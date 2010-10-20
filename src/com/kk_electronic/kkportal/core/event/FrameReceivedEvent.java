@@ -19,70 +19,43 @@
  */
 package com.kk_electronic.kkportal.core.event;
 
-import com.google.gwt.event.logical.shared.HasOpenHandlers;
+import com.google.gwt.event.shared.EventHandler;
 import com.google.gwt.event.shared.GwtEvent;
 import com.kk_electronic.kkportal.core.rpc.WebSocket;
 
 /**
- * This event is fired when a frame is recieved from the portal server  
+ * This event is fired when a frame is sent to the portal server
+ * 
  * @author Jes Andersen
  * @see WebSocket
  */
-public class FrameReceivedEvent extends GwtEvent<FrameReceivedHandler> {
+public class FrameReceivedEvent extends GwtEvent<FrameReceivedEvent.Handler> {
+
+	public interface Handler extends EventHandler {
+		void onFrameReceived(FrameReceivedEvent event);
+	}
 
 	/**
 	 * Handler type.
 	 */
-	private static Type<FrameReceivedHandler> TYPE;
+	public static final Type<Handler> TYPE = new Type<Handler>();
+	private final String data;
 
-	/**
-	 * Fires a open event on all registered handlers in the handler manager.If
-	 * no such handlers exist, this method will do nothing.
-	 * 
-	 * @param <T>
-	 *            the target type
-	 * @param source
-	 *            the source of the handlers
-	 * @param target
-	 *            the target
-	 */
-	public static <T> void fire(HasOpenHandlers<T> source, String data) {
-		if (TYPE != null) {
-			FrameReceivedEvent event = new FrameReceivedEvent(data);
-			source.fireEvent(event);
-		}
+	public String getData() {
+		return data;
 	}
 
-	/**
-	 * Gets the type associated with this event.
-	 * 
-	 * @return returns the handler type
-	 */
-	public static Type<FrameReceivedHandler> getType() {
-		if (TYPE == null) {
-			TYPE = new Type<FrameReceivedHandler>();
-		}
-		return TYPE;
-	}
-
-	private String data;
-
-	protected FrameReceivedEvent(String data) {
+	public FrameReceivedEvent(String data) {
 		this.data = data;
 	}
 
-	@SuppressWarnings("unchecked")
 	@Override
-	public final Type<FrameReceivedHandler> getAssociatedType() {
-		return (Type) TYPE;
+	public Type<Handler> getAssociatedType() {
+		return TYPE;
 	}
 
 	@Override
-	protected void dispatch(FrameReceivedHandler handler) {
+	protected void dispatch(Handler handler) {
 		handler.onFrameReceived(this);
-	}
-
-	public String getData() {
-		return this.data;
 	}
 }

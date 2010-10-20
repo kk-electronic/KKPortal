@@ -19,7 +19,8 @@
  */
 package com.kk_electronic.kkportal.core;
 
-import com.google.gwt.event.shared.HandlerManager;
+import com.google.gwt.event.shared.EventBus;
+import com.google.gwt.event.shared.SimpleEventBus;
 import com.google.gwt.inject.client.AbstractGinModule;
 import com.google.gwt.view.client.ProvidesKey;
 import com.google.inject.Provides;
@@ -66,12 +67,8 @@ public class WebPageInjectConfig extends AbstractGinModule {
 		bind(User.class).toProvider(UserProvider.class);
 		bind(Hasher.class).to(SHA256.class);
 		bind(FrameEncoder.class).to(SimpleEncoder.class);
+		bind(EventBus.class).to(SimpleEventBus.class).in(Singleton.class);
 		bindConstant().annotatedWith(Names.named("DefaultHistoryToken")).to("ViewModules");
-	}
-	
-	@Provides @Singleton
-	HandlerManager provideHandlerManager(){
-		return new HandlerManager(null);
 	}
 	
 	@Provides @Singleton

@@ -19,15 +19,20 @@
  */
 package com.kk_electronic.kkportal.core.rpc;
 
-import com.google.gwt.event.logical.shared.HasCloseHandlers;
-import com.google.gwt.event.logical.shared.HasOpenHandlers;
-import com.kk_electronic.kkportal.core.event.HasFrameReceivedHandlers;
-import com.kk_electronic.kkportal.core.event.HasFrameSentHandlers;
+import com.google.gwt.event.shared.HandlerRegistration;
+import com.kk_electronic.kkportal.core.event.FrameReceivedEvent;
+import com.kk_electronic.kkportal.core.event.FrameSentEvent;
+import com.kk_electronic.kkportal.core.event.ServerConnectEvent;
+import com.kk_electronic.kkportal.core.event.ServerDisconnectEvent;
 
-public interface WebSocket extends HasCloseHandlers<WebSocket>,HasOpenHandlers<WebSocket>,HasFrameSentHandlers,HasFrameReceivedHandlers {
+public interface WebSocket {
 	void send(String s);
 	void connect(String url, String subprotocol);
 	void close();
 	boolean isConnected();
 	boolean isTxBusy();
+	HandlerRegistration addFrameSentHandler(FrameSentEvent.Handler handler);
+	HandlerRegistration addFrameReceivedHandler(FrameReceivedEvent.Handler handler);
+	HandlerRegistration addServerConnectHandler(ServerConnectEvent.Handler handler);
+	HandlerRegistration addServerDisconnectHandler(ServerDisconnectEvent.Handler handler);
 }

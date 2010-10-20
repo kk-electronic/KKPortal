@@ -20,11 +20,36 @@
 package com.kk_electronic.kkportal.core.event;
 
 import com.google.gwt.event.shared.EventHandler;
+import com.google.gwt.event.shared.GwtEvent;
+import com.kk_electronic.kkportal.core.rpc.WebSocket;
 
 /**
- * Enables the listener to listen to frames sent to the portal server 
+ * This event is fired when a connection is established to the server
+ * 
  * @author Jes Andersen
+ * @see WebSocket
  */
-public interface FrameSentHandler extends EventHandler {
-	void onFrameSent(FrameSentEvent frameSentEvent);
+public class ServerConnectEvent extends GwtEvent<ServerConnectEvent.Handler> {
+
+	public interface Handler extends EventHandler {
+		void onServerConnect(ServerConnectEvent event);
+	}
+
+	/**
+	 * Handler type.
+	 */
+	public static final Type<Handler> TYPE = new Type<Handler>();
+
+	public ServerConnectEvent() {
+	}
+
+	@Override
+	public Type<Handler> getAssociatedType() {
+		return TYPE;
+	}
+
+	@Override
+	protected void dispatch(Handler handler) {
+		handler.onServerConnect(this);
+	}
 }

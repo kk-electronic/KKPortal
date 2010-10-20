@@ -78,7 +78,7 @@ public class Inotify implements Module,INotificationHandler {
 	}
 	
 	@Inject
-	public Inotify(Display display,Debug debug,HandlerManager eventBus) {
+	public Inotify(Display display,Debug debug,EventBus eventBus) {
 		eventBus.addHandler(INotificationEvent.getType(), this);
 		debug.inotify("server", new AsyncCallback<Object>() {
 

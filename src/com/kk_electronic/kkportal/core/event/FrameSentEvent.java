@@ -19,63 +19,43 @@
  */
 package com.kk_electronic.kkportal.core.event;
 
-import com.google.gwt.event.logical.shared.HasOpenHandlers;
+import com.google.gwt.event.shared.EventHandler;
 import com.google.gwt.event.shared.GwtEvent;
 import com.kk_electronic.kkportal.core.rpc.WebSocket;
 
 /**
- * This event is fired when a frame is sent to the portal server  
+ * This event is fired when a frame is sent to the portal server
+ * 
  * @author Jes Andersen
  * @see WebSocket
  */
-public class FrameSentEvent extends GwtEvent<FrameSentHandler> {
+public class FrameSentEvent extends GwtEvent<FrameSentEvent.Handler> {
 
-  /**
-   * Handler type.
-   */
-  private static Type<FrameSentHandler> TYPE;
+	public interface Handler extends EventHandler {
+		void onFrameSent(FrameSentEvent event);
+	}
 
-  /**
-   * Fires a open event on all registered handlers in the handler manager.If no
-   * such handlers exist, this method will do nothing.
-   * 
-   * @param <T> the target type
-   * @param source the source of the handlers
-   * @param target the target
-   */
-  public static <T> void fire(HasOpenHandlers<T> source) {
-    if (TYPE != null) {
-      FrameSentEvent event = new FrameSentEvent();
-      source.fireEvent(event);
-    }
-  }
+	/**
+	 * Handler type.
+	 */
+	public static final Type<Handler> TYPE = new Type<Handler>();
+	private final String data;
 
-  /**
-   * Gets the type associated with this event.
-   * 
-   * @return returns the handler type
-   */
-  public static Type<FrameSentHandler> getType() {
-    if (TYPE == null) {
-      TYPE = new Type<FrameSentHandler>();
-    }
-    return TYPE;
-  }
+	public String getData() {
+		return data;
+	}
 
-  protected FrameSentEvent() {
-  }
+	public FrameSentEvent(String data) {
+		this.data = data;
+	}
 
-  @SuppressWarnings("unchecked")
-  @Override
-  public final Type<FrameSentHandler> getAssociatedType() {
-    return (Type) TYPE;
-  }
+	@Override
+	public Type<Handler> getAssociatedType() {
+		return TYPE;
+	}
 
-  // Because of type erasure, our static type is
-  // wild carded, yet the "real" type should use our I param.
-
-  @Override
-  protected void dispatch(FrameSentHandler handler) {
-    handler.onFrameSent(this);
-  }
+	@Override
+	protected void dispatch(Handler handler) {
+		handler.onFrameSent(this);
+	}
 }
