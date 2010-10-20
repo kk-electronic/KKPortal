@@ -129,7 +129,7 @@ public class Comet implements WebSocket {
 			case Response.SC_OK:
 				GWT.log("SOCKET-portalserver receiving @"+new Date().getTime() +  " : " + response.getText());
 				FrameReceivedEvent.fire(Comet.this,response.getText());
-				poll();
+				deferredPoll();
 				break;
 			case 0:
 			case Response.SC_GONE:
@@ -166,8 +166,21 @@ public class Comet implements WebSocket {
 			GWT.log("SOCKET-Failed to get responses to portalserver",e);
 		}
 	}
-	
+
 	/**
+	 * Many browsers has a load indicator that can be stopped by delaying
+	 * the long pull using the deferredCommand
+	 */
+	protected void deferredPoll() {
+		DeferredCommand.addCommand(new Command() {
+			
+			@Override
+			public void execute() {
+				poll();
+			}
+		});
+	}
+
 	 * Creates the class with no sideeffects.
 	 * @param eventBus the eventbus to send {@link FrameReceivedEvent}, {@link FrameSentEvent}, {@link OpenEvent} and {@link CloseEvent} on.
 	 */
