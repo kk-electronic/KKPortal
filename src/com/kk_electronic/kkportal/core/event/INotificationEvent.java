@@ -19,72 +19,47 @@
  */
 package com.kk_electronic.kkportal.core.event;
 
+import com.google.gwt.event.shared.EventHandler;
 import com.google.gwt.event.shared.GwtEvent;
-import com.google.gwt.event.shared.HasHandlers;
 
-public class INotificationEvent extends GwtEvent<INotificationHandler> {
+/**
+ * This event is fired when a INotify event is registered on the server
+ * 
+ * @author Jes Andersen
+ */
+public class INotificationEvent extends GwtEvent<INotificationEvent.Handler> {
+
+	public interface Handler extends EventHandler {
+		void onINotification(INotificationEvent event);
+	}
 
 	/**
 	 * Handler type.
 	 */
-	private static Type<INotificationHandler> TYPE;
-	private final String filename;
-	private final String inotiytype;
+	public static final Type<Handler> TYPE = new Type<Handler>();
+	private final String file;
+	private final String notifytype;
 
-	/**
-	 * Fires a open event on all registered handlers in the handler manager.If
-	 * no such handlers exist, this method will do nothing.
-	 * 
-	 * @param <T>
-	 *            the target type
-	 * @param source
-	 *            the source of the handlers
-	 * @param target
-	 *            the target
-	 */
-	public static <T> void fire(HasHandlers source,String filename,String type) {
-		if (TYPE != null) {
-			INotificationEvent event = new INotificationEvent(filename,type);
-			source.fireEvent(event);
-		}
+	public String getFileName() {
+		return file;
 	}
 
-	public String getFilename() {
-		return filename;
+	public String getNotifytype() {
+		return notifytype;
 	}
 
-	public String getInotiytype() {
-		return inotiytype;
+	public INotificationEvent(String file, String notifytype) {
+		this.file = file;
+		this.notifytype = notifytype;
 	}
 
-	/**
-	 * Gets the type associated with this event.
-	 * 
-	 * @return returns the handler type
-	 */
-	public static Type<INotificationHandler> getType() {
-		if (TYPE == null) {
-			TYPE = new Type<INotificationHandler>();
-		}
+	@Override
+	public Type<Handler> getAssociatedType() {
 		return TYPE;
 	}
 
-	protected INotificationEvent(String filename, String type) {
-		this.filename = filename;
-		inotiytype = type;
-	}
-
-	@SuppressWarnings("unchecked")
 	@Override
-	public final Type<INotificationHandler> getAssociatedType() {
-		return (Type) TYPE;
-	}
-
-	// Because of type erasure, our static type is
-	// wild carded, yet the "real" type should use our I param.
-
-	@Override
-	protected void dispatch(INotificationHandler handler) {
+	protected void dispatch(Handler handler) {
 		handler.onINotification(this);
 	}
 }

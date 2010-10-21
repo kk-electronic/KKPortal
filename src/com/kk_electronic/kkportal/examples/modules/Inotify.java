@@ -24,20 +24,18 @@ import java.util.List;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.Element;
-import com.google.gwt.event.shared.HandlerManager;
+import com.google.gwt.event.shared.EventBus;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
-import com.google.gwt.user.client.Command;
-import com.google.gwt.user.client.DeferredCommand;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.inject.Inject;
+import com.kk_electronic.kkportal.core.event.ContentChangedEvent;
 import com.kk_electronic.kkportal.core.event.INotificationEvent;
-import com.kk_electronic.kkportal.core.event.INotificationHandler;
 import com.kk_electronic.kkportal.core.moduleview.Module;
 import com.kk_electronic.kkportal.core.services.Debug;
 
-public class Inotify implements Module,INotificationHandler {
+public class Inotify implements Module,INotificationEvent.Handler {
 	private final Display display;
 
 	public static interface UIBinder extends UiBinder<Widget, Display>{};
@@ -45,8 +43,10 @@ public class Inotify implements Module,INotificationHandler {
 		Widget w;
 		@UiField
 		Element lineList;
+		private final EventBus eventBus;
 		@Inject
-		public Display(UIBinder binder) {
+		public Display(UIBinder binder,EventBus eventBus) {
+			this.eventBus = eventBus;
 			w = binder.createAndBindUi(this);
 		}
 		public Widget asWidget(){
@@ -61,25 +61,13 @@ public class Inotify implements Module,INotificationHandler {
 				sb.append(line);
 			}
 			lineList.setInnerHTML(sb.toString());
-			checkResize();
-		}
-		private void checkResize() {
-			final int oldSize = lineList.getOffsetHeight();
-			DeferredCommand.addCommand(new Command() {
-				
-				@Override
-				public void execute() {
-					if(lineList.getOffsetHeight() != oldSize){
-						GWT.log("resize");
-					}
-				}
-			});
+			eventBus.fireEventFromSource(new ContentChangedEvent(), this);
 		}
 	}
 	
 	@Inject
 	public Inotify(Display display,Debug debug,EventBus eventBus) {
-		eventBus.addHandler(INotificationEvent.getType(), this);
+		eventBus.addHandler(INotificationEvent.TYPE, this);
 		debug.inotify("server", new AsyncCallback<Object>() {
 
 			@Override
@@ -112,6 +100,6 @@ public class Inotify implements Module,INotificationHandler {
 
 	@Override
 	public void onINotification(INotificationEvent event) {
-		addMessage(event.getInotiytype() + ":" +event.getFilename());
+		addMessage(event.getNotifytype() + ":" +event.getFileName());
 	}
 }

@@ -391,7 +391,7 @@ public class RpcDispatcher implements FrameSentEvent.Handler, Dispatcher,
 						new Class<?>[] { String.class }, params.get(0));
 				String s2 = frameEncoder.decodeResult(
 						new Class<?>[] { String.class }, params.get(1));
-				INotificationEvent.fire(eventbus, s1, s2);
+				eventbus.fireEvent(new INotificationEvent(s1,s2));
 				continue;
 			}
 			PendingCall<?> pendingCall = pending.remove(response.getId());
