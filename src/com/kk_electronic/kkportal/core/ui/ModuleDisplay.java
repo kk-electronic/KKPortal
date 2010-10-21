@@ -111,17 +111,7 @@ public class ModuleDisplay implements DropSink<ModuleWindow> {
 	 * @param animate 
 	 */
 	public void setModuleList(List<List<ModuleInfo>> modules, boolean animate) {
-		/*
-		 * To avoid unnecessary reload we ...
-		 */
-		HashMap<Object, ModuleWindow> displayed = new HashMap<Object, ModuleWindow>();
-		for (int i = 0, l = canvas.getWidgetCount(); i < l; i++) {
-			Widget widget = canvas.getWidget(i);
-			if (widget instanceof ModuleWindow) {
-				ModuleWindow window = (ModuleWindow) widget;
-				displayed.put(keyprovider.getKey(window.getModule()), window);
-			}
-		}
+		HashMap<Object, ModuleWindow> displayed = getModuleWindowMap();
 		// TODO: Add weights to column sizes
 		double left = 0;
 		for (List<ModuleInfo> moduleInfos : modules) {
@@ -179,6 +169,21 @@ public class ModuleDisplay implements DropSink<ModuleWindow> {
 		}
 	}
 
+	private HashMap<Object, ModuleWindow> getModuleWindowMap() {
+		/*
+		 * To avoid unnecessary reload we ...
+		 */
+		HashMap<Object, ModuleWindow> displayed = new HashMap<Object, ModuleWindow>();
+		for (int i = 0, l = canvas.getWidgetCount(); i < l; i++) {
+			Widget widget = canvas.getWidget(i);
+			if (widget instanceof ModuleWindow) {
+				ModuleWindow window = (ModuleWindow) widget;
+				displayed.put(keyprovider.getKey(window.getModule()), window);
+			}
+		}
+		return displayed;
+	}
+	
 	private void loadModuleContents(final ModuleWindow widget) {
 		typeInfoProvider.get(widget.getModule().getType(),
 				new AsyncCallback<ModuleTypeInfo>() {
@@ -253,5 +258,19 @@ public class ModuleDisplay implements DropSink<ModuleWindow> {
 
 	public void setModuleList(List<List<ModuleInfo>> moduleList) {
 		setModuleList(moduleList, true);
+	}
+
+	public void checkForResizes() {
+		if(viewModules == null) return;
+		for (int i = 0, l = canvas.getWidgetCount(); i < l; i++) {
+			Widget widget = canvas.getWidget(i);
+			if (widget instanceof ModuleWindow) {
+				ModuleWindow window = (ModuleWindow) widget;
+				int currentHeight = window.getContent().getElement().getScrollHeight();
+				if(currentHeight != window.getHeight()){
+					viewModules.updateHeight(window.getModule(),currentHeight);
+				}
+			}
+		}
 	}
 }

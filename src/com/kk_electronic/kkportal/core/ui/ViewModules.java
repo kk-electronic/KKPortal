@@ -23,11 +23,13 @@ package com.kk_electronic.kkportal.core.ui;
 import java.util.List;
 
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.event.shared.EventBus;
 import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.inject.Inject;
 import com.kk_electronic.kkportal.core.Activity;
+import com.kk_electronic.kkportal.core.event.ContentChangedEvent;
 import com.kk_electronic.kkportal.core.security.User;
 import com.kk_electronic.kkportal.core.services.ModuleService;
 import com.kk_electronic.kkportal.core.services.PortalService;
@@ -35,21 +37,22 @@ import com.kk_electronic.kkportal.core.services.ModuleService.ModuleInfo;
 import com.kk_electronic.kkportal.core.services.ModuleService.TabInfo;
 
 /**
- * Note this is not a good example yet. Does not have View-Presenter seperation
+ * Note this is not a good example yet. Does not have View-Presenter separation
  * 
  * @author Jes Andersen type filter text
  */
-public class ViewModules implements Activity {
+public class ViewModules implements Activity, ContentChangedEvent.Handler {
 	private final ModuleService moduleService;
 	private final ModuleDisplay display;
 	protected List<List<ModuleInfo>> moduleList;
 	private TabInfo tab;
-	
+
 	@Inject
 	public ViewModules(PortalService service, ModuleService moduleService,
-			User user,ModuleDisplay display) {
+			User user,ModuleDisplay display,EventBus eventBus) {
 		this.moduleService = moduleService;
 		this.display = display;
+		eventBus.addHandler(ContentChangedEvent.TYPE, this);
 		display.setViewModules(this);
 		
 		moduleService.getTabs(user, new AsyncCallback<List<TabInfo>>() {
@@ -151,5 +154,15 @@ public class ViewModules implements Activity {
 	
 	public void save() {
 		delayedSave.schedule(1300);
+	}
+
+	@Override
+	public void onContentSizeChanged(ContentChangedEvent event) {
+		display.checkForResizes();
+	}
+
+	public void updateHeight(ModuleInfo module, int currentHeight) {
+		module.setHeight(currentHeight + 5);
+		display.setModuleList(moduleList);
 	}
 }

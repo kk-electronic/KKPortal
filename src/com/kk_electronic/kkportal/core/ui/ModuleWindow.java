@@ -100,4 +100,8 @@ public class ModuleWindow extends Composite implements Dragsource<ModuleWindow>{
 	public void setContent(Widget content){
 		this.content.setWidget(content);
 	}
+
+	public Widget getContent() {
+		return this.content;
+	}
 }
