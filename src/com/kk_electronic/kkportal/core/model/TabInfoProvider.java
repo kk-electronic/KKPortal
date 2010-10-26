@@ -24,7 +24,10 @@ import java.util.List;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.view.client.HasData;
+import com.google.gwt.view.client.SelectionModel;
+import com.google.gwt.view.client.SingleSelectionModel;
 import com.google.inject.Inject;
+import com.kk_electronic.kkportal.core.activity.LocationInfo;
 import com.kk_electronic.kkportal.core.security.User;
 import com.kk_electronic.kkportal.core.services.ModuleService;
 import com.kk_electronic.kkportal.core.services.ModuleService.TabInfo;
@@ -38,8 +41,7 @@ public class TabInfoProvider{
 		
 		@Override
 		public void onSuccess(List<TabInfo> tabInfos) {
-			TabInfoProvider.this.tabInfos = tabInfos;
-			updateDisplay();
+			setTabInfos(tabInfos);
 		}	
 		
 		@Override
@@ -47,13 +49,41 @@ public class TabInfoProvider{
 			GWT.log("ERROR-Could not fetch tabs: " + caught);
 		}
 	};
+	private final LocationInfo locationInfo;
+	private final SingleSelectionModel<TabInfo> selectionModel;
+
+	public SelectionModel<TabInfo> getSelectionModel() {
+		return selectionModel;
+	}
 
 	@Inject
-	public TabInfoProvider(User user, ModuleService moduleService) {
+	public TabInfoProvider(User user, ModuleService moduleService,LocationInfo locationInfo) {
 		this.moduleService = moduleService;
+		this.locationInfo = locationInfo;
+		selectionModel = new SingleSelectionModel<TabInfo>();
 		moduleService.getTabs(user, tabscallback );
 	}
+
+	private TabInfo findSelectedTabInfo(List<TabInfo> tabInfos){
+		if(locationInfo.getSubint() == null) return null;
+		for(TabInfo tabInfo : tabInfos){
+			if(tabInfo.getId() == locationInfo.getSubint()){
+				return tabInfo;
+			}
+		}
+		return null;
+	}
 	
+	protected void setTabInfos(List<TabInfo> tabInfos) {
+		this.tabInfos = tabInfos;
+		TabInfo selectedInfo = findSelectedTabInfo(tabInfos);
+		if(selectedInfo == null & tabInfos.size()>0){
+			selectedInfo = tabInfos.get(0);
+		}
+		selectionModel.setSelected(selectedInfo, true);
+		updateDisplay();
+	}
+
 	HasData<TabInfo> display;
 	public void addDataDisplay(HasData<TabInfo> newDisplay){
 		if(display != null) GWT.log("display overridden");
@@ -65,5 +95,10 @@ public class TabInfoProvider{
 	private void updateDisplay() {
 		if(display == null || tabInfos == null) return;
 		display.setRowData(0, tabInfos);
+	}
+
+	public int getMaxWidth() {
+		//TODO:iterate and find
+		return 80;
 	}
 }

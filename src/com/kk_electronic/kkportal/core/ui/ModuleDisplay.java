@@ -58,7 +58,7 @@ public class ModuleDisplay implements DropSink<ModuleWindow> {
 	@Inject
 	public ModuleDisplay(ProvidesKey<ModuleInfo> keyprovider,
 			ModuleTypeInfoProvider typeInfoProvider, ModuleMap moduleMap,
-			FlexInjector injector, DND<ModuleWindow> dnd,Resources resources) {
+			FlexInjector injector, DND<ModuleWindow> dnd, Resources resources) {
 		this.keyprovider = keyprovider;
 		this.typeInfoProvider = typeInfoProvider;
 		this.moduleMap = moduleMap;
@@ -108,13 +108,14 @@ public class ModuleDisplay implements DropSink<ModuleWindow> {
 	/**
 	 * 
 	 * @param modules
-	 * @param animate 
+	 * @param animate
 	 */
 	public void setModuleList(List<List<ModuleInfo>> modules, boolean animate) {
 		HashMap<Object, ModuleWindow> displayed = getModuleWindowMap();
 		// TODO: Add weights to column sizes
 		double left = 0;
-		for (List<ModuleInfo> moduleInfos : modules) {
+		for (int i=0,l=modules.size();i<l;i++) {
+			List<ModuleInfo> moduleInfos = modules.get(i);
 			double top = 0;
 			double width = 100.0 / modules.size();
 			for (ModuleInfo moduleInfo : moduleInfos) {
@@ -138,7 +139,7 @@ public class ModuleDisplay implements DropSink<ModuleWindow> {
 						}
 					});
 					widget.addDeleteHandler(new MouseDownHandler() {
-						
+
 						@Override
 						public void onMouseDown(MouseDownEvent event) {
 							viewModules.remove(drag.getModule());
@@ -148,9 +149,15 @@ public class ModuleDisplay implements DropSink<ModuleWindow> {
 					loadModuleContents(widget);
 					canvas.add(widget);
 				}
-				int height = moduleInfo.getHeight() + 20;
-				canvas.setWidgetTopHeight(widget, top, Unit.PX, height, Unit.PX);
-				canvas.setWidgetLeftWidth(widget, left, Unit.PCT, width, Unit.PCT);
+				widget.setFirstColumn(i == 0);
+				widget.setLastColumn((i + 1) == l);
+				//TODO: Calculate from style
+				int height = moduleInfo.getHeight() + 30;
+				canvas
+						.setWidgetTopHeight(widget, top, Unit.PX, height,
+								Unit.PX);
+				canvas.setWidgetLeftWidth(widget, left, Unit.PCT, width,
+						Unit.PCT);
 				top += height;
 			}
 			left += width;
@@ -162,7 +169,7 @@ public class ModuleDisplay implements DropSink<ModuleWindow> {
 		for (ModuleWindow window : displayed.values()) {
 			canvas.remove(window);
 		}
-		if(animate){
+		if (animate) {
 			canvas.animate(200);
 		} else {
 			canvas.forceLayout();
@@ -183,7 +190,7 @@ public class ModuleDisplay implements DropSink<ModuleWindow> {
 		}
 		return displayed;
 	}
-	
+
 	private void loadModuleContents(final ModuleWindow widget) {
 		typeInfoProvider.get(widget.getModule().getType(),
 				new AsyncCallback<ModuleTypeInfo>() {
@@ -261,14 +268,16 @@ public class ModuleDisplay implements DropSink<ModuleWindow> {
 	}
 
 	public void checkForResizes() {
-		if(viewModules == null) return;
+		if (viewModules == null)
+			return;
 		for (int i = 0, l = canvas.getWidgetCount(); i < l; i++) {
 			Widget widget = canvas.getWidget(i);
 			if (widget instanceof ModuleWindow) {
 				ModuleWindow window = (ModuleWindow) widget;
-				int currentHeight = window.getContent().getElement().getScrollHeight();
-				if(currentHeight != window.getHeight()){
-					viewModules.updateHeight(window.getModule(),currentHeight);
+				int currentHeight = window.getContent().getElement()
+						.getScrollHeight();
+				if (currentHeight != window.getHeight()) {
+					viewModules.updateHeight(window.getModule(), currentHeight);
 				}
 			}
 		}

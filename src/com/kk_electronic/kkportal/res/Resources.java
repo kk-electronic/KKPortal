@@ -28,6 +28,8 @@ public interface Resources extends ClientBundle {
 		String colour2();
 		String colour3();
 		String colour4();
+		
+		int margin();
 //		
 //		String good();
 //		String maybe();

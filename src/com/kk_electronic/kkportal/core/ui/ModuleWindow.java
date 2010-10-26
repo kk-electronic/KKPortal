@@ -24,6 +24,7 @@ import com.google.gwt.dom.client.Element;
 import com.google.gwt.event.dom.client.MouseDownEvent;
 import com.google.gwt.event.dom.client.MouseDownHandler;
 import com.google.gwt.event.shared.HandlerRegistration;
+import com.google.gwt.resources.client.CssResource;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.Composite;
@@ -35,30 +36,39 @@ import com.google.inject.Inject;
 import com.kk_electronic.kkportal.core.dnd.DND.Dragsource;
 import com.kk_electronic.kkportal.core.services.ModuleService.ModuleInfo;
 
-public class ModuleWindow extends Composite implements Dragsource<ModuleWindow>{
-	public static interface UIBinder extends UiBinder<Panel, ModuleWindow>{}
-	
+public class ModuleWindow extends Composite implements Dragsource<ModuleWindow> {
+	public static interface UIBinder extends UiBinder<Panel, ModuleWindow> {
+	}
+
 	public UIBinder binder = GWT.create(UIBinder.class);
+
+	static interface Style extends CssResource {
+		String first();
+		String last();
+	}
 	
+	@UiField
+	Style style;
+
 	@UiField
 	Widget titlebar;
-	
+
 	@UiField
 	Hyperlink title;
-	
+
 	@UiField
 	SimplePanel content;
-	
+
 	@UiField
 	Element container;
-	
+
 	private Widget masked;
 
 	private final ModuleInfo module;
 
 	@UiField
 	Widget delete;
-	
+
 	@Inject
 	public ModuleWindow(ModuleInfo module) {
 		this.module = module;
@@ -66,16 +76,16 @@ public class ModuleWindow extends Composite implements Dragsource<ModuleWindow>{
 		super.initWidget(masked);
 		title.setTargetHistoryToken("SingleRender$" + module.getId());
 	}
-	
+
 	public void setTitle(String title) {
 		this.title.setText(title);
 	}
-	
-	public int getHeight(){
+
+	public int getHeight() {
 		return container.getOffsetHeight();
 	}
-	
-	public void setHeight(int height){
+
+	public void setHeight(int height) {
 		module.setHeight(height);
 	}
 
@@ -88,7 +98,7 @@ public class ModuleWindow extends Composite implements Dragsource<ModuleWindow>{
 	public HandlerRegistration addMouseDownHandler(MouseDownHandler handler) {
 		return titlebar.addDomHandler(handler, MouseDownEvent.getType());
 	}
-	
+
 	public HandlerRegistration addDeleteHandler(MouseDownHandler handler) {
 		return delete.addDomHandler(handler, MouseDownEvent.getType());
 	}
@@ -96,12 +106,28 @@ public class ModuleWindow extends Composite implements Dragsource<ModuleWindow>{
 	public ModuleInfo getModule() {
 		return module;
 	}
-	
-	public void setContent(Widget content){
+
+	public void setContent(Widget content) {
 		this.content.setWidget(content);
 	}
 
 	public Widget getContent() {
 		return this.content;
+	}
+
+	public void setFirstColumn(boolean b) {
+		if(b){
+			this.addStyleName(style.first());
+		} else {
+			this.removeStyleName(style.first());
+		}
+	}
+
+	public void setLastColumn(boolean b) {
+		if(b){
+			this.addStyleName(style.last());
+		} else {
+			this.removeStyleName(style.last());
+		}
 	}
 }
