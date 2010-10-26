@@ -27,6 +27,7 @@ import com.google.inject.Provides;
 import com.google.inject.Singleton;
 import com.google.inject.TypeLiteral;
 import com.google.inject.name.Names;
+import com.kk_electronic.kkportal.core.activity.ActivityManager;
 import com.kk_electronic.kkportal.core.inject.FlexInjector;
 import com.kk_electronic.kkportal.core.reflection.Injection;
 import com.kk_electronic.kkportal.core.rpc.Comet;

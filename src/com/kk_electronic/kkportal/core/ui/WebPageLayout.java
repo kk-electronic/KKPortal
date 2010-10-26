@@ -31,7 +31,7 @@ import com.google.gwt.user.client.ui.RootLayoutPanel;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
-import com.kk_electronic.kkportal.core.Activity;
+import com.kk_electronic.kkportal.core.activity.Activity;
 
 @Singleton
 public class WebPageLayout extends Composite implements ApplicationLayout {

@@ -17,7 +17,7 @@
  * along with KKPortal.  If not, see <http://www.gnu.org/licenses/>.
  *
  */
-package com.kk_electronic.kkportal.core;
+package com.kk_electronic.kkportal.core.activity;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -30,7 +30,6 @@ import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import com.google.inject.name.Named;
-import com.kk_electronic.kkportal.core.activity.LocationInfo;
 import com.kk_electronic.kkportal.core.inject.ConstructFromLiteral;
 import com.kk_electronic.kkportal.core.inject.FlexInjector;
 import com.kk_electronic.kkportal.core.reflection.ActivityMap;

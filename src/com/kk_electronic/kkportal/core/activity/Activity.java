@@ -17,7 +17,7 @@
  * along with KKPortal.  If not, see <http://www.gnu.org/licenses/>.
  *
  */
-package com.kk_electronic.kkportal.core;
+package com.kk_electronic.kkportal.core.activity;
 
 import com.google.gwt.user.client.ui.Widget;
 import com.kk_electronic.kkportal.core.inject.ConstructFromLiteral;

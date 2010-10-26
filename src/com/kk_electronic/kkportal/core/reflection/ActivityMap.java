@@ -19,6 +19,6 @@
  */
 package com.kk_electronic.kkportal.core.reflection;
 
-import com.kk_electronic.kkportal.core.Activity;
+import com.kk_electronic.kkportal.core.activity.Activity;
 
 public interface ActivityMap extends ClassMap<String,Activity>{}

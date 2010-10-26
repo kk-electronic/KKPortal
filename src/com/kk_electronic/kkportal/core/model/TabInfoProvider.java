@@ -19,25 +19,27 @@
  */
 package com.kk_electronic.kkportal.core.model;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.rpc.AsyncCallback;
-import com.google.gwt.view.client.ListDataProvider;
+import com.google.gwt.view.client.HasData;
 import com.google.inject.Inject;
 import com.kk_electronic.kkportal.core.security.User;
 import com.kk_electronic.kkportal.core.services.ModuleService;
 import com.kk_electronic.kkportal.core.services.ModuleService.TabInfo;
 
-public class TabInfoProvider extends ListDataProvider<Tab>{
+public class TabInfoProvider{
 	@SuppressWarnings("unused")
 	private final ModuleService moduleService;
+	private List<TabInfo> tabInfos;
+	
 	private AsyncCallback<List<TabInfo>> tabscallback = new AsyncCallback<List<TabInfo>>() {
 		
 		@Override
-		public void onSuccess(List<TabInfo> result) {
-			makeTabsFromTabInfo(result);
+		public void onSuccess(List<TabInfo> tabInfos) {
+			TabInfoProvider.this.tabInfos = tabInfos;
+			updateDisplay();
 		}	
 		
 		@Override
@@ -49,13 +51,19 @@ public class TabInfoProvider extends ListDataProvider<Tab>{
 	@Inject
 	public TabInfoProvider(User user, ModuleService moduleService) {
 		this.moduleService = moduleService;
-		moduleService.getTabInfos(user, tabscallback );
+		moduleService.getTabs(user, tabscallback );
 	}
+	
+	HasData<TabInfo> display;
+	public void addDataDisplay(HasData<TabInfo> newDisplay){
+		if(display != null) GWT.log("display overridden");
 
-	protected void makeTabsFromTabInfo(List<TabInfo> tabInfos) {
-		ArrayList<Tab> tabs = new ArrayList<Tab>();
-		for(TabInfo tabInfo:tabInfos){
-			tabs.add(new Tab(tabInfo));
-		}
+		display = newDisplay;
+		updateDisplay();
+	}
+	
+	private void updateDisplay() {
+		if(display == null || tabInfos == null) return;
+		display.setRowData(0, tabInfos);
 	}
 }

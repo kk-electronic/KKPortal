@@ -23,12 +23,14 @@ package com.kk_electronic.kkportal.core.ui;
 import java.util.List;
 
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.dom.client.Style.Unit;
 import com.google.gwt.event.shared.EventBus;
 import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.rpc.AsyncCallback;
+import com.google.gwt.user.client.ui.DockLayoutPanel;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.inject.Inject;
-import com.kk_electronic.kkportal.core.Activity;
+import com.kk_electronic.kkportal.core.activity.Activity;
 import com.kk_electronic.kkportal.core.event.ContentChangedEvent;
 import com.kk_electronic.kkportal.core.security.User;
 import com.kk_electronic.kkportal.core.services.ModuleService;
@@ -43,17 +45,19 @@ import com.kk_electronic.kkportal.core.services.ModuleService.TabInfo;
  */
 public class ViewModules implements Activity, ContentChangedEvent.Handler {
 	private final ModuleService moduleService;
-	private final ModuleDisplay display;
+	private final ModuleDisplay moduleDisplay;
 	protected List<List<ModuleInfo>> moduleList;
 	private TabInfo tab;
+	private final TabDisplay tabDisplay;
 
 	@Inject
 	public ViewModules(PortalService service, ModuleService moduleService,
-			User user,ModuleDisplay display,EventBus eventBus) {
+			User user,ModuleDisplay moduleDisplay,TabDisplay tabDisplay, EventBus eventBus) {
 		this.moduleService = moduleService;
-		this.display = display;
+		this.moduleDisplay = moduleDisplay;
+		this.tabDisplay = tabDisplay;
 		eventBus.addHandler(ContentChangedEvent.TYPE, this);
-		display.setViewModules(this);
+		moduleDisplay.setViewModules(this);
 		
 		moduleService.getTabs(user, new AsyncCallback<List<TabInfo>>() {
 			
@@ -84,7 +88,7 @@ public class ViewModules implements Activity, ContentChangedEvent.Handler {
 			@Override
 			public void onSuccess(List<List<ModuleInfo>> result) {
 				ViewModules.this.moduleList = result;
-				display.setModuleList(result,true);
+				moduleDisplay.setModuleList(result,true);
 			}
 		});
 	}
@@ -92,16 +96,22 @@ public class ViewModules implements Activity, ContentChangedEvent.Handler {
 	protected boolean removeWindow(ModuleWindow window){
 		for(List<ModuleInfo> column : moduleList){
 			if(column.remove(window)) {
-				display.setModuleList(moduleList);
+				moduleDisplay.setModuleList(moduleList);
 				return true;
 			}
 		}
 		return false;
 	}
 
+	DockLayoutPanel dockLayoutPanel;
+	
 	@Override
-	public Widget asWidget() {	
-		return display.asWidget();
+	public Widget asWidget() {
+		if(dockLayoutPanel != null) return dockLayoutPanel;
+		dockLayoutPanel = new DockLayoutPanel(Unit.EM);
+		dockLayoutPanel.addNorth(tabDisplay.asWidget(), 2);
+		dockLayoutPanel.add(moduleDisplay.asWidget());
+		return dockLayoutPanel;
 	}
 	
 	public boolean remove(ModuleInfo module){
@@ -115,7 +125,7 @@ public class ViewModules implements Activity, ContentChangedEvent.Handler {
 	}
 
 	private void updateDisplays() {
-		display.setModuleList(moduleList);
+		moduleDisplay.setModuleList(moduleList);
 	}
 	
 	public void add(ModuleInfo module, double d, int j) {
@@ -158,11 +168,11 @@ public class ViewModules implements Activity, ContentChangedEvent.Handler {
 
 	@Override
 	public void onContentSizeChanged(ContentChangedEvent event) {
-		display.checkForResizes();
+		moduleDisplay.checkForResizes();
 	}
 
 	public void updateHeight(ModuleInfo module, int currentHeight) {
 		module.setHeight(currentHeight + 5);
-		display.setModuleList(moduleList);
+		moduleDisplay.setModuleList(moduleList);
 	}
 }

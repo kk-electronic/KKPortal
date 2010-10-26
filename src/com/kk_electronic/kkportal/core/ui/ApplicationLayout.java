@@ -19,7 +19,7 @@
  */
 package com.kk_electronic.kkportal.core.ui;
 
-import com.kk_electronic.kkportal.core.Activity;
+import com.kk_electronic.kkportal.core.activity.Activity;
 import com.kk_electronic.kkportal.core.inject.ConstructFromLiteral;
 
 @ConstructFromLiteral(includeInterfaces=true,recursive=false)
