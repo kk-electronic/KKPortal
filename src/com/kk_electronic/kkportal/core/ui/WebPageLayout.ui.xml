@@ -42,7 +42,7 @@
 		
 	<g:DockLayoutPanel unit='EM' styleName='{style.body}'>
 		<g:north size='4'>
-			<g:HTML>North</g:HTML>
+			<g:HTML><span style="font-size:250%"><span style="color:#C4151B">KK</span>Portal</span></g:HTML>
 		</g:north>
 		<g:center>
 			<g:DockLayoutPanel unit="PX" ui:field="main">
