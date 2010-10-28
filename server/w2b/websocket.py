@@ -135,8 +135,7 @@ class MessageBox(resource.Resource):
         '''
         returns an server side event
         '''
-        if id:
-            return {"method": method,"params": params}
+        return {"method": method,"params": params}
     def addResponse(self, response=None):
         '''
         Used for sending frames to the client

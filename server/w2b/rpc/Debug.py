@@ -47,4 +47,27 @@ def inotify(context,path):
     notifier = INotify()
     notifier.startReading()
     context.addResponse()
-    notifier.watch(filepath.FilePath(path),callbacks=[TransmitInotify(context).write]) 
+    notifier.watch(filepath.FilePath(path),callbacks=[TransmitInotify(context).write])
+
+class Wall():
+    mailboxes = []
+    lastlines = ['']*10
+    def __init__(self):
+        pass
+    def addMailBox(self,mailbox):
+        if mailbox not in self.mailboxes:
+            self.mailboxes.append(mailbox)
+    def broadcast(self,message):
+        self.lastlines.append(message)
+        self.lastlines.pop(0)
+        for mailbox in self.mailboxes:
+            mailbox.addResponse(mailbox.makeNotification("NewWallMessageEvent",[message]))
+    
+def getWall(context):
+    wall = Wall()
+    wall.addMailBox(context)
+    return wall.lastlines
+
+def postToWall(context,message):
+    wall = Wall()
+    wall.broadcast(message)
