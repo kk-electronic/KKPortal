@@ -30,7 +30,9 @@ import com.kk_electronic.kkportal.core.reflection.ModuleMap;
 import com.kk_electronic.kkportal.core.services.ModuleTypeInfo;
 import com.kk_electronic.kkportal.examples.modules.HelloWorld;
 import com.kk_electronic.kkportal.examples.modules.Inotify;
+import com.kk_electronic.kkportal.examples.modules.Wall;
 
+//TODO: Generate this class
 public class ModuleTypeInfoProvider {
 	HashMap<Integer, ModuleTypeInfo> map = new HashMap<Integer, ModuleTypeInfo>();
 
@@ -40,6 +42,8 @@ public class ModuleTypeInfoProvider {
 				.getKeyFromClass(HelloWorld.class), "Hello World"));
 		map.put(1, new ModuleTypeInfo(0, moduleMap
 				.getKeyFromClass(Inotify.class), "Inotify"));
+		map.put(2, new ModuleTypeInfo(0, moduleMap
+				.getKeyFromClass(Wall.class), "Wall"));
 	}
 
 	public void get(Integer typeid, AsyncCallback<ModuleTypeInfo> callback) {

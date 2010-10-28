@@ -44,6 +44,7 @@ import com.kk_electronic.kkportal.core.inject.FlexInjector;
 import com.kk_electronic.kkportal.core.reflection.FeatureMap;
 import com.kk_electronic.kkportal.core.reflection.SecurityMap;
 import com.kk_electronic.kkportal.core.security.SecurityMethod;
+import com.kk_electronic.kkportal.examples.modules.NewWallMessageEvent;
 
 /**
  * RpcDispatcher is a flexible {@link Dispatcher} for use with direct server
@@ -70,7 +71,8 @@ import com.kk_electronic.kkportal.core.security.SecurityMethod;
  */
 @Singleton
 public class RpcDispatcher implements FrameSentEvent.Handler, Dispatcher,
-		ServerConnectEvent.Handler, ServerDisconnectEvent.Handler,FrameReceivedEvent.Handler {
+		ServerConnectEvent.Handler, ServerDisconnectEvent.Handler,
+		FrameReceivedEvent.Handler {
 
 	private final IdCreator<Integer> idCreator;
 
@@ -384,14 +386,22 @@ public class RpcDispatcher implements FrameSentEvent.Handler, Dispatcher,
 			if (response == null)
 				continue;
 			if (response.isNotification()) {
-				GWT.log("NOTIFY-" + response.getMethod());
-				List<Object> params = frameEncoder.decodeResult(new Class<?>[] {
-						List.class, Object.class }, response.getParams());
-				String s1 = frameEncoder.decodeResult(
-						new Class<?>[] { String.class }, params.get(0));
-				String s2 = frameEncoder.decodeResult(
-						new Class<?>[] { String.class }, params.get(1));
-				eventbus.fireEvent(new INotificationEvent(s1,s2));
+				//TODO Make generic
+				GWT.log("SERVEREVENT-" + response.getMethod());
+				List<Object> params = frameEncoder.decodeResult(
+						new Class<?>[] { List.class, Object.class },
+						response.getParams());
+				if ("INotification".equals(response.getMethod())) {
+					String s1 = frameEncoder.decodeResult(
+							new Class<?>[] { String.class }, params.get(0));
+					String s2 = frameEncoder.decodeResult(
+							new Class<?>[] { String.class }, params.get(1));
+					eventbus.fireEvent(new INotificationEvent(s1, s2));
+				} else if ("NewWallMessageEvent".equals(response.getMethod())){
+					String s1 = frameEncoder.decodeResult(
+							new Class<?>[] { String.class }, params.get(0));
+					eventbus.fireEvent(new NewWallMessageEvent(s1));
+				}
 				continue;
 			}
 			PendingCall<?> pendingCall = pending.remove(response.getId());
