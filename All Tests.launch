@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <launchConfiguration type="com.google.gwt.eclipse.core.launch.gwtJUnit">
 <stringAttribute key="com.google.gwt.eclipse.core.LOG_LEVEL" value="INFO"/>
-<booleanAttribute key="com.google.gwt.eclipse.core.NOT_HEADLESS" value="false"/>
+<booleanAttribute key="com.google.gwt.eclipse.core.NOT_HEADLESS" value="true"/>
 <stringAttribute key="com.google.gwt.eclipse.core.OUT_DIR" value="www-test"/>
 <booleanAttribute key="com.google.gwt.eclipse.core.STANDARDS_MODE" value="true"/>
 <stringAttribute key="com.google.gwt.eclipse.core.STYLE" value="OBFUSCATED"/>
-<stringAttribute key="com.google.gwt.eclipse.core.WEB_MODE" value="true"/>
+<stringAttribute key="com.google.gwt.eclipse.core.WEB_MODE" value="false"/>
 <listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_PATHS">
 <listEntry value="/KKPortal"/>
 </listAttribute>
@@ -13,11 +13,11 @@
 <listEntry value="4"/>
 </listAttribute>
 <listAttribute key="org.eclipse.debug.ui.favoriteGroups">
-<listEntry value="org.eclipse.debug.ui.launchGroup.run"/>
 <listEntry value="org.eclipse.debug.ui.launchGroup.debug"/>
+<listEntry value="org.eclipse.debug.ui.launchGroup.run"/>
 </listAttribute>
 <stringAttribute key="org.eclipse.jdt.junit.CONTAINER" value="=KKPortal"/>
-<booleanAttribute key="org.eclipse.jdt.junit.KEEPRUNNING_ATTR" value="false"/>
+<booleanAttribute key="org.eclipse.jdt.junit.KEEPRUNNING_ATTR" value="true"/>
 <stringAttribute key="org.eclipse.jdt.junit.TESTNAME" value=""/>
 <stringAttribute key="org.eclipse.jdt.junit.TEST_KIND" value="org.eclipse.jdt.junit.loader.junit3"/>
 <stringAttribute key="org.eclipse.jdt.launching.CLASSPATH_PROVIDER" value="com.google.gwt.eclipse.core.moduleClasspathProvider"/>
