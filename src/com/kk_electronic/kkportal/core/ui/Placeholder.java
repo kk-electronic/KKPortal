@@ -34,6 +34,7 @@ public class Placeholder extends Composite {
 	}
 
 	public void copysize(Widget widget) {
+		//TODO: Compensate for border,padding,margin;
 		this.setPixelSize(widget.getOffsetWidth(), widget.getOffsetHeight());
 	}
 }
