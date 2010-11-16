@@ -25,11 +25,13 @@ import java.util.Map;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.event.logical.shared.ValueChangeHandler;
+import com.google.gwt.event.shared.EventBus;
 import com.google.gwt.user.client.History;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import com.google.inject.name.Named;
+import com.kk_electronic.kkportal.core.event.LocationChangedEvent;
 import com.kk_electronic.kkportal.core.inject.ConstructFromLiteral;
 import com.kk_electronic.kkportal.core.inject.FlexInjector;
 import com.kk_electronic.kkportal.core.reflection.ActivityMap;
@@ -60,17 +62,20 @@ public class ActivityManager implements ValueChangeHandler<String> {
 	private final ActivityMap activityMap;
 	private final String defaultplace;
 	private final LocationInfo locationInfo;
+	private final EventBus eventBus;
 
 	@Inject
 	public ActivityManager(ApplicationLayout layout, FlexInjector injector,
 			ActivityMap activityMap,
-			@Named("DefaultHistoryToken") String defaultplace,LocationInfo locationInfo) {
+			@Named("DefaultHistoryToken") String defaultplace,LocationInfo locationInfo
+			, EventBus eventBus) {
 
 		this.injector = injector;
 		this.activityMap = activityMap;
 		this.defaultplace = defaultplace;
 		this.display = layout;
 		this.locationInfo = locationInfo;
+		this.eventBus = eventBus;
 		/*
 		 * We create the initial GUI elements needed for displaying activities.
 		 */
@@ -112,7 +117,7 @@ public class ActivityManager implements ValueChangeHandler<String> {
 		}
 		History.newItem(placename);
 	}
-
+		
 	/**
 	 * This is called either when the user loads the page for the first time or
 	 * when the user switches places.
@@ -129,17 +134,7 @@ public class ActivityManager implements ValueChangeHandler<String> {
 		} else {
 			Class<? extends Activity> mainActivity = getActityFromLocation(tokens);
 			if (mainActivity != null) {
-				injector.create(mainActivity, new AsyncCallback<Activity>() {
-					@Override
-					public void onFailure(Throwable caught) {
-						GWT.log("Unable to start requested Presenter", caught);
-					}
-
-					@Override
-					public void onSuccess(Activity result) {
-						display.displayActivity(result);
-					}
-				});
+				displayActivityClass(mainActivity);
 			} else {
 				GWT.log("Unknown location - returning to home page");
 				goHome();
@@ -148,6 +143,31 @@ public class ActivityManager implements ValueChangeHandler<String> {
 		}
 	}
 
+	HashMap<Class<? extends Activity>, Activity> running = new HashMap<Class<? extends Activity>, Activity>();
+
+	private void displayActivityClass(final Class<? extends Activity> mainActivity) {
+		if(running.containsKey(mainActivity)){
+			displayActivity(running.get(mainActivity));
+			return;
+		}
+		injector.create(mainActivity, new AsyncCallback<Activity>() {
+			@Override
+			public void onFailure(Throwable caught) {
+				GWT.log("Unable to start requested Presenter", caught);
+			}
+
+			@Override
+			public void onSuccess(Activity result) {
+				running.put(mainActivity, result);
+				displayActivity(result);
+			}
+		});		
+	}
+
+	private void displayActivity(Activity result) {
+		display.displayActivity(result);
+	}
+	
 	/**
 	 * This one trims the place name a bit before using activitymap to lookup
 	 * the name. It is done to provide some nice looking urls. Everything after
@@ -178,6 +198,7 @@ public class ActivityManager implements ValueChangeHandler<String> {
 						+ location);
 			}
 		}
+		eventBus.fireEvent(new LocationChangedEvent(locationInfo));
 		return activityMap.getClassFromKey(matches[0]);
 	}
 
