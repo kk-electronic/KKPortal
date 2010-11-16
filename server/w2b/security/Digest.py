@@ -38,8 +38,8 @@ def process(method,params,id):
         user = getUser(username)
         if user is None:
             return False
-        realDigest = hashlib.sha256(user.secret + ':' + requestSignature).hexdigest()
-        if isinstance(providedDigest, str) and providedDigest == realDigest:
+        realDigest = unicode(hashlib.sha256(user.secret + ':' + requestSignature).hexdigest())
+        if isinstance(providedDigest, basestring) and providedDigest == realDigest:
             params[:] = realparams
             return True
     return False
