@@ -52,12 +52,17 @@ def getModule(context, moduleid):
     row = result.fetchone()
     return {"id":row.module_id, "height":row.height, "type":row.type_id}
 
+def getModuleInfo(context, ids):
+    result = db.modules.select().where(db.modules.c.module_id.in_(ids)).execute() #@UndefinedVariable
+    returnvalue = [dict(x) for x in result]
+    result.close()
+    return returnvalue
 
 def getModuleTypeInfo(context, ids):
-    result = db.types.select().where(db.types.c.type_id.in_(ids)).execute().fetchall() #@UndefinedVariable
-    resultmap = {'k':result.keys, 'v':[map(str, x.values()) for x in result]}
+    result = db.types.select().where(db.types.c.type_id.in_(ids)).execute() #@UndefinedVariable
+    returnvalue = [dict(x) for x in result]
     result.close()
-    return resultmap
+    return returnvalue
 
 def setModules(context, tabid, modules):
     # To insert into the database we need to rename the id to module_id and add col_nr
