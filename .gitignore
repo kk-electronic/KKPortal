@@ -6,3 +6,7 @@ test-classes/
 .generated/
 test.db
 *.pyc
+.waf*/
+.lock-wafbuild
+www-test/
+waf-build/
