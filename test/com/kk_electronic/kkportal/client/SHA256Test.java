@@ -32,6 +32,17 @@ public class SHA256Test extends GWTTestCase {
 				hasher.hash("2,TabsService.getTabs,[{\"username\":\"Jes\"}]"));
 	}
 
+	/*
+	 * The modulo operation became negative which caused the following test to fail
+	 * with an exception.
+	 */
+	public void testPadding() {
+		Hasher hasher = new SHA256();
+		assertEquals(
+				"0798649893f9d0bf84befaeafa22a24749ef754eb1cac71229c83e65252ac3ca",
+				hasher.hash("1b65c7ef6fb2081201b542c0d35165767bf5da9cf3869209de358c4a0475b4c9:6,ModuleService.setModulesIdsOnTab,[1,[[1,21],[2,3],[4,5,6]]]"));
+	}
+
 	public void testDoubleCall() {
 		Hasher hasher = new SHA256();
 		String hash1 = hasher.hash("abc");

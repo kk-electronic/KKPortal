@@ -225,7 +225,7 @@ public class SHA256 implements Hasher {
 		sb.append(a);
 		long l = input.length() * 8;
 		int i = (int) (l % 512);
-		int p = ((512 - 64 - 8 - i) % 512) / 8;
+		int p = ((1024 - 64 - 8 - i) % 512) / 8;
 		while (p > 0) {
 			sb.append((char) 0);
 			p--;
