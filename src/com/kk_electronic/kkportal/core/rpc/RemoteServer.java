@@ -26,4 +26,6 @@ import com.google.gwt.user.client.rpc.AsyncCallback;
 public interface RemoteServer extends RemoteService {
 	void getServerFQDN(AsyncCallback<String> callback);
 	void getSecurityMap(AsyncCallback<HashMap<String,String>> callback);
+	void getEncryptedSessionKey(String newusername,
+			AsyncCallback<String> encryptedKeyCallback);
 }

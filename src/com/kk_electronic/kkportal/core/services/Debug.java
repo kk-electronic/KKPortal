@@ -26,7 +26,6 @@ import com.kk_electronic.kkportal.core.rpc.RemoteService;
 
 public interface Debug extends RemoteService {
 	void reload(AsyncCallback<?> callback);
-	void runQuery(String query,AsyncCallback<JsTable> asyncCallback);
 	void inotify(String path,AsyncCallback<?> callback);
 	void getWall(AsyncCallback<List<String>> callback);
 	void postToWall(String message,AsyncCallback<?> callback);

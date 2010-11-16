@@ -21,7 +21,7 @@ package com.kk_electronic.kkportal.core.security;
 
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.kk_electronic.kkportal.core.inject.ConstructFromLiteral;
-import com.kk_electronic.kkportal.core.rpc.Request;
+import com.kk_electronic.kkportal.core.rpc.RpcRequest;
 
 @ConstructFromLiteral
 public interface SecurityMethod {
@@ -30,6 +30,6 @@ public interface SecurityMethod {
 	 * @param request the request to be signed
 	 * @param asyncCallback Should be called with the updated Request on success or onFailure if the method could not be signed
 	 */
-	void sign(Request request, AsyncCallback<Request> asyncCallback);
+	void sign(RpcRequest request, AsyncCallback<RpcRequest> asyncCallback);
 
 }

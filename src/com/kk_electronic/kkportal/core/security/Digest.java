@@ -19,31 +19,83 @@
  */
 package com.kk_electronic.kkportal.core.security;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.json.client.JSONValue;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.inject.Inject;
-import com.kk_electronic.kkportal.core.rpc.Request;
+import com.kk_electronic.kkportal.core.rpc.FrameEncoder;
+import com.kk_electronic.kkportal.core.rpc.RemoteServer;
+import com.kk_electronic.kkportal.core.rpc.RpcRequest;
+import com.kk_electronic.kkportal.core.security.NewPrimaryIdentityEvent.Handler;
+import com.kk_electronic.kkportal.core.ui.InputDialog;
+import com.kk_electronic.kkportal.core.util.Pair;
 
 /**
  * 
  * @author Jes Andersen
  */
-public class Digest implements SecurityMethod {
+
+public class Digest implements SecurityMethod, Handler, com.kk_electronic.kkportal.core.ui.InputDialog.Handler {
 
 	private final Hasher hasher;
-	private final String username;
-	private final String secret;
+	private String username;
+	private String secret;
+	private final FrameEncoder<JSONValue> encoder;
+	private final InputDialog dialog;
+	@SuppressWarnings("unused")
+	private final IdentityProvider identityProvider;
+	private final RemoteServer remoteServer;
 
 	@Inject
-	public Digest(Hasher hasher) {
+	public Digest(RemoteServer remoteServer, Hasher hasher,FrameEncoder<JSONValue> encoder,InputDialog dialog,IdentityProvider identityProvider) {
+		this.remoteServer = remoteServer;
 		this.hasher = hasher;
-		this.username = "jes";
-		this.secret = hasher.hash(username + ':' + "1234");
+		this.encoder = encoder;
+		this.dialog = dialog;
+		this.identityProvider = identityProvider;
+		identityProvider.addNewPrimaryIdentityEventHandler(this);
+		setIdentity(identityProvider.getPrimaryIdentity());
+		dialog.setHandler(this);
 	}
 	
+	List<Pair<RpcRequest, AsyncCallback<RpcRequest>>> queue;
+	private AsyncCallback<String>  encryptedKeyCallback = new AsyncCallback<String>() {
+		
+		@Override
+		public void onSuccess(String result) {
+			// TODO Auto-generated method stub
+			
+		}
+		
+		@Override
+		public void onFailure(Throwable caught) {
+			// TODO Auto-generated method stub
+			
+		}
+	};
+	
 	@Override
-	public void sign(Request request, AsyncCallback<Request> asyncCallback) {
-		String requestSignature = request.getSignature();
+	public void sign(RpcRequest request, AsyncCallback<RpcRequest> asyncCallback) {
+		if(secret == null){
+			queue(request,asyncCallback);
+		} else {
+			signInternal(request, asyncCallback);
+		}
+	}
+
+	private void queue(RpcRequest request,
+			AsyncCallback<RpcRequest> asyncCallback) {
+		if(queue == null) queue = new ArrayList<Pair<RpcRequest,AsyncCallback<RpcRequest>>>();
+		queue.add(new Pair<RpcRequest, AsyncCallback<RpcRequest>>(request, asyncCallback));
+		GWT.log("DIGEST-Queued call for signing");
+	}
+
+	private void signInternal(RpcRequest request,
+			AsyncCallback<RpcRequest> asyncCallback) {
+		String requestSignature = request.getSignature(encoder);
 		GWT.log("DIGEST-Signing: " + requestSignature);
 		String digestinput = secret+':'+requestSignature;
 		request.setParams(new Object[]{
@@ -52,5 +104,39 @@ public class Digest implements SecurityMethod {
 				request.getParams()
 		});
 		asyncCallback.onSuccess(request);
+	}
+		
+	public void setIdentity(Identity identity){
+		if(identity == null){
+			username = null;
+			secret = null;
+			return;
+		} else {
+			GWT.log("DIGEST-New identity " + identity);
+			String newusername = identity.toString();
+			if(newusername.equals(username)) return;
+			dialog.setText("Need password for " + newusername);
+			dialog.setValue("");
+			username = newusername;
+			secret = null;
+			remoteServer.getEncryptedSessionKey(newusername,encryptedKeyCallback);
+			if(queue == null || (!queue.isEmpty())) dialog.show();
+		}
+	}
+
+	@Override
+	public void onNewPrimaryIdentity(NewPrimaryIdentityEvent event) {
+		setIdentity(event.getIdentity());
+	}
+
+	@Override
+	public void onInput(String input) {
+		this.secret = hasher.hash(username + ':' + input);
+		GWT.log("DIGEST-Got secret");
+		if(queue != null && !queue.isEmpty()){
+			for(Pair<RpcRequest, AsyncCallback<RpcRequest>> pair : queue){
+				signInternal(pair.getA(), pair.getB());
+			}
+		}
 	}
 }

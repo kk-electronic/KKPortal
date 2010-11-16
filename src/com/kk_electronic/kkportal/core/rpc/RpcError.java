@@ -19,9 +19,42 @@
  */
 package com.kk_electronic.kkportal.core.rpc;
 
+import com.google.gwt.json.client.JSONValue;
 
-public interface RpcError {
-	public int getCode();
-	public String getMessage();
-	public Object getData();
+
+@SuppressWarnings("serial")
+public class RpcError extends Exception implements RpcEnvelope {
+	private final int code;
+	private final String message;
+	private final JSONValue data;
+	private final int id;
+	
+	
+	public int getId() {
+		return id;
+	}
+
+
+	public RpcError(int id, int code, String message, JSONValue data) {
+		this.id = id;
+		this.code = code;
+		this.message = message;
+		this.data = data;
+	}
+
+
+	public int getCode() {
+		return code;
+	}
+
+
+	public String getMessage() {
+		return message;
+	}
+
+
+	public JSONValue getData() {
+		return data;
+	}
+	
 }

@@ -28,12 +28,12 @@ import com.google.inject.Inject;
 import com.kk_electronic.kkportal.core.activity.Activity;
 import com.kk_electronic.kkportal.core.activity.LocationInfo;
 import com.kk_electronic.kkportal.core.inject.FlexInjector;
-import com.kk_electronic.kkportal.core.model.ModuleTypeInfoProvider;
 import com.kk_electronic.kkportal.core.moduleview.Module;
 import com.kk_electronic.kkportal.core.reflection.ModuleMap;
 import com.kk_electronic.kkportal.core.services.ModuleService;
 import com.kk_electronic.kkportal.core.services.ModuleTypeInfo;
 import com.kk_electronic.kkportal.core.services.ModuleService.ModuleInfo;
+import com.kk_electronic.kkportal.core.tabs.ModuleTypeInfoProvider;
 
 public class SingleRender implements Activity {
 

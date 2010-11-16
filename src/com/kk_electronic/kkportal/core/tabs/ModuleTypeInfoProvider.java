@@ -17,7 +17,7 @@
  * along with KKPortal.  If not, see <http://www.gnu.org/licenses/>.
  *
  */
-package com.kk_electronic.kkportal.core.model;
+package com.kk_electronic.kkportal.core.tabs;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -40,9 +40,9 @@ public class ModuleTypeInfoProvider {
 	public ModuleTypeInfoProvider(ModuleMap moduleMap) {
 		map.put(0, new ModuleTypeInfo(0, moduleMap
 				.getKeyFromClass(HelloWorld.class), "Hello World"));
-		map.put(1, new ModuleTypeInfo(0, moduleMap
+		map.put(1, new ModuleTypeInfo(1, moduleMap
 				.getKeyFromClass(Inotify.class), "Inotify"));
-		map.put(2, new ModuleTypeInfo(0, moduleMap
+		map.put(2, new ModuleTypeInfo(2, moduleMap
 				.getKeyFromClass(Wall.class), "Wall"));
 	}
 

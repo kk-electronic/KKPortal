@@ -22,75 +22,36 @@ package com.kk_electronic.kkportal.core.ui;
 
 import java.util.List;
 
-import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.Style.Unit;
 import com.google.gwt.event.shared.EventBus;
 import com.google.gwt.user.client.Timer;
-import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.DockLayoutPanel;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.inject.Inject;
 import com.kk_electronic.kkportal.core.activity.Activity;
 import com.kk_electronic.kkportal.core.event.ContentChangedEvent;
-import com.kk_electronic.kkportal.core.security.User;
-import com.kk_electronic.kkportal.core.services.ModuleService;
-import com.kk_electronic.kkportal.core.services.PortalService;
 import com.kk_electronic.kkportal.core.services.ModuleService.ModuleInfo;
-import com.kk_electronic.kkportal.core.services.ModuleService.TabInfo;
+import com.kk_electronic.kkportal.core.tabs.CanvasModel;
+import com.kk_electronic.kkportal.core.tabs.TabsModel;
+import com.kk_electronic.kkportal.core.util.Sink;
 
 /**
  * Note this is not a good example yet. Does not have View-Presenter separation
  * 
  * @author Jes Andersen type filter text
  */
-public class ViewModules implements Activity, ContentChangedEvent.Handler {
-	private final ModuleService moduleService;
+public class ViewModules implements Activity, ContentChangedEvent.Handler, Sink<List<List<ModuleInfo>>> {
 	private final ModuleDisplay moduleDisplay;
 	protected List<List<ModuleInfo>> moduleList;
-	private TabInfo tab;
 	private final TabDisplay tabDisplay;
 
 	@Inject
-	public ViewModules(PortalService service, ModuleService moduleService,
-			User user,ModuleDisplay moduleDisplay,TabDisplay tabDisplay, EventBus eventBus) {
-		this.moduleService = moduleService;
+	public ViewModules(ModuleDisplay moduleDisplay,TabDisplay tabDisplay, EventBus eventBus,TabsModel tabsModel,CanvasModel canvasModel) {
 		this.moduleDisplay = moduleDisplay;
 		this.tabDisplay = tabDisplay;
 		eventBus.addHandler(ContentChangedEvent.TYPE, this);
 		moduleDisplay.setViewModules(this);
-		
-		moduleService.getTabs(user, new AsyncCallback<List<TabInfo>>() {
-			
-			@Override
-			public void onSuccess(List<TabInfo> result) {
-				viewTab(result.get(0));
-			}
-			
-			@Override
-			public void onFailure(Throwable caught) {
-				GWT.log("Didn't get tabs", caught);
-			}
-		});
-	}
-
-	public void viewTab(final TabInfo tab) {
-		this.tab = tab;
-		if (tab == null)
-			return;
-		moduleService.getModules(tab.getId(), new AsyncCallback<List<List<ModuleInfo>>>() {
-
-			@Override
-			public void onFailure(Throwable caught) {
-				GWT.log("failed to get modules for tab: "
-						+ tab.toString(), caught);
-			}
-
-			@Override
-			public void onSuccess(List<List<ModuleInfo>> result) {
-				ViewModules.this.moduleList = result;
-				moduleDisplay.setModuleList(result,true);
-			}
-		});
+		canvasModel.addCurrentCanvasDisplay(this);
 	}
 	
 	protected boolean removeWindow(ModuleWindow window){
@@ -147,18 +108,7 @@ public class ViewModules implements Activity, ContentChangedEvent.Handler {
 		
 		@Override
 		public void run() {
-			moduleService.setModules(tab.getId(), moduleList, new AsyncCallback<Object>() {
-
-				@Override
-				public void onFailure(Throwable caught) {
-					GWT.log("ViewModules-Failed to save modules:",caught);
-				}
-
-				@Override
-				public void onSuccess(Object result) {
-					GWT.log("ViewModules-Saved Modules:");
-				}
-			});
+			//TODO: Save Modules
 		}
 	};
 	
@@ -173,6 +123,12 @@ public class ViewModules implements Activity, ContentChangedEvent.Handler {
 
 	public void updateHeight(ModuleInfo module, int currentHeight) {
 		module.setHeight(currentHeight + 5);
+		moduleDisplay.setModuleList(moduleList);
+	}
+
+	@Override
+	public void setSinkValue(List<List<ModuleInfo>> value) {
+		moduleList = value;
 		moduleDisplay.setModuleList(moduleList);
 	}
 }

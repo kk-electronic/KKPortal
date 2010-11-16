@@ -29,7 +29,7 @@ import java.util.Set;
 import java.util.Map.Entry;
 
 import com.google.gwt.core.client.GWT;
-import com.google.gwt.event.shared.EventBus;
+import com.google.gwt.json.client.JSONValue;
 import com.google.gwt.user.client.Command;
 import com.google.gwt.user.client.DeferredCommand;
 import com.google.gwt.user.client.rpc.AsyncCallback;
@@ -37,14 +37,17 @@ import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import com.kk_electronic.kkportal.core.event.FrameReceivedEvent;
 import com.kk_electronic.kkportal.core.event.FrameSentEvent;
-import com.kk_electronic.kkportal.core.event.INotificationEvent;
 import com.kk_electronic.kkportal.core.event.ServerConnectEvent;
 import com.kk_electronic.kkportal.core.event.ServerDisconnectEvent;
+import com.kk_electronic.kkportal.core.event.ServerEvent;
 import com.kk_electronic.kkportal.core.inject.FlexInjector;
+import com.kk_electronic.kkportal.core.reflection.EventFromJsonCreator;
 import com.kk_electronic.kkportal.core.reflection.FeatureMap;
 import com.kk_electronic.kkportal.core.reflection.SecurityMap;
+import com.kk_electronic.kkportal.core.reflection.ServerEventMap;
+import com.kk_electronic.kkportal.core.rpc.jsonformat.UnableToDeserialize;
+import com.kk_electronic.kkportal.core.rpc.jsonformat.UnableToSerialize;
 import com.kk_electronic.kkportal.core.security.SecurityMethod;
-import com.kk_electronic.kkportal.examples.modules.NewWallMessageEvent;
 
 /**
  * RpcDispatcher is a flexible {@link Dispatcher} for use with direct server
@@ -82,7 +85,7 @@ public class RpcDispatcher implements FrameSentEvent.Handler, Dispatcher,
 
 	private final WebSocket socket;
 
-	private final FrameEncoder frameEncoder;
+	private final FrameEncoder<JSONValue> frameEncoder;
 
 	private final FeatureMap clientFeatureMap;
 
@@ -90,7 +93,9 @@ public class RpcDispatcher implements FrameSentEvent.Handler, Dispatcher,
 
 	private final FlexInjector injector;
 
-	private final EventBus eventbus;
+	private final ServerEventMap serverEventMap;
+
+	private final EventFromJsonCreator creator;
 
 	/**
 	 * A holder to keep metainformation about the calls made. should generally
@@ -101,15 +106,15 @@ public class RpcDispatcher implements FrameSentEvent.Handler, Dispatcher,
 	 * @param <T>
 	 *            used to provide type safety for the callback
 	 */
-	public final static class PendingCall<T> implements AsyncCallback<Response> {
+	public final static class PendingCall<T> implements AsyncCallback<RpcResponse<JSONValue>> {
 		private final AsyncCallback<T> callback;
-		private Request request;
+		private RpcRequest request;
 		private PendingCallStatus status;
-		private final FrameEncoder encoder;
+		private final FrameEncoder<JSONValue> encoder;
 		private final Class<?>[] returnValueType;
 
-		public PendingCall(AsyncCallback<T> callback, Request request,
-				FrameEncoder encoder, Class<?>[] returnValueType) {
+		public PendingCall(AsyncCallback<T> callback, RpcRequest request,
+				FrameEncoder<JSONValue> encoder, Class<?>[] returnValueType) {
 			this.callback = callback;
 			this.request = request;
 			this.encoder = encoder;
@@ -125,7 +130,7 @@ public class RpcDispatcher implements FrameSentEvent.Handler, Dispatcher,
 			return status;
 		}
 
-		public void setRequest(Request request) {
+		public void setRequest(RpcRequest request) {
 			this.request = request;
 		}
 
@@ -137,9 +142,14 @@ public class RpcDispatcher implements FrameSentEvent.Handler, Dispatcher,
 		}
 
 		@Override
-		public void onSuccess(Response response) {
-			T result = encoder.<T> decodeResult(returnValueType, response
-					.getResult());
+		public void onSuccess(RpcResponse<JSONValue> response) {
+			T result = null;
+			try {
+				result = encoder.validate(response.getResult(),result,returnValueType);
+			} catch (UnableToDeserialize e) {
+				callback.onFailure(e);
+				return;
+			}
 			if (callback != null) {
 				callback.onSuccess(result);
 			}
@@ -148,16 +158,17 @@ public class RpcDispatcher implements FrameSentEvent.Handler, Dispatcher,
 
 	@Inject
 	public RpcDispatcher(IdCreator<Integer> idCreator, WebSocket socket,
-			FrameEncoder encoder, SecurityMap clientSecurityMap,
+			FrameEncoder<JSONValue> encoder, SecurityMap clientSecurityMap,
 			FeatureMap clientFeatureMap, FlexInjector injector,
-			EventBus eventbus) {
+			ServerEventMap serverEventMap,EventFromJsonCreator creator) {
 		this.idCreator = idCreator;
 		this.socket = socket;
 		this.frameEncoder = encoder;
 		this.clientSecurityMap = clientSecurityMap;
 		this.clientFeatureMap = clientFeatureMap;
 		this.injector = injector;
-		this.eventbus = eventbus;
+		this.serverEventMap = serverEventMap;
+		this.creator = creator;
 		authenticationMethods.put(RemoteServer.class, null);
 		socket.addServerConnectHandler(this);
 		socket.addServerDisconnectHandler(this);
@@ -178,7 +189,7 @@ public class RpcDispatcher implements FrameSentEvent.Handler, Dispatcher,
 			GWT.log("RPC-could not map class to feature: "
 					+ serverinterface.getName());
 		}
-		Request request = new Request(featureName, method, params);
+		RpcRequest request = new RpcRequest(featureName, method, params);
 		// TODO: Delay Creation of id
 		request.setId(idCreator.getNextId());
 		final PendingCall<T> pendingCall = new PendingCall<T>(callback,
@@ -203,7 +214,7 @@ public class RpcDispatcher implements FrameSentEvent.Handler, Dispatcher,
 	protected void signAndTransmit(final PendingCall<?> pendingCall,
 			SecurityMethod securityMethod) {
 		pendingCall.status = PendingCallStatus.WAITING_FOR_SECURITY;
-		securityMethod.sign(pendingCall.request, new AsyncCallback<Request>() {
+		securityMethod.sign(pendingCall.request, new AsyncCallback<RpcRequest>() {
 
 			@Override
 			public void onFailure(Throwable caught) {
@@ -212,7 +223,7 @@ public class RpcDispatcher implements FrameSentEvent.Handler, Dispatcher,
 			}
 
 			@Override
-			public void onSuccess(Request result) {
+			public void onSuccess(RpcRequest result) {
 				pendingCall.setRequest(result);
 				transmit(pendingCall);
 			}
@@ -231,8 +242,15 @@ public class RpcDispatcher implements FrameSentEvent.Handler, Dispatcher,
 
 		if (socket.isConnected()) {
 			if (!socket.isTxBusy()) {
-				socket.send(frameEncoder.encode(txQueue));
-				for (Request request : txQueue) {
+				try {
+					StringBuilder request = new StringBuilder();
+					frameEncoder.encode(txQueue, request);
+					socket.send(request.toString());
+				} catch (UnableToSerialize e) {
+					e.printStackTrace();
+					return;
+				}
+				for (RpcRequest request : txQueue) {
 					pending.get(request.getId()).setStatus(
 							PendingCallStatus.WAITING_FOR_RESPONSE);
 				}
@@ -243,7 +261,7 @@ public class RpcDispatcher implements FrameSentEvent.Handler, Dispatcher,
 		}
 	}
 
-	List<Request> txQueue = new ArrayList<Request>();
+	List<RpcRequest> txQueue = new ArrayList<RpcRequest>();
 
 	Map<Integer, PendingCall<?>> pending = new HashMap<Integer, PendingCall<?>>();
 
@@ -379,41 +397,55 @@ public class RpcDispatcher implements FrameSentEvent.Handler, Dispatcher,
 
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public void onFrameReceived(FrameReceivedEvent event) {
-		List<Response> responses = frameEncoder.decode(event.getData());
-		for (Response response : responses) {
-			if (response == null)
-				continue;
-			if (response.isNotification()) {
-				//TODO Make generic
-				GWT.log("SERVEREVENT-" + response.getMethod());
-				List<Object> params = frameEncoder.decodeResult(
-						new Class<?>[] { List.class, Object.class },
-						response.getParams());
-				if ("INotification".equals(response.getMethod())) {
-					String s1 = frameEncoder.decodeResult(
-							new Class<?>[] { String.class }, params.get(0));
-					String s2 = frameEncoder.decodeResult(
-							new Class<?>[] { String.class }, params.get(1));
-					eventbus.fireEvent(new INotificationEvent(s1, s2));
-				} else if ("NewWallMessageEvent".equals(response.getMethod())){
-					String s1 = frameEncoder.decodeResult(
-							new Class<?>[] { String.class }, params.get(0));
-					eventbus.fireEvent(new NewWallMessageEvent(s1));
-				}
+		List<RpcEnvelope> responses = null;
+		try {
+			JSONValue object = frameEncoder.decode(event.getData());
+			responses = frameEncoder.validate(object, responses, new Class<?>[]{List.class,RpcResponse.class});
+		} catch (UnableToDeserialize e) {
+			GWT.log("RpcDispatcher could not get responses",e);
+			return;
+		}
+		for (RpcEnvelope envelope : responses) {
+			if(envelope instanceof RpcResponse<?>){
+				RpcResponse response = (RpcResponse) envelope;
+				PendingCall<?> pendingCall = pending.remove(response.getId());
+				pendingCall.onSuccess(response);
 				continue;
 			}
-			PendingCall<?> pendingCall = pending.remove(response.getId());
-			if (response.hasError()) {
-				pendingCall.setStatus(PendingCallStatus.DONE);
-				pending.remove(response.getId());
-				pendingCall.onFailure(new Exception(response.getError()
-						.getMessage()));
-			} else {
-				pendingCall.onSuccess(response);
+			if(envelope instanceof RpcError){
+				RpcError response = (RpcError) envelope;
+				PendingCall<?> pendingCall = pending.remove(response.getId());
+				pendingCall.onFailure(response);
+				continue;
+			}
+			if(envelope instanceof RpcRequest){
+				RpcRequest request = (RpcRequest) envelope;
+				fireServerEvent(request);
+				continue;
 			}
 		}
+	}
+
+	private void fireServerEvent(RpcRequest request) {
+		Class<? extends ServerEvent> clazz = serverEventMap.getClassFromKey(request.getMethod());
+		if(clazz == null){
+			GWT.log("SERVEREVENT-Unknown event " + request.getMethod());
+		}
+		creator.create(clazz, request.getParams(), new AsyncCallback<ServerEvent>() {
+
+			@Override
+			public void onFailure(Throwable caught) {
+				GWT.log("SERVEREVENT-Failure during creation of serverevent",caught);
+			}
+
+			@Override
+			public void onSuccess(ServerEvent result) {
+				GWT.log("SERVEREVENT-Created");
+			}
+		});
 	}
 
 	@Override

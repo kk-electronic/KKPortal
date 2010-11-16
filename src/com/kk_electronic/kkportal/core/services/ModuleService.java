@@ -23,7 +23,8 @@ import java.util.List;
 
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.kk_electronic.kkportal.core.rpc.RemoteService;
-import com.kk_electronic.kkportal.core.security.User;
+import com.kk_electronic.kkportal.core.security.Identity;
+import com.kk_electronic.kkportal.core.tabs.TabInfo;
 
 public interface ModuleService extends RemoteService {
 	public interface ModuleInfo  {
@@ -34,13 +35,9 @@ public interface ModuleService extends RemoteService {
 		public void setType(int code);
 	}
 
-	public interface TabInfo {
-		public int getId();
-		public String getName();
-	}
+	void getTabs(Identity user,AsyncCallback<List<TabInfo>> asyncCallback);
 	
-	void getTabs(User user,AsyncCallback<List<TabInfo>> asyncCallback);
-	
+	void getModuleInfo(List<Integer> ids,AsyncCallback<List<ModuleInfo>> callback);
 	void getModuleTypeInfo(List<Integer> ids,AsyncCallback<List<ModuleTypeInfo>> callback);
 	
 	void getModule(int moduleID,AsyncCallback<ModuleInfo> callback);
@@ -48,7 +45,12 @@ public interface ModuleService extends RemoteService {
 	void getModules(Integer tabid,AsyncCallback<List<List<ModuleInfo>>> callback);
 	void setModules(int tabid,List<List<ModuleInfo>> modules,AsyncCallback<?> callback);
 
-	void getTabInfos(User user, AsyncCallback<List<TabInfo>> tabscallback);
+	void getTabInfos(Identity user, AsyncCallback<List<TabInfo>> tabscallback);
 
-	void addModule(int tabid, int typeId,AsyncCallback<?> callback);
+	void addModule(Identity user, Integer tabid, AsyncCallback<TabInfo> callback);
+
+	void createModule(Identity identity, Integer typeId,
+			AsyncCallback<Integer> asyncCallback);
+
+	void setModulesIdsOnTab(Integer id, List<List<Integer>> moduleIds,AsyncCallback<?> callback);
 }

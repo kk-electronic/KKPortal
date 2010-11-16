@@ -38,11 +38,11 @@ import com.google.inject.Inject;
 import com.kk_electronic.kkportal.core.dnd.DND;
 import com.kk_electronic.kkportal.core.dnd.DND.DropSink;
 import com.kk_electronic.kkportal.core.inject.FlexInjector;
-import com.kk_electronic.kkportal.core.model.ModuleTypeInfoProvider;
 import com.kk_electronic.kkportal.core.moduleview.Module;
 import com.kk_electronic.kkportal.core.reflection.ModuleMap;
 import com.kk_electronic.kkportal.core.services.ModuleTypeInfo;
 import com.kk_electronic.kkportal.core.services.ModuleService.ModuleInfo;
+import com.kk_electronic.kkportal.core.tabs.ModuleTypeInfoProvider;
 import com.kk_electronic.kkportal.res.Resources;
 import com.kk_electronic.kkportal.res.Resources.ColourPalette;
 

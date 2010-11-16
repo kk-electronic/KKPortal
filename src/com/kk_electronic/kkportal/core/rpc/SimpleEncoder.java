@@ -19,174 +19,105 @@
  */
 package com.kk_electronic.kkportal.core.rpc;
 
-import java.util.ArrayList;
+import java.util.AbstractList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.google.gwt.core.client.GWT;
-import com.google.gwt.core.client.JavaScriptObject;
-import com.google.gwt.core.client.JsArray;
-import com.google.gwt.core.client.JsArrayMixed;
-import com.google.gwt.json.client.JSONArray;
-import com.google.gwt.json.client.JSONObject;
 import com.google.gwt.json.client.JSONParser;
 import com.google.gwt.json.client.JSONValue;
-import com.kk_electronic.kkportal.core.rpc.converters.ModuleInfoDTO;
-import com.kk_electronic.kkportal.core.rpc.converters.ResponseDTO;
-import com.kk_electronic.kkportal.core.rpc.converters.TabInfoDTO;
+import com.google.inject.Inject;
+import com.kk_electronic.kkportal.core.rpc.jsonformat.JsonIdentity;
+import com.kk_electronic.kkportal.core.rpc.jsonformat.JsonInteger;
+import com.kk_electronic.kkportal.core.rpc.jsonformat.JsonList;
+import com.kk_electronic.kkportal.core.rpc.jsonformat.JsonMap;
+import com.kk_electronic.kkportal.core.rpc.jsonformat.JsonModuleInfo;
+import com.kk_electronic.kkportal.core.rpc.jsonformat.JsonRpcEnvelope;
+import com.kk_electronic.kkportal.core.rpc.jsonformat.JsonString;
+import com.kk_electronic.kkportal.core.rpc.jsonformat.JsonTabInfo;
+import com.kk_electronic.kkportal.core.rpc.jsonformat.JsonValue;
+import com.kk_electronic.kkportal.core.rpc.jsonformat.UnableToDeserialize;
+import com.kk_electronic.kkportal.core.rpc.jsonformat.UnableToSerialize;
+import com.kk_electronic.kkportal.core.security.Identity;
 import com.kk_electronic.kkportal.core.services.ModuleService.ModuleInfo;
-import com.kk_electronic.kkportal.core.services.ModuleService.TabInfo;
-import com.kk_electronic.kkportal.core.util.JsonValueHelper;
+import com.kk_electronic.kkportal.core.tabs.TabInfo;
 
-public class SimpleEncoder implements FrameEncoder {
-	static class JsonRpcRequest extends JavaScriptObject {
-		protected JsonRpcRequest() {
-		};
+public class SimpleEncoder implements FrameEncoder<JSONValue> {
 
-		public final native void setMethod(String method) /*-{
-			this.method = method
-		}-*/;
+	HashMap<Class<?>, JsonValue<?>> types = new HashMap<Class<?>, JsonValue<?>>();
 
-		public final native void setId(int id) /*-{
-			this.id = id
-		}-*/;
-
-		public final native void setParams(JsArrayMixed params) /*-{
-			this.params = params
-		}-*/;
-	}
-
-	public static class JsonRpcError extends JavaScriptObject implements
-			RpcError {
-		protected JsonRpcError() {
-		}
-
-		public final native int getCode() /*-{
-			return this.code
-		}-*/;
-
-		public final native String getMessage() /*-{
-			return this.message
-		}-*/;
-
-		public final native Object getData() /*-{
-			return this.data
-		}-*/;
-	}
-
-	public String encode(List<Request> requests) {
-		JsArray<JavaScriptObject> array = JsArray.createArray().cast();
-		for (Request request : requests) {
-			JsonRpcRequest o = JavaScriptObject.createObject().cast();
-			o.setId(request.getId());
-			o.setMethod(request.getFeatureName() + "." + request.getMethod());
-			JsArrayMixed jsParams = JsonValueHelper.makeJSONArray(
-					request.getParams()).isArray().getJavaScriptObject().cast();
-			o.setParams(jsParams);
-			array.push(o);
-		}
-		return new JSONArray(array).toString();
-	}
-
-	private static interface ObjectHelper {
-		Object convert(JSONObject a);
-	}
-
-	public List<Response> decode(String data) {
-		JSONValue parsed = JSONParser.parseLenient(data);
-		return decodeResult(new Class<?>[] { List.class, Response.class },
-				parsed);
+	@Inject
+	public SimpleEncoder() {
+		JsonValue<?> t;
+		types.put(Identity.class, new JsonIdentity());
+		t = new JsonRpcEnvelope();
+		types.put(RpcRequest.class, t);
+		types.put(RpcResponse.class, t);
+		t = new JsonList<Object>();
+		types.put(AbstractList.class, t);
+		types.put(List.class, t);
+		types.put(String.class, new JsonString());
+		types.put(Integer.class, new JsonInteger());
+		t = new JsonMap<Object>();
+		types.put(Map.class, t);
+		types.put(HashMap.class, t);
+		types.put(TabInfo.class, new JsonTabInfo());
+		types.put(ModuleInfo.class, new JsonModuleInfo());
 	}
 
 	@SuppressWarnings("unchecked")
-	private static <T> List<T> convert(JSONArray a, ObjectHelper objectHelper) {
-		List<Object> list = new ArrayList<Object>();
-		for (int index = 0, length = a.size(); index < length; index++) {
-			list.add(convert(a.get(index), objectHelper));
-		}
-		return (List<T>) list;
+	public <T> JsonValue<T> get(Class<T> basetype) {
+		return (JsonValue<T>) types.get(basetype);
 	}
 
-	private static Object convert(JSONObject a, ObjectHelper objectHelper) {
-		if (objectHelper != null)
-			return objectHelper.convert(a);
-		HashMap<String, Object> hashMap = new HashMap<String, Object>();
-		for (String key : a.keySet()) {
-			hashMap.put(key, convert(a.get(key), objectHelper));
+	@SuppressWarnings("unchecked")
+	@Override
+	public <T> void encode(T object, StringBuilder json)
+			throws UnableToSerialize {
+		if( object instanceof Object[] ){
+			T[] ts = (T[]) object;
+			encode(Arrays.asList(ts), json);
+			return;
 		}
-		return hashMap;
+		JsonValue<T> jsonValue = find(object.getClass(), object);
+		if (jsonValue == null)
+			throw new UnableToSerialize("Could not find serializer for "
+					+ object.getClass());
+		jsonValue.toJson(json, object, this);
 	}
 
-	private static Object convert(JSONValue y, ObjectHelper objectHelper) {
-		if (y.isArray() != null)
-			return convert(y.isArray(), objectHelper);
-		if (y.isObject() != null)
-			return convert(y.isObject(), objectHelper);
-		if (y.isBoolean() != null)
-			return y.isBoolean().booleanValue();
-		if (y.isString() != null)
-			return y.isString().stringValue();
-		if (y.isNumber() != null)
-			return y.isNumber().doubleValue();
-		if (y.isNull() != null)
-			return null;
-		throw new RuntimeException("Could not convert");
+	@SuppressWarnings("unchecked")
+	private <T> JsonValue<T> find(Class<?> clazz, T ihatejava) {
+		if (types.containsKey(clazz))
+			return (JsonValue<T>) types.get(clazz);
+		if (clazz.getSuperclass() != null)
+			return find(clazz.getSuperclass(), ihatejava);
+		return null;
 	}
 
 	@Override
-	public <T> T decodeResult(Class<?>[] resultSubTypes, Object result) {
-		if (result instanceof JSONValue) {
-			return decodeFromJson(Arrays.asList(resultSubTypes),
-					(JSONValue) result);
-		}
-		return null;
+	public <T> T validate(JSONValue result, T resultType, Class<?>[] subtypes)
+			throws UnableToDeserialize {
+		if (!(result instanceof JSONValue))
+			throw new UnableToDeserialize("result must not be null");
+		if (subtypes == null || subtypes.length == 0)
+			throw new UnableToDeserialize("Subtypes must not be null or empty");
+		return test(result,Arrays.asList(subtypes),resultType);
 	}
 
-	@SuppressWarnings("unchecked")
-	private <T> T decodeFromJson(List<Class<?>> resultSubTypes,
-			JSONValue jsonvalue) {
-		if (jsonvalue == null || jsonvalue.isNull() != null)
-			return null;
-		Class<?> target = resultSubTypes.get(0);
-		if (target == List.class) {
-			List<T> list = new ArrayList<T>();
-			JSONArray ja = jsonvalue.isArray();
-			for (int i = 0, l = ja.size(); i < l; i++) {
-				list.add((T) decodeFromJson(resultSubTypes.subList(1,
-						resultSubTypes.size()), ja.get(i)));
-			}
-			return (T) list;
+	public <T> T test(JSONValue result, List<Class<?>> subtypes,T resultType) throws UnableToDeserialize {
+		if(result.isNull() != null) return null;
+		JsonValue<T> jsonValue = find(subtypes.get(0), resultType);
+		if (jsonValue == null){
+			throw new UnableToDeserialize("Could not find serializer for "
+					+ subtypes.get(0));
 		}
-		if (target == Map.class) {
-			if (resultSubTypes.get(1) == String.class) {
-				Map<String, Object> map = new HashMap<String, Object>();
-				JSONObject jo = jsonvalue.isObject();
-				for (String key : jo.keySet()) {
-					map.put(key, decodeFromJson(resultSubTypes.subList(2,
-							resultSubTypes.size()), jo.get(key)));
-				}
-				return (T) map;
-			}
-		}
-		if (target == Response.class) {
-			JSONObject jo = jsonvalue.isObject();
-			return (T) new ResponseDTO(jo);
-		}
-		if (target == String.class) {
-			return (T) jsonvalue.isString().stringValue();
-		}
-		if (target == TabInfo.class) {
-			return (T) new TabInfoDTO(jsonvalue.isObject());
-		}
-		if (target == ModuleInfo.class) {
-			return (T) new ModuleInfoDTO(jsonvalue.isObject());
-		}
-		if (target == Object.class) {
-			return (T) jsonvalue;
-		}
-		GWT.log("DECODING-Can't convert type " + target.getName());
-		return null;
+		return jsonValue.fromJson(result, subtypes.subList(1, subtypes.size()), this);
+	}
+
+	@Override
+	public JSONValue decode(String string) throws UnableToDeserialize {
+		return JSONParser.parseLenient(string);
 	}
 }

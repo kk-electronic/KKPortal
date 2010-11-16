@@ -19,14 +19,19 @@
  */
 package com.kk_electronic.kkportal.core.rpc;
 
-import com.google.gwt.user.client.rpc.IsSerializable;
-import com.kk_electronic.kkportal.core.util.JsonValueHelper;
+import java.util.Arrays;
+import java.util.List;
 
-public final class Request implements IsSerializable {
+import com.google.gwt.core.client.GWT;
+import com.google.gwt.json.client.JSONValue;
+import com.google.gwt.user.client.rpc.IsSerializable;
+import com.kk_electronic.kkportal.core.rpc.jsonformat.UnableToSerialize;
+
+public final class RpcRequest implements IsSerializable,RpcEnvelope {
 	
 	private final String featureName;
 	private final String method;
-	private Object[] params;
+	private List<?> params;
 	private Integer id;
 
 	public String getFeatureName() {
@@ -37,7 +42,7 @@ public final class Request implements IsSerializable {
 		return method;
 	}
 
-	public Object[] getParams() {
+	public List<?> getParams() {
 		return params;
 	}
 
@@ -45,15 +50,21 @@ public final class Request implements IsSerializable {
 		return id;
 	}
 
-	public Request(
+	public RpcRequest(
 			String featureName, String method,
 			Object... params) {
 				this.featureName = featureName;
 				this.method = method;
-				this.setParams(params);
+				this.setParams(Arrays.asList(params));
 	}
-
-	public String getSignature(){
+	
+	public RpcRequest(
+			String featureName, String method) {
+				this.featureName = featureName;
+				this.method = method;
+	}
+	
+	public String getSignature(FrameEncoder<JSONValue> encoder){
 		StringBuilder sb = new StringBuilder();
 		sb.append(getId());
 		sb.append(',');
@@ -61,7 +72,12 @@ public final class Request implements IsSerializable {
 		sb.append('.');
 		sb.append(getMethod());
 		sb.append(',');
-		sb.append(JsonValueHelper.toCompactJson(getParams()));
+		try {
+			encoder.encode(params, sb);
+		} catch (UnableToSerialize e) {
+			GWT.log("Could bnot create signature",e);
+			return null;
+		}
 		return sb.toString();
 	}
 
@@ -69,7 +85,11 @@ public final class Request implements IsSerializable {
 		this.id = id;
 	}
 
-	public void setParams(Object[] params) {
+	public void setParams(List<?> params) {
 		this.params = params;
+	}
+
+	public void setParams(Object[] objects) {
+		this.params = Arrays.asList(objects);
 	}
 }

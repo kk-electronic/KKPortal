@@ -25,7 +25,8 @@ import com.google.gwt.dom.client.Style.Unit;
 import com.google.gwt.event.shared.EventBus;
 import com.google.gwt.event.shared.GwtEvent;
 import com.google.gwt.event.shared.HandlerRegistration;
-import com.google.gwt.user.client.ui.Label;
+import com.google.gwt.safehtml.shared.SafeHtmlUtils;
+import com.google.gwt.user.client.ui.Hyperlink;
 import com.google.gwt.user.client.ui.LayoutPanel;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.gwt.view.client.HasData;
@@ -35,8 +36,8 @@ import com.google.gwt.view.client.RowCountChangeEvent;
 import com.google.gwt.view.client.SelectionModel;
 import com.google.gwt.view.client.RangeChangeEvent.Handler;
 import com.google.inject.Inject;
-import com.kk_electronic.kkportal.core.model.TabInfoProvider;
-import com.kk_electronic.kkportal.core.services.ModuleService.TabInfo;
+import com.kk_electronic.kkportal.core.tabs.TabInfo;
+import com.kk_electronic.kkportal.core.tabs.TabsModel;
 import com.kk_electronic.kkportal.res.Resources;
 import com.kk_electronic.kkportal.res.Resources.ColourPalette;
 
@@ -48,11 +49,11 @@ public class TabDisplay implements HasData<TabInfo> {
 	private Range range;
 	private int rowCount;
 	private boolean isRowCountExact;
-	private final TabInfoProvider tabInfoProvider;
+	private final TabsModel tabInfoProvider;
 	private ColourPalette palette;
 
 	@Inject
-	public TabDisplay(TabInfoProvider tabInfoProvider, EventBus eventBus,
+	public TabDisplay(TabsModel tabInfoProvider, EventBus eventBus,
 			Resources resources) {
 		this.tabInfoProvider = tabInfoProvider;
 		this.eventBus = eventBus;
@@ -78,7 +79,7 @@ public class TabDisplay implements HasData<TabInfo> {
 		int totalWidth = margin;
 		int tabWidth = tabInfoProvider.getMaxWidth();
 		for (TabInfo info : values) {
-			Label l = new Label(info.getName());
+			Hyperlink l = new Hyperlink(SafeHtmlUtils.fromString(info.getName()),"View$" + info.getId());
 			if (selectionModel != null && selectionModel.isSelected(info)) {
 				l.getElement().getStyle().setBackgroundColor(palette.colour2());
 			} else {
