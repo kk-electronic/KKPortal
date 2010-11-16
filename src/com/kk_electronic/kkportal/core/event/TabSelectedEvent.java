@@ -21,36 +21,29 @@ package com.kk_electronic.kkportal.core.event;
 
 import com.google.gwt.event.shared.EventHandler;
 import com.google.gwt.event.shared.GwtEvent;
+import com.kk_electronic.kkportal.core.tabs.TabInfo;
 
 /**
- * This event is fired when a INotify event is registered on the server
- * 
  * @author Jes Andersen
  */
-public class INotificationEvent extends GwtEvent<INotificationEvent.Handler> {
+public class TabSelectedEvent extends GwtEvent<TabSelectedEvent.Handler> {
 
 	public interface Handler extends EventHandler {
-		void onINotification(INotificationEvent event);
+		void onTabSelected(TabSelectedEvent event);
 	}
 
 	/**
 	 * Handler type.
 	 */
 	public static final Type<Handler> TYPE = new Type<Handler>();
-	private final String file;
-	private final String notifytype;
+	private final TabInfo tabInfo;
 
-	public String getFileName() {
-		return file;
+	public TabInfo getTabInfo() {
+		return tabInfo;
 	}
 
-	public String getNotifytype() {
-		return notifytype;
-	}
-
-	public INotificationEvent(String file, String notifytype) {
-		this.file = file;
-		this.notifytype = notifytype;
+	public TabSelectedEvent(TabInfo tabInfo) {
+		this.tabInfo = tabInfo;
 	}
 
 	@Override
@@ -60,6 +53,6 @@ public class INotificationEvent extends GwtEvent<INotificationEvent.Handler> {
 
 	@Override
 	protected void dispatch(Handler handler) {
-		handler.onINotification(this);
+		handler.onTabSelected(this);
 	}
 }
