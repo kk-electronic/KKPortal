@@ -36,7 +36,10 @@ import com.kk_electronic.kkportal.core.activity.Activity;
 @Singleton
 public class WebPageLayout extends Composite implements ApplicationLayout {
 	public static interface UIBinder extends UiBinder<Panel, WebPageLayout>{}
-		
+	
+	@UiField(provided=true)
+	AddModuleLink addModuleLink;
+	
 	@UiField
 	DockLayoutPanel main;
 	@UiField
@@ -44,7 +47,8 @@ public class WebPageLayout extends Composite implements ApplicationLayout {
 	private Widget activityWidget;
 	
 	@Inject
-	public WebPageLayout(UIBinder binder) {
+	public WebPageLayout(UIBinder binder,AddModuleLink addModuleLink) {
+		this.addModuleLink = addModuleLink;
 		Panel e = binder.createAndBindUi(this);
 		super.initWidget(e);
 	}

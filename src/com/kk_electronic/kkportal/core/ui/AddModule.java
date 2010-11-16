@@ -21,31 +21,27 @@ package com.kk_electronic.kkportal.core.ui;
 
 import java.util.List;
 
-import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.cellview.client.CellList;
 import com.google.gwt.user.client.History;
-import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Panel;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.gwt.view.client.SingleSelectionModel;
 import com.google.inject.Inject;
 import com.kk_electronic.kkportal.core.activity.Activity;
-import com.kk_electronic.kkportal.core.activity.LocationInfo;
-import com.kk_electronic.kkportal.core.model.ModuleTypeInfoProvider;
-import com.kk_electronic.kkportal.core.security.User;
-import com.kk_electronic.kkportal.core.services.ModuleService;
 import com.kk_electronic.kkportal.core.services.ModuleTypeInfo;
+import com.kk_electronic.kkportal.core.tabs.ModuleTypeInfoProvider;
+import com.kk_electronic.kkportal.core.tabs.TabInfo;
+import com.kk_electronic.kkportal.core.tabs.TabsModel;
 
 public class AddModule implements Activity {
 	protected String error;
 	protected List<ModuleTypeInfo> moduleTypes;
 	private final Display display;
-	private final ModuleService moduleService;
-	private final Integer tabid;
+	private final TabsModel tabsModel;
 
 	public static interface UIBinder extends UiBinder<Panel, Display> {
 	}
@@ -86,40 +82,18 @@ public class AddModule implements Activity {
 	}
 
 	@Inject
-	public AddModule(User user, ModuleService moduleService, Display display,
-			LocationInfo locationInfo) {
-		tabid = locationInfo.getSubint();
-		this.moduleService = moduleService;
+	public AddModule(Display display, TabsModel tabsModel) {
 		this.display = display;
+		this.tabsModel = tabsModel;
 		display.setHandler(this);
-		moduleService.getModuleTypeInfo(null,
-				new AsyncCallback<List<ModuleTypeInfo>>() {
-
-					@Override
-					public void onSuccess(List<ModuleTypeInfo> result) {
-						moduleTypes = result;
-					}
-
-					@Override
-					public void onFailure(Throwable caught) {
-						error = "Could not get module list: " + caught;
-					}
-				});
 	}
 
 	public void addNewModule(ModuleTypeInfo selectedObject) {
-		moduleService.addModule(tabid, selectedObject.getType_id(), new AsyncCallback<Object>() {
-
-			@Override
-			public void onFailure(Throwable caught) {
-				GWT.log("Could not add module",caught);
-			}
-
-			@Override
-			public void onSuccess(Object result) {
-				History.back();
-			}
-		});
+		TabInfo tabInfo = tabsModel.getSelectedTab();
+		if (tabInfo == null)
+			return;
+		tabsModel.addNewModule(tabInfo, selectedObject);
+		History.newItem("View$" + tabInfo.getId());
 	}
 
 	@Override
