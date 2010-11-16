@@ -17,34 +17,35 @@
  * along with KKPortal.  If not, see <http://www.gnu.org/licenses/>.
  *
  */
-package com.kk_electronic.kkportal.core.util;
+package com.kk_electronic.kkportal.core.util.wait;
 
-import java.util.List;
+import com.google.gwt.event.shared.EventHandler;
+import com.google.gwt.event.shared.GwtEvent;
 
-import com.google.gwt.layout.client.Layout.AnimationCallback;
-import com.google.gwt.layout.client.Layout.Layer;
-import com.google.gwt.user.client.DOM;
-import com.google.gwt.user.client.ui.UIObject;
+/**
+ * @author Jes Andersen
+ */
+public class LoadEvent extends GwtEvent<LoadEvent.Handler> {
 
-public class FadeIn implements AnimationCallback{
-
-	private final List<? extends UIObject> uiObjects;
-
-	public FadeIn(List<? extends UIObject> uiObjects) {
-		this.uiObjects = uiObjects;
+	public interface Handler extends EventHandler {
+		void onLoad(LoadEvent event);
 	}
-	
-	@Override
-	public void onAnimationComplete() {
-		for(UIObject uiObject: uiObjects){
-			DOM.setStyleAttribute(uiObject.getElement(), "opacity", "1.0");
-		}
+
+	/**
+	 * Handler type.
+	 */
+	public static final Type<Handler> TYPE = new Type<Handler>();
+
+	public LoadEvent() {
 	}
 
 	@Override
-	public void onLayout(Layer layer, double progress) {
-		for(UIObject uiObject: uiObjects){
-			DOM.setStyleAttribute(uiObject.getElement(), "opacity", String.valueOf(progress));
-		}
+	public Type<Handler> getAssociatedType() {
+		return TYPE;
+	}
+
+	@Override
+	protected void dispatch(Handler handler) {
+		handler.onLoad(this);
 	}
 }
