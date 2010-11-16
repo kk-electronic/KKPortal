@@ -28,7 +28,7 @@ import com.google.gwt.event.dom.client.MouseMoveHandler;
 import com.google.gwt.event.dom.client.MouseUpEvent;
 import com.google.gwt.event.dom.client.MouseUpHandler;
 import com.google.gwt.event.shared.HandlerRegistration;
-import com.google.gwt.user.client.ui.Widget;
+import com.google.gwt.user.client.ui.IsWidget;
 import com.google.inject.Inject;
 
 /**
@@ -39,7 +39,7 @@ import com.google.inject.Inject;
  *
  * @param <T>
  */
-public class DND<T extends Widget> implements MouseMoveHandler,MouseUpHandler {
+public class DND<T extends IsWidget> implements MouseMoveHandler,MouseUpHandler {
 	T widgetDragging;
 	
 	public static interface DragOver<T> {
@@ -74,7 +74,7 @@ public class DND<T extends Widget> implements MouseMoveHandler,MouseUpHandler {
 
 	public void startDrag(MouseDownEvent event, T widgetToDrag) {
 		assert(widgetDragging == null);
-		mousePanel.attachWidgetToMouse(event, widgetToDrag,this,this);
+		mousePanel.attachWidgetToMouse(event, widgetToDrag.asWidget(),this,this);
 		widgetDragging = widgetToDrag;
 		GWT.log("DND-dragging started");
 		
@@ -90,12 +90,13 @@ public class DND<T extends Widget> implements MouseMoveHandler,MouseUpHandler {
 
 	@Override
 	public void onMouseMove(MouseMoveEvent event) {
-		
 	}
 
 	@Override
 	public void onMouseUp(MouseUpEvent event) {
-		dropSink.Drop(event, widgetDragging);
+		if(dropSink != null){
+			dropSink.Drop(event, widgetDragging);
+		}
 		mousePanel.clearWidgetFromMouse();
 		widgetDragging = null;
 		GWT.log("DND-dragging ended");
