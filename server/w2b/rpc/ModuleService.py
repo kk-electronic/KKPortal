@@ -91,6 +91,23 @@ def getTabInfos(context, user):
                 ]
             }
 
+def createModule(context,user,typeid):
+    query = db.modules.insert()
+    result = query.execute({'col_nr':None,
+      'order':None,
+      'type_id':typeid,
+      'tab_id':None,
+      'height':40}
+    )
+    result.close()
+    return result.last_inserted_ids()[0]
+
+def setModulesIdsOnTab(context,tabid,moduleids):
+    jsonModuleIds = json.dumps(moduleids)
+    query = update(db.tabs).where(db.tabs.c.tab_id == tabid).values(module_ids=jsonModuleIds) #@UndefinedVariable
+    result = query.execute()
+    result.close()
+
 def addModule(context,tabid,typeid):
     query = select([db.modules.c.col_nr,func.count()+1]).where(db.modules.c.tab_id == 2).group_by(db.modules.c.col_nr).order_by(func.sum(db.modules.c.height)).limit(1) #@UndefinedVariable
     result = query.execute().fetchone()
