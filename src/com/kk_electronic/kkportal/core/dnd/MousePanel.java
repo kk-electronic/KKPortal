@@ -42,6 +42,7 @@ public class MousePanel implements MouseMoveHandler,MouseUpHandler{
 	private int offsetY;
 	private MouseUpHandler mouseUpHandler;
 	private MouseMoveHandler mouseMoveHandler;
+	private String oldmargin;
 
 	public MousePanel() {
 		parent = RootLayoutPanel.get();
@@ -60,6 +61,8 @@ public class MousePanel implements MouseMoveHandler,MouseUpHandler{
 			width = w.getOffsetWidth();
 			offsetX = event.getRelativeX(w.getElement());
 			offsetY = event.getRelativeY(w.getElement());
+			oldmargin = w.getElement().getStyle().getMargin();
+			w.getElement().getStyle().setMargin(0, Unit.PX);
 			parent.add(widget);
 			parent.setWidgetTopHeight(widget, event.getClientY() - offsetY, Unit.PX, height, Unit.PX);
 			parent.setWidgetLeftWidth(widget, event.getClientX() - offsetX, Unit.PX, width, Unit.PX);
@@ -70,6 +73,11 @@ public class MousePanel implements MouseMoveHandler,MouseUpHandler{
 	
 	public void clearWidgetFromMouse() {
 		if(widget != null){
+			if("".equals(oldmargin)){
+				widget.getElement().getStyle().clearMargin();
+			} else {
+				widget.getElement().getStyle().setProperty("margin", oldmargin);
+			}
 			detachHandlers();
 			/*
 			 * Do not use widget.removeFromParent() since the parent might not
