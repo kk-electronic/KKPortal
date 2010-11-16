@@ -32,6 +32,9 @@ def getServerFQDN(context):
     #We use the socket library to figure this one out
     return socket.gethostbyaddr(socket.gethostname())[0]
 
+def getEncryptedSessionKey(context):
+    pass
+
 def getSecurityMap(context):
     '''
     Return a map from feature to security.
