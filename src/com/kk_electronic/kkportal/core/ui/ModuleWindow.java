@@ -21,22 +21,27 @@ package com.kk_electronic.kkportal.core.ui;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.Element;
+import com.google.gwt.event.dom.client.HasMouseDownHandlers;
 import com.google.gwt.event.dom.client.MouseDownEvent;
 import com.google.gwt.event.dom.client.MouseDownHandler;
+import com.google.gwt.event.shared.GwtEvent;
 import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.resources.client.CssResource;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.Hyperlink;
+import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.Panel;
 import com.google.gwt.user.client.ui.SimplePanel;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.inject.Inject;
+import com.kk_electronic.kkportal.core.dnd.DragSource;
 import com.kk_electronic.kkportal.core.dnd.DND.Dragsource;
 import com.kk_electronic.kkportal.core.services.ModuleService.ModuleInfo;
 
-public class ModuleWindow extends Composite implements Dragsource<ModuleWindow> {
+public class ModuleWindow extends Composite implements
+		Dragsource<ModuleWindow>, IsWidget, KnownHeight, DragSource {
 	public static interface UIBinder extends UiBinder<Panel, ModuleWindow> {
 	}
 
@@ -44,9 +49,10 @@ public class ModuleWindow extends Composite implements Dragsource<ModuleWindow> 
 
 	static interface Style extends CssResource {
 		String first();
+
 		String last();
 	}
-	
+
 	@UiField
 	Style style;
 
@@ -116,7 +122,7 @@ public class ModuleWindow extends Composite implements Dragsource<ModuleWindow> 
 	}
 
 	public void setFirstColumn(boolean b) {
-		if(b){
+		if (b) {
 			this.addStyleName(style.first());
 		} else {
 			this.removeStyleName(style.first());
@@ -124,10 +130,36 @@ public class ModuleWindow extends Composite implements Dragsource<ModuleWindow> 
 	}
 
 	public void setLastColumn(boolean b) {
-		if(b){
+		if (b) {
 			this.addStyleName(style.last());
 		} else {
 			this.removeStyleName(style.last());
 		}
+	}
+
+	@Override
+	public String toString() {
+		return String.valueOf(module.getId());
+	}
+	
+	@Override
+	public int getLastHeight() {
+		return module.getHeight();
+	}
+
+	@Override
+	public HasMouseDownHandlers getDragHandle() {
+		return new HasMouseDownHandlers() {
+			
+			@Override
+			public void fireEvent(GwtEvent<?> event) {
+				titlebar.fireEvent(event);
+			}
+			
+			@Override
+			public HandlerRegistration addMouseDownHandler(MouseDownHandler handler) {
+				return titlebar.addDomHandler(handler, MouseDownEvent.getType());
+			}
+		};
 	}
 }
