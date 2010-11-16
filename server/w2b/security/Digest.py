@@ -25,10 +25,6 @@ import hashlib
 import simplejson as json
 from w2b.database.portal import users
 
-_db = {
-       "jes":hashlib.sha256('jes:bb.windpowerhub.com:secret').hexdigest()
-       }
-
 def getUser(username):
     return users.select(users.c.name == username).execute().fetchone() #@UndefinedVariable
 
