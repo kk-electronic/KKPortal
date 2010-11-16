@@ -24,19 +24,17 @@ import com.google.gwt.event.dom.client.KeyPressEvent;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
-import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.HasEnabled;
 import com.google.gwt.user.client.ui.HasValue;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.SimplePanel;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.inject.Inject;
+import com.kk_electronic.kkportal.core.AbstractModule;
 import com.kk_electronic.kkportal.core.moduleview.Module;
 import com.kk_electronic.kkportal.core.services.Debug;
-import com.kk_electronic.kkportal.core.services.JsTable;
-import com.kk_electronic.kkportal.debug.DynaTable;
 
-public class DataBaseQuery implements Module {
+public class DataBaseQuery extends AbstractModule implements Module {
 	private final Debug debug;
 	private final UIBinder display;
 	
@@ -55,18 +53,7 @@ public class DataBaseQuery implements Module {
 	
 	public void submit(String query){
 		resultDisplay.setWidget(new Label("Fetching"));
-		debug.runQuery(query, new AsyncCallback<JsTable>() {
-			
-			@Override
-			public void onSuccess(JsTable result) {
-				resultDisplay.setWidget(new DynaTable(result));
-			}
-			
-			@Override
-			public void onFailure(Throwable caught) {
-				resultDisplay.setWidget(new Label("Failed: " + caught));
-			}
-		});
+		//TODO Run query and display it
 	}
 		
 	

@@ -30,12 +30,12 @@ import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.inject.Inject;
+import com.kk_electronic.kkportal.core.AbstractModule;
 import com.kk_electronic.kkportal.core.event.ContentChangedEvent;
-import com.kk_electronic.kkportal.core.event.INotificationEvent;
 import com.kk_electronic.kkportal.core.moduleview.Module;
 import com.kk_electronic.kkportal.core.services.Debug;
 
-public class Inotify implements Module,INotificationEvent.Handler {
+public class Inotify extends AbstractModule implements Module,INotificationEvent.Handler {
 	private final Display display;
 
 	public static interface UIBinder extends UiBinder<Widget, Display>{};

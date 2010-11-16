@@ -19,10 +19,13 @@
  */
 package com.kk_electronic.kkportal.core.moduleview;
 
-import com.google.gwt.user.client.ui.Widget;
+import com.google.gwt.user.client.ui.IsWidget;
 import com.kk_electronic.kkportal.core.inject.ConstructFromLiteral;
+import com.kk_electronic.kkportal.core.services.ModuleService.ModuleInfo;
 
 @ConstructFromLiteral(includeInterfaces=false,includeConcreteClasses=true,recursive=true)
-public interface Module {
-	public Widget asWidget();
+public interface Module extends IsWidget {
+
+	void setModuleInfo(ModuleInfo info);
+	String getTitle();
 }

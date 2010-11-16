@@ -22,9 +22,10 @@ package com.kk_electronic.kkportal.examples.modules;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.inject.Inject;
+import com.kk_electronic.kkportal.core.AbstractModule;
 import com.kk_electronic.kkportal.core.moduleview.Module;
 
-public class HelloWorld implements Module {
+public class HelloWorld extends AbstractModule implements Module {
 	private final Display display;
 
 	public static interface UIBinder extends UiBinder<Widget, Display>{};
@@ -48,4 +49,5 @@ public class HelloWorld implements Module {
 	public Widget asWidget() {
 		return display.asWidget();
 	}
+
 }

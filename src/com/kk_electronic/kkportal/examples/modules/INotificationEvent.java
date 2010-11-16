@@ -28,24 +28,30 @@ import com.kk_electronic.kkportal.core.event.ServerEvent;
  * 
  * @author Jes Andersen
  */
-public class NewWallMessageEvent extends GwtEvent<NewWallMessageEvent.Handler> implements ServerEvent {
+public class INotificationEvent extends GwtEvent<INotificationEvent.Handler> implements ServerEvent {
 
 	public interface Handler extends EventHandler {
-		void onNewWallMessage(NewWallMessageEvent event);
+		void onINotification(INotificationEvent event);
 	}
 
 	/**
 	 * Handler type.
 	 */
 	public static final Type<Handler> TYPE = new Type<Handler>();
-	private final String message;
+	private final String file;
+	private final String notifytype;
 
-	public String getMessage() {
-		return message;
+	public String getFileName() {
+		return file;
 	}
 
-	public NewWallMessageEvent(String message) {
-		this.message = message;
+	public String getNotifytype() {
+		return notifytype;
+	}
+
+	public INotificationEvent(String file, String notifytype) {
+		this.file = file;
+		this.notifytype = notifytype;
 	}
 
 	@Override
@@ -55,6 +61,6 @@ public class NewWallMessageEvent extends GwtEvent<NewWallMessageEvent.Handler> i
 
 	@Override
 	protected void dispatch(Handler handler) {
-		handler.onNewWallMessage(this);
+		handler.onINotification(this);
 	}
 }

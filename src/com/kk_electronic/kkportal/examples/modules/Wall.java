@@ -35,11 +35,12 @@ import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.ValueBoxBase;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.inject.Inject;
+import com.kk_electronic.kkportal.core.AbstractModule;
 import com.kk_electronic.kkportal.core.event.ContentChangedEvent;
 import com.kk_electronic.kkportal.core.moduleview.Module;
 import com.kk_electronic.kkportal.core.services.Debug;
 
-public class Wall implements Module,NewWallMessageEvent.Handler {
+public class Wall extends AbstractModule implements Module,NewWallMessageEvent.Handler {
 	private final Display display;
 	private final Debug debug;
 
