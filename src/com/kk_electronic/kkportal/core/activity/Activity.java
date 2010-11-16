@@ -19,7 +19,7 @@
  */
 package com.kk_electronic.kkportal.core.activity;
 
-import com.google.gwt.user.client.ui.Widget;
+import com.google.gwt.user.client.ui.IsWidget;
 import com.kk_electronic.kkportal.core.inject.ConstructFromLiteral;
 
 /**
@@ -28,9 +28,5 @@ import com.kk_electronic.kkportal.core.inject.ConstructFromLiteral;
  * @author Jes Andersen
  */
 @ConstructFromLiteral
-public interface Activity {
-	/**
-	 * @return The widget representing this activity
-	 */
-	public Widget asWidget();
+public interface Activity extends IsWidget {
 }
