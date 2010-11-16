@@ -24,6 +24,7 @@ import __builtin__
 from twisted.python import filepath
 from w2b.inotify import INotify,humanReadableMask
 from twisted.python import log
+import datetime
 
 class TransmitInotify():
     def __init__(self,context):
@@ -70,4 +71,8 @@ def getWall(context):
 
 def postToWall(context,message):
     wall = Wall()
-    wall.broadcast(message)
+    fullmessage = "<%s> [%s] %s" % (
+                      datetime.datetime.now().strftime('%H:%M'),
+                      context.user[:context.user.find("@")],
+                      message)
+    wall.broadcast(fullmessage)
