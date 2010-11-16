@@ -44,7 +44,8 @@ types = Table('types',metadata,
 
 tabs = Table('tabs',metadata,
               Column('tab_id',Integer,primary_key=True),
-              Column('name',String(255))
+              Column('name',String(255)),
+              Column('module_ids',String(255))
               )
 
 
@@ -76,7 +77,7 @@ def createDebugData():
     
     #Here we insert all the users
     users.insert().execute(demousers)
-    
-    types.insert().execute([{'type_id':0,'code':439329280,'title':'Hello World'}])
-    import random
-    modules.insert().execute([{'col_nr':2,'order':i,'module_id':i,'type_id':0,'tab_id':0,'height':random.randrange(24,80)} for i in range(8)])
+    tabs.insert().execute([{'tab_id':i,'name':'Tab ' + str(i),'module_ids':'[[1],[1,1],[1,1,1]]'} for i in range(1,4)])
+    #types.insert().execute([{'type_id':0,'code':439329280,'title':'Hello World'}])
+    #import random
+    #modules.insert().execute([{'col_nr':2,'order':i,'module_id':i,'type_id':0,'tab_id':0,'height':random.randrange(24,80)} for i in range(8)])
