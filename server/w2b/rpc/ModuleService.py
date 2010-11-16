@@ -23,10 +23,15 @@ Created on Aug 2, 2010
 '''
 
 import w2b.database.portal as db
-from sqlalchemy import func,select
+from sqlalchemy import func,select,update
+import json
 
 def getTabs(context, user):
-    return [{'name':'test', 'id':2}, {'name':'test2', 'id':3}]
+    query = db.tabs.select()
+    result = query.execute()
+    returnvalues = [dict(x) for x in result]
+    result.close()
+    return returnvalues
 
 def getModules(context, tabid):
     # In the database the structure is quite different since lists can't be saved easily 
