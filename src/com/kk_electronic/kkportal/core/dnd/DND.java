@@ -90,12 +90,13 @@ public class DND<T extends Widget> implements MouseMoveHandler,MouseUpHandler {
 
 	@Override
 	public void onMouseMove(MouseMoveEvent event) {
-		
 	}
 
 	@Override
 	public void onMouseUp(MouseUpEvent event) {
-		dropSink.Drop(event, widgetDragging);
+		if(dropSink != null){
+			dropSink.Drop(event, widgetDragging);
+		}
 		mousePanel.clearWidgetFromMouse();
 		widgetDragging = null;
 		GWT.log("DND-dragging ended");
