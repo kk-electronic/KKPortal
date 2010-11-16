@@ -36,6 +36,7 @@ import com.kk_electronic.kkportal.core.rpc.IdCreator;
 import com.kk_electronic.kkportal.core.rpc.IdCreatorSequence;
 import com.kk_electronic.kkportal.core.rpc.SimpleEncoder;
 import com.kk_electronic.kkportal.core.rpc.WebSocket;
+import com.kk_electronic.kkportal.core.security.Digest;
 import com.kk_electronic.kkportal.core.security.Hasher;
 import com.kk_electronic.kkportal.core.security.SHA256;
 import com.kk_electronic.kkportal.core.security.User;
@@ -70,6 +71,7 @@ public class WebPageInjectConfig extends AbstractGinModule {
 		bind(FrameEncoder.class).to(SimpleEncoder.class);
 		bind(EventBus.class).to(SimpleEventBus.class).in(Singleton.class);
 		bindConstant().annotatedWith(Names.named("DefaultHistoryToken")).to("ViewModules");
+		bind(Digest.class).in(Singleton.class);
 	}
 	
 	@Provides @Singleton
