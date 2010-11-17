@@ -24,7 +24,7 @@ Created on Aug 2, 2010
 
 import w2b.database.portal as db
 from sqlalchemy import func,select,update
-import json
+import simplejson as json
 
 def getTabs(context, user):
     query = db.tabs.select()
