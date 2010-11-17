@@ -71,6 +71,7 @@ def recreate():
 def createDebugData():
     demousersid = range(1,4);
     demousernames = ['demo','demo2','jes']
+    demousernames = [s + "@example.com" for s in demousernames]
     demopasswd = ['demo','password','1234']
     #Using generators we create a lists objects with a name and a secret attribute
     demousers = [{'id':i,'name':u,'secret':hashlib.sha256(u+':'+p).hexdigest()} for i,u,p in zip(demousersid,demousernames,demopasswd)]
