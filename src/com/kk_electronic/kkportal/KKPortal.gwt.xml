@@ -25,6 +25,7 @@
   <inherits name='com.google.gwt.json.JSON'/>
   <inherits name='com.google.gwt.user.theme.standard.Standard'/>
   <inherits name="com.google.gwt.inject.Inject"/>
+  <inherits name='com.google.gwt.widgetideas.GWTCanvas'/>
   
   <entry-point class='com.kk_electronic.kkportal.core.KKPortal'/>
   <source path='core'/>

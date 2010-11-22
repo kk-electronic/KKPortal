@@ -28,6 +28,7 @@ import com.google.gwt.view.client.HasData;
 import com.google.inject.Inject;
 import com.kk_electronic.kkportal.core.reflection.ModuleMap;
 import com.kk_electronic.kkportal.core.services.ModuleTypeInfo;
+import com.kk_electronic.kkportal.debug.modules.UsageGraph;
 import com.kk_electronic.kkportal.examples.modules.HelloWorld;
 import com.kk_electronic.kkportal.examples.modules.Inotify;
 import com.kk_electronic.kkportal.examples.modules.Wall;
@@ -44,6 +45,8 @@ public class ModuleTypeInfoProvider {
 				.getKeyFromClass(Inotify.class), "Inotify"));
 		map.put(2, new ModuleTypeInfo(2, moduleMap
 				.getKeyFromClass(Wall.class), "Wall"));
+		map.put(3, new ModuleTypeInfo(3, moduleMap
+				.getKeyFromClass(UsageGraph.class), "Cpu Usage"));
 	}
 
 	public void get(Integer typeid, AsyncCallback<ModuleTypeInfo> callback) {
