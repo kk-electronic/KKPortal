@@ -103,7 +103,7 @@ class CpuInfo():
         self._read()
     def _updatecpu(self,cpuname,used,idle):
         if cpuname not in self.history:
-            self.history[cpuname] = deque(maxlen=5)
+            self.history[cpuname] = deque()
         if cpuname in self.info:
             lastused,lastidle = self.info[cpuname]
             useddiff = used - lastused
@@ -112,6 +112,7 @@ class CpuInfo():
             self._callAll(cpuname,load)
             self.usage[cpuname] = (used-lastused,idle-lastidle)
             self.history[cpuname].append(load)
+            self.history[cpuname]=self.history[cpuname][-60:]
             self._updatewarnings(cpuname,load)
         self.info[cpuname] = (used,idle)
     def _callAll(self,cpuname,load):
