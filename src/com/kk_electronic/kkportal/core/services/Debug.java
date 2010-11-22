@@ -29,4 +29,5 @@ public interface Debug extends RemoteService {
 	void inotify(String path,AsyncCallback<?> callback);
 	void getWall(AsyncCallback<List<String>> callback);
 	void postToWall(String message,AsyncCallback<?> callback);
+	void getCpuHistory(AsyncCallback<List<Double>> callback);
 }

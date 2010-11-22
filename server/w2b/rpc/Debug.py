@@ -25,6 +25,8 @@ from twisted.python import filepath
 from w2b.inotify import INotify,humanReadableMask
 from twisted.python import log
 import datetime
+from collections import deque
+from twisted.internet.task import LoopingCall
 
 class TransmitInotify():
     def __init__(self,context):
@@ -76,3 +78,63 @@ def postToWall(context,message):
                       context.user[:context.user.find("@")],
                       message)
     wall.broadcast(fullmessage)
+
+class CpuInfo():
+    def __init__(self):
+        self.info = {}
+        self.usage = {}
+        self.history = {}
+        self.loaded = set()
+        self.lowthreshold = 0.66
+        self.highthreshold = 0.80
+        self.wall = Wall()
+        self.timer = None
+        self.callbacks = set()
+    def _read(self):
+        file=open('/proc/stat')
+        cpulines = [line for line in file if line.startswith('cpu')]
+        file.close()
+        for line in cpulines:
+            s = line.split()
+            self._updatecpu(s[0],sum(map(float,s[1:4])),int(s[4]))
+    def addCallback(self,messagebox):
+        self.callbacks.add(messagebox)
+    def update(self):
+        self._read()
+    def _updatecpu(self,cpuname,used,idle):
+        if cpuname not in self.history:
+            self.history[cpuname] = deque(maxlen=5)
+        if cpuname in self.info:
+            lastused,lastidle = self.info[cpuname]
+            useddiff = used - lastused
+            idlediff = idle - lastidle
+            load=round(useddiff/(useddiff+idlediff),2)
+            self._callAll(cpuname,load)
+            self.usage[cpuname] = (used-lastused,idle-lastidle)
+            self.history[cpuname].append(load)
+            self._updatewarnings(cpuname,load)
+        self.info[cpuname] = (used,idle)
+    def _callAll(self,cpuname,load):
+        print("TROUT")
+        for callback in self.callbacks:
+            callback.addResponse(callback.makeNotification("NewCpuUsageDataEvent",[cpuname,load]))
+    def _updatewarnings(self,cpuname,load):
+        if load > self.highthreshold and cpuname not in self.loaded:
+            self.loaded.add(cpuname)
+            self.wall.broadcast("%s is loaded" % cpuname)
+        if load < self.lowthreshold and cpuname in self.loaded:
+            self.loaded.remove(cpuname)
+            self.wall.broadcast("%s is no longer loaded" % cpuname)
+    def start(self):
+        if self.timer:
+            return
+        self.timer = LoopingCall(self._read)
+        self.timer.start(1)
+cpuinfo = CpuInfo()
+def getCpuHistory(context):
+    cpuinfo.start()
+    cpuinfo.addCallback(context)
+    if 'cpu' in cpuinfo.history:
+        return list(cpuinfo.history['cpu'])
+    else:
+        return []
