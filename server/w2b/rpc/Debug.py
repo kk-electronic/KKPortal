@@ -112,7 +112,8 @@ class CpuInfo():
             self._callAll(cpuname,load)
             self.usage[cpuname] = (used-lastused,idle-lastidle)
             self.history[cpuname].append(load)
-            self.history[cpuname]=self.history[cpuname][-60:]
+            while(len(self.history[cpuname]) > 60):
+                self.history[cpuname].popleft()
             self._updatewarnings(cpuname,load)
         self.info[cpuname] = (used,idle)
     def _callAll(self,cpuname,load):
