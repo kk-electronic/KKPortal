@@ -9,6 +9,7 @@ import com.google.inject.Inject;
 import com.kk_electronic.kkportal.core.event.ServerEvent;
 import com.kk_electronic.kkportal.core.rpc.FrameEncoder;
 import com.kk_electronic.kkportal.core.rpc.jsonformat.UnableToDeserialize;
+import com.kk_electronic.kkportal.debug.model.NewCpuUsageDataEvent;
 import com.kk_electronic.kkportal.examples.modules.NewWallMessageEvent;
 
 /* TODO: Destroy this class */
@@ -36,6 +37,22 @@ public class EventFromJsonCreator {
 			NewWallMessageEvent event = new NewWallMessageEvent(message);
 			eventBus.fireEvent(event);
 			asyncCallback.onSuccess(new NewWallMessageEvent(message));
+			return;
+		}
+		if(NewCpuUsageDataEvent.class.equals(clazz)){
+			String message = null;
+			Double load = null;
+			JSONValue value = (JSONValue)list.get(0);
+			try {
+				message = encoder.validate(value.isArray().get(0), message, new Class<?>[]{String.class});
+				load = encoder.validate(value.isArray().get(1), load, new Class<?>[]{Double.class});
+			} catch (UnableToDeserialize e) {
+				asyncCallback.onFailure(e);
+				return;
+			}
+			NewCpuUsageDataEvent event = new NewCpuUsageDataEvent(message,load);
+			eventBus.fireEvent(event);
+			asyncCallback.onSuccess(event);
 			return;
 		}
 		asyncCallback.onFailure(new Exception("Class not found"));
