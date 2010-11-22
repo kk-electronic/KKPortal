@@ -28,6 +28,7 @@ import java.util.Map;
 import com.google.gwt.json.client.JSONParser;
 import com.google.gwt.json.client.JSONValue;
 import com.google.inject.Inject;
+import com.kk_electronic.kkportal.core.rpc.jsonformat.JsonDouble;
 import com.kk_electronic.kkportal.core.rpc.jsonformat.JsonIdentity;
 import com.kk_electronic.kkportal.core.rpc.jsonformat.JsonInteger;
 import com.kk_electronic.kkportal.core.rpc.jsonformat.JsonList;
@@ -64,6 +65,7 @@ public class SimpleEncoder implements FrameEncoder<JSONValue> {
 		types.put(HashMap.class, t);
 		types.put(TabInfo.class, new JsonTabInfo());
 		types.put(ModuleInfo.class, new JsonModuleInfo());
+		types.put(Double.class, new JsonDouble());
 	}
 
 	@SuppressWarnings("unchecked")
