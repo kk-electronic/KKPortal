@@ -31,6 +31,7 @@ import com.kk_electronic.kkportal.core.services.ModuleTypeInfo;
 import com.kk_electronic.kkportal.debug.modules.UsageGraph;
 import com.kk_electronic.kkportal.examples.modules.HelloWorld;
 import com.kk_electronic.kkportal.examples.modules.Inotify;
+import com.kk_electronic.kkportal.examples.modules.MotD;
 import com.kk_electronic.kkportal.examples.modules.Wall;
 
 //TODO: Generate this class
@@ -47,8 +48,10 @@ public class ModuleTypeInfoProvider {
 				.getKeyFromClass(Wall.class), "Wall"));
 		map.put(3, new ModuleTypeInfo(3, moduleMap
 				.getKeyFromClass(UsageGraph.class), "Cpu Usage"));
+		map.put(4, new ModuleTypeInfo(4, moduleMap
+				.getKeyFromClass(MotD.class), "MotD"));
 	}
-
+		
 	public void get(Integer typeid, AsyncCallback<ModuleTypeInfo> callback) {
 		if (map.containsKey(typeid)) {
 			callback.onSuccess(map.get(typeid));
