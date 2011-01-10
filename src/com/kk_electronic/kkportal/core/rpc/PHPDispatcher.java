@@ -19,53 +19,71 @@
  */
 package com.kk_electronic.kkportal.core.rpc;
 
+import com.google.gwt.http.client.Request;
+import com.google.gwt.http.client.RequestBuilder;
+import com.google.gwt.http.client.RequestCallback;
+import com.google.gwt.http.client.RequestException;
+import com.google.gwt.http.client.Response;
+import com.google.gwt.json.client.JSONValue;
 import com.google.gwt.user.client.rpc.AsyncCallback;
+import com.google.inject.Inject;
+import com.kk_electronic.kkportal.core.rpc.jsonformat.UnableToDeserialize;
+import com.kk_electronic.kkportal.core.rpc.jsonformat.UnableToSerialize;
 
 
 public class PHPDispatcher implements Dispatcher {
 
+	private final SimpleEncoder encoder;
+
+	@Inject
+	public PHPDispatcher(SimpleEncoder encoder) {
+		this.encoder = encoder;
+	}
+	
 	@Override
-	public <T> void execute(AsyncCallback<T> callback,
-			Class<?>[] returnValueType,
+	public <T> void execute(final AsyncCallback<T> callback,
+			final Class<?>[] returnValueType,
 			Class<? extends RemoteService> serverinterface, String method,
 			Object... params) {
-		// TODO Auto-generated method stub
-		
+		String url = "php/dispatch.php?i="+serverinterface.getName()+"&m="+method;
+		RequestBuilder builder = new RequestBuilder(RequestBuilder.POST,url);
+		StringBuilder sb = new StringBuilder();
+		try {
+			encoder.encode(params, sb);
+		} catch (UnableToSerialize e) {
+			callback.onFailure(e);
+		}
+		try {
+			builder.sendRequest(sb.toString(),new RequestCallback() {
+							
+				@Override
+				public void onError(com.google.gwt.http.client.Request request,
+						Throwable exception) {
+					callback.onFailure(exception);
+				}
+
+				@Override
+				public void onResponseReceived(Request request,
+						Response response) {
+					JSONValue result;
+					try {
+						result = encoder.decode(response.getText());
+					} catch (UnableToDeserialize e) {
+						callback.onFailure(e);
+						return;
+					}
+					T decodedResult = null;
+					try {
+						decodedResult = encoder.validate(result, decodedResult, returnValueType);
+					} catch (UnableToDeserialize e) {
+						callback.onFailure(e);
+						return;
+					}
+					callback.onSuccess(decodedResult);
+				}
+			});
+		} catch (RequestException e) {
+			callback.onFailure(e);
+		}
 	}
-//
-//	private final SimpleEncoder encoder;
-//
-//	@Inject
-//	public PHPDispatcher(SimpleEncoder encoder) {
-//		this.encoder = encoder;
-//	}
-//	
-//	@Override
-//	public <T> void execute(final AsyncCallback<T> callback,
-//			final Class<?>[] returnValueType,
-//			Class<? extends RemoteService> serverinterface, String method,
-//			Object... params) {
-//		String url = "http://1.2.3.4/php" + serverinterface.getName() + "/" + method + ".php";
-//		RequestBuilder builder = new RequestBuilder(RequestBuilder.POST,url);
-//		String data = JsonValueHelper.makeJSONValue(params).toString();
-//		try {
-//			builder.sendRequest(data,new RequestCallback() {
-//				
-//				@Override
-//				public void onResponseReceived(com.google.gwt.http.client.Request request,
-//						Response response) {
-////					T result = encoder.decodeResult(returnValueType, response.getText());
-////					callback.onSuccess(result);
-//				}
-//				
-//				@Override
-//				public void onError(com.google.gwt.http.client.Request request,
-//						Throwable exception) {
-//					callback.onFailure(exception);
-//				}
-//			});
-//		} catch (RequestException e) {
-//			callback.onFailure(e);
-//		}
-//	}
 }

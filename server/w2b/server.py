@@ -133,6 +133,10 @@ def main(argv=None):
     log.msg(os.getcwd())
     log.msg(settings['rootdir'])
     root = static.File(settings['rootdir'])
+    from twisted.web.proxy import ReverseProxyResource
+    proxy = ReverseProxyResource('windpowerhub.com',80,'/~albatros/php')
+    root.putChild("php",proxy)
+    
     #phproot = static.File('src/com/kk_electronic/public/clsrv/')
     #phproot.processors = {
     #                      '.php':PHP5Script
