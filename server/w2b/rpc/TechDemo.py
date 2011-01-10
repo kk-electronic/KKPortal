@@ -79,6 +79,7 @@ def postToWall(context,message):
                       message)
     wall.broadcast(fullmessage)
 
+#Note: This reader requires Linux/Mac or QNX, does not work under windows
 class CpuInfo():
     def __init__(self):
         self.info = {}
@@ -91,17 +92,24 @@ class CpuInfo():
         self.timer = None
         self.callbacks = set()
     def _read(self):
+        #We read the virtual file with info on the system
         file=open('/proc/stat')
+        #We only interested in lines containing Cpu info
         cpulines = [line for line in file if line.startswith('cpu')]
         file.close()
         for line in cpulines:
+            #The line is formatted like this
+            #<name> <usertime> <usernicetime> <systemtime> <idletime> (...)
             s = line.split()
+            #We sum up user, usernice and systemtime to get info on how much cpu time is used
             self._updatecpu(s[0],sum(map(float,s[1:4])),int(s[4]))
     def addCallback(self,messagebox):
         self.callbacks.add(messagebox)
     def update(self):
         self._read()
     def _updatecpu(self,cpuname,used,idle):
+        #Since used,idle in this case in since system start, we add some discrete differentiation.
+        #We also maintains a log of the last 60 values 
         if cpuname not in self.history:
             self.history[cpuname] = deque()
         if cpuname in self.info:
@@ -117,7 +125,6 @@ class CpuInfo():
             self._updatewarnings(cpuname,load)
         self.info[cpuname] = (used,idle)
     def _callAll(self,cpuname,load):
-        print("TROUT")
         for callback in self.callbacks:
             callback.addResponse(callback.makeNotification("NewCpuUsageDataEvent",[cpuname,load]))
     def _updatewarnings(self,cpuname,load):
@@ -131,11 +138,21 @@ class CpuInfo():
         if self.timer:
             return
         self.timer = LoopingCall(self._read)
-        self.timer.start(1)
+        self.timer.start(0.5)
+
+# We instantiate the cpuInfo but do not being polling the data source
+# Effectively makes it a singleton as well
 cpuinfo = CpuInfo()
+
+# This function is the implementation of the TechDemo interface function with the same name
+# The framework takes care of connecting this python file with the interface on the browser
 def getCpuHistory(context):
-    cpuinfo.start()
+    cpuinfo.start() #We start the polling of the cpu usage
+    #Since this client is interested in CpuUsage we add it to the list of messageboxes that
+    #needs events when new data is ready
     cpuinfo.addCallback(context)
+    
+    #We return previously recorded data if have any
     if 'cpu' in cpuinfo.history:
         return list(cpuinfo.history['cpu'])
     else:
