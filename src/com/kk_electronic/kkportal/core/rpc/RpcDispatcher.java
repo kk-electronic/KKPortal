@@ -286,6 +286,7 @@ public class RpcDispatcher implements FrameSentEvent.Handler, Dispatcher,
 			GWT.log("RPC-PortalServer Feature " + featureName
 					+ " with no security enabled");
 			authenticationMethods.put(feature, null);
+			sendCallsWithFeature(feature);
 		} else {
 			Class<? extends SecurityMethod> security = clientSecurityMap
 					.getClassFromKey(securityName);
@@ -324,6 +325,17 @@ public class RpcDispatcher implements FrameSentEvent.Handler, Dispatcher,
 		});
 	}
 
+	protected void sendCallsWithFeature(Class<? extends RemoteService> feature) {
+		Iterator<PendingCall<?>> i = pending.values().iterator();
+		String featureName = clientFeatureMap.getKeyFromClass(feature);
+		for (PendingCall<?> call = i.next(); i.hasNext(); call = i.next()) {
+			if (call.getStatus() == PendingCallStatus.NEW
+					&& call.request.getFeatureName().equals(featureName)) {
+				transmit(call);
+			}
+		}
+	}
+	
 	protected void cancelCallsWithFeature(Class<? extends RemoteService> feature) {
 		Iterator<PendingCall<?>> i = pending.values().iterator();
 		String featureName = clientFeatureMap.getKeyFromClass(feature);
