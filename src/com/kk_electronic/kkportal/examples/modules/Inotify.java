@@ -33,7 +33,7 @@ import com.google.inject.Inject;
 import com.kk_electronic.kkportal.core.AbstractModule;
 import com.kk_electronic.kkportal.core.event.ContentChangedEvent;
 import com.kk_electronic.kkportal.core.moduleview.Module;
-import com.kk_electronic.kkportal.core.services.Debug;
+import com.kk_electronic.kkportal.core.services.TechDemo;
 
 public class Inotify extends AbstractModule implements Module,INotificationEvent.Handler {
 	private final Display display;
@@ -66,7 +66,7 @@ public class Inotify extends AbstractModule implements Module,INotificationEvent
 	}
 	
 	@Inject
-	public Inotify(Display display,Debug debug,EventBus eventBus) {
+	public Inotify(Display display,TechDemo debug,EventBus eventBus) {
 		eventBus.addHandler(INotificationEvent.TYPE, this);
 		debug.inotify("server", new AsyncCallback<Object>() {
 

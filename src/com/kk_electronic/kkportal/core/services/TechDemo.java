@@ -24,10 +24,24 @@ import java.util.List;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.kk_electronic.kkportal.core.rpc.RemoteService;
 
-public interface Debug extends RemoteService {
+/**
+ * The {@link RemoteService} interface is a marker interface that
+ * enables the framework to generate the implementation of this
+ * interface, which links it to the rest of the system. 
+ */
+public interface TechDemo extends RemoteService {
+	/**
+	 * The interface must use {@link AsyncCallback} instead of
+	 * a return value, since javascript is singlethreaded and
+	 * we cannot make blocking calls. 
+	 */
+	void getCpuHistory(AsyncCallback<List<Double>> callback);
+
+	/*
+	 * The functions below are not relevant for the presentation
+	 */
 	void reload(AsyncCallback<?> callback);
 	void inotify(String path,AsyncCallback<?> callback);
 	void getWall(AsyncCallback<List<String>> callback);
 	void postToWall(String message,AsyncCallback<?> callback);
-	void getCpuHistory(AsyncCallback<List<Double>> callback);
 }

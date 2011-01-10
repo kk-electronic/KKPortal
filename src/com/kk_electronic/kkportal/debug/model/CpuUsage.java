@@ -8,7 +8,7 @@ import com.google.gwt.event.shared.EventBus;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.view.client.HasData;
 import com.google.inject.Inject;
-import com.kk_electronic.kkportal.core.services.Debug;
+import com.kk_electronic.kkportal.core.services.TechDemo;
 
 public class CpuUsage implements AsyncCallback<List<Double>>,
 		NewCpuUsageDataEvent.Handler {
@@ -16,8 +16,12 @@ public class CpuUsage implements AsyncCallback<List<Double>>,
 	List<HasData<Double>> displays = new LinkedList<HasData<Double>>();
 
 	@Inject
-	public CpuUsage(Debug debug, EventBus eventBus) {
-		debug.getCpuHistory(this);
+	public CpuUsage(TechDemo techDemo, EventBus eventBus) {
+		/*
+		 * the getCpuHistory has the side effect that the server
+		 * will send events about updates to the data
+		 */
+		techDemo.getCpuHistory(this);
 		eventBus.addHandler(NewCpuUsageDataEvent.TYPE, this);
 	}
 

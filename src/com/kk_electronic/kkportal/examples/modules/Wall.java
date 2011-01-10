@@ -38,11 +38,11 @@ import com.google.inject.Inject;
 import com.kk_electronic.kkportal.core.AbstractModule;
 import com.kk_electronic.kkportal.core.event.ContentChangedEvent;
 import com.kk_electronic.kkportal.core.moduleview.Module;
-import com.kk_electronic.kkportal.core.services.Debug;
+import com.kk_electronic.kkportal.core.services.TechDemo;
 
 public class Wall extends AbstractModule implements Module,NewWallMessageEvent.Handler {
 	private final Display display;
-	private final Debug debug;
+	private final TechDemo debug;
 
 	public static interface UIBinder extends UiBinder<Widget, Display>{};
 	public static class Display{
@@ -95,7 +95,7 @@ public class Wall extends AbstractModule implements Module,NewWallMessageEvent.H
 	}
 	
 	@Inject
-	public Wall(Display display,Debug debug,EventBus eventBus) {
+	public Wall(Display display,TechDemo debug,EventBus eventBus) {
 		this.debug = debug;
 		display.setHandler(this);
 		debug.getWall(new AsyncCallback<List<String>>() {

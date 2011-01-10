@@ -24,7 +24,7 @@ import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.kk_electronic.kkportal.core.activity.ActivityManager;
 import com.kk_electronic.kkportal.core.reflection.Injection;
-import com.kk_electronic.kkportal.core.services.Debug;
+import com.kk_electronic.kkportal.core.services.TechDemo;
 
 /**
  * This is the main entry point for the KKPortal project.
@@ -44,14 +44,14 @@ public class KKPortal implements EntryPoint {
 	}
 
 	private void reloadServer() {
-		Injection.create(Debug.class, new AsyncCallback<Debug>() {
+		Injection.create(TechDemo.class, new AsyncCallback<TechDemo>() {
 			@Override
 			public void onFailure(Throwable caught) {
 				
 			}
 
 			@Override
-			public void onSuccess(Debug result) {
+			public void onSuccess(TechDemo result) {
 				result.reload(null);
 			}
 		});
