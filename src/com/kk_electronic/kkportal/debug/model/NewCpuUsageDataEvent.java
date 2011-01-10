@@ -24,18 +24,29 @@ import com.google.gwt.event.shared.GwtEvent;
 import com.kk_electronic.kkportal.core.event.ServerEvent;
 
 /**
+ * This class is created and fired on the eventBus each time a NewCpuUsageDataEvent comes from the server.
+ * The parameters are decodes and comes from the server as well.
  * @author Jes Andersen
  */
 public class NewCpuUsageDataEvent extends GwtEvent<NewCpuUsageDataEvent.Handler> implements ServerEvent {
 
+	/*
+	 * Defines an interface that matches the event. This enables a Class to have many handlers defined
+	 * for different events.
+	 */
 	public interface Handler extends EventHandler {
 		void onNewCpuUsage(NewCpuUsageDataEvent event);
 	}
 
 	/**
 	 * Handler type.
+	 * Used when subscribing to the event on the eventbus.
 	 */
 	public static final Type<Handler> TYPE = new Type<Handler>();
+	
+	/*
+	 * Parameters from the server
+	 */
 	private final String cpuname;
 	private final Double cpuload;
 
@@ -52,6 +63,9 @@ public class NewCpuUsageDataEvent extends GwtEvent<NewCpuUsageDataEvent.Handler>
 		return cpuload;
 	}
 
+	/*
+	 * The next two functions makes the class work with the GWT eventbus system.
+	 */
 	@Override
 	public Type<Handler> getAssociatedType() {
 		return TYPE;
