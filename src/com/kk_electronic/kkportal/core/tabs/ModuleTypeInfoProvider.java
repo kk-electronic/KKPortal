@@ -26,32 +26,70 @@ import java.util.List;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.view.client.HasData;
 import com.google.inject.Inject;
+import com.kk_electronic.kkportal.core.moduleview.Module;
 import com.kk_electronic.kkportal.core.reflection.ModuleMap;
 import com.kk_electronic.kkportal.core.services.ModuleTypeInfo;
 import com.kk_electronic.kkportal.debug.modules.UsageGraph;
 import com.kk_electronic.kkportal.examples.modules.HelloWorld;
 import com.kk_electronic.kkportal.examples.modules.Inotify;
 import com.kk_electronic.kkportal.examples.modules.MotD;
+import com.kk_electronic.kkportal.examples.modules.SRPLogin;
 import com.kk_electronic.kkportal.examples.modules.Wall;
 
 //TODO: Generate this class
 public class ModuleTypeInfoProvider {
 	HashMap<Integer, ModuleTypeInfo> map = new HashMap<Integer, ModuleTypeInfo>();
+	private final ModuleMap moduleMap;
 
 	@Inject
 	public ModuleTypeInfoProvider(ModuleMap moduleMap) {
-		map.put(0, new ModuleTypeInfo(0, moduleMap
-				.getKeyFromClass(HelloWorld.class), "Hello World"));
-		map.put(1, new ModuleTypeInfo(1, moduleMap
-				.getKeyFromClass(Inotify.class), "Inotify"));
-		map.put(2, new ModuleTypeInfo(2, moduleMap
-				.getKeyFromClass(Wall.class), "Wall"));
-		map.put(3, new ModuleTypeInfo(3, moduleMap
-				.getKeyFromClass(UsageGraph.class), "Cpu Usage"));
-		map.put(4, new ModuleTypeInfo(4, moduleMap
-				.getKeyFromClass(MotD.class), "MotD"));
+		this.moduleMap = moduleMap;
+		generated();
+	}
+	
+	private void generated() {
+		add(HelloWorld.class,0,null);
+		add(Inotify.class,1,null);		
+		add(Wall.class,2,null);
+		add(UsageGraph.class,3,null);
+		add(MotD.class,4,"Message of the Day");
+		add(SRPLogin.class,5,null);
+	}
+
+	public void add(Class<? extends Module> clazz,Integer id,String name){
+		if (name == null){
+			name = getNameFromClass(clazz);
+		}
+		if (id == null){
+			id = getKetFromClass(clazz);
+		}
+		map.put(id, new ModuleTypeInfo(id, moduleMap
+				.getKeyFromClass(clazz), name));
 	}
 		
+	private Integer getKetFromClass(Class<? extends Module> clazz) {
+		return clazz.getName().hashCode();
+	}
+
+	private String getNameFromClass(Class<? extends Module> clazz) {
+		String s = clazz.getName();
+		s = s.substring(s.lastIndexOf('.')+1);
+		StringBuilder sb = new StringBuilder();
+		boolean canAdd = false;
+		for(int i=0,l=s.length();i<l;i++){
+			char c = s.charAt(i);
+			if(canAdd && Character.isUpperCase(c)){
+				canAdd = false;
+				sb.append(' ');
+			}
+			sb.append(c);
+			if(Character.isLowerCase(c)){
+				canAdd = true;
+			}
+		}
+		return sb.toString();
+	}
+
 	public void get(Integer typeid, AsyncCallback<ModuleTypeInfo> callback) {
 		if (map.containsKey(typeid)) {
 			callback.onSuccess(map.get(typeid));
