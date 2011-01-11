@@ -1,0 +1,549 @@
+#LyX 1.6.7 created this file. For more info see http://www.lyx.org/
+\lyxformat 345
+\begin_document
+\begin_header
+\textclass powerdot
+\begin_preamble
+\definecolor{darkgreen}{RGB}{56, 118, 29}
+\hypersetup{
+pdfpagemode=FullScreen
+}
+\end_preamble
+\use_default_options true
+\language english
+\inputencoding auto
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_amsmath 1
+\use_esint 1
+\cite_engine basic
+\use_bibtopic false
+\paperorientation portrait
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\author "" 
+\author "" 
+\end_header
+
+\begin_body
+
+\begin_layout Title
+KKPortal Presentation
+\end_layout
+
+\begin_layout WideSlide
+\begin_inset OptArg
+status collapsed
+
+\begin_layout Plain Layout
+method=direct
+\end_layout
+
+\end_inset
+
+Simple Module Code
+\end_layout
+
+\begin_layout Standard
+We create the most simple module by extending from AbstractModule, and implement
+ing one function.
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "basicstyle={\sffamily},emph={asWidget},emphstyle={\color{darkgreen}},language=Java,tabsize=2"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+public class MotD extends AbstractModule {
+\end_layout
+
+\begin_layout Plain Layout
+
+	HTML widget = new HTML("Fetching MotD");
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\end_layout
+
+\begin_layout Plain Layout
+
+	@Override
+\end_layout
+
+\begin_layout Plain Layout
+
+	public Widget asWidget() {
+\end_layout
+
+\begin_layout Plain Layout
+
+		return widget;
+\end_layout
+
+\begin_layout Plain Layout
+
+	}
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout WideSlide
+Simple Module Result
+\end_layout
+
+\begin_layout Standard
+The module is available after running devmode and going to http://localhost:8888
+/KKPortal.html
+\end_layout
+
+\begin_layout Standard
+<insert image of portal with MotD module>
+\end_layout
+
+\begin_layout WideSlide
+\begin_inset OptArg
+status collapsed
+
+\begin_layout Plain Layout
+method=direct
+\end_layout
+
+\end_inset
+
+Backend Interface
+\end_layout
+
+\begin_layout Standard
+Now we want to contact the backend
+\begin_inset listings
+lstparams "basicstyle={\sffamily},breaklines=true,emph={asWidget},emphstyle={\color{darkgreen}},language=Java,tabsize=2"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+public interface MotDService extends RemoteService{
+\end_layout
+
+\begin_layout Plain Layout
+
+  public void getMessageOfTheDay(AsyncCallback<String> callback);
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Similar to the way GWT does it.
+\end_layout
+
+\begin_layout Standard
+The return value is defined based on the callback and enables asynchronous
+ communication.
+\end_layout
+
+\begin_layout WideSlide
+\begin_inset OptArg
+status collapsed
+
+\begin_layout Plain Layout
+method=direct
+\end_layout
+
+\end_inset
+
+Changes to the client code
+\end_layout
+
+\begin_layout Standard
+To use the interface we add two new functions to the MotD class
+\begin_inset listings
+lstparams "basicstyle={\sffamily},breaklines=true,emph={asWidget},emphstyle={\color{darkgreen}},language=Java,tabsize=2"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+public class MotD extends AbstractModule {
+\end_layout
+
+\begin_layout Plain Layout
+
+	/* appended to the class: */
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+	@Inject 
+\end_layout
+
+\begin_layout Plain Layout
+
+	public MotD(MotDService service){
+\end_layout
+
+\begin_layout Plain Layout
+
+		service.getMessageOfTheDay(this);
+\end_layout
+
+\begin_layout Plain Layout
+
+	}
+\end_layout
+
+\begin_layout Plain Layout
+
+	public void onSuccess(String result) {
+\end_layout
+
+\begin_layout Plain Layout
+
+		widget.setText(result);
+\end_layout
+
+\begin_layout Plain Layout
+
+	}
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+You do not have to worry about how the MotDService is implemented, but you
+ can make easy mock implementations, that facilitates testing.
+\end_layout
+
+\begin_layout WideSlide
+\begin_inset OptArg
+status collapsed
+
+\begin_layout Plain Layout
+method=direct
+\end_layout
+
+\end_inset
+
+Backend implementation
+\end_layout
+
+\begin_layout Standard
+We create a python file called MotDService.py and place it in server/w2b/rpc/
+ 
+\begin_inset listings
+lstparams "basicstyle={\sffamily},breaklines=true,emph={asWidget},emphstyle={\color{darkgreen}},language=Python,tabsize=2"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+import w2b.settings
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+def getMessageOfTheDay(context):
+\end_layout
+
+\begin_layout Plain Layout
+
+    motd = w2b.settings.getGlobalSetting('LoginMessage');
+\end_layout
+
+\begin_layout Plain Layout
+
+    return motd or 'No message'
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Now the framework automatically connects the interface to backend implementation.
+\end_layout
+
+\begin_layout WideSlide
+\begin_inset OptArg
+status collapsed
+
+\begin_layout Plain Layout
+method=direct
+\end_layout
+
+\end_inset
+
+Alternative backend
+\end_layout
+
+\begin_layout Standard
+Now suppose we annotate MotDService interface with @Dispatch(PHPDispatcher.class)
+ and and place a file like this on the server: 
+\begin_inset listings
+lstparams "basicstyle={\sffamily},breaklines=true,emph={asWidget},emphstyle={\color{darkgreen}},language=PHP,tabsize=2"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+<?php
+\end_layout
+
+\begin_layout Plain Layout
+
+class MotDService{
+\end_layout
+
+\begin_layout Plain Layout
+
+  function getMessageOfTheDay(){
+\end_layout
+
+\begin_layout Plain Layout
+
+    return "This is the message of the day";
+\end_layout
+
+\begin_layout Plain Layout
+
+  }
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+?>
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Note that since the default server we run doesn't have an php interprenter
+ we proxy http://localhost/php/...
+ to another server, but if all the serverinterface classes is implemented
+ with this, you do 
+\emph on
+not
+\emph default
+ need to use the supplied server, and it's usuable even without the Portal.
+\end_layout
+
+\begin_layout WideSlide
+\begin_inset OptArg
+status collapsed
+
+\begin_layout Plain Layout
+method=direct
+\end_layout
+
+\end_inset
+
+Dispatcher implementation
+\end_layout
+
+\begin_layout Standard
+Excluding error handling and some details (see full code in repository)
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "basicstyle={\scriptsize\sffamily},breaklines=true,emph={asWidget},emphstyle={\color{darkgreen}},language=Java,tabsize=2"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+public class PHPDispatcher implements Dispatcher {
+\end_layout
+
+\begin_layout Plain Layout
+
+	public <T> void execute() {
+\end_layout
+
+\begin_layout Plain Layout
+
+		String url = "php/dispatch.php?i="+serverinterface.getName()+"&m="+method;
+\end_layout
+
+\begin_layout Plain Layout
+
+		...
+\end_layout
+
+\begin_layout Plain Layout
+
+		builder.sendRequest(encodedParameters,callback);
+\end_layout
+
+\begin_layout Plain Layout
+
+		});
+\end_layout
+
+\begin_layout Plain Layout
+
+	}
+\end_layout
+
+\begin_layout Plain Layout
+
+	public void onResponseReceived() {
+\end_layout
+
+\begin_layout Plain Layout
+
+		callback.onSuccess(decodedResult);
+\end_layout
+
+\begin_layout Plain Layout
+
+	}
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Note that since the default server we run doesn't have an php interprenter
+ we proxy http://localhost/php/...
+ to another server, but if all the serverinterface classes is implemented
+ with this, you do 
+\emph on
+not
+\emph default
+ need to use the supplied server, and it's usuable even without the Portal.
+\end_layout
+
+\begin_layout WideSlide
+The default dispatcher
+\end_layout
+
+\begin_layout Standard
+The default dispatcher does this:
+\end_layout
+
+\begin_layout Itemize
+Use bundling to get around the HTTP Connection limit.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Many fast calls requires fewer TCP connections.
+\end_layout
+
+\begin_layout Itemize
+Long calls doesn't block the communication.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Receive bundled answers to requests on a different connection
+\end_layout
+
+\begin_layout Itemize
+Supports server events
+\end_layout
+
+\begin_layout Itemize
+Use json-rpc
+\end_layout
+
+\begin_layout Itemize
+Login and ensure integrity of the call
+\end_layout
+
+\begin_layout Itemize
+Uses python as backend
+\end_layout
+
+\begin_layout WideSlide
+Summary
+\end_layout
+
+\begin_layout Itemize
+Easy to use for different backends
+\end_layout
+
+\begin_layout Itemize
+Custom dispatchers for different calling conventions
+\end_layout
+
+\begin_layout EndSlide
+
+\end_layout
+
+\end_body
+\end_document
