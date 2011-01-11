@@ -25,8 +25,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 
+import com.google.gwt.core.client.Scheduler;
 import com.google.gwt.user.client.Command;
-import com.google.gwt.user.client.DeferredCommand;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
@@ -82,7 +82,7 @@ public class ModuleInfoProvider {
 		if(missing != null && !missing.isEmpty()){
 			addCallback(asyncCallback);
 			//We defer so multiple call in the same cycle gets bundled
-			DeferredCommand.addCommand(new Command() {
+			Scheduler.get().scheduleDeferred(new Command() {
 				
 				@Override
 				public void execute() {

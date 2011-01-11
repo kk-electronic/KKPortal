@@ -22,12 +22,12 @@ package com.kk_electronic.kkportal.core.ui;
 import java.util.HashSet;
 import java.util.List;
 
+import com.google.gwt.core.client.Scheduler;
 import com.google.gwt.dom.client.Style.Unit;
 import com.google.gwt.event.dom.client.MouseDownEvent;
 import com.google.gwt.event.dom.client.MouseDownHandler;
 import com.google.gwt.event.dom.client.MouseUpEvent;
 import com.google.gwt.user.client.Command;
-import com.google.gwt.user.client.DeferredCommand;
 import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.LayoutPanel;
 import com.google.gwt.user.client.ui.Widget;
@@ -121,7 +121,7 @@ public class GroupDisplay<T extends IsWidget & KnownHeight & DragSource> impleme
 		canvas.setWidgetTopHeight(widget, top, Unit.PX, height, Unit.PX);
 		canvas.setWidgetLeftWidth(widget, left, Unit.PCT, width, Unit.PCT);
 		if (handler != null) {
-			DeferredCommand.addCommand(new Command() {
+			Scheduler.get().scheduleDeferred(new Command() {
 
 				@Override
 				public void execute() {

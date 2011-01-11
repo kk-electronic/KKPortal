@@ -47,7 +47,7 @@ import com.kk_electronic.kkportal.debug.model.CpuUsage;
  */
 public class UsageGraph extends AbstractModule implements HasData<Double>{
 	GWTCanvas canvas = new GWTCanvas();
-	private List<Double> values;
+	private List<? extends Double> values;
 	
 	/*
 	 * This class was used for testing before the back-end was implemented
@@ -138,7 +138,7 @@ public class UsageGraph extends AbstractModule implements HasData<Double>{
 	 * @see com.google.gwt.view.client.HasData#setRowData(int, java.util.List)
 	 */
 	@Override
-	public void setRowData(int start, List<Double> values) {
+	public void setRowData(int start, List<? extends Double> values) {
 		
 		offset = Duration.currentTimeMillis();
 		this.values = values;
@@ -150,7 +150,7 @@ public class UsageGraph extends AbstractModule implements HasData<Double>{
 	 * update of the graph.
 	 * The constructor will ensure this function gets called every 0.1 seconds
 	 */
-	private void drawPath(List<Double> values, double shift) {
+	private void drawPath(List<? extends Double> values, double shift) {
 		if(values == null || values.isEmpty()) return;
 		canvas.clear();
 	    canvas.beginPath();
@@ -238,5 +238,30 @@ public class UsageGraph extends AbstractModule implements HasData<Double>{
 	public void fireEvent(GwtEvent<?> event) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public Double getVisibleItem(int indexOnPage) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public int getVisibleItemCount() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public Iterable<Double> getVisibleItems() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public HandlerRegistration addCellPreviewHandler(
+			com.google.gwt.view.client.CellPreviewEvent.Handler<Double> handler) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

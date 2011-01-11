@@ -22,6 +22,7 @@ package com.kk_electronic.kkportal.core.rpc;
 import java.util.Date;
 
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.core.client.Scheduler;
 import com.google.gwt.event.logical.shared.CloseEvent;
 import com.google.gwt.event.logical.shared.OpenEvent;
 import com.google.gwt.event.shared.EventBus;
@@ -32,7 +33,6 @@ import com.google.gwt.http.client.RequestCallback;
 import com.google.gwt.http.client.RequestException;
 import com.google.gwt.http.client.Response;
 import com.google.gwt.user.client.Command;
-import com.google.gwt.user.client.DeferredCommand;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import com.kk_electronic.kkportal.core.event.FrameReceivedEvent;
@@ -185,7 +185,7 @@ public class Comet implements WebSocket {
 	 * the long pull using the deferredCommand
 	 */
 	protected void deferredPoll() {
-		DeferredCommand.addCommand(new Command() {
+		Scheduler.get().scheduleDeferred(new Command() {
 			
 			@Override
 			public void execute() {

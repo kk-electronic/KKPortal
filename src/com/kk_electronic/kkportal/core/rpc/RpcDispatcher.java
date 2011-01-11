@@ -29,9 +29,9 @@ import java.util.Set;
 import java.util.Map.Entry;
 
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.core.client.Scheduler;
 import com.google.gwt.json.client.JSONValue;
 import com.google.gwt.user.client.Command;
-import com.google.gwt.user.client.DeferredCommand;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
@@ -462,7 +462,7 @@ public class RpcDispatcher implements FrameSentEvent.Handler, Dispatcher,
 
 	@Override
 	public void onFrameSent(FrameSentEvent frameSentEvent) {
-		DeferredCommand.addCommand(new Command() {
+		Scheduler.get().scheduleDeferred(new Command() {
 
 			@Override
 			public void execute() {
