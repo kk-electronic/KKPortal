@@ -42,7 +42,7 @@ public class GroupDisplay<T extends IsWidget & KnownHeight & DragSource> impleme
 	private final DND<T> dnd;
 	
 	public static interface Handler<T>{
-		public void onElementDrop(double x, int y,T element);
+		public void onElementDrop(double x, int y, T element);
 	}
 	
 	private Handler<T> handler;
@@ -52,7 +52,7 @@ public class GroupDisplay<T extends IsWidget & KnownHeight & DragSource> impleme
 	}
 
 	@Inject
-	public GroupDisplay(Resources resources,DND<T> dnd) {
+	public GroupDisplay(Resources resources, DND<T> dnd) {
 		this.dnd = dnd;
 		dnd.registerDropSink(this);
 		canvas.getElement().getStyle().setBackgroundColor(resources.palette().colour2());
@@ -74,7 +74,7 @@ public class GroupDisplay<T extends IsWidget & KnownHeight & DragSource> impleme
 			double width = 100.0 / widgets.size();
 			for(final T face:column){
 				final Widget widget = face.asWidget();
-				int height = face.getLastHeight();
+				int height = face.getDesiredHeight();
 				if(!displayed.contains(widget)){
 					canvas.add(widget);
 					displayed.add(widget);
@@ -136,5 +136,27 @@ public class GroupDisplay<T extends IsWidget & KnownHeight & DragSource> impleme
 	@Override
 	public Widget asWidget() {
 		return canvas;
+	}
+	
+	public boolean checkForResizes() {
+		if (canvas.getWidgetCount() == 0)
+			return false;
+
+		boolean newSizes = false;
+		for (int i = 0, l = canvas.getWidgetCount(); i < l; i++) {
+			Widget widget = canvas.getWidget(i);
+
+			int currentHeight = widget.getElement().getScrollHeight();
+			int desiredHeight = 0;
+			if (widget instanceof KnownHeight) {
+				KnownHeight heightWidget = (KnownHeight) widget;
+				desiredHeight = heightWidget.getDesiredHeight();
+				if (currentHeight != desiredHeight) {
+					heightWidget.saveHeight(desiredHeight);
+					newSizes = true;
+				}
+			}
+		}
+		return newSizes;
 	}
 }

@@ -68,7 +68,7 @@ public class WebPageInjectConfig extends AbstractGinModule {
 		bind(Hasher.class).to(SHA256.class);
 		bind(new TypeLiteral<FrameEncoder<JSONValue>>() {}).to(SimpleEncoder.class);
 		bind(EventBus.class).to(SimpleEventBus.class).in(Singleton.class);
-		bindConstant().annotatedWith(Names.named("DefaultHistoryToken")).to("ViewModules");
+		bindConstant().annotatedWith(Names.named("DefaultHistoryToken")).to("View");
 		bind(Digest.class).in(Singleton.class);
 	}
 	

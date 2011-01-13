@@ -53,4 +53,5 @@ public interface ModuleService extends RemoteService {
 			AsyncCallback<Integer> asyncCallback);
 
 	void setModulesIdsOnTab(Integer id, List<List<Integer>> moduleIds,AsyncCallback<?> callback);
+	void setModuleHeight(Integer moduleId, Integer height, AsyncCallback<?> callback);
 }

@@ -148,6 +148,11 @@ public class ModuleWindow extends Composite implements
 	}
 
 	@Override
+	public void saveHeight(int newHeight) {
+		module.setHeight(newHeight + 5);
+	}
+
+	@Override
 	public HasMouseDownHandlers getDragHandle() {
 		return new HasMouseDownHandlers() {
 			
@@ -161,5 +166,17 @@ public class ModuleWindow extends Composite implements
 				return titlebar.addDomHandler(handler, MouseDownEvent.getType());
 			}
 		};
+	}
+
+	@Override
+	public int getDesiredHeight() {
+		int magicInt = 10;
+		int a = this.content.getElement().getScrollHeight();
+		int b = this.content.getElement().getOffsetTop();
+		int r = a+b + magicInt;
+		if (r == magicInt) {
+			r = getLastHeight();
+		}
+		return r + 5;
 	}
 }

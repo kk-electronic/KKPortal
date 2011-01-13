@@ -227,4 +227,19 @@ public class TabsModel implements NewPrimaryIdentityEvent.Handler, LocationChang
 			}
 		});
 	}
+
+	public void setModuleHeight(int moduleId, int height) {
+		moduleService.setModuleHeight(moduleId, height, new AsyncCallback<Object>() {
+
+			@Override
+			public void onFailure(Throwable caught) {
+				GWT.log("ModuleHeight-Save failed",caught);
+			}
+
+			@Override
+			public void onSuccess(Object result) {
+			}
+		});
+		
+	}
 }
