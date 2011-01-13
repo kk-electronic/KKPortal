@@ -27,7 +27,7 @@ from sqlalchemy import func,select,update
 import simplejson as json
 
 def getTabs(context, user):
-    query = db.tabs.select()
+    query = db.tabs.select().where(db.tabs.c.ownerName == user) #@UndefinedVariable
     result = query.execute()
     returnvalues = [dict(x) for x in result]
     result.close()

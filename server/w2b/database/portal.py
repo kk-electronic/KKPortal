@@ -45,7 +45,8 @@ types = Table('types',metadata,
 tabs = Table('tabs',metadata,
               Column('tab_id',Integer,primary_key=True),
               Column('name',String(255)),
-              Column('module_ids',String(255))
+              Column('module_ids',String(255)),
+              Column('ownerName',String(256),ForeignKey(users.c.name))
               )
 
 
@@ -78,7 +79,8 @@ def createDebugData():
     
     #Here we insert all the users
     users.insert().execute(demousers)
-    tabs.insert().execute([{'tab_id':i,'name':'Tab ' + str(i),'module_ids':'[[],[],[]]'} for i in range(1,4)])
+    for user in demousernames:
+        tabs.insert().execute([{'name':'Tab ' + str(i),'module_ids':'[[],[],[]]','ownerName':user} for i in range(1,4)])
     types.insert().execute([{'type_id':0,'code':439329280,'title':'Hello World'}])
     types.insert().execute([{'type_id':1,'code':2688490,'title':'Wall'}])
     types.insert().execute([{'type_id':2,'code':-676430638,'title':'Inotify'}])
