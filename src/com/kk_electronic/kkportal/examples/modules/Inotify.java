@@ -31,7 +31,6 @@ import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.inject.Inject;
 import com.kk_electronic.kkportal.core.AbstractModule;
-import com.kk_electronic.kkportal.core.event.ContentChangedEvent;
 import com.kk_electronic.kkportal.core.moduleview.Module;
 import com.kk_electronic.kkportal.core.services.TechDemo;
 
@@ -43,10 +42,8 @@ public class Inotify extends AbstractModule implements Module,INotificationEvent
 		Widget w;
 		@UiField
 		Element lineList;
-		private final EventBus eventBus;
 		@Inject
-		public Display(UIBinder binder,EventBus eventBus) {
-			this.eventBus = eventBus;
+		public Display(UIBinder binder) {
 			w = binder.createAndBindUi(this);
 		}
 		public Widget asWidget(){
@@ -61,7 +58,6 @@ public class Inotify extends AbstractModule implements Module,INotificationEvent
 				sb.append(line);
 			}
 			lineList.setInnerHTML(sb.toString());
-			eventBus.fireEventFromSource(new ContentChangedEvent(), this);
 		}
 	}
 	
@@ -91,6 +87,7 @@ public class Inotify extends AbstractModule implements Module,INotificationEvent
 			lines.remove(0);
 		}
 		display.setLines(lines);
+		contentChanged();
 	}
 	
 	@Override

@@ -19,14 +19,17 @@
  */
 package com.kk_electronic.kkportal.core;
 
+import com.google.gwt.event.shared.EventBus;
+import com.google.inject.Inject;
+import com.kk_electronic.kkportal.core.event.ContentChangedEvent;
 import com.kk_electronic.kkportal.core.moduleview.Module;
 import com.kk_electronic.kkportal.core.services.ModuleService.ModuleInfo;
 
 public abstract class AbstractModule implements Module {
 
-	@SuppressWarnings("unused")
 	private ModuleInfo info;
-
+	@Inject private EventBus eventBus;  
+	
 	@Override
 	public void setModuleInfo(ModuleInfo info) {
 		this.info = info;
@@ -35,5 +38,13 @@ public abstract class AbstractModule implements Module {
 	@Override
 	public String getTitle() {
 		return null;
+	}
+	
+	protected void contentChanged() {
+		eventBus.fireEventFromSource(new ContentChangedEvent(info.getId(),info.getHeight()), this);
+	}
+	
+	public void setEventBus(EventBus eventBus) {
+		this.eventBus = eventBus;
 	}
 }
