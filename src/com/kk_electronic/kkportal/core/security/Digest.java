@@ -20,6 +20,7 @@
 package com.kk_electronic.kkportal.core.security;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import com.google.gwt.core.client.GWT;
@@ -41,21 +42,25 @@ import com.kk_electronic.kkportal.core.util.Pair;
 public class Digest implements SecurityMethod, Handler, com.kk_electronic.kkportal.core.ui.InputDialog.Handler {
 
 	private final Hasher hasher;
-	private String username;
+	private Identity identity;
 	private String secret;
 	private final FrameEncoder<JSONValue> encoder;
 	private final InputDialog dialog;
 	@SuppressWarnings("unused")
 	private final IdentityProvider identityProvider;
 	private final RemoteServer remoteServer;
+	private final SecurityContext context;
+	private final SRP srp;
 
 	@Inject
-	public Digest(RemoteServer remoteServer, Hasher hasher,FrameEncoder<JSONValue> encoder,InputDialog dialog,IdentityProvider identityProvider) {
+	public Digest(RemoteServer remoteServer, Hasher hasher,FrameEncoder<JSONValue> encoder,InputDialog dialog,IdentityProvider identityProvider,SecurityContext context,SRP srp) {
 		this.remoteServer = remoteServer;
 		this.hasher = hasher;
 		this.encoder = encoder;
 		this.dialog = dialog;
 		this.identityProvider = identityProvider;
+		this.context = context;
+		this.srp = srp;
 		identityProvider.addNewPrimaryIdentityEventHandler(this);
 		setIdentity(identityProvider.getPrimaryIdentity());
 		dialog.setHandler(this);
@@ -76,6 +81,7 @@ public class Digest implements SecurityMethod, Handler, com.kk_electronic.kkport
 			
 		}
 	};
+	private List<String> methods = Arrays.asList(new String[]{"password"});
 	
 	@Override
 	public void sign(RpcRequest request, AsyncCallback<RpcRequest> asyncCallback) {
@@ -100,7 +106,6 @@ public class Digest implements SecurityMethod, Handler, com.kk_electronic.kkport
 		String digestinput = secret+':'+requestSignature;
 		request.setParams(new Object[]{
 				hasher.hash(digestinput),
-				username,
 				request.getParams()
 		});
 		asyncCallback.onSuccess(request);
@@ -108,19 +113,19 @@ public class Digest implements SecurityMethod, Handler, com.kk_electronic.kkport
 		
 	public void setIdentity(Identity identity){
 		if(identity == null){
-			username = null;
+			this.identity = null;
 			secret = null;
 			return;
 		} else {
 			GWT.log("DIGEST-New identity " + identity);
-			String newusername = identity.toString();
-			if(newusername.equals(username)) return;
-			dialog.setText("Need password for " + newusername);
+			Identity newidentity = identity;
+			if(newidentity.equals(this.identity)) return;
+			dialog.setText("Need password for " + newidentity.toString());
 			dialog.setValue("");
-			username = newusername;
+			this.identity = newidentity;
 			secret = null;
-			remoteServer.getEncryptedSessionKey(newusername,encryptedKeyCallback);
-			if(queue == null || (!queue.isEmpty())) dialog.show();
+			context.setIdentity(identity.toString());
+			if(queue != null && (!queue.isEmpty())) dialog.show();
 		}
 	}
 
@@ -131,8 +136,43 @@ public class Digest implements SecurityMethod, Handler, com.kk_electronic.kkport
 
 	@Override
 	public void onInput(String input) {
-		this.secret = hasher.hash(username + ':' + input);
-		GWT.log("DIGEST-Got secret");
+		context.setPassword(input);
+		GWT.log("DIGEST-Got password");
+		srp.requestChallange(null, context.getIdentity(), methods , new AsyncCallback<Challange>() {
+			
+			@Override
+			public void onSuccess(Challange result) {
+				sendAnswer(context.calc_answer(result));
+			}
+			
+			@Override
+			public void onFailure(Throwable caught) {
+				GWT.log("Login failed", caught);	
+			}
+		});
+	}
+	
+	
+
+	protected void sendAnswer(Answer answer) {
+		srp.answerChallange(answer.a.toString(16), answer.m1, new AsyncCallback<String>() {
+			
+			@Override
+			public void onSuccess(String result) {
+				secret = hasher.hash(context.getSecret());
+				GWT.log("DIGEST-Has shared secret with server");
+				sendQueue();
+			}
+			
+			@Override
+			public void onFailure(Throwable caught) {
+				GWT.log("Login failed", caught);
+				identityProvider.invalidate(identity,"Wrong password");
+			}
+		});
+	}
+
+	private void sendQueue() {
 		if(queue != null && !queue.isEmpty()){
 			for(Pair<RpcRequest, AsyncCallback<RpcRequest>> pair : queue){
 				signInternal(pair.getA(), pair.getB());

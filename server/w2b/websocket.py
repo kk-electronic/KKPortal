@@ -95,8 +95,7 @@ class MessageBox(resource.Resource):
         
         try:
             if securityFunction is not None:
-                self.user = params[1]
-                rejection = securityFunction(method,params,id)
+                rejection = securityFunction(self,method,params,id)
                 if rejection is not True:
                     return self.makeError(id, "Rejected by security", -31301, rejection)
                     

@@ -31,14 +31,13 @@ def getUser(username):
 def getRequestSignature(method,params,id):
     return ",".join((str(id),method,json.dumps(params,separators=(',',':'),sort_keys=True)))
 
-def process(method,params,id):
+def process(context,method,params,id):
+    if not hasattr(context, 'security'):
+        return False
     if isinstance(params, list) and len(params) > 1:
-        providedDigest,username,realparams = params
+        providedDigest,realparams = params
         requestSignature = getRequestSignature(method, realparams, id)
-        user = getUser(username)
-        if user is None:
-            return False
-        realDigest = unicode(hashlib.sha256(user.secret + ':' + requestSignature).hexdigest())
+        realDigest = unicode(hashlib.sha256(context.security.get_key() + ':' + requestSignature).hexdigest())
         if isinstance(providedDigest, basestring) and providedDigest == realDigest:
             params[:] = realparams
             return True
