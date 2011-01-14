@@ -38,6 +38,7 @@ function windowTitle()
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-summary.html"><FONT CLASS="NavBarFont1"><B>Package</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Class</B></FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="class-use/RequestFactory.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
@@ -46,13 +47,13 @@ function windowTitle()
 </TABLE>
 </TD>
 <TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
-GWT 2.1.0.RC1</EM>
+GWT 2.1.1</EM>
 </TD>
 </TR>
 
 <TR>
 <TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
-&nbsp;<A HREF="../../../../../com/google/gwt/requestfactory/shared/RequestEvent.State.html" title="enum in com.google.gwt.requestfactory.shared"><B>PREV CLASS</B></A>&nbsp;
+&nbsp;<A HREF="../../../../../com/google/gwt/requestfactory/shared/RequestContext.html" title="interface in com.google.gwt.requestfactory.shared"><B>PREV CLASS</B></A>&nbsp;
 &nbsp;<A HREF="../../../../../com/google/gwt/requestfactory/shared/RequestTransport.html" title="interface in com.google.gwt.requestfactory.shared"><B>NEXT CLASS</B></A></FONT></TD>
 <TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
   <A HREF="../../../../../index.html?com/google/gwt/requestfactory/shared/RequestFactory.html" target="_top"><B>FRAMES</B></A>  &nbsp;
@@ -94,15 +95,32 @@ Interface RequestFactory</H2>
 </PRE>
 
 <P>
-<p>
- <span style="color:red">Experimental API: This class is still under rapid
- development, and is very likely to be deleted. Use it at your own risk.
- </span>
+Marker interface for the RequestFactory code generator.
+ <p>
+ <b>Limitations on the transferrability of types.</b> <br>
+ RequestFactory currently supports the transfer of basic value types, entity
+ types, and collections, with limitations. The basic value types supported are
+ <CODE>String</CODE>, <CODE>Enum</CODE>, <CODE>Boolean</CODE>, <CODE>Character</CODE>, subtypes of
+ <CODE>Number</CODE>, and <CODE>Date</CODE>. Any value type not included in
+ this list may not be declared in the type signature of a service method, or
+ <A HREF="../../../../../com/google/gwt/requestfactory/shared/EntityProxy.html" title="interface in com.google.gwt.requestfactory.shared"><CODE>EntityProxy</CODE></A>. <CODE>Collection</CODE> types supported are
+ <CODE>List</CODE> and <CODE>Set</CODE> with the restriction that a
+ collection must be homogeneous and only hold one type of value.
  </p>
- Marker interface for the RequestFactory code generator.
+ <p>
+ Polymorphism is not supported at this time. RequestFactory encoding and
+ decoding requires exact knowledge of the concrete type. If a method declares
+ a given type <code>T</code> as a parameter or return type, only
+ <code>T</code>'s transferrable properties will be sent over the wire if it is
+ a proxy, even if the underlying domain value contains extra fields, in
+ effect, treating it as an instance of the supertype. Returning abstract
+ supertypes of value types is not supported (e.g. Object, Enum, Number).
+ </p>
 <P>
 
 <P>
+<DL>
+<DT><B>See Also:</B><DD><A HREF="../../../../../com/google/gwt/requestfactory/server/testing/InProcessRequestTransport.html" title="class in com.google.gwt.requestfactory.server.testing"><CODE>InProcessRequestTransport</CODE></A></DL>
 <HR>
 
 <P>
@@ -120,7 +138,7 @@ Interface RequestFactory</H2>
 <TD><CODE><B><A HREF="../../../../../com/google/gwt/requestfactory/shared/RequestFactory.html#JSON_CONTENT_TYPE_UTF8">JSON_CONTENT_TYPE_UTF8</A></B></CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The JSON content type String.</TD>
 </TR>
 </TABLE>
 &nbsp;
@@ -155,8 +173,8 @@ Interface RequestFactory</H2>
 <TD><CODE><B><A HREF="../../../../../com/google/gwt/requestfactory/shared/RequestFactory.html#getEventBus()">getEventBus</A></B>()</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns the eventbus this factory's events are posted on, which was set via
- <A HREF="../../../../../com/google/gwt/requestfactory/shared/RequestFactory.html#initialize(com.google.gwt.event.shared.EventBus)"><CODE>initialize(com.google.gwt.event.shared.EventBus)</CODE></A>.</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns the event bus this factory's events are posted on, which was set
+ via <A HREF="../../../../../com/google/gwt/requestfactory/shared/RequestFactory.html#initialize(com.google.gwt.event.shared.EventBus)"><CODE>initialize(com.google.gwt.event.shared.EventBus)</CODE></A>.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -183,7 +201,7 @@ Interface RequestFactory</H2>
 
 <BR>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Return the class object which may be used to create new instances of the
- type of this token, via <CODE>#create</CODE>.</TD>
+ type of this token, via <A HREF="../../../../../com/google/gwt/requestfactory/shared/RequestContext.html#create(java.lang.Class)"><CODE>RequestContext.create(java.lang.Class<T>)</CODE></A>.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -202,6 +220,15 @@ Interface RequestFactory</H2>
 <BR>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Return the appropriate <A HREF="../../../../../com/google/gwt/requestfactory/shared/EntityProxyId.html" title="interface in com.google.gwt.requestfactory.shared"><CODE>EntityProxyId</CODE></A> using a string returned from
  <A HREF="../../../../../com/google/gwt/requestfactory/shared/RequestFactory.html#getHistoryToken(com.google.gwt.requestfactory.shared.EntityProxyId)"><CODE>getHistoryToken(EntityProxyId)</CODE></A>.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;<A HREF="../../../../../com/google/gwt/requestfactory/shared/ProxySerializer.html" title="interface in com.google.gwt.requestfactory.shared">ProxySerializer</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../com/google/gwt/requestfactory/shared/RequestFactory.html#getSerializer(com.google.gwt.requestfactory.shared.ProxyStore)">getSerializer</A></B>(<A HREF="../../../../../com/google/gwt/requestfactory/shared/ProxyStore.html" title="interface in com.google.gwt.requestfactory.shared">ProxyStore</A>&nbsp;store)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns a ProxySerializer that can encode and decode the various
+ EntityProxy and ValueProxy types reachable from the RequestFactory.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -240,6 +267,8 @@ JSON_CONTENT_TYPE_UTF8</H3>
 <PRE>
 static final java.lang.String <B>JSON_CONTENT_TYPE_UTF8</B></PRE>
 <DL>
+<DD>The JSON content type String.
+<P>
 <DL>
 <DT><B>See Also:</B><DD><A HREF="../../../../../constant-values.html#com.google.gwt.requestfactory.shared.RequestFactory.JSON_CONTENT_TYPE_UTF8">Constant Field Values</A></DL>
 </DL>
@@ -262,7 +291,8 @@ find</H3>
 <DD>Return a request to find a fresh instance of the referenced proxy.
 <P>
 <DD><DL>
-</DL>
+<DT><B>Parameters:</B><DD><CODE>proxyId</CODE> - an <A HREF="../../../../../com/google/gwt/requestfactory/shared/EntityProxyId.html" title="interface in com.google.gwt.requestfactory.shared"><CODE>EntityProxyId</CODE></A> instance of type P
+<DT><B>Returns:</B><DD>a <A HREF="../../../../../com/google/gwt/requestfactory/shared/Request.html" title="interface in com.google.gwt.requestfactory.shared"><CODE>Request</CODE></A> object</DL>
 </DD>
 </DL>
 <HR>
@@ -272,11 +302,12 @@ getEventBus</H3>
 <PRE>
 <A HREF="../../../../../com/google/gwt/event/shared/EventBus.html" title="class in com.google.gwt.event.shared">EventBus</A> <B>getEventBus</B>()</PRE>
 <DL>
-<DD>Returns the eventbus this factory's events are posted on, which was set via
- <A HREF="../../../../../com/google/gwt/requestfactory/shared/RequestFactory.html#initialize(com.google.gwt.event.shared.EventBus)"><CODE>initialize(com.google.gwt.event.shared.EventBus)</CODE></A>.
+<DD>Returns the event bus this factory's events are posted on, which was set
+ via <A HREF="../../../../../com/google/gwt/requestfactory/shared/RequestFactory.html#initialize(com.google.gwt.event.shared.EventBus)"><CODE>initialize(com.google.gwt.event.shared.EventBus)</CODE></A>.
 <P>
 <DD><DL>
-</DL>
+
+<DT><B>Returns:</B><DD>the <A HREF="../../../../../com/google/gwt/event/shared/EventBus.html" title="class in com.google.gwt.event.shared"><CODE>EventBus</CODE></A> associated with this instance</DL>
 </DD>
 </DL>
 <HR>
@@ -291,7 +322,7 @@ java.lang.String <B>getHistoryToken</B>(java.lang.Class&lt;? extends <A HREF="..
  <A HREF="../../../../../com/google/gwt/requestfactory/shared/RequestFactory.html#getProxyClass(java.lang.String)"><CODE>getProxyClass(String)</CODE></A>
 <P>
 <DD><DL>
-
+<DT><B>Parameters:</B><DD><CODE>clazz</CODE> - a Class object for an <A HREF="../../../../../com/google/gwt/requestfactory/shared/EntityProxy.html" title="interface in com.google.gwt.requestfactory.shared"><CODE>EntityProxy</CODE></A> subclass
 <DT><B>Returns:</B><DD>a <A HREF="../../../../../com/google/gwt/user/client/History.html" title="class in com.google.gwt.user.client"><CODE>History</CODE></A> compatible token</DL>
 </DD>
 </DL>
@@ -316,7 +347,7 @@ java.lang.String <B>getHistoryToken</B>(<A HREF="../../../../../com/google/gwt/r
  RequestFactory's lifespan.
 <P>
 <DD><DL>
-
+<DT><B>Parameters:</B><DD><CODE>proxy</CODE> - an <A HREF="../../../../../com/google/gwt/requestfactory/shared/EntityProxyId.html" title="interface in com.google.gwt.requestfactory.shared"><CODE>EntityProxyId</CODE></A> instance
 <DT><B>Returns:</B><DD>a <A HREF="../../../../../com/google/gwt/user/client/History.html" title="class in com.google.gwt.user.client"><CODE>History</CODE></A> compatible token</DL>
 </DD>
 </DL>
@@ -328,12 +359,13 @@ getProxyClass</H3>
 java.lang.Class&lt;? extends <A HREF="../../../../../com/google/gwt/requestfactory/shared/EntityProxy.html" title="interface in com.google.gwt.requestfactory.shared">EntityProxy</A>&gt; <B>getProxyClass</B>(java.lang.String&nbsp;historyToken)</PRE>
 <DL>
 <DD>Return the class object which may be used to create new instances of the
- type of this token, via <CODE>#create</CODE>. The token may represent either a
- proxy instance (see <CODE>#getHistoryToken()</CODE>) or a proxy class (see
- <CODE>#getToken()</CODE>).
+ type of this token, via <A HREF="../../../../../com/google/gwt/requestfactory/shared/RequestContext.html#create(java.lang.Class)"><CODE>RequestContext.create(java.lang.Class<T>)</CODE></A>. The token may
+ represent either a proxy instance (see <A HREF="../../../../../com/google/gwt/requestfactory/shared/RequestFactory.html#getHistoryToken(java.lang.Class)"><CODE>getHistoryToken(java.lang.Class<? extends com.google.gwt.requestfactory.shared.EntityProxy>)</CODE></A>) or a proxy
+ class (see <A HREF="../../../../../com/google/gwt/requestfactory/shared/RequestFactory.html#getProxyClass(java.lang.String)"><CODE>getProxyClass(java.lang.String)</CODE></A>).
 <P>
 <DD><DL>
-</DL>
+<DT><B>Parameters:</B><DD><CODE>historyToken</CODE> - a String token
+<DT><B>Returns:</B><DD>a Class object for an <A HREF="../../../../../com/google/gwt/requestfactory/shared/EntityProxy.html" title="interface in com.google.gwt.requestfactory.shared"><CODE>EntityProxy</CODE></A> subclass</DL>
 </DD>
 </DL>
 <HR>
@@ -347,7 +379,24 @@ getProxyId</H3>
  <A HREF="../../../../../com/google/gwt/requestfactory/shared/RequestFactory.html#getHistoryToken(com.google.gwt.requestfactory.shared.EntityProxyId)"><CODE>getHistoryToken(EntityProxyId)</CODE></A>.
 <P>
 <DD><DL>
+<DT><B>Parameters:</B><DD><CODE>historyToken</CODE> - a String token
+<DT><B>Returns:</B><DD>an <A HREF="../../../../../com/google/gwt/requestfactory/shared/EntityProxyId.html" title="interface in com.google.gwt.requestfactory.shared"><CODE>EntityProxyId</CODE></A></DL>
+</DD>
 </DL>
+<HR>
+
+<A NAME="getSerializer(com.google.gwt.requestfactory.shared.ProxyStore)"><!-- --></A><H3>
+getSerializer</H3>
+<PRE>
+<A HREF="../../../../../com/google/gwt/requestfactory/shared/ProxySerializer.html" title="interface in com.google.gwt.requestfactory.shared">ProxySerializer</A> <B>getSerializer</B>(<A HREF="../../../../../com/google/gwt/requestfactory/shared/ProxyStore.html" title="interface in com.google.gwt.requestfactory.shared">ProxyStore</A>&nbsp;store)</PRE>
+<DL>
+<DD>Returns a ProxySerializer that can encode and decode the various
+ EntityProxy and ValueProxy types reachable from the RequestFactory.
+<P>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>store</CODE> - a helper object for the ProxySerializer to provide low-level
+          storage access
+<DT><B>Returns:</B><DD>a new ProxySerializer<DT><B>See Also:</B><DD><A HREF="../../../../../com/google/gwt/requestfactory/shared/DefaultProxyStore.html" title="class in com.google.gwt.requestfactory.shared"><CODE>DefaultProxyStore</CODE></A></DL>
 </DD>
 </DL>
 <HR>
@@ -361,7 +410,7 @@ void <B>initialize</B>(<A HREF="../../../../../com/google/gwt/event/shared/Event
  <A HREF="../../../../../com/google/gwt/requestfactory/client/DefaultRequestTransport.html" title="class in com.google.gwt.requestfactory.client"><CODE>DefaultRequestTransport</CODE></A>.
 <P>
 <DD><DL>
-</DL>
+<DT><B>Parameters:</B><DD><CODE>eventBus</CODE> - an <A HREF="../../../../../com/google/gwt/event/shared/EventBus.html" title="class in com.google.gwt.event.shared"><CODE>EventBus</CODE></A></DL>
 </DD>
 </DL>
 <HR>
@@ -375,7 +424,7 @@ void <B>initialize</B>(<A HREF="../../../../../com/google/gwt/event/shared/Event
 <DD>Start this request factory with a user-provided transport.
 <P>
 <DD><DL>
-</DL>
+<DT><B>Parameters:</B><DD><CODE>eventBus</CODE> - an <A HREF="../../../../../com/google/gwt/event/shared/EventBus.html" title="class in com.google.gwt.event.shared"><CODE>EventBus</CODE></A><DD><CODE>transport</CODE> - a <A HREF="../../../../../com/google/gwt/requestfactory/shared/RequestTransport.html" title="interface in com.google.gwt.requestfactory.shared"><CODE>RequestTransport</CODE></A> instance</DL>
 </DD>
 </DL>
 <!-- ========= END OF CLASS DATA ========= -->
@@ -394,6 +443,7 @@ void <B>initialize</B>(<A HREF="../../../../../com/google/gwt/event/shared/Event
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-summary.html"><FONT CLASS="NavBarFont1"><B>Package</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Class</B></FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="class-use/RequestFactory.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
@@ -402,13 +452,13 @@ void <B>initialize</B>(<A HREF="../../../../../com/google/gwt/event/shared/Event
 </TABLE>
 </TD>
 <TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
-GWT 2.1.0.RC1</EM>
+GWT 2.1.1</EM>
 </TD>
 </TR>
 
 <TR>
 <TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
-&nbsp;<A HREF="../../../../../com/google/gwt/requestfactory/shared/RequestEvent.State.html" title="enum in com.google.gwt.requestfactory.shared"><B>PREV CLASS</B></A>&nbsp;
+&nbsp;<A HREF="../../../../../com/google/gwt/requestfactory/shared/RequestContext.html" title="interface in com.google.gwt.requestfactory.shared"><B>PREV CLASS</B></A>&nbsp;
 &nbsp;<A HREF="../../../../../com/google/gwt/requestfactory/shared/RequestTransport.html" title="interface in com.google.gwt.requestfactory.shared"><B>NEXT CLASS</B></A></FONT></TD>
 <TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
   <A HREF="../../../../../index.html?com/google/gwt/requestfactory/shared/RequestFactory.html" target="_top"><B>FRAMES</B></A>  &nbsp;

@@ -38,6 +38,7 @@ function windowTitle()
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-summary.html"><FONT CLASS="NavBarFont1"><B>Package</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Class</B></FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="class-use/PlaceHistoryHandler.DefaultHistorian.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
@@ -46,7 +47,7 @@ function windowTitle()
 </TABLE>
 </TD>
 <TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
-GWT 2.1.0.RC1</EM>
+GWT 2.1.1</EM>
 </TD>
 </TR>
 
@@ -142,7 +143,8 @@ Default implementation of <A HREF="../../../../../com/google/gwt/place/shared/Pl
 <TD><CODE><B><A HREF="../../../../../com/google/gwt/place/shared/PlaceHistoryHandler.DefaultHistorian.html#addValueChangeHandler(com.google.gwt.event.logical.shared.ValueChangeHandler)">addValueChangeHandler</A></B>(<A HREF="../../../../../com/google/gwt/event/logical/shared/ValueChangeHandler.html" title="interface in com.google.gwt.event.logical.shared">ValueChangeHandler</A>&lt;java.lang.String&gt;&nbsp;valueChangeHandler)</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Adds a <A HREF="../../../../../com/google/gwt/event/logical/shared/ValueChangeEvent.html" title="class in com.google.gwt.event.logical.shared"><CODE>ValueChangeEvent</CODE></A>
+ handler to be informed of changes to the browser's history stack.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -159,7 +161,7 @@ Default implementation of <A HREF="../../../../../com/google/gwt/place/shared/Pl
         boolean&nbsp;issueEvent)</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Adds a new browser history entry.</TD>
 </TR>
 </TABLE>
 &nbsp;<A NAME="methods_inherited_from_class_java.lang.Object"><!-- --></A>
@@ -206,11 +208,16 @@ addValueChangeHandler</H3>
 <PRE>
 public <A HREF="../../../../../com/google/gwt/event/shared/HandlerRegistration.html" title="interface in com.google.gwt.event.shared">HandlerRegistration</A> <B>addValueChangeHandler</B>(<A HREF="../../../../../com/google/gwt/event/logical/shared/ValueChangeHandler.html" title="interface in com.google.gwt.event.logical.shared">ValueChangeHandler</A>&lt;java.lang.String&gt;&nbsp;valueChangeHandler)</PRE>
 <DL>
+<DD><B>Description copied from interface: <CODE><A HREF="../../../../../com/google/gwt/place/shared/PlaceHistoryHandler.Historian.html#addValueChangeHandler(com.google.gwt.event.logical.shared.ValueChangeHandler)">PlaceHistoryHandler.Historian</A></CODE></B></DD>
+<DD>Adds a <A HREF="../../../../../com/google/gwt/event/logical/shared/ValueChangeEvent.html" title="class in com.google.gwt.event.logical.shared"><CODE>ValueChangeEvent</CODE></A>
+ handler to be informed of changes to the browser's history stack.
+<P>
 <DD><DL>
 <DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../com/google/gwt/place/shared/PlaceHistoryHandler.Historian.html#addValueChangeHandler(com.google.gwt.event.logical.shared.ValueChangeHandler)">addValueChangeHandler</A></CODE> in interface <CODE><A HREF="../../../../../com/google/gwt/place/shared/PlaceHistoryHandler.Historian.html" title="interface in com.google.gwt.place.shared">PlaceHistoryHandler.Historian</A></CODE></DL>
 </DD>
 <DD><DL>
-</DL>
+
+<DT><B>Returns:</B><DD>the registration used to remove this value change handler</DL>
 </DD>
 </DL>
 <HR>
@@ -224,7 +231,8 @@ public java.lang.String <B>getToken</B>()</PRE>
 <DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../com/google/gwt/place/shared/PlaceHistoryHandler.Historian.html#getToken()">getToken</A></CODE> in interface <CODE><A HREF="../../../../../com/google/gwt/place/shared/PlaceHistoryHandler.Historian.html" title="interface in com.google.gwt.place.shared">PlaceHistoryHandler.Historian</A></CODE></DL>
 </DD>
 <DD><DL>
-</DL>
+
+<DT><B>Returns:</B><DD>the current history token.</DL>
 </DD>
 </DL>
 <HR>
@@ -235,6 +243,11 @@ newItem</H3>
 public void <B>newItem</B>(java.lang.String&nbsp;token,
                     boolean&nbsp;issueEvent)</PRE>
 <DL>
+<DD><B>Description copied from interface: <CODE><A HREF="../../../../../com/google/gwt/place/shared/PlaceHistoryHandler.Historian.html#newItem(java.lang.String, boolean)">PlaceHistoryHandler.Historian</A></CODE></B></DD>
+<DD>Adds a new browser history entry. Calling this method will cause
+ <A HREF="../../../../../com/google/gwt/event/logical/shared/ValueChangeHandler.html#onValueChange(com.google.gwt.event.logical.shared.ValueChangeEvent)"><CODE>ValueChangeHandler.onValueChange(com.google.gwt.event.logical.shared.ValueChangeEvent)</CODE></A>
+ to be called as well.
+<P>
 <DD><DL>
 <DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../com/google/gwt/place/shared/PlaceHistoryHandler.Historian.html#newItem(java.lang.String, boolean)">newItem</A></CODE> in interface <CODE><A HREF="../../../../../com/google/gwt/place/shared/PlaceHistoryHandler.Historian.html" title="interface in com.google.gwt.place.shared">PlaceHistoryHandler.Historian</A></CODE></DL>
 </DD>
@@ -258,6 +271,7 @@ public void <B>newItem</B>(java.lang.String&nbsp;token,
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-summary.html"><FONT CLASS="NavBarFont1"><B>Package</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Class</B></FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="class-use/PlaceHistoryHandler.DefaultHistorian.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
@@ -266,7 +280,7 @@ public void <B>newItem</B>(java.lang.String&nbsp;token,
 </TABLE>
 </TD>
 <TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
-GWT 2.1.0.RC1</EM>
+GWT 2.1.1</EM>
 </TD>
 </TR>
 

@@ -38,6 +38,7 @@ function windowTitle()
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Package</B></FONT>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <FONT CLASS="NavBarFont1">Class</FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-use.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
@@ -46,7 +47,7 @@ function windowTitle()
 </TABLE>
 </TD>
 <TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
-GWT 2.1.0.RC1</EM>
+GWT 2.1.1</EM>
 </TD>
 </TR>
 
@@ -121,8 +122,8 @@ Fundamental user-interface classes used in client-side GWT code.
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD WIDTH="15%"><B><A HREF="../../../../../com/google/gwt/user/client/IncrementalCommand.html" title="interface in com.google.gwt.user.client">IncrementalCommand</A></B></TD>
-<TD>An <code>IncrementalCommand</code> is a command that is broken into one or
- more substeps, each substep brings the whole command nearer to completion.</TD>
+<TD><B>Deprecated.</B>&nbsp;<I>Replaced by <A HREF="../../../../../com/google/gwt/core/client/Scheduler.RepeatingCommand.html" title="interface in com.google.gwt.core.client"><CODE>Scheduler.RepeatingCommand</CODE></A> and
+             <A HREF="../../../../../com/google/gwt/core/client/Scheduler.html#scheduleIncremental(com.google.gwt.core.client.Scheduler.RepeatingCommand)"><CODE>Scheduler.scheduleIncremental()</CODE></A></I></TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD WIDTH="15%"><B><A HREF="../../../../../com/google/gwt/user/client/ResponseTextHandler.html" title="interface in com.google.gwt.user.client">ResponseTextHandler</A></B></TD>
@@ -180,9 +181,9 @@ Fundamental user-interface classes used in client-side GWT code.
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD WIDTH="15%"><B><A HREF="../../../../../com/google/gwt/user/client/DeferredCommand.html" title="class in com.google.gwt.user.client">DeferredCommand</A></B></TD>
-<TD>This class allows you to execute code after all currently pending event
- handlers have completed, using the <A HREF="../../../../../com/google/gwt/user/client/DeferredCommand.html#addCommand(com.google.gwt.user.client.Command)"><CODE>DeferredCommand.addCommand(Command)</CODE></A> or
- <A HREF="../../../../../com/google/gwt/user/client/DeferredCommand.html#addCommand(com.google.gwt.user.client.IncrementalCommand)"><CODE>DeferredCommand.addCommand(IncrementalCommand)</CODE></A> methods.</TD>
+<TD><B>Deprecated.</B>&nbsp;<I>Replaced by
+             <A HREF="../../../../../com/google/gwt/core/client/Scheduler.html#scheduleDeferred(com.google.gwt.core.client.Scheduler.ScheduledCommand)"><CODE>Scheduler.scheduleDeferred()</CODE></A> because the static nature of this
+             API prevents effective mocking for JRE-only tests.</I></TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD WIDTH="15%"><B><A HREF="../../../../../com/google/gwt/user/client/DOM.html" title="class in com.google.gwt.user.client">DOM</A></B></TD>
@@ -318,6 +319,7 @@ contains convenience classes such as Timer and Random.
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Package</B></FONT>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <FONT CLASS="NavBarFont1">Class</FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-use.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
@@ -326,7 +328,7 @@ contains convenience classes such as Timer and Random.
 </TABLE>
 </TD>
 <TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
-GWT 2.1.0.RC1</EM>
+GWT 2.1.1</EM>
 </TD>
 </TR>
 

@@ -38,6 +38,7 @@ function windowTitle()
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Package</B></FONT>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <FONT CLASS="NavBarFont1">Class</FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-use.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
@@ -46,14 +47,14 @@ function windowTitle()
 </TABLE>
 </TD>
 <TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
-GWT 2.1.0.RC1</EM>
+GWT 2.1.1</EM>
 </TD>
 </TR>
 
 <TR>
 <TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
 &nbsp;<A HREF="../../../../../com/google/gwt/requestfactory/client/testing/package-summary.html"><B>PREV PACKAGE</B></A>&nbsp;
-&nbsp;<A HREF="../../../../../com/google/gwt/requestfactory/shared/package-summary.html"><B>NEXT PACKAGE</B></A></FONT></TD>
+&nbsp;<A HREF="../../../../../com/google/gwt/requestfactory/server/testing/package-summary.html"><B>NEXT PACKAGE</B></A></FONT></TD>
 <TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
   <A HREF="../../../../../index.html?com/google/gwt/requestfactory/server/package-summary.html" target="_top"><B>FRAMES</B></A>  &nbsp;
 &nbsp;<A HREF="package-summary.html" target="_top"><B>NO FRAMES</B></A>  &nbsp;
@@ -79,7 +80,8 @@ GWT 2.1.0.RC1</EM>
 <H2>
 Package com.google.gwt.requestfactory.server
 </H2>
-Server side classes for mediating between the client side and the persistent datastore.
+Server side classes for mediating between the client side and the persistent
+ datastore.
 <P>
 <B>See:</B>
 <BR>
@@ -96,26 +98,8 @@ Server side classes for mediating between the client side and the persistent dat
 <TD>Handles an exception produced while processing a request.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
-<TD WIDTH="15%"><B><A HREF="../../../../../com/google/gwt/requestfactory/server/OperationRegistry.html" title="interface in com.google.gwt.requestfactory.server">OperationRegistry</A></B></TD>
-<TD>
- <span style="color:red">Experimental API: This class is still under rapid
- development, and is very likely to be deleted.</TD>
-</TR>
-<TR BGCOLOR="white" CLASS="TableRowColor">
-<TD WIDTH="15%"><B><A HREF="../../../../../com/google/gwt/requestfactory/server/RequestDefinition.html" title="interface in com.google.gwt.requestfactory.server">RequestDefinition</A></B></TD>
-<TD>
- <span style="color:red">Experimental API: This class is still under rapid
- development, and is very likely to be deleted.</TD>
-</TR>
-<TR BGCOLOR="white" CLASS="TableRowColor">
-<TD WIDTH="15%"><B><A HREF="../../../../../com/google/gwt/requestfactory/server/RequestProcessor.html" title="interface in com.google.gwt.requestfactory.server">RequestProcessor&lt;T&gt;</A></B></TD>
-<TD>Simple interface to abstract the underlying RequestFactory RPC mechanism.</TD>
-</TR>
-<TR BGCOLOR="white" CLASS="TableRowColor">
-<TD WIDTH="15%"><B><A HREF="../../../../../com/google/gwt/requestfactory/server/RequestSecurityProvider.html" title="interface in com.google.gwt.requestfactory.server">RequestSecurityProvider</A></B></TD>
-<TD>
- <span style="color:red">Experimental API: This class is still under rapid
- development, and is very likely to be deleted.</TD>
+<TD WIDTH="15%"><B><A HREF="../../../../../com/google/gwt/requestfactory/server/RequestFactoryInterfaceValidator.Loader.html" title="interface in com.google.gwt.requestfactory.server">RequestFactoryInterfaceValidator.Loader</A></B></TD>
+<TD>Abstracts the mechanism by which class files are loaded.</TD>
 </TR>
 </TABLE>
 &nbsp;
@@ -129,75 +113,43 @@ Server side classes for mediating between the client side and the persistent dat
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD WIDTH="15%"><B><A HREF="../../../../../com/google/gwt/requestfactory/server/DefaultExceptionHandler.html" title="class in com.google.gwt.requestfactory.server">DefaultExceptionHandler</A></B></TD>
-<TD>Default implementation for handling exceptions thrown while
- processing a request.</TD>
-</TR>
-<TR BGCOLOR="white" CLASS="TableRowColor">
-<TD WIDTH="15%"><B><A HREF="../../../../../com/google/gwt/requestfactory/server/DefaultSecurityProvider.html" title="class in com.google.gwt.requestfactory.server">DefaultSecurityProvider</A></B></TD>
-<TD>
- <span style="color:red">Experimental API: This class is still under rapid
- development, and is very likely to be deleted.</TD>
-</TR>
-<TR BGCOLOR="white" CLASS="TableRowColor">
-<TD WIDTH="15%"><B><A HREF="../../../../../com/google/gwt/requestfactory/server/FindService.html" title="class in com.google.gwt.requestfactory.server">FindService</A></B></TD>
-<TD>Server side service to support a generic find method.</TD>
-</TR>
-<TR BGCOLOR="white" CLASS="TableRowColor">
-<TD WIDTH="15%"><B><A HREF="../../../../../com/google/gwt/requestfactory/server/JsonRequestProcessor.html" title="class in com.google.gwt.requestfactory.server">JsonRequestProcessor</A></B></TD>
-<TD>An implementation of RequestProcessor for JSON encoded payloads.</TD>
+<TD>Default implementation for handling exceptions thrown while processing a
+ request.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD WIDTH="15%"><B><A HREF="../../../../../com/google/gwt/requestfactory/server/Logging.html" title="class in com.google.gwt.requestfactory.server">Logging</A></B></TD>
 <TD>Server side object that handles log messages sent by
- <CODE>RequestFactoryLogHandler</CODE>.</TD>
+ <A HREF="../../../../../com/google/gwt/requestfactory/client/RequestFactoryLogHandler.html" title="class in com.google.gwt.requestfactory.client"><CODE>RequestFactoryLogHandler</CODE></A>.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
-<TD WIDTH="15%"><B><A HREF="../../../../../com/google/gwt/requestfactory/server/ReflectionBasedOperationRegistry.html" title="class in com.google.gwt.requestfactory.server">ReflectionBasedOperationRegistry</A></B></TD>
-<TD>
- <span style="color:red">Experimental API: This class is still under rapid
- development, and is very likely to be deleted.</TD>
+<TD WIDTH="15%"><B><A HREF="../../../../../com/google/gwt/requestfactory/server/RequestFactoryInterfaceValidator.html" title="class in com.google.gwt.requestfactory.server">RequestFactoryInterfaceValidator</A></B></TD>
+<TD>Encapsulates validation logic to determine if a <A HREF="../../../../../com/google/gwt/requestfactory/shared/RequestFactory.html" title="interface in com.google.gwt.requestfactory.shared"><CODE>RequestFactory</CODE></A>
+ interface, its <A HREF="../../../../../com/google/gwt/requestfactory/shared/RequestContext.html" title="interface in com.google.gwt.requestfactory.shared"><CODE>RequestContext</CODE></A>, and associated <A HREF="../../../../../com/google/gwt/requestfactory/shared/EntityProxy.html" title="interface in com.google.gwt.requestfactory.shared"><CODE>EntityProxy</CODE></A>
+ interfaces match their domain counterparts.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../com/google/gwt/requestfactory/server/RequestFactoryInterfaceValidator.ClassLoaderLoader.html" title="class in com.google.gwt.requestfactory.server">RequestFactoryInterfaceValidator.ClassLoaderLoader</A></B></TD>
+<TD>An implementation of <A HREF="../../../../../com/google/gwt/requestfactory/server/RequestFactoryInterfaceValidator.ClassLoaderLoader.html" title="class in com.google.gwt.requestfactory.server"><CODE>RequestFactoryInterfaceValidator.ClassLoaderLoader</CODE></A> that uses a <CODE>ClassLoader</CODE> to
+ retrieve the class files.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD WIDTH="15%"><B><A HREF="../../../../../com/google/gwt/requestfactory/server/RequestFactoryServlet.html" title="class in com.google.gwt.requestfactory.server">RequestFactoryServlet</A></B></TD>
-<TD>
- <span style="color:red">Experimental API: This class is still under rapid
- development, and is very likely to be deleted.</TD>
+<TD>Handles GWT RequestFactory JSON requests.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
-<TD WIDTH="15%"><B><A HREF="../../../../../com/google/gwt/requestfactory/server/RequestProperty.html" title="class in com.google.gwt.requestfactory.server">RequestProperty</A></B></TD>
-<TD> <span style="color:red">Experimental API: This class is still under rapid development, and is
- very likely to be deleted.</TD>
+<TD WIDTH="15%"><B><A HREF="../../../../../com/google/gwt/requestfactory/server/ServiceLayer.html" title="class in com.google.gwt.requestfactory.server">ServiceLayer</A></B></TD>
+<TD>The ServiceLayer mediates all interactions between the
+ <A HREF="../../../../../com/google/gwt/requestfactory/server/SimpleRequestProcessor.html" title="class in com.google.gwt.requestfactory.server"><CODE>SimpleRequestProcessor</CODE></A> and the domain environment.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
-<TD WIDTH="15%"><B><A HREF="../../../../../com/google/gwt/requestfactory/server/SampleDataPopulator.html" title="class in com.google.gwt.requestfactory.server">SampleDataPopulator</A></B></TD>
-<TD>
- <span style="color:red">Experimental API: This class is still under rapid
- development, and is very likely to be deleted.</TD>
+<TD WIDTH="15%"><B><A HREF="../../../../../com/google/gwt/requestfactory/server/ServiceLayerDecorator.html" title="class in com.google.gwt.requestfactory.server">ServiceLayerDecorator</A></B></TD>
+<TD>Users that intend to alter how RequestFactory interacts with the domain
+ environment can extend this type and provide it to
+ <A HREF="../../../../../com/google/gwt/requestfactory/server/ServiceLayer.html#create(com.google.gwt.requestfactory.server.ServiceLayerDecorator...)"><CODE>ServiceLayer.create(ServiceLayerDecorator...)</CODE></A>.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
-<TD WIDTH="15%"><B><A HREF="../../../../../com/google/gwt/requestfactory/server/UserInformation.html" title="class in com.google.gwt.requestfactory.server">UserInformation</A></B></TD>
-<TD>A base class for providing authentication related information about the
- user.</TD>
-</TR>
-<TR BGCOLOR="white" CLASS="TableRowColor">
-<TD WIDTH="15%"><B><A HREF="../../../../../com/google/gwt/requestfactory/server/UserInformationSimpleImpl.html" title="class in com.google.gwt.requestfactory.server">UserInformationSimpleImpl</A></B></TD>
-<TD>This implementation treats the user as constantly signed in, and
- without any information.</TD>
-</TR>
-</TABLE>
-&nbsp;
-
-<P>
-
-<TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
-<TR BGCOLOR="#CCCCFF" CLASS="TableHeadingColor">
-<TH ALIGN="left" COLSPAN="2"><FONT SIZE="+2">
-<B>Exception Summary</B></FONT></TH>
-</TR>
-<TR BGCOLOR="white" CLASS="TableRowColor">
-<TD WIDTH="15%"><B><A HREF="../../../../../com/google/gwt/requestfactory/server/RequestProcessingException.html" title="class in com.google.gwt.requestfactory.server">RequestProcessingException</A></B></TD>
-<TD>Exception thrown during by a <A HREF="../../../../../com/google/gwt/requestfactory/server/RequestProcessor.html" title="interface in com.google.gwt.requestfactory.server"><CODE>RequestProcessor</CODE></A> when 
- an unexpected exception is caught.</TD>
+<TD WIDTH="15%"><B><A HREF="../../../../../com/google/gwt/requestfactory/server/SimpleRequestProcessor.html" title="class in com.google.gwt.requestfactory.server">SimpleRequestProcessor</A></B></TD>
+<TD>Processes request payloads from a RequestFactory client.</TD>
 </TR>
 </TABLE>
 &nbsp;
@@ -208,15 +160,18 @@ Package com.google.gwt.requestfactory.server Description
 </H2>
 
 <P>
-Server side classes for mediating between the client side and the persistent datastore.
-
-This package contains classes that can receive client side read and write requests in the JSON format, perform the necessary operations on the persistent datastore, and return the results in JSON format.
-<p><span style="color:red">Experimental API: All classes in this package are still under rapid development, and are very likely to be deleted or renamed. Use them at your own risk.
-</span></p>
+Server side classes for mediating between the client side and the persistent
+ datastore.
+ 
+ This package contains classes that can receive client side read and write
+ requests in the JSON format, perform the necessary operations on the
+ persistent datastore, and return the results in JSON format.
 <P>
 
 <P>
 <DL>
+<DT><B>Since:</B></DT>
+  <DD>GWT 2.1</DD>
 </DL>
 <HR>
 
@@ -233,6 +188,7 @@ This package contains classes that can receive client side read and write reques
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Package</B></FONT>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <FONT CLASS="NavBarFont1">Class</FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-use.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
@@ -241,14 +197,14 @@ This package contains classes that can receive client side read and write reques
 </TABLE>
 </TD>
 <TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
-GWT 2.1.0.RC1</EM>
+GWT 2.1.1</EM>
 </TD>
 </TR>
 
 <TR>
 <TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
 &nbsp;<A HREF="../../../../../com/google/gwt/requestfactory/client/testing/package-summary.html"><B>PREV PACKAGE</B></A>&nbsp;
-&nbsp;<A HREF="../../../../../com/google/gwt/requestfactory/shared/package-summary.html"><B>NEXT PACKAGE</B></A></FONT></TD>
+&nbsp;<A HREF="../../../../../com/google/gwt/requestfactory/server/testing/package-summary.html"><B>NEXT PACKAGE</B></A></FONT></TD>
 <TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
   <A HREF="../../../../../index.html?com/google/gwt/requestfactory/server/package-summary.html" target="_top"><B>FRAMES</B></A>  &nbsp;
 &nbsp;<A HREF="package-summary.html" target="_top"><B>NO FRAMES</B></A>  &nbsp;

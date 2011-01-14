@@ -38,6 +38,7 @@ function windowTitle()
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-summary.html"><FONT CLASS="NavBarFont1"><B>Package</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Class</B></FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="class-use/Benchmark.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
@@ -46,7 +47,7 @@ function windowTitle()
 </TABLE>
 </TD>
 <TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
-GWT 2.1.0.RC1</EM>
+GWT 2.1.1</EM>
 </TD>
 </TR>
 
@@ -178,11 +179,11 @@ A type of <A HREF="../../../../../com/google/gwt/junit/client/GWTTestCase.html" 
    * The current version of the compiler lifts the declaration of obj outside
    * of this loop and also does constant folding of numAllocs.
    * Also, this loop allocs the GWT JS mirror for java.lang.Object
-   * <em>NOT</em> an empty JS object, for example.
+   * &lt;em&gt;NOT&lt;/em&gt; an empty JS object, for example.
    *
    */
   public void testJavaObjectAlloc() {
-    for ( int i = 0; i < numAllocs; ++i ) {
+    for ( int i = 0; i &lt; numAllocs; ++i ) {
       Object obj = new Object();
     }
   }
@@ -191,7 +192,7 @@ A type of <A HREF="../../../../../com/google/gwt/junit/client/GWTTestCase.html" 
    * Compares GWT mirror allocations of java.lang.Object to an empty JS object.
    */
   public native void testJsniObjectAlloc1() /*-{
-    for (var i = 0; i < @com.google.gwt.examples.benchmarks.AllocBenchmark::numAllocs; ++i ) {
+    for (var i = 0; i &lt; @com.google.gwt.examples.benchmarks.AllocBenchmark::numAllocs; ++i ) {
       var obj = {}; // An empty JS object alloc
     }
   }-*/;
@@ -200,7 +201,7 @@ A type of <A HREF="../../../../../com/google/gwt/junit/client/GWTTestCase.html" 
    * Like version 1, but also folds the constant being used in the iteration.
    */
   public native void testJsniObjectAlloc2() /*-{
-    for (var i = 0; i < 1000; ++i ) {
+    for (var i = 0; i &lt; 1000; ++i ) {
       var obj = {}; // An empty JS object alloc
     }
   }-*/;
@@ -210,7 +211,7 @@ A type of <A HREF="../../../../../com/google/gwt/junit/client/GWTTestCase.html" 
    */
   public native void testJsniObjectAlloc3() /*-{
     var obj;
-    for (var i = 0; i < 1000; ++i ) {
+    for (var i = 0; i &lt; 1000; ++i ) {
       obj = {}; // An empty JS object alloc
     }
   }-*/;
@@ -220,7 +221,7 @@ A type of <A HREF="../../../../../com/google/gwt/junit/client/GWTTestCase.html" 
    */
   public native void testJsniObjectAlloc4() /*-{
     var obj;
-    for (var i = 1000; i > 0; --i ) {
+    for (var i = 1000; i &gt; 0; --i ) {
       obj = {}; // An empty JS object alloc
     }
   }-*/;
@@ -247,10 +248,10 @@ A type of <A HREF="../../../../../com/google/gwt/junit/client/GWTTestCase.html" 
     private String label;
 
     /**
-     * Constructor for <code>Position</code>.
+     * Constructor for &lt;code&gt;Position&lt;/code&gt;.
      * 
-     * @param label a not <code>null</code> label describing this
-     *          <code>Position</code>.
+     * @param label a not &lt;code&gt;null&lt;/code&gt; label describing this
+     *          &lt;code&gt;Position&lt;/code&gt;.
      */
     Position(String label) {
       this.label = label;
@@ -259,7 +260,7 @@ A type of <A HREF="../../../../../com/google/gwt/junit/client/GWTTestCase.html" 
     /**
      * Returns the textual description for the position.
      * 
-     * @return a not <code>null</code> description.
+     * @return a not &lt;code&gt;null&lt;/code&gt; description.
      */
     @Override
     public String toString() {
@@ -267,7 +268,7 @@ A type of <A HREF="../../../../../com/google/gwt/junit/client/GWTTestCase.html" 
     }
   }
 
-  protected final List<Position> explicitPositions = Arrays.asList(
+  protected final List&lt;Position&gt; explicitPositions = Arrays.asList(
       Position.BEGIN, Position.EXPLICIT_END, Position.VARIED);
 
   protected final IntRange insertRemoveRange = new IntRange(64,
@@ -276,7 +277,7 @@ A type of <A HREF="../../../../../com/google/gwt/junit/client/GWTTestCase.html" 
   protected final IntRange baseRange = new IntRange(512, Integer.MAX_VALUE,
       Operator.MULTIPLY, 2);
 
-  List<String> list;
+  List&lt;String&gt; list;
 
   int index = 0;
 
@@ -286,7 +287,7 @@ A type of <A HREF="../../../../../com/google/gwt/junit/client/GWTTestCase.html" 
   }
 
   /**
-   * Appends <code>size</code> items to an empty {@code List}.
+   * Appends &lt;code&gt;size&lt;/code&gt; items to an empty {@code List}.
    * 
    * @param size the size of the {@code List}
    */
@@ -294,7 +295,7 @@ A type of <A HREF="../../../../../com/google/gwt/junit/client/GWTTestCase.html" 
   public void testListAdds(@RangeField("baseRange")
   Integer size) {
     int num = size.intValue();
-    for (int i = 0; i < num; i++) {
+    for (int i = 0; i &lt; num; i++) {
       list.add("hello");
     }
   }
@@ -304,8 +305,8 @@ A type of <A HREF="../../../../../com/google/gwt/junit/client/GWTTestCase.html" 
   }
 
   /**
-   * Performs <code>size</code> gets on a {@code List} of size,
-   * <code>size</code>.
+   * Performs &lt;code&gt;size&lt;/code&gt; gets on a {@code List} of size,
+   * &lt;code&gt;size&lt;/code&gt;.
    * 
    * @param size the size of the {@code List}
    */
@@ -313,7 +314,7 @@ A type of <A HREF="../../../../../com/google/gwt/junit/client/GWTTestCase.html" 
   public void testListGets(@RangeField("baseRange")
   Integer size) {
     int num = size.intValue();
-    for (int i = 0; i < num; i++) {
+    for (int i = 0; i &lt; num; i++) {
       list.get(i);
     }
   }
@@ -323,11 +324,11 @@ A type of <A HREF="../../../../../com/google/gwt/junit/client/GWTTestCase.html" 
   }
 
   /**
-   * Performs <code>size</code> inserts at position, <code>where</code>, on
-   * an empty <code>List</code>.
+   * Performs &lt;code&gt;size&lt;/code&gt; inserts at position, &lt;code&gt;where&lt;/code&gt;, on
+   * an empty &lt;code&gt;List&lt;/code&gt;.
    * 
    * @param where Where the inserts happen
-   * @param size The size of the <code>List</code>
+   * @param size The size of the &lt;code&gt;List&lt;/code&gt;
    * 
    */
   @Setup("beginListInserts")
@@ -342,11 +343,11 @@ A type of <A HREF="../../../../../com/google/gwt/junit/client/GWTTestCase.html" 
   }
 
   /**
-   * Performs <code>size</code> removes at position, <code>where</code>, on
-   * an ArrayList of size, <code>size</code>.
+   * Performs &lt;code&gt;size&lt;/code&gt; removes at position, &lt;code&gt;where&lt;/code&gt;, on
+   * an ArrayList of size, &lt;code&gt;size&lt;/code&gt;.
    * 
    * @param where Where the inserts happen
-   * @param size The size of the <code>List</code>
+   * @param size The size of the &lt;code&gt;List&lt;/code&gt;
    */
   @Setup("beginListRemoves")
   public void testListRemoves(@RangeField("explicitPositions")
@@ -362,10 +363,10 @@ A type of <A HREF="../../../../../com/google/gwt/junit/client/GWTTestCase.html" 
   /**
    * Creates a new empty List.
    * 
-   * @return a not <code>null</code>, empty List
+   * @return a not &lt;code&gt;null&lt;/code&gt;, empty List
    */
-  protected List<String> newList() {
-    return new ArrayList<String>();
+  protected List&lt;String&gt; newList() {
+    return new ArrayList&lt;String&gt;();
   }
 
   void beginListAdds(Integer size) {
@@ -391,9 +392,9 @@ A type of <A HREF="../../../../../com/google/gwt/junit/client/GWTTestCase.html" 
     testListAdds(size);
   }
 
-  private void insertIntoCollection(Integer size, Position where, List<String> l) {
+  private void insertIntoCollection(Integer size, Position where, List&lt;String&gt; l) {
     int num = size.intValue();
-    for (int i = 0; i < num; i++) {
+    for (int i = 0; i &lt; num; i++) {
       if (where == Position.IMPLICIT_END) {
         l.add("hello");
       } else if (where == Position.BEGIN) {
@@ -408,9 +409,9 @@ A type of <A HREF="../../../../../com/google/gwt/junit/client/GWTTestCase.html" 
     }
   }
 
-  private int removeFromCollection(Integer size, Position where, List<String> l) {
+  private int removeFromCollection(Integer size, Position where, List&lt;String&gt; l) {
     int num = size.intValue();
-    for (int i = 0; i < num; i++) {
+    for (int i = 0; i &lt; num; i++) {
       if (where == Position.IMPLICIT_END) {
         throw new RuntimeException("cannot remove from the end implicitly");
       } else if (where == Position.BEGIN) {
@@ -421,7 +422,7 @@ A type of <A HREF="../../../../../com/google/gwt/junit/client/GWTTestCase.html" 
         l.remove(index);
         index += PRIME;
         int currentSize = l.size();
-        if (currentSize > 0) {
+        if (currentSize &gt; 0) {
           index %= l.size();
         }
       }
@@ -700,6 +701,7 @@ protected final boolean <B>supportsAsync</B>()</PRE>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-summary.html"><FONT CLASS="NavBarFont1"><B>Package</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Class</B></FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="class-use/Benchmark.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
@@ -708,7 +710,7 @@ protected final boolean <B>supportsAsync</B>()</PRE>
 </TABLE>
 </TD>
 <TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
-GWT 2.1.0.RC1</EM>
+GWT 2.1.1</EM>
 </TD>
 </TR>
 

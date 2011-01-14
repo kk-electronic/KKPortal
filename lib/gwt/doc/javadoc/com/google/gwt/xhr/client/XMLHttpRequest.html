@@ -38,6 +38,7 @@ function windowTitle()
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-summary.html"><FONT CLASS="NavBarFont1"><B>Package</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Class</B></FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="class-use/XMLHttpRequest.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
@@ -46,7 +47,7 @@ function windowTitle()
 </TABLE>
 </TD>
 <TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
-GWT 2.1.0.RC1</EM>
+GWT 2.1.1</EM>
 </TD>
 </TR>
 
@@ -100,13 +101,14 @@ java.lang.Object
 
 <P>
 The native XMLHttpRequest object. Most applications should use the higher-
- level <CODE>RequestBuilder</CODE> class unless they need specific functionality
- provided by the XMLHttpRequest object.
+ level <A HREF="../../../../../com/google/gwt/http/client/RequestBuilder.html" title="class in com.google.gwt.http.client"><CODE>RequestBuilder</CODE></A> class unless they
+ need specific functionality provided by the XMLHttpRequest object.
+ 
+ See <a href="http://www.w3.org/TR/XMLHttpRequest/"
+ >http://www.w3.org/TR/XMLHttpRequest/</a>/
 <P>
 
 <P>
-<DL>
-<DT><B>See Also:</B><DD><CODE>http://www.w3.org/TR/XMLHttpRequest/</CODE></DL>
 <HR>
 
 <P>
@@ -471,9 +473,12 @@ abort</H3>
 public final void <B>abort</B>()</PRE>
 <DL>
 <DD>Aborts the current request.
+ <p>
+ See <a href="http://www.w3.org/TR/XMLHttpRequest/#abort"
+ >http://www.w3.org/TR/XMLHttpRequest/#abort</a>.
 <P>
 <DD><DL>
-<DT><B>See Also:</B><DD><CODE>http://www.w3.org/TR/XMLHttpRequest/#abort</CODE></DL>
+</DL>
 </DD>
 </DL>
 <HR>
@@ -484,10 +489,12 @@ clearOnReadyStateChange</H3>
 public final void <B>clearOnReadyStateChange</B>()</PRE>
 <DL>
 <DD>Clears the <A HREF="../../../../../com/google/gwt/xhr/client/ReadyStateChangeHandler.html" title="interface in com.google.gwt.xhr.client"><CODE>ReadyStateChangeHandler</CODE></A>.
+ <p>
+ See <a href="http://www.w3.org/TR/XMLHttpRequest/#onreadystatechange"
+ >http://www.w3.org/TR/XMLHttpRequest/#onreadystatechange</a>.
 <P>
 <DD><DL>
-<DT><B>See Also:</B><DD><A HREF="../../../../../com/google/gwt/xhr/client/XMLHttpRequest.html#clearOnReadyStateChange()"><CODE>clearOnReadyStateChange()</CODE></A>, 
-<CODE>http://www.w3.org/TR/XMLHttpRequest/#onreadystatechange</CODE></DL>
+<DT><B>See Also:</B><DD><A HREF="../../../../../com/google/gwt/xhr/client/XMLHttpRequest.html#clearOnReadyStateChange()"><CODE>clearOnReadyStateChange()</CODE></A></DL>
 </DD>
 </DL>
 <HR>
@@ -498,10 +505,13 @@ getAllResponseHeaders</H3>
 public final java.lang.String <B>getAllResponseHeaders</B>()</PRE>
 <DL>
 <DD>Gets all the HTTP response headers, as a single string.
+ <p>
+ See <a href="http://www.w3.org/TR/XMLHttpRequest/#getallresponseheaders"
+ >http://www.w3.org/TR/XMLHttpRequest/#getallresponseheaders</a>.
 <P>
 <DD><DL>
 
-<DT><B>Returns:</B><DD>the response headers.<DT><B>See Also:</B><DD><CODE>http://www.w3.org/TR/XMLHttpRequest/#getallresponseheaders</CODE></DL>
+<DT><B>Returns:</B><DD>the response headers.</DL>
 </DD>
 </DL>
 <HR>
@@ -512,10 +522,13 @@ getReadyState</H3>
 public final int <B>getReadyState</B>()</PRE>
 <DL>
 <DD>Get's the current ready-state.
+ <p>
+ See <a href="http://www.w3.org/TR/XMLHttpRequest/#readystate"
+ >http://www.w3.org/TR/XMLHttpRequest/#readystate</a>.
 <P>
 <DD><DL>
 
-<DT><B>Returns:</B><DD>the ready-state constant<DT><B>See Also:</B><DD><CODE>http://www.w3.org/TR/XMLHttpRequest/#readystate</CODE></DL>
+<DT><B>Returns:</B><DD>the ready-state constant</DL>
 </DD>
 </DL>
 <HR>
@@ -526,10 +539,13 @@ getResponseHeader</H3>
 public final java.lang.String <B>getResponseHeader</B>(java.lang.String&nbsp;header)</PRE>
 <DL>
 <DD>Gets an HTTP response header.
+ <p>
+ See <a href="http://www.w3.org/TR/XMLHttpRequest/#getresponseheader"
+ >http://www.w3.org/TR/XMLHttpRequest/#getresponseheader</a>.
 <P>
 <DD><DL>
 <DT><B>Parameters:</B><DD><CODE>header</CODE> - the response header to be retrieved
-<DT><B>Returns:</B><DD>the header value<DT><B>See Also:</B><DD><CODE>http://www.w3.org/TR/XMLHttpRequest/#getresponseheader</CODE></DL>
+<DT><B>Returns:</B><DD>the header value</DL>
 </DD>
 </DL>
 <HR>
@@ -540,10 +556,13 @@ getResponseText</H3>
 public final java.lang.String <B>getResponseText</B>()</PRE>
 <DL>
 <DD>Gets the response text.
+ <p>
+ See <a href="http://www.w3.org/TR/XMLHttpRequest/#responsetext"
+ >http://www.w3.org/TR/XMLHttpRequest/#responsetext</a>.
 <P>
 <DD><DL>
 
-<DT><B>Returns:</B><DD>the response text<DT><B>See Also:</B><DD><CODE>http://www.w3.org/TR/XMLHttpRequest/#responsetext</CODE></DL>
+<DT><B>Returns:</B><DD>the response text</DL>
 </DD>
 </DL>
 <HR>
@@ -554,10 +573,13 @@ getStatus</H3>
 public final int <B>getStatus</B>()</PRE>
 <DL>
 <DD>Gets the status code.
+ <p>
+ See <a href="http://www.w3.org/TR/XMLHttpRequest/#status"
+ >http://www.w3.org/TR/XMLHttpRequest/#status</a>.
 <P>
 <DD><DL>
 
-<DT><B>Returns:</B><DD>the status code<DT><B>See Also:</B><DD><CODE>http://www.w3.org/TR/XMLHttpRequest/#status</CODE></DL>
+<DT><B>Returns:</B><DD>the status code</DL>
 </DD>
 </DL>
 <HR>
@@ -568,10 +590,13 @@ getStatusText</H3>
 public final java.lang.String <B>getStatusText</B>()</PRE>
 <DL>
 <DD>Gets the status text.
+ <p>
+ See <a href="http://www.w3.org/TR/XMLHttpRequest/#statustext"
+ >http://www.w3.org/TR/XMLHttpRequest/#statustext</a>.
 <P>
 <DD><DL>
 
-<DT><B>Returns:</B><DD>the status text<DT><B>See Also:</B><DD><CODE>http://www.w3.org/TR/XMLHttpRequest/#statustext</CODE></DL>
+<DT><B>Returns:</B><DD>the status text</DL>
 </DD>
 </DL>
 <HR>
@@ -583,9 +608,12 @@ public final void <B>open</B>(java.lang.String&nbsp;httpMethod,
                        java.lang.String&nbsp;url)</PRE>
 <DL>
 <DD>Opens an asynchronous connection.
+ <p>
+ See <a href="http://www.w3.org/TR/XMLHttpRequest/#open"
+ >http://www.w3.org/TR/XMLHttpRequest/#open</a>.
 <P>
 <DD><DL>
-<DT><B>Parameters:</B><DD><CODE>httpMethod</CODE> - the HTTP method to use<DD><CODE>url</CODE> - the URL to be opened<DT><B>See Also:</B><DD><CODE>http://www.w3.org/TR/XMLHttpRequest/#open</CODE></DL>
+<DT><B>Parameters:</B><DD><CODE>httpMethod</CODE> - the HTTP method to use<DD><CODE>url</CODE> - the URL to be opened</DL>
 </DD>
 </DL>
 <HR>
@@ -598,9 +626,12 @@ public final void <B>open</B>(java.lang.String&nbsp;httpMethod,
                        java.lang.String&nbsp;user)</PRE>
 <DL>
 <DD>Opens an asynchronous connection.
+ <p>
+ See <a href="http://www.w3.org/TR/XMLHttpRequest/#open"
+ >http://www.w3.org/TR/XMLHttpRequest/#open</a>.
 <P>
 <DD><DL>
-<DT><B>Parameters:</B><DD><CODE>httpMethod</CODE> - the HTTP method to use<DD><CODE>url</CODE> - the URL to be opened<DD><CODE>user</CODE> - user to use in the URL<DT><B>See Also:</B><DD><CODE>http://www.w3.org/TR/XMLHttpRequest/#open</CODE></DL>
+<DT><B>Parameters:</B><DD><CODE>httpMethod</CODE> - the HTTP method to use<DD><CODE>url</CODE> - the URL to be opened<DD><CODE>user</CODE> - user to use in the URL</DL>
 </DD>
 </DL>
 <HR>
@@ -614,9 +645,12 @@ public final void <B>open</B>(java.lang.String&nbsp;httpMethod,
                        java.lang.String&nbsp;password)</PRE>
 <DL>
 <DD>Opens an asynchronous connection.
+ <p>
+ See <a href="http://www.w3.org/TR/XMLHttpRequest/#open"
+ >http://www.w3.org/TR/XMLHttpRequest/#open</a>.
 <P>
 <DD><DL>
-<DT><B>Parameters:</B><DD><CODE>httpMethod</CODE> - the HTTP method to use<DD><CODE>url</CODE> - the URL to be opened<DD><CODE>user</CODE> - user to use in the URL<DD><CODE>password</CODE> - password to use in the URL<DT><B>See Also:</B><DD><CODE>http://www.w3.org/TR/XMLHttpRequest/#open</CODE></DL>
+<DT><B>Parameters:</B><DD><CODE>httpMethod</CODE> - the HTTP method to use<DD><CODE>url</CODE> - the URL to be opened<DD><CODE>user</CODE> - user to use in the URL<DD><CODE>password</CODE> - password to use in the URL</DL>
 </DD>
 </DL>
 <HR>
@@ -642,9 +676,12 @@ send</H3>
 public final void <B>send</B>(java.lang.String&nbsp;requestData)</PRE>
 <DL>
 <DD>Initiates a request with data.  If there is no data, specify null.
+ <p>
+ See <a href="http://www.w3.org/TR/XMLHttpRequest/#send"
+ >http://www.w3.org/TR/XMLHttpRequest/#send</a>.
 <P>
 <DD><DL>
-<DT><B>Parameters:</B><DD><CODE>requestData</CODE> - the data to be sent with the request<DT><B>See Also:</B><DD><CODE>http://www.w3.org/TR/XMLHttpRequest/#send</CODE></DL>
+<DT><B>Parameters:</B><DD><CODE>requestData</CODE> - the data to be sent with the request</DL>
 </DD>
 </DL>
 <HR>
@@ -656,6 +693,9 @@ public final void <B>setOnReadyStateChange</B>(<A HREF="../../../../../com/googl
 <DL>
 <DD>Sets the <A HREF="../../../../../com/google/gwt/xhr/client/ReadyStateChangeHandler.html" title="interface in com.google.gwt.xhr.client"><CODE>ReadyStateChangeHandler</CODE></A> to be notified when the object's
  ready-state changes.
+ <p>
+ See <a href="http://www.w3.org/TR/XMLHttpRequest/#onreadystatechange"
+ >http://www.w3.org/TR/XMLHttpRequest/#onreadystatechange</a>.
  
  <p>
  Note: Applications <em>must</em> call <A HREF="../../../../../com/google/gwt/xhr/client/XMLHttpRequest.html#clearOnReadyStateChange()"><CODE>clearOnReadyStateChange()</CODE></A>
@@ -664,8 +704,7 @@ public final void <B>setOnReadyStateChange</B>(<A HREF="../../../../../com/googl
  </p>
 <P>
 <DD><DL>
-<DT><B>Parameters:</B><DD><CODE>handler</CODE> - the handler to be called when the ready state changes<DT><B>See Also:</B><DD><A HREF="../../../../../com/google/gwt/xhr/client/XMLHttpRequest.html#clearOnReadyStateChange()"><CODE>clearOnReadyStateChange()</CODE></A>, 
-<CODE>http://www.w3.org/TR/XMLHttpRequest/#onreadystatechange</CODE></DL>
+<DT><B>Parameters:</B><DD><CODE>handler</CODE> - the handler to be called when the ready state changes<DT><B>See Also:</B><DD><A HREF="../../../../../com/google/gwt/xhr/client/XMLHttpRequest.html#clearOnReadyStateChange()"><CODE>clearOnReadyStateChange()</CODE></A></DL>
 </DD>
 </DL>
 <HR>
@@ -677,9 +716,12 @@ public final void <B>setRequestHeader</B>(java.lang.String&nbsp;header,
                                    java.lang.String&nbsp;value)</PRE>
 <DL>
 <DD>Sets a request header.
+ <p>
+ See <a href="http://www.w3.org/TR/XMLHttpRequest/#setrequestheader"
+ >http://www.w3.org/TR/XMLHttpRequest/#setrequestheader</a>.
 <P>
 <DD><DL>
-<DT><B>Parameters:</B><DD><CODE>header</CODE> - the header to be set<DD><CODE>value</CODE> - the header's value<DT><B>See Also:</B><DD><CODE>http://www.w3.org/TR/XMLHttpRequest/#setrequestheader</CODE></DL>
+<DT><B>Parameters:</B><DD><CODE>header</CODE> - the header to be set<DD><CODE>value</CODE> - the header's value</DL>
 </DD>
 </DL>
 <!-- ========= END OF CLASS DATA ========= -->
@@ -698,6 +740,7 @@ public final void <B>setRequestHeader</B>(java.lang.String&nbsp;header,
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-summary.html"><FONT CLASS="NavBarFont1"><B>Package</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Class</B></FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="class-use/XMLHttpRequest.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
@@ -706,7 +749,7 @@ public final void <B>setRequestHeader</B>(java.lang.String&nbsp;header,
 </TABLE>
 </TD>
 <TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
-GWT 2.1.0.RC1</EM>
+GWT 2.1.1</EM>
 </TD>
 </TR>
 

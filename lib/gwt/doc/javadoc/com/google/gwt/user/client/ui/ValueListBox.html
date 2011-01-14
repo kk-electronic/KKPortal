@@ -38,6 +38,7 @@ function windowTitle()
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-summary.html"><FONT CLASS="NavBarFont1"><B>Package</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Class</B></FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="class-use/ValueListBox.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
@@ -46,13 +47,13 @@ function windowTitle()
 </TABLE>
 </TD>
 <TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
-GWT 2.1.0.RC1</EM>
+GWT 2.1.1</EM>
 </TD>
 </TR>
 
 <TR>
 <TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
-&nbsp;<A HREF="../../../../../../com/google/gwt/user/client/ui/ValueBoxBase.TextAlignment.html" title="enum in com.google.gwt.user.client.ui"><B>PREV CLASS</B></A>&nbsp;
+&nbsp;<A HREF="../../../../../../com/google/gwt/user/client/ui/ValueLabel.html" title="class in com.google.gwt.user.client.ui"><B>PREV CLASS</B></A>&nbsp;
 &nbsp;<A HREF="../../../../../../com/google/gwt/user/client/ui/ValuePicker.html" title="class in com.google.gwt.user.client.ui"><B>NEXT CLASS</B></A></FONT></TD>
 <TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
   <A HREF="../../../../../../index.html?com/google/gwt/user/client/ui/ValueListBox.html" target="_top"><B>FRAMES</B></A>  &nbsp;
@@ -109,8 +110,8 @@ java.lang.Object
 Implementation of <A HREF="../../../../../../com/google/gwt/user/client/ui/HasConstrainedValue.html" title="interface in com.google.gwt.user.client.ui"><CODE>HasConstrainedValue</CODE></A> based on a
  <A HREF="../../../../../../com/google/gwt/dom/client/SelectElement.html" title="class in com.google.gwt.dom.client"><CODE>SelectElement</CODE></A>.
  <p>
- A <CODE>Renderer<T></CODE> is used to get user presentable strings to display in
- the select element.
+ A <A HREF="../../../../../../com/google/gwt/text/shared/Renderer.html" title="interface in com.google.gwt.text.shared"><CODE>Renderer<T></CODE></A> is used to get user-presentable strings to
+ display in the select element.
 <P>
 
 <P>
@@ -349,7 +350,8 @@ public <A HREF="../../../../../../com/google/gwt/editor/client/adapters/TakesVal
 <DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../../com/google/gwt/editor/client/IsEditor.html#asEditor()">asEditor</A></CODE> in interface <CODE><A HREF="../../../../../../com/google/gwt/editor/client/IsEditor.html" title="interface in com.google.gwt.editor.client">IsEditor</A>&lt;<A HREF="../../../../../../com/google/gwt/editor/client/adapters/TakesValueEditor.html" title="class in com.google.gwt.editor.client.adapters">TakesValueEditor</A>&lt;<A HREF="../../../../../../com/google/gwt/user/client/ui/ValueListBox.html" title="type parameter in ValueListBox">T</A>&gt;&gt;</CODE></DL>
 </DD>
 <DD><DL>
-</DL>
+
+<DT><B>Returns:</B><DD>an <A HREF="../../../../../../com/google/gwt/editor/client/Editor.html" title="interface in com.google.gwt.editor.client"><CODE>Editor</CODE></A> of type E</DL>
 </DD>
 </DL>
 <HR>
@@ -367,7 +369,7 @@ public <A HREF="../../../../../../com/google/gwt/user/client/ui/ValueListBox.htm
 </DD>
 <DD><DL>
 
-<DT><B>Returns:</B><DD>the object's value</DL>
+<DT><B>Returns:</B><DD>the object's value<DT><B>See Also:</B><DD><A HREF="../../../../../../com/google/gwt/user/client/TakesValue.html#setValue(V)"><CODE>TakesValue.setValue(V)</CODE></A></DL>
 </DD>
 </DL>
 <HR>
@@ -401,7 +403,7 @@ public void <B>setValue</B>(<A HREF="../../../../../../com/google/gwt/user/clien
 <DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../../com/google/gwt/user/client/TakesValue.html#setValue(V)">setValue</A></CODE> in interface <CODE><A HREF="../../../../../../com/google/gwt/user/client/TakesValue.html" title="interface in com.google.gwt.user.client">TakesValue</A>&lt;<A HREF="../../../../../../com/google/gwt/user/client/ui/ValueListBox.html" title="type parameter in ValueListBox">T</A>&gt;</CODE><DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../../com/google/gwt/user/client/ui/HasValue.html#setValue(T)">setValue</A></CODE> in interface <CODE><A HREF="../../../../../../com/google/gwt/user/client/ui/HasValue.html" title="interface in com.google.gwt.user.client.ui">HasValue</A>&lt;<A HREF="../../../../../../com/google/gwt/user/client/ui/ValueListBox.html" title="type parameter in ValueListBox">T</A>&gt;</CODE></DL>
 </DD>
 <DD><DL>
-<DT><B>Parameters:</B><DD><CODE>value</CODE> - the object's new value</DL>
+<DT><B>Parameters:</B><DD><CODE>value</CODE> - the object's new value<DT><B>See Also:</B><DD><A HREF="../../../../../../com/google/gwt/user/client/TakesValue.html#getValue()"><CODE>TakesValue.getValue()</CODE></A></DL>
 </DD>
 </DL>
 <HR>
@@ -443,6 +445,7 @@ public void <B>setValue</B>(<A HREF="../../../../../../com/google/gwt/user/clien
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-summary.html"><FONT CLASS="NavBarFont1"><B>Package</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Class</B></FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="class-use/ValueListBox.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
@@ -451,13 +454,13 @@ public void <B>setValue</B>(<A HREF="../../../../../../com/google/gwt/user/clien
 </TABLE>
 </TD>
 <TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
-GWT 2.1.0.RC1</EM>
+GWT 2.1.1</EM>
 </TD>
 </TR>
 
 <TR>
 <TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
-&nbsp;<A HREF="../../../../../../com/google/gwt/user/client/ui/ValueBoxBase.TextAlignment.html" title="enum in com.google.gwt.user.client.ui"><B>PREV CLASS</B></A>&nbsp;
+&nbsp;<A HREF="../../../../../../com/google/gwt/user/client/ui/ValueLabel.html" title="class in com.google.gwt.user.client.ui"><B>PREV CLASS</B></A>&nbsp;
 &nbsp;<A HREF="../../../../../../com/google/gwt/user/client/ui/ValuePicker.html" title="class in com.google.gwt.user.client.ui"><B>NEXT CLASS</B></A></FONT></TD>
 <TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
   <A HREF="../../../../../../index.html?com/google/gwt/user/client/ui/ValueListBox.html" target="_top"><B>FRAMES</B></A>  &nbsp;

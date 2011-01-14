@@ -38,6 +38,7 @@ function windowTitle()
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-summary.html"><FONT CLASS="NavBarFont1"><B>Package</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Class</B></FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="class-use/SafeHtmlHostedModeUtils.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
@@ -46,7 +47,7 @@ function windowTitle()
 </TABLE>
 </TD>
 <TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
-GWT 2.1.0.RC1</EM>
+GWT 2.1.1</EM>
 </TD>
 </TR>
 
@@ -122,7 +123,7 @@ SafeHtml utilities whose implementation differs between hosted and web mode.
 <TD><CODE><B><A HREF="../../../../../com/google/gwt/safehtml/shared/SafeHtmlHostedModeUtils.html#FORCE_CHECK_COMPLETE_HTML">FORCE_CHECK_COMPLETE_HTML</A></B></CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;If true, perform checks in server-side code.</TD>
 </TR>
 </TABLE>
 &nbsp;
@@ -175,7 +176,9 @@ SafeHtml utilities whose implementation differs between hosted and web mode.
 <TD><CODE><B><A HREF="../../../../../com/google/gwt/safehtml/shared/SafeHtmlHostedModeUtils.html#setForceCheckCompleteHtmlFromProperty()">setForceCheckCompleteHtmlFromProperty</A></B>()</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sets a global flag that controls whether or not
+ <A HREF="../../../../../com/google/gwt/safehtml/shared/SafeHtmlHostedModeUtils.html#maybeCheckCompleteHtml(java.lang.String)"><CODE>maybeCheckCompleteHtml(String)</CODE></A> should perform its check in a
+ server-side environment from the value of the <A HREF="../../../../../com/google/gwt/safehtml/shared/SafeHtmlHostedModeUtils.html#FORCE_CHECK_COMPLETE_HTML">"com.google.gwt.safehtml.ForceCheckCompleteHtml"</A> property.</TD>
 </TR>
 </TABLE>
 &nbsp;<A NAME="methods_inherited_from_class_java.lang.Object"><!-- --></A>
@@ -205,6 +208,8 @@ FORCE_CHECK_COMPLETE_HTML</H3>
 <PRE>
 public static final java.lang.String <B>FORCE_CHECK_COMPLETE_HTML</B></PRE>
 <DL>
+<DD>If true, perform checks in server-side code.
+<P>
 <DL>
 <DT><B>See Also:</B><DD><A HREF="../../../../../constant-values.html#com.google.gwt.safehtml.shared.SafeHtmlHostedModeUtils.FORCE_CHECK_COMPLETE_HTML">Constant Field Values</A></DL>
 </DL>
@@ -247,21 +252,21 @@ public static void <B>maybeCheckCompleteHtml</B>(java.lang.String&nbsp;html)</PR
  <p>
  This method parses the provided string as HTML and determines the HTML
  context at the end of the string. If the context is not "inner HTML text",
- a <CODE>IllegalArgumentException</CODE> or <CODE>AssertionError</CODE> is thrown.
+ an <CODE>IllegalArgumentException</CODE> or <CODE>AssertionError</CODE> is thrown.
 
  <p>
  For example, this check will pass for the following strings:
 
- <pre><code>&lt;foo&gt;blah
-   baz&lt;em&gt;foo&lt;/em&gt; &lt;x a="b"&gt;hello
+ <pre><code>&amp;lt;foo&amp;gt;blah
+   baz&amp;lt;em&amp;gt;foo&amp;lt;/em&amp;gt; &amp;lt;x a="b"&amp;gt;hello
  </code></pre>
 
  <p>
  The check will fail for the following strings:
 
- <pre><code>baz&lt;em&gt;foo&lt;/em&gt; &lt;x
-   baz&lt;em&gt;foo&lt;/em&gt; &lt;x a="b
-   baz&lt;em&gt;foo&lt;/em&gt; &lt;x a="b"
+ <pre><code>baz&amp;lt;em&amp;gt;foo&amp;lt;/em&amp;gt; &amp;lt;x
+   baz&amp;lt;em&amp;gt;foo&amp;lt;/em&amp;gt; &amp;lt;x a="b
+   baz&amp;lt;em&amp;gt;foo&amp;lt;/em&amp;gt; &amp;lt;x a="b"
  </code></pre>
 
  <p>
@@ -300,7 +305,7 @@ public static void <B>setForceCheckCompleteHtml</B>(boolean&nbsp;check)</PRE>
  server-side environment.
 <P>
 <DD><DL>
-</DL>
+<DT><B>Parameters:</B><DD><CODE>check</CODE> - if true, perform server-side checks.</DL>
 </DD>
 </DL>
 <HR>
@@ -308,6 +313,12 @@ public static void <B>setForceCheckCompleteHtml</B>(boolean&nbsp;check)</PRE>
 <A NAME="setForceCheckCompleteHtmlFromProperty()"><!-- --></A><H3>
 setForceCheckCompleteHtmlFromProperty</H3>
 <PRE>
+public static void <B>setForceCheckCompleteHtmlFromProperty</B>()</PRE>
+<DL>
+<DD>Sets a global flag that controls whether or not
+ <A HREF="../../../../../com/google/gwt/safehtml/shared/SafeHtmlHostedModeUtils.html#maybeCheckCompleteHtml(java.lang.String)"><CODE>maybeCheckCompleteHtml(String)</CODE></A> should perform its check in a
+ server-side environment from the value of the <A HREF="../../../../../com/google/gwt/safehtml/shared/SafeHtmlHostedModeUtils.html#FORCE_CHECK_COMPLETE_HTML">"com.google.gwt.safehtml.ForceCheckCompleteHtml"</A> property.
+<P>
 <DD><DL>
 </DL>
 </DD>
@@ -328,6 +339,7 @@ setForceCheckCompleteHtmlFromProperty</H3>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-summary.html"><FONT CLASS="NavBarFont1"><B>Package</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Class</B></FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="class-use/SafeHtmlHostedModeUtils.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
@@ -336,7 +348,7 @@ setForceCheckCompleteHtmlFromProperty</H3>
 </TABLE>
 </TD>
 <TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
-GWT 2.1.0.RC1</EM>
+GWT 2.1.1</EM>
 </TD>
 </TR>
 

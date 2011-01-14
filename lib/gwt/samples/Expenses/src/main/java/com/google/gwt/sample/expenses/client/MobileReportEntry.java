@@ -18,10 +18,10 @@ package com.google.gwt.sample.expenses.client;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.requestfactory.shared.Receiver;
-import com.google.gwt.sample.expenses.client.request.EmployeeProxy;
-import com.google.gwt.sample.expenses.client.request.ExpensesRequestFactory;
-import com.google.gwt.sample.expenses.client.request.ReportProxy;
-import com.google.gwt.sample.expenses.client.request.ReportRequest;
+import com.google.gwt.sample.expenses.shared.EmployeeProxy;
+import com.google.gwt.sample.expenses.shared.ExpensesRequestFactory;
+import com.google.gwt.sample.expenses.shared.ReportProxy;
+import com.google.gwt.sample.expenses.shared.ReportRequest;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.Composite;
@@ -57,6 +57,7 @@ public class MobileReportEntry extends Composite implements MobilePage {
 
   private ReportProxy report;
   private final ExpensesRequestFactory requestFactory;
+  @SuppressWarnings("unused")
   private final Listener listener;
   private ReportRequest request;
 
@@ -66,7 +67,7 @@ public class MobileReportEntry extends Composite implements MobilePage {
     this.requestFactory = requestFactory;
     initWidget(BINDER.createAndBindUi(this));
 
-    for (String department : Expenses.DEPARTMENTS) {
+    for (String department : ExpensesApp.DEPARTMENTS) {
       departmentList.addItem(department);
     }
 
@@ -143,8 +144,8 @@ public class MobileReportEntry extends Composite implements MobilePage {
     notesText.setText(report.getNotes());
     String department = report.getDepartment();
     departmentList.setSelectedIndex(0);
-    for (int i = 0; i < Expenses.DEPARTMENTS.length; i++) {
-      if (Expenses.DEPARTMENTS[i].equals(department)) {
+    for (int i = 0; i < ExpensesApp.DEPARTMENTS.length; i++) {
+      if (ExpensesApp.DEPARTMENTS[i].equals(department)) {
         departmentList.setSelectedIndex(i);
       }
     }
@@ -165,9 +166,15 @@ public class MobileReportEntry extends Composite implements MobilePage {
 
   @SuppressWarnings("deprecation")
   private void showCreationDate(Date d) {
-    // TODO(jgw): Use non-deprecated date methods for this.
-    dateYear.setSelectedIndex(d.getYear() - 100);
-    dateMonth.setSelectedIndex(d.getMonth());
-    dateDay.setSelectedIndex(d.getDate() - 1);
+    if (d != null) {
+      // TODO(jgw): Use non-deprecated date methods for this.
+      dateYear.setSelectedIndex(d.getYear() - 100);
+      dateMonth.setSelectedIndex(d.getMonth());
+      dateDay.setSelectedIndex(d.getDate() - 1);
+    } else {
+      dateYear.setSelectedIndex(0);
+      dateMonth.setSelectedIndex(0);
+      dateDay.setSelectedIndex(0);
+    }
   }
 }

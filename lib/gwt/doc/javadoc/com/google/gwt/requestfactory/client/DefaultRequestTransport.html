@@ -38,6 +38,7 @@ function windowTitle()
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-summary.html"><FONT CLASS="NavBarFont1"><B>Package</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Class</B></FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="class-use/DefaultRequestTransport.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
@@ -46,7 +47,7 @@ function windowTitle()
 </TABLE>
 </TD>
 <TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
-GWT 2.1.0.RC1</EM>
+GWT 2.1.1</EM>
 </TD>
 </TR>
 
@@ -157,10 +158,10 @@ An implementation of <A HREF="../../../../../com/google/gwt/requestfactory/share
 <B>Constructor Summary</B></FONT></TH>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
-<TD><CODE><B><A HREF="../../../../../com/google/gwt/requestfactory/client/DefaultRequestTransport.html#DefaultRequestTransport(com.google.gwt.event.shared.EventBus)">DefaultRequestTransport</A></B>(<A HREF="../../../../../com/google/gwt/event/shared/EventBus.html" title="class in com.google.gwt.event.shared">EventBus</A>&nbsp;eventBus)</CODE>
+<TD><CODE><B><A HREF="../../../../../com/google/gwt/requestfactory/client/DefaultRequestTransport.html#DefaultRequestTransport()">DefaultRequestTransport</A></B>()</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Construct a DefaultRequestTransport.</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
 </TR>
 </TABLE>
 &nbsp;
@@ -186,8 +187,8 @@ An implementation of <A HREF="../../../../../com/google/gwt/requestfactory/share
 <TD><CODE><B><A HREF="../../../../../com/google/gwt/requestfactory/client/DefaultRequestTransport.html#createRequestBuilder()">createRequestBuilder</A></B>()</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Constructs a RequestBuilder using the <A HREF="../../../../../com/google/gwt/http/client/RequestBuilder.html#POST"><CODE>RequestBuilder.POST</CODE></A> method
- sent to the URL returned from <A HREF="../../../../../com/google/gwt/requestfactory/client/DefaultRequestTransport.html#getRequestUrl()"><CODE>getRequestUrl()</CODE></A>.</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Constructs a <A HREF="../../../../../com/google/gwt/http/client/RequestBuilder.html" title="class in com.google.gwt.http.client"><CODE>RequestBuilder</CODE></A> using the <A HREF="../../../../../com/google/gwt/http/client/RequestBuilder.html#POST"><CODE>RequestBuilder.POST</CODE></A>
+ method sent to the URL returned from <A HREF="../../../../../com/google/gwt/requestfactory/client/DefaultRequestTransport.html#getRequestUrl()"><CODE>getRequestUrl()</CODE></A>.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -196,7 +197,7 @@ An implementation of <A HREF="../../../../../com/google/gwt/requestfactory/share
 
 <BR>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Creates a RequestCallback that maps the HTTP response onto the
- <CODE>TransportReceiver</CODE> interface.</TD>
+ <A HREF="../../../../../com/google/gwt/requestfactory/shared/RequestTransport.TransportReceiver.html" title="interface in com.google.gwt.requestfactory.shared"><CODE>TransportReceiver</CODE></A> interface.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -269,15 +270,11 @@ public static final java.lang.String <B>URL</B></PRE>
 </TR>
 </TABLE>
 
-<A NAME="DefaultRequestTransport(com.google.gwt.event.shared.EventBus)"><!-- --></A><H3>
+<A NAME="DefaultRequestTransport()"><!-- --></A><H3>
 DefaultRequestTransport</H3>
 <PRE>
-public <B>DefaultRequestTransport</B>(<A HREF="../../../../../com/google/gwt/event/shared/EventBus.html" title="class in com.google.gwt.event.shared">EventBus</A>&nbsp;eventBus)</PRE>
+public <B>DefaultRequestTransport</B>()</PRE>
 <DL>
-<DD>Construct a DefaultRequestTransport.
-<P>
-<DL>
-<DT><B>Parameters:</B><DD><CODE>eventBus</CODE> - the same EventBus passed into <CODE>RequestFactory#init</CODE>.</DL>
 </DL>
 
 <!-- ============ METHOD DETAIL ========== -->
@@ -301,7 +298,8 @@ public java.lang.String <B>getRequestUrl</B>()</PRE>
 </DL>
 </DD>
 <DD><DL>
-</DL>
+
+<DT><B>Returns:</B><DD>the URL as a String<DT><B>See Also:</B><DD><A HREF="../../../../../com/google/gwt/requestfactory/client/DefaultRequestTransport.html#setRequestUrl(java.lang.String)"><CODE>setRequestUrl(String)</CODE></A></DL>
 </DD>
 </DL>
 <HR>
@@ -319,7 +317,7 @@ public void <B>send</B>(java.lang.String&nbsp;payload,
 <DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../com/google/gwt/requestfactory/shared/RequestTransport.html#send(java.lang.String, com.google.gwt.requestfactory.shared.RequestTransport.TransportReceiver)">send</A></CODE> in interface <CODE><A HREF="../../../../../com/google/gwt/requestfactory/shared/RequestTransport.html" title="interface in com.google.gwt.requestfactory.shared">RequestTransport</A></CODE></DL>
 </DD>
 <DD><DL>
-</DL>
+<DT><B>Parameters:</B><DD><CODE>payload</CODE> - the String payload<DD><CODE>receiver</CODE> - a <A HREF="../../../../../com/google/gwt/requestfactory/shared/RequestTransport.TransportReceiver.html" title="interface in com.google.gwt.requestfactory.shared"><CODE>RequestTransport.TransportReceiver</CODE></A> instance</DL>
 </DD>
 </DL>
 <HR>
@@ -335,7 +333,7 @@ public void <B>setRequestUrl</B>(java.lang.String&nbsp;url)</PRE>
 </DL>
 </DD>
 <DD><DL>
-</DL>
+<DT><B>Parameters:</B><DD><CODE>url</CODE> - a String URL<DT><B>See Also:</B><DD><A HREF="../../../../../com/google/gwt/requestfactory/client/DefaultRequestTransport.html#getRequestUrl()"><CODE>getRequestUrl()</CODE></A></DL>
 </DD>
 </DL>
 <HR>
@@ -351,7 +349,7 @@ protected void <B>configureRequestBuilder</B>(<A HREF="../../../../../com/google
 </DL>
 </DD>
 <DD><DL>
-</DL>
+<DT><B>Parameters:</B><DD><CODE>builder</CODE> - a <A HREF="../../../../../com/google/gwt/http/client/RequestBuilder.html" title="class in com.google.gwt.http.client"><CODE>RequestBuilder</CODE></A> instance</DL>
 </DD>
 </DL>
 <HR>
@@ -361,14 +359,15 @@ createRequestBuilder</H3>
 <PRE>
 protected <A HREF="../../../../../com/google/gwt/http/client/RequestBuilder.html" title="class in com.google.gwt.http.client">RequestBuilder</A> <B>createRequestBuilder</B>()</PRE>
 <DL>
-<DD>Constructs a RequestBuilder using the <A HREF="../../../../../com/google/gwt/http/client/RequestBuilder.html#POST"><CODE>RequestBuilder.POST</CODE></A> method
- sent to the URL returned from <A HREF="../../../../../com/google/gwt/requestfactory/client/DefaultRequestTransport.html#getRequestUrl()"><CODE>getRequestUrl()</CODE></A>.
+<DD>Constructs a <A HREF="../../../../../com/google/gwt/http/client/RequestBuilder.html" title="class in com.google.gwt.http.client"><CODE>RequestBuilder</CODE></A> using the <A HREF="../../../../../com/google/gwt/http/client/RequestBuilder.html#POST"><CODE>RequestBuilder.POST</CODE></A>
+ method sent to the URL returned from <A HREF="../../../../../com/google/gwt/requestfactory/client/DefaultRequestTransport.html#getRequestUrl()"><CODE>getRequestUrl()</CODE></A>.
 <P>
 <DD><DL>
 </DL>
 </DD>
 <DD><DL>
-</DL>
+
+<DT><B>Returns:</B><DD>a <A HREF="../../../../../com/google/gwt/http/client/RequestBuilder.html" title="class in com.google.gwt.http.client"><CODE>RequestBuilder</CODE></A> instance</DL>
 </DD>
 </DL>
 <HR>
@@ -379,13 +378,14 @@ createRequestCallback</H3>
 protected <A HREF="../../../../../com/google/gwt/http/client/RequestCallback.html" title="interface in com.google.gwt.http.client">RequestCallback</A> <B>createRequestCallback</B>(<A HREF="../../../../../com/google/gwt/requestfactory/shared/RequestTransport.TransportReceiver.html" title="interface in com.google.gwt.requestfactory.shared">RequestTransport.TransportReceiver</A>&nbsp;receiver)</PRE>
 <DL>
 <DD>Creates a RequestCallback that maps the HTTP response onto the
- <CODE>TransportReceiver</CODE> interface.
+ <A HREF="../../../../../com/google/gwt/requestfactory/shared/RequestTransport.TransportReceiver.html" title="interface in com.google.gwt.requestfactory.shared"><CODE>TransportReceiver</CODE></A> interface.
 <P>
 <DD><DL>
 </DL>
 </DD>
 <DD><DL>
-</DL>
+<DT><B>Parameters:</B><DD><CODE>receiver</CODE> - a <CODE>TransportReceiver</CODE>
+<DT><B>Returns:</B><DD>a <A HREF="../../../../../com/google/gwt/http/client/RequestCallback.html" title="interface in com.google.gwt.http.client"><CODE>RequestCallback</CODE></A> instance</DL>
 </DD>
 </DL>
 <!-- ========= END OF CLASS DATA ========= -->
@@ -404,6 +404,7 @@ protected <A HREF="../../../../../com/google/gwt/http/client/RequestCallback.htm
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-summary.html"><FONT CLASS="NavBarFont1"><B>Package</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Class</B></FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="class-use/DefaultRequestTransport.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
@@ -412,7 +413,7 @@ protected <A HREF="../../../../../com/google/gwt/http/client/RequestCallback.htm
 </TABLE>
 </TD>
 <TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
-GWT 2.1.0.RC1</EM>
+GWT 2.1.1</EM>
 </TD>
 </TR>
 

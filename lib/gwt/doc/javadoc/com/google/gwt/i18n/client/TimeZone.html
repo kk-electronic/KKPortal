@@ -38,6 +38,7 @@ function windowTitle()
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-summary.html"><FONT CLASS="NavBarFont1"><B>Package</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Class</B></FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="class-use/TimeZone.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
@@ -46,7 +47,7 @@ function windowTitle()
 </TABLE>
 </TD>
 <TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
-GWT 2.1.0.RC1</EM>
+GWT 2.1.1</EM>
 </TD>
 </TR>
 
@@ -105,9 +106,9 @@ The TimeZone class implements a time zone information source for client
  in which case the data could be retrieved from
  the <A HREF="../../../../../com/google/gwt/i18n/client/constants/TimeZoneConstants.html" title="interface in com.google.gwt.i18n.client.constants"><CODE>TimeZoneConstants</CODE></A>
  class. Applications can also choose to instantiate from a string obtained
- from a server. The time zone string contains locale specific data. If the 
+ from a server. The time zone string contains locale specific data. If the
  application only uses a short representation, the English data will usually
- satisfy the user's need. In the case that only the time zone offset is known, 
+ satisfy the user's need. In the case that only the time zone offset is known,
  there is a decent fallback that only uses the time zone offset to create a
  TimeZone object.
 <P>
@@ -157,7 +158,7 @@ The TimeZone class implements a time zone information source for client
 <TD><CODE><B><A HREF="../../../../../com/google/gwt/i18n/client/TimeZone.html#getDaylightAdjustment(java.util.Date)">getDaylightAdjustment</A></B>(java.util.Date&nbsp;date)</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Return the daylight savings time adjustment, in minutes, for the given
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns the daylight savings time adjustment, in minutes, for the given
  date.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
@@ -166,7 +167,7 @@ The TimeZone class implements a time zone information source for client
 <TD><CODE><B><A HREF="../../../../../com/google/gwt/i18n/client/TimeZone.html#getGMTString(java.util.Date)">getGMTString</A></B>(java.util.Date&nbsp;date)</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Return the GMT representation of this time zone object.</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns the GMT representation of this time zone object.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -174,7 +175,7 @@ The TimeZone class implements a time zone information source for client
 <TD><CODE><B><A HREF="../../../../../com/google/gwt/i18n/client/TimeZone.html#getID()">getID</A></B>()</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Return time zone id for this time zone.</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns time zone id for this time zone.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -224,7 +225,7 @@ The TimeZone class implements a time zone information source for client
 <TD><CODE><B><A HREF="../../../../../com/google/gwt/i18n/client/TimeZone.html#getStandardOffset()">getStandardOffset</A></B>()</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns the standard time zone offset, in minutes.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -308,7 +309,7 @@ getDaylightAdjustment</H3>
 <PRE>
 public int <B>getDaylightAdjustment</B>(java.util.Date&nbsp;date)</PRE>
 <DL>
-<DD>Return the daylight savings time adjustment, in minutes, for the given
+<DD>Returns the daylight savings time adjustment, in minutes, for the given
  date. If daylight savings time is in effect on the given date, the number
  will be positive, otherwise 0.
 <P>
@@ -324,7 +325,7 @@ getGMTString</H3>
 <PRE>
 public java.lang.String <B>getGMTString</B>(java.util.Date&nbsp;date)</PRE>
 <DL>
-<DD>Return the GMT representation of this time zone object.
+<DD>Returns the GMT representation of this time zone object.
 <P>
 <DD><DL>
 <DT><B>Parameters:</B><DD><CODE>date</CODE> - The date from which the time information should be extracted
@@ -338,7 +339,7 @@ getID</H3>
 <PRE>
 public java.lang.String <B>getID</B>()</PRE>
 <DL>
-<DD>Return time zone id for this time zone. For time zone objects that have
+<DD>Returns time zone id for this time zone. For time zone objects that have
  been instantiated from a time zone offset, the POSIX time zone id will be
  returned.
 <P>
@@ -428,9 +429,10 @@ getStandardOffset</H3>
 <PRE>
 public int <B>getStandardOffset</B>()</PRE>
 <DL>
+<DD>Returns the standard time zone offset, in minutes.
+<P>
 <DD><DL>
-
-<DT><B>Returns:</B><DD>the standard time zone offset, in minutes.</DL>
+</DL>
 </DD>
 </DL>
 <HR>
@@ -464,6 +466,7 @@ public boolean <B>isDaylightTime</B>(java.util.Date&nbsp;date)</PRE>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-summary.html"><FONT CLASS="NavBarFont1"><B>Package</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Class</B></FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="class-use/TimeZone.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
@@ -472,7 +475,7 @@ public boolean <B>isDaylightTime</B>(java.util.Date&nbsp;date)</PRE>
 </TABLE>
 </TD>
 <TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
-GWT 2.1.0.RC1</EM>
+GWT 2.1.1</EM>
 </TD>
 </TR>
 

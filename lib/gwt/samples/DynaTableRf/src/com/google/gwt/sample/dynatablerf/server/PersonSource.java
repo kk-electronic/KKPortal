@@ -15,17 +15,23 @@
  */
 package com.google.gwt.sample.dynatablerf.server;
 
-import com.google.gwt.sample.dynatablerf.domain.Address;
+import static com.google.gwt.sample.dynatablerf.shared.DynaTableRequestFactory.SchoolCalendarRequest.ALL_DAYS;
+import static com.google.gwt.sample.dynatablerf.shared.DynaTableRequestFactory.SchoolCalendarRequest.NO_DAYS;
+
 import com.google.gwt.sample.dynatablerf.domain.Person;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
 /**
- * 
+ * Provides a number of Person objects as a demonstration datasource. Many of
+ * the operations in this implementation would be much more efficient in a real
+ * database, but are implemented is a straightforward fashion because they're
+ * not really important for understanding the RequestFactory framework.
  */
 public abstract class PersonSource {
   static class Backing extends PersonSource {
@@ -43,7 +49,7 @@ public abstract class PersonSource {
 
     @Override
     public List<Person> getPeople(int startIndex, int maxCount,
-        boolean[] daysFilter) {
+        List<Boolean> daysFilter) {
       int peopleCount = countPeople();
 
       int start = startIndex;
@@ -55,14 +61,31 @@ public abstract class PersonSource {
       if (start == end) {
         return Collections.emptyList();
       }
-      // This is ugly, but a real backend would have a skip mechanism
-      return new ArrayList<Person>(people.values()).subList(start, end);
-    }
 
-    @Override
-    public void persist(Address address) {
-      address.setVersion(address.getVersion() + 1);
-      findPerson(address.getId()).getAddress().copyFrom(address);
+      // If there's a simple filter, use a fast path
+      if (ALL_DAYS.equals(daysFilter)) {
+        return new ArrayList<Person>(people.values()).subList(start, end);
+      } else if (NO_DAYS.equals(daysFilter)) {
+        return new ArrayList<Person>();
+      }
+
+      /*
+       * Otherwise, iterate from the start position until we collect enough
+       * People or hit the end of the list.
+       */
+      Iterator<Person> it = people.values().iterator();
+      int skipped = 0;
+      List<Person> toReturn = new ArrayList<Person>(maxCount);
+      while (toReturn.size() < maxCount && it.hasNext()) {
+        Person person = it.next();
+        if (person.getScheduleWithFilter(daysFilter).length() > 0) {
+          if (skipped++ < startIndex) {
+            continue;
+          }
+          toReturn.add(person);
+        }
+      }
+      return toReturn;
     }
 
     @Override
@@ -107,20 +130,15 @@ public abstract class PersonSource {
 
     @Override
     public List<Person> getPeople(int startIndex, int maxCount,
-        boolean[] daysFilter) {
+        List<Boolean> daysFilter) {
       List<Person> toReturn = new ArrayList<Person>(maxCount);
       for (Person person : backingStore.getPeople(startIndex, maxCount,
           daysFilter)) {
         Person copy = findPerson(person.getId());
-        toReturn.add(copy);
         copy.setDaysFilter(daysFilter);
+        toReturn.add(copy);
       }
       return toReturn;
-    }
-
-    @Override
-    public void persist(Address address) {
-      backingStore.persist(address);
     }
 
     @Override
@@ -155,9 +173,7 @@ public abstract class PersonSource {
   public abstract Person findPerson(String id);
 
   public abstract List<Person> getPeople(int startIndex, int maxCount,
-      boolean[] daysFilter);
-
-  public abstract void persist(Address address);
+      List<Boolean> daysFilter);
 
   public abstract void persist(Person person);
 }

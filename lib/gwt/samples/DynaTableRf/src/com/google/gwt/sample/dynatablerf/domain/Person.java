@@ -15,7 +15,11 @@
  */
 package com.google.gwt.sample.dynatablerf.domain;
 
+import static com.google.gwt.sample.dynatablerf.shared.DynaTableRequestFactory.SchoolCalendarRequest.ALL_DAYS;
+
 import com.google.gwt.sample.dynatablerf.server.SchoolCalendarService;
+
+import java.util.List;
 
 import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.NotNull;
@@ -46,7 +50,7 @@ public class Person {
   }
 
   @NotNull
-  private final Address address = new Address();
+  private Address address = new Address();
 
   @NotNull
   private Schedule classSchedule = new Schedule();
@@ -69,8 +73,7 @@ public class Person {
 
   private String note;
 
-  private final boolean[] daysFilters = new boolean[] {
-      true, true, true, true, true, true, true};
+  private List<Boolean> daysFilters = ALL_DAYS;
 
   public Person() {
   }
@@ -129,7 +132,7 @@ public class Person {
     return getScheduleWithFilter(daysFilters);
   }
 
-  public String getScheduleWithFilter(boolean[] daysFilter) {
+  public String getScheduleWithFilter(List<Boolean> daysFilter) {
     return classSchedule.getDescription(daysFilter);
   }
 
@@ -155,13 +158,12 @@ public class Person {
   }
 
   public void setAddress(Address address) {
-    this.address.copyFrom(address);
+    this.address = address;
   }
 
-  public void setDaysFilter(boolean[] daysFilter) {
-    assert daysFilter.length == this.daysFilters.length;
-    System.arraycopy(daysFilter, 0, this.daysFilters, 0,
-        this.daysFilters.length);
+  public void setDaysFilter(List<Boolean> daysFilter) {
+    assert daysFilter.size() == this.daysFilters.size();
+    this.daysFilters = daysFilter;
   }
 
   public void setDescription(String description) {
@@ -170,7 +172,6 @@ public class Person {
 
   public void setId(String id) {
     this.id = id;
-    address.setId(id);
   }
 
   public void setMentor(Person mentor) {

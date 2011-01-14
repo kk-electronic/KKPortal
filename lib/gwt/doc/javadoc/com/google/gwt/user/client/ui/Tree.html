@@ -38,6 +38,7 @@ function windowTitle()
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-summary.html"><FONT CLASS="NavBarFont1"><B>Package</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Class</B></FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="class-use/Tree.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
@@ -46,7 +47,7 @@ function windowTitle()
 </TABLE>
 </TD>
 <TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
-GWT 2.1.0.RC1</EM>
+GWT 2.1.1</EM>
 </TD>
 </TR>
 
@@ -297,6 +298,14 @@ A standard hierarchical tree widget. The tree contains a hierarchy of
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
 <CODE>&nbsp;<A HREF="../../../../../../com/google/gwt/user/client/ui/TreeItem.html" title="class in com.google.gwt.user.client.ui">TreeItem</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../../com/google/gwt/user/client/ui/Tree.html#addItem(com.google.gwt.safehtml.shared.SafeHtml)">addItem</A></B>(<A HREF="../../../../../../com/google/gwt/safehtml/shared/SafeHtml.html" title="interface in com.google.gwt.safehtml.shared">SafeHtml</A>&nbsp;itemHtml)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Adds a simple tree item containing the specified html.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;<A HREF="../../../../../../com/google/gwt/user/client/ui/TreeItem.html" title="class in com.google.gwt.user.client.ui">TreeItem</A></CODE></FONT></TD>
 <TD><CODE><B><A HREF="../../../../../../com/google/gwt/user/client/ui/Tree.html#addItem(java.lang.String)">addItem</A></B>(java.lang.String&nbsp;itemText)</CODE>
 
 <BR>
@@ -415,7 +424,7 @@ A standard hierarchical tree widget. The tree contains a hierarchy of
 <TD><CODE><B><A HREF="../../../../../../com/google/gwt/user/client/ui/Tree.html#addOpenHandler(com.google.gwt.event.logical.shared.OpenHandler)">addOpenHandler</A></B>(<A HREF="../../../../../../com/google/gwt/event/logical/shared/OpenHandler.html" title="interface in com.google.gwt.event.logical.shared">OpenHandler</A>&lt;<A HREF="../../../../../../com/google/gwt/user/client/ui/TreeItem.html" title="class in com.google.gwt.user.client.ui">TreeItem</A>&gt;&nbsp;handler)</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Adds a <A HREF="../../../../../../com/google/gwt/event/logical/shared/OpenEvent.html" title="class in com.google.gwt.event.logical.shared"><CODE>OpenEvent</CODE></A> handler.</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Adds an <A HREF="../../../../../../com/google/gwt/event/logical/shared/OpenEvent.html" title="class in com.google.gwt.event.logical.shared"><CODE>OpenEvent</CODE></A> handler.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -508,6 +517,16 @@ A standard hierarchical tree widget. The tree contains a hierarchy of
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
 <CODE>&nbsp;<A HREF="../../../../../../com/google/gwt/user/client/ui/TreeItem.html" title="class in com.google.gwt.user.client.ui">TreeItem</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../../com/google/gwt/user/client/ui/Tree.html#insertItem(int, com.google.gwt.safehtml.shared.SafeHtml)">insertItem</A></B>(int&nbsp;beforeIndex,
+           <A HREF="../../../../../../com/google/gwt/safehtml/shared/SafeHtml.html" title="interface in com.google.gwt.safehtml.shared">SafeHtml</A>&nbsp;itemHtml)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Inserts a child tree item at the specified index containing the specified
+ html.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;<A HREF="../../../../../../com/google/gwt/user/client/ui/TreeItem.html" title="class in com.google.gwt.user.client.ui">TreeItem</A></CODE></FONT></TD>
 <TD><CODE><B><A HREF="../../../../../../com/google/gwt/user/client/ui/Tree.html#insertItem(int, java.lang.String)">insertItem</A></B>(int&nbsp;beforeIndex,
            java.lang.String&nbsp;itemText)</CODE>
 
@@ -540,7 +559,7 @@ A standard hierarchical tree widget. The tree contains a hierarchy of
 <TD><CODE><B><A HREF="../../../../../../com/google/gwt/user/client/ui/Tree.html#isAnimationEnabled()">isAnimationEnabled</A></B>()</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns true if animations are enabled, false if not.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -940,6 +959,23 @@ public <A HREF="../../../../../../com/google/gwt/user/client/ui/TreeItem.html" t
 </DL>
 <HR>
 
+<A NAME="addItem(com.google.gwt.safehtml.shared.SafeHtml)"><!-- --></A><H3>
+addItem</H3>
+<PRE>
+public <A HREF="../../../../../../com/google/gwt/user/client/ui/TreeItem.html" title="class in com.google.gwt.user.client.ui">TreeItem</A> <B>addItem</B>(<A HREF="../../../../../../com/google/gwt/safehtml/shared/SafeHtml.html" title="interface in com.google.gwt.safehtml.shared">SafeHtml</A>&nbsp;itemHtml)</PRE>
+<DL>
+<DD>Adds a simple tree item containing the specified html.
+<P>
+<DD><DL>
+</DL>
+</DD>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>itemHtml</CODE> - the html of the item to be added
+<DT><B>Returns:</B><DD>the item that was added</DL>
+</DD>
+</DL>
+<HR>
+
 <A NAME="addItem(com.google.gwt.user.client.ui.TreeItem)"><!-- --></A><H3>
 addItem</H3>
 <PRE>
@@ -1184,7 +1220,7 @@ addOpenHandler</H3>
 public final <A HREF="../../../../../../com/google/gwt/event/shared/HandlerRegistration.html" title="interface in com.google.gwt.event.shared">HandlerRegistration</A> <B>addOpenHandler</B>(<A HREF="../../../../../../com/google/gwt/event/logical/shared/OpenHandler.html" title="interface in com.google.gwt.event.logical.shared">OpenHandler</A>&lt;<A HREF="../../../../../../com/google/gwt/user/client/ui/TreeItem.html" title="class in com.google.gwt.user.client.ui">TreeItem</A>&gt;&nbsp;handler)</PRE>
 <DL>
 <DD><B>Description copied from interface: <CODE><A HREF="../../../../../../com/google/gwt/event/logical/shared/HasOpenHandlers.html#addOpenHandler(com.google.gwt.event.logical.shared.OpenHandler)">HasOpenHandlers</A></CODE></B></DD>
-<DD>Adds a <A HREF="../../../../../../com/google/gwt/event/logical/shared/OpenEvent.html" title="class in com.google.gwt.event.logical.shared"><CODE>OpenEvent</CODE></A> handler.
+<DD>Adds an <A HREF="../../../../../../com/google/gwt/event/logical/shared/OpenEvent.html" title="class in com.google.gwt.event.logical.shared"><CODE>OpenEvent</CODE></A> handler.
 <P>
 <DD><DL>
 <DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../../com/google/gwt/event/logical/shared/HasOpenHandlers.html#addOpenHandler(com.google.gwt.event.logical.shared.OpenHandler)">addOpenHandler</A></CODE> in interface <CODE><A HREF="../../../../../../com/google/gwt/event/logical/shared/HasOpenHandlers.html" title="interface in com.google.gwt.event.logical.shared">HasOpenHandlers</A>&lt;<A HREF="../../../../../../com/google/gwt/user/client/ui/TreeItem.html" title="class in com.google.gwt.user.client.ui">TreeItem</A>&gt;</CODE></DL>
@@ -1358,6 +1394,27 @@ public <A HREF="../../../../../../com/google/gwt/user/client/ui/TreeItem.html" t
 </DL>
 <HR>
 
+<A NAME="insertItem(int, com.google.gwt.safehtml.shared.SafeHtml)"><!-- --></A><H3>
+insertItem</H3>
+<PRE>
+public <A HREF="../../../../../../com/google/gwt/user/client/ui/TreeItem.html" title="class in com.google.gwt.user.client.ui">TreeItem</A> <B>insertItem</B>(int&nbsp;beforeIndex,
+                           <A HREF="../../../../../../com/google/gwt/safehtml/shared/SafeHtml.html" title="interface in com.google.gwt.safehtml.shared">SafeHtml</A>&nbsp;itemHtml)</PRE>
+<DL>
+<DD>Inserts a child tree item at the specified index containing the specified
+ html.
+<P>
+<DD><DL>
+</DL>
+</DD>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>beforeIndex</CODE> - the index where the item will be inserted<DD><CODE>itemHtml</CODE> - the html of the item to be added
+<DT><B>Returns:</B><DD>the item that was added
+<DT><B>Throws:</B>
+<DD><CODE>java.lang.IndexOutOfBoundsException</CODE> - if the index is out of range</DL>
+</DD>
+</DL>
+<HR>
+
 <A NAME="insertItem(int, com.google.gwt.user.client.ui.TreeItem)"><!-- --></A><H3>
 insertItem</H3>
 <PRE>
@@ -1403,12 +1460,14 @@ isAnimationEnabled</H3>
 <PRE>
 public boolean <B>isAnimationEnabled</B>()</PRE>
 <DL>
+<DD><B>Description copied from interface: <CODE><A HREF="../../../../../../com/google/gwt/user/client/ui/HasAnimation.html#isAnimationEnabled()">HasAnimation</A></CODE></B></DD>
+<DD>Returns true if animations are enabled, false if not.
+<P>
 <DD><DL>
 <DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../../com/google/gwt/user/client/ui/HasAnimation.html#isAnimationEnabled()">isAnimationEnabled</A></CODE> in interface <CODE><A HREF="../../../../../../com/google/gwt/user/client/ui/HasAnimation.html" title="interface in com.google.gwt.user.client.ui">HasAnimation</A></CODE></DL>
 </DD>
 <DD><DL>
-
-<DT><B>Returns:</B><DD>true if animations are enabled, false if not</DL>
+</DL>
 </DD>
 </DL>
 <HR>
@@ -1793,8 +1852,7 @@ protected void <B>onLoad</B>()</PRE>
 <DL>
 <DD><B>Description copied from class: <CODE><A HREF="../../../../../../com/google/gwt/user/client/ui/Widget.html#onLoad()">Widget</A></CODE></B></DD>
 <DD>This method is called immediately after a widget becomes attached to the
- browser's document. This default implementation notifies the widgets
- <CODE>AttachEvent.Handler</CODE>s.
+ browser's document.
 <P>
 <DD><DL>
 <DT><B>Overrides:</B><DD><CODE><A HREF="../../../../../../com/google/gwt/user/client/ui/Widget.html#onLoad()">onLoad</A></CODE> in class <CODE><A HREF="../../../../../../com/google/gwt/user/client/ui/Widget.html" title="class in com.google.gwt.user.client.ui">Widget</A></CODE></DL>
@@ -1819,6 +1877,7 @@ protected void <B>onLoad</B>()</PRE>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-summary.html"><FONT CLASS="NavBarFont1"><B>Package</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Class</B></FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="class-use/Tree.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
@@ -1827,7 +1886,7 @@ protected void <B>onLoad</B>()</PRE>
 </TABLE>
 </TD>
 <TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
-GWT 2.1.0.RC1</EM>
+GWT 2.1.1</EM>
 </TD>
 </TR>
 

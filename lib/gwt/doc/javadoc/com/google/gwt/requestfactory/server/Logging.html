@@ -38,6 +38,7 @@ function windowTitle()
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-summary.html"><FONT CLASS="NavBarFont1"><B>Package</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Class</B></FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="class-use/Logging.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
@@ -46,14 +47,14 @@ function windowTitle()
 </TABLE>
 </TD>
 <TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
-GWT 2.1.0.RC1</EM>
+GWT 2.1.1</EM>
 </TD>
 </TR>
 
 <TR>
 <TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
-&nbsp;<A HREF="../../../../../com/google/gwt/requestfactory/server/JsonRequestProcessor.html" title="class in com.google.gwt.requestfactory.server"><B>PREV CLASS</B></A>&nbsp;
-&nbsp;<A HREF="../../../../../com/google/gwt/requestfactory/server/OperationRegistry.html" title="interface in com.google.gwt.requestfactory.server"><B>NEXT CLASS</B></A></FONT></TD>
+&nbsp;<A HREF="../../../../../com/google/gwt/requestfactory/server/ExceptionHandler.html" title="interface in com.google.gwt.requestfactory.server"><B>PREV CLASS</B></A>&nbsp;
+&nbsp;<A HREF="../../../../../com/google/gwt/requestfactory/server/RequestFactoryInterfaceValidator.html" title="class in com.google.gwt.requestfactory.server"><B>NEXT CLASS</B></A></FONT></TD>
 <TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
   <A HREF="../../../../../index.html?com/google/gwt/requestfactory/server/Logging.html" target="_top"><B>FRAMES</B></A>  &nbsp;
 &nbsp;<A HREF="Logging.html" target="_top"><B>NO FRAMES</B></A>  &nbsp;
@@ -99,7 +100,7 @@ java.lang.Object
 
 <P>
 Server side object that handles log messages sent by
- <CODE>RequestFactoryLogHandler</CODE>.
+ <A HREF="../../../../../com/google/gwt/requestfactory/client/RequestFactoryLogHandler.html" title="class in com.google.gwt.requestfactory.client"><CODE>RequestFactoryLogHandler</CODE></A>.
 <P>
 
 <P>
@@ -137,7 +138,7 @@ Server side object that handles log messages sent by
 <TD><CODE><B><A HREF="../../../../../com/google/gwt/requestfactory/server/Logging.html#getId()">getId</A></B>()</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns the id of this instance.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -145,7 +146,7 @@ Server side object that handles log messages sent by
 <TD><CODE><B><A HREF="../../../../../com/google/gwt/requestfactory/server/Logging.html#getVersion()">getVersion</A></B>()</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns the version of this instance.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -153,7 +154,7 @@ Server side object that handles log messages sent by
 <TD><CODE><B><A HREF="../../../../../com/google/gwt/requestfactory/server/Logging.html#logMessage(java.lang.String)">logMessage</A></B>(java.lang.String&nbsp;logRecordJson)</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Logs a message.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -161,7 +162,7 @@ Server side object that handles log messages sent by
 <TD><CODE><B><A HREF="../../../../../com/google/gwt/requestfactory/server/Logging.html#setId(java.lang.String)">setId</A></B>(java.lang.String&nbsp;id)</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sets the id on this instance.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -178,7 +179,7 @@ Server side object that handles log messages sent by
 <TD><CODE><B><A HREF="../../../../../com/google/gwt/requestfactory/server/Logging.html#setVersion(java.lang.Integer)">setVersion</A></B>(java.lang.Integer&nbsp;version)</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sets the version of this instance.</TD>
 </TR>
 </TABLE>
 &nbsp;<A NAME="methods_inherited_from_class_java.lang.Object"><!-- --></A>
@@ -226,10 +227,13 @@ logMessage</H3>
 public static void <B>logMessage</B>(java.lang.String&nbsp;logRecordJson)
                        throws <A HREF="../../../../../com/google/gwt/logging/server/RemoteLoggingServiceUtil.RemoteLoggingException.html" title="class in com.google.gwt.logging.server">RemoteLoggingServiceUtil.RemoteLoggingException</A></PRE>
 <DL>
+<DD>Logs a message.
+<P>
 <DD><DL>
-
+<DT><B>Parameters:</B><DD><CODE>serializedLogRecordString</CODE> - a json serialized LogRecord, as provided by
+ <CODE>com.google.gwt.logging.client.JsonLogRecordClientUtil.logRecordAsJsonObject(LogRecord)</CODE>
 <DT><B>Throws:</B>
-<DD><CODE><A HREF="../../../../../com/google/gwt/logging/server/RemoteLoggingServiceUtil.RemoteLoggingException.html" title="class in com.google.gwt.logging.server">RemoteLoggingServiceUtil.RemoteLoggingException</A></CODE></DL>
+<DD><CODE><A HREF="../../../../../com/google/gwt/logging/server/RemoteLoggingServiceUtil.RemoteLoggingException.html" title="class in com.google.gwt.logging.server">RemoteLoggingServiceUtil.RemoteLoggingException</A></CODE> - if logging fails</DL>
 </DD>
 </DL>
 <HR>
@@ -243,7 +247,7 @@ public static void <B>setSymbolMapsDirectory</B>(java.lang.String&nbsp;dir)</PRE
  LoggingRequest interface.
 <P>
 <DD><DL>
-</DL>
+<DT><B>Parameters:</B><DD><CODE>dir</CODE> - a directory, specified as a String</DL>
 </DD>
 </DL>
 <HR>
@@ -253,8 +257,11 @@ getId</H3>
 <PRE>
 public java.lang.String <B>getId</B>()</PRE>
 <DL>
+<DD>Returns the id of this instance.
+<P>
 <DD><DL>
-</DL>
+
+<DT><B>Returns:</B><DD>a String id<DT><B>See Also:</B><DD><A HREF="../../../../../com/google/gwt/requestfactory/server/Logging.html#setId(java.lang.String)"><CODE>setId(String)</CODE></A></DL>
 </DD>
 </DL>
 <HR>
@@ -264,8 +271,11 @@ getVersion</H3>
 <PRE>
 public java.lang.Integer <B>getVersion</B>()</PRE>
 <DL>
+<DD>Returns the version of this instance.
+<P>
 <DD><DL>
-</DL>
+
+<DT><B>Returns:</B><DD>an Integer version number<DT><B>See Also:</B><DD><A HREF="../../../../../com/google/gwt/requestfactory/server/Logging.html#setVersion(java.lang.Integer)"><CODE>setVersion(Integer)</CODE></A></DL>
 </DD>
 </DL>
 <HR>
@@ -275,8 +285,10 @@ setId</H3>
 <PRE>
 public void <B>setId</B>(java.lang.String&nbsp;id)</PRE>
 <DL>
+<DD>Sets the id on this instance.
+<P>
 <DD><DL>
-</DL>
+<DT><B>Parameters:</B><DD><CODE>id</CODE> - a String id<DT><B>See Also:</B><DD><A HREF="../../../../../com/google/gwt/requestfactory/server/Logging.html#getId()"><CODE>getId()</CODE></A></DL>
 </DD>
 </DL>
 <HR>
@@ -286,8 +298,10 @@ setVersion</H3>
 <PRE>
 public void <B>setVersion</B>(java.lang.Integer&nbsp;version)</PRE>
 <DL>
+<DD>Sets the version of this instance.
+<P>
 <DD><DL>
-</DL>
+<DT><B>Parameters:</B><DD><CODE>version</CODE> - an Integer version number<DT><B>See Also:</B><DD><A HREF="../../../../../com/google/gwt/requestfactory/server/Logging.html#getVersion()"><CODE>getVersion()</CODE></A></DL>
 </DD>
 </DL>
 <!-- ========= END OF CLASS DATA ========= -->
@@ -306,6 +320,7 @@ public void <B>setVersion</B>(java.lang.Integer&nbsp;version)</PRE>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-summary.html"><FONT CLASS="NavBarFont1"><B>Package</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Class</B></FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="class-use/Logging.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
@@ -314,14 +329,14 @@ public void <B>setVersion</B>(java.lang.Integer&nbsp;version)</PRE>
 </TABLE>
 </TD>
 <TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
-GWT 2.1.0.RC1</EM>
+GWT 2.1.1</EM>
 </TD>
 </TR>
 
 <TR>
 <TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
-&nbsp;<A HREF="../../../../../com/google/gwt/requestfactory/server/JsonRequestProcessor.html" title="class in com.google.gwt.requestfactory.server"><B>PREV CLASS</B></A>&nbsp;
-&nbsp;<A HREF="../../../../../com/google/gwt/requestfactory/server/OperationRegistry.html" title="interface in com.google.gwt.requestfactory.server"><B>NEXT CLASS</B></A></FONT></TD>
+&nbsp;<A HREF="../../../../../com/google/gwt/requestfactory/server/ExceptionHandler.html" title="interface in com.google.gwt.requestfactory.server"><B>PREV CLASS</B></A>&nbsp;
+&nbsp;<A HREF="../../../../../com/google/gwt/requestfactory/server/RequestFactoryInterfaceValidator.html" title="class in com.google.gwt.requestfactory.server"><B>NEXT CLASS</B></A></FONT></TD>
 <TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
   <A HREF="../../../../../index.html?com/google/gwt/requestfactory/server/Logging.html" target="_top"><B>FRAMES</B></A>  &nbsp;
 &nbsp;<A HREF="Logging.html" target="_top"><B>NO FRAMES</B></A>  &nbsp;

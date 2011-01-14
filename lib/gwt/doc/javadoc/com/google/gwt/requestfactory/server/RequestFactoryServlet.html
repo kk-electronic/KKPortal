@@ -38,6 +38,7 @@ function windowTitle()
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-summary.html"><FONT CLASS="NavBarFont1"><B>Package</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Class</B></FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="class-use/RequestFactoryServlet.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
@@ -46,14 +47,14 @@ function windowTitle()
 </TABLE>
 </TD>
 <TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
-GWT 2.1.0.RC1</EM>
+GWT 2.1.1</EM>
 </TD>
 </TR>
 
 <TR>
 <TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
-&nbsp;<A HREF="../../../../../com/google/gwt/requestfactory/server/RequestDefinition.html" title="interface in com.google.gwt.requestfactory.server"><B>PREV CLASS</B></A>&nbsp;
-&nbsp;<A HREF="../../../../../com/google/gwt/requestfactory/server/RequestProcessingException.html" title="class in com.google.gwt.requestfactory.server"><B>NEXT CLASS</B></A></FONT></TD>
+&nbsp;<A HREF="../../../../../com/google/gwt/requestfactory/server/RequestFactoryInterfaceValidator.Loader.html" title="interface in com.google.gwt.requestfactory.server"><B>PREV CLASS</B></A>&nbsp;
+&nbsp;<A HREF="../../../../../com/google/gwt/requestfactory/server/ServiceLayer.html" title="class in com.google.gwt.requestfactory.server"><B>NEXT CLASS</B></A></FONT></TD>
 <TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
   <A HREF="../../../../../index.html?com/google/gwt/requestfactory/server/RequestFactoryServlet.html" target="_top"><B>FRAMES</B></A>  &nbsp;
 &nbsp;<A HREF="RequestFactoryServlet.html" target="_top"><B>NO FRAMES</B></A>  &nbsp;
@@ -103,29 +104,7 @@ java.lang.Object
 </PRE>
 
 <P>
-<p>
- <span style="color:red">Experimental API: This class is still under rapid
- development, and is very likely to be deleted. Use it at your own risk.
- </span>
- </p>
- Handles GWT RequestFactory JSON requests. Does user authentication on every
- request, returning SC_UNAUTHORIZED if authentication fails, as well as a
- header named "login" which contains the URL the user should be sent in to
- login. Note that the servlet expects a "pageurl" header in the request,
- indicating the page to redirect to after authentication. If authentication
- succeeds, a header named "userId" is returned, which will be unique to the
- user (so the app can react if the signed in user has changed).
- 
- Configured via servlet init params.
- <p>
- e.g. - in order to use GAE authentication:
- 
- <pre>  &lt;init-param>
-    &lt;param-name>userInfoClass&lt;/param-name>
-    &lt;param-value>com.google.gwt.sample.expenses.server.domain.GaeUserInformation&lt;/param-value>
-  &lt;/init-param>
-
- </pre>
+Handles GWT RequestFactory JSON requests.
 <P>
 
 <P>
@@ -147,10 +126,12 @@ java.lang.Object
 <TD><CODE><B><A HREF="../../../../../com/google/gwt/requestfactory/server/RequestFactoryServlet.html#RequestFactoryServlet()">RequestFactoryServlet</A></B>()</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Constructs a new <A HREF="../../../../../com/google/gwt/requestfactory/server/RequestFactoryServlet.html" title="class in com.google.gwt.requestfactory.server"><CODE>RequestFactoryServlet</CODE></A> with a
+ <code>DefaultExceptionHandler</code>.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
-<TD><CODE><B><A HREF="../../../../../com/google/gwt/requestfactory/server/RequestFactoryServlet.html#RequestFactoryServlet(com.google.gwt.requestfactory.server.ExceptionHandler)">RequestFactoryServlet</A></B>(<A HREF="../../../../../com/google/gwt/requestfactory/server/ExceptionHandler.html" title="interface in com.google.gwt.requestfactory.server">ExceptionHandler</A>&nbsp;exceptionHandler)</CODE>
+<TD><CODE><B><A HREF="../../../../../com/google/gwt/requestfactory/server/RequestFactoryServlet.html#RequestFactoryServlet(com.google.gwt.requestfactory.server.ExceptionHandler, com.google.gwt.requestfactory.server.ServiceLayerDecorator...)">RequestFactoryServlet</A></B>(<A HREF="../../../../../com/google/gwt/requestfactory/server/ExceptionHandler.html" title="interface in com.google.gwt.requestfactory.server">ExceptionHandler</A>&nbsp;exceptionHandler,
+                      <A HREF="../../../../../com/google/gwt/requestfactory/server/ServiceLayerDecorator.html" title="class in com.google.gwt.requestfactory.server">ServiceLayerDecorator</A>...&nbsp;serviceDecorators)</CODE>
 
 <BR>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Use this constructor in subclasses to provide a custom
@@ -173,7 +154,7 @@ java.lang.Object
        javax.servlet.http.HttpServletResponse&nbsp;response)</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Processes a POST to the server.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -181,7 +162,7 @@ java.lang.Object
 <TD><CODE><B><A HREF="../../../../../com/google/gwt/requestfactory/server/RequestFactoryServlet.html#getThreadLocalRequest()">getThreadLocalRequest</A></B>()</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns the thread-local <CODE>HttpServletRequest</CODE>.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -189,7 +170,7 @@ java.lang.Object
 <TD><CODE><B><A HREF="../../../../../com/google/gwt/requestfactory/server/RequestFactoryServlet.html#getThreadLocalResponse()">getThreadLocalResponse</A></B>()</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns the thread-local <CODE>HttpServletResponse</CODE>.</TD>
 </TR>
 </TABLE>
 &nbsp;<A NAME="methods_inherited_from_class_javax.servlet.http.HttpServlet"><!-- --></A>
@@ -237,17 +218,25 @@ RequestFactoryServlet</H3>
 <PRE>
 public <B>RequestFactoryServlet</B>()</PRE>
 <DL>
+<DD>Constructs a new <A HREF="../../../../../com/google/gwt/requestfactory/server/RequestFactoryServlet.html" title="class in com.google.gwt.requestfactory.server"><CODE>RequestFactoryServlet</CODE></A> with a
+ <code>DefaultExceptionHandler</code>.
+<P>
 </DL>
 <HR>
 
-<A NAME="RequestFactoryServlet(com.google.gwt.requestfactory.server.ExceptionHandler)"><!-- --></A><H3>
+<A NAME="RequestFactoryServlet(com.google.gwt.requestfactory.server.ExceptionHandler, com.google.gwt.requestfactory.server.ServiceLayerDecorator...)"><!-- --></A><H3>
 RequestFactoryServlet</H3>
 <PRE>
-public <B>RequestFactoryServlet</B>(<A HREF="../../../../../com/google/gwt/requestfactory/server/ExceptionHandler.html" title="interface in com.google.gwt.requestfactory.server">ExceptionHandler</A>&nbsp;exceptionHandler)</PRE>
+public <B>RequestFactoryServlet</B>(<A HREF="../../../../../com/google/gwt/requestfactory/server/ExceptionHandler.html" title="interface in com.google.gwt.requestfactory.server">ExceptionHandler</A>&nbsp;exceptionHandler,
+                             <A HREF="../../../../../com/google/gwt/requestfactory/server/ServiceLayerDecorator.html" title="class in com.google.gwt.requestfactory.server">ServiceLayerDecorator</A>...&nbsp;serviceDecorators)</PRE>
 <DL>
 <DD>Use this constructor in subclasses to provide a custom
  <A HREF="../../../../../com/google/gwt/requestfactory/server/ExceptionHandler.html" title="interface in com.google.gwt.requestfactory.server"><CODE>ExceptionHandler</CODE></A>.
 <P>
+<DL>
+<DT><B>Parameters:</B><DD><CODE>exceptionHandler</CODE> - an <A HREF="../../../../../com/google/gwt/requestfactory/server/ExceptionHandler.html" title="interface in com.google.gwt.requestfactory.server"><CODE>ExceptionHandler</CODE></A> instance<DD><CODE>serviceDecorators</CODE> - an array of ServiceLayerDecorators that change how
+          the RequestFactory request processor interact with the domain
+          objects</DL>
 </DL>
 
 <!-- ============ METHOD DETAIL ========== -->
@@ -265,8 +254,11 @@ getThreadLocalRequest</H3>
 <PRE>
 public static javax.servlet.http.HttpServletRequest <B>getThreadLocalRequest</B>()</PRE>
 <DL>
+<DD>Returns the thread-local <CODE>HttpServletRequest</CODE>.
+<P>
 <DD><DL>
-</DL>
+
+<DT><B>Returns:</B><DD>an <CODE>HttpServletRequest</CODE> instance</DL>
 </DD>
 </DL>
 <HR>
@@ -276,8 +268,11 @@ getThreadLocalResponse</H3>
 <PRE>
 public static javax.servlet.http.HttpServletResponse <B>getThreadLocalResponse</B>()</PRE>
 <DL>
+<DD>Returns the thread-local <CODE>HttpServletResponse</CODE>.
+<P>
 <DD><DL>
-</DL>
+
+<DT><B>Returns:</B><DD>an <CODE>HttpServletResponse</CODE> instance</DL>
 </DD>
 </DL>
 <HR>
@@ -290,14 +285,16 @@ protected void <B>doPost</B>(javax.servlet.http.HttpServletRequest&nbsp;request,
                throws java.io.IOException,
                       javax.servlet.ServletException</PRE>
 <DL>
+<DD>Processes a POST to the server.
+<P>
 <DD><DL>
 <DT><B>Overrides:</B><DD><CODE>doPost</CODE> in class <CODE>javax.servlet.http.HttpServlet</CODE></DL>
 </DD>
 <DD><DL>
-
+<DT><B>Parameters:</B><DD><CODE>request</CODE> - an <CODE>HttpServletRequest</CODE> instance<DD><CODE>response</CODE> - an <CODE>HttpServletResponse</CODE> instance
 <DT><B>Throws:</B>
-<DD><CODE>java.io.IOException</CODE>
-<DD><CODE>javax.servlet.ServletException</CODE></DL>
+<DD><CODE>java.io.IOException</CODE> - if an internal I/O error occurs
+<DD><CODE>javax.servlet.ServletException</CODE> - if an error occurs in the servlet</DL>
 </DD>
 </DL>
 <!-- ========= END OF CLASS DATA ========= -->
@@ -316,6 +313,7 @@ protected void <B>doPost</B>(javax.servlet.http.HttpServletRequest&nbsp;request,
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-summary.html"><FONT CLASS="NavBarFont1"><B>Package</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Class</B></FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="class-use/RequestFactoryServlet.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
@@ -324,14 +322,14 @@ protected void <B>doPost</B>(javax.servlet.http.HttpServletRequest&nbsp;request,
 </TABLE>
 </TD>
 <TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
-GWT 2.1.0.RC1</EM>
+GWT 2.1.1</EM>
 </TD>
 </TR>
 
 <TR>
 <TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
-&nbsp;<A HREF="../../../../../com/google/gwt/requestfactory/server/RequestDefinition.html" title="interface in com.google.gwt.requestfactory.server"><B>PREV CLASS</B></A>&nbsp;
-&nbsp;<A HREF="../../../../../com/google/gwt/requestfactory/server/RequestProcessingException.html" title="class in com.google.gwt.requestfactory.server"><B>NEXT CLASS</B></A></FONT></TD>
+&nbsp;<A HREF="../../../../../com/google/gwt/requestfactory/server/RequestFactoryInterfaceValidator.Loader.html" title="interface in com.google.gwt.requestfactory.server"><B>PREV CLASS</B></A>&nbsp;
+&nbsp;<A HREF="../../../../../com/google/gwt/requestfactory/server/ServiceLayer.html" title="class in com.google.gwt.requestfactory.server"><B>NEXT CLASS</B></A></FONT></TD>
 <TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
   <A HREF="../../../../../index.html?com/google/gwt/requestfactory/server/RequestFactoryServlet.html" target="_top"><B>FRAMES</B></A>  &nbsp;
 &nbsp;<A HREF="RequestFactoryServlet.html" target="_top"><B>NO FRAMES</B></A>  &nbsp;

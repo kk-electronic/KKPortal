@@ -38,6 +38,7 @@ function windowTitle()
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-summary.html"><FONT CLASS="NavBarFont1"><B>Package</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Class</B></FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="class-use/EntityProxy.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
@@ -46,13 +47,13 @@ function windowTitle()
 </TABLE>
 </TD>
 <TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
-GWT 2.1.0.RC1</EM>
+GWT 2.1.1</EM>
 </TD>
 </TR>
 
 <TR>
 <TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
-&nbsp;PREV CLASS&nbsp;
+&nbsp;<A HREF="../../../../../com/google/gwt/requestfactory/shared/DefaultProxyStore.html" title="class in com.google.gwt.requestfactory.shared"><B>PREV CLASS</B></A>&nbsp;
 &nbsp;<A HREF="../../../../../com/google/gwt/requestfactory/shared/EntityProxyChange.html" title="class in com.google.gwt.requestfactory.shared"><B>NEXT CLASS</B></A></FONT></TD>
 <TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
   <A HREF="../../../../../index.html?com/google/gwt/requestfactory/shared/EntityProxy.html" target="_top"><B>FRAMES</B></A>  &nbsp;
@@ -89,20 +90,15 @@ com.google.gwt.requestfactory.shared</FONT>
 <BR>
 Interface EntityProxy</H2>
 <DL>
-<DT><B>All Known Subinterfaces:</B> <DD><A HREF="../../../../../com/google/gwt/requestfactory/shared/UserInformationProxy.html" title="interface in com.google.gwt.requestfactory.shared">UserInformationProxy</A></DD>
+<DT><B>All Superinterfaces:</B> <DD><A HREF="../../../../../com/google/gwt/requestfactory/shared/BaseProxy.html" title="interface in com.google.gwt.requestfactory.shared">BaseProxy</A></DD>
 </DL>
 <HR>
 <DL>
-<DT><PRE>public interface <B>EntityProxy</B></DL>
+<DT><PRE>public interface <B>EntityProxy</B><DT>extends <A HREF="../../../../../com/google/gwt/requestfactory/shared/BaseProxy.html" title="interface in com.google.gwt.requestfactory.shared">BaseProxy</A></DL>
 </PRE>
 
 <P>
-<p>
- <span style="color:red">Experimental API: This class is still under rapid
- development, and is very likely to be deleted. Use it at your own risk.
- </span>
- </p>
- A proxy for a server-side domain object.
+A proxy for a server-side domain object.
 <P>
 
 <P>
@@ -149,9 +145,9 @@ stableId</H3>
 <DD>Returns the <A HREF="../../../../../com/google/gwt/requestfactory/shared/EntityProxyId.html" title="interface in com.google.gwt.requestfactory.shared"><CODE>EntityProxyId</CODE></A> that identifies a particular instance of
  the type proxied by the receiver.
  <p>
- An id returned by a proxy newly created by <CODE>RequestFactory#create</CODE>
- <CODE>#equals(Object)</CODE> those returned later by a proxies to the persisted
- object.
+ An id returned by a proxy newly created by <A HREF="../../../../../com/google/gwt/requestfactory/shared/RequestContext.html#create(java.lang.Class)"><CODE>RequestContext.create(java.lang.Class<T>)</CODE></A>
+ <CODE>equals</CODE> those returned later by proxies to the
+ persisted object.
  <p>
  Subtypes should override to declare they return a stable id of their own
  type, to allow type safe use of the request objects returned by
@@ -159,6 +155,10 @@ stableId</H3>
 <P>
 <DD><DL>
 </DL>
+</DD>
+<DD><DL>
+
+<DT><B>Returns:</B><DD>an <A HREF="../../../../../com/google/gwt/requestfactory/shared/EntityProxyId.html" title="interface in com.google.gwt.requestfactory.shared"><CODE>EntityProxyId</CODE></A> instance</DL>
 </DD>
 </DL>
 <!-- ========= END OF CLASS DATA ========= -->
@@ -177,6 +177,7 @@ stableId</H3>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-summary.html"><FONT CLASS="NavBarFont1"><B>Package</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Class</B></FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="class-use/EntityProxy.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
@@ -185,13 +186,13 @@ stableId</H3>
 </TABLE>
 </TD>
 <TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
-GWT 2.1.0.RC1</EM>
+GWT 2.1.1</EM>
 </TD>
 </TR>
 
 <TR>
 <TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
-&nbsp;PREV CLASS&nbsp;
+&nbsp;<A HREF="../../../../../com/google/gwt/requestfactory/shared/DefaultProxyStore.html" title="class in com.google.gwt.requestfactory.shared"><B>PREV CLASS</B></A>&nbsp;
 &nbsp;<A HREF="../../../../../com/google/gwt/requestfactory/shared/EntityProxyChange.html" title="class in com.google.gwt.requestfactory.shared"><B>NEXT CLASS</B></A></FONT></TD>
 <TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
   <A HREF="../../../../../index.html?com/google/gwt/requestfactory/shared/EntityProxy.html" target="_top"><B>FRAMES</B></A>  &nbsp;

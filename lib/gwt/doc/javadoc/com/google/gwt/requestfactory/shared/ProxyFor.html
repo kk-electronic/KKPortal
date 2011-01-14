@@ -38,6 +38,7 @@ function windowTitle()
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-summary.html"><FONT CLASS="NavBarFont1"><B>Package</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Class</B></FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="class-use/ProxyFor.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
@@ -46,14 +47,14 @@ function windowTitle()
 </TABLE>
 </TD>
 <TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
-GWT 2.1.0.RC1</EM>
+GWT 2.1.1</EM>
 </TD>
 </TR>
 
 <TR>
 <TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
 &nbsp;<A HREF="../../../../../com/google/gwt/requestfactory/shared/LoggingRequest.html" title="interface in com.google.gwt.requestfactory.shared"><B>PREV CLASS</B></A>&nbsp;
-&nbsp;<A HREF="../../../../../com/google/gwt/requestfactory/shared/Receiver.html" title="class in com.google.gwt.requestfactory.shared"><B>NEXT CLASS</B></A></FONT></TD>
+&nbsp;<A HREF="../../../../../com/google/gwt/requestfactory/shared/ProxyForName.html" title="annotation in com.google.gwt.requestfactory.shared"><B>NEXT CLASS</B></A></FONT></TD>
 <TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
   <A HREF="../../../../../index.html?com/google/gwt/requestfactory/shared/ProxyFor.html" target="_top"><B>FRAMES</B></A>  &nbsp;
 &nbsp;<A HREF="ProxyFor.html" target="_top"><B>NO FRAMES</B></A>  &nbsp;
@@ -73,7 +74,7 @@ GWT 2.1.0.RC1</EM>
 </TR>
 <TR>
 <TD VALIGN="top" CLASS="NavBarCell3"><FONT SIZE="-2">
-  SUMMARY:&nbsp;<A HREF="#annotation_type_required_element_summary">REQUIRED</A>&nbsp;|&nbsp;OPTIONAL</FONT></TD>
+  SUMMARY:&nbsp;<A HREF="#annotation_type_required_element_summary">REQUIRED</A>&nbsp;|&nbsp;<A HREF="#annotation_type_optional_element_summary">OPTIONAL</A></FONT></TD>
 <TD VALIGN="top" CLASS="NavBarCell3"><FONT SIZE="-2">
 DETAIL:&nbsp;<A HREF="#annotation_type_element_detail">ELEMENT</A></FONT></TD>
 </TR>
@@ -96,13 +97,13 @@ Annotation Type ProxyFor</H2>
 </PRE>
 
 <P>
-<p> <span style="color:red">Experimental API: This class is still under rapid
- development, and is very likely to be deleted. Use it at your own risk.
- </span> </p> Annotation on Record classes specifying 'type'. 'type'
- represents the server-side counterpart of the Record.
+Annotation on EntityProxy and ValueProxy classes specifying the domain
+ (server-side) object type.
 <P>
 
 <P>
+<DL>
+<DT><B>See Also:</B><DD><A HREF="../../../../../com/google/gwt/requestfactory/shared/ProxyForName.html" title="annotation in com.google.gwt.requestfactory.shared"><CODE>ProxyForName</CODE></A></DL>
 <HR>
 
 <P>
@@ -120,7 +121,24 @@ Annotation Type ProxyFor</H2>
 <TD><CODE><B><A HREF="../../../../../com/google/gwt/requestfactory/shared/ProxyFor.html#value()">value</A></B></CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The domain type that the proxy is mapped to.</TD>
+</TR>
+</TABLE>
+&nbsp;<!-- =========== ANNOTATION TYPE OPTIONAL MEMBER SUMMARY =========== -->
+
+<A NAME="annotation_type_optional_element_summary"><!-- --></A>
+<TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
+<TR BGCOLOR="#CCCCFF" CLASS="TableHeadingColor">
+<TH ALIGN="left" COLSPAN="2"><FONT SIZE="+2">
+<B>Optional Element Summary</B></FONT></TH>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;java.lang.Class&lt;? extends <A HREF="../../../../../com/google/gwt/requestfactory/shared/Locator.html" title="class in com.google.gwt.requestfactory.shared">Locator</A>&gt;</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../com/google/gwt/requestfactory/shared/ProxyFor.html#locator()">locator</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;An optional <A HREF="../../../../../com/google/gwt/requestfactory/shared/Locator.html" title="class in com.google.gwt.requestfactory.shared"><CODE>Locator</CODE></A> that provides instances of the domain objects.</TD>
 </TR>
 </TABLE>
 &nbsp;
@@ -141,10 +159,28 @@ value</H3>
 <PRE>
 public abstract java.lang.Class&lt;?&gt; <B>value</B></PRE>
 <DL>
+<DD>The domain type that the proxy is mapped to.
+<P>
 <DD><DL>
 </DL>
 </DD>
 <DD><DL>
+</DL>
+</DL>
+<A NAME="locator()"><!-- --></A><H3>
+locator</H3>
+<PRE>
+public abstract java.lang.Class&lt;? extends <A HREF="../../../../../com/google/gwt/requestfactory/shared/Locator.html" title="class in com.google.gwt.requestfactory.shared">Locator</A>&gt; <B>locator</B></PRE>
+<DL>
+<DD>An optional <A HREF="../../../../../com/google/gwt/requestfactory/shared/Locator.html" title="class in com.google.gwt.requestfactory.shared"><CODE>Locator</CODE></A> that provides instances of the domain objects.
+<P>
+<DD><DL>
+</DL>
+</DD>
+<DD><DL>
+</DL>
+<DL>
+<DT><B>Default:</B><DD>com.google.gwt.requestfactory.shared.Locator.class</DD>
 </DL>
 </DL>
 <!-- ========= END OF CLASS DATA ========= -->
@@ -163,6 +199,7 @@ public abstract java.lang.Class&lt;?&gt; <B>value</B></PRE>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-summary.html"><FONT CLASS="NavBarFont1"><B>Package</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Class</B></FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="class-use/ProxyFor.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
@@ -171,14 +208,14 @@ public abstract java.lang.Class&lt;?&gt; <B>value</B></PRE>
 </TABLE>
 </TD>
 <TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
-GWT 2.1.0.RC1</EM>
+GWT 2.1.1</EM>
 </TD>
 </TR>
 
 <TR>
 <TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
 &nbsp;<A HREF="../../../../../com/google/gwt/requestfactory/shared/LoggingRequest.html" title="interface in com.google.gwt.requestfactory.shared"><B>PREV CLASS</B></A>&nbsp;
-&nbsp;<A HREF="../../../../../com/google/gwt/requestfactory/shared/Receiver.html" title="class in com.google.gwt.requestfactory.shared"><B>NEXT CLASS</B></A></FONT></TD>
+&nbsp;<A HREF="../../../../../com/google/gwt/requestfactory/shared/ProxyForName.html" title="annotation in com.google.gwt.requestfactory.shared"><B>NEXT CLASS</B></A></FONT></TD>
 <TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
   <A HREF="../../../../../index.html?com/google/gwt/requestfactory/shared/ProxyFor.html" target="_top"><B>FRAMES</B></A>  &nbsp;
 &nbsp;<A HREF="ProxyFor.html" target="_top"><B>NO FRAMES</B></A>  &nbsp;
@@ -198,7 +235,7 @@ GWT 2.1.0.RC1</EM>
 </TR>
 <TR>
 <TD VALIGN="top" CLASS="NavBarCell3"><FONT SIZE="-2">
-  SUMMARY:&nbsp;<A HREF="#annotation_type_required_element_summary">REQUIRED</A>&nbsp;|&nbsp;OPTIONAL</FONT></TD>
+  SUMMARY:&nbsp;<A HREF="#annotation_type_required_element_summary">REQUIRED</A>&nbsp;|&nbsp;<A HREF="#annotation_type_optional_element_summary">OPTIONAL</A></FONT></TD>
 <TD VALIGN="top" CLASS="NavBarCell3"><FONT SIZE="-2">
 DETAIL:&nbsp;<A HREF="#annotation_type_element_detail">ELEMENT</A></FONT></TD>
 </TR>

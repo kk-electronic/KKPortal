@@ -38,6 +38,7 @@ function windowTitle()
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-summary.html"><FONT CLASS="NavBarFont1"><B>Package</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Class</B></FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="class-use/SelectionEvent.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
@@ -46,7 +47,7 @@ function windowTitle()
 </TABLE>
 </TD>
 <TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
-GWT 2.1.0.RC1</EM>
+GWT 2.1.1</EM>
 </TD>
 </TR>
 
@@ -87,17 +88,17 @@ DETAIL:&nbsp;FIELD&nbsp;|&nbsp;<A HREF="#constructor_detail">CONSTR</A>&nbsp;|&n
 <FONT SIZE="-1">
 com.google.gwt.event.logical.shared</FONT>
 <BR>
-Class SelectionEvent&lt;I&gt;</H2>
+Class SelectionEvent&lt;T&gt;</H2>
 <PRE>
 java.lang.Object
-  <IMG SRC="../../../../../../resources/inherit.gif" ALT="extended by "><A HREF="../../../../../../com/google/gwt/event/shared/GwtEvent.html" title="class in com.google.gwt.event.shared">com.google.gwt.event.shared.GwtEvent</A>&lt;<A HREF="../../../../../../com/google/gwt/event/logical/shared/SelectionHandler.html" title="interface in com.google.gwt.event.logical.shared">SelectionHandler</A>&lt;I&gt;&gt;
-      <IMG SRC="../../../../../../resources/inherit.gif" ALT="extended by "><B>com.google.gwt.event.logical.shared.SelectionEvent&lt;I&gt;</B>
+  <IMG SRC="../../../../../../resources/inherit.gif" ALT="extended by "><A HREF="../../../../../../com/google/gwt/event/shared/GwtEvent.html" title="class in com.google.gwt.event.shared">com.google.gwt.event.shared.GwtEvent</A>&lt;<A HREF="../../../../../../com/google/gwt/event/logical/shared/SelectionHandler.html" title="interface in com.google.gwt.event.logical.shared">SelectionHandler</A>&lt;T&gt;&gt;
+      <IMG SRC="../../../../../../resources/inherit.gif" ALT="extended by "><B>com.google.gwt.event.logical.shared.SelectionEvent&lt;T&gt;</B>
 </PRE>
 <DL>
-<DT><DT><B>Type Parameters:</B><DD><CODE>I</CODE> - the type being selected</DL>
+<DT><DT><B>Type Parameters:</B><DD><CODE>T</CODE> - the type being selected</DL>
 <HR>
 <DL>
-<DT><PRE>public class <B>SelectionEvent&lt;I&gt;</B><DT>extends <A HREF="../../../../../../com/google/gwt/event/shared/GwtEvent.html" title="class in com.google.gwt.event.shared">GwtEvent</A>&lt;<A HREF="../../../../../../com/google/gwt/event/logical/shared/SelectionHandler.html" title="interface in com.google.gwt.event.logical.shared">SelectionHandler</A>&lt;I&gt;&gt;</DL>
+<DT><PRE>public class <B>SelectionEvent&lt;T&gt;</B><DT>extends <A HREF="../../../../../../com/google/gwt/event/shared/GwtEvent.html" title="class in com.google.gwt.event.shared">GwtEvent</A>&lt;<A HREF="../../../../../../com/google/gwt/event/logical/shared/SelectionHandler.html" title="interface in com.google.gwt.event.logical.shared">SelectionHandler</A>&lt;T&gt;&gt;</DL>
 </PRE>
 
 <P>
@@ -139,7 +140,7 @@ Represents a selection event.
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
 <CODE>protected </CODE></FONT></TD>
-<TD><CODE><B><A HREF="../../../../../../com/google/gwt/event/logical/shared/SelectionEvent.html#SelectionEvent(I)">SelectionEvent</A></B>(<A HREF="../../../../../../com/google/gwt/event/logical/shared/SelectionEvent.html" title="type parameter in SelectionEvent">I</A>&nbsp;selectedItem)</CODE>
+<TD><CODE><B><A HREF="../../../../../../com/google/gwt/event/logical/shared/SelectionEvent.html#SelectionEvent(T)">SelectionEvent</A></B>(<A HREF="../../../../../../com/google/gwt/event/logical/shared/SelectionEvent.html" title="type parameter in SelectionEvent">T</A>&nbsp;selectedItem)</CODE>
 
 <BR>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Creates a new selection event.</TD>
@@ -157,7 +158,7 @@ Represents a selection event.
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
 <CODE>protected &nbsp;void</CODE></FONT></TD>
-<TD><CODE><B><A HREF="../../../../../../com/google/gwt/event/logical/shared/SelectionEvent.html#dispatch(com.google.gwt.event.logical.shared.SelectionHandler)">dispatch</A></B>(<A HREF="../../../../../../com/google/gwt/event/logical/shared/SelectionHandler.html" title="interface in com.google.gwt.event.logical.shared">SelectionHandler</A>&lt;<A HREF="../../../../../../com/google/gwt/event/logical/shared/SelectionEvent.html" title="type parameter in SelectionEvent">I</A>&gt;&nbsp;handler)</CODE>
+<TD><CODE><B><A HREF="../../../../../../com/google/gwt/event/logical/shared/SelectionEvent.html#dispatch(com.google.gwt.event.logical.shared.SelectionHandler)">dispatch</A></B>(<A HREF="../../../../../../com/google/gwt/event/logical/shared/SelectionHandler.html" title="interface in com.google.gwt.event.logical.shared">SelectionHandler</A>&lt;<A HREF="../../../../../../com/google/gwt/event/logical/shared/SelectionEvent.html" title="type parameter in SelectionEvent">T</A>&gt;&nbsp;handler)</CODE>
 
 <BR>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Should only be called by <A HREF="../../../../../../com/google/gwt/event/shared/HandlerManager.html" title="class in com.google.gwt.event.shared"><CODE>HandlerManager</CODE></A>.</TD>
@@ -168,12 +169,12 @@ Represents a selection event.
 <TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0" SUMMARY="">
 <TR ALIGN="right" VALIGN="">
 <TD NOWRAP><FONT SIZE="-1">
-<CODE>&lt;I&gt; void</CODE></FONT></TD>
+<CODE>&lt;T&gt; void</CODE></FONT></TD>
 </TR>
 </TABLE>
 </CODE></FONT></TD>
-<TD><CODE><B><A HREF="../../../../../../com/google/gwt/event/logical/shared/SelectionEvent.html#fire(com.google.gwt.event.logical.shared.HasSelectionHandlers, I)">fire</A></B>(<A HREF="../../../../../../com/google/gwt/event/logical/shared/HasSelectionHandlers.html" title="interface in com.google.gwt.event.logical.shared">HasSelectionHandlers</A>&lt;I&gt;&nbsp;source,
-     I&nbsp;selectedItem)</CODE>
+<TD><CODE><B><A HREF="../../../../../../com/google/gwt/event/logical/shared/SelectionEvent.html#fire(com.google.gwt.event.logical.shared.HasSelectionHandlers, T)">fire</A></B>(<A HREF="../../../../../../com/google/gwt/event/logical/shared/HasSelectionHandlers.html" title="interface in com.google.gwt.event.logical.shared">HasSelectionHandlers</A>&lt;T&gt;&nbsp;source,
+     T&nbsp;selectedItem)</CODE>
 
 <BR>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Fires a selection event on all registered handlers in the handler
@@ -181,7 +182,7 @@ Represents a selection event.
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
-<CODE>&nbsp;<A HREF="../../../../../../com/google/gwt/event/shared/GwtEvent.Type.html" title="class in com.google.gwt.event.shared">GwtEvent.Type</A>&lt;<A HREF="../../../../../../com/google/gwt/event/logical/shared/SelectionHandler.html" title="interface in com.google.gwt.event.logical.shared">SelectionHandler</A>&lt;<A HREF="../../../../../../com/google/gwt/event/logical/shared/SelectionEvent.html" title="type parameter in SelectionEvent">I</A>&gt;&gt;</CODE></FONT></TD>
+<CODE>&nbsp;<A HREF="../../../../../../com/google/gwt/event/shared/GwtEvent.Type.html" title="class in com.google.gwt.event.shared">GwtEvent.Type</A>&lt;<A HREF="../../../../../../com/google/gwt/event/logical/shared/SelectionHandler.html" title="interface in com.google.gwt.event.logical.shared">SelectionHandler</A>&lt;<A HREF="../../../../../../com/google/gwt/event/logical/shared/SelectionEvent.html" title="type parameter in SelectionEvent">T</A>&gt;&gt;</CODE></FONT></TD>
 <TD><CODE><B><A HREF="../../../../../../com/google/gwt/event/logical/shared/SelectionEvent.html#getAssociatedType()">getAssociatedType</A></B>()</CODE>
 
 <BR>
@@ -189,7 +190,7 @@ Represents a selection event.
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
-<CODE>&nbsp;<A HREF="../../../../../../com/google/gwt/event/logical/shared/SelectionEvent.html" title="type parameter in SelectionEvent">I</A></CODE></FONT></TD>
+<CODE>&nbsp;<A HREF="../../../../../../com/google/gwt/event/logical/shared/SelectionEvent.html" title="type parameter in SelectionEvent">T</A></CODE></FONT></TD>
 <TD><CODE><B><A HREF="../../../../../../com/google/gwt/event/logical/shared/SelectionEvent.html#getSelectedItem()">getSelectedItem</A></B>()</CODE>
 
 <BR>
@@ -235,10 +236,10 @@ Represents a selection event.
 </TR>
 </TABLE>
 
-<A NAME="SelectionEvent(java.lang.Object)"><!-- --></A><A NAME="SelectionEvent(I)"><!-- --></A><H3>
+<A NAME="SelectionEvent(java.lang.Object)"><!-- --></A><A NAME="SelectionEvent(T)"><!-- --></A><H3>
 SelectionEvent</H3>
 <PRE>
-protected <B>SelectionEvent</B>(<A HREF="../../../../../../com/google/gwt/event/logical/shared/SelectionEvent.html" title="type parameter in SelectionEvent">I</A>&nbsp;selectedItem)</PRE>
+protected <B>SelectionEvent</B>(<A HREF="../../../../../../com/google/gwt/event/logical/shared/SelectionEvent.html" title="type parameter in SelectionEvent">T</A>&nbsp;selectedItem)</PRE>
 <DL>
 <DD>Creates a new selection event.
 <P>
@@ -256,17 +257,17 @@ protected <B>SelectionEvent</B>(<A HREF="../../../../../../com/google/gwt/event/
 </TR>
 </TABLE>
 
-<A NAME="fire(com.google.gwt.event.logical.shared.HasSelectionHandlers,java.lang.Object)"><!-- --></A><A NAME="fire(com.google.gwt.event.logical.shared.HasSelectionHandlers, I)"><!-- --></A><H3>
+<A NAME="fire(com.google.gwt.event.logical.shared.HasSelectionHandlers,java.lang.Object)"><!-- --></A><A NAME="fire(com.google.gwt.event.logical.shared.HasSelectionHandlers, T)"><!-- --></A><H3>
 fire</H3>
 <PRE>
-public static &lt;I&gt; void <B>fire</B>(<A HREF="../../../../../../com/google/gwt/event/logical/shared/HasSelectionHandlers.html" title="interface in com.google.gwt.event.logical.shared">HasSelectionHandlers</A>&lt;I&gt;&nbsp;source,
-                            I&nbsp;selectedItem)</PRE>
+public static &lt;T&gt; void <B>fire</B>(<A HREF="../../../../../../com/google/gwt/event/logical/shared/HasSelectionHandlers.html" title="interface in com.google.gwt.event.logical.shared">HasSelectionHandlers</A>&lt;T&gt;&nbsp;source,
+                            T&nbsp;selectedItem)</PRE>
 <DL>
 <DD>Fires a selection event on all registered handlers in the handler
  manager.If no such handlers exist, this method will do nothing.
 <P>
 <DD><DL>
-<DT><B>Type Parameters:</B><DD><CODE>I</CODE> - the selected item type<DT><B>Parameters:</B><DD><CODE>source</CODE> - the source of the handlers<DD><CODE>selectedItem</CODE> - the selected item</DL>
+<DT><B>Type Parameters:</B><DD><CODE>T</CODE> - the selected item type<DT><B>Parameters:</B><DD><CODE>source</CODE> - the source of the handlers<DD><CODE>selectedItem</CODE> - the selected item</DL>
 </DD>
 </DL>
 <HR>
@@ -288,14 +289,14 @@ public static <A HREF="../../../../../../com/google/gwt/event/shared/GwtEvent.Ty
 <A NAME="getAssociatedType()"><!-- --></A><H3>
 getAssociatedType</H3>
 <PRE>
-public final <A HREF="../../../../../../com/google/gwt/event/shared/GwtEvent.Type.html" title="class in com.google.gwt.event.shared">GwtEvent.Type</A>&lt;<A HREF="../../../../../../com/google/gwt/event/logical/shared/SelectionHandler.html" title="interface in com.google.gwt.event.logical.shared">SelectionHandler</A>&lt;<A HREF="../../../../../../com/google/gwt/event/logical/shared/SelectionEvent.html" title="type parameter in SelectionEvent">I</A>&gt;&gt; <B>getAssociatedType</B>()</PRE>
+public final <A HREF="../../../../../../com/google/gwt/event/shared/GwtEvent.Type.html" title="class in com.google.gwt.event.shared">GwtEvent.Type</A>&lt;<A HREF="../../../../../../com/google/gwt/event/logical/shared/SelectionHandler.html" title="interface in com.google.gwt.event.logical.shared">SelectionHandler</A>&lt;<A HREF="../../../../../../com/google/gwt/event/logical/shared/SelectionEvent.html" title="type parameter in SelectionEvent">T</A>&gt;&gt; <B>getAssociatedType</B>()</PRE>
 <DL>
 <DD><B>Description copied from class: <CODE><A HREF="../../../../../../com/google/gwt/event/shared/GwtEvent.html#getAssociatedType()">GwtEvent</A></CODE></B></DD>
 <DD>Returns the type used to register this event. Used by handler manager to
  dispatch events to the correct handlers.
 <P>
 <DD><DL>
-<DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../../com/google/gwt/event/shared/GwtEvent.html#getAssociatedType()">getAssociatedType</A></CODE> in class <CODE><A HREF="../../../../../../com/google/gwt/event/shared/GwtEvent.html" title="class in com.google.gwt.event.shared">GwtEvent</A>&lt;<A HREF="../../../../../../com/google/gwt/event/logical/shared/SelectionHandler.html" title="interface in com.google.gwt.event.logical.shared">SelectionHandler</A>&lt;<A HREF="../../../../../../com/google/gwt/event/logical/shared/SelectionEvent.html" title="type parameter in SelectionEvent">I</A>&gt;&gt;</CODE></DL>
+<DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../../com/google/gwt/event/shared/GwtEvent.html#getAssociatedType()">getAssociatedType</A></CODE> in class <CODE><A HREF="../../../../../../com/google/gwt/event/shared/GwtEvent.html" title="class in com.google.gwt.event.shared">GwtEvent</A>&lt;<A HREF="../../../../../../com/google/gwt/event/logical/shared/SelectionHandler.html" title="interface in com.google.gwt.event.logical.shared">SelectionHandler</A>&lt;<A HREF="../../../../../../com/google/gwt/event/logical/shared/SelectionEvent.html" title="type parameter in SelectionEvent">T</A>&gt;&gt;</CODE></DL>
 </DD>
 <DD><DL>
 
@@ -307,7 +308,7 @@ public final <A HREF="../../../../../../com/google/gwt/event/shared/GwtEvent.Typ
 <A NAME="getSelectedItem()"><!-- --></A><H3>
 getSelectedItem</H3>
 <PRE>
-public <A HREF="../../../../../../com/google/gwt/event/logical/shared/SelectionEvent.html" title="type parameter in SelectionEvent">I</A> <B>getSelectedItem</B>()</PRE>
+public <A HREF="../../../../../../com/google/gwt/event/logical/shared/SelectionEvent.html" title="type parameter in SelectionEvent">T</A> <B>getSelectedItem</B>()</PRE>
 <DL>
 <DD>Gets the selected item.
 <P>
@@ -321,14 +322,14 @@ public <A HREF="../../../../../../com/google/gwt/event/logical/shared/SelectionE
 <A NAME="dispatch(com.google.gwt.event.logical.shared.SelectionHandler)"><!-- --></A><H3>
 dispatch</H3>
 <PRE>
-protected void <B>dispatch</B>(<A HREF="../../../../../../com/google/gwt/event/logical/shared/SelectionHandler.html" title="interface in com.google.gwt.event.logical.shared">SelectionHandler</A>&lt;<A HREF="../../../../../../com/google/gwt/event/logical/shared/SelectionEvent.html" title="type parameter in SelectionEvent">I</A>&gt;&nbsp;handler)</PRE>
+protected void <B>dispatch</B>(<A HREF="../../../../../../com/google/gwt/event/logical/shared/SelectionHandler.html" title="interface in com.google.gwt.event.logical.shared">SelectionHandler</A>&lt;<A HREF="../../../../../../com/google/gwt/event/logical/shared/SelectionEvent.html" title="type parameter in SelectionEvent">T</A>&gt;&nbsp;handler)</PRE>
 <DL>
 <DD><B>Description copied from class: <CODE><A HREF="../../../../../../com/google/gwt/event/shared/GwtEvent.html#dispatch(H)">GwtEvent</A></CODE></B></DD>
 <DD>Should only be called by <A HREF="../../../../../../com/google/gwt/event/shared/HandlerManager.html" title="class in com.google.gwt.event.shared"><CODE>HandlerManager</CODE></A>. In other words, do not use
  or call.
 <P>
 <DD><DL>
-<DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../../com/google/gwt/event/shared/GwtEvent.html#dispatch(H)">dispatch</A></CODE> in class <CODE><A HREF="../../../../../../com/google/gwt/event/shared/GwtEvent.html" title="class in com.google.gwt.event.shared">GwtEvent</A>&lt;<A HREF="../../../../../../com/google/gwt/event/logical/shared/SelectionHandler.html" title="interface in com.google.gwt.event.logical.shared">SelectionHandler</A>&lt;<A HREF="../../../../../../com/google/gwt/event/logical/shared/SelectionEvent.html" title="type parameter in SelectionEvent">I</A>&gt;&gt;</CODE></DL>
+<DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../../com/google/gwt/event/shared/GwtEvent.html#dispatch(H)">dispatch</A></CODE> in class <CODE><A HREF="../../../../../../com/google/gwt/event/shared/GwtEvent.html" title="class in com.google.gwt.event.shared">GwtEvent</A>&lt;<A HREF="../../../../../../com/google/gwt/event/logical/shared/SelectionHandler.html" title="interface in com.google.gwt.event.logical.shared">SelectionHandler</A>&lt;<A HREF="../../../../../../com/google/gwt/event/logical/shared/SelectionEvent.html" title="type parameter in SelectionEvent">T</A>&gt;&gt;</CODE></DL>
 </DD>
 <DD><DL>
 <DT><B>Parameters:</B><DD><CODE>handler</CODE> - handler</DL>
@@ -350,6 +351,7 @@ protected void <B>dispatch</B>(<A HREF="../../../../../../com/google/gwt/event/l
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-summary.html"><FONT CLASS="NavBarFont1"><B>Package</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Class</B></FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="class-use/SelectionEvent.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
@@ -358,7 +360,7 @@ protected void <B>dispatch</B>(<A HREF="../../../../../../com/google/gwt/event/l
 </TABLE>
 </TD>
 <TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
-GWT 2.1.0.RC1</EM>
+GWT 2.1.1</EM>
 </TD>
 </TR>
 

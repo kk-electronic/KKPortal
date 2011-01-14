@@ -38,6 +38,7 @@ function windowTitle()
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-summary.html"><FONT CLASS="NavBarFont1"><B>Package</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Class</B></FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="class-use/FieldReferenceConverter.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
@@ -46,7 +47,7 @@ function windowTitle()
 </TABLE>
 </TD>
 <TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
-GWT 2.1.0.RC1</EM>
+GWT 2.1.1</EM>
 </TD>
 </TR>
 
@@ -100,7 +101,8 @@ java.lang.Object
 <P>
 Deals with field references, e.g. the bits in braces here: <code>&lt;div
  class="{style.enabled} fancy {style.impressive}" /></code>, by converting
- them to java expressions (with the help of a <CODE>#Delegate</CODE>).
+ them to java expressions (with the help of a
+ <CODE>FieldReferenceConverter.Delegate</CODE>).
  <p>
  A field reference is one or more segments separated by dots. The first
  segment is considered to be a reference to a ui field, and succeeding
@@ -137,7 +139,8 @@ Deals with field references, e.g. the bits in braces here: <code>&lt;div
 <TD><CODE><B><A HREF="../../../../../com/google/gwt/uibinder/attributeparsers/FieldReferenceConverter.IllegalFieldReferenceException.html" title="class in com.google.gwt.uibinder.attributeparsers">FieldReferenceConverter.IllegalFieldReferenceException</A></B></CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;May be thrown by the <CODE>#Delegate</CODE> for badly formatted input.</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;May be thrown by the <CODE>FieldReferenceConverter.Delegate</CODE> for badly
+ formatted input.</TD>
 </TR>
 </TABLE>
 &nbsp;
@@ -164,7 +167,7 @@ Deals with field references, e.g. the bits in braces here: <code>&lt;div
 <TD><CODE><B><A HREF="../../../../../com/google/gwt/uibinder/attributeparsers/FieldReferenceConverter.html#hasFieldReferences(java.lang.String)">hasFieldReferences</A></B>(java.lang.String&nbsp;string)</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns true if the given string holds one or more field references.</TD>
 </TR>
 </TABLE>
 &nbsp;<A NAME="methods_inherited_from_class_java.lang.Object"><!-- --></A>
@@ -194,9 +197,10 @@ hasFieldReferences</H3>
 <PRE>
 public static boolean <B>hasFieldReferences</B>(java.lang.String&nbsp;string)</PRE>
 <DL>
+<DD>Returns true if the given string holds one or more field references.
+<P>
 <DD><DL>
-
-<DT><B>Returns:</B><DD>true if the given string holds one or more field references</DL>
+</DL>
 </DD>
 </DL>
 <HR>
@@ -229,6 +233,7 @@ public java.lang.String <B>convert</B>(java.lang.String&nbsp;in,
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-summary.html"><FONT CLASS="NavBarFont1"><B>Package</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Class</B></FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="class-use/FieldReferenceConverter.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
@@ -237,7 +242,7 @@ public java.lang.String <B>convert</B>(java.lang.String&nbsp;in,
 </TABLE>
 </TD>
 <TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
-GWT 2.1.0.RC1</EM>
+GWT 2.1.1</EM>
 </TD>
 </TR>
 

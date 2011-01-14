@@ -38,6 +38,7 @@ function windowTitle()
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-summary.html"><FONT CLASS="NavBarFont1"><B>Package</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Class</B></FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="class-use/RequestContext.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
@@ -46,14 +47,14 @@ function windowTitle()
 </TABLE>
 </TD>
 <TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
-GWT 2.1.0.RC1</EM>
+GWT 2.1.1</EM>
 </TD>
 </TR>
 
 <TR>
 <TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
 &nbsp;<A HREF="../../../../../com/google/gwt/requestfactory/shared/Request.html" title="interface in com.google.gwt.requestfactory.shared"><B>PREV CLASS</B></A>&nbsp;
-&nbsp;<A HREF="../../../../../com/google/gwt/requestfactory/shared/RequestEvent.html" title="class in com.google.gwt.requestfactory.shared"><B>NEXT CLASS</B></A></FONT></TD>
+&nbsp;<A HREF="../../../../../com/google/gwt/requestfactory/shared/RequestFactory.html" title="interface in com.google.gwt.requestfactory.shared"><B>NEXT CLASS</B></A></FONT></TD>
 <TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
   <A HREF="../../../../../index.html?com/google/gwt/requestfactory/shared/RequestContext.html" target="_top"><B>FRAMES</B></A>  &nbsp;
 &nbsp;<A HREF="RequestContext.html" target="_top"><B>NO FRAMES</B></A>  &nbsp;
@@ -89,7 +90,7 @@ com.google.gwt.requestfactory.shared</FONT>
 <BR>
 Interface RequestContext</H2>
 <DL>
-<DT><B>All Known Subinterfaces:</B> <DD><A HREF="../../../../../com/google/gwt/requestfactory/shared/LoggingRequest.html" title="interface in com.google.gwt.requestfactory.shared">LoggingRequest</A>, <A HREF="../../../../../com/google/gwt/requestfactory/shared/UserInformationRequest.html" title="interface in com.google.gwt.requestfactory.shared">UserInformationRequest</A></DD>
+<DT><B>All Known Subinterfaces:</B> <DD><A HREF="../../../../../com/google/gwt/requestfactory/shared/LoggingRequest.html" title="interface in com.google.gwt.requestfactory.shared">LoggingRequest</A></DD>
 </DL>
 <HR>
 <DL>
@@ -119,7 +120,7 @@ The base interface for RequestFactory service endpoints.
 <TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0" SUMMARY="">
 <TR ALIGN="right" VALIGN="">
 <TD NOWRAP><FONT SIZE="-1">
-<CODE>&lt;T extends <A HREF="../../../../../com/google/gwt/requestfactory/shared/EntityProxy.html" title="interface in com.google.gwt.requestfactory.shared">EntityProxy</A>&gt; 
+<CODE>&lt;T extends <A HREF="../../../../../com/google/gwt/requestfactory/shared/BaseProxy.html" title="interface in com.google.gwt.requestfactory.shared">BaseProxy</A>&gt; 
 <BR>
 T</CODE></FONT></TD>
 </TR>
@@ -137,7 +138,7 @@ T</CODE></FONT></TD>
 <TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0" SUMMARY="">
 <TR ALIGN="right" VALIGN="">
 <TD NOWRAP><FONT SIZE="-1">
-<CODE>&lt;T extends <A HREF="../../../../../com/google/gwt/requestfactory/shared/EntityProxy.html" title="interface in com.google.gwt.requestfactory.shared">EntityProxy</A>&gt; 
+<CODE>&lt;T extends <A HREF="../../../../../com/google/gwt/requestfactory/shared/BaseProxy.html" title="interface in com.google.gwt.requestfactory.shared">BaseProxy</A>&gt; 
 <BR>
 T</CODE></FONT></TD>
 </TR>
@@ -192,29 +193,31 @@ T</CODE></FONT></TD>
 <A NAME="create(java.lang.Class)"><!-- --></A><H3>
 create</H3>
 <PRE>
-&lt;T extends <A HREF="../../../../../com/google/gwt/requestfactory/shared/EntityProxy.html" title="interface in com.google.gwt.requestfactory.shared">EntityProxy</A>&gt; T <B>create</B>(java.lang.Class&lt;T&gt;&nbsp;clazz)</PRE>
+&lt;T extends <A HREF="../../../../../com/google/gwt/requestfactory/shared/BaseProxy.html" title="interface in com.google.gwt.requestfactory.shared">BaseProxy</A>&gt; T <B>create</B>(java.lang.Class&lt;T&gt;&nbsp;clazz)</PRE>
 <DL>
 <DD>Returns a new mutable proxy that this request can carry to the server,
- perhaps to be persisted. If a persist does happen, a CREATE event will be
- posted including the EntityProxyId of this proxy.
+ perhaps to be persisted. If the object is succesfully persisted, a PERSIST
+ event will be posted including the EntityProxyId of this proxy.
 <P>
 <DD><DL>
-</DL>
+<DT><B>Parameters:</B><DD><CODE>clazz</CODE> - a Class object of type T
+<DT><B>Returns:</B><DD>an <A HREF="../../../../../com/google/gwt/requestfactory/shared/BaseProxy.html" title="interface in com.google.gwt.requestfactory.shared"><CODE>BaseProxy</CODE></A> instance of type T</DL>
 </DD>
 </DL>
 <HR>
 
-<A NAME="edit(com.google.gwt.requestfactory.shared.EntityProxy)"><!-- --></A><A NAME="edit(T)"><!-- --></A><H3>
+<A NAME="edit(com.google.gwt.requestfactory.shared.BaseProxy)"><!-- --></A><A NAME="edit(T)"><!-- --></A><H3>
 edit</H3>
 <PRE>
-&lt;T extends <A HREF="../../../../../com/google/gwt/requestfactory/shared/EntityProxy.html" title="interface in com.google.gwt.requestfactory.shared">EntityProxy</A>&gt; T <B>edit</B>(T&nbsp;object)</PRE>
+&lt;T extends <A HREF="../../../../../com/google/gwt/requestfactory/shared/BaseProxy.html" title="interface in com.google.gwt.requestfactory.shared">BaseProxy</A>&gt; T <B>edit</B>(T&nbsp;object)</PRE>
 <DL>
 <DD>Returns a mutable version of the proxy, whose mutations will accumulate in
  this context. Proxies reached via getters on this mutable proxy will also
  be mutable.
 <P>
 <DD><DL>
-</DL>
+<DT><B>Parameters:</B><DD><CODE>object</CODE> - an instance of type T
+<DT><B>Returns:</B><DD>an <A HREF="../../../../../com/google/gwt/requestfactory/shared/EntityProxy.html" title="interface in com.google.gwt.requestfactory.shared"><CODE>EntityProxy</CODE></A> or <A HREF="../../../../../com/google/gwt/requestfactory/shared/ValueProxy.html" title="interface in com.google.gwt.requestfactory.shared"><CODE>ValueProxy</CODE></A> instance of type T</DL>
 </DD>
 </DL>
 <HR>
@@ -242,11 +245,10 @@ fire</H3>
 <PRE>
 void <B>fire</B>(<A HREF="../../../../../com/google/gwt/requestfactory/shared/Receiver.html" title="class in com.google.gwt.requestfactory.shared">Receiver</A>&lt;java.lang.Void&gt;&nbsp;receiver)</PRE>
 <DL>
-<DD>For receiving errors or validation failures only. Request return values are
- received via <CODE>Request#receive</CODE>.
+<DD>For receiving errors or validation failures only.
 <P>
 <DD><DL>
-
+<DT><B>Parameters:</B><DD><CODE>receiver</CODE> - a <A HREF="../../../../../com/google/gwt/requestfactory/shared/Receiver.html" title="class in com.google.gwt.requestfactory.shared"><CODE>Receiver</CODE></A> instance
 <DT><B>Throws:</B>
 <DD><CODE>java.lang.IllegalArgumentException</CODE> - if <code>receiver</code> is
            <code>null</code></DL>
@@ -273,7 +275,8 @@ boolean <B>isChanged</B>()</PRE>
  </pre>
 <P>
 <DD><DL>
-</DL>
+
+<DT><B>Returns:</B><DD><code>true</code> if any changes have been made</DL>
 </DD>
 </DL>
 <!-- ========= END OF CLASS DATA ========= -->
@@ -292,6 +295,7 @@ boolean <B>isChanged</B>()</PRE>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-summary.html"><FONT CLASS="NavBarFont1"><B>Package</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Class</B></FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="class-use/RequestContext.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
@@ -300,14 +304,14 @@ boolean <B>isChanged</B>()</PRE>
 </TABLE>
 </TD>
 <TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
-GWT 2.1.0.RC1</EM>
+GWT 2.1.1</EM>
 </TD>
 </TR>
 
 <TR>
 <TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
 &nbsp;<A HREF="../../../../../com/google/gwt/requestfactory/shared/Request.html" title="interface in com.google.gwt.requestfactory.shared"><B>PREV CLASS</B></A>&nbsp;
-&nbsp;<A HREF="../../../../../com/google/gwt/requestfactory/shared/RequestEvent.html" title="class in com.google.gwt.requestfactory.shared"><B>NEXT CLASS</B></A></FONT></TD>
+&nbsp;<A HREF="../../../../../com/google/gwt/requestfactory/shared/RequestFactory.html" title="interface in com.google.gwt.requestfactory.shared"><B>NEXT CLASS</B></A></FONT></TD>
 <TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
   <A HREF="../../../../../index.html?com/google/gwt/requestfactory/shared/RequestContext.html" target="_top"><B>FRAMES</B></A>  &nbsp;
 &nbsp;<A HREF="RequestContext.html" target="_top"><B>NO FRAMES</B></A>  &nbsp;

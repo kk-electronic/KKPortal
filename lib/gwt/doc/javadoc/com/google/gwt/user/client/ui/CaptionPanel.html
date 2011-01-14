@@ -38,6 +38,7 @@ function windowTitle()
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-summary.html"><FONT CLASS="NavBarFont1"><B>Package</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Class</B></FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="class-use/CaptionPanel.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
@@ -46,7 +47,7 @@ function windowTitle()
 </TABLE>
 </TD>
 <TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
-GWT 2.1.0.RC1</EM>
+GWT 2.1.1</EM>
 </TD>
 </TR>
 
@@ -250,7 +251,8 @@ A panel that wraps its contents in a border with a caption that appears in
 <TD><CODE><B><A HREF="../../../../../../com/google/gwt/user/client/ui/CaptionPanel.html#getCaptionHTML()">getCaptionHTML</A></B>()</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns the caption as HTML; note that if the caption was previously set
+ using <A HREF="../../../../../../com/google/gwt/user/client/ui/CaptionPanel.html#setCaptionText(java.lang.String)"><CODE>setCaptionText(String)</CODE></A>, the return value is undefined.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -258,7 +260,8 @@ A panel that wraps its contents in a border with a caption that appears in
 <TD><CODE><B><A HREF="../../../../../../com/google/gwt/user/client/ui/CaptionPanel.html#getCaptionText()">getCaptionText</A></B>()</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns the caption as text; note that if the caption was previously set
+ using <A HREF="../../../../../../com/google/gwt/user/client/ui/CaptionPanel.html#setCaptionHTML(java.lang.String)"><CODE>setCaptionHTML(String)</CODE></A>, the return value is undefined.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -464,14 +467,14 @@ getCaptionHTML</H3>
 <PRE>
 public java.lang.String <B>getCaptionHTML</B>()</PRE>
 <DL>
+<DD>Returns the caption as HTML; note that if the caption was previously set
+ using <A HREF="../../../../../../com/google/gwt/user/client/ui/CaptionPanel.html#setCaptionText(java.lang.String)"><CODE>setCaptionText(String)</CODE></A>, the return value is undefined.
+<P>
 <DD><DL>
 </DL>
 </DD>
 <DD><DL>
-
-<DT><B>Returns:</B><DD>the caption as HTML; note that if the caption was previously set
-         using <A HREF="../../../../../../com/google/gwt/user/client/ui/CaptionPanel.html#setCaptionText(java.lang.String)"><CODE>setCaptionText(String)</CODE></A>, the return value is
-         undefined</DL>
+</DL>
 </DD>
 </DL>
 <HR>
@@ -481,14 +484,14 @@ getCaptionText</H3>
 <PRE>
 public java.lang.String <B>getCaptionText</B>()</PRE>
 <DL>
+<DD>Returns the caption as text; note that if the caption was previously set
+ using <A HREF="../../../../../../com/google/gwt/user/client/ui/CaptionPanel.html#setCaptionHTML(java.lang.String)"><CODE>setCaptionHTML(String)</CODE></A>, the return value is undefined.
+<P>
 <DD><DL>
 </DL>
 </DD>
 <DD><DL>
-
-<DT><B>Returns:</B><DD>the caption as text; note that if the caption was previously set
-         using <A HREF="../../../../../../com/google/gwt/user/client/ui/CaptionPanel.html#setCaptionHTML(java.lang.String)"><CODE>setCaptionHTML(String)</CODE></A>, the return value is
-         undefined</DL>
+</DL>
 </DD>
 </DL>
 <HR>
@@ -627,6 +630,7 @@ public void <B>setContentWidget</B>(<A HREF="../../../../../../com/google/gwt/us
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-summary.html"><FONT CLASS="NavBarFont1"><B>Package</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Class</B></FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="class-use/CaptionPanel.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
@@ -635,7 +639,7 @@ public void <B>setContentWidget</B>(<A HREF="../../../../../../com/google/gwt/us
 </TABLE>
 </TD>
 <TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
-GWT 2.1.0.RC1</EM>
+GWT 2.1.1</EM>
 </TD>
 </TR>
 

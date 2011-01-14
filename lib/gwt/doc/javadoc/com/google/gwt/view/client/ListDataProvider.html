@@ -38,6 +38,7 @@ function windowTitle()
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-summary.html"><FONT CLASS="NavBarFont1"><B>Package</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Class</B></FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="class-use/ListDataProvider.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
@@ -46,7 +47,7 @@ function windowTitle()
 </TABLE>
 </TD>
 <TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
-GWT 2.1.0.RC1</EM>
+GWT 2.1.1</EM>
 </TD>
 </TR>
 
@@ -113,10 +114,10 @@ A concrete subclass of <A HREF="../../../../../com/google/gwt/view/client/Abstra
 
   public void onModuleLoad() {
     // Create a CellList.
-    CellList<String> cellList = new CellList<String>(new TextCell());
+    CellList&lt;String&gt; cellList = new CellList&lt;String&gt;(new TextCell());
 
     // Create a list data provider.
-    final ListDataProvider<String> dataProvider = new ListDataProvider<String>();
+    final ListDataProvider&lt;String&gt; dataProvider = new ListDataProvider&lt;String&gt;();
 
     // Add the cellList to the dataProvider.
     dataProvider.addDataDisplay(cellList);
@@ -130,7 +131,7 @@ A concrete subclass of <A HREF="../../../../../com/google/gwt/view/client/Abstra
         String newValue = valueBox.getText();
 
         // Get the underlying list from data dataProvider.
-        List<String> list = dataProvider.getList();
+        List&lt;String&gt; list = dataProvider.getList();
 
         // Add the value to the list. The dataProvider will update the cellList.
         list.add(newValue);
@@ -288,6 +289,8 @@ public <B>ListDataProvider</B>(java.util.List&lt;<A HREF="../../../../../com/goo
  wrapped list must be made via this model in order to be correctly applied
  to displays.
 <P>
+<DL>
+<DT><B>Parameters:</B><DD><CODE>listToWrap</CODE> - the List to be wrapped</DL>
 </DL>
 <HR>
 
@@ -315,7 +318,7 @@ public <B>ListDataProvider</B>(java.util.List&lt;<A HREF="../../../../../com/goo
  to displays.
 <P>
 <DL>
-<DT><B>Parameters:</B><DD><CODE>keyProvider</CODE> - an instance of ProvidesKey<T>, or null if the record
+<DT><B>Parameters:</B><DD><CODE>listToWrap</CODE> - the List to be wrapped<DD><CODE>keyProvider</CODE> - an instance of ProvidesKey<T>, or null if the record
         object should act as its own key</DL>
 </DL>
 
@@ -357,7 +360,7 @@ public java.util.List&lt;<A HREF="../../../../../com/google/gwt/view/client/List
 <P>
 <DD><DL>
 
-<DT><B>Returns:</B><DD>the list</DL>
+<DT><B>Returns:</B><DD>the list<DT><B>See Also:</B><DD><A HREF="../../../../../com/google/gwt/view/client/ListDataProvider.html#setList(java.util.List)"><CODE>setList(List)</CODE></A></DL>
 </DD>
 </DL>
 <HR>
@@ -383,7 +386,7 @@ public void <B>setList</B>(java.util.List&lt;<A HREF="../../../../../com/google/
 <DD>Replace this model's list.
 <P>
 <DD><DL>
-<DT><B>Parameters:</B><DD><CODE>listToWrap</CODE> - the model's new list</DL>
+<DT><B>Parameters:</B><DD><CODE>listToWrap</CODE> - the model's new list<DT><B>See Also:</B><DD><A HREF="../../../../../com/google/gwt/view/client/ListDataProvider.html#getList()"><CODE>getList()</CODE></A></DL>
 </DD>
 </DL>
 <HR>
@@ -419,6 +422,7 @@ protected void <B>onRangeChanged</B>(<A HREF="../../../../../com/google/gwt/view
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-summary.html"><FONT CLASS="NavBarFont1"><B>Package</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Class</B></FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="class-use/ListDataProvider.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
@@ -427,7 +431,7 @@ protected void <B>onRangeChanged</B>(<A HREF="../../../../../com/google/gwt/view
 </TABLE>
 </TD>
 <TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
-GWT 2.1.0.RC1</EM>
+GWT 2.1.1</EM>
 </TD>
 </TR>
 

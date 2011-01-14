@@ -38,6 +38,7 @@ function windowTitle()
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-summary.html"><FONT CLASS="NavBarFont1"><B>Package</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Class</B></FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="class-use/OptionalFieldEditor.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
@@ -46,7 +47,7 @@ function windowTitle()
 </TABLE>
 </TD>
 <TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
-GWT 2.1.0.RC1</EM>
+GWT 2.1.1</EM>
 </TD>
 </TR>
 
@@ -166,7 +167,7 @@ This adapter can be used when a type being edited has an optional field that
 <TD><CODE><B><A HREF="../../../../../../com/google/gwt/editor/client/adapters/OptionalFieldEditor.html#OptionalFieldEditor(E)">OptionalFieldEditor</A></B>(<A HREF="../../../../../../com/google/gwt/editor/client/adapters/OptionalFieldEditor.html" title="type parameter in OptionalFieldEditor">E</A>&nbsp;subEditor)</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Construct an OptionalFieldEditor backed by the given sub-Editor.</TD>
 </TR>
 </TABLE>
 &nbsp;
@@ -184,8 +185,8 @@ This adapter can be used when a type being edited has an optional field that
 <TD><CODE><B><A HREF="../../../../../../com/google/gwt/editor/client/adapters/OptionalFieldEditor.html#createEditorForTraversal()">createEditorForTraversal</A></B>()</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns an canonical sub-editor instance that will be used by the driver
- for computing all edited paths.</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns the sub-Editor that the OptionalFieldEditor was constructed
+ with.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -251,7 +252,7 @@ This adapter can be used when a type being edited has an optional field that
 <TD><CODE><B><A HREF="../../../../../../com/google/gwt/editor/client/adapters/OptionalFieldEditor.html#setEditorChain(com.google.gwt.editor.client.CompositeEditor.EditorChain)">setEditorChain</A></B>(<A HREF="../../../../../../com/google/gwt/editor/client/CompositeEditor.EditorChain.html" title="interface in com.google.gwt.editor.client">CompositeEditor.EditorChain</A>&lt;<A HREF="../../../../../../com/google/gwt/editor/client/adapters/OptionalFieldEditor.html" title="type parameter in OptionalFieldEditor">T</A>,<A HREF="../../../../../../com/google/gwt/editor/client/adapters/OptionalFieldEditor.html" title="type parameter in OptionalFieldEditor">E</A>&gt;&nbsp;chain)</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Called by the Editor framework to provide the <A HREF="../../../../../../com/google/gwt/editor/client/CompositeEditor.EditorChain.html" title="interface in com.google.gwt.editor.client"><CODE>CompositeEditor.EditorChain</CODE></A>.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -289,6 +290,11 @@ OptionalFieldEditor</H3>
 <PRE>
 protected <B>OptionalFieldEditor</B>(<A HREF="../../../../../../com/google/gwt/editor/client/adapters/OptionalFieldEditor.html" title="type parameter in OptionalFieldEditor">E</A>&nbsp;subEditor)</PRE>
 <DL>
+<DD>Construct an OptionalFieldEditor backed by the given sub-Editor.
+<P>
+<DL>
+<DT><B>Parameters:</B><DD><CODE>subEditor</CODE> - the sub-Editor that will be attached to the Editor
+          hierarchy</DL>
 </DL>
 
 <!-- ============ METHOD DETAIL ========== -->
@@ -324,15 +330,15 @@ createEditorForTraversal</H3>
 <PRE>
 public <A HREF="../../../../../../com/google/gwt/editor/client/adapters/OptionalFieldEditor.html" title="type parameter in OptionalFieldEditor">E</A> <B>createEditorForTraversal</B>()</PRE>
 <DL>
-<DD><B>Description copied from interface: <CODE><A HREF="../../../../../../com/google/gwt/editor/client/CompositeEditor.html#createEditorForTraversal()">CompositeEditor</A></CODE></B></DD>
-<DD>Returns an canonical sub-editor instance that will be used by the driver
- for computing all edited paths.
+<DD>Returns the sub-Editor that the OptionalFieldEditor was constructed
+ with.
 <P>
 <DD><DL>
 <DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../../com/google/gwt/editor/client/CompositeEditor.html#createEditorForTraversal()">createEditorForTraversal</A></CODE> in interface <CODE><A HREF="../../../../../../com/google/gwt/editor/client/CompositeEditor.html" title="interface in com.google.gwt.editor.client">CompositeEditor</A>&lt;<A HREF="../../../../../../com/google/gwt/editor/client/adapters/OptionalFieldEditor.html" title="type parameter in OptionalFieldEditor">T</A>,<A HREF="../../../../../../com/google/gwt/editor/client/adapters/OptionalFieldEditor.html" title="type parameter in OptionalFieldEditor">T</A>,<A HREF="../../../../../../com/google/gwt/editor/client/adapters/OptionalFieldEditor.html" title="type parameter in OptionalFieldEditor">E</A> extends <A HREF="../../../../../../com/google/gwt/editor/client/Editor.html" title="interface in com.google.gwt.editor.client">Editor</A>&lt;<A HREF="../../../../../../com/google/gwt/editor/client/adapters/OptionalFieldEditor.html" title="type parameter in OptionalFieldEditor">T</A>&gt;&gt;</CODE></DL>
 </DD>
 <DD><DL>
-</DL>
+
+<DT><B>Returns:</B><DD>an <A HREF="../../../../../../com/google/gwt/editor/client/Editor.html" title="interface in com.google.gwt.editor.client"><CODE>Editor</CODE></A> of type E</DL>
 </DD>
 </DL>
 <HR>
@@ -367,7 +373,9 @@ public java.lang.String <B>getPathElement</B>(<A HREF="../../../../../../com/goo
 <DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../../com/google/gwt/editor/client/CompositeEditor.html#getPathElement(E)">getPathElement</A></CODE> in interface <CODE><A HREF="../../../../../../com/google/gwt/editor/client/CompositeEditor.html" title="interface in com.google.gwt.editor.client">CompositeEditor</A>&lt;<A HREF="../../../../../../com/google/gwt/editor/client/adapters/OptionalFieldEditor.html" title="type parameter in OptionalFieldEditor">T</A>,<A HREF="../../../../../../com/google/gwt/editor/client/adapters/OptionalFieldEditor.html" title="type parameter in OptionalFieldEditor">T</A>,<A HREF="../../../../../../com/google/gwt/editor/client/adapters/OptionalFieldEditor.html" title="type parameter in OptionalFieldEditor">E</A> extends <A HREF="../../../../../../com/google/gwt/editor/client/Editor.html" title="interface in com.google.gwt.editor.client">Editor</A>&lt;<A HREF="../../../../../../com/google/gwt/editor/client/adapters/OptionalFieldEditor.html" title="type parameter in OptionalFieldEditor">T</A>&gt;&gt;</CODE></DL>
 </DD>
 <DD><DL>
-</DL>
+<DT><B>Parameters:</B><DD><CODE>subEditor</CODE> - an instance of the Editor type previously passed into
+          <A HREF="../../../../../../com/google/gwt/editor/client/CompositeEditor.EditorChain.html#attach(C, E)"><CODE>CompositeEditor.EditorChain.attach(C, E)</CODE></A>
+<DT><B>Returns:</B><DD>the path element as a String</DL>
 </DD>
 </DL>
 <HR>
@@ -384,7 +392,8 @@ public <A HREF="../../../../../../com/google/gwt/editor/client/adapters/Optional
 <DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../../com/google/gwt/user/client/TakesValue.html#getValue()">getValue</A></CODE> in interface <CODE><A HREF="../../../../../../com/google/gwt/user/client/TakesValue.html" title="interface in com.google.gwt.user.client">TakesValue</A>&lt;<A HREF="../../../../../../com/google/gwt/editor/client/adapters/OptionalFieldEditor.html" title="type parameter in OptionalFieldEditor">T</A>&gt;</CODE></DL>
 </DD>
 <DD><DL>
-</DL>
+
+<DT><B>Returns:</B><DD>the value as an object of type V<DT><B>See Also:</B><DD><A HREF="../../../../../../com/google/gwt/user/client/TakesValue.html#setValue(V)"><CODE>TakesValue.setValue(V)</CODE></A></DL>
 </DD>
 </DL>
 <HR>
@@ -402,7 +411,7 @@ public void <B>onPropertyChange</B>(java.lang.String...&nbsp;paths)</PRE>
 <DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../../com/google/gwt/editor/client/ValueAwareEditor.html#onPropertyChange(java.lang.String...)">onPropertyChange</A></CODE> in interface <CODE><A HREF="../../../../../../com/google/gwt/editor/client/ValueAwareEditor.html" title="interface in com.google.gwt.editor.client">ValueAwareEditor</A>&lt;<A HREF="../../../../../../com/google/gwt/editor/client/adapters/OptionalFieldEditor.html" title="type parameter in OptionalFieldEditor">T</A>&gt;</CODE></DL>
 </DD>
 <DD><DL>
-</DL>
+<DT><B>Parameters:</B><DD><CODE>paths</CODE> - a list of String paths</DL>
 </DD>
 </DL>
 <HR>
@@ -420,7 +429,7 @@ public void <B>setDelegate</B>(<A HREF="../../../../../../com/google/gwt/editor/
 <DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../../com/google/gwt/editor/client/HasEditorDelegate.html#setDelegate(com.google.gwt.editor.client.EditorDelegate)">setDelegate</A></CODE> in interface <CODE><A HREF="../../../../../../com/google/gwt/editor/client/HasEditorDelegate.html" title="interface in com.google.gwt.editor.client">HasEditorDelegate</A>&lt;<A HREF="../../../../../../com/google/gwt/editor/client/adapters/OptionalFieldEditor.html" title="type parameter in OptionalFieldEditor">T</A>&gt;</CODE></DL>
 </DD>
 <DD><DL>
-</DL>
+<DT><B>Parameters:</B><DD><CODE>delegate</CODE> - an <A HREF="../../../../../../com/google/gwt/editor/client/EditorDelegate.html" title="interface in com.google.gwt.editor.client"><CODE>EditorDelegate</CODE></A> of type T</DL>
 </DD>
 </DL>
 <HR>
@@ -430,11 +439,14 @@ setEditorChain</H3>
 <PRE>
 public void <B>setEditorChain</B>(<A HREF="../../../../../../com/google/gwt/editor/client/CompositeEditor.EditorChain.html" title="interface in com.google.gwt.editor.client">CompositeEditor.EditorChain</A>&lt;<A HREF="../../../../../../com/google/gwt/editor/client/adapters/OptionalFieldEditor.html" title="type parameter in OptionalFieldEditor">T</A>,<A HREF="../../../../../../com/google/gwt/editor/client/adapters/OptionalFieldEditor.html" title="type parameter in OptionalFieldEditor">E</A>&gt;&nbsp;chain)</PRE>
 <DL>
+<DD><B>Description copied from interface: <CODE><A HREF="../../../../../../com/google/gwt/editor/client/CompositeEditor.html#setEditorChain(com.google.gwt.editor.client.CompositeEditor.EditorChain)">CompositeEditor</A></CODE></B></DD>
+<DD>Called by the Editor framework to provide the <A HREF="../../../../../../com/google/gwt/editor/client/CompositeEditor.EditorChain.html" title="interface in com.google.gwt.editor.client"><CODE>CompositeEditor.EditorChain</CODE></A>.
+<P>
 <DD><DL>
 <DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../../com/google/gwt/editor/client/CompositeEditor.html#setEditorChain(com.google.gwt.editor.client.CompositeEditor.EditorChain)">setEditorChain</A></CODE> in interface <CODE><A HREF="../../../../../../com/google/gwt/editor/client/CompositeEditor.html" title="interface in com.google.gwt.editor.client">CompositeEditor</A>&lt;<A HREF="../../../../../../com/google/gwt/editor/client/adapters/OptionalFieldEditor.html" title="type parameter in OptionalFieldEditor">T</A>,<A HREF="../../../../../../com/google/gwt/editor/client/adapters/OptionalFieldEditor.html" title="type parameter in OptionalFieldEditor">T</A>,<A HREF="../../../../../../com/google/gwt/editor/client/adapters/OptionalFieldEditor.html" title="type parameter in OptionalFieldEditor">E</A> extends <A HREF="../../../../../../com/google/gwt/editor/client/Editor.html" title="interface in com.google.gwt.editor.client">Editor</A>&lt;<A HREF="../../../../../../com/google/gwt/editor/client/adapters/OptionalFieldEditor.html" title="type parameter in OptionalFieldEditor">T</A>&gt;&gt;</CODE></DL>
 </DD>
 <DD><DL>
-</DL>
+<DT><B>Parameters:</B><DD><CODE>chain</CODE> - an <A HREF="../../../../../../com/google/gwt/editor/client/CompositeEditor.EditorChain.html" title="interface in com.google.gwt.editor.client"><CODE>CompositeEditor.EditorChain</CODE></A> instance</DL>
 </DD>
 </DL>
 <HR>
@@ -454,7 +466,7 @@ public void <B>setValue</B>(<A HREF="../../../../../../com/google/gwt/editor/cli
 <DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../../com/google/gwt/editor/client/ValueAwareEditor.html#setValue(T)">setValue</A></CODE> in interface <CODE><A HREF="../../../../../../com/google/gwt/editor/client/ValueAwareEditor.html" title="interface in com.google.gwt.editor.client">ValueAwareEditor</A>&lt;<A HREF="../../../../../../com/google/gwt/editor/client/adapters/OptionalFieldEditor.html" title="type parameter in OptionalFieldEditor">T</A>&gt;</CODE><DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../../com/google/gwt/user/client/TakesValue.html#setValue(V)">setValue</A></CODE> in interface <CODE><A HREF="../../../../../../com/google/gwt/user/client/TakesValue.html" title="interface in com.google.gwt.user.client">TakesValue</A>&lt;<A HREF="../../../../../../com/google/gwt/editor/client/adapters/OptionalFieldEditor.html" title="type parameter in OptionalFieldEditor">T</A>&gt;</CODE></DL>
 </DD>
 <DD><DL>
-</DL>
+<DT><B>Parameters:</B><DD><CODE>value</CODE> - a value of type T<DT><B>See Also:</B><DD><A HREF="../../../../../../com/google/gwt/user/client/TakesValue.html#getValue()"><CODE>TakesValue.getValue()</CODE></A></DL>
 </DD>
 </DL>
 <!-- ========= END OF CLASS DATA ========= -->
@@ -473,6 +485,7 @@ public void <B>setValue</B>(<A HREF="../../../../../../com/google/gwt/editor/cli
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-summary.html"><FONT CLASS="NavBarFont1"><B>Package</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Class</B></FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="class-use/OptionalFieldEditor.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
@@ -481,7 +494,7 @@ public void <B>setValue</B>(<A HREF="../../../../../../com/google/gwt/editor/cli
 </TABLE>
 </TD>
 <TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
-GWT 2.1.0.RC1</EM>
+GWT 2.1.1</EM>
 </TD>
 </TR>
 

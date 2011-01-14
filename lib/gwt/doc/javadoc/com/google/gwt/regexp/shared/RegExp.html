@@ -38,6 +38,7 @@ function windowTitle()
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-summary.html"><FONT CLASS="NavBarFont1"><B>Package</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Class</B></FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="class-use/RegExp.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
@@ -46,7 +47,7 @@ function windowTitle()
 </TABLE>
 </TD>
 <TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
-GWT 2.1.0.RC1</EM>
+GWT 2.1.1</EM>
 </TD>
 </TR>
 
@@ -156,7 +157,8 @@ A class for regular expressions with features like Javascript's RegExp, plus
 <TD><CODE><B><A HREF="../../../../../com/google/gwt/regexp/shared/RegExp.html#getGlobal()">getGlobal</A></B>()</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns whether the regular expression captures all occurrences of the
+ pattern.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -164,7 +166,7 @@ A class for regular expressions with features like Javascript's RegExp, plus
 <TD><CODE><B><A HREF="../../../../../com/google/gwt/regexp/shared/RegExp.html#getIgnoreCase()">getIgnoreCase</A></B>()</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns whether the regular expression ignores case.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -172,7 +174,7 @@ A class for regular expressions with features like Javascript's RegExp, plus
 <TD><CODE><B><A HREF="../../../../../com/google/gwt/regexp/shared/RegExp.html#getLastIndex()">getLastIndex</A></B>()</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns the zero-based position at which to start the next match.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -180,7 +182,8 @@ A class for regular expressions with features like Javascript's RegExp, plus
 <TD><CODE><B><A HREF="../../../../../com/google/gwt/regexp/shared/RegExp.html#getMultiline()">getMultiline</A></B>()</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns whether '$' and '^' match line returns ('\n' and '\r') in addition
+ to the beginning or end of the string.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -188,7 +191,7 @@ A class for regular expressions with features like Javascript's RegExp, plus
 <TD><CODE><B><A HREF="../../../../../com/google/gwt/regexp/shared/RegExp.html#getSource()">getSource</A></B>()</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns the pattern string of the regular expression.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -310,10 +313,11 @@ getGlobal</H3>
 <PRE>
 public boolean <B>getGlobal</B>()</PRE>
 <DL>
+<DD>Returns whether the regular expression captures all occurrences of the
+ pattern.
+<P>
 <DD><DL>
-
-<DT><B>Returns:</B><DD>Whether the regular expression captures all occurrences of the
-         pattern.</DL>
+</DL>
 </DD>
 </DL>
 <HR>
@@ -323,9 +327,10 @@ getIgnoreCase</H3>
 <PRE>
 public boolean <B>getIgnoreCase</B>()</PRE>
 <DL>
+<DD>Returns whether the regular expression ignores case.
+<P>
 <DD><DL>
-
-<DT><B>Returns:</B><DD>Whether the regular expression ignores case.</DL>
+</DL>
 </DD>
 </DL>
 <HR>
@@ -335,12 +340,13 @@ getLastIndex</H3>
 <PRE>
 public int <B>getLastIndex</B>()</PRE>
 <DL>
+<DD>Returns the zero-based position at which to start the next match. The
+ return value is not defined if the global flag is not set. After a call
+ to <A HREF="../../../../../com/google/gwt/regexp/shared/RegExp.html#exec(java.lang.String)"><CODE>exec(String)</CODE></A> or <A HREF="../../../../../com/google/gwt/regexp/shared/RegExp.html#test(java.lang.String)"><CODE>test(String)</CODE></A>, this method returns
+ the next position following the most recent match.
+<P>
 <DD><DL>
-
-<DT><B>Returns:</B><DD>The zero-based position at which to start the next match. The
-         return value is not defined if the global flag is not set. After a
-         call to <A HREF="../../../../../com/google/gwt/regexp/shared/RegExp.html#exec(java.lang.String)"><CODE>exec(java.lang.String)</CODE></A> or <A HREF="../../../../../com/google/gwt/regexp/shared/RegExp.html#test(java.lang.String)"><CODE>test(java.lang.String)</CODE></A>, this method returns the
-         next position following the most recent match.<DT><B>See Also:</B><DD><A HREF="../../../../../com/google/gwt/regexp/shared/RegExp.html#getGlobal()"><CODE>getGlobal()</CODE></A></DL>
+<DT><B>See Also:</B><DD><A HREF="../../../../../com/google/gwt/regexp/shared/RegExp.html#getGlobal()"><CODE>getGlobal()</CODE></A></DL>
 </DD>
 </DL>
 <HR>
@@ -350,10 +356,11 @@ getMultiline</H3>
 <PRE>
 public boolean <B>getMultiline</B>()</PRE>
 <DL>
+<DD>Returns whether '$' and '^' match line returns ('\n' and '\r') in addition
+ to the beginning or end of the string.
+<P>
 <DD><DL>
-
-<DT><B>Returns:</B><DD>Whether '$' and '^' match line returns ('\n' and '\r') in addition
-         to the beginning or end of the string.</DL>
+</DL>
 </DD>
 </DL>
 <HR>
@@ -363,9 +370,10 @@ getSource</H3>
 <PRE>
 public java.lang.String <B>getSource</B>()</PRE>
 <DL>
+<DD>Returns the pattern string of the regular expression.
+<P>
 <DD><DL>
-
-<DT><B>Returns:</B><DD>The pattern string of the regular expression.</DL>
+</DL>
 </DD>
 </DL>
 <HR>
@@ -441,8 +449,8 @@ public <A HREF="../../../../../com/google/gwt/regexp/shared/SplitResult.html" ti
  regular expression is completely empty, splits the input string into its
  constituent characters. If the regular expression is not empty but matches
  an empty string, the results are not well defined.
- 
- Note: There are some browser inconsistencies with this implementation, as 
+
+ Note: There are some browser inconsistencies with this implementation, as
  it is delegated to the browser, and no browser follows the spec completely.
  A major difference is that IE will exclude empty strings in the result.
 <P>
@@ -485,6 +493,7 @@ public boolean <B>test</B>(java.lang.String&nbsp;input)</PRE>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-summary.html"><FONT CLASS="NavBarFont1"><B>Package</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Class</B></FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="class-use/RegExp.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
@@ -493,7 +502,7 @@ public boolean <B>test</B>(java.lang.String&nbsp;input)</PRE>
 </TABLE>
 </TD>
 <TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
-GWT 2.1.0.RC1</EM>
+GWT 2.1.1</EM>
 </TD>
 </TR>
 

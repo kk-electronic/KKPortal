@@ -38,6 +38,7 @@ function windowTitle()
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-summary.html"><FONT CLASS="NavBarFont1"><B>Package</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Class</B></FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="class-use/SimpleHtmlSanitizer.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
@@ -46,7 +47,7 @@ function windowTitle()
 </TABLE>
 </TD>
 <TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
-GWT 2.1.0.RC1</EM>
+GWT 2.1.1</EM>
 </TD>
 </TR>
 
@@ -104,11 +105,20 @@ java.lang.Object
 A simple and relatively inexpensive HTML sanitizer.
 
  <p>
- This sanitizer accepts the subset of HTML consisting of attribute-free tags
- in a whitelist (including <code>&lt;b&gt;, &lt;em&gt;, &lt;i&gt;</code>, etc; for the exact list
- consult the source), as well as numeric HTML entities and HTML entity
- references. Any HTML metacharacters that do not appear as part of markup in
- this subset will be HTML-esacped.
+ This sanitizer accepts the subset of HTML consisting of the following
+ attribute-free tags:
+
+ <ul>
+ <li><code>&amp;lt;b&amp;gt;</code>, <code>&amp;lt;em&amp;gt;</code>, <code>&amp;lt;i&amp;gt;</code></li>
+ <li><code>&amp;lt;h1&amp;gt;</code>, <code>&amp;lt;h2&amp;gt;</code>, <code>&amp;lt;h3&amp;gt;</code>,
+     <code>&amp;lt;h4&amp;gt;</code>, <code>&amp;lt;h5&amp;gt;</code>, <code>&amp;lt;h6&amp;gt;</code></li>
+ <li><code>&amp;lt;ul&amp;gt;</code>, <code>&amp;lt;ol&amp;gt;</code>. <code>&amp;lt;li&amp;gt;</code></li>
+ <li><code>&amp;lt;hr&amp;gt;</code></li>
+ </ul>
+
+ as well as numeric HTML entities and HTML entity references. Any HTML
+ metacharacters that do not appear as part of markup in this subset will be
+ HTML-escaped.
 <P>
 
 <P>
@@ -130,7 +140,7 @@ A simple and relatively inexpensive HTML sanitizer.
 <TD><CODE><B><A HREF="../../../../../com/google/gwt/safehtml/shared/SimpleHtmlSanitizer.html#getInstance()">getInstance</A></B>()</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Return a singleton SimpleHtmlSanitizer instance.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -176,11 +186,14 @@ getInstance</H3>
 <PRE>
 public static <A HREF="../../../../../com/google/gwt/safehtml/shared/SimpleHtmlSanitizer.html" title="class in com.google.gwt.safehtml.shared">SimpleHtmlSanitizer</A> <B>getInstance</B>()</PRE>
 <DL>
+<DD>Return a singleton SimpleHtmlSanitizer instance.
+<P>
 <DD><DL>
 </DL>
 </DD>
 <DD><DL>
-</DL>
+
+<DT><B>Returns:</B><DD>the instance</DL>
 </DD>
 </DL>
 <HR>
@@ -202,7 +215,8 @@ public static <A HREF="../../../../../com/google/gwt/safehtml/shared/SafeHtml.ht
 </DL>
 </DD>
 <DD><DL>
-</DL>
+<DT><B>Parameters:</B><DD><CODE>html</CODE> - the input String
+<DT><B>Returns:</B><DD>a sanitized SafeHtml instance</DL>
 </DD>
 </DL>
 <HR>
@@ -240,6 +254,7 @@ public <A HREF="../../../../../com/google/gwt/safehtml/shared/SafeHtml.html" tit
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-summary.html"><FONT CLASS="NavBarFont1"><B>Package</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Class</B></FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="class-use/SimpleHtmlSanitizer.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
@@ -248,7 +263,7 @@ public <A HREF="../../../../../com/google/gwt/safehtml/shared/SafeHtml.html" tit
 </TABLE>
 </TD>
 <TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
-GWT 2.1.0.RC1</EM>
+GWT 2.1.1</EM>
 </TD>
 </TR>
 

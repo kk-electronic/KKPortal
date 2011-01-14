@@ -38,6 +38,7 @@ function windowTitle()
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-summary.html"><FONT CLASS="NavBarFont1"><B>Package</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Class</B></FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="class-use/AttachEvent.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
@@ -46,7 +47,7 @@ function windowTitle()
 </TABLE>
 </TD>
 <TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
-GWT 2.1.0.RC1</EM>
+GWT 2.1.1</EM>
 </TD>
 </TR>
 
@@ -146,7 +147,7 @@ Fired when the event source is attached to the browser's document
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
 <CODE>protected </CODE></FONT></TD>
-<TD><CODE><B><A HREF="../../../../../../com/google/gwt/event/logical/shared/AttachEvent.html#AttachEvent(boolean)">AttachEvent</A></B>(boolean&nbsp;loaded)</CODE>
+<TD><CODE><B><A HREF="../../../../../../com/google/gwt/event/logical/shared/AttachEvent.html#AttachEvent(boolean)">AttachEvent</A></B>(boolean&nbsp;attached)</CODE>
 
 <BR>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Construct a new <A HREF="../../../../../../com/google/gwt/event/logical/shared/AttachEvent.html" title="class in com.google.gwt.event.logical.shared"><CODE>AttachEvent</CODE></A>.</TD>
@@ -185,7 +186,8 @@ void</CODE></FONT></TD>
      boolean&nbsp;attached)</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Fires a <A HREF="../../../../../../com/google/gwt/event/logical/shared/AttachEvent.html" title="class in com.google.gwt.event.logical.shared"><CODE>AttachEvent</CODE></A> on all registered handlers in the handler source.</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Fires an <A HREF="../../../../../../com/google/gwt/event/logical/shared/AttachEvent.html" title="class in com.google.gwt.event.logical.shared"><CODE>AttachEvent</CODE></A> on all registered handlers in the handler
+ source.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -209,7 +211,8 @@ void</CODE></FONT></TD>
 <TD><CODE><B><A HREF="../../../../../../com/google/gwt/event/logical/shared/AttachEvent.html#isAttached()">isAttached</A></B>()</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns true if this event announces that the source has been attached,
+ false if it has been detached.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -254,12 +257,12 @@ void</CODE></FONT></TD>
 <A NAME="AttachEvent(boolean)"><!-- --></A><H3>
 AttachEvent</H3>
 <PRE>
-protected <B>AttachEvent</B>(boolean&nbsp;loaded)</PRE>
+protected <B>AttachEvent</B>(boolean&nbsp;attached)</PRE>
 <DL>
 <DD>Construct a new <A HREF="../../../../../../com/google/gwt/event/logical/shared/AttachEvent.html" title="class in com.google.gwt.event.logical.shared"><CODE>AttachEvent</CODE></A>.
 <P>
 <DL>
-<DT><B>Parameters:</B><DD><CODE>width</CODE> - the new width<DD><CODE>height</CODE> - the new height</DL>
+<DT><B>Parameters:</B><DD><CODE>attached</CODE> - true if the source has been attached</DL>
 </DL>
 
 <!-- ============ METHOD DETAIL ========== -->
@@ -278,7 +281,8 @@ fire</H3>
 public static &lt;S extends <A HREF="../../../../../../com/google/gwt/event/logical/shared/HasAttachHandlers.html" title="interface in com.google.gwt.event.logical.shared">HasAttachHandlers</A>&gt; void <B>fire</B>(S&nbsp;source,
                                                       boolean&nbsp;attached)</PRE>
 <DL>
-<DD>Fires a <A HREF="../../../../../../com/google/gwt/event/logical/shared/AttachEvent.html" title="class in com.google.gwt.event.logical.shared"><CODE>AttachEvent</CODE></A> on all registered handlers in the handler source.
+<DD>Fires an <A HREF="../../../../../../com/google/gwt/event/logical/shared/AttachEvent.html" title="class in com.google.gwt.event.logical.shared"><CODE>AttachEvent</CODE></A> on all registered handlers in the handler
+ source.
 <P>
 <DD><DL>
 <DT><B>Type Parameters:</B><DD><CODE>S</CODE> - The handler source type<DT><B>Parameters:</B><DD><CODE>source</CODE> - the source of the handlers<DD><CODE>attached</CODE> - whether to announce an attach or detach</DL>
@@ -324,10 +328,11 @@ isAttached</H3>
 <PRE>
 public boolean <B>isAttached</B>()</PRE>
 <DL>
+<DD>Returns true if this event announces that the source has been attached,
+ false if it has been detached.
+<P>
 <DD><DL>
-
-<DT><B>Returns:</B><DD>true if this event announces that the source has been attached,
- false if it has been detached</DL>
+</DL>
 </DD>
 </DL>
 <HR>
@@ -385,6 +390,7 @@ protected void <B>dispatch</B>(<A HREF="../../../../../../com/google/gwt/event/l
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-summary.html"><FONT CLASS="NavBarFont1"><B>Package</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Class</B></FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="class-use/AttachEvent.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
@@ -393,7 +399,7 @@ protected void <B>dispatch</B>(<A HREF="../../../../../../com/google/gwt/event/l
 </TABLE>
 </TD>
 <TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
-GWT 2.1.0.RC1</EM>
+GWT 2.1.1</EM>
 </TD>
 </TR>
 

@@ -38,6 +38,7 @@ function windowTitle()
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-summary.html"><FONT CLASS="NavBarFont1"><B>Package</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Class</B></FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="class-use/MenuItem.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
@@ -46,7 +47,7 @@ function windowTitle()
 </TABLE>
 </TD>
 <TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
-GWT 2.1.0.RC1</EM>
+GWT 2.1.1</EM>
 </TD>
 </TR>
 
@@ -94,11 +95,11 @@ java.lang.Object
       <IMG SRC="../../../../../../resources/inherit.gif" ALT="extended by "><B>com.google.gwt.user.client.ui.MenuItem</B>
 </PRE>
 <DL>
-<DT><B>All Implemented Interfaces:</B> <DD><A HREF="../../../../../../com/google/gwt/safehtml/client/HasSafeHtml.html" title="interface in com.google.gwt.safehtml.client">HasSafeHtml</A>, <A HREF="../../../../../../com/google/gwt/user/client/ui/HasHTML.html" title="interface in com.google.gwt.user.client.ui">HasHTML</A>, <A HREF="../../../../../../com/google/gwt/user/client/ui/HasText.html" title="interface in com.google.gwt.user.client.ui">HasText</A></DD>
+<DT><B>All Implemented Interfaces:</B> <DD><A HREF="../../../../../../com/google/gwt/safehtml/client/HasSafeHtml.html" title="interface in com.google.gwt.safehtml.client">HasSafeHtml</A>, <A HREF="../../../../../../com/google/gwt/user/client/ui/HasEnabled.html" title="interface in com.google.gwt.user.client.ui">HasEnabled</A>, <A HREF="../../../../../../com/google/gwt/user/client/ui/HasHTML.html" title="interface in com.google.gwt.user.client.ui">HasHTML</A>, <A HREF="../../../../../../com/google/gwt/user/client/ui/HasText.html" title="interface in com.google.gwt.user.client.ui">HasText</A></DD>
 </DL>
 <HR>
 <DL>
-<DT><PRE>public class <B>MenuItem</B><DT>extends <A HREF="../../../../../../com/google/gwt/user/client/ui/UIObject.html" title="class in com.google.gwt.user.client.ui">UIObject</A><DT>implements <A HREF="../../../../../../com/google/gwt/user/client/ui/HasHTML.html" title="interface in com.google.gwt.user.client.ui">HasHTML</A>, <A HREF="../../../../../../com/google/gwt/safehtml/client/HasSafeHtml.html" title="interface in com.google.gwt.safehtml.client">HasSafeHtml</A></DL>
+<DT><PRE>public class <B>MenuItem</B><DT>extends <A HREF="../../../../../../com/google/gwt/user/client/ui/UIObject.html" title="class in com.google.gwt.user.client.ui">UIObject</A><DT>implements <A HREF="../../../../../../com/google/gwt/user/client/ui/HasHTML.html" title="interface in com.google.gwt.user.client.ui">HasHTML</A>, <A HREF="../../../../../../com/google/gwt/user/client/ui/HasEnabled.html" title="interface in com.google.gwt.user.client.ui">HasEnabled</A>, <A HREF="../../../../../../com/google/gwt/safehtml/client/HasSafeHtml.html" title="interface in com.google.gwt.safehtml.client">HasSafeHtml</A></DL>
 </PRE>
 
 <P>
@@ -263,6 +264,14 @@ An entry in a
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;boolean</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../../com/google/gwt/user/client/ui/MenuItem.html#isEnabled()">isEnabled</A></B>()</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns true if the widget is enabled, false if not.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
 <CODE>protected &nbsp;void</CODE></FONT></TD>
 <TD><CODE><B><A HREF="../../../../../../com/google/gwt/user/client/ui/MenuItem.html#onEnsureDebugId(java.lang.String)">onEnsureDebugId</A></B>(java.lang.String&nbsp;baseID)</CODE>
 
@@ -277,6 +286,14 @@ An entry in a
 
 <BR>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sets the command associated with this item.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;void</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../../com/google/gwt/user/client/ui/MenuItem.html#setEnabled(boolean)">setEnabled</A></B>(boolean&nbsp;enabled)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sets whether this widget is enabled.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -375,16 +392,16 @@ public <B>MenuItem</B>(<A HREF="../../../../../../com/google/gwt/safehtml/shared
 </DL>
 <HR>
 
-<A NAME="MenuItem(java.lang.String, com.google.gwt.user.client.Command)"><!-- --></A><H3>
+<A NAME="MenuItem(com.google.gwt.safehtml.shared.SafeHtml, com.google.gwt.user.client.ui.MenuBar)"><!-- --></A><H3>
 MenuItem</H3>
 <PRE>
-public <B>MenuItem</B>(java.lang.String&nbsp;text,
-                <A HREF="../../../../../../com/google/gwt/user/client/Command.html" title="interface in com.google.gwt.user.client">Command</A>&nbsp;cmd)</PRE>
+public <B>MenuItem</B>(<A HREF="../../../../../../com/google/gwt/safehtml/shared/SafeHtml.html" title="interface in com.google.gwt.safehtml.shared">SafeHtml</A>&nbsp;html,
+                <A HREF="../../../../../../com/google/gwt/user/client/ui/MenuBar.html" title="class in com.google.gwt.user.client.ui">MenuBar</A>&nbsp;subMenu)</PRE>
 <DL>
-<DD>Constructs a new menu item that fires a command when it is selected.
+<DD>Constructs a new menu item that cascades to a sub-menu when it is selected.
 <P>
 <DL>
-<DT><B>Parameters:</B><DD><CODE>text</CODE> - the item's text<DD><CODE>cmd</CODE> - the command to be fired when it is selected</DL>
+<DT><B>Parameters:</B><DD><CODE>html</CODE> - the item's text<DD><CODE>subMenu</CODE> - the sub-menu to be displayed when it is selected</DL>
 </DL>
 <HR>
 
@@ -402,16 +419,30 @@ public <B>MenuItem</B>(java.lang.String&nbsp;text,
 </DL>
 <HR>
 
-<A NAME="MenuItem(com.google.gwt.safehtml.shared.SafeHtml, com.google.gwt.user.client.ui.MenuBar)"><!-- --></A><H3>
+<A NAME="MenuItem(java.lang.String, boolean, com.google.gwt.user.client.ui.MenuBar)"><!-- --></A><H3>
 MenuItem</H3>
 <PRE>
-public <B>MenuItem</B>(<A HREF="../../../../../../com/google/gwt/safehtml/shared/SafeHtml.html" title="interface in com.google.gwt.safehtml.shared">SafeHtml</A>&nbsp;html,
+public <B>MenuItem</B>(java.lang.String&nbsp;text,
+                boolean&nbsp;asHTML,
                 <A HREF="../../../../../../com/google/gwt/user/client/ui/MenuBar.html" title="class in com.google.gwt.user.client.ui">MenuBar</A>&nbsp;subMenu)</PRE>
 <DL>
 <DD>Constructs a new menu item that cascades to a sub-menu when it is selected.
 <P>
 <DL>
-<DT><B>Parameters:</B><DD><CODE>html</CODE> - the item's text<DD><CODE>subMenu</CODE> - the sub-menu to be displayed when it is selected</DL>
+<DT><B>Parameters:</B><DD><CODE>text</CODE> - the item's text<DD><CODE>asHTML</CODE> - <code>true</code> to treat the specified text as html<DD><CODE>subMenu</CODE> - the sub-menu to be displayed when it is selected</DL>
+</DL>
+<HR>
+
+<A NAME="MenuItem(java.lang.String, com.google.gwt.user.client.Command)"><!-- --></A><H3>
+MenuItem</H3>
+<PRE>
+public <B>MenuItem</B>(java.lang.String&nbsp;text,
+                <A HREF="../../../../../../com/google/gwt/user/client/Command.html" title="interface in com.google.gwt.user.client">Command</A>&nbsp;cmd)</PRE>
+<DL>
+<DD>Constructs a new menu item that fires a command when it is selected.
+<P>
+<DL>
+<DT><B>Parameters:</B><DD><CODE>text</CODE> - the item's text<DD><CODE>cmd</CODE> - the command to be fired when it is selected</DL>
 </DL>
 <HR>
 
@@ -425,20 +456,6 @@ public <B>MenuItem</B>(java.lang.String&nbsp;text,
 <P>
 <DL>
 <DT><B>Parameters:</B><DD><CODE>text</CODE> - the item's text<DD><CODE>subMenu</CODE> - the sub-menu to be displayed when it is selected</DL>
-</DL>
-<HR>
-
-<A NAME="MenuItem(java.lang.String, boolean, com.google.gwt.user.client.ui.MenuBar)"><!-- --></A><H3>
-MenuItem</H3>
-<PRE>
-public <B>MenuItem</B>(java.lang.String&nbsp;text,
-                boolean&nbsp;asHTML,
-                <A HREF="../../../../../../com/google/gwt/user/client/ui/MenuBar.html" title="class in com.google.gwt.user.client.ui">MenuBar</A>&nbsp;subMenu)</PRE>
-<DL>
-<DD>Constructs a new menu item that cascades to a sub-menu when it is selected.
-<P>
-<DL>
-<DT><B>Parameters:</B><DD><CODE>text</CODE> - the item's text<DD><CODE>asHTML</CODE> - <code>true</code> to treat the specified text as html<DD><CODE>subMenu</CODE> - the sub-menu to be displayed when it is selected</DL>
 </DL>
 
 <!-- ============ METHOD DETAIL ========== -->
@@ -538,6 +555,23 @@ public java.lang.String <B>getText</B>()</PRE>
 </DL>
 <HR>
 
+<A NAME="isEnabled()"><!-- --></A><H3>
+isEnabled</H3>
+<PRE>
+public boolean <B>isEnabled</B>()</PRE>
+<DL>
+<DD><B>Description copied from interface: <CODE><A HREF="../../../../../../com/google/gwt/user/client/ui/HasEnabled.html#isEnabled()">HasEnabled</A></CODE></B></DD>
+<DD>Returns true if the widget is enabled, false if not.
+<P>
+<DD><DL>
+<DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../../com/google/gwt/user/client/ui/HasEnabled.html#isEnabled()">isEnabled</A></CODE> in interface <CODE><A HREF="../../../../../../com/google/gwt/user/client/ui/HasEnabled.html" title="interface in com.google.gwt.user.client.ui">HasEnabled</A></CODE></DL>
+</DD>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
 <A NAME="setCommand(com.google.gwt.user.client.Command)"><!-- --></A><H3>
 setCommand</H3>
 <PRE>
@@ -554,21 +588,20 @@ public void <B>setCommand</B>(<A HREF="../../../../../../com/google/gwt/user/cli
 </DL>
 <HR>
 
-<A NAME="setHTML(java.lang.String)"><!-- --></A><H3>
-setHTML</H3>
+<A NAME="setEnabled(boolean)"><!-- --></A><H3>
+setEnabled</H3>
 <PRE>
-public void <B>setHTML</B>(java.lang.String&nbsp;html)</PRE>
+public void <B>setEnabled</B>(boolean&nbsp;enabled)</PRE>
 <DL>
-<DD><B>Description copied from interface: <CODE><A HREF="../../../../../../com/google/gwt/user/client/ui/HasHTML.html#setHTML(java.lang.String)">HasHTML</A></CODE></B></DD>
-<DD>Sets this object's contents via HTML. Use care when setting an object's
- HTML; it is an easy way to expose script-based security problems. Consider
- using <A HREF="../../../../../../com/google/gwt/user/client/ui/HasText.html#setText(java.lang.String)"><CODE>HasText.setText(String)</CODE></A> whenever possible.
+<DD><B>Description copied from interface: <CODE><A HREF="../../../../../../com/google/gwt/user/client/ui/HasEnabled.html#setEnabled(boolean)">HasEnabled</A></CODE></B></DD>
+<DD>Sets whether this widget is enabled.
 <P>
 <DD><DL>
-<DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../../com/google/gwt/user/client/ui/HasHTML.html#setHTML(java.lang.String)">setHTML</A></CODE> in interface <CODE><A HREF="../../../../../../com/google/gwt/user/client/ui/HasHTML.html" title="interface in com.google.gwt.user.client.ui">HasHTML</A></CODE></DL>
+<DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../../com/google/gwt/user/client/ui/HasEnabled.html#setEnabled(boolean)">setEnabled</A></CODE> in interface <CODE><A HREF="../../../../../../com/google/gwt/user/client/ui/HasEnabled.html" title="interface in com.google.gwt.user.client.ui">HasEnabled</A></CODE></DL>
 </DD>
 <DD><DL>
-<DT><B>Parameters:</B><DD><CODE>html</CODE> - the object's new HTML</DL>
+<DT><B>Parameters:</B><DD><CODE>enabled</CODE> - <code>true</code> to enable the widget, <code>false</code>
+          to disable it</DL>
 </DD>
 </DL>
 <HR>
@@ -595,6 +628,25 @@ public void <B>setHTML</B>(<A HREF="../../../../../../com/google/gwt/safehtml/sh
 </DD>
 <DD><DL>
 <DT><B>Parameters:</B><DD><CODE>html</CODE> - the object's new HTML, represented as a <A HREF="../../../../../../com/google/gwt/safehtml/shared/SafeHtml.html" title="interface in com.google.gwt.safehtml.shared"><CODE>SafeHtml</CODE></A> object</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="setHTML(java.lang.String)"><!-- --></A><H3>
+setHTML</H3>
+<PRE>
+public void <B>setHTML</B>(java.lang.String&nbsp;html)</PRE>
+<DL>
+<DD><B>Description copied from interface: <CODE><A HREF="../../../../../../com/google/gwt/user/client/ui/HasHTML.html#setHTML(java.lang.String)">HasHTML</A></CODE></B></DD>
+<DD>Sets this object's contents via HTML. Use care when setting an object's
+ HTML; it is an easy way to expose script-based security problems. Consider
+ using <A HREF="../../../../../../com/google/gwt/user/client/ui/HasText.html#setText(java.lang.String)"><CODE>HasText.setText(String)</CODE></A> whenever possible.
+<P>
+<DD><DL>
+<DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../../com/google/gwt/user/client/ui/HasHTML.html#setHTML(java.lang.String)">setHTML</A></CODE> in interface <CODE><A HREF="../../../../../../com/google/gwt/user/client/ui/HasHTML.html" title="interface in com.google.gwt.user.client.ui">HasHTML</A></CODE></DL>
+</DD>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>html</CODE> - the object's new HTML</DL>
 </DD>
 </DL>
 <HR>
@@ -677,6 +729,7 @@ protected void <B>setSelectionStyle</B>(boolean&nbsp;selected)</PRE>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-summary.html"><FONT CLASS="NavBarFont1"><B>Package</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Class</B></FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="class-use/MenuItem.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
@@ -685,7 +738,7 @@ protected void <B>setSelectionStyle</B>(boolean&nbsp;selected)</PRE>
 </TABLE>
 </TD>
 <TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
-GWT 2.1.0.RC1</EM>
+GWT 2.1.1</EM>
 </TD>
 </TR>
 

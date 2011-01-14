@@ -38,6 +38,7 @@ function windowTitle()
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-summary.html"><FONT CLASS="NavBarFont1"><B>Package</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Class</B></FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="class-use/TreeItem.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
@@ -46,7 +47,7 @@ function windowTitle()
 </TABLE>
 </TD>
 <TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
-GWT 2.1.0.RC1</EM>
+GWT 2.1.1</EM>
 </TD>
 </TR>
 
@@ -237,6 +238,14 @@ An item that can be contained within a
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
 <CODE>&nbsp;<A HREF="../../../../../../com/google/gwt/user/client/ui/TreeItem.html" title="class in com.google.gwt.user.client.ui">TreeItem</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../../com/google/gwt/user/client/ui/TreeItem.html#addItem(com.google.gwt.safehtml.shared.SafeHtml)">addItem</A></B>(<A HREF="../../../../../../com/google/gwt/safehtml/shared/SafeHtml.html" title="interface in com.google.gwt.safehtml.shared">SafeHtml</A>&nbsp;itemHtml)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Adds a child tree item containing the specified html.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;<A HREF="../../../../../../com/google/gwt/user/client/ui/TreeItem.html" title="class in com.google.gwt.user.client.ui">TreeItem</A></CODE></FONT></TD>
 <TD><CODE><B><A HREF="../../../../../../com/google/gwt/user/client/ui/TreeItem.html#addItem(java.lang.String)">addItem</A></B>(java.lang.String&nbsp;itemText)</CODE>
 
 <BR>
@@ -354,6 +363,16 @@ An item that can be contained within a
 
 <BR>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Gets the <code>Widget</code> associated with this tree item.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;<A HREF="../../../../../../com/google/gwt/user/client/ui/TreeItem.html" title="class in com.google.gwt.user.client.ui">TreeItem</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../../com/google/gwt/user/client/ui/TreeItem.html#insertItem(int, com.google.gwt.safehtml.shared.SafeHtml)">insertItem</A></B>(int&nbsp;beforeIndex,
+           <A HREF="../../../../../../com/google/gwt/safehtml/shared/SafeHtml.html" title="interface in com.google.gwt.safehtml.shared">SafeHtml</A>&nbsp;itemHtml)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Inserts a child tree item at the specified index containing the specified
+ text.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -597,6 +616,23 @@ public <A HREF="../../../../../../com/google/gwt/user/client/ui/TreeItem.html" t
 </DL>
 <HR>
 
+<A NAME="addItem(com.google.gwt.safehtml.shared.SafeHtml)"><!-- --></A><H3>
+addItem</H3>
+<PRE>
+public <A HREF="../../../../../../com/google/gwt/user/client/ui/TreeItem.html" title="class in com.google.gwt.user.client.ui">TreeItem</A> <B>addItem</B>(<A HREF="../../../../../../com/google/gwt/safehtml/shared/SafeHtml.html" title="interface in com.google.gwt.safehtml.shared">SafeHtml</A>&nbsp;itemHtml)</PRE>
+<DL>
+<DD>Adds a child tree item containing the specified html.
+<P>
+<DD><DL>
+</DL>
+</DD>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>itemHtml</CODE> - the item's HTML
+<DT><B>Returns:</B><DD>the item that was added</DL>
+</DD>
+</DL>
+<HR>
+
 <A NAME="addItem(com.google.gwt.user.client.ui.TreeItem)"><!-- --></A><H3>
 addItem</H3>
 <PRE>
@@ -817,6 +853,28 @@ public <A HREF="../../../../../../com/google/gwt/user/client/ui/TreeItem.html" t
 </DD>
 <DD><DL>
 <DT><B>Parameters:</B><DD><CODE>beforeIndex</CODE> - the index where the item will be inserted<DD><CODE>itemText</CODE> - the text to be added
+<DT><B>Returns:</B><DD>the item that was added
+<DT><B>Throws:</B>
+<DD><CODE>java.lang.IndexOutOfBoundsException</CODE> - if the index is out of range</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="insertItem(int, com.google.gwt.safehtml.shared.SafeHtml)"><!-- --></A><H3>
+insertItem</H3>
+<PRE>
+public <A HREF="../../../../../../com/google/gwt/user/client/ui/TreeItem.html" title="class in com.google.gwt.user.client.ui">TreeItem</A> <B>insertItem</B>(int&nbsp;beforeIndex,
+                           <A HREF="../../../../../../com/google/gwt/safehtml/shared/SafeHtml.html" title="interface in com.google.gwt.safehtml.shared">SafeHtml</A>&nbsp;itemHtml)
+                    throws java.lang.IndexOutOfBoundsException</PRE>
+<DL>
+<DD>Inserts a child tree item at the specified index containing the specified
+ text.
+<P>
+<DD><DL>
+</DL>
+</DD>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>beforeIndex</CODE> - the index where the item will be inserted<DD><CODE>itemHtml</CODE> - the item's HTML
 <DT><B>Returns:</B><DD>the item that was added
 <DT><B>Throws:</B>
 <DD><CODE>java.lang.IndexOutOfBoundsException</CODE> - if the index is out of range</DL>
@@ -1153,6 +1211,7 @@ protected void <B>onEnsureDebugId</B>(java.lang.String&nbsp;baseID)</PRE>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-summary.html"><FONT CLASS="NavBarFont1"><B>Package</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Class</B></FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="class-use/TreeItem.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
@@ -1161,7 +1220,7 @@ protected void <B>onEnsureDebugId</B>(java.lang.String&nbsp;baseID)</PRE>
 </TABLE>
 </TD>
 <TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
-GWT 2.1.0.RC1</EM>
+GWT 2.1.1</EM>
 </TD>
 </TR>
 

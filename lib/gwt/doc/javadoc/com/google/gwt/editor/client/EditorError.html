@@ -38,6 +38,7 @@ function windowTitle()
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-summary.html"><FONT CLASS="NavBarFont1"><B>Package</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Class</B></FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="class-use/EditorError.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
@@ -46,7 +47,7 @@ function windowTitle()
 </TABLE>
 </TD>
 <TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
-GWT 2.1.0.RC1</EM>
+GWT 2.1.1</EM>
 </TD>
 </TR>
 
@@ -99,7 +100,7 @@ Interface EditorError</H2>
 <P>
 Allows invalid Editor state to be propagated through an Editor hierarchy.
  Instances of EditorError are typically created as a side effect of calling
- <CODE>EditorDelegate#recordError()</CODE>.
+ <A HREF="../../../../../com/google/gwt/editor/client/EditorDelegate.html#recordError(java.lang.String, java.lang.Object, java.lang.Object)"><CODE>EditorDelegate.recordError(java.lang.String, java.lang.Object, java.lang.Object)</CODE></A>.
 <P>
 
 <P>
@@ -156,7 +157,7 @@ Allows invalid Editor state to be propagated through an Editor hierarchy.
 <TD><CODE><B><A HREF="../../../../../com/google/gwt/editor/client/EditorError.html#getUserData()">getUserData</A></B>()</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns the object passed into <CODE>EditorDelegate#recordError()</CODE>.</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns the object passed into <A HREF="../../../../../com/google/gwt/editor/client/EditorDelegate.html#recordError(java.lang.String, java.lang.Object, java.lang.Object)"><CODE>EditorDelegate.recordError(java.lang.String, java.lang.Object, java.lang.Object)</CODE></A>.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -207,7 +208,8 @@ java.lang.String <B>getAbsolutePath</B>()</PRE>
  that was passed into the EditorDriver.
 <P>
 <DD><DL>
-</DL>
+
+<DT><B>Returns:</B><DD>the absolute path as a String</DL>
 </DD>
 </DL>
 <HR>
@@ -220,7 +222,8 @@ getEditor</H3>
 <DD>Returns the Editor that holds the invalid value.
 <P>
 <DD><DL>
-</DL>
+
+<DT><B>Returns:</B><DD>the Editor instance</DL>
 </DD>
 </DL>
 <HR>
@@ -233,7 +236,8 @@ java.lang.String <B>getMessage</B>()</PRE>
 <DD>Returns a message associated with the error.
 <P>
 <DD><DL>
-</DL>
+
+<DT><B>Returns:</B><DD>the error message as a String</DL>
 </DD>
 </DL>
 <HR>
@@ -248,7 +252,8 @@ java.lang.String <B>getPath</B>()</PRE>
  will return an empty string.
 <P>
 <DD><DL>
-</DL>
+
+<DT><B>Returns:</B><DD>the error path as a String</DL>
 </DD>
 </DL>
 <HR>
@@ -258,10 +263,11 @@ getUserData</H3>
 <PRE>
 java.lang.Object <B>getUserData</B>()</PRE>
 <DL>
-<DD>Returns the object passed into <CODE>EditorDelegate#recordError()</CODE>.
+<DD>Returns the object passed into <A HREF="../../../../../com/google/gwt/editor/client/EditorDelegate.html#recordError(java.lang.String, java.lang.Object, java.lang.Object)"><CODE>EditorDelegate.recordError(java.lang.String, java.lang.Object, java.lang.Object)</CODE></A>.
 <P>
 <DD><DL>
-</DL>
+
+<DT><B>Returns:</B><DD>the user data Object</DL>
 </DD>
 </DL>
 <HR>
@@ -274,7 +280,8 @@ java.lang.Object <B>getValue</B>()</PRE>
 <DD>Returns the value that triggered the error.
 <P>
 <DD><DL>
-</DL>
+
+<DT><B>Returns:</B><DD>the error value Object</DL>
 </DD>
 </DL>
 <HR>
@@ -288,7 +295,8 @@ boolean <B>isConsumed</B>()</PRE>
  enclosing Editor.
 <P>
 <DD><DL>
-</DL>
+
+<DT><B>Returns:</B><DD><code>true</code> if the error will not be propagated<DT><B>See Also:</B><DD><A HREF="../../../../../com/google/gwt/editor/client/EditorError.html#setConsumed(boolean)"><CODE>setConsumed(boolean)</CODE></A></DL>
 </DD>
 </DL>
 <HR>
@@ -302,7 +310,7 @@ void <B>setConsumed</B>(boolean&nbsp;consumed)</PRE>
  enclosing Editor.
 <P>
 <DD><DL>
-</DL>
+<DT><B>Parameters:</B><DD><CODE>consumed</CODE> - <code>true</code> if the error will not be propagated<DT><B>See Also:</B><DD><A HREF="../../../../../com/google/gwt/editor/client/EditorError.html#isConsumed()"><CODE>isConsumed()</CODE></A></DL>
 </DD>
 </DL>
 <!-- ========= END OF CLASS DATA ========= -->
@@ -321,6 +329,7 @@ void <B>setConsumed</B>(boolean&nbsp;consumed)</PRE>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-summary.html"><FONT CLASS="NavBarFont1"><B>Package</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Class</B></FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="class-use/EditorError.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
@@ -329,7 +338,7 @@ void <B>setConsumed</B>(boolean&nbsp;consumed)</PRE>
 </TABLE>
 </TD>
 <TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
-GWT 2.1.0.RC1</EM>
+GWT 2.1.1</EM>
 </TD>
 </TR>
 

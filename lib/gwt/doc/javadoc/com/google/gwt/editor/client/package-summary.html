@@ -38,6 +38,7 @@ function windowTitle()
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Package</B></FONT>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <FONT CLASS="NavBarFont1">Class</FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-use.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
@@ -46,7 +47,7 @@ function windowTitle()
 </TABLE>
 </TD>
 <TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
-GWT 2.1.0.RC1</EM>
+GWT 2.1.1</EM>
 </TD>
 </TR>
 
@@ -79,27 +80,17 @@ GWT 2.1.0.RC1</EM>
 <H2>
 Package com.google.gwt.editor.client
 </H2>
+A framework for editing bean-like objects.
+<P>
+<B>See:</B>
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="#package_description"><B>Description</B></A>
+<P>
 
 <TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
 <TR BGCOLOR="#CCCCFF" CLASS="TableHeadingColor">
 <TH ALIGN="left" COLSPAN="2"><FONT SIZE="+2">
 <B>Interface Summary</B></FONT></TH>
-</TR>
-<TR BGCOLOR="white" CLASS="TableRowColor">
-<TD WIDTH="15%"><B><A HREF="../../../../../com/google/gwt/editor/client/AutoBean.html" title="interface in com.google.gwt.editor.client">AutoBean&lt;T&gt;</A></B></TD>
-<TD>A controller for an implementation of a bean interface.</TD>
-</TR>
-<TR BGCOLOR="white" CLASS="TableRowColor">
-<TD WIDTH="15%"><B><A HREF="../../../../../com/google/gwt/editor/client/AutoBeanFactory.html" title="interface in com.google.gwt.editor.client">AutoBeanFactory</A></B></TD>
-<TD>A tag interface for the AutoBean generator.</TD>
-</TR>
-<TR BGCOLOR="white" CLASS="TableRowColor">
-<TD WIDTH="15%"><B><A HREF="../../../../../com/google/gwt/editor/client/AutoBeanVisitor.Context.html" title="interface in com.google.gwt.editor.client">AutoBeanVisitor.Context</A></B></TD>
-<TD>Reserved for future expansion to avoid API breaks.</TD>
-</TR>
-<TR BGCOLOR="white" CLASS="TableRowColor">
-<TD WIDTH="15%"><B><A HREF="../../../../../com/google/gwt/editor/client/AutoBeanVisitor.PropertyContext.html" title="interface in com.google.gwt.editor.client">AutoBeanVisitor.PropertyContext</A></B></TD>
-<TD>Allows properties to be reset.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD WIDTH="15%"><B><A HREF="../../../../../com/google/gwt/editor/client/CompositeEditor.html" title="interface in com.google.gwt.editor.client">CompositeEditor&lt;T,C,E extends Editor&lt;C&gt;&gt;</A></B></TD>
@@ -118,9 +109,7 @@ Package com.google.gwt.editor.client
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD WIDTH="15%"><B><A HREF="../../../../../com/google/gwt/editor/client/EditorDelegate.html" title="interface in com.google.gwt.editor.client">EditorDelegate&lt;T&gt;</A></B></TD>
-<TD>
- <span style="color:red">Experimental API: This class is still under rapid
- development, and is very likely to be changed.</TD>
+<TD>Binds an individual Editor to the backing service.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD WIDTH="15%"><B><A HREF="../../../../../com/google/gwt/editor/client/EditorError.html" title="interface in com.google.gwt.editor.client">EditorError</A></B></TD>
@@ -146,9 +135,7 @@ Package com.google.gwt.editor.client
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD WIDTH="15%"><B><A HREF="../../../../../com/google/gwt/editor/client/SimpleBeanEditorDriver.html" title="interface in com.google.gwt.editor.client">SimpleBeanEditorDriver&lt;T,E extends Editor&lt;? super T&gt;&gt;</A></B></TD>
-<TD>
- <span style="color:red">Experimental API: This class is still under rapid
- development, and is very likely to be changed.</TD>
+<TD>Automates editing of simple bean-like objects.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD WIDTH="15%"><B><A HREF="../../../../../com/google/gwt/editor/client/ValueAwareEditor.html" title="interface in com.google.gwt.editor.client">ValueAwareEditor&lt;T&gt;</A></B></TD>
@@ -163,34 +150,7 @@ Package com.google.gwt.editor.client
 <TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
 <TR BGCOLOR="#CCCCFF" CLASS="TableHeadingColor">
 <TH ALIGN="left" COLSPAN="2"><FONT SIZE="+2">
-<B>Class Summary</B></FONT></TH>
-</TR>
-<TR BGCOLOR="white" CLASS="TableRowColor">
-<TD WIDTH="15%"><B><A HREF="../../../../../com/google/gwt/editor/client/AutoBeanUtils.html" title="class in com.google.gwt.editor.client">AutoBeanUtils</A></B></TD>
-<TD>Utility methods for working with AutoBeans.</TD>
-</TR>
-<TR BGCOLOR="white" CLASS="TableRowColor">
-<TD WIDTH="15%"><B><A HREF="../../../../../com/google/gwt/editor/client/AutoBeanVisitor.html" title="class in com.google.gwt.editor.client">AutoBeanVisitor</A></B></TD>
-<TD>Allows traversal of an AutoBean object graph.</TD>
-</TR>
-</TABLE>
-&nbsp;
-
-<P>
-
-<TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
-<TR BGCOLOR="#CCCCFF" CLASS="TableHeadingColor">
-<TH ALIGN="left" COLSPAN="2"><FONT SIZE="+2">
 <B>Annotation Types Summary</B></FONT></TH>
-</TR>
-<TR BGCOLOR="white" CLASS="TableRowColor">
-<TD WIDTH="15%"><B><A HREF="../../../../../com/google/gwt/editor/client/AutoBeanFactory.Category.html" title="annotation in com.google.gwt.editor.client">AutoBeanFactory.Category</A></B></TD>
-<TD>Allows non-property methods on simple bean implementations when applied.</TD>
-</TR>
-<TR BGCOLOR="white" CLASS="TableRowColor">
-<TD WIDTH="15%"><B><A HREF="../../../../../com/google/gwt/editor/client/AutoBeanFactory.NoWrap.html" title="annotation in com.google.gwt.editor.client">AutoBeanFactory.NoWrap</A></B></TD>
-<TD>Methods annotated with this annotation will not have their return values
- automatically wrapped by the factory.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD WIDTH="15%"><B><A HREF="../../../../../com/google/gwt/editor/client/Editor.Ignore.html" title="annotation in com.google.gwt.editor.client">Editor.Ignore</A></B></TD>
@@ -204,7 +164,18 @@ Package com.google.gwt.editor.client
 &nbsp;
 
 <P>
+<A NAME="package_description"><!-- --></A><H2>
+Package com.google.gwt.editor.client Description
+</H2>
+
+<P>
+<p>A framework for editing bean-like objects.</p>
+<P>
+
+<P>
 <DL>
+<DT><B>Since:</B></DT>
+  <DD>GWT 2.1</DD>
 </DL>
 <HR>
 
@@ -221,6 +192,7 @@ Package com.google.gwt.editor.client
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Package</B></FONT>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <FONT CLASS="NavBarFont1">Class</FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-use.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
@@ -229,7 +201,7 @@ Package com.google.gwt.editor.client
 </TABLE>
 </TD>
 <TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
-GWT 2.1.0.RC1</EM>
+GWT 2.1.1</EM>
 </TD>
 </TR>
 

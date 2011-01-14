@@ -38,6 +38,7 @@ function windowTitle()
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-summary.html"><FONT CLASS="NavBarFont1"><B>Package</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Class</B></FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="class-use/IncrementalCommand.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
@@ -46,7 +47,7 @@ function windowTitle()
 </TABLE>
 </TD>
 <TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
-GWT 2.1.0.RC1</EM>
+GWT 2.1.1</EM>
 </TD>
 </TR>
 
@@ -88,9 +89,16 @@ DETAIL:&nbsp;FIELD&nbsp;|&nbsp;CONSTR&nbsp;|&nbsp;<A HREF="#method_detail">METHO
 com.google.gwt.user.client</FONT>
 <BR>
 Interface IncrementalCommand</H2>
-<HR>
 <DL>
-<DT><PRE>public interface <B>IncrementalCommand</B></DL>
+<DT><B>All Superinterfaces:</B> <DD><A HREF="../../../../../com/google/gwt/core/client/Scheduler.RepeatingCommand.html" title="interface in com.google.gwt.core.client">Scheduler.RepeatingCommand</A></DD>
+</DL>
+<HR>
+<B>Deprecated.</B>&nbsp;<I>Replaced by <A HREF="../../../../../com/google/gwt/core/client/Scheduler.RepeatingCommand.html" title="interface in com.google.gwt.core.client"><CODE>Scheduler.RepeatingCommand</CODE></A> and
+             <A HREF="../../../../../com/google/gwt/core/client/Scheduler.html#scheduleIncremental(com.google.gwt.core.client.Scheduler.RepeatingCommand)"><CODE>Scheduler.scheduleIncremental()</CODE></A></I>
+<P>
+<DL>
+<DT><PRE><FONT SIZE="-1">@Deprecated
+</FONT>public interface <B>IncrementalCommand</B><DT>extends <A HREF="../../../../../com/google/gwt/core/client/Scheduler.RepeatingCommand.html" title="interface in com.google.gwt.core.client">Scheduler.RepeatingCommand</A></DL>
 </PRE>
 
 <P>
@@ -112,7 +120,7 @@ An <code>IncrementalCommand</code> is a command that is broken into one or
       public boolean execute() {
         label.setText("IncrementalCommand - index " + Integer.toString(index));
         
-        return ++index < COUNT;
+        return ++index &lt; COUNT;
       }
     });
   }
@@ -139,7 +147,7 @@ An <code>IncrementalCommand</code> is a command that is broken into one or
 <TD><CODE><B><A HREF="../../../../../com/google/gwt/user/client/IncrementalCommand.html#execute()">execute</A></B>()</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Causes the <code>IncrementalCommand</code> to execute its encapsulated
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<B>Deprecated.</B>&nbsp;Causes the <code>IncrementalCommand</code> to execute its encapsulated
  behavior.</TD>
 </TR>
 </TABLE>
@@ -161,9 +169,12 @@ execute</H3>
 <PRE>
 boolean <B>execute</B>()</PRE>
 <DL>
-<DD>Causes the <code>IncrementalCommand</code> to execute its encapsulated
+<DD><B>Deprecated.</B>&nbsp;<DD>Causes the <code>IncrementalCommand</code> to execute its encapsulated
  behavior.
 <P>
+<DD><DL>
+<DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../com/google/gwt/core/client/Scheduler.RepeatingCommand.html#execute()">execute</A></CODE> in interface <CODE><A HREF="../../../../../com/google/gwt/core/client/Scheduler.RepeatingCommand.html" title="interface in com.google.gwt.core.client">Scheduler.RepeatingCommand</A></CODE></DL>
+</DD>
 <DD><DL>
 
 <DT><B>Returns:</B><DD><code>true</code> if the command has more work to do,
@@ -186,6 +197,7 @@ boolean <B>execute</B>()</PRE>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-summary.html"><FONT CLASS="NavBarFont1"><B>Package</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Class</B></FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="class-use/IncrementalCommand.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
@@ -194,7 +206,7 @@ boolean <B>execute</B>()</PRE>
 </TABLE>
 </TD>
 <TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
-GWT 2.1.0.RC1</EM>
+GWT 2.1.1</EM>
 </TD>
 </TR>
 

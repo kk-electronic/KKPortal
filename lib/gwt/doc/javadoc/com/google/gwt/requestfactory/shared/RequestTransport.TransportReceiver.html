@@ -38,6 +38,7 @@ function windowTitle()
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-summary.html"><FONT CLASS="NavBarFont1"><B>Package</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Class</B></FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="class-use/RequestTransport.TransportReceiver.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
@@ -46,7 +47,7 @@ function windowTitle()
 </TABLE>
 </TD>
 <TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
-GWT 2.1.0.RC1</EM>
+GWT 2.1.1</EM>
 </TD>
 </TR>
 
@@ -116,10 +117,10 @@ A callback interface.
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
 <CODE>&nbsp;void</CODE></FONT></TD>
-<TD><CODE><B><A HREF="../../../../../com/google/gwt/requestfactory/shared/RequestTransport.TransportReceiver.html#onTransportFailure(java.lang.String)">onTransportFailure</A></B>(java.lang.String&nbsp;message)</CODE>
+<TD><CODE><B><A HREF="../../../../../com/google/gwt/requestfactory/shared/RequestTransport.TransportReceiver.html#onTransportFailure(com.google.gwt.requestfactory.shared.ServerFailure)">onTransportFailure</A></B>(<A HREF="../../../../../com/google/gwt/requestfactory/shared/ServerFailure.html" title="class in com.google.gwt.requestfactory.shared">ServerFailure</A>&nbsp;failure)</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Called to report a transmission failure as a ServerFailure.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -127,7 +128,7 @@ A callback interface.
 <TD><CODE><B><A HREF="../../../../../com/google/gwt/requestfactory/shared/RequestTransport.TransportReceiver.html#onTransportSuccess(java.lang.String)">onTransportSuccess</A></B>(java.lang.String&nbsp;payload)</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Called when the transmission succeeds.</TD>
 </TR>
 </TABLE>
 &nbsp;
@@ -148,19 +149,23 @@ onTransportSuccess</H3>
 <PRE>
 void <B>onTransportSuccess</B>(java.lang.String&nbsp;payload)</PRE>
 <DL>
+<DD>Called when the transmission succeeds.
+<P>
 <DD><DL>
-</DL>
+<DT><B>Parameters:</B><DD><CODE>payload</CODE> - the String payload</DL>
 </DD>
 </DL>
 <HR>
 
-<A NAME="onTransportFailure(java.lang.String)"><!-- --></A><H3>
+<A NAME="onTransportFailure(com.google.gwt.requestfactory.shared.ServerFailure)"><!-- --></A><H3>
 onTransportFailure</H3>
 <PRE>
-void <B>onTransportFailure</B>(java.lang.String&nbsp;message)</PRE>
+void <B>onTransportFailure</B>(<A HREF="../../../../../com/google/gwt/requestfactory/shared/ServerFailure.html" title="class in com.google.gwt.requestfactory.shared">ServerFailure</A>&nbsp;failure)</PRE>
 <DL>
+<DD>Called to report a transmission failure as a ServerFailure.
+<P>
 <DD><DL>
-</DL>
+<DT><B>Parameters:</B><DD><CODE>message</CODE> - the String error message</DL>
 </DD>
 </DL>
 <!-- ========= END OF CLASS DATA ========= -->
@@ -179,6 +184,7 @@ void <B>onTransportFailure</B>(java.lang.String&nbsp;message)</PRE>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-summary.html"><FONT CLASS="NavBarFont1"><B>Package</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Class</B></FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="class-use/RequestTransport.TransportReceiver.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
@@ -187,7 +193,7 @@ void <B>onTransportFailure</B>(java.lang.String&nbsp;message)</PRE>
 </TABLE>
 </TD>
 <TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
-GWT 2.1.0.RC1</EM>
+GWT 2.1.1</EM>
 </TD>
 </TR>
 

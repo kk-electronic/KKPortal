@@ -38,6 +38,7 @@ function windowTitle()
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-summary.html"><FONT CLASS="NavBarFont1"><B>Package</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Class</B></FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="class-use/Activity.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
@@ -46,7 +47,7 @@ function windowTitle()
 </TABLE>
 </TD>
 <TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
-GWT 2.1.0.RC1</EM>
+GWT 2.1.1</EM>
 </TD>
 </TR>
 
@@ -97,12 +98,7 @@ Interface Activity</H2>
 </PRE>
 
 <P>
-<p>
- <span style="color:red">Experimental API: This class is still under rapid
- development, and is very likely to be deleted. Use it at your own risk.
- </span>
- </p>
- Implemented by objects that control a piece of user interface, with a life
+Implemented by objects that control a piece of user interface, with a life
  cycle managed by an <A HREF="../../../../../com/google/gwt/activity/shared/ActivityManager.html" title="class in com.google.gwt.activity.shared"><CODE>ActivityManager</CODE></A>, in response to
  <A HREF="../../../../../com/google/gwt/place/shared/PlaceChangeEvent.html" title="class in com.google.gwt.place.shared"><CODE>PlaceChangeEvent</CODE></A> events as the user
  navigates through the app.
@@ -220,8 +216,8 @@ void <B>start</B>(<A HREF="../../../../../com/google/gwt/user/client/ui/AcceptsO
 <DL>
 <DD>Called when the Activity should ready its widget for the user. When the
  widget is ready (typically after an RPC response has been received),
- receiver should present it by calling <CODE>AcceptsOneWidget#setWidget()</CODE>
- on the given panel.
+ receiver should present it by calling
+ <A HREF="../../../../../com/google/gwt/user/client/ui/AcceptsOneWidget.html#setWidget(com.google.gwt.user.client.ui.IsWidget)"><CODE>AcceptsOneWidget.setWidget(IsWidget)</CODE></A> on the given panel.
  <p>
  Any handlers attached to the provided event bus will be de-registered when
  the activity is stopped, so activities will rarely need to hold on to the
@@ -248,6 +244,7 @@ void <B>start</B>(<A HREF="../../../../../com/google/gwt/user/client/ui/AcceptsO
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-summary.html"><FONT CLASS="NavBarFont1"><B>Package</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Class</B></FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="class-use/Activity.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
@@ -256,7 +253,7 @@ void <B>start</B>(<A HREF="../../../../../com/google/gwt/user/client/ui/AcceptsO
 </TABLE>
 </TD>
 <TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
-GWT 2.1.0.RC1</EM>
+GWT 2.1.1</EM>
 </TD>
 </TR>
 

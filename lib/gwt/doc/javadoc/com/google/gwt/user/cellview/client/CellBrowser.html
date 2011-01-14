@@ -38,6 +38,7 @@ function windowTitle()
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-summary.html"><FONT CLASS="NavBarFont1"><B>Package</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Class</B></FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="class-use/CellBrowser.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
@@ -46,13 +47,13 @@ function windowTitle()
 </TABLE>
 </TD>
 <TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
-GWT 2.1.0.RC1</EM>
+GWT 2.1.1</EM>
 </TD>
 </TR>
 
 <TR>
 <TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
-&nbsp;<A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractPager.html" title="class in com.google.gwt.user.cellview.client"><B>PREV CLASS</B></A>&nbsp;
+&nbsp;<A HREF="../../../../../../com/google/gwt/user/cellview/client/CellBasedWidgetImplSafari.html" title="class in com.google.gwt.user.cellview.client"><B>PREV CLASS</B></A>&nbsp;
 &nbsp;<A HREF="../../../../../../com/google/gwt/user/cellview/client/CellBrowser.Resources.html" title="interface in com.google.gwt.user.cellview.client"><B>NEXT CLASS</B></A></FONT></TD>
 <TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
   <A HREF="../../../../../../index.html?com/google/gwt/user/cellview/client/CellBrowser.html" target="_top"><B>FRAMES</B></A>  &nbsp;
@@ -129,18 +130,18 @@ A "browsable" view of a tree in which only a single node per level may be
      * Get the {@link NodeInfo} that provides the children of the specified
      * value.
      */
-    public <T> NodeInfo<?> getNodeInfo(T value) {
+    public &lt;T&gt; NodeInfo&lt;?&gt; getNodeInfo(T value) {
       /*
        * Create some data in a data provider. Use the parent value as a prefix
        * for the next level.
        */
-      ListDataProvider<String> dataProvider = new ListDataProvider<String>();
-      for (int i = 0; i < 2; i++) {
+      ListDataProvider&lt;String&gt; dataProvider = new ListDataProvider&lt;String&gt;();
+      for (int i = 0; i &lt; 2; i++) {
         dataProvider.getList().add(value + "." + String.valueOf(i));
       }
 
       // Return a node info that pairs the data with a cell.
-      return new DefaultNodeInfo<String>(dataProvider, new TextCell());
+      return new DefaultNodeInfo&lt;String&gt;(dataProvider, new TextCell());
     }
 
     /**
@@ -149,7 +150,7 @@ A "browsable" view of a tree in which only a single node per level may be
      */
     public boolean isLeaf(Object value) {
       // The maximum length of a value is ten characters.
-      return value.toString().length() > 10;
+      return value.toString().length() &gt; 10;
     }
   }
 
@@ -176,7 +177,7 @@ A "browsable" view of a tree in which only a single node per level may be
    */
   private static class Playlist {
     private final String name;
-    private final List<String> songs = new ArrayList<String>();
+    private final List&lt;String&gt; songs = new ArrayList&lt;String&gt;();
 
     public Playlist(String name) {
       this.name = name;
@@ -198,7 +199,7 @@ A "browsable" view of a tree in which only a single node per level may be
     /**
      * Return the list of songs in the playlist.
      */
-    public List<String> getSongs() {
+    public List&lt;String&gt; getSongs() {
       return songs;
     }
   }
@@ -208,7 +209,7 @@ A "browsable" view of a tree in which only a single node per level may be
    */
   private static class Composer {
     private final String name;
-    private final List<Playlist> playlists = new ArrayList<Playlist>();
+    private final List&lt;Playlist&gt; playlists = new ArrayList&lt;Playlist&gt;();
 
     public Composer(String name) {
       this.name = name;
@@ -231,7 +232,7 @@ A "browsable" view of a tree in which only a single node per level may be
     /**
      * Return the rockin' playlist for this composer.
      */
-    public List<Playlist> getPlaylists() {
+    public List&lt;Playlist&gt; getPlaylists() {
       return playlists;
     }
   }
@@ -241,7 +242,7 @@ A "browsable" view of a tree in which only a single node per level may be
    */
   private static class CustomTreeModel implements TreeViewModel {
 
-    private final List<Composer> composers;
+    private final List&lt;Composer&gt; composers;
 
     /**
      * This selection model is shared across all leaf nodes. A selection model
@@ -249,11 +250,11 @@ A "browsable" view of a tree in which only a single node per level may be
      * nodes can have its own instance. This gives you flexibility to determine
      * how nodes are selected.
      */
-    private final SingleSelectionModel<String> selectionModel = new SingleSelectionModel<String>();
+    private final SingleSelectionModel&lt;String&gt; selectionModel = new SingleSelectionModel&lt;String&gt;();
 
     public CustomTreeModel() {
       // Create a database of information.
-      composers = new ArrayList<Composer>();
+      composers = new ArrayList&lt;Composer&gt;();
 
       // Add compositions by Beethoven.
       {
@@ -332,19 +333,19 @@ A "browsable" view of a tree in which only a single node per level may be
      * Get the {@link NodeInfo} that provides the children of the specified
      * value.
      */
-    public <T> NodeInfo<?> getNodeInfo(T value) {
+    public &lt;T&gt; NodeInfo&lt;?&gt; getNodeInfo(T value) {
       if (value == null) {
         // LEVEL 0.
         // We passed null as the root value. Return the composers.
 
         // Create a data provider that contains the list of composers.
-        ListDataProvider<Composer> dataProvider = new ListDataProvider<CellBrowserExample2.Composer>(
+        ListDataProvider&lt;Composer&gt; dataProvider = new ListDataProvider&lt;CellBrowserExample2.Composer&gt;(
             composers);
 
         // Create a cell to display a composer.
-        Cell<Composer> cell = new AbstractCell<Composer>() {
+        Cell&lt;Composer&gt; cell = new AbstractCell&lt;Composer&gt;() {
           @Override
-          public void render(Composer value, Object key, SafeHtmlBuilder sb) {
+          public void render(Context context, Composer value, SafeHtmlBuilder sb) {
             if (value != null) {
               sb.appendEscaped(value.getName());
             }
@@ -352,29 +353,29 @@ A "browsable" view of a tree in which only a single node per level may be
         };
 
         // Return a node info that pairs the data provider and the cell.
-        return new DefaultNodeInfo<Composer>(dataProvider, cell);
+        return new DefaultNodeInfo&lt;Composer&gt;(dataProvider, cell);
       } else if (value instanceof Composer) {
         // LEVEL 1.
         // We want the children of the composer. Return the playlists.
-        ListDataProvider<Playlist> dataProvider = new ListDataProvider<Playlist>(
+        ListDataProvider&lt;Playlist&gt; dataProvider = new ListDataProvider&lt;Playlist&gt;(
             ((Composer) value).getPlaylists());
-        Cell<Playlist> cell = new AbstractCell<Playlist>() {
+        Cell&lt;Playlist&gt; cell = new AbstractCell&lt;Playlist&gt;() {
           @Override
-          public void render(Playlist value, Object key, SafeHtmlBuilder sb) {
+          public void render(Context context, Playlist value, SafeHtmlBuilder sb) {
             if (value != null) {
               sb.appendEscaped(value.getName());
             }
           }
         };
-        return new DefaultNodeInfo<Playlist>(dataProvider, cell);
+        return new DefaultNodeInfo&lt;Playlist&gt;(dataProvider, cell);
       } else if (value instanceof Playlist) {
         // LEVEL 2 - LEAF.
         // We want the children of the playlist. Return the songs.
-        ListDataProvider<String> dataProvider = new ListDataProvider<String>(
+        ListDataProvider&lt;String&gt; dataProvider = new ListDataProvider&lt;String&gt;(
             ((Playlist) value).getSongs());
 
         // Use the shared selection model.
-        return new DefaultNodeInfo<String>(dataProvider, new TextCell(),
+        return new DefaultNodeInfo&lt;String&gt;(dataProvider, new TextCell(),
             selectionModel, null);
       }
 
@@ -400,7 +401,7 @@ A "browsable" view of a tree in which only a single node per level may be
     TreeViewModel model = new CustomTreeModel();
 
     /*
-     * Create the browser using the model. We use <code>null</code> as the
+     * Create the browser using the model. We use &lt;code&gt;null&lt;/code&gt; as the
      * default value of the root node. The default value will be passed to
      * CustomTreeModel#getNodeInfo();
      */
@@ -561,7 +562,7 @@ A "browsable" view of a tree in which only a single node per level may be
 <TD><CODE><B><A HREF="../../../../../../com/google/gwt/user/cellview/client/CellBrowser.html#isAnimationEnabled()">isAnimationEnabled</A></B>()</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns true if animations are enabled, false if not.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -728,7 +729,7 @@ public int <B>getDefaultColumnWidth</B>()</PRE>
 </DD>
 <DD><DL>
 
-<DT><B>Returns:</B><DD>the default width in pixels</DL>
+<DT><B>Returns:</B><DD>the default width in pixels<DT><B>See Also:</B><DD><A HREF="../../../../../../com/google/gwt/user/cellview/client/CellBrowser.html#setDefaultColumnWidth(int)"><CODE>setDefaultColumnWidth(int)</CODE></A></DL>
 </DD>
 </DL>
 <HR>
@@ -745,7 +746,7 @@ public int <B>getMinimumColumnWidth</B>()</PRE>
 </DD>
 <DD><DL>
 
-<DT><B>Returns:</B><DD>the minimum width in pixels</DL>
+<DT><B>Returns:</B><DD>the minimum width in pixels<DT><B>See Also:</B><DD><A HREF="../../../../../../com/google/gwt/user/cellview/client/CellBrowser.html#setMinimumColumnWidth(int)"><CODE>setMinimumColumnWidth(int)</CODE></A></DL>
 </DD>
 </DL>
 <HR>
@@ -773,12 +774,14 @@ isAnimationEnabled</H3>
 <PRE>
 public boolean <B>isAnimationEnabled</B>()</PRE>
 <DL>
+<DD><B>Description copied from interface: <CODE><A HREF="../../../../../../com/google/gwt/user/client/ui/HasAnimation.html#isAnimationEnabled()">HasAnimation</A></CODE></B></DD>
+<DD>Returns true if animations are enabled, false if not.
+<P>
 <DD><DL>
 <DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../../com/google/gwt/user/client/ui/HasAnimation.html#isAnimationEnabled()">isAnimationEnabled</A></CODE> in interface <CODE><A HREF="../../../../../../com/google/gwt/user/client/ui/HasAnimation.html" title="interface in com.google.gwt.user.client.ui">HasAnimation</A></CODE></DL>
 </DD>
 <DD><DL>
-
-<DT><B>Returns:</B><DD>true if animations are enabled, false if not</DL>
+</DL>
 </DD>
 </DL>
 <HR>
@@ -846,7 +849,7 @@ public void <B>setDefaultColumnWidth</B>(int&nbsp;width)</PRE>
 </DL>
 </DD>
 <DD><DL>
-<DT><B>Parameters:</B><DD><CODE>width</CODE> - the default width in pixels</DL>
+<DT><B>Parameters:</B><DD><CODE>width</CODE> - the default width in pixels<DT><B>See Also:</B><DD><A HREF="../../../../../../com/google/gwt/user/cellview/client/CellBrowser.html#getDefaultColumnWidth()"><CODE>getDefaultColumnWidth()</CODE></A></DL>
 </DD>
 </DL>
 <HR>
@@ -863,7 +866,7 @@ public void <B>setKeyboardSelectionPolicy</B>(<A HREF="../../../../../../com/goo
 <DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../../com/google/gwt/user/cellview/client/HasKeyboardSelectionPolicy.html#setKeyboardSelectionPolicy(com.google.gwt.user.cellview.client.HasKeyboardSelectionPolicy.KeyboardSelectionPolicy)">setKeyboardSelectionPolicy</A></CODE> in interface <CODE><A HREF="../../../../../../com/google/gwt/user/cellview/client/HasKeyboardSelectionPolicy.html" title="interface in com.google.gwt.user.cellview.client">HasKeyboardSelectionPolicy</A></CODE><DT><B>Overrides:</B><DD><CODE><A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractCellTree.html#setKeyboardSelectionPolicy(com.google.gwt.user.cellview.client.HasKeyboardSelectionPolicy.KeyboardSelectionPolicy)">setKeyboardSelectionPolicy</A></CODE> in class <CODE><A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractCellTree.html" title="class in com.google.gwt.user.cellview.client">AbstractCellTree</A></CODE></DL>
 </DD>
 <DD><DL>
-</DL>
+<DT><B>Parameters:</B><DD><CODE>policy</CODE> - the selection policy<DT><B>See Also:</B><DD><A HREF="../../../../../../com/google/gwt/user/cellview/client/HasKeyboardSelectionPolicy.html#getKeyboardSelectionPolicy()"><CODE>HasKeyboardSelectionPolicy.getKeyboardSelectionPolicy()</CODE></A></DL>
 </DD>
 </DL>
 <HR>
@@ -879,7 +882,7 @@ public void <B>setMinimumColumnWidth</B>(int&nbsp;minWidth)</PRE>
 </DL>
 </DD>
 <DD><DL>
-<DT><B>Parameters:</B><DD><CODE>minWidth</CODE> - the minimum width in pixels</DL>
+<DT><B>Parameters:</B><DD><CODE>minWidth</CODE> - the minimum width in pixels<DT><B>See Also:</B><DD><A HREF="../../../../../../com/google/gwt/user/cellview/client/CellBrowser.html#getMinimumColumnWidth()"><CODE>getMinimumColumnWidth()</CODE></A></DL>
 </DD>
 </DL>
 <HR>
@@ -915,6 +918,7 @@ protected &lt;C&gt; <A HREF="../../../../../../com/google/gwt/user/client/ui/Wid
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-summary.html"><FONT CLASS="NavBarFont1"><B>Package</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Class</B></FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="class-use/CellBrowser.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
@@ -923,13 +927,13 @@ protected &lt;C&gt; <A HREF="../../../../../../com/google/gwt/user/client/ui/Wid
 </TABLE>
 </TD>
 <TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
-GWT 2.1.0.RC1</EM>
+GWT 2.1.1</EM>
 </TD>
 </TR>
 
 <TR>
 <TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
-&nbsp;<A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractPager.html" title="class in com.google.gwt.user.cellview.client"><B>PREV CLASS</B></A>&nbsp;
+&nbsp;<A HREF="../../../../../../com/google/gwt/user/cellview/client/CellBasedWidgetImplSafari.html" title="class in com.google.gwt.user.cellview.client"><B>PREV CLASS</B></A>&nbsp;
 &nbsp;<A HREF="../../../../../../com/google/gwt/user/cellview/client/CellBrowser.Resources.html" title="interface in com.google.gwt.user.cellview.client"><B>NEXT CLASS</B></A></FONT></TD>
 <TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
   <A HREF="../../../../../../index.html?com/google/gwt/user/cellview/client/CellBrowser.html" target="_top"><B>FRAMES</B></A>  &nbsp;

@@ -38,6 +38,7 @@ function windowTitle()
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-summary.html"><FONT CLASS="NavBarFont1"><B>Package</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Class</B></FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="class-use/ActivityManager.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
@@ -46,7 +47,7 @@ function windowTitle()
 </TABLE>
 </TD>
 <TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
-GWT 2.1.0.RC1</EM>
+GWT 2.1.1</EM>
 </TD>
 </TR>
 
@@ -101,12 +102,7 @@ java.lang.Object
 </PRE>
 
 <P>
-<p>
- <span style="color:red">Experimental API: This class is still under rapid
- development, and is very likely to be deleted. Use it at your own risk.
- </span>
- </p>
- Manages <A HREF="../../../../../com/google/gwt/activity/shared/Activity.html" title="interface in com.google.gwt.activity.shared"><CODE>Activity</CODE></A> objects that should be kicked off in response to
+Manages <A HREF="../../../../../com/google/gwt/activity/shared/Activity.html" title="interface in com.google.gwt.activity.shared"><CODE>Activity</CODE></A> objects that should be kicked off in response to
  <A HREF="../../../../../com/google/gwt/place/shared/PlaceChangeEvent.html" title="class in com.google.gwt.place.shared"><CODE>PlaceChangeEvent</CODE></A> events. Each activity can start itself
  asynchronously, and provides a widget to be shown when it's ready to run.
 <P>
@@ -147,7 +143,7 @@ java.lang.Object
 <TD><CODE><B><A HREF="../../../../../com/google/gwt/activity/shared/ActivityManager.html#onPlaceChange(com.google.gwt.place.shared.PlaceChangeEvent)">onPlaceChange</A></B>(<A HREF="../../../../../com/google/gwt/place/shared/PlaceChangeEvent.html" title="class in com.google.gwt.place.shared">PlaceChangeEvent</A>&nbsp;event)</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Deactive the current activity, find the next one from our ActivityMapper,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Deactivate the current activity, find the next one from our ActivityMapper,
  and start it.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
@@ -219,14 +215,20 @@ onPlaceChange</H3>
 <PRE>
 public void <B>onPlaceChange</B>(<A HREF="../../../../../com/google/gwt/place/shared/PlaceChangeEvent.html" title="class in com.google.gwt.place.shared">PlaceChangeEvent</A>&nbsp;event)</PRE>
 <DL>
-<DD>Deactive the current activity, find the next one from our ActivityMapper,
+<DD>Deactivate the current activity, find the next one from our ActivityMapper,
  and start it.
+ <p>
+ The current activity's widget will be hidden immediately, which can cause
+ flicker if the next activity provides its widget asynchronously. That can
+ be minimized by decent caching. Perenially slow activities might mitigate
+ this by providing a widget immediately, with some kind of "loading"
+ treatment.
 <P>
 <DD><DL>
 <DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../com/google/gwt/place/shared/PlaceChangeEvent.Handler.html#onPlaceChange(com.google.gwt.place.shared.PlaceChangeEvent)">onPlaceChange</A></CODE> in interface <CODE><A HREF="../../../../../com/google/gwt/place/shared/PlaceChangeEvent.Handler.html" title="interface in com.google.gwt.place.shared">PlaceChangeEvent.Handler</A></CODE></DL>
 </DD>
 <DD><DL>
-<DT><B>See Also:</B><DD><CODE>PlaceChangeEvent.Handler#onPlaceChange(PlaceChangeEvent)</CODE></DL>
+<DT><B>See Also:</B><DD><A HREF="../../../../../com/google/gwt/place/shared/PlaceChangeEvent.Handler.html#onPlaceChange(com.google.gwt.place.shared.PlaceChangeEvent)"><CODE>PlaceChangeEvent.Handler.onPlaceChange(PlaceChangeEvent)</CODE></A></DL>
 </DD>
 </DL>
 <HR>
@@ -242,7 +244,7 @@ public void <B>onPlaceChangeRequest</B>(<A HREF="../../../../../com/google/gwt/p
 <DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../com/google/gwt/place/shared/PlaceChangeRequestEvent.Handler.html#onPlaceChangeRequest(com.google.gwt.place.shared.PlaceChangeRequestEvent)">onPlaceChangeRequest</A></CODE> in interface <CODE><A HREF="../../../../../com/google/gwt/place/shared/PlaceChangeRequestEvent.Handler.html" title="interface in com.google.gwt.place.shared">PlaceChangeRequestEvent.Handler</A></CODE></DL>
 </DD>
 <DD><DL>
-<DT><B>See Also:</B><DD><CODE>PlaceChangeRequestEvent.Handler#onPlaceChangeRequest(PlaceChangeRequestEvent)</CODE></DL>
+<DT><B>See Also:</B><DD><A HREF="../../../../../com/google/gwt/place/shared/PlaceChangeRequestEvent.Handler.html#onPlaceChangeRequest(com.google.gwt.place.shared.PlaceChangeRequestEvent)"><CODE>PlaceChangeRequestEvent.Handler.onPlaceChangeRequest(PlaceChangeRequestEvent)</CODE></A></DL>
 </DD>
 </DL>
 <HR>
@@ -263,7 +265,7 @@ public void <B>setDisplay</B>(<A HREF="../../../../../com/google/gwt/user/client
 </DL>
 </DD>
 <DD><DL>
-<DT><B>Parameters:</B><DD><CODE>display</CODE> - </DL>
+<DT><B>Parameters:</B><DD><CODE>display</CODE> - an instance of AcceptsOneWidget</DL>
 </DD>
 </DL>
 <!-- ========= END OF CLASS DATA ========= -->
@@ -282,6 +284,7 @@ public void <B>setDisplay</B>(<A HREF="../../../../../com/google/gwt/user/client
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-summary.html"><FONT CLASS="NavBarFont1"><B>Package</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Class</B></FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="class-use/ActivityManager.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
@@ -290,7 +293,7 @@ public void <B>setDisplay</B>(<A HREF="../../../../../com/google/gwt/user/client
 </TABLE>
 </TD>
 <TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
-GWT 2.1.0.RC1</EM>
+GWT 2.1.1</EM>
 </TD>
 </TR>
 

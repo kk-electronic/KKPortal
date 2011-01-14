@@ -38,6 +38,7 @@ function windowTitle()
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-summary.html"><FONT CLASS="NavBarFont1"><B>Package</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Class</B></FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="class-use/Violation.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
@@ -46,13 +47,13 @@ function windowTitle()
 </TABLE>
 </TD>
 <TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
-GWT 2.1.0.RC1</EM>
+GWT 2.1.1</EM>
 </TD>
 </TR>
 
 <TR>
 <TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
-&nbsp;<A HREF="../../../../../com/google/gwt/requestfactory/shared/Version.html" title="annotation in com.google.gwt.requestfactory.shared"><B>PREV CLASS</B></A>&nbsp;
+&nbsp;<A HREF="../../../../../com/google/gwt/requestfactory/shared/ValueProxy.html" title="interface in com.google.gwt.requestfactory.shared"><B>PREV CLASS</B></A>&nbsp;
 &nbsp;<A HREF="../../../../../com/google/gwt/requestfactory/shared/WriteOperation.html" title="enum in com.google.gwt.requestfactory.shared"><B>NEXT CLASS</B></A></FONT></TD>
 <TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
   <A HREF="../../../../../index.html?com/google/gwt/requestfactory/shared/Violation.html" target="_top"><B>FRAMES</B></A>  &nbsp;
@@ -94,12 +95,8 @@ Interface Violation</H2>
 </PRE>
 
 <P>
-<p>
- <span style="color:red">Experimental API: This class is still under rapid
- development, and is very likely to be deleted. Use it at your own risk.
- </span>
- </p>
- A lightweight representation of a ConstraintViolation.
+A lightweight representation of a
+ <A HREF="http://download.oracle.com/javaee/6/api/javax/validation/ConstraintViolation.html?is-external=true" title="class or interface in javax.validation"><CODE>ConstraintViolation</CODE></A>.
 <P>
 
 <P>
@@ -117,11 +114,30 @@ Interface Violation</H2>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;<A HREF="../../../../../com/google/gwt/requestfactory/shared/BaseProxy.html" title="interface in com.google.gwt.requestfactory.shared">BaseProxy</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../com/google/gwt/requestfactory/shared/Violation.html#getInvalidProxy()">getInvalidProxy</A></B>()</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;If the ConstraintViolation occurred while validating a object, this method
+ will return a BaseProxy that contains the invalid values.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
 <CODE>&nbsp;java.lang.String</CODE></FONT></TD>
 <TD><CODE><B><A HREF="../../../../../com/google/gwt/requestfactory/shared/Violation.html#getMessage()">getMessage</A></B>()</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns the message associated with this <A HREF="../../../../../com/google/gwt/requestfactory/shared/Violation.html" title="interface in com.google.gwt.requestfactory.shared"><CODE>Violation</CODE></A>.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;<A HREF="../../../../../com/google/gwt/requestfactory/shared/BaseProxy.html" title="interface in com.google.gwt.requestfactory.shared">BaseProxy</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../com/google/gwt/requestfactory/shared/Violation.html#getOriginalProxy()">getOriginalProxy</A></B>()</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;If the ConstraintViolation occurred while validating a value object that
+ originated from the server, this method will return a BaseProxy that
+ contains the original values.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -129,7 +145,7 @@ Interface Violation</H2>
 <TD><CODE><B><A HREF="../../../../../com/google/gwt/requestfactory/shared/Violation.html#getPath()">getPath</A></B>()</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns the path associated with this <A HREF="../../../../../com/google/gwt/requestfactory/shared/Violation.html" title="interface in com.google.gwt.requestfactory.shared"><CODE>Violation</CODE></A>.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -137,7 +153,8 @@ Interface Violation</H2>
 <TD><CODE><B><A HREF="../../../../../com/google/gwt/requestfactory/shared/Violation.html#getProxyId()">getProxyId</A></B>()</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns the proxy id associated with this <A HREF="../../../../../com/google/gwt/requestfactory/shared/Violation.html" title="interface in com.google.gwt.requestfactory.shared"><CODE>Violation</CODE></A> if the object
+ associated with the violation is an <A HREF="../../../../../com/google/gwt/requestfactory/shared/EntityProxy.html" title="interface in com.google.gwt.requestfactory.shared"><CODE>EntityProxy</CODE></A>.</TD>
 </TR>
 </TABLE>
 &nbsp;
@@ -153,13 +170,48 @@ Interface Violation</H2>
 </TR>
 </TABLE>
 
+<A NAME="getInvalidProxy()"><!-- --></A><H3>
+getInvalidProxy</H3>
+<PRE>
+<A HREF="../../../../../com/google/gwt/requestfactory/shared/BaseProxy.html" title="interface in com.google.gwt.requestfactory.shared">BaseProxy</A> <B>getInvalidProxy</B>()</PRE>
+<DL>
+<DD>If the ConstraintViolation occurred while validating a object, this method
+ will return a BaseProxy that contains the invalid values.
+<P>
+<DD><DL>
+
+<DT><B>Returns:</B><DD>the BaseProxy that caused the ConstraintViolation</DL>
+</DD>
+</DL>
+<HR>
+
 <A NAME="getMessage()"><!-- --></A><H3>
 getMessage</H3>
 <PRE>
 java.lang.String <B>getMessage</B>()</PRE>
 <DL>
+<DD>Returns the message associated with this <A HREF="../../../../../com/google/gwt/requestfactory/shared/Violation.html" title="interface in com.google.gwt.requestfactory.shared"><CODE>Violation</CODE></A>.
+<P>
 <DD><DL>
+
+<DT><B>Returns:</B><DD>a String message</DL>
+</DD>
 </DL>
+<HR>
+
+<A NAME="getOriginalProxy()"><!-- --></A><H3>
+getOriginalProxy</H3>
+<PRE>
+<A HREF="../../../../../com/google/gwt/requestfactory/shared/BaseProxy.html" title="interface in com.google.gwt.requestfactory.shared">BaseProxy</A> <B>getOriginalProxy</B>()</PRE>
+<DL>
+<DD>If the ConstraintViolation occurred while validating a value object that
+ originated from the server, this method will return a BaseProxy that
+ contains the original values.
+<P>
+<DD><DL>
+
+<DT><B>Returns:</B><DD>the BaseProxy originally sent by the server or <code>null</code> if the
+         BaseProxy was created on the client.</DL>
 </DD>
 </DL>
 <HR>
@@ -169,8 +221,11 @@ getPath</H3>
 <PRE>
 java.lang.String <B>getPath</B>()</PRE>
 <DL>
+<DD>Returns the path associated with this <A HREF="../../../../../com/google/gwt/requestfactory/shared/Violation.html" title="interface in com.google.gwt.requestfactory.shared"><CODE>Violation</CODE></A>.
+<P>
 <DD><DL>
-</DL>
+
+<DT><B>Returns:</B><DD>a String path</DL>
 </DD>
 </DL>
 <HR>
@@ -180,8 +235,13 @@ getProxyId</H3>
 <PRE>
 <A HREF="../../../../../com/google/gwt/requestfactory/shared/EntityProxyId.html" title="interface in com.google.gwt.requestfactory.shared">EntityProxyId</A>&lt;?&gt; <B>getProxyId</B>()</PRE>
 <DL>
+<DD>Returns the proxy id associated with this <A HREF="../../../../../com/google/gwt/requestfactory/shared/Violation.html" title="interface in com.google.gwt.requestfactory.shared"><CODE>Violation</CODE></A> if the object
+ associated with the violation is an <A HREF="../../../../../com/google/gwt/requestfactory/shared/EntityProxy.html" title="interface in com.google.gwt.requestfactory.shared"><CODE>EntityProxy</CODE></A>.
+<P>
 <DD><DL>
-</DL>
+
+<DT><B>Returns:</B><DD>an <A HREF="../../../../../com/google/gwt/requestfactory/shared/EntityProxyId.html" title="interface in com.google.gwt.requestfactory.shared"><CODE>EntityProxyId</CODE></A> instance or <code>null</code> if the object is
+         a ValueProxy.</DL>
 </DD>
 </DL>
 <!-- ========= END OF CLASS DATA ========= -->
@@ -200,6 +260,7 @@ getProxyId</H3>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-summary.html"><FONT CLASS="NavBarFont1"><B>Package</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Class</B></FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="class-use/Violation.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
@@ -208,13 +269,13 @@ getProxyId</H3>
 </TABLE>
 </TD>
 <TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
-GWT 2.1.0.RC1</EM>
+GWT 2.1.1</EM>
 </TD>
 </TR>
 
 <TR>
 <TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
-&nbsp;<A HREF="../../../../../com/google/gwt/requestfactory/shared/Version.html" title="annotation in com.google.gwt.requestfactory.shared"><B>PREV CLASS</B></A>&nbsp;
+&nbsp;<A HREF="../../../../../com/google/gwt/requestfactory/shared/ValueProxy.html" title="interface in com.google.gwt.requestfactory.shared"><B>PREV CLASS</B></A>&nbsp;
 &nbsp;<A HREF="../../../../../com/google/gwt/requestfactory/shared/WriteOperation.html" title="enum in com.google.gwt.requestfactory.shared"><B>NEXT CLASS</B></A></FONT></TD>
 <TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
   <A HREF="../../../../../index.html?com/google/gwt/requestfactory/shared/Violation.html" target="_top"><B>FRAMES</B></A>  &nbsp;

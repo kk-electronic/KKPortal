@@ -38,6 +38,7 @@ function windowTitle()
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-summary.html"><FONT CLASS="NavBarFont1"><B>Package</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Class</B></FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="class-use/DeferredCommand.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
@@ -46,7 +47,7 @@ function windowTitle()
 </TABLE>
 </TD>
 <TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
-GWT 2.1.0.RC1</EM>
+GWT 2.1.1</EM>
 </TD>
 </TR>
 
@@ -93,8 +94,13 @@ java.lang.Object
   <IMG SRC="../../../../../resources/inherit.gif" ALT="extended by "><B>com.google.gwt.user.client.DeferredCommand</B>
 </PRE>
 <HR>
+<B>Deprecated.</B>&nbsp;<I>Replaced by
+             <A HREF="../../../../../com/google/gwt/core/client/Scheduler.html#scheduleDeferred(com.google.gwt.core.client.Scheduler.ScheduledCommand)"><CODE>Scheduler.scheduleDeferred()</CODE></A> because the static nature of this
+             API prevents effective mocking for JRE-only tests.</I>
+<P>
 <DL>
-<DT><PRE>public class <B>DeferredCommand</B><DT>extends java.lang.Object</DL>
+<DT><PRE><FONT SIZE="-1">@Deprecated
+</FONT>public class <B>DeferredCommand</B><DT>extends java.lang.Object</DL>
 </PRE>
 
 <P>
@@ -121,7 +127,7 @@ This class allows you to execute code after all currently pending event
 <TD><CODE><B><A HREF="../../../../../com/google/gwt/user/client/DeferredCommand.html#DeferredCommand()">DeferredCommand</A></B>()</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<B>Deprecated.</B>&nbsp;&nbsp;</TD>
 </TR>
 </TABLE>
 &nbsp;
@@ -147,7 +153,7 @@ This class allows you to execute code after all currently pending event
 <TD><CODE><B><A HREF="../../../../../com/google/gwt/user/client/DeferredCommand.html#addCommand(com.google.gwt.user.client.Command)">addCommand</A></B>(<A HREF="../../../../../com/google/gwt/user/client/Command.html" title="interface in com.google.gwt.user.client">Command</A>&nbsp;cmd)</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Enqueues a <A HREF="../../../../../com/google/gwt/user/client/Command.html" title="interface in com.google.gwt.user.client"><CODE>Command</CODE></A> to be fired after all current events have been
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<B>Deprecated.</B>&nbsp;Enqueues a <A HREF="../../../../../com/google/gwt/user/client/Command.html" title="interface in com.google.gwt.user.client"><CODE>Command</CODE></A> to be fired after all current events have been
  handled.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
@@ -156,7 +162,7 @@ This class allows you to execute code after all currently pending event
 <TD><CODE><B><A HREF="../../../../../com/google/gwt/user/client/DeferredCommand.html#addCommand(com.google.gwt.user.client.IncrementalCommand)">addCommand</A></B>(<A HREF="../../../../../com/google/gwt/user/client/IncrementalCommand.html" title="interface in com.google.gwt.user.client">IncrementalCommand</A>&nbsp;cmd)</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Enqueues an <A HREF="../../../../../com/google/gwt/user/client/IncrementalCommand.html" title="interface in com.google.gwt.user.client"><CODE>IncrementalCommand</CODE></A> to be fired after all current events
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<B>Deprecated.</B>&nbsp;Enqueues an <A HREF="../../../../../com/google/gwt/user/client/IncrementalCommand.html" title="interface in com.google.gwt.user.client"><CODE>IncrementalCommand</CODE></A> to be fired after all current events
  have been handled.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
@@ -165,7 +171,8 @@ This class allows you to execute code after all currently pending event
 <TD><CODE><B><A HREF="../../../../../com/google/gwt/user/client/DeferredCommand.html#addPause()">addPause</A></B>()</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Adds a "pause" to the queue of <A HREF="../../../../../com/google/gwt/user/client/DeferredCommand.html" title="class in com.google.gwt.user.client"><CODE>DeferredCommand</CODE></A>s.</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<B>Deprecated.</B>&nbsp;<I>with no replacement because the presence of this method causes
+             arbitrary scheduling decisions</I></TD>
 </TR>
 </TABLE>
 &nbsp;<A NAME="methods_inherited_from_class_java.lang.Object"><!-- --></A>
@@ -195,7 +202,7 @@ DeferredCommand</H3>
 <PRE>
 public <B>DeferredCommand</B>()</PRE>
 <DL>
-</DL>
+<DD><B>Deprecated.</B>&nbsp;</DL>
 
 <!-- ============ METHOD DETAIL ========== -->
 
@@ -232,7 +239,7 @@ addCommand</H3>
 <PRE>
 public static void <B>addCommand</B>(<A HREF="../../../../../com/google/gwt/user/client/Command.html" title="interface in com.google.gwt.user.client">Command</A>&nbsp;cmd)</PRE>
 <DL>
-<DD>Enqueues a <A HREF="../../../../../com/google/gwt/user/client/Command.html" title="interface in com.google.gwt.user.client"><CODE>Command</CODE></A> to be fired after all current events have been
+<DD><B>Deprecated.</B>&nbsp;<DD>Enqueues a <A HREF="../../../../../com/google/gwt/user/client/Command.html" title="interface in com.google.gwt.user.client"><CODE>Command</CODE></A> to be fired after all current events have been
  handled.
  
  Note that the <A HREF="../../../../../com/google/gwt/user/client/Command.html" title="interface in com.google.gwt.user.client"><CODE>Command</CODE></A> should not perform any blocking operations.
@@ -250,7 +257,7 @@ addCommand</H3>
 <PRE>
 public static void <B>addCommand</B>(<A HREF="../../../../../com/google/gwt/user/client/IncrementalCommand.html" title="interface in com.google.gwt.user.client">IncrementalCommand</A>&nbsp;cmd)</PRE>
 <DL>
-<DD>Enqueues an <A HREF="../../../../../com/google/gwt/user/client/IncrementalCommand.html" title="interface in com.google.gwt.user.client"><CODE>IncrementalCommand</CODE></A> to be fired after all current events
+<DD><B>Deprecated.</B>&nbsp;<DD>Enqueues an <A HREF="../../../../../com/google/gwt/user/client/IncrementalCommand.html" title="interface in com.google.gwt.user.client"><CODE>IncrementalCommand</CODE></A> to be fired after all current events
  have been handled.
  
  Note that the <A HREF="../../../../../com/google/gwt/user/client/IncrementalCommand.html" title="interface in com.google.gwt.user.client"><CODE>IncrementalCommand</CODE></A> should not perform any blocking
@@ -269,6 +276,9 @@ addPause</H3>
 <PRE>
 public static void <B>addPause</B>()</PRE>
 <DL>
+<DD><B>Deprecated.</B>&nbsp;<I>with no replacement because the presence of this method causes
+             arbitrary scheduling decisions</I>
+<P>
 <DD>Adds a "pause" to the queue of <A HREF="../../../../../com/google/gwt/user/client/DeferredCommand.html" title="class in com.google.gwt.user.client"><CODE>DeferredCommand</CODE></A>s. Any
  <A HREF="../../../../../com/google/gwt/user/client/DeferredCommand.html" title="class in com.google.gwt.user.client"><CODE>DeferredCommand</CODE></A>s or pauses that are added after this pause will
  wait for an additional cycle through the system event loop before
@@ -294,6 +304,7 @@ public static void <B>addPause</B>()</PRE>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-summary.html"><FONT CLASS="NavBarFont1"><B>Package</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Class</B></FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="class-use/DeferredCommand.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
@@ -302,7 +313,7 @@ public static void <B>addPause</B>()</PRE>
 </TABLE>
 </TD>
 <TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
-GWT 2.1.0.RC1</EM>
+GWT 2.1.1</EM>
 </TD>
 </TR>
 

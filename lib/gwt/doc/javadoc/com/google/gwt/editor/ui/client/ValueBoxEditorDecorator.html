@@ -38,6 +38,7 @@ function windowTitle()
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-summary.html"><FONT CLASS="NavBarFont1"><B>Package</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Class</B></FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="class-use/ValueBoxEditorDecorator.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
@@ -46,7 +47,7 @@ function windowTitle()
 </TABLE>
 </TD>
 <TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
-GWT 2.1.0.RC1</EM>
+GWT 2.1.1</EM>
 </TD>
 </TR>
 
@@ -116,7 +117,7 @@ A simple decorator to display leaf widgets with an error message.
  For example:
  <pre>
  &#64;UiField
- ValueBoxEditorDecorator<String> name;
+ ValueBoxEditorDecorator&lt;String&gt; name;
  </pre>
  <pre>
  &lt;e:ValueBoxEditorDecorator ui:field='name'>
@@ -191,14 +192,15 @@ A simple decorator to display leaf widgets with an error message.
 <TD><CODE><B><A HREF="../../../../../../com/google/gwt/editor/ui/client/ValueBoxEditorDecorator.html#ValueBoxEditorDecorator()">ValueBoxEditorDecorator</A></B>()</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Constructs a ValueBoxEditorDecorator.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD><CODE><B><A HREF="../../../../../../com/google/gwt/editor/ui/client/ValueBoxEditorDecorator.html#ValueBoxEditorDecorator(com.google.gwt.user.client.ui.ValueBoxBase, com.google.gwt.editor.ui.client.adapters.ValueBoxEditor)">ValueBoxEditorDecorator</A></B>(<A HREF="../../../../../../com/google/gwt/user/client/ui/ValueBoxBase.html" title="class in com.google.gwt.user.client.ui">ValueBoxBase</A>&lt;<A HREF="../../../../../../com/google/gwt/editor/ui/client/ValueBoxEditorDecorator.html" title="type parameter in ValueBoxEditorDecorator">T</A>&gt;&nbsp;widget,
                         <A HREF="../../../../../../com/google/gwt/editor/ui/client/adapters/ValueBoxEditor.html" title="class in com.google.gwt.editor.ui.client.adapters">ValueBoxEditor</A>&lt;<A HREF="../../../../../../com/google/gwt/editor/ui/client/ValueBoxEditorDecorator.html" title="type parameter in ValueBoxEditorDecorator">T</A>&gt;&nbsp;editor)</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Constructs a ValueBoxEditorDecorator using a <A HREF="../../../../../../com/google/gwt/user/client/ui/ValueBoxBase.html" title="class in com.google.gwt.user.client.ui"><CODE>ValueBoxBase</CODE></A>
+ widget and a <A HREF="../../../../../../com/google/gwt/editor/ui/client/adapters/ValueBoxEditor.html" title="class in com.google.gwt.editor.ui.client.adapters"><CODE>ValueBoxEditor</CODE></A> editor.</TD>
 </TR>
 </TABLE>
 &nbsp;
@@ -216,7 +218,7 @@ A simple decorator to display leaf widgets with an error message.
 <TD><CODE><B><A HREF="../../../../../../com/google/gwt/editor/ui/client/ValueBoxEditorDecorator.html#asEditor()">asEditor</A></B>()</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns the Editor encapsulated by the view object.</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns the associated <A HREF="../../../../../../com/google/gwt/editor/ui/client/adapters/ValueBoxEditor.html" title="class in com.google.gwt.editor.ui.client.adapters"><CODE>ValueBoxEditor</CODE></A>.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -224,7 +226,7 @@ A simple decorator to display leaf widgets with an error message.
 <TD><CODE><B><A HREF="../../../../../../com/google/gwt/editor/ui/client/ValueBoxEditorDecorator.html#setEditor(com.google.gwt.editor.ui.client.adapters.ValueBoxEditor)">setEditor</A></B>(<A HREF="../../../../../../com/google/gwt/editor/ui/client/adapters/ValueBoxEditor.html" title="class in com.google.gwt.editor.ui.client.adapters">ValueBoxEditor</A>&lt;<A HREF="../../../../../../com/google/gwt/editor/ui/client/ValueBoxEditorDecorator.html" title="type parameter in ValueBoxEditorDecorator">T</A>&gt;&nbsp;editor)</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sets the associated <A HREF="../../../../../../com/google/gwt/editor/ui/client/adapters/ValueBoxEditor.html" title="class in com.google.gwt.editor.ui.client.adapters"><CODE>ValueBoxEditor</CODE></A>.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -300,6 +302,8 @@ ValueBoxEditorDecorator</H3>
 <FONT SIZE="-1"><A HREF="../../../../../../com/google/gwt/uibinder/client/UiConstructor.html" title="annotation in com.google.gwt.uibinder.client">@UiConstructor</A>
 </FONT>public <B>ValueBoxEditorDecorator</B>()</PRE>
 <DL>
+<DD>Constructs a ValueBoxEditorDecorator.
+<P>
 </DL>
 <HR>
 
@@ -309,6 +313,11 @@ ValueBoxEditorDecorator</H3>
 public <B>ValueBoxEditorDecorator</B>(<A HREF="../../../../../../com/google/gwt/user/client/ui/ValueBoxBase.html" title="class in com.google.gwt.user.client.ui">ValueBoxBase</A>&lt;<A HREF="../../../../../../com/google/gwt/editor/ui/client/ValueBoxEditorDecorator.html" title="type parameter in ValueBoxEditorDecorator">T</A>&gt;&nbsp;widget,
                                <A HREF="../../../../../../com/google/gwt/editor/ui/client/adapters/ValueBoxEditor.html" title="class in com.google.gwt.editor.ui.client.adapters">ValueBoxEditor</A>&lt;<A HREF="../../../../../../com/google/gwt/editor/ui/client/ValueBoxEditorDecorator.html" title="type parameter in ValueBoxEditorDecorator">T</A>&gt;&nbsp;editor)</PRE>
 <DL>
+<DD>Constructs a ValueBoxEditorDecorator using a <A HREF="../../../../../../com/google/gwt/user/client/ui/ValueBoxBase.html" title="class in com.google.gwt.user.client.ui"><CODE>ValueBoxBase</CODE></A>
+ widget and a <A HREF="../../../../../../com/google/gwt/editor/ui/client/adapters/ValueBoxEditor.html" title="class in com.google.gwt.editor.ui.client.adapters"><CODE>ValueBoxEditor</CODE></A> editor.
+<P>
+<DL>
+<DT><B>Parameters:</B><DD><CODE>widget</CODE> - the widget<DD><CODE>editor</CODE> - the editor</DL>
 </DL>
 
 <!-- ============ METHOD DETAIL ========== -->
@@ -326,14 +335,14 @@ asEditor</H3>
 <PRE>
 public <A HREF="../../../../../../com/google/gwt/editor/ui/client/adapters/ValueBoxEditor.html" title="class in com.google.gwt.editor.ui.client.adapters">ValueBoxEditor</A>&lt;<A HREF="../../../../../../com/google/gwt/editor/ui/client/ValueBoxEditorDecorator.html" title="type parameter in ValueBoxEditorDecorator">T</A>&gt; <B>asEditor</B>()</PRE>
 <DL>
-<DD><B>Description copied from interface: <CODE><A HREF="../../../../../../com/google/gwt/editor/client/IsEditor.html#asEditor()">IsEditor</A></CODE></B></DD>
-<DD>Returns the Editor encapsulated by the view object.
+<DD>Returns the associated <A HREF="../../../../../../com/google/gwt/editor/ui/client/adapters/ValueBoxEditor.html" title="class in com.google.gwt.editor.ui.client.adapters"><CODE>ValueBoxEditor</CODE></A>.
 <P>
 <DD><DL>
 <DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../../com/google/gwt/editor/client/IsEditor.html#asEditor()">asEditor</A></CODE> in interface <CODE><A HREF="../../../../../../com/google/gwt/editor/client/IsEditor.html" title="interface in com.google.gwt.editor.client">IsEditor</A>&lt;<A HREF="../../../../../../com/google/gwt/editor/ui/client/adapters/ValueBoxEditor.html" title="class in com.google.gwt.editor.ui.client.adapters">ValueBoxEditor</A>&lt;<A HREF="../../../../../../com/google/gwt/editor/ui/client/ValueBoxEditorDecorator.html" title="type parameter in ValueBoxEditorDecorator">T</A>&gt;&gt;</CODE></DL>
 </DD>
 <DD><DL>
-</DL>
+
+<DT><B>Returns:</B><DD>a <A HREF="../../../../../../com/google/gwt/editor/ui/client/adapters/ValueBoxEditor.html" title="class in com.google.gwt.editor.ui.client.adapters"><CODE>ValueBoxEditor</CODE></A> instance<DT><B>See Also:</B><DD><A HREF="../../../../../../com/google/gwt/editor/ui/client/ValueBoxEditorDecorator.html#setEditor(com.google.gwt.editor.ui.client.adapters.ValueBoxEditor)"><CODE>setEditor(ValueBoxEditor)</CODE></A></DL>
 </DD>
 </DL>
 <HR>
@@ -343,11 +352,13 @@ setEditor</H3>
 <PRE>
 public void <B>setEditor</B>(<A HREF="../../../../../../com/google/gwt/editor/ui/client/adapters/ValueBoxEditor.html" title="class in com.google.gwt.editor.ui.client.adapters">ValueBoxEditor</A>&lt;<A HREF="../../../../../../com/google/gwt/editor/ui/client/ValueBoxEditorDecorator.html" title="type parameter in ValueBoxEditorDecorator">T</A>&gt;&nbsp;editor)</PRE>
 <DL>
+<DD>Sets the associated <A HREF="../../../../../../com/google/gwt/editor/ui/client/adapters/ValueBoxEditor.html" title="class in com.google.gwt.editor.ui.client.adapters"><CODE>ValueBoxEditor</CODE></A>.
+<P>
 <DD><DL>
 </DL>
 </DD>
 <DD><DL>
-</DL>
+<DT><B>Parameters:</B><DD><CODE>editor</CODE> - a <A HREF="../../../../../../com/google/gwt/editor/ui/client/adapters/ValueBoxEditor.html" title="class in com.google.gwt.editor.ui.client.adapters"><CODE>ValueBoxEditor</CODE></A> instance<DT><B>See Also:</B><DD><A HREF="../../../../../../com/google/gwt/editor/ui/client/ValueBoxEditorDecorator.html#asEditor()"><CODE>asEditor()</CODE></A></DL>
 </DD>
 </DL>
 <HR>
@@ -366,7 +377,7 @@ setValueBox</H3>
 </DL>
 </DD>
 <DD><DL>
-</DL>
+<DT><B>Parameters:</B><DD><CODE>widget</CODE> - a <A HREF="../../../../../../com/google/gwt/user/client/ui/ValueBoxBase.html" title="class in com.google.gwt.user.client.ui"><CODE>ValueBoxBase</CODE></A> widget</DL>
 </DD>
 </DL>
 <HR>
@@ -384,7 +395,7 @@ public void <B>showErrors</B>(java.util.List&lt;<A HREF="../../../../../../com/g
 <DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../../com/google/gwt/editor/client/HasEditorErrors.html#showErrors(java.util.List)">showErrors</A></CODE> in interface <CODE><A HREF="../../../../../../com/google/gwt/editor/client/HasEditorErrors.html" title="interface in com.google.gwt.editor.client">HasEditorErrors</A>&lt;<A HREF="../../../../../../com/google/gwt/editor/ui/client/ValueBoxEditorDecorator.html" title="type parameter in ValueBoxEditorDecorator">T</A>&gt;</CODE></DL>
 </DD>
 <DD><DL>
-<DT><B>Parameters:</B><DD><CODE>errors</CODE> - an unmodifiable list of EditorErrors</DL>
+<DT><B>Parameters:</B><DD><CODE>errors</CODE> - a List of <A HREF="../../../../../../com/google/gwt/editor/client/EditorError.html" title="interface in com.google.gwt.editor.client"><CODE>EditorError</CODE></A> instances</DL>
 </DD>
 </DL>
 <!-- ========= END OF CLASS DATA ========= -->
@@ -403,6 +414,7 @@ public void <B>showErrors</B>(java.util.List&lt;<A HREF="../../../../../../com/g
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-summary.html"><FONT CLASS="NavBarFont1"><B>Package</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Class</B></FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="class-use/ValueBoxEditorDecorator.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
@@ -411,7 +423,7 @@ public void <B>showErrors</B>(java.util.List&lt;<A HREF="../../../../../../com/g
 </TABLE>
 </TD>
 <TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
-GWT 2.1.0.RC1</EM>
+GWT 2.1.1</EM>
 </TD>
 </TR>
 

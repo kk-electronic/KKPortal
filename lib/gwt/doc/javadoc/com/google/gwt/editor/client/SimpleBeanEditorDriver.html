@@ -38,6 +38,7 @@ function windowTitle()
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-summary.html"><FONT CLASS="NavBarFont1"><B>Package</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Class</B></FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="class-use/SimpleBeanEditorDriver.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
@@ -46,7 +47,7 @@ function windowTitle()
 </TABLE>
 </TD>
 <TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
-GWT 2.1.0.RC1</EM>
+GWT 2.1.1</EM>
 </TD>
 </TR>
 
@@ -99,12 +100,7 @@ Interface SimpleBeanEditorDriver&lt;T,E extends <A HREF="../../../../../com/goog
 </PRE>
 
 <P>
-<p>
- <span style="color:red">Experimental API: This class is still under rapid
- development, and is very likely to be changed. Use it at your own risk.
- </span>
- </p>
- Automates editing of simple bean-like objects. The <A HREF="../../../../../com/google/gwt/editor/client/EditorDelegate.html" title="interface in com.google.gwt.editor.client"><CODE>EditorDelegate</CODE></A>
+Automates editing of simple bean-like objects. The <A HREF="../../../../../com/google/gwt/editor/client/EditorDelegate.html" title="interface in com.google.gwt.editor.client"><CODE>EditorDelegate</CODE></A>
  provided from this driver has a no-op implementation of
  <A HREF="../../../../../com/google/gwt/editor/client/EditorDelegate.html#subscribe()"><CODE>EditorDelegate.subscribe()</CODE></A>.
  
@@ -232,7 +228,8 @@ java.util.List&lt;<A HREF="../../../../../com/google/gwt/editor/client/EditorErr
 <DD>Returns any unconsumed EditorErrors from the last call to <A HREF="../../../../../com/google/gwt/editor/client/SimpleBeanEditorDriver.html#flush()"><CODE>flush()</CODE></A>.
 <P>
 <DD><DL>
-</DL>
+
+<DT><B>Returns:</B><DD>a List of <A HREF="../../../../../com/google/gwt/editor/client/EditorError.html" title="interface in com.google.gwt.editor.client"><CODE>EditorError</CODE></A> instances</DL>
 </DD>
 </DL>
 <HR>
@@ -245,7 +242,8 @@ boolean <B>hasErrors</B>()</PRE>
 <DD>Indicates if the last call to <A HREF="../../../../../com/google/gwt/editor/client/SimpleBeanEditorDriver.html#flush()"><CODE>flush()</CODE></A> resulted in any errors.
 <P>
 <DD><DL>
-</DL>
+
+<DT><B>Returns:</B><DD><code>true</code> if errors are present</DL>
 </DD>
 </DL>
 <HR>
@@ -277,6 +275,7 @@ void <B>initialize</B>(<A HREF="../../../../../com/google/gwt/editor/client/Simp
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-summary.html"><FONT CLASS="NavBarFont1"><B>Package</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Class</B></FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="class-use/SimpleBeanEditorDriver.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
@@ -285,7 +284,7 @@ void <B>initialize</B>(<A HREF="../../../../../com/google/gwt/editor/client/Simp
 </TABLE>
 </TD>
 <TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
-GWT 2.1.0.RC1</EM>
+GWT 2.1.1</EM>
 </TD>
 </TR>
 

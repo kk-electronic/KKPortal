@@ -38,6 +38,7 @@ function windowTitle()
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-summary.html"><FONT CLASS="NavBarFont1"><B>Package</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Class</B></FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="class-use/ServerFailure.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
@@ -46,7 +47,7 @@ function windowTitle()
 </TABLE>
 </TD>
 <TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
-GWT 2.1.0.RC1</EM>
+GWT 2.1.1</EM>
 </TD>
 </TR>
 
@@ -99,6 +100,10 @@ java.lang.Object
 
 <P>
 Describes a request failure on the server.
+ <p>
+ This error reporting mechanism is adequate at best. When RequestFactory is
+ extended to handle polymorphic types, this class will likely be replaced with
+ something more expressive.
 <P>
 
 <P>
@@ -118,15 +123,22 @@ Describes a request failure on the server.
 <TD><CODE><B><A HREF="../../../../../com/google/gwt/requestfactory/shared/ServerFailure.html#ServerFailure()">ServerFailure</A></B>()</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Constructs a ServerFailure with a null message.</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Constructs a ServerFailure with null properties.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
-<TD><CODE><B><A HREF="../../../../../com/google/gwt/requestfactory/shared/ServerFailure.html#ServerFailure(java.lang.String, java.lang.String, java.lang.String)">ServerFailure</A></B>(java.lang.String&nbsp;message,
-              java.lang.String&nbsp;exceptionType,
-              java.lang.String&nbsp;stackTraceString)</CODE>
+<TD><CODE><B><A HREF="../../../../../com/google/gwt/requestfactory/shared/ServerFailure.html#ServerFailure(java.lang.String)">ServerFailure</A></B>(java.lang.String&nbsp;message)</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Constructs a fatal ServerFailure with null type and null stack trace.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD><CODE><B><A HREF="../../../../../com/google/gwt/requestfactory/shared/ServerFailure.html#ServerFailure(java.lang.String, java.lang.String, java.lang.String, boolean)">ServerFailure</A></B>(java.lang.String&nbsp;message,
+              java.lang.String&nbsp;exceptionType,
+              java.lang.String&nbsp;stackTraceString,
+              boolean&nbsp;fatal)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Constructs a ServerFailure object.</TD>
 </TR>
 </TABLE>
 &nbsp;
@@ -144,7 +156,7 @@ Describes a request failure on the server.
 <TD><CODE><B><A HREF="../../../../../com/google/gwt/requestfactory/shared/ServerFailure.html#getExceptionType()">getExceptionType</A></B>()</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Return the exception type.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -152,7 +164,7 @@ Describes a request failure on the server.
 <TD><CODE><B><A HREF="../../../../../com/google/gwt/requestfactory/shared/ServerFailure.html#getMessage()">getMessage</A></B>()</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Return the failure message.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -160,7 +172,15 @@ Describes a request failure on the server.
 <TD><CODE><B><A HREF="../../../../../com/google/gwt/requestfactory/shared/ServerFailure.html#getStackTraceString()">getStackTraceString</A></B>()</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Return the failure stack trace.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;boolean</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../com/google/gwt/requestfactory/shared/ServerFailure.html#isFatal()">isFatal</A></B>()</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Return true if this is a fatal error.</TD>
 </TR>
 </TABLE>
 &nbsp;<A NAME="methods_inherited_from_class_java.lang.Object"><!-- --></A>
@@ -190,18 +210,33 @@ ServerFailure</H3>
 <PRE>
 public <B>ServerFailure</B>()</PRE>
 <DL>
-<DD>Constructs a ServerFailure with a null message.
+<DD>Constructs a ServerFailure with null properties.
 <P>
 </DL>
 <HR>
 
-<A NAME="ServerFailure(java.lang.String, java.lang.String, java.lang.String)"><!-- --></A><H3>
+<A NAME="ServerFailure(java.lang.String)"><!-- --></A><H3>
+ServerFailure</H3>
+<PRE>
+public <B>ServerFailure</B>(java.lang.String&nbsp;message)</PRE>
+<DL>
+<DD>Constructs a fatal ServerFailure with null type and null stack trace.
+<P>
+</DL>
+<HR>
+
+<A NAME="ServerFailure(java.lang.String, java.lang.String, java.lang.String, boolean)"><!-- --></A><H3>
 ServerFailure</H3>
 <PRE>
 public <B>ServerFailure</B>(java.lang.String&nbsp;message,
                      java.lang.String&nbsp;exceptionType,
-                     java.lang.String&nbsp;stackTraceString)</PRE>
+                     java.lang.String&nbsp;stackTraceString,
+                     boolean&nbsp;fatal)</PRE>
 <DL>
+<DD>Constructs a ServerFailure object.
+<P>
+<DL>
+<DT><B>Parameters:</B><DD><CODE>message</CODE> - a String containing the failure message<DD><CODE>exceptionType</CODE> - a String containing the exception type<DD><CODE>stackTraceString</CODE> - a String containing the stack trace</DL>
 </DL>
 
 <!-- ============ METHOD DETAIL ========== -->
@@ -219,8 +254,11 @@ getExceptionType</H3>
 <PRE>
 public java.lang.String <B>getExceptionType</B>()</PRE>
 <DL>
+<DD>Return the exception type.
+<P>
 <DD><DL>
-</DL>
+
+<DT><B>Returns:</B><DD>the exception type as a String</DL>
 </DD>
 </DL>
 <HR>
@@ -230,8 +268,11 @@ getMessage</H3>
 <PRE>
 public java.lang.String <B>getMessage</B>()</PRE>
 <DL>
+<DD>Return the failure message.
+<P>
 <DD><DL>
-</DL>
+
+<DT><B>Returns:</B><DD>the message as a String</DL>
 </DD>
 </DL>
 <HR>
@@ -241,8 +282,26 @@ getStackTraceString</H3>
 <PRE>
 public java.lang.String <B>getStackTraceString</B>()</PRE>
 <DL>
+<DD>Return the failure stack trace.
+<P>
 <DD><DL>
+
+<DT><B>Returns:</B><DD>the stack trace as a String</DL>
+</DD>
 </DL>
+<HR>
+
+<A NAME="isFatal()"><!-- --></A><H3>
+isFatal</H3>
+<PRE>
+public boolean <B>isFatal</B>()</PRE>
+<DL>
+<DD>Return true if this is a fatal error. The default implementation of
+ <A HREF="../../../../../com/google/gwt/requestfactory/shared/Receiver.html#onFailure(com.google.gwt.requestfactory.shared.ServerFailure)"><CODE>Receiver.onFailure(com.google.gwt.requestfactory.shared.ServerFailure)</CODE></A> throws a runtime exception for fatal failures.
+<P>
+<DD><DL>
+
+<DT><B>Returns:</B><DD>whether this is a fatal failure</DL>
 </DD>
 </DL>
 <!-- ========= END OF CLASS DATA ========= -->
@@ -261,6 +320,7 @@ public java.lang.String <B>getStackTraceString</B>()</PRE>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-summary.html"><FONT CLASS="NavBarFont1"><B>Package</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Class</B></FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="class-use/ServerFailure.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
@@ -269,7 +329,7 @@ public java.lang.String <B>getStackTraceString</B>()</PRE>
 </TABLE>
 </TD>
 <TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
-GWT 2.1.0.RC1</EM>
+GWT 2.1.1</EM>
 </TD>
 </TR>
 

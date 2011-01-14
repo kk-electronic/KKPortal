@@ -38,6 +38,7 @@ function windowTitle()
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-summary.html"><FONT CLASS="NavBarFont1"><B>Package</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <FONT CLASS="NavBarFont1">Class</FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <FONT CLASS="NavBarFont1">Use</FONT>&nbsp;</TD>
   <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Tree</B></FONT>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
@@ -46,7 +47,7 @@ function windowTitle()
 </TABLE>
 </TD>
 <TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
-GWT 2.1.0.RC1</EM>
+GWT 2.1.1</EM>
 </TD>
 </TR>
 
@@ -92,8 +93,10 @@ Class Hierarchy
 <LI TYPE="circle">com.google.gwt.view.client.<A HREF="../../../../../com/google/gwt/view/client/AbstractDataProvider.html" title="class in com.google.gwt.view.client"><B>AbstractDataProvider</B></A>&lt;T&gt; (implements com.google.gwt.view.client.<A HREF="../../../../../com/google/gwt/view/client/ProvidesKey.html" title="interface in com.google.gwt.view.client">ProvidesKey</A>&lt;T&gt;)
 <UL>
 <LI TYPE="circle">com.google.gwt.view.client.<A HREF="../../../../../com/google/gwt/view/client/AsyncDataProvider.html" title="class in com.google.gwt.view.client"><B>AsyncDataProvider</B></A>&lt;T&gt;<LI TYPE="circle">com.google.gwt.view.client.<A HREF="../../../../../com/google/gwt/view/client/ListDataProvider.html" title="class in com.google.gwt.view.client"><B>ListDataProvider</B></A>&lt;T&gt;</UL>
+<LI TYPE="circle">com.google.gwt.view.client.<A HREF="../../../../../com/google/gwt/view/client/DefaultSelectionEventManager.html" title="class in com.google.gwt.view.client"><B>DefaultSelectionEventManager</B></A>&lt;T&gt; (implements com.google.gwt.view.client.<A HREF="../../../../../com/google/gwt/view/client/CellPreviewEvent.Handler.html" title="interface in com.google.gwt.view.client">CellPreviewEvent.Handler</A>&lt;T&gt;)
+<LI TYPE="circle">com.google.gwt.view.client.<A HREF="../../../../../com/google/gwt/view/client/DefaultSelectionEventManager.CheckboxEventTranslator.html" title="class in com.google.gwt.view.client"><B>DefaultSelectionEventManager.CheckboxEventTranslator</B></A>&lt;T&gt; (implements com.google.gwt.view.client.<A HREF="../../../../../com/google/gwt/view/client/DefaultSelectionEventManager.EventTranslator.html" title="interface in com.google.gwt.view.client">DefaultSelectionEventManager.EventTranslator</A>&lt;T&gt;)
 <LI TYPE="circle">com.google.gwt.event.shared.<A HREF="../../../../../com/google/gwt/event/shared/GwtEvent.html" title="class in com.google.gwt.event.shared"><B>GwtEvent</B></A>&lt;H&gt;<UL>
-<LI TYPE="circle">com.google.gwt.view.client.<A HREF="../../../../../com/google/gwt/view/client/RangeChangeEvent.html" title="class in com.google.gwt.view.client"><B>RangeChangeEvent</B></A><LI TYPE="circle">com.google.gwt.view.client.<A HREF="../../../../../com/google/gwt/view/client/RowCountChangeEvent.html" title="class in com.google.gwt.view.client"><B>RowCountChangeEvent</B></A><LI TYPE="circle">com.google.gwt.view.client.<A HREF="../../../../../com/google/gwt/view/client/SelectionChangeEvent.html" title="class in com.google.gwt.view.client"><B>SelectionChangeEvent</B></A></UL>
+<LI TYPE="circle">com.google.gwt.view.client.<A HREF="../../../../../com/google/gwt/view/client/CellPreviewEvent.html" title="class in com.google.gwt.view.client"><B>CellPreviewEvent</B></A>&lt;T&gt;<LI TYPE="circle">com.google.gwt.view.client.<A HREF="../../../../../com/google/gwt/view/client/RangeChangeEvent.html" title="class in com.google.gwt.view.client"><B>RangeChangeEvent</B></A><LI TYPE="circle">com.google.gwt.view.client.<A HREF="../../../../../com/google/gwt/view/client/RowCountChangeEvent.html" title="class in com.google.gwt.view.client"><B>RowCountChangeEvent</B></A><LI TYPE="circle">com.google.gwt.view.client.<A HREF="../../../../../com/google/gwt/view/client/SelectionChangeEvent.html" title="class in com.google.gwt.view.client"><B>SelectionChangeEvent</B></A></UL>
 <LI TYPE="circle">com.google.gwt.view.client.<A HREF="../../../../../com/google/gwt/view/client/Range.html" title="class in com.google.gwt.view.client"><B>Range</B></A> (implements java.io.Serializable)
 <LI TYPE="circle">com.google.gwt.view.client.<A HREF="../../../../../com/google/gwt/view/client/SelectionModel.AbstractSelectionModel.html" title="class in com.google.gwt.view.client"><B>SelectionModel.AbstractSelectionModel</B></A>&lt;T&gt; (implements com.google.gwt.view.client.<A HREF="../../../../../com/google/gwt/view/client/SelectionModel.html" title="interface in com.google.gwt.view.client">SelectionModel</A>&lt;T&gt;)
 <UL>
@@ -106,17 +109,31 @@ Class Hierarchy
 Interface Hierarchy
 </H2>
 <UL>
-<LI TYPE="circle">com.google.gwt.event.shared.<A HREF="../../../../../com/google/gwt/event/shared/EventHandler.html" title="interface in com.google.gwt.event.shared"><B>EventHandler</B></A><UL>
-<LI TYPE="circle">com.google.gwt.view.client.<A HREF="../../../../../com/google/gwt/view/client/RangeChangeEvent.Handler.html" title="interface in com.google.gwt.view.client"><B>RangeChangeEvent.Handler</B></A><LI TYPE="circle">com.google.gwt.view.client.<A HREF="../../../../../com/google/gwt/view/client/RowCountChangeEvent.Handler.html" title="interface in com.google.gwt.view.client"><B>RowCountChangeEvent.Handler</B></A><LI TYPE="circle">com.google.gwt.view.client.<A HREF="../../../../../com/google/gwt/view/client/SelectionChangeEvent.Handler.html" title="interface in com.google.gwt.view.client"><B>SelectionChangeEvent.Handler</B></A></UL>
+<LI TYPE="circle">com.google.gwt.view.client.<A HREF="../../../../../com/google/gwt/view/client/DefaultSelectionEventManager.EventTranslator.html" title="interface in com.google.gwt.view.client"><B>DefaultSelectionEventManager.EventTranslator</B></A>&lt;T&gt;<LI TYPE="circle">com.google.gwt.event.shared.<A HREF="../../../../../com/google/gwt/event/shared/EventHandler.html" title="interface in com.google.gwt.event.shared"><B>EventHandler</B></A><UL>
+<LI TYPE="circle">com.google.gwt.view.client.<A HREF="../../../../../com/google/gwt/view/client/CellPreviewEvent.Handler.html" title="interface in com.google.gwt.view.client"><B>CellPreviewEvent.Handler</B></A>&lt;T&gt;<LI TYPE="circle">com.google.gwt.view.client.<A HREF="../../../../../com/google/gwt/view/client/RangeChangeEvent.Handler.html" title="interface in com.google.gwt.view.client"><B>RangeChangeEvent.Handler</B></A><LI TYPE="circle">com.google.gwt.view.client.<A HREF="../../../../../com/google/gwt/view/client/RowCountChangeEvent.Handler.html" title="interface in com.google.gwt.view.client"><B>RowCountChangeEvent.Handler</B></A><LI TYPE="circle">com.google.gwt.view.client.<A HREF="../../../../../com/google/gwt/view/client/SelectionChangeEvent.Handler.html" title="interface in com.google.gwt.view.client"><B>SelectionChangeEvent.Handler</B></A></UL>
 <LI TYPE="circle">com.google.gwt.event.shared.<A HREF="../../../../../com/google/gwt/event/shared/HasHandlers.html" title="interface in com.google.gwt.event.shared"><B>HasHandlers</B></A><UL>
+<LI TYPE="circle">com.google.gwt.view.client.<A HREF="../../../../../com/google/gwt/view/client/HasCellPreviewHandlers.html" title="interface in com.google.gwt.view.client"><B>HasCellPreviewHandlers</B></A>&lt;T&gt;<UL>
+<LI TYPE="circle">com.google.gwt.view.client.<A HREF="../../../../../com/google/gwt/view/client/HasData.html" title="interface in com.google.gwt.view.client"><B>HasData</B></A>&lt;T&gt; (also extends com.google.gwt.view.client.<A HREF="../../../../../com/google/gwt/view/client/HasRows.html" title="interface in com.google.gwt.view.client">HasRows</A>)
+</UL>
 <LI TYPE="circle">com.google.gwt.view.client.<A HREF="../../../../../com/google/gwt/view/client/HasRows.html" title="interface in com.google.gwt.view.client"><B>HasRows</B></A><UL>
-<LI TYPE="circle">com.google.gwt.view.client.<A HREF="../../../../../com/google/gwt/view/client/HasData.html" title="interface in com.google.gwt.view.client"><B>HasData</B></A>&lt;T&gt;</UL>
+<LI TYPE="circle">com.google.gwt.view.client.<A HREF="../../../../../com/google/gwt/view/client/HasData.html" title="interface in com.google.gwt.view.client"><B>HasData</B></A>&lt;T&gt; (also extends com.google.gwt.view.client.<A HREF="../../../../../com/google/gwt/view/client/HasCellPreviewHandlers.html" title="interface in com.google.gwt.view.client">HasCellPreviewHandlers</A>&lt;T&gt;)
+</UL>
 <LI TYPE="circle">com.google.gwt.view.client.<A HREF="../../../../../com/google/gwt/view/client/SelectionModel.html" title="interface in com.google.gwt.view.client"><B>SelectionModel</B></A>&lt;T&gt; (also extends com.google.gwt.view.client.<A HREF="../../../../../com/google/gwt/view/client/ProvidesKey.html" title="interface in com.google.gwt.view.client">ProvidesKey</A>&lt;T&gt;)
 </UL>
 <LI TYPE="circle">com.google.gwt.view.client.<A HREF="../../../../../com/google/gwt/view/client/HasKeyProvider.html" title="interface in com.google.gwt.view.client"><B>HasKeyProvider</B></A>&lt;T&gt;<LI TYPE="circle">com.google.gwt.view.client.<A HREF="../../../../../com/google/gwt/view/client/ProvidesKey.html" title="interface in com.google.gwt.view.client"><B>ProvidesKey</B></A>&lt;T&gt;<UL>
 <LI TYPE="circle">com.google.gwt.view.client.<A HREF="../../../../../com/google/gwt/view/client/SelectionModel.html" title="interface in com.google.gwt.view.client"><B>SelectionModel</B></A>&lt;T&gt; (also extends com.google.gwt.event.shared.<A HREF="../../../../../com/google/gwt/event/shared/HasHandlers.html" title="interface in com.google.gwt.event.shared">HasHandlers</A>)
 </UL>
 <LI TYPE="circle">com.google.gwt.view.client.<A HREF="../../../../../com/google/gwt/view/client/TreeViewModel.html" title="interface in com.google.gwt.view.client"><B>TreeViewModel</B></A><LI TYPE="circle">com.google.gwt.view.client.<A HREF="../../../../../com/google/gwt/view/client/TreeViewModel.NodeInfo.html" title="interface in com.google.gwt.view.client"><B>TreeViewModel.NodeInfo</B></A>&lt;T&gt;</UL>
+<H2>
+Enum Hierarchy
+</H2>
+<UL>
+<LI TYPE="circle">java.lang.Object<UL>
+<LI TYPE="circle">java.lang.Enum&lt;E&gt; (implements java.lang.Comparable&lt;T&gt;, java.io.Serializable)
+<UL>
+<LI TYPE="circle">com.google.gwt.view.client.<A HREF="../../../../../com/google/gwt/view/client/DefaultSelectionEventManager.SelectAction.html" title="enum in com.google.gwt.view.client"><B>DefaultSelectionEventManager.SelectAction</B></A></UL>
+</UL>
+</UL>
 <HR>
 
 
@@ -132,6 +149,7 @@ Interface Hierarchy
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-summary.html"><FONT CLASS="NavBarFont1"><B>Package</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <FONT CLASS="NavBarFont1">Class</FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <FONT CLASS="NavBarFont1">Use</FONT>&nbsp;</TD>
   <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Tree</B></FONT>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
@@ -140,7 +158,7 @@ Interface Hierarchy
 </TABLE>
 </TD>
 <TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
-GWT 2.1.0.RC1</EM>
+GWT 2.1.1</EM>
 </TD>
 </TR>
 

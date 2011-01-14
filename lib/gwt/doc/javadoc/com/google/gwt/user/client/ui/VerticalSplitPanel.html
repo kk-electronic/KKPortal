@@ -38,6 +38,7 @@ function windowTitle()
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-summary.html"><FONT CLASS="NavBarFont1"><B>Package</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Class</B></FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="class-use/VerticalSplitPanel.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
@@ -46,7 +47,7 @@ function windowTitle()
 </TABLE>
 </TD>
 <TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
-GWT 2.1.0.RC1</EM>
+GWT 2.1.1</EM>
 </TD>
 </TR>
 
@@ -321,8 +322,8 @@ A panel that arranges two widgets in a single vertical column and allows the
 <TD><CODE><B><A HREF="../../../../../../com/google/gwt/user/client/ui/VerticalSplitPanel.html#onLoad()">onLoad</A></B>()</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<B>Deprecated.</B>&nbsp;A Panel's onLoad method will be called after all of its children are
- attached.</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<B>Deprecated.</B>&nbsp;This method is called immediately after a widget becomes attached to the
+ browser's document.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -330,8 +331,8 @@ A panel that arranges two widgets in a single vertical column and allows the
 <TD><CODE><B><A HREF="../../../../../../com/google/gwt/user/client/ui/VerticalSplitPanel.html#onUnload()">onUnload</A></B>()</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<B>Deprecated.</B>&nbsp;A Panel's onUnload method will be called before its children become
- detached themselves.</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<B>Deprecated.</B>&nbsp;This method is called immediately before a widget will be detached from the
+ browser's document.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -585,15 +586,15 @@ onLoad</H3>
 <PRE>
 protected void <B>onLoad</B>()</PRE>
 <DL>
-<DD><B>Deprecated.</B>&nbsp;<DD><B>Description copied from class: <CODE><A HREF="../../../../../../com/google/gwt/user/client/ui/Panel.html#onLoad()">Panel</A></CODE></B></DD>
-<DD>A Panel's onLoad method will be called after all of its children are
- attached.
+<DD><B>Deprecated.</B>&nbsp;<DD><B>Description copied from class: <CODE><A HREF="../../../../../../com/google/gwt/user/client/ui/Widget.html#onLoad()">Widget</A></CODE></B></DD>
+<DD>This method is called immediately after a widget becomes attached to the
+ browser's document.
 <P>
 <DD><DL>
-<DT><B>Overrides:</B><DD><CODE><A HREF="../../../../../../com/google/gwt/user/client/ui/Panel.html#onLoad()">onLoad</A></CODE> in class <CODE><A HREF="../../../../../../com/google/gwt/user/client/ui/Panel.html" title="class in com.google.gwt.user.client.ui">Panel</A></CODE></DL>
+<DT><B>Overrides:</B><DD><CODE><A HREF="../../../../../../com/google/gwt/user/client/ui/Widget.html#onLoad()">onLoad</A></CODE> in class <CODE><A HREF="../../../../../../com/google/gwt/user/client/ui/Widget.html" title="class in com.google.gwt.user.client.ui">Widget</A></CODE></DL>
 </DD>
 <DD><DL>
-<DT><B>See Also:</B><DD><A HREF="../../../../../../com/google/gwt/user/client/ui/Widget.html#onLoad()"><CODE>Widget.onLoad()</CODE></A></DL>
+</DL>
 </DD>
 </DL>
 <HR>
@@ -603,15 +604,15 @@ onUnload</H3>
 <PRE>
 protected void <B>onUnload</B>()</PRE>
 <DL>
-<DD><B>Deprecated.</B>&nbsp;<DD><B>Description copied from class: <CODE><A HREF="../../../../../../com/google/gwt/user/client/ui/Panel.html#onUnload()">Panel</A></CODE></B></DD>
-<DD>A Panel's onUnload method will be called before its children become
- detached themselves.
+<DD><B>Deprecated.</B>&nbsp;<DD><B>Description copied from class: <CODE><A HREF="../../../../../../com/google/gwt/user/client/ui/Widget.html#onUnload()">Widget</A></CODE></B></DD>
+<DD>This method is called immediately before a widget will be detached from the
+ browser's document.
 <P>
 <DD><DL>
-<DT><B>Overrides:</B><DD><CODE><A HREF="../../../../../../com/google/gwt/user/client/ui/Panel.html#onUnload()">onUnload</A></CODE> in class <CODE><A HREF="../../../../../../com/google/gwt/user/client/ui/Panel.html" title="class in com.google.gwt.user.client.ui">Panel</A></CODE></DL>
+<DT><B>Overrides:</B><DD><CODE><A HREF="../../../../../../com/google/gwt/user/client/ui/Widget.html#onUnload()">onUnload</A></CODE> in class <CODE><A HREF="../../../../../../com/google/gwt/user/client/ui/Widget.html" title="class in com.google.gwt.user.client.ui">Widget</A></CODE></DL>
 </DD>
 <DD><DL>
-<DT><B>See Also:</B><DD><A HREF="../../../../../../com/google/gwt/user/client/ui/Widget.html#onLoad()"><CODE>Widget.onLoad()</CODE></A></DL>
+</DL>
 </DD>
 </DL>
 <HR>
@@ -817,6 +818,7 @@ protected final void <B>setWidget</B>(int&nbsp;index,
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-summary.html"><FONT CLASS="NavBarFont1"><B>Package</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Class</B></FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="class-use/VerticalSplitPanel.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
@@ -825,7 +827,7 @@ protected final void <B>setWidget</B>(int&nbsp;index,
 </TABLE>
 </TD>
 <TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
-GWT 2.1.0.RC1</EM>
+GWT 2.1.1</EM>
 </TD>
 </TR>
 

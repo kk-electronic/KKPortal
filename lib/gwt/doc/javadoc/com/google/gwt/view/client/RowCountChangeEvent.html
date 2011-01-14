@@ -38,6 +38,7 @@ function windowTitle()
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-summary.html"><FONT CLASS="NavBarFont1"><B>Package</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Class</B></FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="class-use/RowCountChangeEvent.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
@@ -46,7 +47,7 @@ function windowTitle()
 </TABLE>
 </TD>
 <TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
-GWT 2.1.0.RC1</EM>
+GWT 2.1.1</EM>
 </TD>
 </TR>
 
@@ -171,14 +172,7 @@ Represents a row count change event.
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
-<CODE>static
-<TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0" SUMMARY="">
-<TR ALIGN="right" VALIGN="">
-<TD NOWRAP><FONT SIZE="-1">
-<CODE>&lt;I&gt; void</CODE></FONT></TD>
-</TR>
-</TABLE>
-</CODE></FONT></TD>
+<CODE>static&nbsp;void</CODE></FONT></TD>
 <TD><CODE><B><A HREF="../../../../../com/google/gwt/view/client/RowCountChangeEvent.html#fire(com.google.gwt.view.client.HasRows, int, boolean)">fire</A></B>(<A HREF="../../../../../com/google/gwt/view/client/HasRows.html" title="interface in com.google.gwt.view.client">HasRows</A>&nbsp;source,
      int&nbsp;rowCount,
      boolean&nbsp;isExact)</CODE>
@@ -284,15 +278,15 @@ protected <B>RowCountChangeEvent</B>(int&nbsp;rowCount,
 <A NAME="fire(com.google.gwt.view.client.HasRows, int, boolean)"><!-- --></A><H3>
 fire</H3>
 <PRE>
-public static &lt;I&gt; void <B>fire</B>(<A HREF="../../../../../com/google/gwt/view/client/HasRows.html" title="interface in com.google.gwt.view.client">HasRows</A>&nbsp;source,
-                            int&nbsp;rowCount,
-                            boolean&nbsp;isExact)</PRE>
+public static void <B>fire</B>(<A HREF="../../../../../com/google/gwt/view/client/HasRows.html" title="interface in com.google.gwt.view.client">HasRows</A>&nbsp;source,
+                        int&nbsp;rowCount,
+                        boolean&nbsp;isExact)</PRE>
 <DL>
 <DD>Fires a <A HREF="../../../../../com/google/gwt/view/client/RowCountChangeEvent.html" title="class in com.google.gwt.view.client"><CODE>RowCountChangeEvent</CODE></A> on all registered handlers in the
  handler manager. If no such handlers exist, this method will do nothing.
 <P>
 <DD><DL>
-<DT><B>Parameters:</B><DD><CODE>source</CODE> - the source of the handlers<DD><CODE>rowCount</CODE> - the new rowCount</DL>
+<DT><B>Parameters:</B><DD><CODE>source</CODE> - the source of the handlers<DD><CODE>rowCount</CODE> - the new rowCount<DD><CODE>isExact</CODE> - true if rowCount is an exact count</DL>
 </DD>
 </DL>
 <HR>
@@ -411,6 +405,7 @@ protected void <B>dispatch</B>(<A HREF="../../../../../com/google/gwt/view/clien
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-summary.html"><FONT CLASS="NavBarFont1"><B>Package</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Class</B></FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="class-use/RowCountChangeEvent.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
@@ -419,7 +414,7 @@ protected void <B>dispatch</B>(<A HREF="../../../../../com/google/gwt/view/clien
 </TABLE>
 </TD>
 <TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
-GWT 2.1.0.RC1</EM>
+GWT 2.1.1</EM>
 </TD>
 </TR>
 

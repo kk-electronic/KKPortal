@@ -38,6 +38,7 @@ function windowTitle()
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-summary.html"><FONT CLASS="NavBarFont1"><B>Package</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Class</B></FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="class-use/RichTextArea.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
@@ -46,7 +47,7 @@ function windowTitle()
 </TABLE>
 </TD>
 <TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
-GWT 2.1.0.RC1</EM>
+GWT 2.1.1</EM>
 </TD>
 </TR>
 
@@ -237,7 +238,7 @@ A rich text editor that allows complex styling and formatting.
 <TD><CODE><B><A HREF="../../../../../../com/google/gwt/user/client/ui/RichTextArea.html#addInitializeHandler(com.google.gwt.event.logical.shared.InitializeHandler)">addInitializeHandler</A></B>(<A HREF="../../../../../../com/google/gwt/event/logical/shared/InitializeHandler.html" title="interface in com.google.gwt.event.logical.shared">InitializeHandler</A>&nbsp;handler)</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Adds a <A HREF="../../../../../../com/google/gwt/event/logical/shared/InitializeEvent.html" title="class in com.google.gwt.event.logical.shared"><CODE>InitializeEvent</CODE></A> handler.</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Adds an <A HREF="../../../../../../com/google/gwt/event/logical/shared/InitializeEvent.html" title="class in com.google.gwt.event.logical.shared"><CODE>InitializeEvent</CODE></A> handler.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -430,7 +431,7 @@ addInitializeHandler</H3>
 public <A HREF="../../../../../../com/google/gwt/event/shared/HandlerRegistration.html" title="interface in com.google.gwt.event.shared">HandlerRegistration</A> <B>addInitializeHandler</B>(<A HREF="../../../../../../com/google/gwt/event/logical/shared/InitializeHandler.html" title="interface in com.google.gwt.event.logical.shared">InitializeHandler</A>&nbsp;handler)</PRE>
 <DL>
 <DD><B>Description copied from interface: <CODE><A HREF="../../../../../../com/google/gwt/event/logical/shared/HasInitializeHandlers.html#addInitializeHandler(com.google.gwt.event.logical.shared.InitializeHandler)">HasInitializeHandlers</A></CODE></B></DD>
-<DD>Adds a <A HREF="../../../../../../com/google/gwt/event/logical/shared/InitializeEvent.html" title="class in com.google.gwt.event.logical.shared"><CODE>InitializeEvent</CODE></A> handler.
+<DD>Adds an <A HREF="../../../../../../com/google/gwt/event/logical/shared/InitializeEvent.html" title="class in com.google.gwt.event.logical.shared"><CODE>InitializeEvent</CODE></A> handler.
 <P>
 <DD><DL>
 <DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../../com/google/gwt/event/logical/shared/HasInitializeHandlers.html#addInitializeHandler(com.google.gwt.event.logical.shared.InitializeHandler)">addInitializeHandler</A></CODE> in interface <CODE><A HREF="../../../../../../com/google/gwt/event/logical/shared/HasInitializeHandlers.html" title="interface in com.google.gwt.event.logical.shared">HasInitializeHandlers</A></CODE></DL>
@@ -666,7 +667,7 @@ protected void <B>onAttach</B>()</PRE>
 <DD><p>
  This method is called when a widget is attached to the browser's document.
  To receive notification after a Widget has been added to the document,
- override the <A HREF="../../../../../../com/google/gwt/user/client/ui/Widget.html#onLoad()"><CODE>Widget.onLoad()</CODE></A> method.
+ override the <A HREF="../../../../../../com/google/gwt/user/client/ui/Widget.html#onLoad()"><CODE>Widget.onLoad()</CODE></A> method or use <A HREF="../../../../../../com/google/gwt/user/client/ui/Widget.html#addAttachHandler(com.google.gwt.event.logical.shared.AttachEvent.Handler)"><CODE>Widget.addAttachHandler(com.google.gwt.event.logical.shared.AttachEvent.Handler)</CODE></A>.
  </p>
  <p>
  It is strongly recommended that you override <A HREF="../../../../../../com/google/gwt/user/client/ui/Widget.html#onLoad()"><CODE>Widget.onLoad()</CODE></A> or
@@ -698,7 +699,7 @@ protected void <B>onDetach</B>()</PRE>
 <DD><p>
  This method is called when a widget is detached from the browser's
  document. To receive notification before a Widget is removed from the
- document, override the <A HREF="../../../../../../com/google/gwt/user/client/ui/Widget.html#onUnload()"><CODE>Widget.onUnload()</CODE></A> method.
+ document, override the <A HREF="../../../../../../com/google/gwt/user/client/ui/Widget.html#onUnload()"><CODE>Widget.onUnload()</CODE></A> method or use <A HREF="../../../../../../com/google/gwt/user/client/ui/Widget.html#addAttachHandler(com.google.gwt.event.logical.shared.AttachEvent.Handler)"><CODE>Widget.addAttachHandler(com.google.gwt.event.logical.shared.AttachEvent.Handler)</CODE></A>.
  </p>
  <p>
  It is strongly recommended that you override <A HREF="../../../../../../com/google/gwt/user/client/ui/Widget.html#onUnload()"><CODE>Widget.onUnload()</CODE></A> or
@@ -737,6 +738,7 @@ protected void <B>onDetach</B>()</PRE>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-summary.html"><FONT CLASS="NavBarFont1"><B>Package</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Class</B></FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="class-use/RichTextArea.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
@@ -745,7 +747,7 @@ protected void <B>onDetach</B>()</PRE>
 </TABLE>
 </TD>
 <TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
-GWT 2.1.0.RC1</EM>
+GWT 2.1.1</EM>
 </TD>
 </TR>
 

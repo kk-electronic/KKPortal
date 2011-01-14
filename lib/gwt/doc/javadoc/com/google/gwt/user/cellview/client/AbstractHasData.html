@@ -38,6 +38,7 @@ function windowTitle()
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-summary.html"><FONT CLASS="NavBarFont1"><B>Package</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Class</B></FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="class-use/AbstractHasData.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
@@ -46,7 +47,7 @@ function windowTitle()
 </TABLE>
 </TD>
 <TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
-GWT 2.1.0.RC1</EM>
+GWT 2.1.1</EM>
 </TD>
 </TR>
 
@@ -97,7 +98,7 @@ java.lang.Object
 <DL>
 <DT><DT><B>Type Parameters:</B><DD><CODE>T</CODE> - the data type of each row</DL>
 <DL>
-<DT><B>All Implemented Interfaces:</B> <DD><A HREF="../../../../../../com/google/gwt/event/logical/shared/HasAttachHandlers.html" title="interface in com.google.gwt.event.logical.shared">HasAttachHandlers</A>, <A HREF="../../../../../../com/google/gwt/event/shared/HasHandlers.html" title="interface in com.google.gwt.event.shared">HasHandlers</A>, <A HREF="../../../../../../com/google/gwt/user/cellview/client/HasKeyboardPagingPolicy.html" title="interface in com.google.gwt.user.cellview.client">HasKeyboardPagingPolicy</A>, <A HREF="../../../../../../com/google/gwt/user/cellview/client/HasKeyboardSelectionPolicy.html" title="interface in com.google.gwt.user.cellview.client">HasKeyboardSelectionPolicy</A>, <A HREF="../../../../../../com/google/gwt/user/client/EventListener.html" title="interface in com.google.gwt.user.client">EventListener</A>, <A HREF="../../../../../../com/google/gwt/user/client/ui/Focusable.html" title="interface in com.google.gwt.user.client.ui">Focusable</A>, <A HREF="../../../../../../com/google/gwt/user/client/ui/IsWidget.html" title="interface in com.google.gwt.user.client.ui">IsWidget</A>, <A HREF="../../../../../../com/google/gwt/view/client/HasData.html" title="interface in com.google.gwt.view.client">HasData</A>&lt;T&gt;, <A HREF="../../../../../../com/google/gwt/view/client/HasKeyProvider.html" title="interface in com.google.gwt.view.client">HasKeyProvider</A>&lt;T&gt;, <A HREF="../../../../../../com/google/gwt/view/client/HasRows.html" title="interface in com.google.gwt.view.client">HasRows</A></DD>
+<DT><B>All Implemented Interfaces:</B> <DD><A HREF="../../../../../../com/google/gwt/event/logical/shared/HasAttachHandlers.html" title="interface in com.google.gwt.event.logical.shared">HasAttachHandlers</A>, <A HREF="../../../../../../com/google/gwt/event/shared/HasHandlers.html" title="interface in com.google.gwt.event.shared">HasHandlers</A>, <A HREF="../../../../../../com/google/gwt/user/cellview/client/HasKeyboardPagingPolicy.html" title="interface in com.google.gwt.user.cellview.client">HasKeyboardPagingPolicy</A>, <A HREF="../../../../../../com/google/gwt/user/cellview/client/HasKeyboardSelectionPolicy.html" title="interface in com.google.gwt.user.cellview.client">HasKeyboardSelectionPolicy</A>, <A HREF="../../../../../../com/google/gwt/user/client/EventListener.html" title="interface in com.google.gwt.user.client">EventListener</A>, <A HREF="../../../../../../com/google/gwt/user/client/ui/Focusable.html" title="interface in com.google.gwt.user.client.ui">Focusable</A>, <A HREF="../../../../../../com/google/gwt/user/client/ui/IsWidget.html" title="interface in com.google.gwt.user.client.ui">IsWidget</A>, <A HREF="../../../../../../com/google/gwt/view/client/HasCellPreviewHandlers.html" title="interface in com.google.gwt.view.client">HasCellPreviewHandlers</A>&lt;T&gt;, <A HREF="../../../../../../com/google/gwt/view/client/HasData.html" title="interface in com.google.gwt.view.client">HasData</A>&lt;T&gt;, <A HREF="../../../../../../com/google/gwt/view/client/HasKeyProvider.html" title="interface in com.google.gwt.view.client">HasKeyProvider</A>&lt;T&gt;, <A HREF="../../../../../../com/google/gwt/view/client/HasRows.html" title="interface in com.google.gwt.view.client">HasRows</A></DD>
 </DL>
 <DL>
 <DT><B>Direct Known Subclasses:</B> <DD><A HREF="../../../../../../com/google/gwt/user/cellview/client/CellList.html" title="class in com.google.gwt.user.cellview.client">CellList</A>, <A HREF="../../../../../../com/google/gwt/user/cellview/client/CellTable.html" title="class in com.google.gwt.user.cellview.client">CellTable</A></DD>
@@ -202,6 +203,14 @@ An abstract <A HREF="../../../../../../com/google/gwt/user/client/ui/Widget.html
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
 <CODE>&nbsp;<A HREF="../../../../../../com/google/gwt/event/shared/HandlerRegistration.html" title="interface in com.google.gwt.event.shared">HandlerRegistration</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractHasData.html#addCellPreviewHandler(com.google.gwt.view.client.CellPreviewEvent.Handler)">addCellPreviewHandler</A></B>(<A HREF="../../../../../../com/google/gwt/view/client/CellPreviewEvent.Handler.html" title="interface in com.google.gwt.view.client">CellPreviewEvent.Handler</A>&lt;<A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractHasData.html" title="type parameter in AbstractHasData">T</A>&gt;&nbsp;handler)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Adds a <A HREF="../../../../../../com/google/gwt/view/client/CellPreviewEvent.html" title="class in com.google.gwt.view.client"><CODE>CellPreviewEvent</CODE></A> handler.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;<A HREF="../../../../../../com/google/gwt/event/shared/HandlerRegistration.html" title="interface in com.google.gwt.event.shared">HandlerRegistration</A></CODE></FONT></TD>
 <TD><CODE><B><A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractHasData.html#addRangeChangeHandler(com.google.gwt.view.client.RangeChangeEvent.Handler)">addRangeChangeHandler</A></B>(<A HREF="../../../../../../com/google/gwt/view/client/RangeChangeEvent.Handler.html" title="interface in com.google.gwt.view.client">RangeChangeEvent.Handler</A>&nbsp;handler)</CODE>
 
 <BR>
@@ -271,7 +280,7 @@ An abstract <A HREF="../../../../../../com/google/gwt/user/client/ui/Widget.html
 <TD><CODE><B><A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractHasData.html#getDisplayedItem(int)">getDisplayedItem</A></B>(int&nbsp;indexOnPage)</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Get the row value at the specified visible index.</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<B>Deprecated.</B>&nbsp;<I>use <A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractHasData.html#getVisibleItem(int)"><CODE>getVisibleItem(int)</CODE></A> instead</I></TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -279,7 +288,7 @@ An abstract <A HREF="../../../../../../com/google/gwt/user/client/ui/Widget.html
 <TD><CODE><B><A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractHasData.html#getDisplayedItems()">getDisplayedItems</A></B>()</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Get the row values that the widget is currently displaying.</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<B>Deprecated.</B>&nbsp;<I>use <A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractHasData.html#getVisibleItems()"><CODE>getVisibleItems()</CODE></A> instead</I></TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -339,6 +348,14 @@ An abstract <A HREF="../../../../../../com/google/gwt/user/client/ui/Widget.html
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;<A HREF="../../../../../../com/google/gwt/dom/client/Element.html" title="class in com.google.gwt.dom.client">Element</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractHasData.html#getRowContainer()">getRowContainer</A></B>()</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Return the outer element that contains all of the rendered row values.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
 <CODE>&nbsp;int</CODE></FONT></TD>
 <TD><CODE><B><A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractHasData.html#getRowCount()">getRowCount</A></B>()</CODE>
 
@@ -371,6 +388,31 @@ An abstract <A HREF="../../../../../../com/google/gwt/user/client/ui/Widget.html
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;<A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractHasData.html" title="type parameter in AbstractHasData">T</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractHasData.html#getVisibleItem(int)">getVisibleItem</A></B>(int&nbsp;indexOnPage)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Get the row value at the specified visible index.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;int</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractHasData.html#getVisibleItemCount()">getVisibleItemCount</A></B>()</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Get the number of visible items being displayed.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;java.util.List&lt;<A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractHasData.html" title="type parameter in AbstractHasData">T</A>&gt;</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractHasData.html#getVisibleItems()">getVisibleItems</A></B>()</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Return the row values that the widget is currently displaying as an
+ immutable list.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
 <CODE>&nbsp;<A HREF="../../../../../../com/google/gwt/view/client/Range.html" title="class in com.google.gwt.view.client">Range</A></CODE></FONT></TD>
 <TD><CODE><B><A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractHasData.html#getVisibleRange()">getVisibleRange</A></B>()</CODE>
 
@@ -400,7 +442,7 @@ An abstract <A HREF="../../../../../../com/google/gwt/user/client/ui/Widget.html
 <TD><CODE><B><A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractHasData.html#isRowWithinBounds(int)">isRowWithinBounds</A></B>(int&nbsp;row)</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Checks that the row is within the correct bounds.</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Checks that the row is within bounds of the view.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -449,7 +491,9 @@ An abstract <A HREF="../../../../../../com/google/gwt/user/client/ui/Widget.html
 <TD><CODE><B><A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractHasData.html#onUpdateSelection()">onUpdateSelection</A></B>()</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Called when selection changes.</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<B>Deprecated.</B>&nbsp;<I>this method is never called by AbstractHasData, render the
+             selected styles in
+             <A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractHasData.html#renderRowValues(com.google.gwt.safehtml.shared.SafeHtmlBuilder, java.util.List, int, com.google.gwt.view.client.SelectionModel)"><CODE>renderRowValues(SafeHtmlBuilder, List, int, SelectionModel)</CODE></A></I></TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -587,19 +631,31 @@ An abstract <A HREF="../../../../../../com/google/gwt/user/client/ui/Widget.html
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
 <CODE>&nbsp;void</CODE></FONT></TD>
 <TD><CODE><B><A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractHasData.html#setRowData(int, java.util.List)">setRowData</A></B>(int&nbsp;start,
-           java.util.List&lt;<A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractHasData.html" title="type parameter in AbstractHasData">T</A>&gt;&nbsp;values)</CODE>
+           java.util.List&lt;? extends <A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractHasData.html" title="type parameter in AbstractHasData">T</A>&gt;&nbsp;values)</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Set a values associated with the rows in the visible range.</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ Set a values associated with the rows in the visible range.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
-<CODE>protected abstract &nbsp;void</CODE></FONT></TD>
+<CODE>&nbsp;void</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractHasData.html#setRowData(java.util.List)">setRowData</A></B>(java.util.List&lt;? extends <A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractHasData.html" title="type parameter in AbstractHasData">T</A>&gt;&nbsp;values)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ Set the complete list of values to display on one page.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>protected &nbsp;void</CODE></FONT></TD>
 <TD><CODE><B><A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractHasData.html#setSelected(com.google.gwt.dom.client.Element, boolean)">setSelected</A></B>(<A HREF="../../../../../../com/google/gwt/dom/client/Element.html" title="class in com.google.gwt.dom.client">Element</A>&nbsp;elem,
             boolean&nbsp;selected)</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Update an element to reflect its selected state.</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<B>Deprecated.</B>&nbsp;<I>this method is never called by AbstractHasData, render the
+             selected styles in
+             <A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractHasData.html#renderRowValues(com.google.gwt.safehtml.shared.SafeHtmlBuilder, java.util.List, int, com.google.gwt.view.client.SelectionModel)"><CODE>renderRowValues(SafeHtmlBuilder, List, int, SelectionModel)</CODE></A></I></TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -608,6 +664,17 @@ An abstract <A HREF="../../../../../../com/google/gwt/user/client/ui/Widget.html
 
 <BR>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Set the <A HREF="../../../../../../com/google/gwt/view/client/SelectionModel.html" title="interface in com.google.gwt.view.client"><CODE>SelectionModel</CODE></A> used by this <A HREF="../../../../../../com/google/gwt/view/client/HasData.html" title="interface in com.google.gwt.view.client"><CODE>HasData</CODE></A>.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;void</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractHasData.html#setSelectionModel(com.google.gwt.view.client.SelectionModel, com.google.gwt.view.client.CellPreviewEvent.Handler)">setSelectionModel</A></B>(<A HREF="../../../../../../com/google/gwt/view/client/SelectionModel.html" title="interface in com.google.gwt.view.client">SelectionModel</A>&lt;? super <A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractHasData.html" title="type parameter in AbstractHasData">T</A>&gt;&nbsp;selectionModel,
+                  <A HREF="../../../../../../com/google/gwt/view/client/CellPreviewEvent.Handler.html" title="interface in com.google.gwt.view.client">CellPreviewEvent.Handler</A>&lt;<A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractHasData.html" title="type parameter in AbstractHasData">T</A>&gt;&nbsp;selectionEventManager)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Set the <A HREF="../../../../../../com/google/gwt/view/client/SelectionModel.html" title="interface in com.google.gwt.view.client"><CODE>SelectionModel</CODE></A> that defines which items are selected and
+ the <A HREF="../../../../../../com/google/gwt/view/client/CellPreviewEvent.Handler.html" title="interface in com.google.gwt.view.client"><CODE>CellPreviewEvent.Handler</CODE></A> that
+ controls how user selection is handled.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -704,7 +771,7 @@ public <B>AbstractHasData</B>(<A HREF="../../../../../../com/google/gwt/dom/clie
 <DD>Constructs an <A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractHasData.html" title="class in com.google.gwt.user.cellview.client"><CODE>AbstractHasData</CODE></A> with the given page size.
 <P>
 <DL>
-<DT><B>Parameters:</B><DD><CODE>pageSize</CODE> - the page size</DL>
+<DT><B>Parameters:</B><DD><CODE>elem</CODE> - the parent <A HREF="../../../../../../com/google/gwt/dom/client/Element.html" title="class in com.google.gwt.dom.client"><CODE>Element</CODE></A><DD><CODE>pageSize</CODE> - the page size<DD><CODE>keyProvider</CODE> - the key provider, or null</DL>
 </DL>
 
 <!-- ============ METHOD DETAIL ========== -->
@@ -716,6 +783,24 @@ public <B>AbstractHasData</B>(<A HREF="../../../../../../com/google/gwt/dom/clie
 <B>Method Detail</B></FONT></TH>
 </TR>
 </TABLE>
+
+<A NAME="addCellPreviewHandler(com.google.gwt.view.client.CellPreviewEvent.Handler)"><!-- --></A><H3>
+addCellPreviewHandler</H3>
+<PRE>
+public <A HREF="../../../../../../com/google/gwt/event/shared/HandlerRegistration.html" title="interface in com.google.gwt.event.shared">HandlerRegistration</A> <B>addCellPreviewHandler</B>(<A HREF="../../../../../../com/google/gwt/view/client/CellPreviewEvent.Handler.html" title="interface in com.google.gwt.view.client">CellPreviewEvent.Handler</A>&lt;<A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractHasData.html" title="type parameter in AbstractHasData">T</A>&gt;&nbsp;handler)</PRE>
+<DL>
+<DD><B>Description copied from interface: <CODE><A HREF="../../../../../../com/google/gwt/view/client/HasCellPreviewHandlers.html#addCellPreviewHandler(com.google.gwt.view.client.CellPreviewEvent.Handler)">HasCellPreviewHandlers</A></CODE></B></DD>
+<DD>Adds a <A HREF="../../../../../../com/google/gwt/view/client/CellPreviewEvent.html" title="class in com.google.gwt.view.client"><CODE>CellPreviewEvent</CODE></A> handler.
+<P>
+<DD><DL>
+<DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../../com/google/gwt/view/client/HasCellPreviewHandlers.html#addCellPreviewHandler(com.google.gwt.view.client.CellPreviewEvent.Handler)">addCellPreviewHandler</A></CODE> in interface <CODE><A HREF="../../../../../../com/google/gwt/view/client/HasCellPreviewHandlers.html" title="interface in com.google.gwt.view.client">HasCellPreviewHandlers</A>&lt;<A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractHasData.html" title="type parameter in AbstractHasData">T</A>&gt;</CODE></DL>
+</DD>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>handler</CODE> - the handler
+<DT><B>Returns:</B><DD>the registration for the event</DL>
+</DD>
+</DL>
+<HR>
 
 <A NAME="addRangeChangeHandler(com.google.gwt.view.client.RangeChangeEvent.Handler)"><!-- --></A><H3>
 addRangeChangeHandler</H3>
@@ -765,7 +850,7 @@ public char <B>getAccessKey</B>()</PRE>
 </DD>
 <DD><DL>
 
-<DT><B>Returns:</B><DD>the access key, or -1 if not set</DL>
+<DT><B>Returns:</B><DD>the access key, or -1 if not set<DT><B>See Also:</B><DD><A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractHasData.html#setAccessKey(char)"><CODE>setAccessKey(char)</CODE></A></DL>
 </DD>
 </DL>
 <HR>
@@ -773,8 +858,11 @@ public char <B>getAccessKey</B>()</PRE>
 <A NAME="getDisplayedItem(int)"><!-- --></A><H3>
 getDisplayedItem</H3>
 <PRE>
-public <A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractHasData.html" title="type parameter in AbstractHasData">T</A> <B>getDisplayedItem</B>(int&nbsp;indexOnPage)</PRE>
+<FONT SIZE="-1">@Deprecated
+</FONT>public <A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractHasData.html" title="type parameter in AbstractHasData">T</A> <B>getDisplayedItem</B>(int&nbsp;indexOnPage)</PRE>
 <DL>
+<DD><B>Deprecated.</B>&nbsp;<I>use <A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractHasData.html#getVisibleItem(int)"><CODE>getVisibleItem(int)</CODE></A> instead</I>
+<P>
 <DD>Get the row value at the specified visible index. Index 0 corresponds to
  the first item on the page.
 <P>
@@ -791,15 +879,20 @@ public <A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractHa
 <A NAME="getDisplayedItems()"><!-- --></A><H3>
 getDisplayedItems</H3>
 <PRE>
-public java.util.List&lt;<A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractHasData.html" title="type parameter in AbstractHasData">T</A>&gt; <B>getDisplayedItems</B>()</PRE>
+<FONT SIZE="-1">@Deprecated
+</FONT>public java.util.List&lt;<A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractHasData.html" title="type parameter in AbstractHasData">T</A>&gt; <B>getDisplayedItems</B>()</PRE>
 <DL>
-<DD>Get the row values that the widget is currently displaying.
+<DD><B>Deprecated.</B>&nbsp;<I>use <A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractHasData.html#getVisibleItems()"><CODE>getVisibleItems()</CODE></A> instead</I>
+<P>
+<DD>Return the row values that the widget is currently displaying as an
+ immutable list.
 <P>
 <DD><DL>
 </DL>
 </DD>
 <DD><DL>
-</DL>
+
+<DT><B>Returns:</B><DD>a List of displayed items</DL>
 </DD>
 </DL>
 <HR>
@@ -816,7 +909,8 @@ public <A HREF="../../../../../../com/google/gwt/user/cellview/client/HasKeyboar
 <DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../../com/google/gwt/user/cellview/client/HasKeyboardPagingPolicy.html#getKeyboardPagingPolicy()">getKeyboardPagingPolicy</A></CODE> in interface <CODE><A HREF="../../../../../../com/google/gwt/user/cellview/client/HasKeyboardPagingPolicy.html" title="interface in com.google.gwt.user.cellview.client">HasKeyboardPagingPolicy</A></CODE></DL>
 </DD>
 <DD><DL>
-</DL>
+
+<DT><B>Returns:</B><DD>the paging policy<DT><B>See Also:</B><DD><A HREF="../../../../../../com/google/gwt/user/cellview/client/HasKeyboardPagingPolicy.html#setKeyboardPagingPolicy(com.google.gwt.user.cellview.client.HasKeyboardPagingPolicy.KeyboardPagingPolicy)"><CODE>HasKeyboardPagingPolicy.setKeyboardPagingPolicy(KeyboardPagingPolicy)</CODE></A></DL>
 </DD>
 </DL>
 <HR>
@@ -833,7 +927,8 @@ public <A HREF="../../../../../../com/google/gwt/user/cellview/client/HasKeyboar
 <DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../../com/google/gwt/user/cellview/client/HasKeyboardSelectionPolicy.html#getKeyboardSelectionPolicy()">getKeyboardSelectionPolicy</A></CODE> in interface <CODE><A HREF="../../../../../../com/google/gwt/user/cellview/client/HasKeyboardSelectionPolicy.html" title="interface in com.google.gwt.user.cellview.client">HasKeyboardSelectionPolicy</A></CODE></DL>
 </DD>
 <DD><DL>
-</DL>
+
+<DT><B>Returns:</B><DD>the selection policy<DT><B>See Also:</B><DD><A HREF="../../../../../../com/google/gwt/user/cellview/client/HasKeyboardSelectionPolicy.html#setKeyboardSelectionPolicy(com.google.gwt.user.cellview.client.HasKeyboardSelectionPolicy.KeyboardSelectionPolicy)"><CODE>HasKeyboardSelectionPolicy.setKeyboardSelectionPolicy(KeyboardSelectionPolicy)</CODE></A></DL>
 </DD>
 </DL>
 <HR>
@@ -867,7 +962,9 @@ public final int <B>getPageSize</B>()</PRE>
 </DL>
 </DD>
 <DD><DL>
-<DT><B>See Also:</B><DD><A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractHasData.html#getVisibleRange()"><CODE>getVisibleRange()</CODE></A></DL>
+
+<DT><B>Returns:</B><DD>the size of the range as an int<DT><B>See Also:</B><DD><A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractHasData.html#getVisibleRange()"><CODE>getVisibleRange()</CODE></A>, 
+<A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractHasData.html#setPageSize(int)"><CODE>setPageSize(int)</CODE></A></DL>
 </DD>
 </DL>
 <HR>
@@ -883,7 +980,27 @@ public final int <B>getPageStart</B>()</PRE>
 </DL>
 </DD>
 <DD><DL>
-<DT><B>See Also:</B><DD><A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractHasData.html#getVisibleRange()"><CODE>getVisibleRange()</CODE></A></DL>
+
+<DT><B>Returns:</B><DD>the start of the range as an int<DT><B>See Also:</B><DD><A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractHasData.html#getVisibleRange()"><CODE>getVisibleRange()</CODE></A>, 
+<A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractHasData.html#setPageStart(int)"><CODE>setPageStart(int)</CODE></A></DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="getRowContainer()"><!-- --></A><H3>
+getRowContainer</H3>
+<PRE>
+public <A HREF="../../../../../../com/google/gwt/dom/client/Element.html" title="class in com.google.gwt.dom.client">Element</A> <B>getRowContainer</B>()</PRE>
+<DL>
+<DD>Return the outer element that contains all of the rendered row values. This
+ method delegates to <A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractHasData.html#getChildContainer()"><CODE>getChildContainer()</CODE></A>;
+<P>
+<DD><DL>
+</DL>
+</DD>
+<DD><DL>
+
+<DT><B>Returns:</B><DD>the <A HREF="../../../../../../com/google/gwt/dom/client/Element.html" title="class in com.google.gwt.dom.client"><CODE>Element</CODE></A> that contains the rendered row values</DL>
 </DD>
 </DL>
 <HR>
@@ -901,7 +1018,7 @@ public int <B>getRowCount</B>()</PRE>
 </DD>
 <DD><DL>
 
-<DT><B>Returns:</B><DD>the total row count</DL>
+<DT><B>Returns:</B><DD>the total row count<DT><B>See Also:</B><DD><A HREF="../../../../../../com/google/gwt/view/client/HasRows.html#setRowCount(int)"><CODE>HasRows.setRowCount(int)</CODE></A></DL>
 </DD>
 </DL>
 <HR>
@@ -919,7 +1036,7 @@ public <A HREF="../../../../../../com/google/gwt/view/client/SelectionModel.html
 </DD>
 <DD><DL>
 
-<DT><B>Returns:</B><DD>the <A HREF="../../../../../../com/google/gwt/view/client/SelectionModel.html" title="interface in com.google.gwt.view.client"><CODE>SelectionModel</CODE></A></DL>
+<DT><B>Returns:</B><DD>the <A HREF="../../../../../../com/google/gwt/view/client/SelectionModel.html" title="interface in com.google.gwt.view.client"><CODE>SelectionModel</CODE></A><DT><B>See Also:</B><DD><A HREF="../../../../../../com/google/gwt/view/client/HasData.html#setSelectionModel(com.google.gwt.view.client.SelectionModel)"><CODE>HasData.setSelectionModel(SelectionModel)</CODE></A></DL>
 </DD>
 </DL>
 <HR>
@@ -942,6 +1059,62 @@ public int <B>getTabIndex</B>()</PRE>
 </DL>
 <HR>
 
+<A NAME="getVisibleItem(int)"><!-- --></A><H3>
+getVisibleItem</H3>
+<PRE>
+public <A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractHasData.html" title="type parameter in AbstractHasData">T</A> <B>getVisibleItem</B>(int&nbsp;indexOnPage)</PRE>
+<DL>
+<DD><B>Description copied from interface: <CODE><A HREF="../../../../../../com/google/gwt/view/client/HasData.html#getVisibleItem(int)">HasData</A></CODE></B></DD>
+<DD>Get the row value at the specified visible index. Index 0 corresponds to
+ the first item on the page.
+<P>
+<DD><DL>
+<DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../../com/google/gwt/view/client/HasData.html#getVisibleItem(int)">getVisibleItem</A></CODE> in interface <CODE><A HREF="../../../../../../com/google/gwt/view/client/HasData.html" title="interface in com.google.gwt.view.client">HasData</A>&lt;<A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractHasData.html" title="type parameter in AbstractHasData">T</A>&gt;</CODE></DL>
+</DD>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>indexOnPage</CODE> - the index on the page
+<DT><B>Returns:</B><DD>the row value</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="getVisibleItemCount()"><!-- --></A><H3>
+getVisibleItemCount</H3>
+<PRE>
+public int <B>getVisibleItemCount</B>()</PRE>
+<DL>
+<DD><B>Description copied from interface: <CODE><A HREF="../../../../../../com/google/gwt/view/client/HasData.html#getVisibleItemCount()">HasData</A></CODE></B></DD>
+<DD>Get the number of visible items being displayed. Note that this value might
+ be less than the page size if there is not enough data to fill the page.
+<P>
+<DD><DL>
+<DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../../com/google/gwt/view/client/HasData.html#getVisibleItemCount()">getVisibleItemCount</A></CODE> in interface <CODE><A HREF="../../../../../../com/google/gwt/view/client/HasData.html" title="interface in com.google.gwt.view.client">HasData</A>&lt;<A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractHasData.html" title="type parameter in AbstractHasData">T</A>&gt;</CODE></DL>
+</DD>
+<DD><DL>
+
+<DT><B>Returns:</B><DD>the number of visible items on the page</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="getVisibleItems()"><!-- --></A><H3>
+getVisibleItems</H3>
+<PRE>
+public java.util.List&lt;<A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractHasData.html" title="type parameter in AbstractHasData">T</A>&gt; <B>getVisibleItems</B>()</PRE>
+<DL>
+<DD>Return the row values that the widget is currently displaying as an
+ immutable list.
+<P>
+<DD><DL>
+<DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../../com/google/gwt/view/client/HasData.html#getVisibleItems()">getVisibleItems</A></CODE> in interface <CODE><A HREF="../../../../../../com/google/gwt/view/client/HasData.html" title="interface in com.google.gwt.view.client">HasData</A>&lt;<A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractHasData.html" title="type parameter in AbstractHasData">T</A>&gt;</CODE></DL>
+</DD>
+<DD><DL>
+
+<DT><B>Returns:</B><DD>a List of displayed items</DL>
+</DD>
+</DL>
+<HR>
+
 <A NAME="getVisibleRange()"><!-- --></A><H3>
 getVisibleRange</H3>
 <PRE>
@@ -955,7 +1128,8 @@ public <A HREF="../../../../../../com/google/gwt/view/client/Range.html" title="
 </DD>
 <DD><DL>
 
-<DT><B>Returns:</B><DD>the visible range</DL>
+<DT><B>Returns:</B><DD>the visible range<DT><B>See Also:</B><DD><A HREF="../../../../../../com/google/gwt/view/client/HasRows.html#setVisibleRange(com.google.gwt.view.client.Range)"><CODE>HasRows.setVisibleRange(Range)</CODE></A>, 
+<A HREF="../../../../../../com/google/gwt/view/client/HasRows.html#setVisibleRange(int, int)"><CODE>HasRows.setVisibleRange(int, int)</CODE></A></DL>
 </DD>
 </DL>
 <HR>
@@ -1017,7 +1191,6 @@ setAccessKey</H3>
 <PRE>
 public void <B>setAccessKey</B>(char&nbsp;key)</PRE>
 <DL>
-<DD><B>Description copied from interface: <CODE><A HREF="../../../../../../com/google/gwt/user/client/ui/Focusable.html#setAccessKey(char)">Focusable</A></CODE></B></DD>
 <DD>Sets the widget's 'access key'. This key is used (in conjunction with a
  browser-specific modifier key) to automatically focus the widget.
 <P>
@@ -1025,7 +1198,7 @@ public void <B>setAccessKey</B>(char&nbsp;key)</PRE>
 <DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../../com/google/gwt/user/client/ui/Focusable.html#setAccessKey(char)">setAccessKey</A></CODE> in interface <CODE><A HREF="../../../../../../com/google/gwt/user/client/ui/Focusable.html" title="interface in com.google.gwt.user.client.ui">Focusable</A></CODE></DL>
 </DD>
 <DD><DL>
-<DT><B>Parameters:</B><DD><CODE>key</CODE> - the widget's access key</DL>
+<DT><B>Parameters:</B><DD><CODE>key</CODE> - the widget's access key<DT><B>See Also:</B><DD><A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractHasData.html#getAccessKey()"><CODE>getAccessKey()</CODE></A></DL>
 </DD>
 </DL>
 <HR>
@@ -1060,7 +1233,7 @@ public void <B>setKeyboardPagingPolicy</B>(<A HREF="../../../../../../com/google
 <DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../../com/google/gwt/user/cellview/client/HasKeyboardPagingPolicy.html#setKeyboardPagingPolicy(com.google.gwt.user.cellview.client.HasKeyboardPagingPolicy.KeyboardPagingPolicy)">setKeyboardPagingPolicy</A></CODE> in interface <CODE><A HREF="../../../../../../com/google/gwt/user/cellview/client/HasKeyboardPagingPolicy.html" title="interface in com.google.gwt.user.cellview.client">HasKeyboardPagingPolicy</A></CODE></DL>
 </DD>
 <DD><DL>
-</DL>
+<DT><B>Parameters:</B><DD><CODE>policy</CODE> - the paging policy<DT><B>See Also:</B><DD><A HREF="../../../../../../com/google/gwt/user/cellview/client/HasKeyboardPagingPolicy.html#getKeyboardPagingPolicy()"><CODE>HasKeyboardPagingPolicy.getKeyboardPagingPolicy()</CODE></A></DL>
 </DD>
 </DL>
 <HR>
@@ -1077,7 +1250,7 @@ public void <B>setKeyboardSelectionPolicy</B>(<A HREF="../../../../../../com/goo
 <DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../../com/google/gwt/user/cellview/client/HasKeyboardSelectionPolicy.html#setKeyboardSelectionPolicy(com.google.gwt.user.cellview.client.HasKeyboardSelectionPolicy.KeyboardSelectionPolicy)">setKeyboardSelectionPolicy</A></CODE> in interface <CODE><A HREF="../../../../../../com/google/gwt/user/cellview/client/HasKeyboardSelectionPolicy.html" title="interface in com.google.gwt.user.cellview.client">HasKeyboardSelectionPolicy</A></CODE></DL>
 </DD>
 <DD><DL>
-</DL>
+<DT><B>Parameters:</B><DD><CODE>policy</CODE> - the selection policy<DT><B>See Also:</B><DD><A HREF="../../../../../../com/google/gwt/user/cellview/client/HasKeyboardSelectionPolicy.html#getKeyboardSelectionPolicy()"><CODE>HasKeyboardSelectionPolicy.getKeyboardSelectionPolicy()</CODE></A></DL>
 </DD>
 </DL>
 <HR>
@@ -1093,7 +1266,8 @@ public final void <B>setPageSize</B>(int&nbsp;pageSize)</PRE>
 </DL>
 </DD>
 <DD><DL>
-<DT><B>Parameters:</B><DD><CODE>pageSize</CODE> - the page size<DT><B>See Also:</B><DD><A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractHasData.html#setVisibleRange(com.google.gwt.view.client.Range)"><CODE>setVisibleRange(Range)</CODE></A></DL>
+<DT><B>Parameters:</B><DD><CODE>pageSize</CODE> - the page size<DT><B>See Also:</B><DD><A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractHasData.html#setVisibleRange(com.google.gwt.view.client.Range)"><CODE>setVisibleRange(Range)</CODE></A>, 
+<A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractHasData.html#getPageSize()"><CODE>getPageSize()</CODE></A></DL>
 </DD>
 </DL>
 <HR>
@@ -1111,7 +1285,8 @@ public final void <B>setPageStart</B>(int&nbsp;pageStart)</PRE>
 </DD>
 <DD><DL>
 <DT><B>Parameters:</B><DD><CODE>pageStart</CODE> - the index of the row that should appear at the start of
-          the page<DT><B>See Also:</B><DD><A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractHasData.html#setVisibleRange(com.google.gwt.view.client.Range)"><CODE>setVisibleRange(Range)</CODE></A></DL>
+          the page<DT><B>See Also:</B><DD><A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractHasData.html#setVisibleRange(com.google.gwt.view.client.Range)"><CODE>setVisibleRange(Range)</CODE></A>, 
+<A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractHasData.html#getPageStart()"><CODE>getPageStart()</CODE></A></DL>
 </DD>
 </DL>
 <HR>
@@ -1129,7 +1304,7 @@ public final void <B>setRowCount</B>(int&nbsp;count)</PRE>
 <DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../../com/google/gwt/view/client/HasRows.html#setRowCount(int)">setRowCount</A></CODE> in interface <CODE><A HREF="../../../../../../com/google/gwt/view/client/HasRows.html" title="interface in com.google.gwt.view.client">HasRows</A></CODE></DL>
 </DD>
 <DD><DL>
-<DT><B>Parameters:</B><DD><CODE>count</CODE> - the exact total count</DL>
+<DT><B>Parameters:</B><DD><CODE>count</CODE> - the exact total count<DT><B>See Also:</B><DD><A HREF="../../../../../../com/google/gwt/view/client/HasRows.html#getRowCount()"><CODE>HasRows.getRowCount()</CODE></A></DL>
 </DD>
 </DL>
 <HR>
@@ -1148,7 +1323,31 @@ public void <B>setRowCount</B>(int&nbsp;size,
 <DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../../com/google/gwt/view/client/HasRows.html#setRowCount(int, boolean)">setRowCount</A></CODE> in interface <CODE><A HREF="../../../../../../com/google/gwt/view/client/HasRows.html" title="interface in com.google.gwt.view.client">HasRows</A></CODE></DL>
 </DD>
 <DD><DL>
-<DT><B>Parameters:</B><DD><CODE>size</CODE> - the total count<DD><CODE>isExact</CODE> - true if the count is exact, false if an estimate</DL>
+<DT><B>Parameters:</B><DD><CODE>size</CODE> - the total count<DD><CODE>isExact</CODE> - true if the count is exact, false if an estimate<DT><B>See Also:</B><DD><A HREF="../../../../../../com/google/gwt/view/client/HasRows.html#getRowCount()"><CODE>HasRows.getRowCount()</CODE></A></DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="setRowData(java.util.List)"><!-- --></A><H3>
+setRowData</H3>
+<PRE>
+public final void <B>setRowData</B>(java.util.List&lt;? extends <A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractHasData.html" title="type parameter in AbstractHasData">T</A>&gt;&nbsp;values)</PRE>
+<DL>
+<DD><p>
+ Set the complete list of values to display on one page.
+ </p>
+ <p>
+ Equivalent to calling <A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractHasData.html#setRowCount(int)"><CODE>setRowCount(int)</CODE></A> with the length of the list
+ of values, <A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractHasData.html#setVisibleRange(com.google.gwt.view.client.Range)"><CODE>setVisibleRange(Range)</CODE></A> from 0 to the size of the list
+ of values, and <A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractHasData.html#setRowData(int, java.util.List)"><CODE>setRowData(int, List)</CODE></A> with a start of 0 and the
+ specified list of values.
+ </p>
+<P>
+<DD><DL>
+</DL>
+</DD>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>values</CODE> - </DL>
 </DD>
 </DL>
 <HR>
@@ -1157,10 +1356,20 @@ public void <B>setRowCount</B>(int&nbsp;size,
 setRowData</H3>
 <PRE>
 public void <B>setRowData</B>(int&nbsp;start,
-                       java.util.List&lt;<A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractHasData.html" title="type parameter in AbstractHasData">T</A>&gt;&nbsp;values)</PRE>
+                       java.util.List&lt;? extends <A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractHasData.html" title="type parameter in AbstractHasData">T</A>&gt;&nbsp;values)</PRE>
 <DL>
 <DD><B>Description copied from interface: <CODE><A HREF="../../../../../../com/google/gwt/view/client/HasData.html#setRowData(int, java.util.List)">HasData</A></CODE></B></DD>
-<DD>Set a values associated with the rows in the visible range.
+<DD><p>
+ Set a values associated with the rows in the visible range.
+ </p>
+ <p>
+ This method <i>does not</i> replace all rows in the display; it replaces
+ the row values starting at the specified start index through the length of
+ the the specified values. You must call <A HREF="../../../../../../com/google/gwt/view/client/HasRows.html#setRowCount(int)"><CODE>HasRows.setRowCount(int)</CODE></A> to set
+ the total number of rows in the display. You should also use
+ <A HREF="../../../../../../com/google/gwt/view/client/HasRows.html#setRowCount(int)"><CODE>HasRows.setRowCount(int)</CODE></A> to remove rows when the total number of rows
+ decreases.
+ </p>
 <P>
 <DD><DL>
 <DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../../com/google/gwt/view/client/HasData.html#setRowData(int, java.util.List)">setRowData</A></CODE> in interface <CODE><A HREF="../../../../../../com/google/gwt/view/client/HasData.html" title="interface in com.google.gwt.view.client">HasData</A>&lt;<A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractHasData.html" title="type parameter in AbstractHasData">T</A>&gt;</CODE></DL>
@@ -1183,7 +1392,26 @@ public void <B>setSelectionModel</B>(<A HREF="../../../../../../com/google/gwt/v
 <DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../../com/google/gwt/view/client/HasData.html#setSelectionModel(com.google.gwt.view.client.SelectionModel)">setSelectionModel</A></CODE> in interface <CODE><A HREF="../../../../../../com/google/gwt/view/client/HasData.html" title="interface in com.google.gwt.view.client">HasData</A>&lt;<A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractHasData.html" title="type parameter in AbstractHasData">T</A>&gt;</CODE></DL>
 </DD>
 <DD><DL>
-<DT><B>Parameters:</B><DD><CODE>selectionModel</CODE> - the <A HREF="../../../../../../com/google/gwt/view/client/SelectionModel.html" title="interface in com.google.gwt.view.client"><CODE>SelectionModel</CODE></A></DL>
+<DT><B>Parameters:</B><DD><CODE>selectionModel</CODE> - the <A HREF="../../../../../../com/google/gwt/view/client/SelectionModel.html" title="interface in com.google.gwt.view.client"><CODE>SelectionModel</CODE></A><DT><B>See Also:</B><DD><A HREF="../../../../../../com/google/gwt/view/client/HasData.html#getSelectionModel()"><CODE>HasData.getSelectionModel()</CODE></A></DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="setSelectionModel(com.google.gwt.view.client.SelectionModel, com.google.gwt.view.client.CellPreviewEvent.Handler)"><!-- --></A><H3>
+setSelectionModel</H3>
+<PRE>
+public void <B>setSelectionModel</B>(<A HREF="../../../../../../com/google/gwt/view/client/SelectionModel.html" title="interface in com.google.gwt.view.client">SelectionModel</A>&lt;? super <A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractHasData.html" title="type parameter in AbstractHasData">T</A>&gt;&nbsp;selectionModel,
+                              <A HREF="../../../../../../com/google/gwt/view/client/CellPreviewEvent.Handler.html" title="interface in com.google.gwt.view.client">CellPreviewEvent.Handler</A>&lt;<A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractHasData.html" title="type parameter in AbstractHasData">T</A>&gt;&nbsp;selectionEventManager)</PRE>
+<DL>
+<DD>Set the <A HREF="../../../../../../com/google/gwt/view/client/SelectionModel.html" title="interface in com.google.gwt.view.client"><CODE>SelectionModel</CODE></A> that defines which items are selected and
+ the <A HREF="../../../../../../com/google/gwt/view/client/CellPreviewEvent.Handler.html" title="interface in com.google.gwt.view.client"><CODE>CellPreviewEvent.Handler</CODE></A> that
+ controls how user selection is handled.
+<P>
+<DD><DL>
+</DL>
+</DD>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>selectionModel</CODE> - the <A HREF="../../../../../../com/google/gwt/view/client/SelectionModel.html" title="interface in com.google.gwt.view.client"><CODE>SelectionModel</CODE></A> that defines selection<DD><CODE>selectionEventManager</CODE> - the handler that controls user selection</DL>
 </DD>
 </DL>
 <HR>
@@ -1222,7 +1450,7 @@ public final void <B>setVisibleRange</B>(int&nbsp;start,
 <DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../../com/google/gwt/view/client/HasRows.html#setVisibleRange(int, int)">setVisibleRange</A></CODE> in interface <CODE><A HREF="../../../../../../com/google/gwt/view/client/HasRows.html" title="interface in com.google.gwt.view.client">HasRows</A></CODE></DL>
 </DD>
 <DD><DL>
-<DT><B>Parameters:</B><DD><CODE>start</CODE> - the start index<DD><CODE>length</CODE> - the length</DL>
+<DT><B>Parameters:</B><DD><CODE>start</CODE> - the start index<DD><CODE>length</CODE> - the length<DT><B>See Also:</B><DD><A HREF="../../../../../../com/google/gwt/view/client/HasRows.html#getVisibleRange()"><CODE>HasRows.getVisibleRange()</CODE></A></DL>
 </DD>
 </DL>
 <HR>
@@ -1239,7 +1467,7 @@ public void <B>setVisibleRange</B>(<A HREF="../../../../../../com/google/gwt/vie
 <DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../../com/google/gwt/view/client/HasRows.html#setVisibleRange(com.google.gwt.view.client.Range)">setVisibleRange</A></CODE> in interface <CODE><A HREF="../../../../../../com/google/gwt/view/client/HasRows.html" title="interface in com.google.gwt.view.client">HasRows</A></CODE></DL>
 </DD>
 <DD><DL>
-<DT><B>Parameters:</B><DD><CODE>range</CODE> - the visible range</DL>
+<DT><B>Parameters:</B><DD><CODE>range</CODE> - the visible range<DT><B>See Also:</B><DD><A HREF="../../../../../../com/google/gwt/view/client/HasRows.html#getVisibleRange()"><CODE>HasRows.getVisibleRange()</CODE></A></DL>
 </DD>
 </DL>
 <HR>
@@ -1353,7 +1581,8 @@ protected abstract <A HREF="../../../../../../com/google/gwt/dom/client/Element.
 </DL>
 </DD>
 <DD><DL>
-</DL>
+
+<DT><B>Returns:</B><DD>the container <A HREF="../../../../../../com/google/gwt/dom/client/Element.html" title="class in com.google.gwt.dom.client"><CODE>Element</CODE></A></DL>
 </DD>
 </DL>
 <HR>
@@ -1432,7 +1661,7 @@ isRowWithinBounds</H3>
 <PRE>
 protected boolean <B>isRowWithinBounds</B>(int&nbsp;row)</PRE>
 <DL>
-<DD>Checks that the row is within the correct bounds.
+<DD>Checks that the row is within bounds of the view.
 <P>
 <DD><DL>
 </DL>
@@ -1499,8 +1728,7 @@ protected void <B>onUnload</B>()</PRE>
 <DL>
 <DD><B>Description copied from class: <CODE><A HREF="../../../../../../com/google/gwt/user/client/ui/Widget.html#onUnload()">Widget</A></CODE></B></DD>
 <DD>This method is called immediately before a widget will be detached from the
- browser's document. This default implementation notifies the widgets
- <CODE>AttachEvent.Handler</CODE>s.
+ browser's document.
 <P>
 <DD><DL>
 <DT><B>Overrides:</B><DD><CODE><A HREF="../../../../../../com/google/gwt/user/client/ui/Widget.html#onUnload()">onUnload</A></CODE> in class <CODE><A HREF="../../../../../../com/google/gwt/user/client/ui/Widget.html" title="class in com.google.gwt.user.client.ui">Widget</A></CODE></DL>
@@ -1514,8 +1742,13 @@ protected void <B>onUnload</B>()</PRE>
 <A NAME="onUpdateSelection()"><!-- --></A><H3>
 onUpdateSelection</H3>
 <PRE>
-protected void <B>onUpdateSelection</B>()</PRE>
+<FONT SIZE="-1">@Deprecated
+</FONT>protected void <B>onUpdateSelection</B>()</PRE>
 <DL>
+<DD><B>Deprecated.</B>&nbsp;<I>this method is never called by AbstractHasData, render the
+             selected styles in
+             <A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractHasData.html#renderRowValues(com.google.gwt.safehtml.shared.SafeHtmlBuilder, java.util.List, int, com.google.gwt.view.client.SelectionModel)"><CODE>renderRowValues(SafeHtmlBuilder, List, int, SelectionModel)</CODE></A></I>
+<P>
 <DD>Called when selection changes.
 <P>
 <DD><DL>
@@ -1541,7 +1774,7 @@ protected abstract void <B>renderRowValues</B>(<A HREF="../../../../../../com/go
 </DL>
 </DD>
 <DD><DL>
-<DT><B>Parameters:</B><DD><CODE>sb</CODE> - the <A HREF="../../../../../../com/google/gwt/safehtml/shared/SafeHtmlBuilder.html" title="class in com.google.gwt.safehtml.shared"><CODE>SafeHtmlBuilder</CODE></A> to render into<DD><CODE>values</CODE> - the row values<DD><CODE>start</CODE> - the start index of the values<DD><CODE>selectionModel</CODE> - the <A HREF="../../../../../../com/google/gwt/view/client/SelectionModel.html" title="interface in com.google.gwt.view.client"><CODE>SelectionModel</CODE></A></DL>
+<DT><B>Parameters:</B><DD><CODE>sb</CODE> - the <A HREF="../../../../../../com/google/gwt/safehtml/shared/SafeHtmlBuilder.html" title="class in com.google.gwt.safehtml.shared"><CODE>SafeHtmlBuilder</CODE></A> to render into<DD><CODE>values</CODE> - the row values<DD><CODE>start</CODE> - the absolute start index of the values<DD><CODE>selectionModel</CODE> - the <A HREF="../../../../../../com/google/gwt/view/client/SelectionModel.html" title="interface in com.google.gwt.view.client"><CODE>SelectionModel</CODE></A></DL>
 </DD>
 </DL>
 <HR>
@@ -1579,7 +1812,7 @@ protected void <B>replaceChildren</B>(java.util.List&lt;<A HREF="../../../../../
 </DL>
 </DD>
 <DD><DL>
-<DT><B>Parameters:</B><DD><CODE>values</CODE> - the values of the new children<DD><CODE>start</CODE> - the start index to be replaced<DD><CODE>html</CODE> - the HTML to convert</DL>
+<DT><B>Parameters:</B><DD><CODE>values</CODE> - the values of the new children<DD><CODE>start</CODE> - the start index to be replaced, relative to the page start<DD><CODE>html</CODE> - the HTML to convert</DL>
 </DD>
 </DL>
 <HR>
@@ -1639,9 +1872,14 @@ protected abstract void <B>setKeyboardSelected</B>(int&nbsp;index,
 <A NAME="setSelected(com.google.gwt.dom.client.Element, boolean)"><!-- --></A><H3>
 setSelected</H3>
 <PRE>
-protected abstract void <B>setSelected</B>(<A HREF="../../../../../../com/google/gwt/dom/client/Element.html" title="class in com.google.gwt.dom.client">Element</A>&nbsp;elem,
-                                    boolean&nbsp;selected)</PRE>
+<FONT SIZE="-1">@Deprecated
+</FONT>protected void <B>setSelected</B>(<A HREF="../../../../../../com/google/gwt/dom/client/Element.html" title="class in com.google.gwt.dom.client">Element</A>&nbsp;elem,
+                                      boolean&nbsp;selected)</PRE>
 <DL>
+<DD><B>Deprecated.</B>&nbsp;<I>this method is never called by AbstractHasData, render the
+             selected styles in
+             <A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractHasData.html#renderRowValues(com.google.gwt.safehtml.shared.SafeHtmlBuilder, java.util.List, int, com.google.gwt.view.client.SelectionModel)"><CODE>renderRowValues(SafeHtmlBuilder, List, int, SelectionModel)</CODE></A></I>
+<P>
 <DD>Update an element to reflect its selected state.
 <P>
 <DD><DL>
@@ -1667,6 +1905,7 @@ protected abstract void <B>setSelected</B>(<A HREF="../../../../../../com/google
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-summary.html"><FONT CLASS="NavBarFont1"><B>Package</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Class</B></FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="class-use/AbstractHasData.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
@@ -1675,7 +1914,7 @@ protected abstract void <B>setSelected</B>(<A HREF="../../../../../../com/google
 </TABLE>
 </TD>
 <TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
-GWT 2.1.0.RC1</EM>
+GWT 2.1.1</EM>
 </TD>
 </TR>
 

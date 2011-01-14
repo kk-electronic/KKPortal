@@ -38,6 +38,7 @@ function windowTitle()
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-summary.html"><FONT CLASS="NavBarFont1"><B>Package</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Class</B></FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="class-use/ValueBoxEditor.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
@@ -46,7 +47,7 @@ function windowTitle()
 </TABLE>
 </TD>
 <TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
-GWT 2.1.0.RC1</EM>
+GWT 2.1.1</EM>
 </TD>
 </TR>
 
@@ -147,7 +148,8 @@ Adapts the <A HREF="../../../../../../../com/google/gwt/user/client/ui/ValueBoxB
 <TD><CODE><B><A HREF="../../../../../../../com/google/gwt/editor/ui/client/adapters/ValueBoxEditor.html#ValueBoxEditor(com.google.gwt.user.client.ui.ValueBoxBase)">ValueBoxEditor</A></B>(<A HREF="../../../../../../../com/google/gwt/user/client/ui/ValueBoxBase.html" title="class in com.google.gwt.user.client.ui">ValueBoxBase</A>&lt;<A HREF="../../../../../../../com/google/gwt/editor/ui/client/adapters/ValueBoxEditor.html" title="type parameter in ValueBoxEditor">T</A>&gt;&nbsp;peer)</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Constructs a new ValueBoxEditor that adapts a <A HREF="../../../../../../../com/google/gwt/user/client/ui/ValueBoxBase.html" title="class in com.google.gwt.user.client.ui"><CODE>ValueBoxBase</CODE></A> peer
+ instance.</TD>
 </TR>
 </TABLE>
 &nbsp;
@@ -165,7 +167,7 @@ Adapts the <A HREF="../../../../../../../com/google/gwt/user/client/ui/ValueBoxB
 <TD><CODE><B><A HREF="../../../../../../../com/google/gwt/editor/ui/client/adapters/ValueBoxEditor.html#getDelegate()">getDelegate</A></B>()</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns the <A HREF="../../../../../../../com/google/gwt/editor/client/EditorDelegate.html" title="interface in com.google.gwt.editor.client"><CODE>EditorDelegate</CODE></A> for this instance.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -188,7 +190,8 @@ Adapts the <A HREF="../../../../../../../com/google/gwt/user/client/ui/ValueBoxB
 <TD><CODE><B><A HREF="../../../../../../../com/google/gwt/editor/ui/client/adapters/ValueBoxEditor.html#of(com.google.gwt.user.client.ui.ValueBoxBase)">of</A></B>(<A HREF="../../../../../../../com/google/gwt/user/client/ui/ValueBoxBase.html" title="class in com.google.gwt.user.client.ui">ValueBoxBase</A>&lt;T&gt;&nbsp;valueBox)</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns a new TakesValueEditor that adapts a <A HREF="../../../../../../../com/google/gwt/user/client/ui/ValueBoxBase.html" title="class in com.google.gwt.user.client.ui"><CODE>ValueBoxBase</CODE></A>
+ instance.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -196,8 +199,7 @@ Adapts the <A HREF="../../../../../../../com/google/gwt/user/client/ui/ValueBoxB
 <TD><CODE><B><A HREF="../../../../../../../com/google/gwt/editor/ui/client/adapters/ValueBoxEditor.html#setDelegate(com.google.gwt.editor.client.EditorDelegate)">setDelegate</A></B>(<A HREF="../../../../../../../com/google/gwt/editor/client/EditorDelegate.html" title="interface in com.google.gwt.editor.client">EditorDelegate</A>&lt;<A HREF="../../../../../../../com/google/gwt/editor/ui/client/adapters/ValueBoxEditor.html" title="type parameter in ValueBoxEditor">T</A>&gt;&nbsp;delegate)</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Called by the EditorDriver to provide access to the EditorDelegate the
- Editor is peered with.</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sets the <A HREF="../../../../../../../com/google/gwt/editor/client/EditorDelegate.html" title="interface in com.google.gwt.editor.client"><CODE>EditorDelegate</CODE></A> for this instance.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -244,6 +246,11 @@ ValueBoxEditor</H3>
 <PRE>
 protected <B>ValueBoxEditor</B>(<A HREF="../../../../../../../com/google/gwt/user/client/ui/ValueBoxBase.html" title="class in com.google.gwt.user.client.ui">ValueBoxBase</A>&lt;<A HREF="../../../../../../../com/google/gwt/editor/ui/client/adapters/ValueBoxEditor.html" title="type parameter in ValueBoxEditor">T</A>&gt;&nbsp;peer)</PRE>
 <DL>
+<DD>Constructs a new ValueBoxEditor that adapts a <A HREF="../../../../../../../com/google/gwt/user/client/ui/ValueBoxBase.html" title="class in com.google.gwt.user.client.ui"><CODE>ValueBoxBase</CODE></A> peer
+ instance.
+<P>
+<DL>
+<DT><B>Parameters:</B><DD><CODE>peer</CODE> - a <A HREF="../../../../../../../com/google/gwt/user/client/ui/ValueBoxBase.html" title="class in com.google.gwt.user.client.ui"><CODE>ValueBoxBase</CODE></A> instance of type T</DL>
 </DL>
 
 <!-- ============ METHOD DETAIL ========== -->
@@ -261,11 +268,16 @@ of</H3>
 <PRE>
 public static &lt;T&gt; <A HREF="../../../../../../../com/google/gwt/editor/ui/client/adapters/ValueBoxEditor.html" title="class in com.google.gwt.editor.ui.client.adapters">ValueBoxEditor</A>&lt;T&gt; <B>of</B>(<A HREF="../../../../../../../com/google/gwt/user/client/ui/ValueBoxBase.html" title="class in com.google.gwt.user.client.ui">ValueBoxBase</A>&lt;T&gt;&nbsp;valueBox)</PRE>
 <DL>
+<DD>Returns a new TakesValueEditor that adapts a <A HREF="../../../../../../../com/google/gwt/user/client/ui/ValueBoxBase.html" title="class in com.google.gwt.user.client.ui"><CODE>ValueBoxBase</CODE></A>
+ instance.
+<P>
 <DD><DL>
 </DL>
 </DD>
 <DD><DL>
-</DL>
+<DT><B>Parameters:</B><DD><CODE>valueBox</CODE> - a <A HREF="../../../../../../../com/google/gwt/user/client/ui/ValueBoxBase.html" title="class in com.google.gwt.user.client.ui"><CODE>ValueBoxBase</CODE></A> instance to adapt
+<DT><B>Returns:</B><DD>a ValueBoxEditor instance of the same type as the
+   adapted <A HREF="../../../../../../../com/google/gwt/user/client/ui/ValueBoxBase.html" title="class in com.google.gwt.user.client.ui"><CODE>ValueBoxBase</CODE></A> instance</DL>
 </DD>
 </DL>
 <HR>
@@ -275,11 +287,14 @@ getDelegate</H3>
 <PRE>
 public <A HREF="../../../../../../../com/google/gwt/editor/client/EditorDelegate.html" title="interface in com.google.gwt.editor.client">EditorDelegate</A>&lt;<A HREF="../../../../../../../com/google/gwt/editor/ui/client/adapters/ValueBoxEditor.html" title="type parameter in ValueBoxEditor">T</A>&gt; <B>getDelegate</B>()</PRE>
 <DL>
+<DD>Returns the <A HREF="../../../../../../../com/google/gwt/editor/client/EditorDelegate.html" title="interface in com.google.gwt.editor.client"><CODE>EditorDelegate</CODE></A> for this instance.
+<P>
 <DD><DL>
 </DL>
 </DD>
 <DD><DL>
-</DL>
+
+<DT><B>Returns:</B><DD>an <A HREF="../../../../../../../com/google/gwt/editor/client/EditorDelegate.html" title="interface in com.google.gwt.editor.client"><CODE>EditorDelegate</CODE></A>, or <code>null</code><DT><B>See Also:</B><DD><A HREF="../../../../../../../com/google/gwt/editor/ui/client/adapters/ValueBoxEditor.html#setDelegate(com.google.gwt.editor.client.EditorDelegate)"><CODE>setDelegate(EditorDelegate)</CODE></A></DL>
 </DD>
 </DL>
 <HR>
@@ -297,7 +312,8 @@ public <A HREF="../../../../../../../com/google/gwt/editor/ui/client/adapters/Va
 <DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../../../com/google/gwt/user/client/TakesValue.html#getValue()">getValue</A></CODE> in interface <CODE><A HREF="../../../../../../../com/google/gwt/user/client/TakesValue.html" title="interface in com.google.gwt.user.client">TakesValue</A>&lt;<A HREF="../../../../../../../com/google/gwt/editor/ui/client/adapters/ValueBoxEditor.html" title="type parameter in ValueBoxEditor">T</A>&gt;</CODE><DT><B>Overrides:</B><DD><CODE><A HREF="../../../../../../../com/google/gwt/editor/client/adapters/TakesValueEditor.html#getValue()">getValue</A></CODE> in class <CODE><A HREF="../../../../../../../com/google/gwt/editor/client/adapters/TakesValueEditor.html" title="class in com.google.gwt.editor.client.adapters">TakesValueEditor</A>&lt;<A HREF="../../../../../../../com/google/gwt/editor/ui/client/adapters/ValueBoxEditor.html" title="type parameter in ValueBoxEditor">T</A>&gt;</CODE></DL>
 </DD>
 <DD><DL>
-</DL>
+
+<DT><B>Returns:</B><DD>a value of type T<DT><B>See Also:</B><DD><A HREF="../../../../../../../com/google/gwt/editor/ui/client/adapters/ValueBoxEditor.html#setValue(T)"><CODE>setValue(Object)</CODE></A></DL>
 </DD>
 </DL>
 <HR>
@@ -307,15 +323,14 @@ setDelegate</H3>
 <PRE>
 public void <B>setDelegate</B>(<A HREF="../../../../../../../com/google/gwt/editor/client/EditorDelegate.html" title="interface in com.google.gwt.editor.client">EditorDelegate</A>&lt;<A HREF="../../../../../../../com/google/gwt/editor/ui/client/adapters/ValueBoxEditor.html" title="type parameter in ValueBoxEditor">T</A>&gt;&nbsp;delegate)</PRE>
 <DL>
-<DD><B>Description copied from interface: <CODE><A HREF="../../../../../../../com/google/gwt/editor/client/HasEditorDelegate.html#setDelegate(com.google.gwt.editor.client.EditorDelegate)">HasEditorDelegate</A></CODE></B></DD>
-<DD>Called by the EditorDriver to provide access to the EditorDelegate the
- Editor is peered with.
+<DD>Sets the <A HREF="../../../../../../../com/google/gwt/editor/client/EditorDelegate.html" title="interface in com.google.gwt.editor.client"><CODE>EditorDelegate</CODE></A> for this instance. This method is only
+ called by the driver.
 <P>
 <DD><DL>
 <DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../../../com/google/gwt/editor/client/HasEditorDelegate.html#setDelegate(com.google.gwt.editor.client.EditorDelegate)">setDelegate</A></CODE> in interface <CODE><A HREF="../../../../../../../com/google/gwt/editor/client/HasEditorDelegate.html" title="interface in com.google.gwt.editor.client">HasEditorDelegate</A>&lt;<A HREF="../../../../../../../com/google/gwt/editor/ui/client/adapters/ValueBoxEditor.html" title="type parameter in ValueBoxEditor">T</A>&gt;</CODE></DL>
 </DD>
 <DD><DL>
-</DL>
+<DT><B>Parameters:</B><DD><CODE>delegate</CODE> - an <A HREF="../../../../../../../com/google/gwt/editor/client/EditorDelegate.html" title="interface in com.google.gwt.editor.client"><CODE>EditorDelegate</CODE></A>, or <code>null</code><DT><B>See Also:</B><DD><A HREF="../../../../../../../com/google/gwt/editor/ui/client/adapters/ValueBoxEditor.html#getDelegate()"><CODE>getDelegate()</CODE></A></DL>
 </DD>
 </DL>
 <HR>
@@ -332,7 +347,7 @@ public void <B>setValue</B>(<A HREF="../../../../../../../com/google/gwt/editor/
 <DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../../../com/google/gwt/user/client/TakesValue.html#setValue(V)">setValue</A></CODE> in interface <CODE><A HREF="../../../../../../../com/google/gwt/user/client/TakesValue.html" title="interface in com.google.gwt.user.client">TakesValue</A>&lt;<A HREF="../../../../../../../com/google/gwt/editor/ui/client/adapters/ValueBoxEditor.html" title="type parameter in ValueBoxEditor">T</A>&gt;</CODE><DT><B>Overrides:</B><DD><CODE><A HREF="../../../../../../../com/google/gwt/editor/client/adapters/TakesValueEditor.html#setValue(T)">setValue</A></CODE> in class <CODE><A HREF="../../../../../../../com/google/gwt/editor/client/adapters/TakesValueEditor.html" title="class in com.google.gwt.editor.client.adapters">TakesValueEditor</A>&lt;<A HREF="../../../../../../../com/google/gwt/editor/ui/client/adapters/ValueBoxEditor.html" title="type parameter in ValueBoxEditor">T</A>&gt;</CODE></DL>
 </DD>
 <DD><DL>
-</DL>
+<DT><B>Parameters:</B><DD><CODE>value</CODE> - a value object of type V<DT><B>See Also:</B><DD><A HREF="../../../../../../../com/google/gwt/user/client/TakesValue.html#getValue()"><CODE>TakesValue.getValue()</CODE></A></DL>
 </DD>
 </DL>
 <!-- ========= END OF CLASS DATA ========= -->
@@ -351,6 +366,7 @@ public void <B>setValue</B>(<A HREF="../../../../../../../com/google/gwt/editor/
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-summary.html"><FONT CLASS="NavBarFont1"><B>Package</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Class</B></FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="class-use/ValueBoxEditor.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
@@ -359,7 +375,7 @@ public void <B>setValue</B>(<A HREF="../../../../../../../com/google/gwt/editor/
 </TABLE>
 </TD>
 <TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
-GWT 2.1.0.RC1</EM>
+GWT 2.1.1</EM>
 </TD>
 </TR>
 

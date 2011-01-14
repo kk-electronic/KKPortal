@@ -38,6 +38,7 @@ function windowTitle()
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-summary.html"><FONT CLASS="NavBarFont1"><B>Package</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Class</B></FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="class-use/Receiver.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
@@ -46,13 +47,13 @@ function windowTitle()
 </TABLE>
 </TD>
 <TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
-GWT 2.1.0.RC1</EM>
+GWT 2.1.1</EM>
 </TD>
 </TR>
 
 <TR>
 <TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
-&nbsp;<A HREF="../../../../../com/google/gwt/requestfactory/shared/ProxyFor.html" title="annotation in com.google.gwt.requestfactory.shared"><B>PREV CLASS</B></A>&nbsp;
+&nbsp;<A HREF="../../../../../com/google/gwt/requestfactory/shared/ProxyStore.html" title="interface in com.google.gwt.requestfactory.shared"><B>PREV CLASS</B></A>&nbsp;
 &nbsp;<A HREF="../../../../../com/google/gwt/requestfactory/shared/Request.html" title="interface in com.google.gwt.requestfactory.shared"><B>NEXT CLASS</B></A></FONT></TD>
 <TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
   <A HREF="../../../../../index.html?com/google/gwt/requestfactory/shared/Receiver.html" target="_top"><B>FRAMES</B></A>  &nbsp;
@@ -100,12 +101,8 @@ java.lang.Object
 </PRE>
 
 <P>
-<p>
- <span style="color:red">Experimental API: This class is still under rapid
- development, and is very likely to be deleted. Use it at your own risk.
- </span>
- </p>
- Implemented by objects that display values.
+Callback object for <A HREF="../../../../../com/google/gwt/requestfactory/shared/Request.html#fire(com.google.gwt.requestfactory.shared.Receiver)"><CODE>Request.fire(Receiver)</CODE></A> and
+ <A HREF="../../../../../com/google/gwt/requestfactory/shared/RequestContext.html#fire(com.google.gwt.requestfactory.shared.Receiver)"><CODE>RequestContext.fire(Receiver)</CODE></A>.
 <P>
 
 <P>
@@ -206,11 +203,12 @@ onFailure</H3>
 <PRE>
 public void <B>onFailure</B>(<A HREF="../../../../../com/google/gwt/requestfactory/shared/ServerFailure.html" title="class in com.google.gwt.requestfactory.shared">ServerFailure</A>&nbsp;error)</PRE>
 <DL>
-<DD>Receives general failure notifications. The default implementation throws a
- RuntimeException with the provided error message.
+<DD>Receives general failure notifications. The default implementation looks at
+ <A HREF="../../../../../com/google/gwt/requestfactory/shared/ServerFailure.html#isFatal()"><CODE>ServerFailure.isFatal()</CODE></A>, and throws a runtime exception with the
+ failure object's error message if it is true.
 <P>
 <DD><DL>
-</DL>
+<DT><B>Parameters:</B><DD><CODE>error</CODE> - a <A HREF="../../../../../com/google/gwt/requestfactory/shared/ServerFailure.html" title="class in com.google.gwt.requestfactory.shared"><CODE>ServerFailure</CODE></A> instance</DL>
 </DD>
 </DL>
 <HR>
@@ -223,7 +221,7 @@ public abstract void <B>onSuccess</B>(<A HREF="../../../../../com/google/gwt/req
 <DD>Called when a Request has been successfully executed on the server.
 <P>
 <DD><DL>
-</DL>
+<DT><B>Parameters:</B><DD><CODE>response</CODE> - a response of type V</DL>
 </DD>
 </DL>
 <HR>
@@ -238,7 +236,7 @@ public void <B>onViolation</B>(java.util.Set&lt;<A HREF="../../../../../com/goog
  </code> is not empty.
 <P>
 <DD><DL>
-</DL>
+<DT><B>Parameters:</B><DD><CODE>errors</CODE> - a Set of <A HREF="../../../../../com/google/gwt/requestfactory/shared/Violation.html" title="interface in com.google.gwt.requestfactory.shared"><CODE>Violation</CODE></A> instances</DL>
 </DD>
 </DL>
 <!-- ========= END OF CLASS DATA ========= -->
@@ -257,6 +255,7 @@ public void <B>onViolation</B>(java.util.Set&lt;<A HREF="../../../../../com/goog
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-summary.html"><FONT CLASS="NavBarFont1"><B>Package</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Class</B></FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="class-use/Receiver.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
@@ -265,13 +264,13 @@ public void <B>onViolation</B>(java.util.Set&lt;<A HREF="../../../../../com/goog
 </TABLE>
 </TD>
 <TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
-GWT 2.1.0.RC1</EM>
+GWT 2.1.1</EM>
 </TD>
 </TR>
 
 <TR>
 <TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
-&nbsp;<A HREF="../../../../../com/google/gwt/requestfactory/shared/ProxyFor.html" title="annotation in com.google.gwt.requestfactory.shared"><B>PREV CLASS</B></A>&nbsp;
+&nbsp;<A HREF="../../../../../com/google/gwt/requestfactory/shared/ProxyStore.html" title="interface in com.google.gwt.requestfactory.shared"><B>PREV CLASS</B></A>&nbsp;
 &nbsp;<A HREF="../../../../../com/google/gwt/requestfactory/shared/Request.html" title="interface in com.google.gwt.requestfactory.shared"><B>NEXT CLASS</B></A></FONT></TD>
 <TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
   <A HREF="../../../../../index.html?com/google/gwt/requestfactory/shared/Receiver.html" target="_top"><B>FRAMES</B></A>  &nbsp;

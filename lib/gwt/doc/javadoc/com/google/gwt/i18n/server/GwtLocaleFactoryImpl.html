@@ -38,6 +38,7 @@ function windowTitle()
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-summary.html"><FONT CLASS="NavBarFont1"><B>Package</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Class</B></FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="class-use/GwtLocaleFactoryImpl.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
@@ -46,7 +47,7 @@ function windowTitle()
 </TABLE>
 </TD>
 <TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
-GWT 2.1.0.RC1</EM>
+GWT 2.1.1</EM>
 </TD>
 </TR>
 
@@ -169,7 +170,7 @@ Creates server-side GwtLocale instances.  Thread-safe.
 <TD><CODE><B><A HREF="../../../../../com/google/gwt/i18n/server/GwtLocaleFactoryImpl.html#getDefault()">getDefault</A></B>()</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns an instance of the default locale.</TD>
 </TR>
 </TABLE>
 &nbsp;<A NAME="methods_inherited_from_class_java.lang.Object"><!-- --></A>
@@ -240,7 +241,7 @@ public <A HREF="../../../../../com/google/gwt/i18n/shared/GwtLocale.html" title=
 <DL>
 <DD><B>Description copied from interface: <CODE><A HREF="../../../../../com/google/gwt/i18n/shared/GwtLocaleFactory.html#fromComponents(java.lang.String, java.lang.String, java.lang.String, java.lang.String)">GwtLocaleFactory</A></CODE></B></DD>
 <DD>Construct a GWT locale from its component parts.
- 
+
  Null or empty strings are accepted for parts not present.
 <P>
 <DD><DL>
@@ -265,7 +266,7 @@ public <A HREF="../../../../../com/google/gwt/i18n/shared/GwtLocale.html" title=
  also private-use tags are only supported for the entire tag).
  Only minimal validation of BCP47 tags is performed, and will continue
  with what it is able to parse if unexpected input is encountered.
- 
+
  A null or empty string is treated as the default locale.
 <P>
 <DD><DL>
@@ -286,12 +287,14 @@ getDefault</H3>
 <PRE>
 public <A HREF="../../../../../com/google/gwt/i18n/shared/GwtLocale.html" title="interface in com.google.gwt.i18n.shared">GwtLocale</A> <B>getDefault</B>()</PRE>
 <DL>
+<DD><B>Description copied from interface: <CODE><A HREF="../../../../../com/google/gwt/i18n/shared/GwtLocaleFactory.html#getDefault()">GwtLocaleFactory</A></CODE></B></DD>
+<DD>Returns an instance of the default locale.
+<P>
 <DD><DL>
 <DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../com/google/gwt/i18n/shared/GwtLocaleFactory.html#getDefault()">getDefault</A></CODE> in interface <CODE><A HREF="../../../../../com/google/gwt/i18n/shared/GwtLocaleFactory.html" title="interface in com.google.gwt.i18n.shared">GwtLocaleFactory</A></CODE></DL>
 </DD>
 <DD><DL>
-
-<DT><B>Returns:</B><DD>an instance of the default locale.</DL>
+</DL>
 </DD>
 </DL>
 <!-- ========= END OF CLASS DATA ========= -->
@@ -310,6 +313,7 @@ public <A HREF="../../../../../com/google/gwt/i18n/shared/GwtLocale.html" title=
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-summary.html"><FONT CLASS="NavBarFont1"><B>Package</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Class</B></FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="class-use/GwtLocaleFactoryImpl.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
@@ -318,7 +322,7 @@ public <A HREF="../../../../../com/google/gwt/i18n/shared/GwtLocale.html" title=
 </TABLE>
 </TD>
 <TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
-GWT 2.1.0.RC1</EM>
+GWT 2.1.1</EM>
 </TD>
 </TR>
 

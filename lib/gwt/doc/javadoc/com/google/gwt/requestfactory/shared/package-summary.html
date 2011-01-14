@@ -38,6 +38,7 @@ function windowTitle()
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Package</B></FONT>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <FONT CLASS="NavBarFont1">Class</FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-use.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
@@ -46,14 +47,14 @@ function windowTitle()
 </TABLE>
 </TD>
 <TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
-GWT 2.1.0.RC1</EM>
+GWT 2.1.1</EM>
 </TD>
 </TR>
 
 <TR>
 <TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
-&nbsp;<A HREF="../../../../../com/google/gwt/requestfactory/server/package-summary.html"><B>PREV PACKAGE</B></A>&nbsp;
-&nbsp;<A HREF="../../../../../com/google/gwt/requestfactory/ui/client/package-summary.html"><B>NEXT PACKAGE</B></A></FONT></TD>
+&nbsp;<A HREF="../../../../../com/google/gwt/requestfactory/server/testing/package-summary.html"><B>PREV PACKAGE</B></A>&nbsp;
+&nbsp;<A HREF="../../../../../com/google/gwt/requestfactory/shared/messages/package-summary.html"><B>NEXT PACKAGE</B></A></FONT></TD>
 <TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
   <A HREF="../../../../../index.html?com/google/gwt/requestfactory/shared/package-summary.html" target="_top"><B>FRAMES</B></A>  &nbsp;
 &nbsp;<A HREF="package-summary.html" target="_top"><B>NO FRAMES</B></A>  &nbsp;
@@ -92,10 +93,12 @@ Shared classes used on both the client and the server side for transmitting data
 <B>Interface Summary</B></FONT></TH>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../com/google/gwt/requestfactory/shared/BaseProxy.html" title="interface in com.google.gwt.requestfactory.shared">BaseProxy</A></B></TD>
+<TD>The root type from which all client-side proxy objects are derived.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
 <TD WIDTH="15%"><B><A HREF="../../../../../com/google/gwt/requestfactory/shared/EntityProxy.html" title="interface in com.google.gwt.requestfactory.shared">EntityProxy</A></B></TD>
-<TD>
- <span style="color:red">Experimental API: This class is still under rapid
- development, and is very likely to be deleted.</TD>
+<TD>A proxy for a server-side domain object.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD WIDTH="15%"><B><A HREF="../../../../../com/google/gwt/requestfactory/shared/EntityProxyChange.Handler.html" title="interface in com.google.gwt.requestfactory.shared">EntityProxyChange.Handler&lt;P extends EntityProxy&gt;</A></B></TD>
@@ -107,7 +110,7 @@ Shared classes used on both the client and the server side for transmitting data
  updates, creates, deletes on the client.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
-<TD WIDTH="15%"><B><A HREF="../../../../../com/google/gwt/requestfactory/shared/InstanceRequest.html" title="interface in com.google.gwt.requestfactory.shared">InstanceRequest&lt;P extends EntityProxy,T&gt;</A></B></TD>
+<TD WIDTH="15%"><B><A HREF="../../../../../com/google/gwt/requestfactory/shared/InstanceRequest.html" title="interface in com.google.gwt.requestfactory.shared">InstanceRequest&lt;P extends BaseProxy,T&gt;</A></B></TD>
 <TD>Used to call instance methods.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
@@ -116,24 +119,25 @@ Shared classes used on both the client and the server side for transmitting data
  client access to the methods of <A HREF="../../../../../com/google/gwt/requestfactory/server/Logging.html" title="class in com.google.gwt.requestfactory.server"><CODE>Logging</CODE></A>.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../com/google/gwt/requestfactory/shared/ProxySerializer.html" title="interface in com.google.gwt.requestfactory.shared">ProxySerializer</A></B></TD>
+<TD>Serializes graphs of EntityProxy objects.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../com/google/gwt/requestfactory/shared/ProxyStore.html" title="interface in com.google.gwt.requestfactory.shared">ProxyStore</A></B></TD>
+<TD>A ProxyStore provides a <A HREF="../../../../../com/google/gwt/requestfactory/shared/ProxySerializer.html" title="interface in com.google.gwt.requestfactory.shared"><CODE>ProxySerializer</CODE></A> with access to a low-level
+ persistence mechanism.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
 <TD WIDTH="15%"><B><A HREF="../../../../../com/google/gwt/requestfactory/shared/Request.html" title="interface in com.google.gwt.requestfactory.shared">Request&lt;T&gt;</A></B></TD>
-<TD>
- <span style="color:red">Experimental API: This class is still under rapid
- development, and is very likely to be deleted.</TD>
+<TD>Implemented by the request objects created by this factory.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD WIDTH="15%"><B><A HREF="../../../../../com/google/gwt/requestfactory/shared/RequestContext.html" title="interface in com.google.gwt.requestfactory.shared">RequestContext</A></B></TD>
 <TD>The base interface for RequestFactory service endpoints.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
-<TD WIDTH="15%"><B><A HREF="../../../../../com/google/gwt/requestfactory/shared/RequestEvent.Handler.html" title="interface in com.google.gwt.requestfactory.shared">RequestEvent.Handler</A></B></TD>
-<TD>Implemented by handlers of this type of event.</TD>
-</TR>
-<TR BGCOLOR="white" CLASS="TableRowColor">
 <TD WIDTH="15%"><B><A HREF="../../../../../com/google/gwt/requestfactory/shared/RequestFactory.html" title="interface in com.google.gwt.requestfactory.shared">RequestFactory</A></B></TD>
-<TD>
- <span style="color:red">Experimental API: This class is still under rapid
- development, and is very likely to be deleted.</TD>
+<TD>Marker interface for the RequestFactory code generator.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD WIDTH="15%"><B><A HREF="../../../../../com/google/gwt/requestfactory/shared/RequestTransport.html" title="interface in com.google.gwt.requestfactory.shared">RequestTransport</A></B></TD>
@@ -145,19 +149,20 @@ Shared classes used on both the client and the server side for transmitting data
 <TD>A callback interface.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
-<TD WIDTH="15%"><B><A HREF="../../../../../com/google/gwt/requestfactory/shared/UserInformationProxy.html" title="interface in com.google.gwt.requestfactory.shared">UserInformationProxy</A></B></TD>
-<TD>"API Generated" DTO interface based on <A HREF="../../../../../com/google/gwt/requestfactory/server/UserInformation.html" title="class in com.google.gwt.requestfactory.server"><CODE>UserInformation</CODE></A>.</TD>
+<TD WIDTH="15%"><B><A HREF="../../../../../com/google/gwt/requestfactory/shared/ServiceLocator.html" title="interface in com.google.gwt.requestfactory.shared">ServiceLocator</A></B></TD>
+<TD>A ServiceLocator provides instances of a type specified by a <A HREF="../../../../../com/google/gwt/requestfactory/shared/Service.html" title="annotation in com.google.gwt.requestfactory.shared"><CODE>Service</CODE></A>
+ when <A HREF="../../../../../com/google/gwt/requestfactory/shared/Request.html" title="interface in com.google.gwt.requestfactory.shared"><CODE>Request</CODE></A> methods declared in a <A HREF="../../../../../com/google/gwt/requestfactory/shared/RequestContext.html" title="interface in com.google.gwt.requestfactory.shared"><CODE>RequestContext</CODE></A>are mapped
+ onto instance (non-static) methods.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
-<TD WIDTH="15%"><B><A HREF="../../../../../com/google/gwt/requestfactory/shared/UserInformationRequest.html" title="interface in com.google.gwt.requestfactory.shared">UserInformationRequest</A></B></TD>
-<TD>"API Generated" request selector interface implemented by objects that give
- client access to the methods of <A HREF="../../../../../com/google/gwt/requestfactory/server/UserInformation.html" title="class in com.google.gwt.requestfactory.server"><CODE>UserInformation</CODE></A>.</TD>
+<TD WIDTH="15%"><B><A HREF="../../../../../com/google/gwt/requestfactory/shared/ValueProxy.html" title="interface in com.google.gwt.requestfactory.shared">ValueProxy</A></B></TD>
+<TD>An analog to EntityProxy for domain types that do not have an identity
+ concept.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD WIDTH="15%"><B><A HREF="../../../../../com/google/gwt/requestfactory/shared/Violation.html" title="interface in com.google.gwt.requestfactory.shared">Violation</A></B></TD>
-<TD>
- <span style="color:red">Experimental API: This class is still under rapid
- development, and is very likely to be deleted.</TD>
+<TD>A lightweight representation of a
+ <A HREF="http://download.oracle.com/javaee/6/api/javax/validation/ConstraintViolation.html?is-external=true" title="class or interface in javax.validation"><CODE>ConstraintViolation</CODE></A>.</TD>
 </TR>
 </TABLE>
 &nbsp;
@@ -170,30 +175,28 @@ Shared classes used on both the client and the server side for transmitting data
 <B>Class Summary</B></FONT></TH>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../com/google/gwt/requestfactory/shared/DefaultProxyStore.html" title="class in com.google.gwt.requestfactory.shared">DefaultProxyStore</A></B></TD>
+<TD>An in-memory ProxyStore store that can encode its state as a JSON object
+ literal.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
 <TD WIDTH="15%"><B><A HREF="../../../../../com/google/gwt/requestfactory/shared/EntityProxyChange.html" title="class in com.google.gwt.requestfactory.shared">EntityProxyChange&lt;P extends EntityProxy&gt;</A></B></TD>
-<TD>
- <span style="color:red">Experimental API: This class is still under rapid
- development, and is very likely to be deleted.</TD>
+<TD>Abstract base class for an event announcing changes to an
+ <A HREF="../../../../../com/google/gwt/requestfactory/shared/EntityProxy.html" title="interface in com.google.gwt.requestfactory.shared"><CODE>EntityProxy</CODE></A>.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../com/google/gwt/requestfactory/shared/Locator.html" title="class in com.google.gwt.requestfactory.shared">Locator&lt;T,I&gt;</A></B></TD>
+<TD>A Locator allows entity types that do not conform to the RequestFactory
+ entity protocol to be used.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD WIDTH="15%"><B><A HREF="../../../../../com/google/gwt/requestfactory/shared/Receiver.html" title="class in com.google.gwt.requestfactory.shared">Receiver&lt;V&gt;</A></B></TD>
-<TD>
- <span style="color:red">Experimental API: This class is still under rapid
- development, and is very likely to be deleted.</TD>
-</TR>
-<TR BGCOLOR="white" CLASS="TableRowColor">
-<TD WIDTH="15%"><B><A HREF="../../../../../com/google/gwt/requestfactory/shared/RequestEvent.html" title="class in com.google.gwt.requestfactory.shared">RequestEvent</A></B></TD>
-<TD>
- <span style="color:red">Experimental API: This class is still under rapid
- development, and is very likely to be deleted.</TD>
+<TD>Callback object for <A HREF="../../../../../com/google/gwt/requestfactory/shared/Request.html#fire(com.google.gwt.requestfactory.shared.Receiver)"><CODE>Request.fire(Receiver)</CODE></A> and
+ <A HREF="../../../../../com/google/gwt/requestfactory/shared/RequestContext.html#fire(com.google.gwt.requestfactory.shared.Receiver)"><CODE>RequestContext.fire(Receiver)</CODE></A>.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD WIDTH="15%"><B><A HREF="../../../../../com/google/gwt/requestfactory/shared/ServerFailure.html" title="class in com.google.gwt.requestfactory.shared">ServerFailure</A></B></TD>
 <TD>Describes a request failure on the server.</TD>
-</TR>
-<TR BGCOLOR="white" CLASS="TableRowColor">
-<TD WIDTH="15%"><B><A HREF="../../../../../com/google/gwt/requestfactory/shared/ValueCodex.html" title="class in com.google.gwt.requestfactory.shared">ValueCodex</A></B></TD>
-<TD>Provides unified encoding and decoding of value objects.</TD>
 </TR>
 </TABLE>
 &nbsp;
@@ -206,14 +209,8 @@ Shared classes used on both the client and the server side for transmitting data
 <B>Enum Summary</B></FONT></TH>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
-<TD WIDTH="15%"><B><A HREF="../../../../../com/google/gwt/requestfactory/shared/RequestEvent.State.html" title="enum in com.google.gwt.requestfactory.shared">RequestEvent.State</A></B></TD>
-<TD>The request state.</TD>
-</TR>
-<TR BGCOLOR="white" CLASS="TableRowColor">
 <TD WIDTH="15%"><B><A HREF="../../../../../com/google/gwt/requestfactory/shared/WriteOperation.html" title="enum in com.google.gwt.requestfactory.shared">WriteOperation</A></B></TD>
-<TD>
- <span style="color:red">Experimental API: This class is still under rapid
- development, and is very likely to be deleted.</TD>
+<TD>The enum used in <A HREF="../../../../../com/google/gwt/requestfactory/shared/EntityProxyChange.html" title="class in com.google.gwt.requestfactory.shared"><CODE>EntityProxyChange</CODE></A>.</TD>
 </TR>
 </TABLE>
 &nbsp;
@@ -226,27 +223,25 @@ Shared classes used on both the client and the server side for transmitting data
 <B>Annotation Types Summary</B></FONT></TH>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
-<TD WIDTH="15%"><B><A HREF="../../../../../com/google/gwt/requestfactory/shared/Id.html" title="annotation in com.google.gwt.requestfactory.shared">Id</A></B></TD>
-<TD>
- <span style="color:red">Experimental API: This class is still under rapid
- development, and is very likely to be deleted.</TD>
+<TD WIDTH="15%"><B><A HREF="../../../../../com/google/gwt/requestfactory/shared/ProxyFor.html" title="annotation in com.google.gwt.requestfactory.shared">ProxyFor</A></B></TD>
+<TD>Annotation on EntityProxy and ValueProxy classes specifying the domain
+ (server-side) object type.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
-<TD WIDTH="15%"><B><A HREF="../../../../../com/google/gwt/requestfactory/shared/ProxyFor.html" title="annotation in com.google.gwt.requestfactory.shared">ProxyFor</A></B></TD>
-<TD> <span style="color:red">Experimental API: This class is still under rapid
- development, and is very likely to be deleted.</TD>
+<TD WIDTH="15%"><B><A HREF="../../../../../com/google/gwt/requestfactory/shared/ProxyForName.html" title="annotation in com.google.gwt.requestfactory.shared">ProxyForName</A></B></TD>
+<TD>Annotation on EntityProxy classes specifying the domain (server-side) object
+ type.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD WIDTH="15%"><B><A HREF="../../../../../com/google/gwt/requestfactory/shared/Service.html" title="annotation in com.google.gwt.requestfactory.shared">Service</A></B></TD>
-<TD>
- <span style="color:red">Experimental API: This class is still under rapid
- development, and is very likely to be deleted.</TD>
+<TD>Annotation on Request classes specifying the server side implementations that
+ back them.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
-<TD WIDTH="15%"><B><A HREF="../../../../../com/google/gwt/requestfactory/shared/Version.html" title="annotation in com.google.gwt.requestfactory.shared">Version</A></B></TD>
-<TD>
- <span style="color:red">Experimental API: This class is still under rapid
- development, and is very likely to be deleted.</TD>
+<TD WIDTH="15%"><B><A HREF="../../../../../com/google/gwt/requestfactory/shared/ServiceName.html" title="annotation in com.google.gwt.requestfactory.shared">ServiceName</A></B></TD>
+<TD>Annotation on Request classes specifying the server side implementations that
+ back them.This annotation can be used in place of <A HREF="../../../../../com/google/gwt/requestfactory/shared/Service.html" title="annotation in com.google.gwt.requestfactory.shared"><CODE>Service</CODE></A> if the
+ service type is not available to the GWT compiler or DevMode runtime.</TD>
 </TR>
 </TABLE>
 &nbsp;
@@ -258,12 +253,12 @@ Package com.google.gwt.requestfactory.shared Description
 
 <P>
 Shared classes used on both the client and the server side for transmitting data between the sever and the client in JSON format.
-<p><span style="color:red">Experimental API: All classes in this package are still under rapid development, and are very likely to be deleted or renamed. Use them at your own risk.
-</span></p>
 <P>
 
 <P>
 <DL>
+<DT><B>Since:</B></DT>
+  <DD>GWT 2.1</DD>
 </DL>
 <HR>
 
@@ -280,6 +275,7 @@ Shared classes used on both the client and the server side for transmitting data
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Package</B></FONT>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <FONT CLASS="NavBarFont1">Class</FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-use.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
@@ -288,14 +284,14 @@ Shared classes used on both the client and the server side for transmitting data
 </TABLE>
 </TD>
 <TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
-GWT 2.1.0.RC1</EM>
+GWT 2.1.1</EM>
 </TD>
 </TR>
 
 <TR>
 <TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
-&nbsp;<A HREF="../../../../../com/google/gwt/requestfactory/server/package-summary.html"><B>PREV PACKAGE</B></A>&nbsp;
-&nbsp;<A HREF="../../../../../com/google/gwt/requestfactory/ui/client/package-summary.html"><B>NEXT PACKAGE</B></A></FONT></TD>
+&nbsp;<A HREF="../../../../../com/google/gwt/requestfactory/server/testing/package-summary.html"><B>PREV PACKAGE</B></A>&nbsp;
+&nbsp;<A HREF="../../../../../com/google/gwt/requestfactory/shared/messages/package-summary.html"><B>NEXT PACKAGE</B></A></FONT></TD>
 <TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
   <A HREF="../../../../../index.html?com/google/gwt/requestfactory/shared/package-summary.html" target="_top"><B>FRAMES</B></A>  &nbsp;
 &nbsp;<A HREF="package-summary.html" target="_top"><B>NO FRAMES</B></A>  &nbsp;

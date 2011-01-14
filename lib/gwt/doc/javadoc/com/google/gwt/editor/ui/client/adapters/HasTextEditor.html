@@ -38,6 +38,7 @@ function windowTitle()
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-summary.html"><FONT CLASS="NavBarFont1"><B>Package</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Class</B></FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="class-use/HasTextEditor.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
@@ -46,7 +47,7 @@ function windowTitle()
 </TABLE>
 </TD>
 <TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
-GWT 2.1.0.RC1</EM>
+GWT 2.1.1</EM>
 </TD>
 </TR>
 
@@ -142,7 +143,8 @@ Adapts the HasText interface to the Editor framework.
 <TD><CODE><B><A HREF="../../../../../../../com/google/gwt/editor/ui/client/adapters/HasTextEditor.html#HasTextEditor(com.google.gwt.user.client.ui.HasText)">HasTextEditor</A></B>(<A HREF="../../../../../../../com/google/gwt/user/client/ui/HasText.html" title="interface in com.google.gwt.user.client.ui">HasText</A>&nbsp;peer)</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Constructs a new HasTextEditor that that modifies the given <A HREF="../../../../../../../com/google/gwt/user/client/ui/HasText.html" title="interface in com.google.gwt.user.client.ui"><CODE>HasText</CODE></A>
+ peer instance.</TD>
 </TR>
 </TABLE>
 &nbsp;
@@ -168,7 +170,8 @@ Adapts the HasText interface to the Editor framework.
 <TD><CODE><B><A HREF="../../../../../../../com/google/gwt/editor/ui/client/adapters/HasTextEditor.html#of(com.google.gwt.user.client.ui.HasText)">of</A></B>(<A HREF="../../../../../../../com/google/gwt/user/client/ui/HasText.html" title="interface in com.google.gwt.user.client.ui">HasText</A>&nbsp;peer)</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns a new ValueEditor that that modifies the given <A HREF="../../../../../../../com/google/gwt/user/client/ui/HasText.html" title="interface in com.google.gwt.user.client.ui"><CODE>HasText</CODE></A> peer
+ instance.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -206,6 +209,11 @@ HasTextEditor</H3>
 <PRE>
 protected <B>HasTextEditor</B>(<A HREF="../../../../../../../com/google/gwt/user/client/ui/HasText.html" title="interface in com.google.gwt.user.client.ui">HasText</A>&nbsp;peer)</PRE>
 <DL>
+<DD>Constructs a new HasTextEditor that that modifies the given <A HREF="../../../../../../../com/google/gwt/user/client/ui/HasText.html" title="interface in com.google.gwt.user.client.ui"><CODE>HasText</CODE></A>
+ peer instance.
+<P>
+<DL>
+<DT><B>Parameters:</B><DD><CODE>peer</CODE> - a <A HREF="../../../../../../../com/google/gwt/user/client/ui/HasText.html" title="interface in com.google.gwt.user.client.ui"><CODE>HasText</CODE></A> instance</DL>
 </DL>
 
 <!-- ============ METHOD DETAIL ========== -->
@@ -223,11 +231,15 @@ of</H3>
 <PRE>
 public static <A HREF="../../../../../../../com/google/gwt/editor/ui/client/adapters/HasTextEditor.html" title="class in com.google.gwt.editor.ui.client.adapters">HasTextEditor</A> <B>of</B>(<A HREF="../../../../../../../com/google/gwt/user/client/ui/HasText.html" title="interface in com.google.gwt.user.client.ui">HasText</A>&nbsp;peer)</PRE>
 <DL>
+<DD>Returns a new ValueEditor that that modifies the given <A HREF="../../../../../../../com/google/gwt/user/client/ui/HasText.html" title="interface in com.google.gwt.user.client.ui"><CODE>HasText</CODE></A> peer
+ instance.
+<P>
 <DD><DL>
 </DL>
 </DD>
 <DD><DL>
-</DL>
+<DT><B>Parameters:</B><DD><CODE>peer</CODE> - a <A HREF="../../../../../../../com/google/gwt/user/client/ui/HasText.html" title="interface in com.google.gwt.user.client.ui"><CODE>HasText</CODE></A> instance
+<DT><B>Returns:</B><DD>a HasTextEditor instance</DL>
 </DD>
 </DL>
 <HR>
@@ -244,7 +256,8 @@ public java.lang.String <B>getValue</B>()</PRE>
 <DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../../../com/google/gwt/user/client/TakesValue.html#getValue()">getValue</A></CODE> in interface <CODE><A HREF="../../../../../../../com/google/gwt/user/client/TakesValue.html" title="interface in com.google.gwt.user.client">TakesValue</A>&lt;java.lang.String&gt;</CODE></DL>
 </DD>
 <DD><DL>
-</DL>
+
+<DT><B>Returns:</B><DD>the value as an object of type V<DT><B>See Also:</B><DD><A HREF="../../../../../../../com/google/gwt/user/client/TakesValue.html#setValue(V)"><CODE>TakesValue.setValue(V)</CODE></A></DL>
 </DD>
 </DL>
 <HR>
@@ -261,7 +274,7 @@ public void <B>setValue</B>(java.lang.String&nbsp;value)</PRE>
 <DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../../../com/google/gwt/user/client/TakesValue.html#setValue(V)">setValue</A></CODE> in interface <CODE><A HREF="../../../../../../../com/google/gwt/user/client/TakesValue.html" title="interface in com.google.gwt.user.client">TakesValue</A>&lt;java.lang.String&gt;</CODE></DL>
 </DD>
 <DD><DL>
-</DL>
+<DT><B>Parameters:</B><DD><CODE>value</CODE> - a value object of type V<DT><B>See Also:</B><DD><A HREF="../../../../../../../com/google/gwt/user/client/TakesValue.html#getValue()"><CODE>TakesValue.getValue()</CODE></A></DL>
 </DD>
 </DL>
 <!-- ========= END OF CLASS DATA ========= -->
@@ -280,6 +293,7 @@ public void <B>setValue</B>(java.lang.String&nbsp;value)</PRE>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-summary.html"><FONT CLASS="NavBarFont1"><B>Package</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Class</B></FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="class-use/HasTextEditor.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
@@ -288,7 +302,7 @@ public void <B>setValue</B>(java.lang.String&nbsp;value)</PRE>
 </TABLE>
 </TD>
 <TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
-GWT 2.1.0.RC1</EM>
+GWT 2.1.1</EM>
 </TD>
 </TR>
 

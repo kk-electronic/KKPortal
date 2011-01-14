@@ -38,6 +38,7 @@ function windowTitle()
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-summary.html"><FONT CLASS="NavBarFont1"><B>Package</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Class</B></FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="class-use/LocaleInfo.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
@@ -46,7 +47,7 @@ function windowTitle()
 </TABLE>
 </TD>
 <TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
-GWT 2.1.0.RC1</EM>
+GWT 2.1.1</EM>
 </TD>
 </TR>
 
@@ -139,7 +140,7 @@ Provides access to the currently-active locale and the list of available
 <TD><CODE><B><A HREF="../../../../../com/google/gwt/i18n/client/LocaleInfo.html#getAvailableLocaleNames()">getAvailableLocaleNames</A></B>()</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns an array of available locale names.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -147,7 +148,7 @@ Provides access to the currently-active locale and the list of available
 <TD><CODE><B><A HREF="../../../../../com/google/gwt/i18n/client/LocaleInfo.html#getCurrentLocale()">getCurrentLocale</A></B>()</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns a LocaleInfo instance for the current locale.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -155,7 +156,7 @@ Provides access to the currently-active locale and the list of available
 <TD><CODE><B><A HREF="../../../../../com/google/gwt/i18n/client/LocaleInfo.html#getDateTimeConstants()">getDateTimeConstants</A></B>()</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns a DateTimeConstants instance for this locale.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -163,7 +164,7 @@ Provides access to the currently-active locale and the list of available
 <TD><CODE><B><A HREF="../../../../../com/google/gwt/i18n/client/LocaleInfo.html#getDateTimeFormatInfo()">getDateTimeFormatInfo</A></B>()</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns a DateTimeConstants instance for this locale.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -171,7 +172,7 @@ Provides access to the currently-active locale and the list of available
 <TD><CODE><B><A HREF="../../../../../com/google/gwt/i18n/client/LocaleInfo.html#getLocaleName()">getLocaleName</A></B>()</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns the name of this locale, such as "default, "en_US", etc.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -179,7 +180,7 @@ Provides access to the currently-active locale and the list of available
 <TD><CODE><B><A HREF="../../../../../com/google/gwt/i18n/client/LocaleInfo.html#getLocaleNativeDisplayName(java.lang.String)">getLocaleNativeDisplayName</A></B>(java.lang.String&nbsp;localeName)</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Return the display name of the requested locale in its native locale, if
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns the display name of the requested locale in its native locale, if
  possible.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
@@ -188,7 +189,7 @@ Provides access to the currently-active locale and the list of available
 <TD><CODE><B><A HREF="../../../../../com/google/gwt/i18n/client/LocaleInfo.html#getNumberConstants()">getNumberConstants</A></B>()</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns a NumberConstants instance for this locale.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -196,7 +197,7 @@ Provides access to the currently-active locale and the list of available
 <TD><CODE><B><A HREF="../../../../../com/google/gwt/i18n/client/LocaleInfo.html#hasAnyRTL()">hasAnyRTL</A></B>()</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns true if any locale supported by this build of the app is RTL.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -204,7 +205,7 @@ Provides access to the currently-active locale and the list of available
 <TD><CODE><B><A HREF="../../../../../com/google/gwt/i18n/client/LocaleInfo.html#isRTL()">isRTL</A></B>()</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns true if this locale is right-to-left instead of left-to-right.</TD>
 </TR>
 </TABLE>
 &nbsp;<A NAME="methods_inherited_from_class_java.lang.Object"><!-- --></A>
@@ -254,9 +255,10 @@ getAvailableLocaleNames</H3>
 <PRE>
 public static final java.lang.String[] <B>getAvailableLocaleNames</B>()</PRE>
 <DL>
+<DD>Returns an array of available locale names.
+<P>
 <DD><DL>
-
-<DT><B>Returns:</B><DD>an array of available locale names</DL>
+</DL>
 </DD>
 </DL>
 <HR>
@@ -266,9 +268,10 @@ getCurrentLocale</H3>
 <PRE>
 public static final <A HREF="../../../../../com/google/gwt/i18n/client/LocaleInfo.html" title="class in com.google.gwt.i18n.client">LocaleInfo</A> <B>getCurrentLocale</B>()</PRE>
 <DL>
+<DD>Returns a LocaleInfo instance for the current locale.
+<P>
 <DD><DL>
-
-<DT><B>Returns:</B><DD>a LocaleInfo instance for the current locale</DL>
+</DL>
 </DD>
 </DL>
 <HR>
@@ -278,12 +281,12 @@ getLocaleNativeDisplayName</H3>
 <PRE>
 public static java.lang.String <B>getLocaleNativeDisplayName</B>(java.lang.String&nbsp;localeName)</PRE>
 <DL>
-<DD>Return the display name of the requested locale in its native locale, if
+<DD>Returns the display name of the requested locale in its native locale, if
  possible. If no native localization is available, the English name will
  be returned, or as a last resort just the locale name will be returned.  If
  the locale name is unknown (including an user overrides) or is not a valid
  locale property value, null is returned.
- 
+
  If the I18N module has not been imported, this will always return null.
 <P>
 <DD><DL>
@@ -298,9 +301,10 @@ hasAnyRTL</H3>
 <PRE>
 public static boolean <B>hasAnyRTL</B>()</PRE>
 <DL>
+<DD>Returns true if any locale supported by this build of the app is RTL.
+<P>
 <DD><DL>
-
-<DT><B>Returns:</B><DD>true if any locale supported by this build of the app is RTL.</DL>
+</DL>
 </DD>
 </DL>
 <HR>
@@ -310,9 +314,10 @@ getDateTimeConstants</H3>
 <PRE>
 public final <A HREF="../../../../../com/google/gwt/i18n/client/constants/DateTimeConstants.html" title="interface in com.google.gwt.i18n.client.constants">DateTimeConstants</A> <B>getDateTimeConstants</B>()</PRE>
 <DL>
+<DD>Returns a DateTimeConstants instance for this locale.
+<P>
 <DD><DL>
-
-<DT><B>Returns:</B><DD>a DateTimeConstants instance for this locale.</DL>
+</DL>
 </DD>
 </DL>
 <HR>
@@ -322,9 +327,10 @@ getDateTimeFormatInfo</H3>
 <PRE>
 public final <A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html" title="interface in com.google.gwt.i18n.client">DateTimeFormatInfo</A> <B>getDateTimeFormatInfo</B>()</PRE>
 <DL>
+<DD>Returns a DateTimeConstants instance for this locale.
+<P>
 <DD><DL>
-
-<DT><B>Returns:</B><DD>a DateTimeConstants instance for this locale.</DL>
+</DL>
 </DD>
 </DL>
 <HR>
@@ -334,9 +340,10 @@ getLocaleName</H3>
 <PRE>
 public final java.lang.String <B>getLocaleName</B>()</PRE>
 <DL>
+<DD>Returns the name of this locale, such as "default, "en_US", etc.
+<P>
 <DD><DL>
-
-<DT><B>Returns:</B><DD>the name of this locale, such as "default, "en_US", etc</DL>
+</DL>
 </DD>
 </DL>
 <HR>
@@ -346,9 +353,10 @@ getNumberConstants</H3>
 <PRE>
 public final <A HREF="../../../../../com/google/gwt/i18n/client/constants/NumberConstants.html" title="interface in com.google.gwt.i18n.client.constants">NumberConstants</A> <B>getNumberConstants</B>()</PRE>
 <DL>
+<DD>Returns a NumberConstants instance for this locale.
+<P>
 <DD><DL>
-
-<DT><B>Returns:</B><DD>a NumberConstants instance for this locale.</DL>
+</DL>
 </DD>
 </DL>
 <HR>
@@ -358,9 +366,10 @@ isRTL</H3>
 <PRE>
 public final boolean <B>isRTL</B>()</PRE>
 <DL>
+<DD>Returns true if this locale is right-to-left instead of left-to-right.
+<P>
 <DD><DL>
-
-<DT><B>Returns:</B><DD>true if this locale is right-to-left instead of left-to-right</DL>
+</DL>
 </DD>
 </DL>
 <!-- ========= END OF CLASS DATA ========= -->
@@ -379,6 +388,7 @@ public final boolean <B>isRTL</B>()</PRE>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-summary.html"><FONT CLASS="NavBarFont1"><B>Package</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Class</B></FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="class-use/LocaleInfo.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
@@ -387,7 +397,7 @@ public final boolean <B>isRTL</B>()</PRE>
 </TABLE>
 </TD>
 <TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
-GWT 2.1.0.RC1</EM>
+GWT 2.1.1</EM>
 </TD>
 </TR>
 

@@ -38,6 +38,7 @@ function windowTitle()
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Package</B></FONT>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <FONT CLASS="NavBarFont1">Class</FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-use.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
@@ -46,7 +47,7 @@ function windowTitle()
 </TABLE>
 </TD>
 <TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
-GWT 2.1.0.RC1</EM>
+GWT 2.1.1</EM>
 </TD>
 </TR>
 
@@ -87,15 +88,15 @@ Package com.google.gwt.activity.shared
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD WIDTH="15%"><B><A HREF="../../../../../com/google/gwt/activity/shared/Activity.html" title="interface in com.google.gwt.activity.shared">Activity</A></B></TD>
-<TD>
- <span style="color:red">Experimental API: This class is still under rapid
- development, and is very likely to be deleted.</TD>
+<TD>Implemented by objects that control a piece of user interface, with a life
+ cycle managed by an <A HREF="../../../../../com/google/gwt/activity/shared/ActivityManager.html" title="class in com.google.gwt.activity.shared"><CODE>ActivityManager</CODE></A>, in response to
+ <A HREF="../../../../../com/google/gwt/place/shared/PlaceChangeEvent.html" title="class in com.google.gwt.place.shared"><CODE>PlaceChangeEvent</CODE></A> events as the user
+ navigates through the app.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD WIDTH="15%"><B><A HREF="../../../../../com/google/gwt/activity/shared/ActivityMapper.html" title="interface in com.google.gwt.activity.shared">ActivityMapper</A></B></TD>
-<TD>
- <span style="color:red">Experimental API: This class is still under rapid
- development, and is very likely to be deleted.</TD>
+<TD>Finds the activity to run for a given <A HREF="../../../../../com/google/gwt/place/shared/Place.html" title="class in com.google.gwt.place.shared"><CODE>Place</CODE></A>, used to configure
+ an <A HREF="../../../../../com/google/gwt/activity/shared/ActivityManager.html" title="class in com.google.gwt.activity.shared"><CODE>ActivityManager</CODE></A>.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD WIDTH="15%"><B><A HREF="../../../../../com/google/gwt/activity/shared/FilteredActivityMapper.Filter.html" title="interface in com.google.gwt.activity.shared">FilteredActivityMapper.Filter</A></B></TD>
@@ -113,15 +114,13 @@ Package com.google.gwt.activity.shared
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD WIDTH="15%"><B><A HREF="../../../../../com/google/gwt/activity/shared/AbstractActivity.html" title="class in com.google.gwt.activity.shared">AbstractActivity</A></B></TD>
-<TD>
- <span style="color:red">Experimental API: This class is still under rapid
- development, and is very likely to be deleted.</TD>
+<TD>Simple Activity implementation that is always willing to stop,
+ and does nothing onStop and onCancel.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD WIDTH="15%"><B><A HREF="../../../../../com/google/gwt/activity/shared/ActivityManager.html" title="class in com.google.gwt.activity.shared">ActivityManager</A></B></TD>
-<TD>
- <span style="color:red">Experimental API: This class is still under rapid
- development, and is very likely to be deleted.</TD>
+<TD>Manages <A HREF="../../../../../com/google/gwt/activity/shared/Activity.html" title="interface in com.google.gwt.activity.shared"><CODE>Activity</CODE></A> objects that should be kicked off in response to
+ <A HREF="../../../../../com/google/gwt/place/shared/PlaceChangeEvent.html" title="class in com.google.gwt.place.shared"><CODE>PlaceChangeEvent</CODE></A> events.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD WIDTH="15%"><B><A HREF="../../../../../com/google/gwt/activity/shared/CachingActivityMapper.html" title="class in com.google.gwt.activity.shared">CachingActivityMapper</A></B></TD>
@@ -154,6 +153,7 @@ Package com.google.gwt.activity.shared
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Package</B></FONT>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <FONT CLASS="NavBarFont1">Class</FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-use.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
@@ -162,7 +162,7 @@ Package com.google.gwt.activity.shared
 </TABLE>
 </TD>
 <TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
-GWT 2.1.0.RC1</EM>
+GWT 2.1.1</EM>
 </TD>
 </TR>
 

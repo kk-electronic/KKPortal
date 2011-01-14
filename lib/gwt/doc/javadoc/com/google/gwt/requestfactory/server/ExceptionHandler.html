@@ -38,6 +38,7 @@ function windowTitle()
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-summary.html"><FONT CLASS="NavBarFont1"><B>Package</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Class</B></FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="class-use/ExceptionHandler.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
@@ -46,14 +47,14 @@ function windowTitle()
 </TABLE>
 </TD>
 <TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
-GWT 2.1.0.RC1</EM>
+GWT 2.1.1</EM>
 </TD>
 </TR>
 
 <TR>
 <TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
-&nbsp;<A HREF="../../../../../com/google/gwt/requestfactory/server/DefaultSecurityProvider.html" title="class in com.google.gwt.requestfactory.server"><B>PREV CLASS</B></A>&nbsp;
-&nbsp;<A HREF="../../../../../com/google/gwt/requestfactory/server/FindService.html" title="class in com.google.gwt.requestfactory.server"><B>NEXT CLASS</B></A></FONT></TD>
+&nbsp;<A HREF="../../../../../com/google/gwt/requestfactory/server/DefaultExceptionHandler.html" title="class in com.google.gwt.requestfactory.server"><B>PREV CLASS</B></A>&nbsp;
+&nbsp;<A HREF="../../../../../com/google/gwt/requestfactory/server/Logging.html" title="class in com.google.gwt.requestfactory.server"><B>NEXT CLASS</B></A></FONT></TD>
 <TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
   <A HREF="../../../../../index.html?com/google/gwt/requestfactory/server/ExceptionHandler.html" target="_top"><B>FRAMES</B></A>  &nbsp;
 &nbsp;<A HREF="ExceptionHandler.html" target="_top"><B>NO FRAMES</B></A>  &nbsp;
@@ -101,6 +102,8 @@ Handles an exception produced while processing a request.
 <P>
 
 <P>
+<DL>
+<DT><B>See Also:</B><DD><A HREF="../../../../../com/google/gwt/requestfactory/server/DefaultExceptionHandler.html" title="class in com.google.gwt.requestfactory.server"><CODE>DefaultExceptionHandler</CODE></A></DL>
 <HR>
 
 <P>
@@ -119,8 +122,8 @@ Handles an exception produced while processing a request.
 <TD><CODE><B><A HREF="../../../../../com/google/gwt/requestfactory/server/ExceptionHandler.html#createServerFailure(java.lang.Throwable)">createServerFailure</A></B>(java.lang.Throwable&nbsp;throwable)</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Generates a <A HREF="../../../../../com/google/gwt/requestfactory/shared/ServerFailure.html" title="class in com.google.gwt.requestfactory.shared"><CODE>ServerFailure</CODE></A> based on the information
- contained in the received <code>exception</code>.</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Generates a <A HREF="../../../../../com/google/gwt/requestfactory/shared/ServerFailure.html" title="class in com.google.gwt.requestfactory.shared"><CODE>ServerFailure</CODE></A> based on the information contained in the
+ received <code>exception</code>.</TD>
 </TR>
 </TABLE>
 &nbsp;
@@ -141,11 +144,12 @@ createServerFailure</H3>
 <PRE>
 <A HREF="../../../../../com/google/gwt/requestfactory/shared/ServerFailure.html" title="class in com.google.gwt.requestfactory.shared">ServerFailure</A> <B>createServerFailure</B>(java.lang.Throwable&nbsp;throwable)</PRE>
 <DL>
-<DD>Generates a <A HREF="../../../../../com/google/gwt/requestfactory/shared/ServerFailure.html" title="class in com.google.gwt.requestfactory.shared"><CODE>ServerFailure</CODE></A> based on the information
- contained in the received <code>exception</code>.
+<DD>Generates a <A HREF="../../../../../com/google/gwt/requestfactory/shared/ServerFailure.html" title="class in com.google.gwt.requestfactory.shared"><CODE>ServerFailure</CODE></A> based on the information contained in the
+ received <code>exception</code>.
 <P>
 <DD><DL>
-<DT><B>See Also:</B><DD><A HREF="../../../../../com/google/gwt/requestfactory/server/DefaultExceptionHandler.html" title="class in com.google.gwt.requestfactory.server"><CODE>DefaultExceptionHandler</CODE></A></DL>
+<DT><B>Parameters:</B><DD><CODE>throwable</CODE> - a Throwable instance
+<DT><B>Returns:</B><DD>a <A HREF="../../../../../com/google/gwt/requestfactory/shared/ServerFailure.html" title="class in com.google.gwt.requestfactory.shared"><CODE>ServerFailure</CODE></A> instance<DT><B>See Also:</B><DD><A HREF="../../../../../com/google/gwt/requestfactory/server/DefaultExceptionHandler.html" title="class in com.google.gwt.requestfactory.server"><CODE>DefaultExceptionHandler</CODE></A></DL>
 </DD>
 </DL>
 <!-- ========= END OF CLASS DATA ========= -->
@@ -164,6 +168,7 @@ createServerFailure</H3>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-summary.html"><FONT CLASS="NavBarFont1"><B>Package</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Class</B></FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="class-use/ExceptionHandler.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
@@ -172,14 +177,14 @@ createServerFailure</H3>
 </TABLE>
 </TD>
 <TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
-GWT 2.1.0.RC1</EM>
+GWT 2.1.1</EM>
 </TD>
 </TR>
 
 <TR>
 <TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
-&nbsp;<A HREF="../../../../../com/google/gwt/requestfactory/server/DefaultSecurityProvider.html" title="class in com.google.gwt.requestfactory.server"><B>PREV CLASS</B></A>&nbsp;
-&nbsp;<A HREF="../../../../../com/google/gwt/requestfactory/server/FindService.html" title="class in com.google.gwt.requestfactory.server"><B>NEXT CLASS</B></A></FONT></TD>
+&nbsp;<A HREF="../../../../../com/google/gwt/requestfactory/server/DefaultExceptionHandler.html" title="class in com.google.gwt.requestfactory.server"><B>PREV CLASS</B></A>&nbsp;
+&nbsp;<A HREF="../../../../../com/google/gwt/requestfactory/server/Logging.html" title="class in com.google.gwt.requestfactory.server"><B>NEXT CLASS</B></A></FONT></TD>
 <TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
   <A HREF="../../../../../index.html?com/google/gwt/requestfactory/server/ExceptionHandler.html" target="_top"><B>FRAMES</B></A>  &nbsp;
 &nbsp;<A HREF="ExceptionHandler.html" target="_top"><B>NO FRAMES</B></A>  &nbsp;

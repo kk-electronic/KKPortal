@@ -38,6 +38,7 @@ function windowTitle()
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-summary.html"><FONT CLASS="NavBarFont1"><B>Package</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Class</B></FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="class-use/Header.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
@@ -46,7 +47,7 @@ function windowTitle()
 </TABLE>
 </TD>
 <TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
-GWT 2.1.0.RC1</EM>
+GWT 2.1.1</EM>
 </TD>
 </TR>
 
@@ -145,7 +146,7 @@ A table column header or footer.
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
-<CODE>protected &nbsp;java.lang.Object</CODE></FONT></TD>
+<CODE>&nbsp;java.lang.Object</CODE></FONT></TD>
 <TD><CODE><B><A HREF="../../../../../../com/google/gwt/user/cellview/client/Header.html#getKey()">getKey</A></B>()</CODE>
 
 <BR>
@@ -162,7 +163,8 @@ A table column header or footer.
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
 <CODE>&nbsp;void</CODE></FONT></TD>
-<TD><CODE><B><A HREF="../../../../../../com/google/gwt/user/cellview/client/Header.html#onBrowserEvent(com.google.gwt.dom.client.Element, com.google.gwt.dom.client.NativeEvent)">onBrowserEvent</A></B>(<A HREF="../../../../../../com/google/gwt/dom/client/Element.html" title="class in com.google.gwt.dom.client">Element</A>&nbsp;elem,
+<TD><CODE><B><A HREF="../../../../../../com/google/gwt/user/cellview/client/Header.html#onBrowserEvent(com.google.gwt.cell.client.Cell.Context, com.google.gwt.dom.client.Element, com.google.gwt.dom.client.NativeEvent)">onBrowserEvent</A></B>(<A HREF="../../../../../../com/google/gwt/cell/client/Cell.Context.html" title="class in com.google.gwt.cell.client">Cell.Context</A>&nbsp;context,
+               <A HREF="../../../../../../com/google/gwt/dom/client/Element.html" title="class in com.google.gwt.dom.client">Element</A>&nbsp;elem,
                <A HREF="../../../../../../com/google/gwt/dom/client/NativeEvent.html" title="class in com.google.gwt.dom.client">NativeEvent</A>&nbsp;event)</CODE>
 
 <BR>
@@ -171,7 +173,8 @@ A table column header or footer.
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
 <CODE>&nbsp;void</CODE></FONT></TD>
-<TD><CODE><B><A HREF="../../../../../../com/google/gwt/user/cellview/client/Header.html#render(com.google.gwt.safehtml.shared.SafeHtmlBuilder)">render</A></B>(<A HREF="../../../../../../com/google/gwt/safehtml/shared/SafeHtmlBuilder.html" title="class in com.google.gwt.safehtml.shared">SafeHtmlBuilder</A>&nbsp;sb)</CODE>
+<TD><CODE><B><A HREF="../../../../../../com/google/gwt/user/cellview/client/Header.html#render(com.google.gwt.cell.client.Cell.Context, com.google.gwt.safehtml.shared.SafeHtmlBuilder)">render</A></B>(<A HREF="../../../../../../com/google/gwt/cell/client/Cell.Context.html" title="class in com.google.gwt.cell.client">Cell.Context</A>&nbsp;context,
+       <A HREF="../../../../../../com/google/gwt/safehtml/shared/SafeHtmlBuilder.html" title="class in com.google.gwt.safehtml.shared">SafeHtmlBuilder</A>&nbsp;sb)</CODE>
 
 <BR>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Render the header.</TD>
@@ -214,6 +217,8 @@ public <B>Header</B>(<A HREF="../../../../../../com/google/gwt/cell/client/Cell.
 <DL>
 <DD>Construct a Header with a given <A HREF="../../../../../../com/google/gwt/cell/client/Cell.html" title="interface in com.google.gwt.cell.client"><CODE>Cell</CODE></A>.
 <P>
+<DL>
+<DT><B>Parameters:</B><DD><CODE>cell</CODE> - the <A HREF="../../../../../../com/google/gwt/cell/client/Cell.html" title="interface in com.google.gwt.cell.client"><CODE>Cell</CODE></A> responsible for rendering items in the header</DL>
 </DL>
 
 <!-- ============ METHOD DETAIL ========== -->
@@ -234,7 +239,23 @@ public <A HREF="../../../../../../com/google/gwt/cell/client/Cell.html" title="i
 <DD>Return the <A HREF="../../../../../../com/google/gwt/cell/client/Cell.html" title="interface in com.google.gwt.cell.client"><CODE>Cell</CODE></A> responsible for rendering items in the header.
 <P>
 <DD><DL>
+
+<DT><B>Returns:</B><DD>the header Cell</DL>
+</DD>
 </DL>
+<HR>
+
+<A NAME="getKey()"><!-- --></A><H3>
+getKey</H3>
+<PRE>
+public java.lang.Object <B>getKey</B>()</PRE>
+<DL>
+<DD>Get the key for the header value. By default, the key is the same as the
+ value. Override this method to return a custom key.
+<P>
+<DD><DL>
+
+<DT><B>Returns:</B><DD>the key associated with the value</DL>
 </DD>
 </DL>
 <HR>
@@ -247,34 +268,37 @@ public abstract <A HREF="../../../../../../com/google/gwt/user/cellview/client/H
 <DD>Return the header value.
 <P>
 <DD><DL>
-</DL>
+
+<DT><B>Returns:</B><DD>the header value</DL>
 </DD>
 </DL>
 <HR>
 
-<A NAME="onBrowserEvent(com.google.gwt.dom.client.Element, com.google.gwt.dom.client.NativeEvent)"><!-- --></A><H3>
+<A NAME="onBrowserEvent(com.google.gwt.cell.client.Cell.Context, com.google.gwt.dom.client.Element, com.google.gwt.dom.client.NativeEvent)"><!-- --></A><H3>
 onBrowserEvent</H3>
 <PRE>
-public void <B>onBrowserEvent</B>(<A HREF="../../../../../../com/google/gwt/dom/client/Element.html" title="class in com.google.gwt.dom.client">Element</A>&nbsp;elem,
+public void <B>onBrowserEvent</B>(<A HREF="../../../../../../com/google/gwt/cell/client/Cell.Context.html" title="class in com.google.gwt.cell.client">Cell.Context</A>&nbsp;context,
+                           <A HREF="../../../../../../com/google/gwt/dom/client/Element.html" title="class in com.google.gwt.dom.client">Element</A>&nbsp;elem,
                            <A HREF="../../../../../../com/google/gwt/dom/client/NativeEvent.html" title="class in com.google.gwt.dom.client">NativeEvent</A>&nbsp;event)</PRE>
 <DL>
 <DD>Handle a browser event that took place within the header.
 <P>
 <DD><DL>
-<DT><B>Parameters:</B><DD><CODE>elem</CODE> - the parent Element<DD><CODE>event</CODE> - the native browser event</DL>
+<DT><B>Parameters:</B><DD><CODE>context</CODE> - the context of the header<DD><CODE>elem</CODE> - the parent Element<DD><CODE>event</CODE> - the native browser event</DL>
 </DD>
 </DL>
 <HR>
 
-<A NAME="render(com.google.gwt.safehtml.shared.SafeHtmlBuilder)"><!-- --></A><H3>
+<A NAME="render(com.google.gwt.cell.client.Cell.Context, com.google.gwt.safehtml.shared.SafeHtmlBuilder)"><!-- --></A><H3>
 render</H3>
 <PRE>
-public void <B>render</B>(<A HREF="../../../../../../com/google/gwt/safehtml/shared/SafeHtmlBuilder.html" title="class in com.google.gwt.safehtml.shared">SafeHtmlBuilder</A>&nbsp;sb)</PRE>
+public void <B>render</B>(<A HREF="../../../../../../com/google/gwt/cell/client/Cell.Context.html" title="class in com.google.gwt.cell.client">Cell.Context</A>&nbsp;context,
+                   <A HREF="../../../../../../com/google/gwt/safehtml/shared/SafeHtmlBuilder.html" title="class in com.google.gwt.safehtml.shared">SafeHtmlBuilder</A>&nbsp;sb)</PRE>
 <DL>
 <DD>Render the header.
 <P>
 <DD><DL>
-<DT><B>Parameters:</B><DD><CODE>sb</CODE> - a <A HREF="../../../../../../com/google/gwt/safehtml/shared/SafeHtmlBuilder.html" title="class in com.google.gwt.safehtml.shared"><CODE>SafeHtmlBuilder</CODE></A> to render into</DL>
+<DT><B>Parameters:</B><DD><CODE>context</CODE> - the context of the header<DD><CODE>sb</CODE> - a <A HREF="../../../../../../com/google/gwt/safehtml/shared/SafeHtmlBuilder.html" title="class in com.google.gwt.safehtml.shared"><CODE>SafeHtmlBuilder</CODE></A> to render into</DL>
 </DD>
 </DL>
 <HR>
@@ -287,22 +311,7 @@ public void <B>setUpdater</B>(<A HREF="../../../../../../com/google/gwt/cell/cli
 <DD>Set the <A HREF="../../../../../../com/google/gwt/cell/client/ValueUpdater.html" title="interface in com.google.gwt.cell.client"><CODE>ValueUpdater</CODE></A>.
 <P>
 <DD><DL>
-</DL>
-</DD>
-</DL>
-<HR>
-
-<A NAME="getKey()"><!-- --></A><H3>
-getKey</H3>
-<PRE>
-protected java.lang.Object <B>getKey</B>()</PRE>
-<DL>
-<DD>Get the key for the header value. By default, the key is the same as the
- value. Override this method to return a custom key.
-<P>
-<DD><DL>
-
-<DT><B>Returns:</B><DD>the key associated with the value</DL>
+<DT><B>Parameters:</B><DD><CODE>updater</CODE> - the value updater to use</DL>
 </DD>
 </DL>
 <!-- ========= END OF CLASS DATA ========= -->
@@ -321,6 +330,7 @@ protected java.lang.Object <B>getKey</B>()</PRE>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-summary.html"><FONT CLASS="NavBarFont1"><B>Package</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Class</B></FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="class-use/Header.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
@@ -329,7 +339,7 @@ protected java.lang.Object <B>getKey</B>()</PRE>
 </TABLE>
 </TD>
 <TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
-GWT 2.1.0.RC1</EM>
+GWT 2.1.1</EM>
 </TD>
 </TR>
 

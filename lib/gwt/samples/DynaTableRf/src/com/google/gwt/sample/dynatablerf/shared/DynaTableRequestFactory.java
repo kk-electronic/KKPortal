@@ -21,10 +21,11 @@ import com.google.gwt.requestfactory.shared.Request;
 import com.google.gwt.requestfactory.shared.RequestContext;
 import com.google.gwt.requestfactory.shared.RequestFactory;
 import com.google.gwt.requestfactory.shared.Service;
-import com.google.gwt.sample.dynatablerf.domain.Address;
 import com.google.gwt.sample.dynatablerf.domain.Person;
 import com.google.gwt.sample.dynatablerf.server.SchoolCalendarService;
 
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -32,15 +33,6 @@ import java.util.List;
  * {@link com.google.gwt.core.client.GWT#create}.
  */
 public interface DynaTableRequestFactory extends RequestFactory {
-
-  /**
-   * Source of request objects for the Address class.
-   */
-  @Service(Address.class)
-  interface AddressRequest extends RequestContext {
-    InstanceRequest<AddressProxy, Void> persist();
-  }
-
   /**
    * Source of request objects for the Person class.
    */
@@ -54,11 +46,16 @@ public interface DynaTableRequestFactory extends RequestFactory {
    */
   @Service(SchoolCalendarService.class)
   interface SchoolCalendarRequest extends RequestContext {
-    Request<List<PersonProxy>> getPeople(int startIndex, int maxCount);
+    List<Boolean> ALL_DAYS = Collections.unmodifiableList(Arrays.asList(true,
+        true, true, true, true, true, true));
+    List<Boolean> NO_DAYS = Collections.unmodifiableList(Arrays.asList(false,
+        false, false, false, false, false, false));
+
+    Request<List<PersonProxy>> getPeople(int startIndex, int maxCount,
+        List<Boolean> dayFilter);
+
     Request<PersonProxy> getRandomPerson();
   }
-
-  AddressRequest addressRequest();
 
   LoggingRequest loggingRequest();
 

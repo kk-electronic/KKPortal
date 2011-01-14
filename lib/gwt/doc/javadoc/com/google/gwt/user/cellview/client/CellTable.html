@@ -38,6 +38,7 @@ function windowTitle()
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-summary.html"><FONT CLASS="NavBarFont1"><B>Package</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Class</B></FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="class-use/CellTable.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
@@ -46,7 +47,7 @@ function windowTitle()
 </TABLE>
 </TD>
 <TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
-GWT 2.1.0.RC1</EM>
+GWT 2.1.1</EM>
 </TD>
 </TR>
 
@@ -98,7 +99,7 @@ java.lang.Object
 <DL>
 <DT><DT><B>Type Parameters:</B><DD><CODE>T</CODE> - the data type of each row</DL>
 <DL>
-<DT><B>All Implemented Interfaces:</B> <DD><A HREF="../../../../../../com/google/gwt/event/logical/shared/HasAttachHandlers.html" title="interface in com.google.gwt.event.logical.shared">HasAttachHandlers</A>, <A HREF="../../../../../../com/google/gwt/event/shared/HasHandlers.html" title="interface in com.google.gwt.event.shared">HasHandlers</A>, <A HREF="../../../../../../com/google/gwt/user/cellview/client/HasKeyboardPagingPolicy.html" title="interface in com.google.gwt.user.cellview.client">HasKeyboardPagingPolicy</A>, <A HREF="../../../../../../com/google/gwt/user/cellview/client/HasKeyboardSelectionPolicy.html" title="interface in com.google.gwt.user.cellview.client">HasKeyboardSelectionPolicy</A>, <A HREF="../../../../../../com/google/gwt/user/client/EventListener.html" title="interface in com.google.gwt.user.client">EventListener</A>, <A HREF="../../../../../../com/google/gwt/user/client/ui/Focusable.html" title="interface in com.google.gwt.user.client.ui">Focusable</A>, <A HREF="../../../../../../com/google/gwt/user/client/ui/IsWidget.html" title="interface in com.google.gwt.user.client.ui">IsWidget</A>, <A HREF="../../../../../../com/google/gwt/view/client/HasData.html" title="interface in com.google.gwt.view.client">HasData</A>&lt;T&gt;, <A HREF="../../../../../../com/google/gwt/view/client/HasKeyProvider.html" title="interface in com.google.gwt.view.client">HasKeyProvider</A>&lt;T&gt;, <A HREF="../../../../../../com/google/gwt/view/client/HasRows.html" title="interface in com.google.gwt.view.client">HasRows</A></DD>
+<DT><B>All Implemented Interfaces:</B> <DD><A HREF="../../../../../../com/google/gwt/event/logical/shared/HasAttachHandlers.html" title="interface in com.google.gwt.event.logical.shared">HasAttachHandlers</A>, <A HREF="../../../../../../com/google/gwt/event/shared/HasHandlers.html" title="interface in com.google.gwt.event.shared">HasHandlers</A>, <A HREF="../../../../../../com/google/gwt/user/cellview/client/HasKeyboardPagingPolicy.html" title="interface in com.google.gwt.user.cellview.client">HasKeyboardPagingPolicy</A>, <A HREF="../../../../../../com/google/gwt/user/cellview/client/HasKeyboardSelectionPolicy.html" title="interface in com.google.gwt.user.cellview.client">HasKeyboardSelectionPolicy</A>, <A HREF="../../../../../../com/google/gwt/user/client/EventListener.html" title="interface in com.google.gwt.user.client">EventListener</A>, <A HREF="../../../../../../com/google/gwt/user/client/ui/Focusable.html" title="interface in com.google.gwt.user.client.ui">Focusable</A>, <A HREF="../../../../../../com/google/gwt/user/client/ui/IsWidget.html" title="interface in com.google.gwt.user.client.ui">IsWidget</A>, <A HREF="../../../../../../com/google/gwt/view/client/HasCellPreviewHandlers.html" title="interface in com.google.gwt.view.client">HasCellPreviewHandlers</A>&lt;T&gt;, <A HREF="../../../../../../com/google/gwt/view/client/HasData.html" title="interface in com.google.gwt.view.client">HasData</A>&lt;T&gt;, <A HREF="../../../../../../com/google/gwt/view/client/HasKeyProvider.html" title="interface in com.google.gwt.view.client">HasKeyProvider</A>&lt;T&gt;, <A HREF="../../../../../../com/google/gwt/view/client/HasRows.html" title="interface in com.google.gwt.view.client">HasRows</A></DD>
 </DL>
 <HR>
 <DL>
@@ -107,7 +108,25 @@ java.lang.Object
 
 <P>
 A tabular view that supports paging and columns.
-
+ 
+ <p>
+ <h3>Columns</h3>
+ The <A HREF="../../../../../../com/google/gwt/user/cellview/client/Column.html" title="class in com.google.gwt.user.cellview.client"><CODE>Column</CODE></A> class defines the <A HREF="../../../../../../com/google/gwt/cell/client/Cell.html" title="interface in com.google.gwt.cell.client"><CODE>Cell</CODE></A> used to render a column.
+ Implement <A HREF="../../../../../../com/google/gwt/user/cellview/client/Column.html#getValue(T)"><CODE>Column.getValue(Object)</CODE></A> to retrieve the field value from
+ the row object that will be rendered in the <A HREF="../../../../../../com/google/gwt/cell/client/Cell.html" title="interface in com.google.gwt.cell.client"><CODE>Cell</CODE></A>.
+ </p>
+ 
+ <p>
+ <h3>Headers and Footers</h3>
+ A <A HREF="../../../../../../com/google/gwt/user/cellview/client/Header.html" title="class in com.google.gwt.user.cellview.client"><CODE>Header</CODE></A> can be placed at the top (header) or bottom (footer) of the
+ <A HREF="../../../../../../com/google/gwt/user/cellview/client/CellTable.html" title="class in com.google.gwt.user.cellview.client"><CODE>CellTable</CODE></A>. You can specify a header as text using
+ <A HREF="../../../../../../com/google/gwt/user/cellview/client/CellTable.html#addColumn(com.google.gwt.user.cellview.client.Column, java.lang.String)"><CODE>addColumn(Column, String)</CODE></A>, or you can create a custom <A HREF="../../../../../../com/google/gwt/user/cellview/client/Header.html" title="class in com.google.gwt.user.cellview.client"><CODE>Header</CODE></A>
+ that can change with the value of the cells, such as a column total. The
+ <A HREF="../../../../../../com/google/gwt/user/cellview/client/Header.html" title="class in com.google.gwt.user.cellview.client"><CODE>Header</CODE></A> will be rendered every time the row data changes or the table
+ is redrawn. If you pass the same header instance (==) into adjacent columns,
+ the header will span the columns.
+ </p>
+ 
  <p>
  <h3>Examples</h3>
  <dl>
@@ -132,18 +151,18 @@ A tabular view that supports paging and columns.
   /**
    * The list of data to display.
    */
-  private static final List<Contact> CONTACTS = Arrays.asList(
+  private static final List&lt;Contact&gt; CONTACTS = Arrays.asList(
       new Contact("John", new Date(80, 4, 12), "123 Fourth Avenue"),
       new Contact("Joe", new Date(85, 2, 22), "22 Lance Ln"),
       new Contact("George", new Date(46, 6, 6), "1600 Pennsylvania Avenue"));
 
   public void onModuleLoad() {
     // Create a CellTable.
-    CellTable<Contact> table = new CellTable<Contact>();
+    CellTable&lt;Contact&gt; table = new CellTable&lt;Contact&gt;();
     table.setKeyboardSelectionPolicy(KeyboardSelectionPolicy.ENABLED);
 
     // Add a text column to show the name.
-    TextColumn<Contact> nameColumn = new TextColumn<Contact>() {
+    TextColumn&lt;Contact&gt; nameColumn = new TextColumn&lt;Contact&gt;() {
       @Override
       public String getValue(Contact object) {
         return object.name;
@@ -153,7 +172,7 @@ A tabular view that supports paging and columns.
 
     // Add a date column to show the birthday.
     DateCell dateCell = new DateCell();
-    Column<Contact, Date> dateColumn = new Column<Contact, Date>(dateCell) {
+    Column&lt;Contact, Date&gt; dateColumn = new Column&lt;Contact, Date&gt;(dateCell) {
       @Override
       public Date getValue(Contact object) {
         return object.birthday;
@@ -162,7 +181,7 @@ A tabular view that supports paging and columns.
     table.addColumn(dateColumn, "Birthday");
 
     // Add a text column to show the address.
-    TextColumn<Contact> addressColumn = new TextColumn<Contact>() {
+    TextColumn&lt;Contact&gt; addressColumn = new TextColumn&lt;Contact&gt;() {
       @Override
       public String getValue(Contact object) {
         return object.address;
@@ -171,7 +190,7 @@ A tabular view that supports paging and columns.
     table.addColumn(addressColumn, "Address");
 
     // Add a selection model to handle user selection.
-    final SingleSelectionModel<Contact> selectionModel = new SingleSelectionModel<Contact>();
+    final SingleSelectionModel&lt;Contact&gt; selectionModel = new SingleSelectionModel&lt;Contact&gt;();
     table.setSelectionModel(selectionModel);
     selectionModel.addSelectionChangeHandler(new SelectionChangeEvent.Handler() {
       public void onSelectionChange(SelectionChangeEvent event) {
@@ -220,7 +239,7 @@ A tabular view that supports paging and columns.
   /**
    * The list of data to display.
    */
-  private static final List<Contact> CONTACTS = Arrays.asList(
+  private static final List&lt;Contact&gt; CONTACTS = Arrays.asList(
       new Contact("John", new Date(80, 4, 12), "123 Fourth Avenue"),
       new Contact("Joe", new Date(85, 2, 22), "22 Lance Ln"),
       new Contact("George", new Date(46, 6, 6), "1600 Pennsylvania Avenue"));
@@ -229,7 +248,7 @@ A tabular view that supports paging and columns.
    * The key provider that allows us to identify Contacts even if a field
    * changes. We identify contacts by their unique ID.
    */
-  private static final ProvidesKey<Contact> KEY_PROVIDER = new ProvidesKey<CellTableFieldUpdaterExample.Contact>() {
+  private static final ProvidesKey&lt;Contact&gt; KEY_PROVIDER = new ProvidesKey&lt;CellTableFieldUpdaterExample.Contact&gt;() {
     public Object getKey(Contact item) {
       return item.id;
     }
@@ -237,12 +256,12 @@ A tabular view that supports paging and columns.
 
   public void onModuleLoad() {
     // Create a CellTable with a key provider.
-    final CellTable<Contact> table = new CellTable<Contact>(KEY_PROVIDER);
+    final CellTable&lt;Contact&gt; table = new CellTable&lt;Contact&gt;(KEY_PROVIDER);
     table.setKeyboardSelectionPolicy(KeyboardSelectionPolicy.ENABLED);
 
     // Add a text input column to edit the name.
     final TextInputCell nameCell = new TextInputCell();
-    Column<Contact, String> nameColumn = new Column<Contact, String>(nameCell) {
+    Column&lt;Contact, String&gt; nameColumn = new Column&lt;Contact, String&gt;(nameCell) {
       @Override
       public String getValue(Contact object) {
         return object.name;
@@ -251,10 +270,10 @@ A tabular view that supports paging and columns.
     table.addColumn(nameColumn, "Name");
 
     // Add a field updater to be notified when the user enters a new name.
-    nameColumn.setFieldUpdater(new FieldUpdater<Contact, String>() {
+    nameColumn.setFieldUpdater(new FieldUpdater&lt;Contact, String&gt;() {
       public void update(int index, Contact object, String value) {
         // Validate the data.
-        if (value.length() < 3) {
+        if (value.length() &lt; 3) {
           Window.alert("Names must be at least three characters long.");
 
           /*
@@ -284,7 +303,7 @@ A tabular view that supports paging and columns.
     });
 
     // Add a date column to show the birthday.
-    Column<Contact, Date> dateColumn = new Column<Contact, Date>(
+    Column&lt;Contact, Date&gt; dateColumn = new Column&lt;Contact, Date&gt;(
         new DatePickerCell()) {
       @Override
       public Date getValue(Contact object) {
@@ -294,7 +313,7 @@ A tabular view that supports paging and columns.
     table.addColumn(dateColumn, "Birthday");
 
     // Add a field updater to be notified when the user enters a new birthday.
-    dateColumn.setFieldUpdater(new FieldUpdater<Contact, Date>() {
+    dateColumn.setFieldUpdater(new FieldUpdater&lt;Contact, Date&gt;() {
       public void update(int index, Contact object, Date value) {
         Window.alert("You changed the birthday of "
             + object.name
@@ -309,7 +328,7 @@ A tabular view that supports paging and columns.
       }
     });
     // Add a text column to show the address.
-    TextColumn<Contact> addressColumn = new TextColumn<Contact>() {
+    TextColumn&lt;Contact&gt; addressColumn = new TextColumn&lt;Contact&gt;() {
       @Override
       public String getValue(Contact object) {
         return object.address;
@@ -351,9 +370,9 @@ A tabular view that supports paging and columns.
   /**
    * A custom {@link Cell} used to render a {@link Contact}.
    */
-  private static class ContactCell extends AbstractCell<Contact> {
+  private static class ContactCell extends AbstractCell&lt;Contact&gt; {
     @Override
-    public void render(Contact value, Object key, SafeHtmlBuilder sb) {
+    public void render(Context context, Contact value, SafeHtmlBuilder sb) {
       if (value != null) {
         sb.appendEscaped(value.name);
       }
@@ -363,7 +382,7 @@ A tabular view that supports paging and columns.
   /**
    * The list of data to display.
    */
-  private static final List<Contact> CONTACTS = Arrays.asList(new Contact(
+  private static final List&lt;Contact&gt; CONTACTS = Arrays.asList(new Contact(
       "John"), new Contact("Joe"), new Contact("Michael"),
       new Contact("Sarah"), new Contact("George"));
 
@@ -372,7 +391,7 @@ A tabular view that supports paging and columns.
      * Define a key provider for a Contact. We use the unique ID as the key,
      * which allows to maintain selection even if the name changes.
      */
-    ProvidesKey<Contact> keyProvider = new ProvidesKey<Contact>() {
+    ProvidesKey&lt;Contact&gt; keyProvider = new ProvidesKey&lt;Contact&gt;() {
       public Object getKey(Contact item) {
         // Always do a null check.
         return (item == null) ? null : item.id;
@@ -380,7 +399,7 @@ A tabular view that supports paging and columns.
     };
 
     // Create a CellList using the keyProvider.
-    CellList<Contact> cellList = new CellList<Contact>(new ContactCell(),
+    CellList&lt;Contact&gt; cellList = new CellList&lt;Contact&gt;(new ContactCell(),
         keyProvider);
 
     // Push data into the CellList.
@@ -388,7 +407,7 @@ A tabular view that supports paging and columns.
     cellList.setRowData(0, CONTACTS);
 
     // Add a selection model using the same keyProvider.
-    SelectionModel<Contact> selectionModel = new SingleSelectionModel<Contact>(
+    SelectionModel&lt;Contact&gt; selectionModel = new SingleSelectionModel&lt;Contact&gt;(
         keyProvider);
     cellList.setSelectionModel(selectionModel);
 
@@ -600,7 +619,7 @@ A tabular view that supports paging and columns.
           <A HREF="../../../../../../com/google/gwt/safehtml/shared/SafeHtml.html" title="interface in com.google.gwt.safehtml.shared">SafeHtml</A>&nbsp;headerHtml)</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Adds a column to the table with an associated SafeHtml header.</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Adds a column to the table with an associated <A HREF="../../../../../../com/google/gwt/safehtml/shared/SafeHtml.html" title="interface in com.google.gwt.safehtml.shared"><CODE>SafeHtml</CODE></A> header.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -610,7 +629,8 @@ A tabular view that supports paging and columns.
           <A HREF="../../../../../../com/google/gwt/safehtml/shared/SafeHtml.html" title="interface in com.google.gwt.safehtml.shared">SafeHtml</A>&nbsp;footerHtml)</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Adds a column to the table with an associated SafeHtml header and footer.</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Adds a column to the table with an associated <A HREF="../../../../../../com/google/gwt/safehtml/shared/SafeHtml.html" title="interface in com.google.gwt.safehtml.shared"><CODE>SafeHtml</CODE></A> header and
+ footer.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -657,6 +677,19 @@ A tabular view that supports paging and columns.
 
 <BR>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Check whether or not the cells in the view depend on the selection state.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>protected &nbsp;void</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../../com/google/gwt/user/cellview/client/CellTable.html#doSelection(com.google.gwt.user.client.Event, T, int, int)">doSelection</A></B>(<A HREF="../../../../../../com/google/gwt/user/client/Event.html" title="class in com.google.gwt.user.client">Event</A>&nbsp;event,
+            <A HREF="../../../../../../com/google/gwt/user/cellview/client/CellTable.html" title="type parameter in CellTable">T</A>&nbsp;value,
+            int&nbsp;row,
+            int&nbsp;column)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<B>Deprecated.</B>&nbsp;<I>use
+             <A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractHasData.html#addCellPreviewHandler(com.google.gwt.view.client.CellPreviewEvent.Handler)"><CODE>AbstractHasData.addCellPreviewHandler(com.google.gwt.view.client.CellPreviewEvent.Handler)</CODE></A>
+             instead</I></TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -730,14 +763,6 @@ A tabular view that supports paging and columns.
 
 <BR>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Called when the widget is focused.</TD>
-</TR>
-<TR BGCOLOR="white" CLASS="TableRowColor">
-<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
-<CODE>protected &nbsp;void</CODE></FONT></TD>
-<TD><CODE><B><A HREF="../../../../../../com/google/gwt/user/cellview/client/CellTable.html#onUpdateSelection()">onUpdateSelection</A></B>()</CODE>
-
-<BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Called when selection changes.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -834,7 +859,9 @@ A tabular view that supports paging and columns.
             boolean&nbsp;selected)</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Update an element to reflect its selected state.</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<B>Deprecated.</B>&nbsp;<I>this method is never called by AbstractHasData, render the
+             selected styles in
+             <A HREF="../../../../../../com/google/gwt/user/cellview/client/CellTable.html#renderRowValues(com.google.gwt.safehtml.shared.SafeHtmlBuilder, java.util.List, int, com.google.gwt.view.client.SelectionModel)"><CODE>renderRowValues(SafeHtmlBuilder, List, int, SelectionModel)</CODE></A></I></TD>
 </TR>
 </TABLE>
 &nbsp;<A NAME="methods_inherited_from_class_com.google.gwt.user.cellview.client.AbstractHasData"><!-- --></A>
@@ -843,7 +870,7 @@ A tabular view that supports paging and columns.
 <TH ALIGN="left"><B>Methods inherited from class com.google.gwt.user.cellview.client.<A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractHasData.html" title="class in com.google.gwt.user.cellview.client">AbstractHasData</A></B></TH>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
-<TD><CODE><A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractHasData.html#addRangeChangeHandler(com.google.gwt.view.client.RangeChangeEvent.Handler)">addRangeChangeHandler</A>, <A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractHasData.html#addRowCountChangeHandler(com.google.gwt.view.client.RowCountChangeEvent.Handler)">addRowCountChangeHandler</A>, <A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractHasData.html#cellConsumesEventType(com.google.gwt.cell.client.Cell, java.lang.String)">cellConsumesEventType</A>, <A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractHasData.html#checkRowBounds(int)">checkRowBounds</A>, <A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractHasData.html#getAccessKey()">getAccessKey</A>, <A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractHasData.html#getDisplayedItem(int)">getDisplayedItem</A>, <A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractHasData.html#getDisplayedItems()">getDisplayedItems</A>, <A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractHasData.html#getKeyboardPagingPolicy()">getKeyboardPagingPolicy</A>, <A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractHasData.html#getKeyboardSelectedRow()">getKeyboardSelectedRow</A>, <A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractHasData.html#getKeyboardSelectionPolicy()">getKeyboardSelectionPolicy</A>, <A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractHasData.html#getKeyProvider()">getKeyProvider</A>, <A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractHasData.html#getPageSize()">getPageSize</A>, <A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractHasData.html#getPageStart()">getPageStart</A>, <A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractHasData.html#getRowCount()">getRowCount</A>, <A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractHasData.html#getSelectionModel()">getSelectionModel</A>, <A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractHasData.html#getTabIndex()">getTabIndex</A>, <A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractHasData.html#getValueKey(T)">getValueKey</A>, <A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractHasData.html#getVisibleRange()">getVisibleRange</A>, <A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractHasData.html#isRowCountExact()">isRowCountExact</A>, <A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractHasData.html#isRowWithinBounds(int)">isRowWithinBounds</A>, <A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractHasData.html#onBrowserEvent(com.google.gwt.user.client.Event)">onBrowserEvent</A>, <A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractHasData.html#onUnload()">onUnload</A>, <A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractHasData.html#redraw()">redraw</A>, <A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractHasData.html#replaceChildren(java.util.List, int, com.google.gwt.safehtml.shared.SafeHtml)">replaceChildren</A>, <A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractHasData.html#setAccessKey(char)">setAccessKey</A>, <A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractHasData.html#setFocus(boolean)">setFocus</A>, <A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractHasData.html#setFocusable(com.google.gwt.dom.client.Element, boolean)">setFocusable</A>, <A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractHasData.html#setKeyboardPagingPolicy(com.google.gwt.user.cellview.client.HasKeyboardPagingPolicy.KeyboardPagingPolicy)">setKeyboardPagingPolicy</A>, <A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractHasData.html#setKeyboardSelectionPolicy(com.google.gwt.user.cellview.client.HasKeyboardSelectionPolicy.KeyboardSelectionPolicy)">setKeyboardSelectionPolicy</A>, <A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractHasData.html#setPageSize(int)">setPageSize</A>, <A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractHasData.html#setPageStart(int)">setPageStart</A>, <A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractHasData.html#setRowCount(int)">setRowCount</A>, <A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractHasData.html#setRowCount(int, boolean)">setRowCount</A>, <A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractHasData.html#setRowData(int, java.util.List)">setRowData</A>, <A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractHasData.html#setSelectionModel(com.google.gwt.view.client.SelectionModel)">setSelectionModel</A>, <A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractHasData.html#setTabIndex(int)">setTabIndex</A>, <A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractHasData.html#setVisibleRange(int, int)">setVisibleRange</A>, <A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractHasData.html#setVisibleRange(com.google.gwt.view.client.Range)">setVisibleRange</A>, <A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractHasData.html#setVisibleRangeAndClearData(com.google.gwt.view.client.Range, boolean)">setVisibleRangeAndClearData</A></CODE></TD>
+<TD><CODE><A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractHasData.html#addCellPreviewHandler(com.google.gwt.view.client.CellPreviewEvent.Handler)">addCellPreviewHandler</A>, <A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractHasData.html#addRangeChangeHandler(com.google.gwt.view.client.RangeChangeEvent.Handler)">addRangeChangeHandler</A>, <A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractHasData.html#addRowCountChangeHandler(com.google.gwt.view.client.RowCountChangeEvent.Handler)">addRowCountChangeHandler</A>, <A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractHasData.html#cellConsumesEventType(com.google.gwt.cell.client.Cell, java.lang.String)">cellConsumesEventType</A>, <A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractHasData.html#checkRowBounds(int)">checkRowBounds</A>, <A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractHasData.html#getAccessKey()">getAccessKey</A>, <A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractHasData.html#getDisplayedItem(int)">getDisplayedItem</A>, <A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractHasData.html#getDisplayedItems()">getDisplayedItems</A>, <A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractHasData.html#getKeyboardPagingPolicy()">getKeyboardPagingPolicy</A>, <A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractHasData.html#getKeyboardSelectedRow()">getKeyboardSelectedRow</A>, <A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractHasData.html#getKeyboardSelectionPolicy()">getKeyboardSelectionPolicy</A>, <A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractHasData.html#getKeyProvider()">getKeyProvider</A>, <A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractHasData.html#getPageSize()">getPageSize</A>, <A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractHasData.html#getPageStart()">getPageStart</A>, <A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractHasData.html#getRowContainer()">getRowContainer</A>, <A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractHasData.html#getRowCount()">getRowCount</A>, <A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractHasData.html#getSelectionModel()">getSelectionModel</A>, <A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractHasData.html#getTabIndex()">getTabIndex</A>, <A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractHasData.html#getValueKey(T)">getValueKey</A>, <A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractHasData.html#getVisibleItem(int)">getVisibleItem</A>, <A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractHasData.html#getVisibleItemCount()">getVisibleItemCount</A>, <A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractHasData.html#getVisibleItems()">getVisibleItems</A>, <A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractHasData.html#getVisibleRange()">getVisibleRange</A>, <A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractHasData.html#isRowCountExact()">isRowCountExact</A>, <A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractHasData.html#isRowWithinBounds(int)">isRowWithinBounds</A>, <A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractHasData.html#onBrowserEvent(com.google.gwt.user.client.Event)">onBrowserEvent</A>, <A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractHasData.html#onUnload()">onUnload</A>, <A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractHasData.html#onUpdateSelection()">onUpdateSelection</A>, <A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractHasData.html#redraw()">redraw</A>, <A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractHasData.html#replaceChildren(java.util.List, int, com.google.gwt.safehtml.shared.SafeHtml)">replaceChildren</A>, <A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractHasData.html#setAccessKey(char)">setAccessKey</A>, <A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractHasData.html#setFocus(boolean)">setFocus</A>, <A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractHasData.html#setFocusable(com.google.gwt.dom.client.Element, boolean)">setFocusable</A>, <A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractHasData.html#setKeyboardPagingPolicy(com.google.gwt.user.cellview.client.HasKeyboardPagingPolicy.KeyboardPagingPolicy)">setKeyboardPagingPolicy</A>, <A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractHasData.html#setKeyboardSelectionPolicy(com.google.gwt.user.cellview.client.HasKeyboardSelectionPolicy.KeyboardSelectionPolicy)">setKeyboardSelectionPolicy</A>, <A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractHasData.html#setPageSize(int)">setPageSize</A>, <A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractHasData.html#setPageStart(int)">setPageStart</A>, <A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractHasData.html#setRowCount(int)">setRowCount</A>, <A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractHasData.html#setRowCount(int, boolean)">setRowCount</A>, <A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractHasData.html#setRowData(int, java.util.List)">setRowData</A>, <A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractHasData.html#setRowData(java.util.List)">setRowData</A>, <A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractHasData.html#setSelectionModel(com.google.gwt.view.client.SelectionModel)">setSelectionModel</A>, <A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractHasData.html#setSelectionModel(com.google.gwt.view.client.SelectionModel, com.google.gwt.view.client.CellPreviewEvent.Handler)">setSelectionModel</A>, <A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractHasData.html#setTabIndex(int)">setTabIndex</A>, <A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractHasData.html#setVisibleRange(int, int)">setVisibleRange</A>, <A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractHasData.html#setVisibleRange(com.google.gwt.view.client.Range)">setVisibleRange</A>, <A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractHasData.html#setVisibleRangeAndClearData(com.google.gwt.view.client.Range, boolean)">setVisibleRangeAndClearData</A></CODE></TD>
 </TR>
 </TABLE>
 &nbsp;<A NAME="methods_inherited_from_class_com.google.gwt.user.client.ui.Widget"><!-- --></A>
@@ -993,7 +1020,7 @@ public void <B>addColumn</B>(<A HREF="../../../../../../com/google/gwt/user/cell
 <DD>Adds a column to the table.
 <P>
 <DD><DL>
-</DL>
+<DT><B>Parameters:</B><DD><CODE>col</CODE> - the column to be added</DL>
 </DD>
 </DL>
 <HR>
@@ -1007,7 +1034,7 @@ public void <B>addColumn</B>(<A HREF="../../../../../../com/google/gwt/user/cell
 <DD>Adds a column to the table with an associated header.
 <P>
 <DD><DL>
-</DL>
+<DT><B>Parameters:</B><DD><CODE>col</CODE> - the column to be added<DD><CODE>header</CODE> - the associated <A HREF="../../../../../../com/google/gwt/user/cellview/client/Header.html" title="class in com.google.gwt.user.cellview.client"><CODE>Header</CODE></A></DL>
 </DD>
 </DL>
 <HR>
@@ -1022,7 +1049,7 @@ public void <B>addColumn</B>(<A HREF="../../../../../../com/google/gwt/user/cell
 <DD>Adds a column to the table with an associated header and footer.
 <P>
 <DD><DL>
-</DL>
+<DT><B>Parameters:</B><DD><CODE>col</CODE> - the column to be added<DD><CODE>header</CODE> - the associated <A HREF="../../../../../../com/google/gwt/user/cellview/client/Header.html" title="class in com.google.gwt.user.cellview.client"><CODE>Header</CODE></A><DD><CODE>footer</CODE> - the associated footer (as a <A HREF="../../../../../../com/google/gwt/user/cellview/client/Header.html" title="class in com.google.gwt.user.cellview.client"><CODE>Header</CODE></A> object)</DL>
 </DD>
 </DL>
 <HR>
@@ -1036,7 +1063,7 @@ public void <B>addColumn</B>(<A HREF="../../../../../../com/google/gwt/user/cell
 <DD>Adds a column to the table with an associated String header.
 <P>
 <DD><DL>
-</DL>
+<DT><B>Parameters:</B><DD><CODE>col</CODE> - the column to be added<DD><CODE>headerString</CODE> - the associated header text, as a String</DL>
 </DD>
 </DL>
 <HR>
@@ -1047,10 +1074,10 @@ addColumn</H3>
 public void <B>addColumn</B>(<A HREF="../../../../../../com/google/gwt/user/cellview/client/Column.html" title="class in com.google.gwt.user.cellview.client">Column</A>&lt;<A HREF="../../../../../../com/google/gwt/user/cellview/client/CellTable.html" title="type parameter in CellTable">T</A>,?&gt;&nbsp;col,
                       <A HREF="../../../../../../com/google/gwt/safehtml/shared/SafeHtml.html" title="interface in com.google.gwt.safehtml.shared">SafeHtml</A>&nbsp;headerHtml)</PRE>
 <DL>
-<DD>Adds a column to the table with an associated SafeHtml header.
+<DD>Adds a column to the table with an associated <A HREF="../../../../../../com/google/gwt/safehtml/shared/SafeHtml.html" title="interface in com.google.gwt.safehtml.shared"><CODE>SafeHtml</CODE></A> header.
 <P>
 <DD><DL>
-</DL>
+<DT><B>Parameters:</B><DD><CODE>col</CODE> - the column to be added<DD><CODE>headerHtml</CODE> - the associated header text, as safe HTML</DL>
 </DD>
 </DL>
 <HR>
@@ -1065,7 +1092,7 @@ public void <B>addColumn</B>(<A HREF="../../../../../../com/google/gwt/user/cell
 <DD>Adds a column to the table with an associated String header and footer.
 <P>
 <DD><DL>
-</DL>
+<DT><B>Parameters:</B><DD><CODE>col</CODE> - the column to be added<DD><CODE>headerString</CODE> - the associated header text, as a String<DD><CODE>footerString</CODE> - the associated footer text, as a String</DL>
 </DD>
 </DL>
 <HR>
@@ -1077,10 +1104,11 @@ public void <B>addColumn</B>(<A HREF="../../../../../../com/google/gwt/user/cell
                       <A HREF="../../../../../../com/google/gwt/safehtml/shared/SafeHtml.html" title="interface in com.google.gwt.safehtml.shared">SafeHtml</A>&nbsp;headerHtml,
                       <A HREF="../../../../../../com/google/gwt/safehtml/shared/SafeHtml.html" title="interface in com.google.gwt.safehtml.shared">SafeHtml</A>&nbsp;footerHtml)</PRE>
 <DL>
-<DD>Adds a column to the table with an associated SafeHtml header and footer.
+<DD>Adds a column to the table with an associated <A HREF="../../../../../../com/google/gwt/safehtml/shared/SafeHtml.html" title="interface in com.google.gwt.safehtml.shared"><CODE>SafeHtml</CODE></A> header and
+ footer.
 <P>
 <DD><DL>
-</DL>
+<DT><B>Parameters:</B><DD><CODE>col</CODE> - the column to be added<DD><CODE>headerHtml</CODE> - the associated header text, as safe HTML<DD><CODE>footerHtml</CODE> - the associated footer text, as safe HTML</DL>
 </DD>
 </DL>
 <HR>
@@ -1108,7 +1136,8 @@ public int <B>getBodyHeight</B>()</PRE>
 <DD>Return the height of the table body.
 <P>
 <DD><DL>
-</DL>
+
+<DT><B>Returns:</B><DD>an int representing the body height</DL>
 </DD>
 </DL>
 <HR>
@@ -1121,7 +1150,8 @@ public int <B>getHeaderHeight</B>()</PRE>
 <DD>Return the height of the table header.
 <P>
 <DD><DL>
-</DL>
+
+<DT><B>Returns:</B><DD>an int representing the header height</DL>
 </DD>
 </DL>
 <HR>
@@ -1219,7 +1249,7 @@ public void <B>setRowStyles</B>(<A HREF="../../../../../../com/google/gwt/user/c
  effect the next time that the table is rendered.
 <P>
 <DD><DL>
-</DL>
+<DT><B>Parameters:</B><DD><CODE>rowStyles</CODE> - a <A HREF="../../../../../../com/google/gwt/user/cellview/client/RowStyles.html" title="interface in com.google.gwt.user.cellview.client"><CODE>RowStyles</CODE></A> object</DL>
 </DD>
 </DL>
 <HR>
@@ -1261,6 +1291,27 @@ protected boolean <B>dependsOnSelection</B>()</PRE>
 </DL>
 <HR>
 
+<A NAME="doSelection(com.google.gwt.user.client.Event,java.lang.Object,int,int)"><!-- --></A><A NAME="doSelection(com.google.gwt.user.client.Event, T, int, int)"><!-- --></A><H3>
+doSelection</H3>
+<PRE>
+<FONT SIZE="-1">@Deprecated
+</FONT>protected void <B>doSelection</B>(<A HREF="../../../../../../com/google/gwt/user/client/Event.html" title="class in com.google.gwt.user.client">Event</A>&nbsp;event,
+                                      <A HREF="../../../../../../com/google/gwt/user/cellview/client/CellTable.html" title="type parameter in CellTable">T</A>&nbsp;value,
+                                      int&nbsp;row,
+                                      int&nbsp;column)</PRE>
+<DL>
+<DD><B>Deprecated.</B>&nbsp;<I>use
+             <A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractHasData.html#addCellPreviewHandler(com.google.gwt.view.client.CellPreviewEvent.Handler)"><CODE>AbstractHasData.addCellPreviewHandler(com.google.gwt.view.client.CellPreviewEvent.Handler)</CODE></A>
+             instead</I>
+<P>
+<DD>Called when a user action triggers selection.
+<P>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>event</CODE> - the event that triggered selection<DD><CODE>value</CODE> - the value that was selected<DD><CODE>row</CODE> - the row index of the value on the page<DD><CODE>column</CODE> - the column index where the event occurred</DL>
+</DD>
+</DL>
+<HR>
+
 <A NAME="getChildContainer()"><!-- --></A><H3>
 getChildContainer</H3>
 <PRE>
@@ -1273,7 +1324,8 @@ protected <A HREF="../../../../../../com/google/gwt/dom/client/Element.html" tit
 <DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractHasData.html#getChildContainer()">getChildContainer</A></CODE> in class <CODE><A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractHasData.html" title="class in com.google.gwt.user.cellview.client">AbstractHasData</A>&lt;<A HREF="../../../../../../com/google/gwt/user/cellview/client/CellTable.html" title="type parameter in CellTable">T</A>&gt;</CODE></DL>
 </DD>
 <DD><DL>
-</DL>
+
+<DT><B>Returns:</B><DD>the container <A HREF="../../../../../../com/google/gwt/dom/client/Element.html" title="class in com.google.gwt.dom.client"><CODE>Element</CODE></A></DL>
 </DD>
 </DL>
 <HR>
@@ -1366,23 +1418,6 @@ protected void <B>onFocus</B>()</PRE>
 </DL>
 <HR>
 
-<A NAME="onUpdateSelection()"><!-- --></A><H3>
-onUpdateSelection</H3>
-<PRE>
-protected void <B>onUpdateSelection</B>()</PRE>
-<DL>
-<DD><B>Description copied from class: <CODE><A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractHasData.html#onUpdateSelection()">AbstractHasData</A></CODE></B></DD>
-<DD>Called when selection changes.
-<P>
-<DD><DL>
-<DT><B>Overrides:</B><DD><CODE><A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractHasData.html#onUpdateSelection()">onUpdateSelection</A></CODE> in class <CODE><A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractHasData.html" title="class in com.google.gwt.user.cellview.client">AbstractHasData</A>&lt;<A HREF="../../../../../../com/google/gwt/user/cellview/client/CellTable.html" title="type parameter in CellTable">T</A>&gt;</CODE></DL>
-</DD>
-<DD><DL>
-</DL>
-</DD>
-</DL>
-<HR>
-
 <A NAME="renderRowValues(com.google.gwt.safehtml.shared.SafeHtmlBuilder, java.util.List, int, com.google.gwt.view.client.SelectionModel)"><!-- --></A><H3>
 renderRowValues</H3>
 <PRE>
@@ -1398,7 +1433,7 @@ protected void <B>renderRowValues</B>(<A HREF="../../../../../../com/google/gwt/
 <DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractHasData.html#renderRowValues(com.google.gwt.safehtml.shared.SafeHtmlBuilder, java.util.List, int, com.google.gwt.view.client.SelectionModel)">renderRowValues</A></CODE> in class <CODE><A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractHasData.html" title="class in com.google.gwt.user.cellview.client">AbstractHasData</A>&lt;<A HREF="../../../../../../com/google/gwt/user/cellview/client/CellTable.html" title="type parameter in CellTable">T</A>&gt;</CODE></DL>
 </DD>
 <DD><DL>
-<DT><B>Parameters:</B><DD><CODE>sb</CODE> - the <A HREF="../../../../../../com/google/gwt/safehtml/shared/SafeHtmlBuilder.html" title="class in com.google.gwt.safehtml.shared"><CODE>SafeHtmlBuilder</CODE></A> to render into<DD><CODE>values</CODE> - the row values<DD><CODE>start</CODE> - the start index of the values<DD><CODE>selectionModel</CODE> - the <A HREF="../../../../../../com/google/gwt/view/client/SelectionModel.html" title="interface in com.google.gwt.view.client"><CODE>SelectionModel</CODE></A></DL>
+<DT><B>Parameters:</B><DD><CODE>sb</CODE> - the <A HREF="../../../../../../com/google/gwt/safehtml/shared/SafeHtmlBuilder.html" title="class in com.google.gwt.safehtml.shared"><CODE>SafeHtmlBuilder</CODE></A> to render into<DD><CODE>values</CODE> - the row values<DD><CODE>start</CODE> - the absolute start index of the values<DD><CODE>selectionModel</CODE> - the <A HREF="../../../../../../com/google/gwt/view/client/SelectionModel.html" title="interface in com.google.gwt.view.client"><CODE>SelectionModel</CODE></A></DL>
 </DD>
 </DL>
 <HR>
@@ -1461,14 +1496,19 @@ protected void <B>setKeyboardSelected</B>(int&nbsp;index,
 <A NAME="setSelected(com.google.gwt.dom.client.Element, boolean)"><!-- --></A><H3>
 setSelected</H3>
 <PRE>
-protected void <B>setSelected</B>(<A HREF="../../../../../../com/google/gwt/dom/client/Element.html" title="class in com.google.gwt.dom.client">Element</A>&nbsp;elem,
-                           boolean&nbsp;selected)</PRE>
+<FONT SIZE="-1">@Deprecated
+</FONT>protected void <B>setSelected</B>(<A HREF="../../../../../../com/google/gwt/dom/client/Element.html" title="class in com.google.gwt.dom.client">Element</A>&nbsp;elem,
+                                      boolean&nbsp;selected)</PRE>
 <DL>
+<DD><B>Deprecated.</B>&nbsp;<I>this method is never called by AbstractHasData, render the
+             selected styles in
+             <A HREF="../../../../../../com/google/gwt/user/cellview/client/CellTable.html#renderRowValues(com.google.gwt.safehtml.shared.SafeHtmlBuilder, java.util.List, int, com.google.gwt.view.client.SelectionModel)"><CODE>renderRowValues(SafeHtmlBuilder, List, int, SelectionModel)</CODE></A></I>
+<P>
 <DD><B>Description copied from class: <CODE><A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractHasData.html#setSelected(com.google.gwt.dom.client.Element, boolean)">AbstractHasData</A></CODE></B></DD>
 <DD>Update an element to reflect its selected state.
 <P>
 <DD><DL>
-<DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractHasData.html#setSelected(com.google.gwt.dom.client.Element, boolean)">setSelected</A></CODE> in class <CODE><A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractHasData.html" title="class in com.google.gwt.user.cellview.client">AbstractHasData</A>&lt;<A HREF="../../../../../../com/google/gwt/user/cellview/client/CellTable.html" title="type parameter in CellTable">T</A>&gt;</CODE></DL>
+<DT><B>Overrides:</B><DD><CODE><A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractHasData.html#setSelected(com.google.gwt.dom.client.Element, boolean)">setSelected</A></CODE> in class <CODE><A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractHasData.html" title="class in com.google.gwt.user.cellview.client">AbstractHasData</A>&lt;<A HREF="../../../../../../com/google/gwt/user/cellview/client/CellTable.html" title="type parameter in CellTable">T</A>&gt;</CODE></DL>
 </DD>
 <DD><DL>
 <DT><B>Parameters:</B><DD><CODE>elem</CODE> - the element to update<DD><CODE>selected</CODE> - true if selected, false if not</DL>
@@ -1490,6 +1530,7 @@ protected void <B>setSelected</B>(<A HREF="../../../../../../com/google/gwt/dom/
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-summary.html"><FONT CLASS="NavBarFont1"><B>Package</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Class</B></FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="class-use/CellTable.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
@@ -1498,7 +1539,7 @@ protected void <B>setSelected</B>(<A HREF="../../../../../../com/google/gwt/dom/
 </TABLE>
 </TD>
 <TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
-GWT 2.1.0.RC1</EM>
+GWT 2.1.1</EM>
 </TD>
 </TR>
 

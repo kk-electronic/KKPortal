@@ -38,6 +38,7 @@ function windowTitle()
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Package</B></FONT>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <FONT CLASS="NavBarFont1">Class</FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-use.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
@@ -46,7 +47,7 @@ function windowTitle()
 </TABLE>
 </TD>
 <TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
-GWT 2.1.0.RC1</EM>
+GWT 2.1.1</EM>
 </TD>
 </TR>
 
@@ -93,7 +94,7 @@ Widgets, Panels, and other user-interface classes.
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD WIDTH="15%"><B><A HREF="../../../../../../com/google/gwt/user/client/ui/AcceptsOneWidget.html" title="interface in com.google.gwt.user.client.ui">AcceptsOneWidget</A></B></TD>
-<TD>Implemented by displays that can be given accept a <A HREF="../../../../../../com/google/gwt/user/client/ui/IsWidget.html" title="interface in com.google.gwt.user.client.ui"><CODE>IsWidget</CODE></A>
+<TD>Implemented by displays that can be given accept an <A HREF="../../../../../../com/google/gwt/user/client/ui/IsWidget.html" title="interface in com.google.gwt.user.client.ui"><CODE>IsWidget</CODE></A>
  to show.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
@@ -591,6 +592,12 @@ Widgets, Panels, and other user-interface classes.
  of button faces.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../../com/google/gwt/user/client/ui/DateLabel.html" title="class in com.google.gwt.user.client.ui">DateLabel</A></B></TD>
+<TD>Extends <A HREF="../../../../../../com/google/gwt/user/client/ui/ValueLabel.html" title="class in com.google.gwt.user.client.ui"><CODE>ValueLabel</CODE></A> for convenience when dealing with dates and
+ <A HREF="../../../../../../com/google/gwt/i18n/client/DateTimeFormat.html" title="class in com.google.gwt.i18n.client"><CODE>DateTimeFormat</CODE></A>, especially in
+ <A HREF="../../../../../../com/google/gwt/uibinder/client/UiBinder.html" title="interface in com.google.gwt.uibinder.client"><CODE>UiBinder</CODE></A> templates.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
 <TD WIDTH="15%"><B><A HREF="../../../../../../com/google/gwt/user/client/ui/DeckPanel.html" title="class in com.google.gwt.user.client.ui">DeckPanel</A></B></TD>
 <TD>A panel that displays all of its child widgets in a 'deck', where only one
  can be visible at a time.</TD>
@@ -645,6 +652,10 @@ Widgets, Panels, and other user-interface classes.
  user.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../../com/google/gwt/user/client/ui/DirectionalTextHelper.html" title="class in com.google.gwt.user.client.ui">DirectionalTextHelper</A></B></TD>
+<TD>A helper class for displaying bidi (i.e.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
 <TD WIDTH="15%"><B><A HREF="../../../../../../com/google/gwt/user/client/ui/DisclosureEvent.html" title="class in com.google.gwt.user.client.ui">DisclosureEvent</A></B></TD>
 <TD><B>Deprecated.</B>&nbsp;<I>Use
              <A HREF="../../../../../../com/google/gwt/event/logical/shared/CloseEvent.html" title="class in com.google.gwt.event.logical.shared"><CODE>CloseEvent</CODE></A> and
@@ -676,8 +687,7 @@ Widgets, Panels, and other user-interface classes.
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD WIDTH="15%"><B><A HREF="../../../../../../com/google/gwt/user/client/ui/DoubleBox.html" title="class in com.google.gwt.user.client.ui">DoubleBox</A></B></TD>
-<TD><span style="color:red">Experimental API: This class is still under rapid
- development, and is very likely to be deleted.</TD>
+<TD>A ValueBox that uses <A HREF="../../../../../../com/google/gwt/text/client/DoubleParser.html" title="class in com.google.gwt.text.client"><CODE>DoubleParser</CODE></A> and <A HREF="../../../../../../com/google/gwt/text/client/DoubleRenderer.html" title="class in com.google.gwt.text.client"><CODE>DoubleRenderer</CODE></A>.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD WIDTH="15%"><B><A HREF="../../../../../../com/google/gwt/user/client/ui/FileUpload.html" title="class in com.google.gwt.user.client.ui">FileUpload</A></B></TD>
@@ -807,8 +817,7 @@ Widgets, Panels, and other user-interface classes.
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD WIDTH="15%"><B><A HREF="../../../../../../com/google/gwt/user/client/ui/IntegerBox.html" title="class in com.google.gwt.user.client.ui">IntegerBox</A></B></TD>
-<TD><span style="color:red">Experimental API: This class is still under rapid
- development, and is very likely to be deleted.</TD>
+<TD>A ValueBox that uses <A HREF="../../../../../../com/google/gwt/text/client/IntegerParser.html" title="class in com.google.gwt.text.client"><CODE>IntegerParser</CODE></A> and <A HREF="../../../../../../com/google/gwt/text/client/IntegerRenderer.html" title="class in com.google.gwt.text.client"><CODE>IntegerRenderer</CODE></A>.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD WIDTH="15%"><B><A HREF="../../../../../../com/google/gwt/user/client/ui/KeyboardListenerAdapter.html" title="class in com.google.gwt.user.client.ui">KeyboardListenerAdapter</A></B></TD>
@@ -823,6 +832,10 @@ Widgets, Panels, and other user-interface classes.
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD WIDTH="15%"><B><A HREF="../../../../../../com/google/gwt/user/client/ui/Label.html" title="class in com.google.gwt.user.client.ui">Label</A></B></TD>
 <TD>A widget that contains arbitrary text, <i>not</i> interpreted as HTML.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../../com/google/gwt/user/client/ui/LabelBase.html" title="class in com.google.gwt.user.client.ui">LabelBase&lt;T&gt;</A></B></TD>
+<TD>Abstract base class for all text display widgets.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD WIDTH="15%"><B><A HREF="../../../../../../com/google/gwt/user/client/ui/LayoutCommand.html" title="class in com.google.gwt.user.client.ui">LayoutCommand</A></B></TD>
@@ -893,8 +906,7 @@ Widgets, Panels, and other user-interface classes.
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD WIDTH="15%"><B><A HREF="../../../../../../com/google/gwt/user/client/ui/LongBox.html" title="class in com.google.gwt.user.client.ui">LongBox</A></B></TD>
-<TD><span style="color:red">Experimental API: This class is still under rapid
- development, and is very likely to be deleted.</TD>
+<TD>A ValueBox that uses <A HREF="../../../../../../com/google/gwt/text/client/LongParser.html" title="class in com.google.gwt.text.client"><CODE>LongParser</CODE></A> and <A HREF="../../../../../../com/google/gwt/text/client/LongRenderer.html" title="class in com.google.gwt.text.client"><CODE>LongRenderer</CODE></A>.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD WIDTH="15%"><B><A HREF="../../../../../../com/google/gwt/user/client/ui/MenuBar.html" title="class in com.google.gwt.user.client.ui">MenuBar</A></B></TD>
@@ -947,9 +959,13 @@ Widgets, Panels, and other user-interface classes.
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD WIDTH="15%"><B><A HREF="../../../../../../com/google/gwt/user/client/ui/NotificationMole.html" title="class in com.google.gwt.user.client.ui">NotificationMole</A></B></TD>
-<TD>
- <span style="color:red">Experimental API: This class is still under rapid
- development, and is very likely to be deleted.</TD>
+<TD>Simple widget for providing notification feedback.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../../com/google/gwt/user/client/ui/NumberLabel.html" title="class in com.google.gwt.user.client.ui">NumberLabel&lt;T extends Number&gt;</A></B></TD>
+<TD>Extends <A HREF="../../../../../../com/google/gwt/user/client/ui/ValueLabel.html" title="class in com.google.gwt.user.client.ui"><CODE>ValueLabel</CODE></A> for convenience when dealing with numbers and
+ <A HREF="../../../../../../com/google/gwt/i18n/client/NumberFormat.html" title="class in com.google.gwt.i18n.client"><CODE>NumberFormat</CODE></A>, especially in
+ <A HREF="../../../../../../com/google/gwt/uibinder/client/UiBinder.html" title="interface in com.google.gwt.uibinder.client"><CODE>UiBinder</CODE></A> templates.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD WIDTH="15%"><B><A HREF="../../../../../../com/google/gwt/user/client/ui/Panel.html" title="class in com.google.gwt.user.client.ui">Panel</A></B></TD>
@@ -1101,8 +1117,8 @@ Widgets, Panels, and other user-interface classes.
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD WIDTH="15%"><B><A HREF="../../../../../../com/google/gwt/user/client/ui/TabPanel.html" title="class in com.google.gwt.user.client.ui">TabPanel</A></B></TD>
-<TD><B>Deprecated.</B>&nbsp;<I>Use <A HREF="../../../../../../com/google/gwt/user/client/ui/TabLayoutPanel.html" title="class in com.google.gwt.user.client.ui"><CODE>TabLayoutPanel</CODE></A> instead, but understand that it is
-             not a drop in replacement for this class.</I></TD>
+<TD>A panel that represents a tabbed set of pages, each of which contains another
+ widget.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD WIDTH="15%"><B><A HREF="../../../../../../com/google/gwt/user/client/ui/TextArea.html" title="class in com.google.gwt.user.client.ui">TextArea</A></B></TD>
@@ -1118,7 +1134,7 @@ Widgets, Panels, and other user-interface classes.
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD WIDTH="15%"><B><A HREF="../../../../../../com/google/gwt/user/client/ui/TextBoxBase.TextAlignConstant.html" title="class in com.google.gwt.user.client.ui">TextBoxBase.TextAlignConstant</A></B></TD>
-<TD><B>Deprecated.</B>&nbsp;<I>use <A HREF="../../../../../../com/google/gwt/user/client/ui/ValueBoxBase.html#setAlignment(com.google.gwt.user.client.ui.ValueBoxBase.TextAlignment)"><CODE>ValueBoxBase.setAlignment(TextAlignment)</CODE></A></I></TD>
+<TD><B>Deprecated.</B>&nbsp;<I>use <A HREF="../../../../../../com/google/gwt/user/client/ui/ValueBoxBase.html#setAlignment(com.google.gwt.user.client.ui.ValueBoxBase.TextAlignment)"><CODE>ValueBoxBase.setAlignment(ValueBoxBase.TextAlignment)</CODE></A></I></TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD WIDTH="15%"><B><A HREF="../../../../../../com/google/gwt/user/client/ui/ToggleButton.html" title="class in com.google.gwt.user.client.ui">ToggleButton</A></B></TD>
@@ -1162,12 +1178,15 @@ Widgets, Panels, and other user-interface classes.
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD WIDTH="15%"><B><A HREF="../../../../../../com/google/gwt/user/client/ui/ValueBox.html" title="class in com.google.gwt.user.client.ui">ValueBox&lt;T&gt;</A></B></TD>
-<TD><span style="color:red">Experimental API: This class is still under rapid
- development, and is very likely to be deleted.</TD>
+<TD>A text box able to parse its displayed value.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD WIDTH="15%"><B><A HREF="../../../../../../com/google/gwt/user/client/ui/ValueBoxBase.html" title="class in com.google.gwt.user.client.ui">ValueBoxBase&lt;T&gt;</A></B></TD>
 <TD>Abstract base class for all text entry widgets.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../../com/google/gwt/user/client/ui/ValueLabel.html" title="class in com.google.gwt.user.client.ui">ValueLabel&lt;T&gt;</A></B></TD>
+<TD>A label displaying its value through a renderer.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD WIDTH="15%"><B><A HREF="../../../../../../com/google/gwt/user/client/ui/ValueListBox.html" title="class in com.google.gwt.user.client.ui">ValueListBox&lt;T&gt;</A></B></TD>
@@ -1176,9 +1195,7 @@ Widgets, Panels, and other user-interface classes.
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD WIDTH="15%"><B><A HREF="../../../../../../com/google/gwt/user/client/ui/ValuePicker.html" title="class in com.google.gwt.user.client.ui">ValuePicker&lt;T&gt;</A></B></TD>
-<TD>
- <span style="color:red">Experimental API: This class is still under rapid
- development, and is very likely to be deleted.</TD>
+<TD>Allows the user to pick a single value from a list.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD WIDTH="15%"><B><A HREF="../../../../../../com/google/gwt/user/client/ui/VerticalPanel.html" title="class in com.google.gwt.user.client.ui">VerticalPanel</A></B></TD>
@@ -1282,6 +1299,7 @@ libraries used by GWT applications.
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Package</B></FONT>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <FONT CLASS="NavBarFont1">Class</FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-use.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
@@ -1290,7 +1308,7 @@ libraries used by GWT applications.
 </TABLE>
 </TD>
 <TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
-GWT 2.1.0.RC1</EM>
+GWT 2.1.1</EM>
 </TD>
 </TR>
 

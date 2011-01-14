@@ -38,6 +38,7 @@ function windowTitle()
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-summary.html"><FONT CLASS="NavBarFont1"><B>Package</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Class</B></FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="class-use/TabBar.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
@@ -46,7 +47,7 @@ function windowTitle()
 </TABLE>
 </TD>
 <TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
-GWT 2.1.0.RC1</EM>
+GWT 2.1.1</EM>
 </TD>
 </TR>
 
@@ -136,16 +137,16 @@ A horizontal bar of folder-style tabs, most commonly used as part of a
     bar.addTab("baz");
 
     // Hook up a tab listener to do something when the user selects a tab.
-    bar.addSelectionHandler(new SelectionHandler<Integer>() {
-      public void onSelection(SelectionEvent<Integer> event) {
+    bar.addSelectionHandler(new SelectionHandler&lt;Integer&gt;() {
+      public void onSelection(SelectionEvent&lt;Integer&gt; event) {
         // Let the user know what they just did.
         Window.alert("You clicked tab " + event.getSelectedItem());
       }
     });
 
     // Just for fun, let's disallow selection of 'bar'.
-    bar.addBeforeSelectionHandler(new BeforeSelectionHandler<Integer>() {
-      public void onBeforeSelection(BeforeSelectionEvent<Integer> event) {
+    bar.addBeforeSelectionHandler(new BeforeSelectionHandler&lt;Integer&gt;() {
+      public void onBeforeSelection(BeforeSelectionEvent&lt;Integer&gt; event) {
         if (event.getItem().intValue() == 1) {
           event.cancel();
         }
@@ -298,8 +299,8 @@ A horizontal bar of folder-style tabs, most commonly used as part of a
 <TD><CODE><B><A HREF="../../../../../../com/google/gwt/user/client/ui/TabBar.html#addTabListener(com.google.gwt.user.client.ui.TabListener)">addTabListener</A></B>(<A HREF="../../../../../../com/google/gwt/user/client/ui/TabListener.html" title="interface in com.google.gwt.user.client.ui">TabListener</A>&nbsp;listener)</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<B>Deprecated.</B>&nbsp;<I>Use <A HREF="../../../../../../com/google/gwt/user/client/ui/TabBar.html#addBeforeSelectionHandler(com.google.gwt.event.logical.shared.BeforeSelectionHandler)"><CODE>addBeforeSelectionHandler(com.google.gwt.event.logical.shared.BeforeSelectionHandler<java.lang.Integer>)</CODE></A> and {#link
-             #addSelectionHandler} instead</I></TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<B>Deprecated.</B>&nbsp;<I>Use <A HREF="../../../../../../com/google/gwt/user/client/ui/TabBar.html#addBeforeSelectionHandler(com.google.gwt.event.logical.shared.BeforeSelectionHandler)"><CODE>addBeforeSelectionHandler(BeforeSelectionHandler)</CODE></A> 
+ and <A HREF="../../../../../../com/google/gwt/user/client/ui/TabBar.html#addSelectionHandler(com.google.gwt.event.logical.shared.SelectionHandler)"><CODE>addSelectionHandler(SelectionHandler)</CODE></A> instead</I></TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -707,8 +708,8 @@ addTabListener</H3>
 <FONT SIZE="-1">@Deprecated
 </FONT>public void <B>addTabListener</B>(<A HREF="../../../../../../com/google/gwt/user/client/ui/TabListener.html" title="interface in com.google.gwt.user.client.ui">TabListener</A>&nbsp;listener)</PRE>
 <DL>
-<DD><B>Deprecated.</B>&nbsp;<I>Use <A HREF="../../../../../../com/google/gwt/user/client/ui/TabBar.html#addBeforeSelectionHandler(com.google.gwt.event.logical.shared.BeforeSelectionHandler)"><CODE>addBeforeSelectionHandler(com.google.gwt.event.logical.shared.BeforeSelectionHandler<java.lang.Integer>)</CODE></A> and {#link
-             #addSelectionHandler} instead</I>
+<DD><B>Deprecated.</B>&nbsp;<I>Use <A HREF="../../../../../../com/google/gwt/user/client/ui/TabBar.html#addBeforeSelectionHandler(com.google.gwt.event.logical.shared.BeforeSelectionHandler)"><CODE>addBeforeSelectionHandler(BeforeSelectionHandler)</CODE></A> 
+ and <A HREF="../../../../../../com/google/gwt/user/client/ui/TabBar.html#addSelectionHandler(com.google.gwt.event.logical.shared.SelectionHandler)"><CODE>addSelectionHandler(SelectionHandler)</CODE></A> instead</I>
 <P>
 <DD><B>Description copied from interface: <CODE><A HREF="../../../../../../com/google/gwt/user/client/ui/SourcesTabEvents.html#addTabListener(com.google.gwt.user.client.ui.TabListener)">SourcesTabEvents</A></CODE></B></DD>
 <DD>Adds a listener interface to receive click events.
@@ -1217,6 +1218,7 @@ protected void <B>onEnsureDebugId</B>(java.lang.String&nbsp;baseID)</PRE>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-summary.html"><FONT CLASS="NavBarFont1"><B>Package</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Class</B></FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="class-use/TabBar.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
@@ -1225,7 +1227,7 @@ protected void <B>onEnsureDebugId</B>(java.lang.String&nbsp;baseID)</PRE>
 </TABLE>
 </TD>
 <TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
-GWT 2.1.0.RC1</EM>
+GWT 2.1.1</EM>
 </TD>
 </TR>
 

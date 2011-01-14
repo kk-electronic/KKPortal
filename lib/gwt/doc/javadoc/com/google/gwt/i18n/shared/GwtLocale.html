@@ -38,6 +38,7 @@ function windowTitle()
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-summary.html"><FONT CLASS="NavBarFont1"><B>Package</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Class</B></FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="class-use/GwtLocale.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
@@ -46,7 +47,7 @@ function windowTitle()
 </TABLE>
 </TD>
 <TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
-GWT 2.1.0.RC1</EM>
+GWT 2.1.1</EM>
 </TD>
 </TR>
 
@@ -149,7 +150,7 @@ Class representing GWT locales and conversion to/from other formats.
 <TD><CODE><B><A HREF="../../../../../com/google/gwt/i18n/shared/GwtLocale.html#getAliases()">getAliases</A></B>()</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Return the list of aliases for this locale.</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns the list of aliases for this locale.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -157,7 +158,7 @@ Class representing GWT locales and conversion to/from other formats.
 <TD><CODE><B><A HREF="../../../../../com/google/gwt/i18n/shared/GwtLocale.html#getAsString()">getAsString</A></B>()</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Return the locale as a fixed-format string suitable for use in searching
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns the locale as a fixed-format string suitable for use in searching
  for localized resources.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
@@ -174,7 +175,7 @@ Class representing GWT locales and conversion to/from other formats.
 <TD><CODE><B><A HREF="../../../../../com/google/gwt/i18n/shared/GwtLocale.html#getCompleteSearchList()">getCompleteSearchList</A></B>()</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Return the complete list of locales to search for the current locale.</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns the complete list of locales to search for the current locale.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -182,7 +183,7 @@ Class representing GWT locales and conversion to/from other formats.
 <TD><CODE><B><A HREF="../../../../../com/google/gwt/i18n/shared/GwtLocale.html#getInheritanceChain()">getInheritanceChain</A></B>()</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Return a list of locales to search for, in order of preference.</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns a list of locales to search for, in order of preference.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -190,7 +191,7 @@ Class representing GWT locales and conversion to/from other formats.
 <TD><CODE><B><A HREF="../../../../../com/google/gwt/i18n/shared/GwtLocale.html#getLanguage()">getLanguage</A></B>()</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns the language portion of the locale, or null if none.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -198,7 +199,7 @@ Class representing GWT locales and conversion to/from other formats.
 <TD><CODE><B><A HREF="../../../../../com/google/gwt/i18n/shared/GwtLocale.html#getLanguageNotNull()">getLanguageNotNull</A></B>()</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns the language portion of the locale, or the empty string if none.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -206,7 +207,7 @@ Class representing GWT locales and conversion to/from other formats.
 <TD><CODE><B><A HREF="../../../../../com/google/gwt/i18n/shared/GwtLocale.html#getRegion()">getRegion</A></B>()</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns the region portion of the locale, or null if none.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -214,7 +215,7 @@ Class representing GWT locales and conversion to/from other formats.
 <TD><CODE><B><A HREF="../../../../../com/google/gwt/i18n/shared/GwtLocale.html#getRegionNotNull()">getRegionNotNull</A></B>()</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns the region portion of the locale, or the empty string if none.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -222,7 +223,7 @@ Class representing GWT locales and conversion to/from other formats.
 <TD><CODE><B><A HREF="../../../../../com/google/gwt/i18n/shared/GwtLocale.html#getScript()">getScript</A></B>()</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns the script portion of the locale, or null if none.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -230,7 +231,7 @@ Class representing GWT locales and conversion to/from other formats.
 <TD><CODE><B><A HREF="../../../../../com/google/gwt/i18n/shared/GwtLocale.html#getScriptNotNull()">getScriptNotNull</A></B>()</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns the script portion of the locale, or the empty string if none.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -238,7 +239,7 @@ Class representing GWT locales and conversion to/from other formats.
 <TD><CODE><B><A HREF="../../../../../com/google/gwt/i18n/shared/GwtLocale.html#getVariant()">getVariant</A></B>()</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns the variant portion of the locale, or null if none.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -246,7 +247,7 @@ Class representing GWT locales and conversion to/from other formats.
 <TD><CODE><B><A HREF="../../../../../com/google/gwt/i18n/shared/GwtLocale.html#getVariantNotNull()">getVariantNotNull</A></B>()</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns the variant portion of the locale, or the empty string if none.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -254,7 +255,7 @@ Class representing GWT locales and conversion to/from other formats.
 <TD><CODE><B><A HREF="../../../../../com/google/gwt/i18n/shared/GwtLocale.html#inheritsFrom(com.google.gwt.i18n.shared.GwtLocale)">inheritsFrom</A></B>(<A HREF="../../../../../com/google/gwt/i18n/shared/GwtLocale.html" title="interface in com.google.gwt.i18n.shared">GwtLocale</A>&nbsp;parent)</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Return true if this locale inherits from the specified locale.</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns true if this locale inherits from the specified locale.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -262,7 +263,7 @@ Class representing GWT locales and conversion to/from other formats.
 <TD><CODE><B><A HREF="../../../../../com/google/gwt/i18n/shared/GwtLocale.html#isDefault()">isDefault</A></B>()</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns true if this is the default or root locale.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -270,7 +271,7 @@ Class representing GWT locales and conversion to/from other formats.
 <TD><CODE><B><A HREF="../../../../../com/google/gwt/i18n/shared/GwtLocale.html#toString()">toString</A></B>()</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns a human readable string -- "default" or the same as getAsString().</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -334,9 +335,9 @@ getAliases</H3>
 <PRE>
 java.util.List&lt;<A HREF="../../../../../com/google/gwt/i18n/shared/GwtLocale.html" title="interface in com.google.gwt.i18n.shared">GwtLocale</A>&gt; <B>getAliases</B>()</PRE>
 <DL>
-<DD>Return the list of aliases for this locale.  The canonical form of the
+<DD>Returns the list of aliases for this locale.  The canonical form of the
  current locale is always first on the list.
- 
+
  Language/region codes have changed over time, so some systems continue to
  use the older codes.  Aliases allow GWT to use the official Unicode CLDR
  locales while still interoperating with such systems.
@@ -356,7 +357,7 @@ getAsString</H3>
 <PRE>
 java.lang.String <B>getAsString</B>()</PRE>
 <DL>
-<DD>Return the locale as a fixed-format string suitable for use in searching
+<DD>Returns the locale as a fixed-format string suitable for use in searching
  for localized resources.  The format is language_Script_REGION_VARIANT,
  where language is a 2-8 letter code (possibly with 3-letter extensions),
  script is a 4-letter code with an initial capital letter, region is a
@@ -404,7 +405,7 @@ getCompleteSearchList</H3>
 <PRE>
 java.util.List&lt;<A HREF="../../../../../com/google/gwt/i18n/shared/GwtLocale.html" title="interface in com.google.gwt.i18n.shared">GwtLocale</A>&gt; <B>getCompleteSearchList</B>()</PRE>
 <DL>
-<DD>Return the complete list of locales to search for the current locale.
+<DD>Returns the complete list of locales to search for the current locale.
  This list will always start with the canonical form of this locale, and
  end with "default", and include all appropriate aliases along the way.
 <P>
@@ -423,7 +424,7 @@ getInheritanceChain</H3>
 <PRE>
 java.util.List&lt;<A HREF="../../../../../com/google/gwt/i18n/shared/GwtLocale.html" title="interface in com.google.gwt.i18n.shared">GwtLocale</A>&gt; <B>getInheritanceChain</B>()</PRE>
 <DL>
-<DD>Return a list of locales to search for, in order of preference.  The
+<DD>Returns a list of locales to search for, in order of preference.  The
  current locale is always first on the list.  Aliases are not included
  in the list -- use <A HREF="../../../../../com/google/gwt/i18n/shared/GwtLocale.html#getAliases()"><CODE>getAliases()</CODE></A> to expand those.
 <P>
@@ -442,12 +443,13 @@ getLanguage</H3>
 <PRE>
 java.lang.String <B>getLanguage</B>()</PRE>
 <DL>
+<DD>Returns the language portion of the locale, or null if none.
+<P>
 <DD><DL>
 </DL>
 </DD>
 <DD><DL>
-
-<DT><B>Returns:</B><DD>the language portion of the locale, or null if none.</DL>
+</DL>
 </DD>
 </DL>
 <HR>
@@ -457,12 +459,13 @@ getLanguageNotNull</H3>
 <PRE>
 java.lang.String <B>getLanguageNotNull</B>()</PRE>
 <DL>
+<DD>Returns the language portion of the locale, or the empty string if none.
+<P>
 <DD><DL>
 </DL>
 </DD>
 <DD><DL>
-
-<DT><B>Returns:</B><DD>the language portion of the locale, or the empty string if none.</DL>
+</DL>
 </DD>
 </DL>
 <HR>
@@ -472,12 +475,13 @@ getRegion</H3>
 <PRE>
 java.lang.String <B>getRegion</B>()</PRE>
 <DL>
+<DD>Returns the region portion of the locale, or null if none.
+<P>
 <DD><DL>
 </DL>
 </DD>
 <DD><DL>
-
-<DT><B>Returns:</B><DD>the region portion of the locale, or null if none.</DL>
+</DL>
 </DD>
 </DL>
 <HR>
@@ -487,12 +491,13 @@ getRegionNotNull</H3>
 <PRE>
 java.lang.String <B>getRegionNotNull</B>()</PRE>
 <DL>
+<DD>Returns the region portion of the locale, or the empty string if none.
+<P>
 <DD><DL>
 </DL>
 </DD>
 <DD><DL>
-
-<DT><B>Returns:</B><DD>the region portion of the locale, or the empty string if none.</DL>
+</DL>
 </DD>
 </DL>
 <HR>
@@ -502,12 +507,13 @@ getScript</H3>
 <PRE>
 java.lang.String <B>getScript</B>()</PRE>
 <DL>
+<DD>Returns the script portion of the locale, or null if none.
+<P>
 <DD><DL>
 </DL>
 </DD>
 <DD><DL>
-
-<DT><B>Returns:</B><DD>the script portion of the locale, or null if none.</DL>
+</DL>
 </DD>
 </DL>
 <HR>
@@ -517,12 +523,13 @@ getScriptNotNull</H3>
 <PRE>
 java.lang.String <B>getScriptNotNull</B>()</PRE>
 <DL>
+<DD>Returns the script portion of the locale, or the empty string if none.
+<P>
 <DD><DL>
 </DL>
 </DD>
 <DD><DL>
-
-<DT><B>Returns:</B><DD>the script portion of the locale, or the empty string if none.</DL>
+</DL>
 </DD>
 </DL>
 <HR>
@@ -532,12 +539,13 @@ getVariant</H3>
 <PRE>
 java.lang.String <B>getVariant</B>()</PRE>
 <DL>
+<DD>Returns the variant portion of the locale, or null if none.
+<P>
 <DD><DL>
 </DL>
 </DD>
 <DD><DL>
-
-<DT><B>Returns:</B><DD>the variant portion of the locale, or null if none.</DL>
+</DL>
 </DD>
 </DL>
 <HR>
@@ -547,12 +555,13 @@ getVariantNotNull</H3>
 <PRE>
 java.lang.String <B>getVariantNotNull</B>()</PRE>
 <DL>
+<DD>Returns the variant portion of the locale, or the empty string if none.
+<P>
 <DD><DL>
 </DL>
 </DD>
 <DD><DL>
-
-<DT><B>Returns:</B><DD>the variant portion of the locale, or the empty string if none.</DL>
+</DL>
 </DD>
 </DL>
 <HR>
@@ -562,7 +571,7 @@ inheritsFrom</H3>
 <PRE>
 boolean <B>inheritsFrom</B>(<A HREF="../../../../../com/google/gwt/i18n/shared/GwtLocale.html" title="interface in com.google.gwt.i18n.shared">GwtLocale</A>&nbsp;parent)</PRE>
 <DL>
-<DD>Return true if this locale inherits from the specified locale.  Note that
+<DD>Returns true if this locale inherits from the specified locale.  Note that
  locale.inheritsFrom(locale) is false -- if you want that to be true, you
  should just use locale.getInheritanceChain().contains(x).
 <P>
@@ -581,12 +590,13 @@ isDefault</H3>
 <PRE>
 boolean <B>isDefault</B>()</PRE>
 <DL>
+<DD>Returns true if this is the default or root locale.
+<P>
 <DD><DL>
 </DL>
 </DD>
 <DD><DL>
-
-<DT><B>Returns:</B><DD>true if this is the default or root locale.</DL>
+</DL>
 </DD>
 </DL>
 <HR>
@@ -596,12 +606,13 @@ toString</H3>
 <PRE>
 java.lang.String <B>toString</B>()</PRE>
 <DL>
+<DD>Returns a human readable string -- "default" or the same as getAsString().
+<P>
 <DD><DL>
 <DT><B>Overrides:</B><DD><CODE>toString</CODE> in class <CODE>java.lang.Object</CODE></DL>
 </DD>
 <DD><DL>
-
-<DT><B>Returns:</B><DD>a human readable string -- "default" or the same as getAsString().</DL>
+</DL>
 </DD>
 </DL>
 <HR>
@@ -637,6 +648,7 @@ boolean <B>usesSameScript</B>(<A HREF="../../../../../com/google/gwt/i18n/shared
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-summary.html"><FONT CLASS="NavBarFont1"><B>Package</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Class</B></FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="class-use/GwtLocale.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
@@ -645,7 +657,7 @@ boolean <B>usesSameScript</B>(<A HREF="../../../../../com/google/gwt/i18n/shared
 </TABLE>
 </TD>
 <TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
-GWT 2.1.0.RC1</EM>
+GWT 2.1.1</EM>
 </TD>
 </TR>
 

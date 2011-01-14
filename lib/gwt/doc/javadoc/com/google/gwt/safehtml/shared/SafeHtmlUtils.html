@@ -38,6 +38,7 @@ function windowTitle()
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-summary.html"><FONT CLASS="NavBarFont1"><B>Package</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Class</B></FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="class-use/SafeHtmlUtils.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
@@ -46,7 +47,7 @@ function windowTitle()
 </TABLE>
 </TD>
 <TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
-GWT 2.1.0.RC1</EM>
+GWT 2.1.1</EM>
 </TD>
 </TR>
 
@@ -119,7 +120,7 @@ Utility class containing static methods for escaping and sanitizing strings.
 <TD><CODE><B><A HREF="../../../../../com/google/gwt/safehtml/shared/SafeHtmlUtils.html#EMPTY_SAFE_HTML">EMPTY_SAFE_HTML</A></B></CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;An empty String.</TD>
 </TR>
 </TABLE>
 &nbsp;
@@ -137,7 +138,8 @@ Utility class containing static methods for escaping and sanitizing strings.
 <TD><CODE><B><A HREF="../../../../../com/google/gwt/safehtml/shared/SafeHtmlUtils.html#fromSafeConstant(java.lang.String)">fromSafeConstant</A></B>(java.lang.String&nbsp;s)</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns a SafeHtml constructed from a safe string, i.e.</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns a SafeHtml constructed from a safe string, i.e., without
+ escaping the string.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -145,7 +147,7 @@ Utility class containing static methods for escaping and sanitizing strings.
 <TD><CODE><B><A HREF="../../../../../com/google/gwt/safehtml/shared/SafeHtmlUtils.html#fromString(java.lang.String)">fromString</A></B>(java.lang.String&nbsp;s)</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns a SafeHtml containing the escaped string.</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns a <A HREF="../../../../../com/google/gwt/safehtml/shared/SafeHtml.html" title="interface in com.google.gwt.safehtml.shared"><CODE>SafeHtml</CODE></A> containing the escaped string.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -153,7 +155,8 @@ Utility class containing static methods for escaping and sanitizing strings.
 <TD><CODE><B><A HREF="../../../../../com/google/gwt/safehtml/shared/SafeHtmlUtils.html#fromTrustedString(java.lang.String)">fromTrustedString</A></B>(java.lang.String&nbsp;s)</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns a SafeHtml constructed from a trusted string, i.e.</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns a <A HREF="../../../../../com/google/gwt/safehtml/shared/SafeHtml.html" title="interface in com.google.gwt.safehtml.shared"><CODE>SafeHtml</CODE></A> constructed from a trusted string, i.e., without
+ escaping the string.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -200,6 +203,8 @@ EMPTY_SAFE_HTML</H3>
 <PRE>
 public static final <A HREF="../../../../../com/google/gwt/safehtml/shared/SafeHtml.html" title="interface in com.google.gwt.safehtml.shared">SafeHtml</A> <B>EMPTY_SAFE_HTML</B></PRE>
 <DL>
+<DD>An empty String.
+<P>
 <DL>
 </DL>
 </DL>
@@ -219,8 +224,8 @@ fromSafeConstant</H3>
 <PRE>
 public static <A HREF="../../../../../com/google/gwt/safehtml/shared/SafeHtml.html" title="interface in com.google.gwt.safehtml.shared">SafeHtml</A> <B>fromSafeConstant</B>(java.lang.String&nbsp;s)</PRE>
 <DL>
-<DD>Returns a SafeHtml constructed from a safe string, i.e. without escaping
- the string.
+<DD>Returns a SafeHtml constructed from a safe string, i.e., without
+ escaping the string.
 
  <p>
  <b>Important</b>: For this method to be able to honor the <A HREF="../../../../../com/google/gwt/safehtml/shared/SafeHtml.html" title="interface in com.google.gwt.safehtml.shared"><CODE>SafeHtml</CODE></A>
@@ -232,10 +237,10 @@ public static <A HREF="../../../../../com/google/gwt/safehtml/shared/SafeHtml.ht
 
  <li>The value of the argument must end in "inner HTML" context and not
  contain incomplete HTML tags. I.e., the following is not a correct use of
- this method, because the <code>&lt;a&gt;</code> tag is incomplete:
+ this method, because the <code>&amp;lt;a&amp;gt;</code> tag is incomplete:
 
  <pre class="code">
- <code>shb.appendConstantHtml("&lt;a href='").append(url)</code></pre>
+ <code>shb.appendConstantHtml("&amp;lt;a href='").append(url)</code></pre>
 
  </ol>
 
@@ -266,10 +271,11 @@ fromString</H3>
 <PRE>
 public static <A HREF="../../../../../com/google/gwt/safehtml/shared/SafeHtml.html" title="interface in com.google.gwt.safehtml.shared">SafeHtml</A> <B>fromString</B>(java.lang.String&nbsp;s)</PRE>
 <DL>
-<DD>Returns a SafeHtml containing the escaped string.
+<DD>Returns a <A HREF="../../../../../com/google/gwt/safehtml/shared/SafeHtml.html" title="interface in com.google.gwt.safehtml.shared"><CODE>SafeHtml</CODE></A> containing the escaped string.
 <P>
 <DD><DL>
-</DL>
+<DT><B>Parameters:</B><DD><CODE>s</CODE> - the input String
+<DT><B>Returns:</B><DD>a SafeHtml instance</DL>
 </DD>
 </DL>
 <HR>
@@ -279,12 +285,13 @@ fromTrustedString</H3>
 <PRE>
 public static <A HREF="../../../../../com/google/gwt/safehtml/shared/SafeHtml.html" title="interface in com.google.gwt.safehtml.shared">SafeHtml</A> <B>fromTrustedString</B>(java.lang.String&nbsp;s)</PRE>
 <DL>
-<DD>Returns a SafeHtml constructed from a trusted string, i.e. without escaping
- the string. No checks are performed. The calling code should be carefully
- reviewed to ensure the argument meets the SafeHtml contract.
+<DD>Returns a <A HREF="../../../../../com/google/gwt/safehtml/shared/SafeHtml.html" title="interface in com.google.gwt.safehtml.shared"><CODE>SafeHtml</CODE></A> constructed from a trusted string, i.e., without
+ escaping the string. No checks are performed. The calling code should be
+ carefully reviewed to ensure the argument meets the SafeHtml contract.
 <P>
 <DD><DL>
-</DL>
+<DT><B>Parameters:</B><DD><CODE>s</CODE> - the input String
+<DT><B>Returns:</B><DD>a SafeHtml instance</DL>
 </DD>
 </DL>
 <HR>
@@ -296,7 +303,7 @@ public static java.lang.String <B>htmlEscape</B>(java.lang.String&nbsp;s)</PRE>
 <DL>
 <DD>HTML-escapes a string.
 
-  Note: The following variants of this function were profiled on FF36,
+ Note: The following variants of this function were profiled on FF36,
  Chrome6, IE8:
  #1) for each case, check indexOf, then use s.replace(regex, string)
  #2) for each case, check indexOf, then use s.replaceAll()
@@ -345,6 +352,7 @@ public static java.lang.String <B>htmlEscapeAllowEntities</B>(java.lang.String&n
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-summary.html"><FONT CLASS="NavBarFont1"><B>Package</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Class</B></FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="class-use/SafeHtmlUtils.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
@@ -353,7 +361,7 @@ public static java.lang.String <B>htmlEscapeAllowEntities</B>(java.lang.String&n
 </TABLE>
 </TD>
 <TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
-GWT 2.1.0.RC1</EM>
+GWT 2.1.1</EM>
 </TD>
 </TR>
 

@@ -38,6 +38,7 @@ function windowTitle()
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-summary.html"><FONT CLASS="NavBarFont1"><B>Package</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Class</B></FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="class-use/TabLayoutPanel.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
@@ -46,7 +47,7 @@ function windowTitle()
 </TABLE>
 </TD>
 <TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
-GWT 2.1.0.RC1</EM>
+GWT 2.1.1</EM>
 </TD>
 </TR>
 
@@ -399,7 +400,7 @@ A panel that represents a tabbed set of pages, each of which contains another
 <TD><CODE><B><A HREF="../../../../../../com/google/gwt/user/client/ui/TabLayoutPanel.html#getWidget(int)">getWidget</A></B>(int&nbsp;index)</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Gets the child widget at the specified index.</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns the widget at the given index.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -407,7 +408,7 @@ A panel that represents a tabbed set of pages, each of which contains another
 <TD><CODE><B><A HREF="../../../../../../com/google/gwt/user/client/ui/TabLayoutPanel.html#getWidgetCount()">getWidgetCount</A></B>()</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Gets the number of child widgets in this panel.</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns the number of tabs and widgets.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -423,7 +424,7 @@ A panel that represents a tabbed set of pages, each of which contains another
 <TD><CODE><B><A HREF="../../../../../../com/google/gwt/user/client/ui/TabLayoutPanel.html#getWidgetIndex(com.google.gwt.user.client.ui.Widget)">getWidgetIndex</A></B>(<A HREF="../../../../../../com/google/gwt/user/client/ui/Widget.html" title="class in com.google.gwt.user.client.ui">Widget</A>&nbsp;child)</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Gets the index of the specified child widget.</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns the index of the given child, or -1 if it is not a child.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -990,15 +991,14 @@ getWidget</H3>
 <PRE>
 public <A HREF="../../../../../../com/google/gwt/user/client/ui/Widget.html" title="class in com.google.gwt.user.client.ui">Widget</A> <B>getWidget</B>(int&nbsp;index)</PRE>
 <DL>
-<DD><B>Description copied from interface: <CODE><A HREF="../../../../../../com/google/gwt/user/client/ui/IndexedPanel.html#getWidget(int)">IndexedPanel</A></CODE></B></DD>
-<DD>Gets the child widget at the specified index.
+<DD>Returns the widget at the given index.
 <P>
 <DD><DL>
 <DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../../com/google/gwt/user/client/ui/IndexedPanel.html#getWidget(int)">getWidget</A></CODE> in interface <CODE><A HREF="../../../../../../com/google/gwt/user/client/ui/IndexedPanel.html" title="interface in com.google.gwt.user.client.ui">IndexedPanel</A></CODE></DL>
 </DD>
 <DD><DL>
 <DT><B>Parameters:</B><DD><CODE>index</CODE> - the child widget's index
-<DT><B>Returns:</B><DD>the widget at the given index.</DL>
+<DT><B>Returns:</B><DD>the child widget</DL>
 </DD>
 </DL>
 <HR>
@@ -1008,15 +1008,14 @@ getWidgetCount</H3>
 <PRE>
 public int <B>getWidgetCount</B>()</PRE>
 <DL>
-<DD><B>Description copied from interface: <CODE><A HREF="../../../../../../com/google/gwt/user/client/ui/IndexedPanel.html#getWidgetCount()">IndexedPanel</A></CODE></B></DD>
-<DD>Gets the number of child widgets in this panel.
+<DD>Returns the number of tabs and widgets.
 <P>
 <DD><DL>
 <DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../../com/google/gwt/user/client/ui/IndexedPanel.html#getWidgetCount()">getWidgetCount</A></CODE> in interface <CODE><A HREF="../../../../../../com/google/gwt/user/client/ui/IndexedPanel.html" title="interface in com.google.gwt.user.client.ui">IndexedPanel</A></CODE></DL>
 </DD>
 <DD><DL>
 
-<DT><B>Returns:</B><DD>the number of tabs and widgets</DL>
+<DT><B>Returns:</B><DD>the number of children</DL>
 </DD>
 </DL>
 <HR>
@@ -1042,15 +1041,15 @@ getWidgetIndex</H3>
 <PRE>
 public int <B>getWidgetIndex</B>(<A HREF="../../../../../../com/google/gwt/user/client/ui/Widget.html" title="class in com.google.gwt.user.client.ui">Widget</A>&nbsp;child)</PRE>
 <DL>
-<DD><B>Description copied from interface: <CODE><A HREF="../../../../../../com/google/gwt/user/client/ui/IndexedPanel.html#getWidgetIndex(com.google.gwt.user.client.ui.Widget)">IndexedPanel</A></CODE></B></DD>
-<DD>Gets the index of the specified child widget.
+<DD>Returns the index of the given child, or -1 if it is not a child.
 <P>
 <DD><DL>
 <DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../../com/google/gwt/user/client/ui/IndexedPanel.html#getWidgetIndex(com.google.gwt.user.client.ui.Widget)">getWidgetIndex</A></CODE> in interface <CODE><A HREF="../../../../../../com/google/gwt/user/client/ui/IndexedPanel.html" title="interface in com.google.gwt.user.client.ui">IndexedPanel</A></CODE></DL>
 </DD>
 <DD><DL>
 <DT><B>Parameters:</B><DD><CODE>child</CODE> - the widget to be found
-<DT><B>Returns:</B><DD>the index of the given child, or -1 if it is not a child</DL>
+<DT><B>Returns:</B><DD>the widget's index, or <code>-1</code> if it is not a child of this
+         panel</DL>
 </DD>
 </DL>
 <HR>
@@ -1385,7 +1384,7 @@ public void <B>setTabHTML</B>(int&nbsp;index,
 
  Use care when setting an object's HTML; it is an easy way to expose
  script-based security problems. Consider using
- <CODE>#setTabSafeHtml(int, SafeHtml)</CODE> or 
+ <A HREF="../../../../../../com/google/gwt/user/client/ui/TabLayoutPanel.html#setTabHTML(int, com.google.gwt.safehtml.shared.SafeHtml)"><CODE>setTabHTML(int, SafeHtml)</CODE></A> or
  <A HREF="../../../../../../com/google/gwt/user/client/ui/TabLayoutPanel.html#setTabText(int, java.lang.String)"><CODE>setTabText(int, String)</CODE></A> whenever possible.
 <P>
 <DD><DL>
@@ -1445,6 +1444,7 @@ public void <B>setTabText</B>(int&nbsp;index,
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-summary.html"><FONT CLASS="NavBarFont1"><B>Package</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Class</B></FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="class-use/TabLayoutPanel.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
@@ -1453,7 +1453,7 @@ public void <B>setTabText</B>(int&nbsp;index,
 </TABLE>
 </TD>
 <TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
-GWT 2.1.0.RC1</EM>
+GWT 2.1.1</EM>
 </TD>
 </TR>
 

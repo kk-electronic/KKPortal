@@ -38,6 +38,7 @@ function windowTitle()
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-summary.html"><FONT CLASS="NavBarFont1"><B>Package</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Class</B></FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="class-use/TreeViewModel.DefaultNodeInfo.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
@@ -46,7 +47,7 @@ function windowTitle()
 </TABLE>
 </TD>
 <TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
-GWT 2.1.0.RC1</EM>
+GWT 2.1.1</EM>
 </TD>
 </TR>
 
@@ -123,6 +124,16 @@ Default implementation of <A HREF="../../../../../com/google/gwt/view/client/Tre
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD><CODE><B><A HREF="../../../../../com/google/gwt/view/client/TreeViewModel.DefaultNodeInfo.html#TreeViewModel.DefaultNodeInfo(com.google.gwt.view.client.AbstractDataProvider, com.google.gwt.cell.client.Cell)">TreeViewModel.DefaultNodeInfo</A></B>(<A HREF="../../../../../com/google/gwt/view/client/AbstractDataProvider.html" title="class in com.google.gwt.view.client">AbstractDataProvider</A>&lt;<A HREF="../../../../../com/google/gwt/view/client/TreeViewModel.DefaultNodeInfo.html" title="type parameter in TreeViewModel.DefaultNodeInfo">T</A>&gt;&nbsp;dataProvider,
                               <A HREF="../../../../../com/google/gwt/cell/client/Cell.html" title="interface in com.google.gwt.cell.client">Cell</A>&lt;<A HREF="../../../../../com/google/gwt/view/client/TreeViewModel.DefaultNodeInfo.html" title="type parameter in TreeViewModel.DefaultNodeInfo">T</A>&gt;&nbsp;cell)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Construct a new <A HREF="../../../../../com/google/gwt/view/client/TreeViewModel.DefaultNodeInfo.html" title="class in com.google.gwt.view.client"><CODE>TreeViewModel.DefaultNodeInfo</CODE></A>.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD><CODE><B><A HREF="../../../../../com/google/gwt/view/client/TreeViewModel.DefaultNodeInfo.html#TreeViewModel.DefaultNodeInfo(com.google.gwt.view.client.AbstractDataProvider, com.google.gwt.cell.client.Cell, com.google.gwt.view.client.SelectionModel, com.google.gwt.view.client.CellPreviewEvent.Handler, com.google.gwt.cell.client.ValueUpdater)">TreeViewModel.DefaultNodeInfo</A></B>(<A HREF="../../../../../com/google/gwt/view/client/AbstractDataProvider.html" title="class in com.google.gwt.view.client">AbstractDataProvider</A>&lt;<A HREF="../../../../../com/google/gwt/view/client/TreeViewModel.DefaultNodeInfo.html" title="type parameter in TreeViewModel.DefaultNodeInfo">T</A>&gt;&nbsp;dataProvider,
+                              <A HREF="../../../../../com/google/gwt/cell/client/Cell.html" title="interface in com.google.gwt.cell.client">Cell</A>&lt;<A HREF="../../../../../com/google/gwt/view/client/TreeViewModel.DefaultNodeInfo.html" title="type parameter in TreeViewModel.DefaultNodeInfo">T</A>&gt;&nbsp;cell,
+                              <A HREF="../../../../../com/google/gwt/view/client/SelectionModel.html" title="interface in com.google.gwt.view.client">SelectionModel</A>&lt;? super <A HREF="../../../../../com/google/gwt/view/client/TreeViewModel.DefaultNodeInfo.html" title="type parameter in TreeViewModel.DefaultNodeInfo">T</A>&gt;&nbsp;selectionModel,
+                              <A HREF="../../../../../com/google/gwt/view/client/CellPreviewEvent.Handler.html" title="interface in com.google.gwt.view.client">CellPreviewEvent.Handler</A>&lt;<A HREF="../../../../../com/google/gwt/view/client/TreeViewModel.DefaultNodeInfo.html" title="type parameter in TreeViewModel.DefaultNodeInfo">T</A>&gt;&nbsp;selectionEventManager,
+                              <A HREF="../../../../../com/google/gwt/cell/client/ValueUpdater.html" title="interface in com.google.gwt.cell.client">ValueUpdater</A>&lt;<A HREF="../../../../../com/google/gwt/view/client/TreeViewModel.DefaultNodeInfo.html" title="type parameter in TreeViewModel.DefaultNodeInfo">T</A>&gt;&nbsp;valueUpdater)</CODE>
 
 <BR>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Construct a new <A HREF="../../../../../com/google/gwt/view/client/TreeViewModel.DefaultNodeInfo.html" title="class in com.google.gwt.view.client"><CODE>TreeViewModel.DefaultNodeInfo</CODE></A>.</TD>
@@ -244,7 +255,26 @@ public <B>TreeViewModel.DefaultNodeInfo</B>(<A HREF="../../../../../com/google/g
 <DL>
 <DT><B>Parameters:</B><DD><CODE>dataProvider</CODE> - the <A HREF="../../../../../com/google/gwt/view/client/AbstractDataProvider.html" title="class in com.google.gwt.view.client"><CODE>AbstractDataProvider</CODE></A> that provides the
           child values<DD><CODE>cell</CODE> - the <A HREF="../../../../../com/google/gwt/cell/client/Cell.html" title="interface in com.google.gwt.cell.client"><CODE>Cell</CODE></A> used to render the child values update when
-          the selection changes<DD><CODE>valueUpdater</CODE> - the <A HREF="../../../../../com/google/gwt/cell/client/ValueUpdater.html" title="interface in com.google.gwt.cell.client"><CODE>ValueUpdater</CODE></A></DL>
+          the selection changes<DD><CODE>selectionModel</CODE> - the <A HREF="../../../../../com/google/gwt/view/client/SelectionModel.html" title="interface in com.google.gwt.view.client"><CODE>SelectionModel</CODE></A> used for selection<DD><CODE>valueUpdater</CODE> - the <A HREF="../../../../../com/google/gwt/cell/client/ValueUpdater.html" title="interface in com.google.gwt.cell.client"><CODE>ValueUpdater</CODE></A></DL>
+</DL>
+<HR>
+
+<A NAME="TreeViewModel.DefaultNodeInfo(com.google.gwt.view.client.AbstractDataProvider, com.google.gwt.cell.client.Cell, com.google.gwt.view.client.SelectionModel, com.google.gwt.view.client.CellPreviewEvent.Handler, com.google.gwt.cell.client.ValueUpdater)"><!-- --></A><H3>
+TreeViewModel.DefaultNodeInfo</H3>
+<PRE>
+public <B>TreeViewModel.DefaultNodeInfo</B>(<A HREF="../../../../../com/google/gwt/view/client/AbstractDataProvider.html" title="class in com.google.gwt.view.client">AbstractDataProvider</A>&lt;<A HREF="../../../../../com/google/gwt/view/client/TreeViewModel.DefaultNodeInfo.html" title="type parameter in TreeViewModel.DefaultNodeInfo">T</A>&gt;&nbsp;dataProvider,
+                                     <A HREF="../../../../../com/google/gwt/cell/client/Cell.html" title="interface in com.google.gwt.cell.client">Cell</A>&lt;<A HREF="../../../../../com/google/gwt/view/client/TreeViewModel.DefaultNodeInfo.html" title="type parameter in TreeViewModel.DefaultNodeInfo">T</A>&gt;&nbsp;cell,
+                                     <A HREF="../../../../../com/google/gwt/view/client/SelectionModel.html" title="interface in com.google.gwt.view.client">SelectionModel</A>&lt;? super <A HREF="../../../../../com/google/gwt/view/client/TreeViewModel.DefaultNodeInfo.html" title="type parameter in TreeViewModel.DefaultNodeInfo">T</A>&gt;&nbsp;selectionModel,
+                                     <A HREF="../../../../../com/google/gwt/view/client/CellPreviewEvent.Handler.html" title="interface in com.google.gwt.view.client">CellPreviewEvent.Handler</A>&lt;<A HREF="../../../../../com/google/gwt/view/client/TreeViewModel.DefaultNodeInfo.html" title="type parameter in TreeViewModel.DefaultNodeInfo">T</A>&gt;&nbsp;selectionEventManager,
+                                     <A HREF="../../../../../com/google/gwt/cell/client/ValueUpdater.html" title="interface in com.google.gwt.cell.client">ValueUpdater</A>&lt;<A HREF="../../../../../com/google/gwt/view/client/TreeViewModel.DefaultNodeInfo.html" title="type parameter in TreeViewModel.DefaultNodeInfo">T</A>&gt;&nbsp;valueUpdater)</PRE>
+<DL>
+<DD>Construct a new <A HREF="../../../../../com/google/gwt/view/client/TreeViewModel.DefaultNodeInfo.html" title="class in com.google.gwt.view.client"><CODE>TreeViewModel.DefaultNodeInfo</CODE></A>.
+<P>
+<DL>
+<DT><B>Parameters:</B><DD><CODE>dataProvider</CODE> - the <A HREF="../../../../../com/google/gwt/view/client/AbstractDataProvider.html" title="class in com.google.gwt.view.client"><CODE>AbstractDataProvider</CODE></A> that provides the
+          child values<DD><CODE>cell</CODE> - the <A HREF="../../../../../com/google/gwt/cell/client/Cell.html" title="interface in com.google.gwt.cell.client"><CODE>Cell</CODE></A> used to render the child values update when
+          the selection changes<DD><CODE>selectionModel</CODE> - the <A HREF="../../../../../com/google/gwt/view/client/SelectionModel.html" title="interface in com.google.gwt.view.client"><CODE>SelectionModel</CODE></A> used for selection<DD><CODE>selectionEventManager</CODE> - the <A HREF="../../../../../com/google/gwt/view/client/CellPreviewEvent.Handler.html" title="interface in com.google.gwt.view.client"><CODE>CellPreviewEvent.Handler</CODE></A> that
+          handles user selection interaction<DD><CODE>valueUpdater</CODE> - the <A HREF="../../../../../com/google/gwt/cell/client/ValueUpdater.html" title="interface in com.google.gwt.cell.client"><CODE>ValueUpdater</CODE></A></DL>
 </DL>
 
 <!-- ============ METHOD DETAIL ========== -->
@@ -382,6 +412,7 @@ public void <B>unsetDataDisplay</B>()</PRE>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-summary.html"><FONT CLASS="NavBarFont1"><B>Package</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Class</B></FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="class-use/TreeViewModel.DefaultNodeInfo.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
@@ -390,7 +421,7 @@ public void <B>unsetDataDisplay</B>()</PRE>
 </TABLE>
 </TD>
 <TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
-GWT 2.1.0.RC1</EM>
+GWT 2.1.1</EM>
 </TD>
 </TR>
 

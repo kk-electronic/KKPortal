@@ -38,6 +38,7 @@ function windowTitle()
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Package</B></FONT>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <FONT CLASS="NavBarFont1">Class</FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-use.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
@@ -46,7 +47,7 @@ function windowTitle()
 </TABLE>
 </TD>
 <TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
-GWT 2.1.0.RC1</EM>
+GWT 2.1.1</EM>
 </TD>
 </TR>
 
@@ -103,9 +104,8 @@ Package com.google.gwt.place.shared
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD WIDTH="15%"><B><A HREF="../../../../../com/google/gwt/place/shared/PlaceHistoryMapper.html" title="interface in com.google.gwt.place.shared">PlaceHistoryMapper</A></B></TD>
-<TD>
- <span style="color:red">Experimental API: This class is still under rapid
- development, and is very likely to be deleted.</TD>
+<TD>Maps <A HREF="../../../../../com/google/gwt/place/shared/Place.html" title="class in com.google.gwt.place.shared"><CODE>Place</CODE></A>s to/from tokens, used to configure a
+ <A HREF="../../../../../com/google/gwt/place/shared/PlaceHistoryHandler.html" title="class in com.google.gwt.place.shared"><CODE>PlaceHistoryHandler</CODE></A>.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD WIDTH="15%"><B><A HREF="../../../../../com/google/gwt/place/shared/PlaceHistoryMapperWithFactory.html" title="interface in com.google.gwt.place.shared">PlaceHistoryMapperWithFactory&lt;F&gt;</A></B></TD>
@@ -129,27 +129,20 @@ Package com.google.gwt.place.shared
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD WIDTH="15%"><B><A HREF="../../../../../com/google/gwt/place/shared/Place.html" title="class in com.google.gwt.place.shared">Place</A></B></TD>
-<TD>
- <span style="color:red">Experimental API: This class is still under rapid
- development, and is very likely to be deleted.</TD>
+<TD>Represents a bookmarkable location in an app.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD WIDTH="15%"><B><A HREF="../../../../../com/google/gwt/place/shared/PlaceChangeEvent.html" title="class in com.google.gwt.place.shared">PlaceChangeEvent</A></B></TD>
-<TD>
- <span style="color:red">Experimental API: This class is still under rapid
- development, and is very likely to be deleted.</TD>
+<TD>Event thrown when the user has reached a new location in the app.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD WIDTH="15%"><B><A HREF="../../../../../com/google/gwt/place/shared/PlaceChangeRequestEvent.html" title="class in com.google.gwt.place.shared">PlaceChangeRequestEvent</A></B></TD>
-<TD>
- <span style="color:red">Experimental API: This class is still under rapid
- development, and is very likely to be deleted.</TD>
+<TD>Event thrown when the user may go to a new place in the app, or tries to
+ leave it.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD WIDTH="15%"><B><A HREF="../../../../../com/google/gwt/place/shared/PlaceController.html" title="class in com.google.gwt.place.shared">PlaceController</A></B></TD>
-<TD>
- <span style="color:red">Experimental API: This class is still under rapid
- development, and is very likely to be deleted.</TD>
+<TD>In charge of the user's location in the app.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD WIDTH="15%"><B><A HREF="../../../../../com/google/gwt/place/shared/PlaceController.DefaultDelegate.html" title="class in com.google.gwt.place.shared">PlaceController.DefaultDelegate</A></B></TD>
@@ -157,7 +150,8 @@ Package com.google.gwt.place.shared
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD WIDTH="15%"><B><A HREF="../../../../../com/google/gwt/place/shared/PlaceHistoryHandler.html" title="class in com.google.gwt.place.shared">PlaceHistoryHandler</A></B></TD>
-<TD>Monitors <A HREF="../../../../../com/google/gwt/place/shared/PlaceChangeEvent.html" title="class in com.google.gwt.place.shared"><CODE>PlaceChangeEvent</CODE></A>s and <A HREF="../../../../../com/google/gwt/user/client/History.html" title="class in com.google.gwt.user.client"><CODE>History</CODE></A> events and keep them in sync.</TD>
+<TD>Monitors <A HREF="../../../../../com/google/gwt/place/shared/PlaceChangeEvent.html" title="class in com.google.gwt.place.shared"><CODE>PlaceChangeEvent</CODE></A>s and
+ <A HREF="../../../../../com/google/gwt/user/client/History.html" title="class in com.google.gwt.user.client"><CODE>History</CODE></A> events and keep them in sync.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD WIDTH="15%"><B><A HREF="../../../../../com/google/gwt/place/shared/PlaceHistoryHandler.DefaultHistorian.html" title="class in com.google.gwt.place.shared">PlaceHistoryHandler.DefaultHistorian</A></B></TD>
@@ -206,6 +200,7 @@ Package com.google.gwt.place.shared
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Package</B></FONT>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <FONT CLASS="NavBarFont1">Class</FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-use.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
@@ -214,7 +209,7 @@ Package com.google.gwt.place.shared
 </TABLE>
 </TD>
 <TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
-GWT 2.1.0.RC1</EM>
+GWT 2.1.1</EM>
 </TD>
 </TR>
 

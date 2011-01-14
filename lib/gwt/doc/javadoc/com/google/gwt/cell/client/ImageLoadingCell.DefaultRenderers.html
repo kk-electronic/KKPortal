@@ -38,6 +38,7 @@ function windowTitle()
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-summary.html"><FONT CLASS="NavBarFont1"><B>Package</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Class</B></FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="class-use/ImageLoadingCell.DefaultRenderers.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
@@ -46,7 +47,7 @@ function windowTitle()
 </TABLE>
 </TD>
 <TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
-GWT 2.1.0.RC1</EM>
+GWT 2.1.1</EM>
 </TD>
 </TR>
 
@@ -104,7 +105,7 @@ java.lang.Object
 </PRE>
 
 <P>
-The default <A HREF="../../../../../com/google/gwt/cell/client/ImageLoadingCell.Renderers.html" title="interface in com.google.gwt.cell.client"><CODE>ImageLoadingCell.Renderers</CODE></A>.
+The default <A HREF="../../../../../com/google/gwt/text/shared/SafeHtmlRenderer.html" title="interface in com.google.gwt.text.shared"><CODE>SafeHtmlRenderers</CODE></A>.
 <P>
 
 <P>
@@ -142,8 +143,7 @@ The default <A HREF="../../../../../com/google/gwt/cell/client/ImageLoadingCell.
 <TD><CODE><B><A HREF="../../../../../com/google/gwt/cell/client/ImageLoadingCell.DefaultRenderers.html#getErrorRenderer()">getErrorRenderer</A></B>()</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Get the renderer used to render an error message when the image does not
- load.</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns the renderer for a broken image.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -151,7 +151,7 @@ The default <A HREF="../../../../../com/google/gwt/cell/client/ImageLoadingCell.
 <TD><CODE><B><A HREF="../../../../../com/google/gwt/cell/client/ImageLoadingCell.DefaultRenderers.html#getImageRenderer()">getImageRenderer</A></B>()</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Get the renderer used to render the image.</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns the renderer for an image.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -159,7 +159,7 @@ The default <A HREF="../../../../../com/google/gwt/cell/client/ImageLoadingCell.
 <TD><CODE><B><A HREF="../../../../../com/google/gwt/cell/client/ImageLoadingCell.DefaultRenderers.html#getLoadingRenderer()">getLoadingRenderer</A></B>()</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Get the renderer used to render a loading message.</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns the renderer for a loading image.</TD>
 </TR>
 </TABLE>
 &nbsp;<A NAME="methods_inherited_from_class_java.lang.Object"><!-- --></A>
@@ -206,16 +206,14 @@ getErrorRenderer</H3>
 <PRE>
 public <A HREF="../../../../../com/google/gwt/text/shared/SafeHtmlRenderer.html" title="interface in com.google.gwt.text.shared">SafeHtmlRenderer</A>&lt;java.lang.String&gt; <B>getErrorRenderer</B>()</PRE>
 <DL>
-<DD><B>Description copied from interface: <CODE><A HREF="../../../../../com/google/gwt/cell/client/ImageLoadingCell.Renderers.html#getErrorRenderer()">ImageLoadingCell.Renderers</A></CODE></B></DD>
-<DD>Get the renderer used to render an error message when the image does not
- load. By default, the broken image is rendered.
+<DD>Returns the renderer for a broken image.
 <P>
 <DD><DL>
 <DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../com/google/gwt/cell/client/ImageLoadingCell.Renderers.html#getErrorRenderer()">getErrorRenderer</A></CODE> in interface <CODE><A HREF="../../../../../com/google/gwt/cell/client/ImageLoadingCell.Renderers.html" title="interface in com.google.gwt.cell.client">ImageLoadingCell.Renderers</A></CODE></DL>
 </DD>
 <DD><DL>
 
-<DT><B>Returns:</B><DD>the <A HREF="../../../../../com/google/gwt/text/shared/SafeHtmlRenderer.html" title="interface in com.google.gwt.text.shared"><CODE>SafeHtmlRenderer</CODE></A> used when the image doesn't load</DL>
+<DT><B>Returns:</B><DD>a <A HREF="../../../../../com/google/gwt/text/shared/SafeHtmlRenderer.html" title="interface in com.google.gwt.text.shared"><CODE>SafeHtmlRenderer<String></CODE></A> instance</DL>
 </DD>
 </DL>
 <HR>
@@ -225,17 +223,14 @@ getImageRenderer</H3>
 <PRE>
 public <A HREF="../../../../../com/google/gwt/text/shared/SafeHtmlRenderer.html" title="interface in com.google.gwt.text.shared">SafeHtmlRenderer</A>&lt;java.lang.String&gt; <B>getImageRenderer</B>()</PRE>
 <DL>
-<DD><B>Description copied from interface: <CODE><A HREF="../../../../../com/google/gwt/cell/client/ImageLoadingCell.Renderers.html#getImageRenderer()">ImageLoadingCell.Renderers</A></CODE></B></DD>
-<DD>Get the renderer used to render the image. This renderer must render an
- <code>img</code> element, which triggers the <code>load</code> or <code>
- error</code> event that this cell handles.
+<DD>Returns the renderer for an image.
 <P>
 <DD><DL>
 <DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../com/google/gwt/cell/client/ImageLoadingCell.Renderers.html#getImageRenderer()">getImageRenderer</A></CODE> in interface <CODE><A HREF="../../../../../com/google/gwt/cell/client/ImageLoadingCell.Renderers.html" title="interface in com.google.gwt.cell.client">ImageLoadingCell.Renderers</A></CODE></DL>
 </DD>
 <DD><DL>
 
-<DT><B>Returns:</B><DD>the <A HREF="../../../../../com/google/gwt/text/shared/SafeHtmlRenderer.html" title="interface in com.google.gwt.text.shared"><CODE>SafeHtmlRenderer</CODE></A> used to render the image</DL>
+<DT><B>Returns:</B><DD>a <A HREF="../../../../../com/google/gwt/text/shared/SafeHtmlRenderer.html" title="interface in com.google.gwt.text.shared"><CODE>SafeHtmlRenderer<String></CODE></A> instance</DL>
 </DD>
 </DL>
 <HR>
@@ -245,16 +240,14 @@ getLoadingRenderer</H3>
 <PRE>
 public <A HREF="../../../../../com/google/gwt/text/shared/SafeHtmlRenderer.html" title="interface in com.google.gwt.text.shared">SafeHtmlRenderer</A>&lt;java.lang.String&gt; <B>getLoadingRenderer</B>()</PRE>
 <DL>
-<DD><B>Description copied from interface: <CODE><A HREF="../../../../../com/google/gwt/cell/client/ImageLoadingCell.Renderers.html#getLoadingRenderer()">ImageLoadingCell.Renderers</A></CODE></B></DD>
-<DD>Get the renderer used to render a loading message. By default, an
- animated loading icon is rendered.
+<DD>Returns the renderer for a loading image.
 <P>
 <DD><DL>
 <DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../com/google/gwt/cell/client/ImageLoadingCell.Renderers.html#getLoadingRenderer()">getLoadingRenderer</A></CODE> in interface <CODE><A HREF="../../../../../com/google/gwt/cell/client/ImageLoadingCell.Renderers.html" title="interface in com.google.gwt.cell.client">ImageLoadingCell.Renderers</A></CODE></DL>
 </DD>
 <DD><DL>
 
-<DT><B>Returns:</B><DD>the <A HREF="../../../../../com/google/gwt/text/shared/SafeHtmlRenderer.html" title="interface in com.google.gwt.text.shared"><CODE>SafeHtmlRenderer</CODE></A> used to render the loading html</DL>
+<DT><B>Returns:</B><DD>a <A HREF="../../../../../com/google/gwt/text/shared/SafeHtmlRenderer.html" title="interface in com.google.gwt.text.shared"><CODE>SafeHtmlRenderer<String></CODE></A> instance</DL>
 </DD>
 </DL>
 <!-- ========= END OF CLASS DATA ========= -->
@@ -273,6 +266,7 @@ public <A HREF="../../../../../com/google/gwt/text/shared/SafeHtmlRenderer.html"
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-summary.html"><FONT CLASS="NavBarFont1"><B>Package</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Class</B></FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="class-use/ImageLoadingCell.DefaultRenderers.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
@@ -281,7 +275,7 @@ public <A HREF="../../../../../com/google/gwt/text/shared/SafeHtmlRenderer.html"
 </TABLE>
 </TD>
 <TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
-GWT 2.1.0.RC1</EM>
+GWT 2.1.1</EM>
 </TD>
 </TR>
 

@@ -38,6 +38,7 @@ function windowTitle()
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-summary.html"><FONT CLASS="NavBarFont1"><B>Package</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Class</B></FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="class-use/SimplePager.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
@@ -46,7 +47,7 @@ function windowTitle()
 </TABLE>
 </TD>
 <TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
-GWT 2.1.0.RC1</EM>
+GWT 2.1.1</EM>
 </TD>
 </TR>
 
@@ -114,12 +115,12 @@ A pager for controlling a <A HREF="../../../../../../com/google/gwt/view/client/
 
   public void onModuleLoad() {
     // Create a CellList.
-    CellList<String> cellList = new CellList<String>(new TextCell());
+    CellList&lt;String&gt; cellList = new CellList&lt;String&gt;(new TextCell());
 
     // Add a cellList to a data provider.
-    ListDataProvider<String> dataProvider = new ListDataProvider<String>();
-    List<String> data = dataProvider.getList();
-    for (int i = 0; i < 200; i++) {
+    ListDataProvider&lt;String&gt; dataProvider = new ListDataProvider&lt;String&gt;();
+    List&lt;String&gt; data = dataProvider.getList();
+    for (int i = 0; i &lt; 200; i++) {
       data.add("Item " + i);
     }
     dataProvider.addDataDisplay(cellList);
@@ -552,7 +553,7 @@ public int <B>getPage</B>()</PRE>
 </DD>
 <DD><DL>
 
-<DT><B>Returns:</B><DD>the page index, or -1 if the display is not set</DL>
+<DT><B>Returns:</B><DD>the page index, or -1 if the display is not set<DT><B>See Also:</B><DD><A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractPager.html#setPage(int)"><CODE>AbstractPager.setPage(int)</CODE></A></DL>
 </DD>
 </DL>
 <HR>
@@ -589,7 +590,8 @@ public boolean <B>hasNextPage</B>()</PRE>
 <DT><B>Overrides:</B><DD><CODE><A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractPager.html#hasNextPage()">hasNextPage</A></CODE> in class <CODE><A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractPager.html" title="class in com.google.gwt.user.cellview.client">AbstractPager</A></CODE></DL>
 </DD>
 <DD><DL>
-</DL>
+
+<DT><B>Returns:</B><DD>true if there is a next page</DL>
 </DD>
 </DL>
 <HR>
@@ -607,7 +609,8 @@ public boolean <B>hasNextPages</B>(int&nbsp;pages)</PRE>
 <DT><B>Overrides:</B><DD><CODE><A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractPager.html#hasNextPages(int)">hasNextPages</A></CODE> in class <CODE><A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractPager.html" title="class in com.google.gwt.user.cellview.client">AbstractPager</A></CODE></DL>
 </DD>
 <DD><DL>
-</DL>
+<DT><B>Parameters:</B><DD><CODE>pages</CODE> - the number of pages to query
+<DT><B>Returns:</B><DD>true if there are <code>pages</code> next pages</DL>
 </DD>
 </DL>
 <HR>
@@ -625,7 +628,8 @@ public boolean <B>hasPage</B>(int&nbsp;index)</PRE>
 <DT><B>Overrides:</B><DD><CODE><A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractPager.html#hasPage(int)">hasPage</A></CODE> in class <CODE><A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractPager.html" title="class in com.google.gwt.user.cellview.client">AbstractPager</A></CODE></DL>
 </DD>
 <DD><DL>
-</DL>
+<DT><B>Parameters:</B><DD><CODE>index</CODE> - the page index
+<DT><B>Returns:</B><DD>true if the specified page is in range</DL>
 </DD>
 </DL>
 <HR>
@@ -644,7 +648,8 @@ public boolean <B>hasPreviousPage</B>()</PRE>
 <DT><B>Overrides:</B><DD><CODE><A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractPager.html#hasPreviousPage()">hasPreviousPage</A></CODE> in class <CODE><A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractPager.html" title="class in com.google.gwt.user.cellview.client">AbstractPager</A></CODE></DL>
 </DD>
 <DD><DL>
-</DL>
+
+<DT><B>Returns:</B><DD>true if there is a previous page</DL>
 </DD>
 </DL>
 <HR>
@@ -662,7 +667,8 @@ public boolean <B>hasPreviousPages</B>(int&nbsp;pages)</PRE>
 <DT><B>Overrides:</B><DD><CODE><A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractPager.html#hasPreviousPages(int)">hasPreviousPages</A></CODE> in class <CODE><A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractPager.html" title="class in com.google.gwt.user.cellview.client">AbstractPager</A></CODE></DL>
 </DD>
 <DD><DL>
-</DL>
+<DT><B>Parameters:</B><DD><CODE>pages</CODE> - the number of previous pages to query
+<DT><B>Returns:</B><DD>true if there are <code>pages</code> previous pages</DL>
 </DD>
 </DL>
 <HR>
@@ -747,7 +753,7 @@ public void <B>setDisplay</B>(<A HREF="../../../../../../com/google/gwt/view/cli
 <DT><B>Overrides:</B><DD><CODE><A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractPager.html#setDisplay(com.google.gwt.view.client.HasRows)">setDisplay</A></CODE> in class <CODE><A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractPager.html" title="class in com.google.gwt.user.cellview.client">AbstractPager</A></CODE></DL>
 </DD>
 <DD><DL>
-<DT><B>Parameters:</B><DD><CODE>display</CODE> - the <A HREF="../../../../../../com/google/gwt/view/client/HasRows.html" title="interface in com.google.gwt.view.client"><CODE>HasRows</CODE></A></DL>
+<DT><B>Parameters:</B><DD><CODE>display</CODE> - the <A HREF="../../../../../../com/google/gwt/view/client/HasRows.html" title="interface in com.google.gwt.view.client"><CODE>HasRows</CODE></A><DT><B>See Also:</B><DD><A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractPager.html#getDisplay()"><CODE>AbstractPager.getDisplay()</CODE></A></DL>
 </DD>
 </DL>
 <HR>
@@ -764,7 +770,7 @@ public void <B>setPage</B>(int&nbsp;index)</PRE>
 <DT><B>Overrides:</B><DD><CODE><A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractPager.html#setPage(int)">setPage</A></CODE> in class <CODE><A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractPager.html" title="class in com.google.gwt.user.cellview.client">AbstractPager</A></CODE></DL>
 </DD>
 <DD><DL>
-<DT><B>Parameters:</B><DD><CODE>index</CODE> - the page index</DL>
+<DT><B>Parameters:</B><DD><CODE>index</CODE> - the page index<DT><B>See Also:</B><DD><A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractPager.html#getPage()"><CODE>AbstractPager.getPage()</CODE></A></DL>
 </DD>
 </DL>
 <HR>
@@ -781,7 +787,7 @@ public void <B>setPageSize</B>(int&nbsp;pageSize)</PRE>
 <DT><B>Overrides:</B><DD><CODE><A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractPager.html#setPageSize(int)">setPageSize</A></CODE> in class <CODE><A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractPager.html" title="class in com.google.gwt.user.cellview.client">AbstractPager</A></CODE></DL>
 </DD>
 <DD><DL>
-<DT><B>Parameters:</B><DD><CODE>pageSize</CODE> - the new page size</DL>
+<DT><B>Parameters:</B><DD><CODE>pageSize</CODE> - the new page size<DT><B>See Also:</B><DD><A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractPager.html#getPageSize()"><CODE>AbstractPager.getPageSize()</CODE></A></DL>
 </DD>
 </DL>
 <HR>
@@ -798,7 +804,7 @@ public void <B>setPageStart</B>(int&nbsp;index)</PRE>
 <DT><B>Overrides:</B><DD><CODE><A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractPager.html#setPageStart(int)">setPageStart</A></CODE> in class <CODE><A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractPager.html" title="class in com.google.gwt.user.cellview.client">AbstractPager</A></CODE></DL>
 </DD>
 <DD><DL>
-<DT><B>Parameters:</B><DD><CODE>index</CODE> - the index</DL>
+<DT><B>Parameters:</B><DD><CODE>index</CODE> - the index<DT><B>See Also:</B><DD><A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractPager.html#getPageStart()"><CODE>AbstractPager.getPageStart()</CODE></A></DL>
 </DD>
 </DL>
 <HR>
@@ -864,6 +870,7 @@ protected void <B>onRangeOrRowCountChanged</B>()</PRE>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-summary.html"><FONT CLASS="NavBarFont1"><B>Package</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Class</B></FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="class-use/SimplePager.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
@@ -872,7 +879,7 @@ protected void <B>onRangeOrRowCountChanged</B>()</PRE>
 </TABLE>
 </TD>
 <TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
-GWT 2.1.0.RC1</EM>
+GWT 2.1.1</EM>
 </TD>
 </TR>
 

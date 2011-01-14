@@ -38,6 +38,7 @@ function windowTitle()
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-summary.html"><FONT CLASS="NavBarFont1"><B>Package</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Class</B></FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="class-use/Widget.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
@@ -46,7 +47,7 @@ function windowTitle()
 </TABLE>
 </TD>
 <TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
-GWT 2.1.0.RC1</EM>
+GWT 2.1.1</EM>
 </TD>
 </TR>
 
@@ -97,7 +98,7 @@ java.lang.Object
 <DT><B>All Implemented Interfaces:</B> <DD><A HREF="../../../../../../com/google/gwt/event/logical/shared/HasAttachHandlers.html" title="interface in com.google.gwt.event.logical.shared">HasAttachHandlers</A>, <A HREF="../../../../../../com/google/gwt/event/shared/HasHandlers.html" title="interface in com.google.gwt.event.shared">HasHandlers</A>, <A HREF="../../../../../../com/google/gwt/user/client/EventListener.html" title="interface in com.google.gwt.user.client">EventListener</A>, <A HREF="../../../../../../com/google/gwt/user/client/ui/IsWidget.html" title="interface in com.google.gwt.user.client.ui">IsWidget</A></DD>
 </DL>
 <DL>
-<DT><B>Direct Known Subclasses:</B> <DD><A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractHasData.html" title="class in com.google.gwt.user.cellview.client">AbstractHasData</A>, <A HREF="../../../../../../com/google/gwt/user/client/ui/Composite.html" title="class in com.google.gwt.user.client.ui">Composite</A>, <A HREF="../../../../../../com/google/gwt/user/client/ui/FileUpload.html" title="class in com.google.gwt.user.client.ui">FileUpload</A>, <A HREF="../../../../../../com/google/gwt/user/client/ui/FocusWidget.html" title="class in com.google.gwt.user.client.ui">FocusWidget</A>, <A HREF="../../../../../../com/google/gwt/user/client/ui/Frame.html" title="class in com.google.gwt.user.client.ui">Frame</A>, <A HREF="../../../../../../com/google/gwt/user/client/ui/Hidden.html" title="class in com.google.gwt.user.client.ui">Hidden</A>, <A HREF="../../../../../../com/google/gwt/user/client/ui/Hyperlink.html" title="class in com.google.gwt.user.client.ui">Hyperlink</A>, <A HREF="../../../../../../com/google/gwt/user/client/ui/Image.html" title="class in com.google.gwt.user.client.ui">Image</A>, <A HREF="../../../../../../com/google/gwt/user/client/ui/Label.html" title="class in com.google.gwt.user.client.ui">Label</A>, <A HREF="../../../../../../com/google/gwt/user/client/ui/MenuBar.html" title="class in com.google.gwt.user.client.ui">MenuBar</A>, <A HREF="../../../../../../com/google/gwt/user/client/ui/Panel.html" title="class in com.google.gwt.user.client.ui">Panel</A>, <A HREF="../../../../../../com/google/gwt/user/client/ui/Tree.html" title="class in com.google.gwt.user.client.ui">Tree</A></DD>
+<DT><B>Direct Known Subclasses:</B> <DD><A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractHasData.html" title="class in com.google.gwt.user.cellview.client">AbstractHasData</A>, <A HREF="../../../../../../com/google/gwt/user/client/ui/Composite.html" title="class in com.google.gwt.user.client.ui">Composite</A>, <A HREF="../../../../../../com/google/gwt/user/client/ui/FileUpload.html" title="class in com.google.gwt.user.client.ui">FileUpload</A>, <A HREF="../../../../../../com/google/gwt/user/client/ui/FocusWidget.html" title="class in com.google.gwt.user.client.ui">FocusWidget</A>, <A HREF="../../../../../../com/google/gwt/user/client/ui/Frame.html" title="class in com.google.gwt.user.client.ui">Frame</A>, <A HREF="../../../../../../com/google/gwt/user/client/ui/Hidden.html" title="class in com.google.gwt.user.client.ui">Hidden</A>, <A HREF="../../../../../../com/google/gwt/user/client/ui/Hyperlink.html" title="class in com.google.gwt.user.client.ui">Hyperlink</A>, <A HREF="../../../../../../com/google/gwt/user/client/ui/Image.html" title="class in com.google.gwt.user.client.ui">Image</A>, <A HREF="../../../../../../com/google/gwt/user/client/ui/LabelBase.html" title="class in com.google.gwt.user.client.ui">LabelBase</A>, <A HREF="../../../../../../com/google/gwt/user/client/ui/MenuBar.html" title="class in com.google.gwt.user.client.ui">MenuBar</A>, <A HREF="../../../../../../com/google/gwt/user/client/ui/Panel.html" title="class in com.google.gwt.user.client.ui">Panel</A>, <A HREF="../../../../../../com/google/gwt/user/client/ui/Tree.html" title="class in com.google.gwt.user.client.ui">Tree</A></DD>
 </DL>
 <HR>
 <DL>
@@ -182,7 +183,7 @@ The base class for the majority of user-interface objects. Widget adds
 <TD><CODE><B><A HREF="../../../../../../com/google/gwt/user/client/ui/Widget.html#addAttachHandler(com.google.gwt.event.logical.shared.AttachEvent.Handler)">addAttachHandler</A></B>(<A HREF="../../../../../../com/google/gwt/event/logical/shared/AttachEvent.Handler.html" title="interface in com.google.gwt.event.logical.shared">AttachEvent.Handler</A>&nbsp;handler)</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Adds a <A HREF="../../../../../../com/google/gwt/event/logical/shared/AttachEvent.html" title="class in com.google.gwt.event.logical.shared"><CODE>AttachEvent</CODE></A> handler.</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Adds an <A HREF="../../../../../../com/google/gwt/event/logical/shared/AttachEvent.html" title="class in com.google.gwt.event.logical.shared"><CODE>AttachEvent</CODE></A> handler.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -227,7 +228,7 @@ The base class for the majority of user-interface objects. Widget adds
 <TD><CODE><B><A HREF="../../../../../../com/google/gwt/user/client/ui/Widget.html#asWidget()">asWidget</A></B>()</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns the <A HREF="../../../../../../com/google/gwt/user/client/ui/Widget.html" title="class in com.google.gwt.user.client.ui"><CODE>Widget</CODE></A> aspect of the receiver.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -470,7 +471,7 @@ addAttachHandler</H3>
 public <A HREF="../../../../../../com/google/gwt/event/shared/HandlerRegistration.html" title="interface in com.google.gwt.event.shared">HandlerRegistration</A> <B>addAttachHandler</B>(<A HREF="../../../../../../com/google/gwt/event/logical/shared/AttachEvent.Handler.html" title="interface in com.google.gwt.event.logical.shared">AttachEvent.Handler</A>&nbsp;handler)</PRE>
 <DL>
 <DD><B>Description copied from interface: <CODE><A HREF="../../../../../../com/google/gwt/event/logical/shared/HasAttachHandlers.html#addAttachHandler(com.google.gwt.event.logical.shared.AttachEvent.Handler)">HasAttachHandlers</A></CODE></B></DD>
-<DD>Adds a <A HREF="../../../../../../com/google/gwt/event/logical/shared/AttachEvent.html" title="class in com.google.gwt.event.logical.shared"><CODE>AttachEvent</CODE></A> handler.
+<DD>Adds an <A HREF="../../../../../../com/google/gwt/event/logical/shared/AttachEvent.html" title="class in com.google.gwt.event.logical.shared"><CODE>AttachEvent</CODE></A> handler.
 <P>
 <DD><DL>
 <DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../../com/google/gwt/event/logical/shared/HasAttachHandlers.html#addAttachHandler(com.google.gwt.event.logical.shared.AttachEvent.Handler)">addAttachHandler</A></CODE> in interface <CODE><A HREF="../../../../../../com/google/gwt/event/logical/shared/HasAttachHandlers.html" title="interface in com.google.gwt.event.logical.shared">HasAttachHandlers</A></CODE></DL>
@@ -525,12 +526,14 @@ asWidget</H3>
 <PRE>
 public <A HREF="../../../../../../com/google/gwt/user/client/ui/Widget.html" title="class in com.google.gwt.user.client.ui">Widget</A> <B>asWidget</B>()</PRE>
 <DL>
+<DD><B>Description copied from interface: <CODE><A HREF="../../../../../../com/google/gwt/user/client/ui/IsWidget.html#asWidget()">IsWidget</A></CODE></B></DD>
+<DD>Returns the <A HREF="../../../../../../com/google/gwt/user/client/ui/Widget.html" title="class in com.google.gwt.user.client.ui"><CODE>Widget</CODE></A> aspect of the receiver.
+<P>
 <DD><DL>
 <DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../../com/google/gwt/user/client/ui/IsWidget.html#asWidget()">asWidget</A></CODE> in interface <CODE><A HREF="../../../../../../com/google/gwt/user/client/ui/IsWidget.html" title="interface in com.google.gwt.user.client.ui">IsWidget</A></CODE></DL>
 </DD>
 <DD><DL>
-
-<DT><B>Returns:</B><DD>the <A HREF="../../../../../../com/google/gwt/user/client/ui/Widget.html" title="class in com.google.gwt.user.client.ui"><CODE>Widget</CODE></A> aspect of the receiver</DL>
+</DL>
 </DD>
 </DL>
 <HR>
@@ -820,7 +823,7 @@ protected void <B>onAttach</B>()</PRE>
 <DD><p>
  This method is called when a widget is attached to the browser's document.
  To receive notification after a Widget has been added to the document,
- override the <A HREF="../../../../../../com/google/gwt/user/client/ui/Widget.html#onLoad()"><CODE>onLoad()</CODE></A> method.
+ override the <A HREF="../../../../../../com/google/gwt/user/client/ui/Widget.html#onLoad()"><CODE>onLoad()</CODE></A> method or use <A HREF="../../../../../../com/google/gwt/user/client/ui/Widget.html#addAttachHandler(com.google.gwt.event.logical.shared.AttachEvent.Handler)"><CODE>addAttachHandler(com.google.gwt.event.logical.shared.AttachEvent.Handler)</CODE></A>.
  </p>
  <p>
  It is strongly recommended that you override <A HREF="../../../../../../com/google/gwt/user/client/ui/Widget.html#onLoad()"><CODE>onLoad()</CODE></A> or
@@ -853,7 +856,7 @@ protected void <B>onDetach</B>()</PRE>
 <DD><p>
  This method is called when a widget is detached from the browser's
  document. To receive notification before a Widget is removed from the
- document, override the <A HREF="../../../../../../com/google/gwt/user/client/ui/Widget.html#onUnload()"><CODE>onUnload()</CODE></A> method.
+ document, override the <A HREF="../../../../../../com/google/gwt/user/client/ui/Widget.html#onUnload()"><CODE>onUnload()</CODE></A> method or use <A HREF="../../../../../../com/google/gwt/user/client/ui/Widget.html#addAttachHandler(com.google.gwt.event.logical.shared.AttachEvent.Handler)"><CODE>addAttachHandler(com.google.gwt.event.logical.shared.AttachEvent.Handler)</CODE></A>.
  </p>
  <p>
  It is strongly recommended that you override <A HREF="../../../../../../com/google/gwt/user/client/ui/Widget.html#onUnload()"><CODE>onUnload()</CODE></A> or
@@ -886,8 +889,7 @@ onLoad</H3>
 protected void <B>onLoad</B>()</PRE>
 <DL>
 <DD>This method is called immediately after a widget becomes attached to the
- browser's document. This default implementation notifies the widgets
- <CODE>AttachEvent.Handler</CODE>s.
+ browser's document.
 <P>
 <DD><DL>
 </DL>
@@ -904,8 +906,7 @@ onUnload</H3>
 protected void <B>onUnload</B>()</PRE>
 <DL>
 <DD>This method is called immediately before a widget will be detached from the
- browser's document. This default implementation notifies the widgets
- <CODE>AttachEvent.Handler</CODE>s.
+ browser's document.
 <P>
 <DD><DL>
 </DL>
@@ -930,6 +931,7 @@ protected void <B>onUnload</B>()</PRE>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-summary.html"><FONT CLASS="NavBarFont1"><B>Package</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Class</B></FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="class-use/Widget.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
@@ -938,7 +940,7 @@ protected void <B>onUnload</B>()</PRE>
 </TABLE>
 </TD>
 <TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
-GWT 2.1.0.RC1</EM>
+GWT 2.1.1</EM>
 </TD>
 </TR>
 

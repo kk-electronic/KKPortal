@@ -38,6 +38,7 @@ function windowTitle()
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Package</B></FONT>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <FONT CLASS="NavBarFont1">Class</FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-use.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
@@ -46,7 +47,7 @@ function windowTitle()
 </TABLE>
 </TD>
 <TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
-GWT 2.1.0.RC1</EM>
+GWT 2.1.1</EM>
 </TD>
 </TR>
 
@@ -91,6 +92,19 @@ Classes and interfaces used by the
 <TR BGCOLOR="#CCCCFF" CLASS="TableHeadingColor">
 <TH ALIGN="left" COLSPAN="2"><FONT SIZE="+2">
 <B>Interface Summary</B></FONT></TH>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../com/google/gwt/view/client/CellPreviewEvent.Handler.html" title="interface in com.google.gwt.view.client">CellPreviewEvent.Handler&lt;T&gt;</A></B></TD>
+<TD>Handler for <A HREF="../../../../../com/google/gwt/view/client/CellPreviewEvent.html" title="class in com.google.gwt.view.client"><CODE>CellPreviewEvent</CODE></A>.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../com/google/gwt/view/client/DefaultSelectionEventManager.EventTranslator.html" title="interface in com.google.gwt.view.client">DefaultSelectionEventManager.EventTranslator&lt;T&gt;</A></B></TD>
+<TD>Translates <A HREF="../../../../../com/google/gwt/view/client/CellPreviewEvent.html" title="class in com.google.gwt.view.client"><CODE>CellPreviewEvent</CODE></A>s into <A HREF="../../../../../com/google/gwt/view/client/DefaultSelectionEventManager.SelectAction.html" title="enum in com.google.gwt.view.client"><CODE>DefaultSelectionEventManager.SelectAction</CODE></A>s.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../com/google/gwt/view/client/HasCellPreviewHandlers.html" title="interface in com.google.gwt.view.client">HasCellPreviewHandlers&lt;T&gt;</A></B></TD>
+<TD>A widget that implements this interface is a public source of
+ <A HREF="../../../../../com/google/gwt/view/client/CellPreviewEvent.html" title="class in com.google.gwt.view.client"><CODE>CellPreviewEvent</CODE></A> events.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD WIDTH="15%"><B><A HREF="../../../../../com/google/gwt/view/client/HasData.html" title="interface in com.google.gwt.view.client">HasData&lt;T&gt;</A></B></TD>
@@ -155,6 +169,20 @@ Classes and interfaces used by the
  modified.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../com/google/gwt/view/client/CellPreviewEvent.html" title="class in com.google.gwt.view.client">CellPreviewEvent&lt;T&gt;</A></B></TD>
+<TD>Allows the previewing of events before they are fired to Cells.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../com/google/gwt/view/client/DefaultSelectionEventManager.html" title="class in com.google.gwt.view.client">DefaultSelectionEventManager&lt;T&gt;</A></B></TD>
+<TD>An implementation of <A HREF="../../../../../com/google/gwt/view/client/CellPreviewEvent.Handler.html" title="interface in com.google.gwt.view.client"><CODE>CellPreviewEvent.Handler</CODE></A> that adds selection
+ support via the spacebar and mouse clicks and handles the control key.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../com/google/gwt/view/client/DefaultSelectionEventManager.CheckboxEventTranslator.html" title="class in com.google.gwt.view.client">DefaultSelectionEventManager.CheckboxEventTranslator&lt;T&gt;</A></B></TD>
+<TD>Implementation of <A HREF="../../../../../com/google/gwt/view/client/DefaultSelectionEventManager.CheckboxEventTranslator.html" title="class in com.google.gwt.view.client"><CODE>DefaultSelectionEventManager.CheckboxEventTranslator</CODE></A> that only triggers selection when
+ any checkbox is selected.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
 <TD WIDTH="15%"><B><A HREF="../../../../../com/google/gwt/view/client/DefaultSelectionModel.html" title="class in com.google.gwt.view.client">DefaultSelectionModel&lt;T&gt;</A></B></TD>
 <TD>A convenience <A HREF="../../../../../com/google/gwt/view/client/SelectionModel.html" title="interface in com.google.gwt.view.client"><CODE>SelectionModel</CODE></A> that allows records to be selected
  according to a subclass-defined rule, plus a list of positive or negative
@@ -211,50 +239,34 @@ Classes and interfaces used by the
 &nbsp;
 
 <P>
+
+<TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
+<TR BGCOLOR="#CCCCFF" CLASS="TableHeadingColor">
+<TH ALIGN="left" COLSPAN="2"><FONT SIZE="+2">
+<B>Enum Summary</B></FONT></TH>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../com/google/gwt/view/client/DefaultSelectionEventManager.SelectAction.html" title="enum in com.google.gwt.view.client">DefaultSelectionEventManager.SelectAction</A></B></TD>
+<TD>The action that controls how selection is handled.</TD>
+</TR>
+</TABLE>
+&nbsp;
+
+<P>
 <A NAME="package_description"><!-- --></A><H2>
 Package com.google.gwt.view.client Description
 </H2>
 
 <P>
 <p>Classes and interfaces used by the
-<A HREF="../../../../../com/google/gwt/user/cellview/client/package-summary.html"><CODE>cellview</CODE></A> widget set.  The package
-includes:
-<ul>
-<li><CODE>ListView</CODE> - interface for all views that display a list of data items
-within a <A HREF="../../../../../com/google/gwt/view/client/Range.html" title="class in com.google.gwt.view.client"><CODE>Range</CODE></A></li>
-  <ul>
-  <li><CODE>PagingListView</CODE> - a ListView that may be controlled by a
-  <CODE>Pager</CODE></li>
-  </ul>
-<li><CODE>AbstractListViewAdapter</CODE> - a basic data source implementation</li>
-  <ul>
-  <li><CODE>ListViewAdapter</CODE> - an implementation of AbstractListViewAdapter
-  that is backed by an in-memory list</li>
-<li><CODE>AsyncListViewAdapter</CODE> - an asynchronous data source
-implementation</li>
-  </ul>
-<li><A HREF="../../../../../com/google/gwt/view/client/SelectionModel.html" title="interface in com.google.gwt.view.client"><CODE>SelectionModel</CODE></A> - an interface for selection of items within a
-view</li>
-  <ul>
-  <li><A HREF="../../../../../com/google/gwt/view/client/DefaultSelectionModel.html" title="class in com.google.gwt.view.client"><CODE>DefaultSelectionModel</CODE></A> - a SelectionModel that allows both
-  rule-based and explicit selection and deselection of items</li>
-  <li><A HREF="../../../../../com/google/gwt/view/client/SingleSelectionModel.html" title="class in com.google.gwt.view.client"><CODE>SingleSelectionModel</CODE></A> - a SelectionModel that allows a single item
-  to be selected</li>
-  <li><A HREF="../../../../../com/google/gwt/view/client/MultiSelectionModel.html" title="class in com.google.gwt.view.client"><CODE>MultiSelectionModel</CODE></A> - a SelectionModel that allows multiple items
-  to be selected</li>
-  <ul>
-<li><CODE>HasViewData</CODE> - an interface to retrieve view data for an item</li>
-<li><A HREF="../../../../../com/google/gwt/view/client/ProvidesKey.html" title="interface in com.google.gwt.view.client"><CODE>ProvidesKey</CODE></A> - an interface to provide a unique key value for an
-item</li>
-<li><A HREF="../../../../../com/google/gwt/view/client/TreeViewModel.html" title="interface in com.google.gwt.view.client"><CODE>TreeViewModel</CODE></A> - interfaces used to manage nodes in a
-<A HREF="../../../../../com/google/gwt/user/cellview/client/CellTree.html" title="class in com.google.gwt.user.cellview.client"><CODE>CellTree</CODE></A> or
-<A HREF="../../../../../com/google/gwt/user/cellview/client/CellBrowser.html" title="class in com.google.gwt.user.cellview.client"><CODE>CellBrowser</CODE></A></li>
-</ul>
-</p>
+<A HREF="../../../../../com/google/gwt/user/cellview/client/package-summary.html"><CODE>cellview</CODE></A> widget set.
 <P>
 
 <P>
 <DL>
+<DT><B>Since:</B></DT>
+  <DD>GWT 2.1
+</p></DD>
 </DL>
 <HR>
 
@@ -271,6 +283,7 @@ item</li>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Package</B></FONT>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <FONT CLASS="NavBarFont1">Class</FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-use.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
@@ -279,7 +292,7 @@ item</li>
 </TABLE>
 </TD>
 <TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
-GWT 2.1.0.RC1</EM>
+GWT 2.1.1</EM>
 </TD>
 </TR>
 

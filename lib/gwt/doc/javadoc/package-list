@@ -1,10 +1,13 @@
 com.google.gwt.activity.shared
 com.google.gwt.animation.client
+com.google.gwt.autobean.server
+com.google.gwt.autobean.shared
 com.google.gwt.benchmarks
 com.google.gwt.benchmarks.client
 com.google.gwt.cell.client
 com.google.gwt.core.client
 com.google.gwt.core.client.prefetch
+com.google.gwt.core.client.testing
 com.google.gwt.core.ext
 com.google.gwt.core.ext.linker
 com.google.gwt.core.ext.soyc
@@ -43,7 +46,9 @@ com.google.gwt.regexp.shared
 com.google.gwt.requestfactory.client
 com.google.gwt.requestfactory.client.testing
 com.google.gwt.requestfactory.server
+com.google.gwt.requestfactory.server.testing
 com.google.gwt.requestfactory.shared
+com.google.gwt.requestfactory.shared.messages
 com.google.gwt.requestfactory.ui.client
 com.google.gwt.resources.client
 com.google.gwt.resources.ext

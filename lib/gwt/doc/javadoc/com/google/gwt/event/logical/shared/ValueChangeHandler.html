@@ -38,6 +38,7 @@ function windowTitle()
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-summary.html"><FONT CLASS="NavBarFont1"><B>Package</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Class</B></FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="class-use/ValueChangeHandler.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
@@ -46,7 +47,7 @@ function windowTitle()
 </TABLE>
 </TD>
 <TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
-GWT 2.1.0.RC1</EM>
+GWT 2.1.1</EM>
 </TD>
 </TR>
 
@@ -87,9 +88,9 @@ DETAIL:&nbsp;FIELD&nbsp;|&nbsp;CONSTR&nbsp;|&nbsp;<A HREF="#method_detail">METHO
 <FONT SIZE="-1">
 com.google.gwt.event.logical.shared</FONT>
 <BR>
-Interface ValueChangeHandler&lt;I&gt;</H2>
+Interface ValueChangeHandler&lt;T&gt;</H2>
 <DL>
-<DT><DT><B>Type Parameters:</B><DD><CODE>I</CODE> - the value about to be changed</DL>
+<DT><DT><B>Type Parameters:</B><DD><CODE>T</CODE> - the value about to be changed</DL>
 <DL>
 <DT><B>All Superinterfaces:</B> <DD><A HREF="../../../../../../com/google/gwt/event/shared/EventHandler.html" title="interface in com.google.gwt.event.shared">EventHandler</A></DD>
 </DL>
@@ -98,7 +99,7 @@ Interface ValueChangeHandler&lt;I&gt;</H2>
 </DL>
 <HR>
 <DL>
-<DT><PRE>public interface <B>ValueChangeHandler&lt;I&gt;</B><DT>extends <A HREF="../../../../../../com/google/gwt/event/shared/EventHandler.html" title="interface in com.google.gwt.event.shared">EventHandler</A></DL>
+<DT><PRE>public interface <B>ValueChangeHandler&lt;T&gt;</B><DT>extends <A HREF="../../../../../../com/google/gwt/event/shared/EventHandler.html" title="interface in com.google.gwt.event.shared">EventHandler</A></DL>
 </PRE>
 
 <P>
@@ -121,7 +122,7 @@ Handler interface for <A HREF="../../../../../../com/google/gwt/event/logical/sh
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
 <CODE>&nbsp;void</CODE></FONT></TD>
-<TD><CODE><B><A HREF="../../../../../../com/google/gwt/event/logical/shared/ValueChangeHandler.html#onValueChange(com.google.gwt.event.logical.shared.ValueChangeEvent)">onValueChange</A></B>(<A HREF="../../../../../../com/google/gwt/event/logical/shared/ValueChangeEvent.html" title="class in com.google.gwt.event.logical.shared">ValueChangeEvent</A>&lt;<A HREF="../../../../../../com/google/gwt/event/logical/shared/ValueChangeHandler.html" title="type parameter in ValueChangeHandler">I</A>&gt;&nbsp;event)</CODE>
+<TD><CODE><B><A HREF="../../../../../../com/google/gwt/event/logical/shared/ValueChangeHandler.html#onValueChange(com.google.gwt.event.logical.shared.ValueChangeEvent)">onValueChange</A></B>(<A HREF="../../../../../../com/google/gwt/event/logical/shared/ValueChangeEvent.html" title="class in com.google.gwt.event.logical.shared">ValueChangeEvent</A>&lt;<A HREF="../../../../../../com/google/gwt/event/logical/shared/ValueChangeHandler.html" title="type parameter in ValueChangeHandler">T</A>&gt;&nbsp;event)</CODE>
 
 <BR>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Called when <A HREF="../../../../../../com/google/gwt/event/logical/shared/ValueChangeEvent.html" title="class in com.google.gwt.event.logical.shared"><CODE>ValueChangeEvent</CODE></A> is fired.</TD>
@@ -143,7 +144,7 @@ Handler interface for <A HREF="../../../../../../com/google/gwt/event/logical/sh
 <A NAME="onValueChange(com.google.gwt.event.logical.shared.ValueChangeEvent)"><!-- --></A><H3>
 onValueChange</H3>
 <PRE>
-void <B>onValueChange</B>(<A HREF="../../../../../../com/google/gwt/event/logical/shared/ValueChangeEvent.html" title="class in com.google.gwt.event.logical.shared">ValueChangeEvent</A>&lt;<A HREF="../../../../../../com/google/gwt/event/logical/shared/ValueChangeHandler.html" title="type parameter in ValueChangeHandler">I</A>&gt;&nbsp;event)</PRE>
+void <B>onValueChange</B>(<A HREF="../../../../../../com/google/gwt/event/logical/shared/ValueChangeEvent.html" title="class in com.google.gwt.event.logical.shared">ValueChangeEvent</A>&lt;<A HREF="../../../../../../com/google/gwt/event/logical/shared/ValueChangeHandler.html" title="type parameter in ValueChangeHandler">T</A>&gt;&nbsp;event)</PRE>
 <DL>
 <DD>Called when <A HREF="../../../../../../com/google/gwt/event/logical/shared/ValueChangeEvent.html" title="class in com.google.gwt.event.logical.shared"><CODE>ValueChangeEvent</CODE></A> is fired.
 <P>
@@ -170,6 +171,7 @@ void <B>onValueChange</B>(<A HREF="../../../../../../com/google/gwt/event/logica
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-summary.html"><FONT CLASS="NavBarFont1"><B>Package</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Class</B></FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="class-use/ValueChangeHandler.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
@@ -178,7 +180,7 @@ void <B>onValueChange</B>(<A HREF="../../../../../../com/google/gwt/event/logica
 </TABLE>
 </TD>
 <TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
-GWT 2.1.0.RC1</EM>
+GWT 2.1.1</EM>
 </TD>
 </TR>
 

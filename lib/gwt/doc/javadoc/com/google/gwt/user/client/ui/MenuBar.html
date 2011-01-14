@@ -38,6 +38,7 @@ function windowTitle()
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-summary.html"><FONT CLASS="NavBarFont1"><B>Package</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Class</B></FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="class-use/MenuBar.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
@@ -46,7 +47,7 @@ function windowTitle()
 </TABLE>
 </TD>
 <TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
-GWT 2.1.0.RC1</EM>
+GWT 2.1.1</EM>
 </TD>
 </TR>
 
@@ -106,11 +107,11 @@ java.lang.Object
 A standard menu bar widget. A menu bar can contain any number of menu items,
  each of which can either fire a <A HREF="../../../../../../com/google/gwt/user/client/Command.html" title="interface in com.google.gwt.user.client"><CODE>Command</CODE></A> or
  open a cascaded menu bar.
- 
+
  <p>
  <img class='gallery' src='doc-files/MenuBar.png'/>
  </p>
- 
+
  <h3>CSS Style Rules</h3>
  <dl>
  <dt>.gwt-MenuBar</dt>
@@ -164,7 +165,7 @@ A standard menu bar widget. A menu bar can contain any number of menu items,
  <dt>.gwt-MenuBarPopup .menuPopupBottomRightInner</dt>
  <dd>the inner element of the cell</dd>
  </dl>
- 
+
  <p>
  <h3>Example</h3>
  <blockquote><pre>public class MenuBarExample implements EntryPoint {
@@ -205,7 +206,7 @@ A standard menu bar widget. A menu bar can contain any number of menu items,
 }
 </pre></blockquote>
  </p>
- 
+
  <h3>Use in UiBinder Templates</h3>
  <p>
  MenuBar elements in UiBinder template files can have a <code>vertical</code>
@@ -213,7 +214,7 @@ A standard menu bar widget. A menu bar can contain any number of menu items,
  elements as children. MenuItems may contain HTML and MenuBars.
  <p>
  For example:
- 
+
  <pre>
  &lt;g:MenuBar>
    &lt;g:MenuItem>Higgledy
@@ -380,7 +381,7 @@ A standard menu bar widget. A menu bar can contain any number of menu items,
         <A HREF="../../../../../../com/google/gwt/user/client/Command.html" title="interface in com.google.gwt.user.client">Command</A>&nbsp;cmd)</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Adds a menu item to the bar containing SafeHtml, that will fire the given 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Adds a menu item to the bar containing SafeHtml, that will fire the given
  command when it is selected.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
@@ -554,7 +555,7 @@ A standard menu bar widget. A menu bar can contain any number of menu items,
 <TD><CODE><B><A HREF="../../../../../../com/google/gwt/user/client/ui/MenuBar.html#isAnimationEnabled()">isAnimationEnabled</A></B>()</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns true if animations are enabled, false if not.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -850,7 +851,7 @@ addItem</H3>
 public <A HREF="../../../../../../com/google/gwt/user/client/ui/MenuItem.html" title="class in com.google.gwt.user.client.ui">MenuItem</A> <B>addItem</B>(<A HREF="../../../../../../com/google/gwt/safehtml/shared/SafeHtml.html" title="interface in com.google.gwt.safehtml.shared">SafeHtml</A>&nbsp;html,
                         <A HREF="../../../../../../com/google/gwt/user/client/Command.html" title="interface in com.google.gwt.user.client">Command</A>&nbsp;cmd)</PRE>
 <DL>
-<DD>Adds a menu item to the bar containing SafeHtml, that will fire the given 
+<DD>Adds a menu item to the bar containing SafeHtml, that will fire the given
  command when it is selected.
 <P>
 <DD><DL>
@@ -1131,7 +1132,7 @@ public <A HREF="../../../../../../com/google/gwt/user/client/ui/MenuItemSeparato
 </DL>
 </DD>
 <DD><DL>
-<DT><B>Parameters:</B><DD><CODE>beforeIndex</CODE> - the index where the seperator should be inserted
+<DT><B>Parameters:</B><DD><CODE>beforeIndex</CODE> - the index where the separator should be inserted
 <DT><B>Returns:</B><DD>the <A HREF="../../../../../../com/google/gwt/user/client/ui/MenuItemSeparator.html" title="class in com.google.gwt.user.client.ui"><CODE>MenuItemSeparator</CODE></A> object
 <DT><B>Throws:</B>
 <DD><CODE>java.lang.IndexOutOfBoundsException</CODE> - if <code>beforeIndex</code> is out of
@@ -1154,7 +1155,7 @@ public <A HREF="../../../../../../com/google/gwt/user/client/ui/MenuItemSeparato
 </DL>
 </DD>
 <DD><DL>
-<DT><B>Parameters:</B><DD><CODE>separator</CODE> - the <A HREF="../../../../../../com/google/gwt/user/client/ui/MenuItemSeparator.html" title="class in com.google.gwt.user.client.ui"><CODE>MenuItemSeparator</CODE></A> to be inserted<DD><CODE>beforeIndex</CODE> - the index where the seperator should be inserted
+<DT><B>Parameters:</B><DD><CODE>separator</CODE> - the <A HREF="../../../../../../com/google/gwt/user/client/ui/MenuItemSeparator.html" title="class in com.google.gwt.user.client.ui"><CODE>MenuItemSeparator</CODE></A> to be inserted<DD><CODE>beforeIndex</CODE> - the index where the separator should be inserted
 <DT><B>Returns:</B><DD>the <A HREF="../../../../../../com/google/gwt/user/client/ui/MenuItemSeparator.html" title="class in com.google.gwt.user.client.ui"><CODE>MenuItemSeparator</CODE></A> object
 <DT><B>Throws:</B>
 <DD><CODE>java.lang.IndexOutOfBoundsException</CODE> - if <code>beforeIndex</code> is out of
@@ -1168,12 +1169,14 @@ isAnimationEnabled</H3>
 <PRE>
 public boolean <B>isAnimationEnabled</B>()</PRE>
 <DL>
+<DD><B>Description copied from interface: <CODE><A HREF="../../../../../../com/google/gwt/user/client/ui/HasAnimation.html#isAnimationEnabled()">HasAnimation</A></CODE></B></DD>
+<DD>Returns true if animations are enabled, false if not.
+<P>
 <DD><DL>
 <DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../../com/google/gwt/user/client/ui/HasAnimation.html#isAnimationEnabled()">isAnimationEnabled</A></CODE> in interface <CODE><A HREF="../../../../../../com/google/gwt/user/client/ui/HasAnimation.html" title="interface in com.google.gwt.user.client.ui">HasAnimation</A></CODE></DL>
 </DD>
 <DD><DL>
-
-<DT><B>Returns:</B><DD>true if animations are enabled, false if not</DL>
+</DL>
 </DD>
 </DL>
 <HR>
@@ -1417,7 +1420,7 @@ protected void <B>onDetach</B>()</PRE>
 <DD><p>
  This method is called when a widget is detached from the browser's
  document. To receive notification before a Widget is removed from the
- document, override the <A HREF="../../../../../../com/google/gwt/user/client/ui/Widget.html#onUnload()"><CODE>Widget.onUnload()</CODE></A> method.
+ document, override the <A HREF="../../../../../../com/google/gwt/user/client/ui/Widget.html#onUnload()"><CODE>Widget.onUnload()</CODE></A> method or use <A HREF="../../../../../../com/google/gwt/user/client/ui/Widget.html#addAttachHandler(com.google.gwt.event.logical.shared.AttachEvent.Handler)"><CODE>Widget.addAttachHandler(com.google.gwt.event.logical.shared.AttachEvent.Handler)</CODE></A>.
  </p>
  <p>
  It is strongly recommended that you override <A HREF="../../../../../../com/google/gwt/user/client/ui/Widget.html#onUnload()"><CODE>Widget.onUnload()</CODE></A> or
@@ -1475,6 +1478,7 @@ protected void <B>onEnsureDebugId</B>(java.lang.String&nbsp;baseID)</PRE>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-summary.html"><FONT CLASS="NavBarFont1"><B>Package</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Class</B></FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="class-use/MenuBar.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
@@ -1483,7 +1487,7 @@ protected void <B>onEnsureDebugId</B>(java.lang.String&nbsp;baseID)</PRE>
 </TABLE>
 </TD>
 <TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
-GWT 2.1.0.RC1</EM>
+GWT 2.1.1</EM>
 </TD>
 </TR>
 

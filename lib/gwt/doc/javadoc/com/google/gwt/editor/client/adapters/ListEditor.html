@@ -38,6 +38,7 @@ function windowTitle()
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-summary.html"><FONT CLASS="NavBarFont1"><B>Package</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Class</B></FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="class-use/ListEditor.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
@@ -46,7 +47,7 @@ function windowTitle()
 </TABLE>
 </TD>
 <TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
-GWT 2.1.0.RC1</EM>
+GWT 2.1.1</EM>
 </TD>
 </TR>
 
@@ -157,7 +158,7 @@ Manages a list of objects and their associated Editors.
 <TD><CODE><B><A HREF="../../../../../../com/google/gwt/editor/client/adapters/ListEditor.html#ListEditor(com.google.gwt.editor.client.adapters.EditorSource)">ListEditor</A></B>(<A HREF="../../../../../../com/google/gwt/editor/client/adapters/EditorSource.html" title="class in com.google.gwt.editor.client.adapters">EditorSource</A>&lt;<A HREF="../../../../../../com/google/gwt/editor/client/adapters/ListEditor.html" title="type parameter in ListEditor">E</A>&gt;&nbsp;source)</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Create a ListEditor backed by an EditorSource.</TD>
 </TR>
 </TABLE>
 &nbsp;
@@ -175,8 +176,7 @@ Manages a list of objects and their associated Editors.
 <TD><CODE><B><A HREF="../../../../../../com/google/gwt/editor/client/adapters/ListEditor.html#createEditorForTraversal()">createEditorForTraversal</A></B>()</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns an canonical sub-editor instance that will be used by the driver
- for computing all edited paths.</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Creates a temporary sub-Editor to use for traversal.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -209,7 +209,8 @@ Manages a list of objects and their associated Editors.
 <TD><CODE><B><A HREF="../../../../../../com/google/gwt/editor/client/adapters/ListEditor.html#getPathElement(E)">getPathElement</A></B>(<A HREF="../../../../../../com/google/gwt/editor/client/adapters/ListEditor.html" title="type parameter in ListEditor">E</A>&nbsp;subEditor)</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Used to implement <A HREF="../../../../../../com/google/gwt/editor/client/EditorDelegate.html#getPath()"><CODE>EditorDelegate.getPath()</CODE></A>.</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Used to implement <A HREF="../../../../../../com/google/gwt/editor/client/EditorDelegate.html#getPath()"><CODE>EditorDelegate.getPath()</CODE></A> for the component
+ Editors.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -251,7 +252,7 @@ Manages a list of objects and their associated Editors.
 <TD><CODE><B><A HREF="../../../../../../com/google/gwt/editor/client/adapters/ListEditor.html#setEditorChain(com.google.gwt.editor.client.CompositeEditor.EditorChain)">setEditorChain</A></B>(<A HREF="../../../../../../com/google/gwt/editor/client/CompositeEditor.EditorChain.html" title="interface in com.google.gwt.editor.client">CompositeEditor.EditorChain</A>&lt;<A HREF="../../../../../../com/google/gwt/editor/client/adapters/ListEditor.html" title="type parameter in ListEditor">T</A>,<A HREF="../../../../../../com/google/gwt/editor/client/adapters/ListEditor.html" title="type parameter in ListEditor">E</A>&gt;&nbsp;chain)</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Called by the Editor framework to provide the <A HREF="../../../../../../com/google/gwt/editor/client/CompositeEditor.EditorChain.html" title="interface in com.google.gwt.editor.client"><CODE>CompositeEditor.EditorChain</CODE></A>.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -259,7 +260,7 @@ Manages a list of objects and their associated Editors.
 <TD><CODE><B><A HREF="../../../../../../com/google/gwt/editor/client/adapters/ListEditor.html#setValue(java.util.List)">setValue</A></B>(java.util.List&lt;<A HREF="../../../../../../com/google/gwt/editor/client/adapters/ListEditor.html" title="type parameter in ListEditor">T</A>&gt;&nbsp;value)</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Called by the EditorDriver to set the object the Editor is peered with</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sets the ListEditor's backing data.</TD>
 </TR>
 </TABLE>
 &nbsp;<A NAME="methods_inherited_from_class_java.lang.Object"><!-- --></A>
@@ -289,6 +290,10 @@ ListEditor</H3>
 <PRE>
 protected <B>ListEditor</B>(<A HREF="../../../../../../com/google/gwt/editor/client/adapters/EditorSource.html" title="class in com.google.gwt.editor.client.adapters">EditorSource</A>&lt;<A HREF="../../../../../../com/google/gwt/editor/client/adapters/ListEditor.html" title="type parameter in ListEditor">E</A>&gt;&nbsp;source)</PRE>
 <DL>
+<DD>Create a ListEditor backed by an EditorSource.
+<P>
+<DL>
+<DT><B>Parameters:</B><DD><CODE>source</CODE> - the EditorSource which will create sub-Editors</DL>
 </DL>
 
 <!-- ============ METHOD DETAIL ========== -->
@@ -323,15 +328,14 @@ createEditorForTraversal</H3>
 <PRE>
 public <A HREF="../../../../../../com/google/gwt/editor/client/adapters/ListEditor.html" title="type parameter in ListEditor">E</A> <B>createEditorForTraversal</B>()</PRE>
 <DL>
-<DD><B>Description copied from interface: <CODE><A HREF="../../../../../../com/google/gwt/editor/client/CompositeEditor.html#createEditorForTraversal()">CompositeEditor</A></CODE></B></DD>
-<DD>Returns an canonical sub-editor instance that will be used by the driver
- for computing all edited paths.
+<DD>Creates a temporary sub-Editor to use for traversal.
 <P>
 <DD><DL>
 <DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../../com/google/gwt/editor/client/CompositeEditor.html#createEditorForTraversal()">createEditorForTraversal</A></CODE> in interface <CODE><A HREF="../../../../../../com/google/gwt/editor/client/CompositeEditor.html" title="interface in com.google.gwt.editor.client">CompositeEditor</A>&lt;java.util.List&lt;<A HREF="../../../../../../com/google/gwt/editor/client/adapters/ListEditor.html" title="type parameter in ListEditor">T</A>&gt;,<A HREF="../../../../../../com/google/gwt/editor/client/adapters/ListEditor.html" title="type parameter in ListEditor">T</A>,<A HREF="../../../../../../com/google/gwt/editor/client/adapters/ListEditor.html" title="type parameter in ListEditor">E</A> extends <A HREF="../../../../../../com/google/gwt/editor/client/Editor.html" title="interface in com.google.gwt.editor.client">Editor</A>&lt;<A HREF="../../../../../../com/google/gwt/editor/client/adapters/ListEditor.html" title="type parameter in ListEditor">T</A>&gt;&gt;</CODE></DL>
 </DD>
 <DD><DL>
-</DL>
+
+<DT><B>Returns:</B><DD>an <A HREF="../../../../../../com/google/gwt/editor/client/Editor.html" title="interface in com.google.gwt.editor.client"><CODE>Editor</CODE></A> of type E</DL>
 </DD>
 </DL>
 <HR>
@@ -367,7 +371,8 @@ public java.util.List&lt;<A HREF="../../../../../../com/google/gwt/editor/client
 </DL>
 </DD>
 <DD><DL>
-</DL>
+
+<DT><B>Returns:</B><DD>a List of <A HREF="../../../../../../com/google/gwt/editor/client/Editor.html" title="interface in com.google.gwt.editor.client"><CODE>Editors</CODE></A> of type E</DL>
 </DD>
 </DL>
 <HR>
@@ -393,7 +398,8 @@ public java.util.List&lt;<A HREF="../../../../../../com/google/gwt/editor/client
 </DL>
 </DD>
 <DD><DL>
-</DL>
+
+<DT><B>Returns:</B><DD>a live view of the ListEditor's backing data</DL>
 </DD>
 </DL>
 <HR>
@@ -404,13 +410,16 @@ getPathElement</H3>
 public java.lang.String <B>getPathElement</B>(<A HREF="../../../../../../com/google/gwt/editor/client/adapters/ListEditor.html" title="type parameter in ListEditor">E</A>&nbsp;subEditor)</PRE>
 <DL>
 <DD><B>Description copied from interface: <CODE><A HREF="../../../../../../com/google/gwt/editor/client/CompositeEditor.html#getPathElement(E)">CompositeEditor</A></CODE></B></DD>
-<DD>Used to implement <A HREF="../../../../../../com/google/gwt/editor/client/EditorDelegate.html#getPath()"><CODE>EditorDelegate.getPath()</CODE></A>.
+<DD>Used to implement <A HREF="../../../../../../com/google/gwt/editor/client/EditorDelegate.html#getPath()"><CODE>EditorDelegate.getPath()</CODE></A> for the component
+ Editors.
 <P>
 <DD><DL>
 <DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../../com/google/gwt/editor/client/CompositeEditor.html#getPathElement(E)">getPathElement</A></CODE> in interface <CODE><A HREF="../../../../../../com/google/gwt/editor/client/CompositeEditor.html" title="interface in com.google.gwt.editor.client">CompositeEditor</A>&lt;java.util.List&lt;<A HREF="../../../../../../com/google/gwt/editor/client/adapters/ListEditor.html" title="type parameter in ListEditor">T</A>&gt;,<A HREF="../../../../../../com/google/gwt/editor/client/adapters/ListEditor.html" title="type parameter in ListEditor">T</A>,<A HREF="../../../../../../com/google/gwt/editor/client/adapters/ListEditor.html" title="type parameter in ListEditor">E</A> extends <A HREF="../../../../../../com/google/gwt/editor/client/Editor.html" title="interface in com.google.gwt.editor.client">Editor</A>&lt;<A HREF="../../../../../../com/google/gwt/editor/client/adapters/ListEditor.html" title="type parameter in ListEditor">T</A>&gt;&gt;</CODE></DL>
 </DD>
 <DD><DL>
-</DL>
+<DT><B>Parameters:</B><DD><CODE>subEditor</CODE> - an instance of the Editor type previously passed into
+          <A HREF="../../../../../../com/google/gwt/editor/client/CompositeEditor.EditorChain.html#attach(C, E)"><CODE>CompositeEditor.EditorChain.attach(C, E)</CODE></A>
+<DT><B>Returns:</B><DD>the path element as a String</DL>
 </DD>
 </DL>
 <HR>
@@ -428,7 +437,7 @@ public void <B>onPropertyChange</B>(java.lang.String...&nbsp;paths)</PRE>
 <DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../../com/google/gwt/editor/client/ValueAwareEditor.html#onPropertyChange(java.lang.String...)">onPropertyChange</A></CODE> in interface <CODE><A HREF="../../../../../../com/google/gwt/editor/client/ValueAwareEditor.html" title="interface in com.google.gwt.editor.client">ValueAwareEditor</A>&lt;java.util.List&lt;<A HREF="../../../../../../com/google/gwt/editor/client/adapters/ListEditor.html" title="type parameter in ListEditor">T</A>&gt;&gt;</CODE></DL>
 </DD>
 <DD><DL>
-</DL>
+<DT><B>Parameters:</B><DD><CODE>paths</CODE> - a list of String paths</DL>
 </DD>
 </DL>
 <HR>
@@ -446,7 +455,7 @@ public void <B>setDelegate</B>(<A HREF="../../../../../../com/google/gwt/editor/
 <DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../../com/google/gwt/editor/client/HasEditorDelegate.html#setDelegate(com.google.gwt.editor.client.EditorDelegate)">setDelegate</A></CODE> in interface <CODE><A HREF="../../../../../../com/google/gwt/editor/client/HasEditorDelegate.html" title="interface in com.google.gwt.editor.client">HasEditorDelegate</A>&lt;java.util.List&lt;<A HREF="../../../../../../com/google/gwt/editor/client/adapters/ListEditor.html" title="type parameter in ListEditor">T</A>&gt;&gt;</CODE></DL>
 </DD>
 <DD><DL>
-</DL>
+<DT><B>Parameters:</B><DD><CODE>delegate</CODE> - an <A HREF="../../../../../../com/google/gwt/editor/client/EditorDelegate.html" title="interface in com.google.gwt.editor.client"><CODE>EditorDelegate</CODE></A> of type T</DL>
 </DD>
 </DL>
 <HR>
@@ -456,11 +465,14 @@ setEditorChain</H3>
 <PRE>
 public void <B>setEditorChain</B>(<A HREF="../../../../../../com/google/gwt/editor/client/CompositeEditor.EditorChain.html" title="interface in com.google.gwt.editor.client">CompositeEditor.EditorChain</A>&lt;<A HREF="../../../../../../com/google/gwt/editor/client/adapters/ListEditor.html" title="type parameter in ListEditor">T</A>,<A HREF="../../../../../../com/google/gwt/editor/client/adapters/ListEditor.html" title="type parameter in ListEditor">E</A>&gt;&nbsp;chain)</PRE>
 <DL>
+<DD><B>Description copied from interface: <CODE><A HREF="../../../../../../com/google/gwt/editor/client/CompositeEditor.html#setEditorChain(com.google.gwt.editor.client.CompositeEditor.EditorChain)">CompositeEditor</A></CODE></B></DD>
+<DD>Called by the Editor framework to provide the <A HREF="../../../../../../com/google/gwt/editor/client/CompositeEditor.EditorChain.html" title="interface in com.google.gwt.editor.client"><CODE>CompositeEditor.EditorChain</CODE></A>.
+<P>
 <DD><DL>
 <DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../../com/google/gwt/editor/client/CompositeEditor.html#setEditorChain(com.google.gwt.editor.client.CompositeEditor.EditorChain)">setEditorChain</A></CODE> in interface <CODE><A HREF="../../../../../../com/google/gwt/editor/client/CompositeEditor.html" title="interface in com.google.gwt.editor.client">CompositeEditor</A>&lt;java.util.List&lt;<A HREF="../../../../../../com/google/gwt/editor/client/adapters/ListEditor.html" title="type parameter in ListEditor">T</A>&gt;,<A HREF="../../../../../../com/google/gwt/editor/client/adapters/ListEditor.html" title="type parameter in ListEditor">T</A>,<A HREF="../../../../../../com/google/gwt/editor/client/adapters/ListEditor.html" title="type parameter in ListEditor">E</A> extends <A HREF="../../../../../../com/google/gwt/editor/client/Editor.html" title="interface in com.google.gwt.editor.client">Editor</A>&lt;<A HREF="../../../../../../com/google/gwt/editor/client/adapters/ListEditor.html" title="type parameter in ListEditor">T</A>&gt;&gt;</CODE></DL>
 </DD>
 <DD><DL>
-</DL>
+<DT><B>Parameters:</B><DD><CODE>chain</CODE> - an <A HREF="../../../../../../com/google/gwt/editor/client/CompositeEditor.EditorChain.html" title="interface in com.google.gwt.editor.client"><CODE>CompositeEditor.EditorChain</CODE></A> instance</DL>
 </DD>
 </DL>
 <HR>
@@ -470,17 +482,13 @@ setValue</H3>
 <PRE>
 public void <B>setValue</B>(java.util.List&lt;<A HREF="../../../../../../com/google/gwt/editor/client/adapters/ListEditor.html" title="type parameter in ListEditor">T</A>&gt;&nbsp;value)</PRE>
 <DL>
-<DD><B>Description copied from interface: <CODE><A HREF="../../../../../../com/google/gwt/editor/client/ValueAwareEditor.html#setValue(T)">ValueAwareEditor</A></CODE></B></DD>
-<DD>Called by the EditorDriver to set the object the Editor is peered with
- <p>
- ValueAwareEditors should preferentially use sub-editors to alter the
- properties of the object being edited.
+<DD>Sets the ListEditor's backing data.
 <P>
 <DD><DL>
 <DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../../com/google/gwt/editor/client/ValueAwareEditor.html#setValue(T)">setValue</A></CODE> in interface <CODE><A HREF="../../../../../../com/google/gwt/editor/client/ValueAwareEditor.html" title="interface in com.google.gwt.editor.client">ValueAwareEditor</A>&lt;java.util.List&lt;<A HREF="../../../../../../com/google/gwt/editor/client/adapters/ListEditor.html" title="type parameter in ListEditor">T</A>&gt;&gt;</CODE></DL>
 </DD>
 <DD><DL>
-</DL>
+<DT><B>Parameters:</B><DD><CODE>value</CODE> - a List of data objects of type T</DL>
 </DD>
 </DL>
 <!-- ========= END OF CLASS DATA ========= -->
@@ -499,6 +507,7 @@ public void <B>setValue</B>(java.util.List&lt;<A HREF="../../../../../../com/goo
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-summary.html"><FONT CLASS="NavBarFont1"><B>Package</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Class</B></FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="class-use/ListEditor.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
@@ -507,7 +516,7 @@ public void <B>setValue</B>(java.util.List&lt;<A HREF="../../../../../../com/goo
 </TABLE>
 </TD>
 <TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
-GWT 2.1.0.RC1</EM>
+GWT 2.1.1</EM>
 </TD>
 </TR>
 

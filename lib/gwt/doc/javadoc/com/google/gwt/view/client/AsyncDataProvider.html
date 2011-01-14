@@ -38,6 +38,7 @@ function windowTitle()
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-summary.html"><FONT CLASS="NavBarFont1"><B>Package</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Class</B></FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="class-use/AsyncDataProvider.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
@@ -46,14 +47,14 @@ function windowTitle()
 </TABLE>
 </TD>
 <TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
-GWT 2.1.0.RC1</EM>
+GWT 2.1.1</EM>
 </TD>
 </TR>
 
 <TR>
 <TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
 &nbsp;<A HREF="../../../../../com/google/gwt/view/client/AbstractDataProvider.html" title="class in com.google.gwt.view.client"><B>PREV CLASS</B></A>&nbsp;
-&nbsp;<A HREF="../../../../../com/google/gwt/view/client/DefaultSelectionModel.html" title="class in com.google.gwt.view.client"><B>NEXT CLASS</B></A></FONT></TD>
+&nbsp;<A HREF="../../../../../com/google/gwt/view/client/CellPreviewEvent.html" title="class in com.google.gwt.view.client"><B>NEXT CLASS</B></A></FONT></TD>
 <TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
   <A HREF="../../../../../index.html?com/google/gwt/view/client/AsyncDataProvider.html" target="_top"><B>FRAMES</B></A>  &nbsp;
 &nbsp;<A HREF="AsyncDataProvider.html" target="_top"><B>NO FRAMES</B></A>  &nbsp;
@@ -114,14 +115,14 @@ An implementation of <A HREF="../../../../../com/google/gwt/view/client/Abstract
   /**
    * A custom {@link AsyncDataProvider}.
    */
-  private static class MyDataProvider extends AsyncDataProvider<String> {
+  private static class MyDataProvider extends AsyncDataProvider&lt;String&gt; {
     /**
      * {@link #onRangeChanged(HasData)} is called when the table requests a new
      * range of data. You can push data back to the displays using
      * {@link #updateRowData(int, List)}.
      */
     @Override
-    protected void onRangeChanged(HasData<String> display) {
+    protected void onRangeChanged(HasData&lt;String&gt; display) {
       // Get the new range.
       final Range range = display.getVisibleRange();
 
@@ -136,8 +137,8 @@ An implementation of <A HREF="../../../../../com/google/gwt/view/client/Abstract
           // server.
           int start = range.getStart();
           int length = range.getLength();
-          List<String> newData = new ArrayList<String>();
-          for (int i = start; i < start + length; i++) {
+          List&lt;String&gt; newData = new ArrayList&lt;String&gt;();
+          for (int i = start; i &lt; start + length; i++) {
             newData.add("Item " + i);
           }
 
@@ -151,7 +152,7 @@ An implementation of <A HREF="../../../../../com/google/gwt/view/client/Abstract
 
   public void onModuleLoad() {
     // Create a CellList.
-    CellList<String> cellList = new CellList<String>(new TextCell());
+    CellList&lt;String&gt; cellList = new CellList&lt;String&gt;(new TextCell());
 
     // Create a data provider.
     MyDataProvider dataProvider = new MyDataProvider();
@@ -345,6 +346,7 @@ public void <B>updateRowData</B>(int&nbsp;start,
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-summary.html"><FONT CLASS="NavBarFont1"><B>Package</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Class</B></FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="class-use/AsyncDataProvider.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
@@ -353,14 +355,14 @@ public void <B>updateRowData</B>(int&nbsp;start,
 </TABLE>
 </TD>
 <TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
-GWT 2.1.0.RC1</EM>
+GWT 2.1.1</EM>
 </TD>
 </TR>
 
 <TR>
 <TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
 &nbsp;<A HREF="../../../../../com/google/gwt/view/client/AbstractDataProvider.html" title="class in com.google.gwt.view.client"><B>PREV CLASS</B></A>&nbsp;
-&nbsp;<A HREF="../../../../../com/google/gwt/view/client/DefaultSelectionModel.html" title="class in com.google.gwt.view.client"><B>NEXT CLASS</B></A></FONT></TD>
+&nbsp;<A HREF="../../../../../com/google/gwt/view/client/CellPreviewEvent.html" title="class in com.google.gwt.view.client"><B>NEXT CLASS</B></A></FONT></TD>
 <TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
   <A HREF="../../../../../index.html?com/google/gwt/view/client/AsyncDataProvider.html" target="_top"><B>FRAMES</B></A>  &nbsp;
 &nbsp;<A HREF="AsyncDataProvider.html" target="_top"><B>NO FRAMES</B></A>  &nbsp;

@@ -38,6 +38,7 @@ function windowTitle()
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-summary.html"><FONT CLASS="NavBarFont1"><B>Package</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Class</B></FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="class-use/NumberFormat.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
@@ -46,7 +47,7 @@ function windowTitle()
 </TABLE>
 </TD>
 <TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
-GWT 2.1.0.RC1</EM>
+GWT 2.1.1</EM>
 </TD>
 </TR>
 
@@ -99,7 +100,7 @@ java.lang.Object
 
 <P>
 Formats and parses numbers using locale-sensitive patterns.
- 
+
  This class provides comprehensive and flexible support for a wide variety of
  localized formats, including
  <ul>
@@ -117,7 +118,7 @@ Formats and parses numbers using locale-sensitive patterns.
  possible to parse and format numbers in any locale, including support for
  Western, Arabic, and Indic digits</li>
  </ul>
- 
+
  <h3>Patterns</h3>
  <p>
  Formatting and parsing are based on customizable patterns that can include a
@@ -128,7 +129,7 @@ Formats and parses numbers using locale-sensitive patterns.
  hand, stand for other characters, strings, or classes of characters. For
  example, the '<code>#</code>' character is replaced by a localized digit.
  </p>
- 
+
  <p>
  Often the replacement character is the same as the pattern character. In the
  U.S. locale, for example, the '<code>,</code>' grouping character is
@@ -139,7 +140,7 @@ Formats and parses numbers using locale-sensitive patterns.
  presence. For example, if the percent character is seen, then the value is
  multiplied by 100 before being displayed.
  </p>
- 
+
  <p>
  The characters listed below are used in patterns. Localized symbols use the
  corresponding characters taken from corresponding locale symbol collection,
@@ -149,7 +150,7 @@ Formats and parses numbers using locale-sensitive patterns.
  meaning) the character must be quoted. There are some exceptions to this
  which are noted below.
  </p>
- 
+
  <table>
  <tr>
  <th>Symbol</th>
@@ -157,42 +158,42 @@ Formats and parses numbers using locale-sensitive patterns.
  <th>Localized?</th>
  <th>Meaning</th>
  </tr>
- 
+
  <tr>
  <td><code>0</code></td>
  <td>Number</td>
  <td>Yes</td>
  <td>Digit</td>
  </tr>
- 
+
  <tr>
  <td><code>#</code></td>
  <td>Number</td>
  <td>Yes</td>
  <td>Digit, zero shows as absent</td>
  </tr>
- 
+
  <tr>
  <td><code>.</code></td>
  <td>Number</td>
  <td>Yes</td>
  <td>Decimal separator or monetary decimal separator</td>
  </tr>
- 
+
  <tr>
  <td><code>-</code></td>
  <td>Number</td>
  <td>Yes</td>
  <td>Minus sign</td>
  </tr>
- 
+
  <tr>
  <td><code>,</code></td>
  <td>Number</td>
  <td>Yes</td>
  <td>Grouping separator</td>
  </tr>
- 
+
  <tr>
  <td><code>E</code></td>
  <td>Number</td>
@@ -200,28 +201,28 @@ Formats and parses numbers using locale-sensitive patterns.
  <td>Separates mantissa and exponent in scientific notation; need not be
  quoted in prefix or suffix</td>
  </tr>
- 
+
  <tr>
  <td><code>;</code></td>
  <td>Subpattern boundary</td>
  <td>Yes</td>
  <td>Separates positive and negative subpatterns</td>
  </tr>
- 
+
  <tr>
  <td><code>%</code></td>
  <td>Prefix or suffix</td>
  <td>Yes</td>
  <td>Multiply by 100 and show as percentage</td>
  </tr>
- 
+
  <tr>
  <td><nobr><code>‰</code> (\u2030)</nobr></td>
  <td>Prefix or suffix</td>
  <td>Yes</td>
  <td>Multiply by 1000 and show as per mille</td>
  </tr>
- 
+
  <tr>
  <td><nobr><code>¤</code> (\u00A4)</nobr></td>
  <td>Prefix or suffix</td>
@@ -230,7 +231,7 @@ Formats and parses numbers using locale-sensitive patterns.
  international currency symbol; if present in a pattern, the monetary decimal
  separator is used instead of the decimal separator</td>
  </tr>
- 
+
  <tr>
  <td><code>'</code></td>
  <td>Prefix or suffix</td>
@@ -240,9 +241,9 @@ Formats and parses numbers using locale-sensitive patterns.
  to create a single quote itself, use two in succession, such as
  <code>"# o''clock"</code></td>
  </tr>
- 
+
  </table>
- 
+
  <p>
  A <code>NumberFormat</code> pattern contains a postive and negative
  subpattern separated by a semicolon, such as
@@ -256,7 +257,7 @@ Formats and parses numbers using locale-sensitive patterns.
  subpattern. That means that <code>"#,##0.0#;(#)"</code> has precisely the
  same result as <code>"#,##0.0#;(#,##0.0#)"</code>.
  </p>
- 
+
  <p>
  The prefixes, suffixes, and various symbols used for infinity, digits,
  thousands separators, decimal separators, etc. may be set to arbitrary
@@ -265,7 +266,7 @@ Formats and parses numbers using locale-sensitive patterns.
  unreliable. For example, the decimal separator and thousands separator should
  be distinct characters, or parsing will be impossible.
  </p>
- 
+
  <p>
  The grouping separator is a character that separates clusters of integer
  digits to make large numbers more legible. It commonly used for thousands,
@@ -273,12 +274,12 @@ Formats and parses numbers using locale-sensitive patterns.
  number of digits between the grouping separators, such as 3 for "100,000,000"
  or 4 for "1 0000 0000".
  </p>
- 
+
  <h3>Pattern Grammar (BNF)</h3>
  <p>
  The pattern itself uses the following grammar:
  </p>
- 
+
  <table>
  <tr>
  <td>pattern</td>
@@ -340,43 +341,43 @@ Formats and parses numbers using locale-sensitive patterns.
  <td>'<code>\u0000</code>'..'<code>\uFFFD</code>' - quote</td>
  </tr>
  </table>
- 
+
  <p>
  Notation:
  </p>
- 
+
  <table>
  <tr>
  <td>X*</td>
  <td style="white-space: nowrap">0 or more instances of X</td>
  </tr>
- 
+
  <tr>
  <td>X?</td>
  <td style="white-space: nowrap">0 or 1 instances of X</td>
  </tr>
- 
+
  <tr>
  <td>X|Y</td>
  <td style="white-space: nowrap">either X or Y</td>
  </tr>
- 
+
  <tr>
  <td>C..D</td>
  <td style="white-space: nowrap">any character from C up to D, inclusive</td>
  </tr>
- 
+
  <tr>
  <td>S-T</td>
  <td style="white-space: nowrap">characters in S, except those in T</td>
  </tr>
  </table>
- 
+
  <p>
  The first subpattern is for positive numbers. The second (optional)
  subpattern is for negative numbers.
  </p>
- 
+
   <h3>Example</h3> <blockquote><pre>public class NumberFormatExample implements EntryPoint {
 
   public void onModuleLoad() {
@@ -498,7 +499,8 @@ Formats and parses numbers using locale-sensitive patterns.
 <TD><CODE><B><A HREF="../../../../../com/google/gwt/i18n/client/NumberFormat.html#forcedLatinDigits()">forcedLatinDigits</A></B>()</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns true if all new NumberFormat instances will use latin digits and
+ related characters rather than the localized ones.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -605,7 +607,8 @@ Formats and parses numbers using locale-sensitive patterns.
 <TD><CODE><B><A HREF="../../../../../com/google/gwt/i18n/client/NumberFormat.html#getGroupingSize()">getGroupingSize</A></B>()</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns the number of digits between grouping separators in the integer
+ portion of a number.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -613,7 +616,7 @@ Formats and parses numbers using locale-sensitive patterns.
 <TD><CODE><B><A HREF="../../../../../com/google/gwt/i18n/client/NumberFormat.html#getNegativePrefix()">getNegativePrefix</A></B>()</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns the prefix to use for negative values.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -621,7 +624,7 @@ Formats and parses numbers using locale-sensitive patterns.
 <TD><CODE><B><A HREF="../../../../../com/google/gwt/i18n/client/NumberFormat.html#getNegativeSuffix()">getNegativeSuffix</A></B>()</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns the suffix to use for negative values.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -629,7 +632,7 @@ Formats and parses numbers using locale-sensitive patterns.
 <TD><CODE><B><A HREF="../../../../../com/google/gwt/i18n/client/NumberFormat.html#getNumberConstants()">getNumberConstants</A></B>()</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns the NumberConstants instance for this formatter.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -653,7 +656,7 @@ Formats and parses numbers using locale-sensitive patterns.
 <TD><CODE><B><A HREF="../../../../../com/google/gwt/i18n/client/NumberFormat.html#getPositivePrefix()">getPositivePrefix</A></B>()</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns the prefix to use for positive values.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -661,7 +664,7 @@ Formats and parses numbers using locale-sensitive patterns.
 <TD><CODE><B><A HREF="../../../../../com/google/gwt/i18n/client/NumberFormat.html#getPositiveSuffix()">getPositiveSuffix</A></B>()</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns the suffix to use for positive values.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -677,7 +680,7 @@ Formats and parses numbers using locale-sensitive patterns.
 <TD><CODE><B><A HREF="../../../../../com/google/gwt/i18n/client/NumberFormat.html#isDecimalSeparatorAlwaysShown()">isDecimalSeparatorAlwaysShown</A></B>()</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns true if the decimal separator should always be shown.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -816,10 +819,11 @@ forcedLatinDigits</H3>
 <PRE>
 public static boolean <B>forcedLatinDigits</B>()</PRE>
 <DL>
+<DD>Returns true if all new NumberFormat instances will use latin digits and
+ related characters rather than the localized ones.
+<P>
 <DD><DL>
-
-<DT><B>Returns:</B><DD>true if all new NumberFormat instances will use latin digits
-     and related characters rather than the localized ones.</DL>
+</DL>
 </DD>
 </DL>
 <HR>
@@ -864,7 +868,7 @@ public static <A HREF="../../../../../com/google/gwt/i18n/client/NumberFormat.ht
  specified currency.
 <P>
 <DD><DL>
-<DT><B>Parameters:</B><DD><CODE>currencyCode</CODE> - valid currency code, as defined in 
+<DT><B>Parameters:</B><DD><CODE>currencyCode</CODE> - valid currency code, as defined in
      com.google.gwt.i18n.client.constants.CurrencyCodeMapConstants.properties
 <DT><B>Returns:</B><DD>a <code>NumberFormat</code> capable of producing and consuming
          currency format for the default locale
@@ -1088,7 +1092,7 @@ public double <B>parse</B>(java.lang.String&nbsp;text,
              throws java.lang.NumberFormatException</PRE>
 <DL>
 <DD>Parses text to produce a numeric value.
- 
+
  <p>
  The method attempts to parse text starting at the index given by pos. If
  parsing succeeds, then the index of <code>pos</code> is updated to the
@@ -1162,10 +1166,11 @@ getGroupingSize</H3>
 <PRE>
 protected int <B>getGroupingSize</B>()</PRE>
 <DL>
+<DD>Returns the number of digits between grouping separators in the integer
+ portion of a number.
+<P>
 <DD><DL>
-
-<DT><B>Returns:</B><DD>the number of digits between grouping separators in the integer
-         portion of a number.</DL>
+</DL>
 </DD>
 </DL>
 <HR>
@@ -1175,9 +1180,10 @@ getNegativePrefix</H3>
 <PRE>
 protected java.lang.String <B>getNegativePrefix</B>()</PRE>
 <DL>
+<DD>Returns the prefix to use for negative values.
+<P>
 <DD><DL>
-
-<DT><B>Returns:</B><DD>the prefix to use for negative values.</DL>
+</DL>
 </DD>
 </DL>
 <HR>
@@ -1187,9 +1193,10 @@ getNegativeSuffix</H3>
 <PRE>
 protected java.lang.String <B>getNegativeSuffix</B>()</PRE>
 <DL>
+<DD>Returns the suffix to use for negative values.
+<P>
 <DD><DL>
-
-<DT><B>Returns:</B><DD>the suffix to use for negative values.</DL>
+</DL>
 </DD>
 </DL>
 <HR>
@@ -1199,9 +1206,10 @@ getNumberConstants</H3>
 <PRE>
 protected <A HREF="../../../../../com/google/gwt/i18n/client/constants/NumberConstants.html" title="interface in com.google.gwt.i18n.client.constants">NumberConstants</A> <B>getNumberConstants</B>()</PRE>
 <DL>
+<DD>Returns the NumberConstants instance for this formatter.
+<P>
 <DD><DL>
-
-<DT><B>Returns:</B><DD>the NumberConstants instance for this formatter.</DL>
+</DL>
 </DD>
 </DL>
 <HR>
@@ -1211,9 +1219,10 @@ getPositivePrefix</H3>
 <PRE>
 protected java.lang.String <B>getPositivePrefix</B>()</PRE>
 <DL>
+<DD>Returns the prefix to use for positive values.
+<P>
 <DD><DL>
-
-<DT><B>Returns:</B><DD>the prefix to use for positive values.</DL>
+</DL>
 </DD>
 </DL>
 <HR>
@@ -1223,9 +1232,10 @@ getPositiveSuffix</H3>
 <PRE>
 protected java.lang.String <B>getPositiveSuffix</B>()</PRE>
 <DL>
+<DD>Returns the suffix to use for positive values.
+<P>
 <DD><DL>
-
-<DT><B>Returns:</B><DD>the suffix to use for positive values.</DL>
+</DL>
 </DD>
 </DL>
 <HR>
@@ -1235,9 +1245,10 @@ isDecimalSeparatorAlwaysShown</H3>
 <PRE>
 protected boolean <B>isDecimalSeparatorAlwaysShown</B>()</PRE>
 <DL>
+<DD>Returns true if the decimal separator should always be shown.
+<P>
 <DD><DL>
-
-<DT><B>Returns:</B><DD>true if the decimal separator should always be shown.</DL>
+</DL>
 </DD>
 </DL>
 <!-- ========= END OF CLASS DATA ========= -->
@@ -1256,6 +1267,7 @@ protected boolean <B>isDecimalSeparatorAlwaysShown</B>()</PRE>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-summary.html"><FONT CLASS="NavBarFont1"><B>Package</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Class</B></FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="class-use/NumberFormat.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
@@ -1264,7 +1276,7 @@ protected boolean <B>isDecimalSeparatorAlwaysShown</B>()</PRE>
 </TABLE>
 </TD>
 <TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
-GWT 2.1.0.RC1</EM>
+GWT 2.1.1</EM>
 </TD>
 </TR>
 

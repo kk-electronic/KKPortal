@@ -38,6 +38,7 @@ function windowTitle()
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-summary.html"><FONT CLASS="NavBarFont1"><B>Package</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Class</B></FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="class-use/BidiFormatter.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
@@ -46,7 +47,7 @@ function windowTitle()
 </TABLE>
 </TD>
 <TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
-GWT 2.1.0.RC1</EM>
+GWT 2.1.1</EM>
 </TD>
 </TR>
 
@@ -202,7 +203,8 @@ Utility class for formatting text for display in a potentially
 <TD><CODE><B><A HREF="../../../../../com/google/gwt/i18n/shared/BidiFormatter.html#getAlwaysSpan()">getAlwaysSpan</A></B>()</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns whether the span structure added by the formatter should be stable,
+ i.e., spans added even when the direction does not need to be declared.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -210,7 +212,7 @@ Utility class for formatting text for display in a potentially
 <TD><CODE><B><A HREF="../../../../../com/google/gwt/i18n/shared/BidiFormatter.html#getContextDir()">getContextDir</A></B>()</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns the context direction.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -275,7 +277,7 @@ Utility class for formatting text for display in a potentially
 <TD><CODE><B><A HREF="../../../../../com/google/gwt/i18n/shared/BidiFormatter.html#isRtlContext()">isRtlContext</A></B>()</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns whether the context direction is RTL.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -670,11 +672,11 @@ getAlwaysSpan</H3>
 <PRE>
 public boolean <B>getAlwaysSpan</B>()</PRE>
 <DL>
+<DD>Returns whether the span structure added by the formatter should be stable,
+ i.e., spans added even when the direction does not need to be declared.
+<P>
 <DD><DL>
-
-<DT><B>Returns:</B><DD>Whether the span structure added by the formatter should be stable,
-         i.e. spans added even when the direction does not need to be
-         declared</DL>
+</DL>
 </DD>
 </DL>
 <HR>
@@ -684,9 +686,10 @@ getContextDir</H3>
 <PRE>
 public <A HREF="../../../../../com/google/gwt/i18n/client/HasDirection.Direction.html" title="enum in com.google.gwt.i18n.client">HasDirection.Direction</A> <B>getContextDir</B>()</PRE>
 <DL>
+<DD>Returns the context direction.
+<P>
 <DD><DL>
-
-<DT><B>Returns:</B><DD>The context direction</DL>
+</DL>
 </DD>
 </DL>
 <HR>
@@ -696,9 +699,10 @@ isRtlContext</H3>
 <PRE>
 public boolean <B>isRtlContext</B>()</PRE>
 <DL>
+<DD>Returns whether the context direction is RTL.
+<P>
 <DD><DL>
-
-<DT><B>Returns:</B><DD>Whether the context direction is RTL</DL>
+</DL>
 </DD>
 </DL>
 <HR>
@@ -1052,6 +1056,7 @@ public java.lang.String <B>unicodeWrapWithKnownDir</B>(<A HREF="../../../../../c
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-summary.html"><FONT CLASS="NavBarFont1"><B>Package</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Class</B></FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="class-use/BidiFormatter.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
@@ -1060,7 +1065,7 @@ public java.lang.String <B>unicodeWrapWithKnownDir</B>(<A HREF="../../../../../c
 </TABLE>
 </TD>
 <TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
-GWT 2.1.0.RC1</EM>
+GWT 2.1.1</EM>
 </TD>
 </TR>
 

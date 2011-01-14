@@ -38,6 +38,7 @@ function windowTitle()
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-summary.html"><FONT CLASS="NavBarFont1"><B>Package</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Class</B></FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="class-use/WriteOperation.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
@@ -46,7 +47,7 @@ function windowTitle()
 </TABLE>
 </TD>
 <TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
-GWT 2.1.0.RC1</EM>
+GWT 2.1.1</EM>
 </TD>
 </TR>
 
@@ -102,18 +103,12 @@ java.lang.Object
 </PRE>
 
 <P>
-<p>
- <span style="color:red">Experimental API: This class is still under rapid
- development, and is very likely to be deleted. Use it at your own risk.
- </span>
- </p>
- The enum used in <A HREF="../../../../../com/google/gwt/requestfactory/shared/EntityProxyChange.html" title="class in com.google.gwt.requestfactory.shared"><CODE>EntityProxyChange</CODE></A>.
+The enum used in <A HREF="../../../../../com/google/gwt/requestfactory/shared/EntityProxyChange.html" title="class in com.google.gwt.requestfactory.shared"><CODE>EntityProxyChange</CODE></A>.
  <ul>
  <li>A PERSIST event is fired after a proxy that was created on the client has
  been persisted on the server.
  <li>An UPDATE event is fired whenever a client encounters a proxy for the
- first time, or encounters a proxy with new fields, or encounters a proxy
- whose fields have been updated.
+ first time, or encounters a proxy whose version number has changed.
  <li>A DELETE event is fired after a proxy that was deleted on the client is
  deleted on the server as well.
  </ul>
@@ -165,7 +160,8 @@ java.lang.Object
 <TD><CODE><B><A HREF="../../../../../com/google/gwt/requestfactory/shared/WriteOperation.html#getUnObfuscatedEnumName()">getUnObfuscatedEnumName</A></B>()</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns the unobfuscated name of the event associated with this
+ <A HREF="../../../../../com/google/gwt/requestfactory/shared/WriteOperation.html" title="enum in com.google.gwt.requestfactory.shared"><CODE>WriteOperation</CODE></A>.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -302,8 +298,12 @@ getUnObfuscatedEnumName</H3>
 <PRE>
 public java.lang.String <B>getUnObfuscatedEnumName</B>()</PRE>
 <DL>
+<DD>Returns the unobfuscated name of the event associated with this
+ <A HREF="../../../../../com/google/gwt/requestfactory/shared/WriteOperation.html" title="enum in com.google.gwt.requestfactory.shared"><CODE>WriteOperation</CODE></A>.
+<P>
 <DD><DL>
-</DL>
+
+<DT><B>Returns:</B><DD>one of "PERSIST", "UPDATE", or "DELETE"</DL>
 </DD>
 </DL>
 <!-- ========= END OF CLASS DATA ========= -->
@@ -322,6 +322,7 @@ public java.lang.String <B>getUnObfuscatedEnumName</B>()</PRE>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-summary.html"><FONT CLASS="NavBarFont1"><B>Package</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Class</B></FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="class-use/WriteOperation.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
@@ -330,7 +331,7 @@ public java.lang.String <B>getUnObfuscatedEnumName</B>()</PRE>
 </TABLE>
 </TD>
 <TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
-GWT 2.1.0.RC1</EM>
+GWT 2.1.1</EM>
 </TD>
 </TR>
 

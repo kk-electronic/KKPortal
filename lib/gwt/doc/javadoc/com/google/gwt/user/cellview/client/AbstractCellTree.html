@@ -38,6 +38,7 @@ function windowTitle()
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-summary.html"><FONT CLASS="NavBarFont1"><B>Package</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Class</B></FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="class-use/AbstractCellTree.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
@@ -46,7 +47,7 @@ function windowTitle()
 </TABLE>
 </TD>
 <TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
-GWT 2.1.0.RC1</EM>
+GWT 2.1.1</EM>
 </TD>
 </TR>
 
@@ -202,7 +203,7 @@ An abstract representation of a tree widget that renders items using
 <TD><CODE><B><A HREF="../../../../../../com/google/gwt/user/cellview/client/AbstractCellTree.html#addOpenHandler(com.google.gwt.event.logical.shared.OpenHandler)">addOpenHandler</A></B>(<A HREF="../../../../../../com/google/gwt/event/logical/shared/OpenHandler.html" title="interface in com.google.gwt.event.logical.shared">OpenHandler</A>&lt;<A HREF="../../../../../../com/google/gwt/user/cellview/client/TreeNode.html" title="interface in com.google.gwt.user.cellview.client">TreeNode</A>&gt;&nbsp;handler)</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Adds a <A HREF="../../../../../../com/google/gwt/event/logical/shared/OpenEvent.html" title="class in com.google.gwt.event.logical.shared"><CODE>OpenEvent</CODE></A> handler.</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Adds an <A HREF="../../../../../../com/google/gwt/event/logical/shared/OpenEvent.html" title="class in com.google.gwt.event.logical.shared"><CODE>OpenEvent</CODE></A> handler.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -373,7 +374,7 @@ addOpenHandler</H3>
 public <A HREF="../../../../../../com/google/gwt/event/shared/HandlerRegistration.html" title="interface in com.google.gwt.event.shared">HandlerRegistration</A> <B>addOpenHandler</B>(<A HREF="../../../../../../com/google/gwt/event/logical/shared/OpenHandler.html" title="interface in com.google.gwt.event.logical.shared">OpenHandler</A>&lt;<A HREF="../../../../../../com/google/gwt/user/cellview/client/TreeNode.html" title="interface in com.google.gwt.user.cellview.client">TreeNode</A>&gt;&nbsp;handler)</PRE>
 <DL>
 <DD><B>Description copied from interface: <CODE><A HREF="../../../../../../com/google/gwt/event/logical/shared/HasOpenHandlers.html#addOpenHandler(com.google.gwt.event.logical.shared.OpenHandler)">HasOpenHandlers</A></CODE></B></DD>
-<DD>Adds a <A HREF="../../../../../../com/google/gwt/event/logical/shared/OpenEvent.html" title="class in com.google.gwt.event.logical.shared"><CODE>OpenEvent</CODE></A> handler.
+<DD>Adds an <A HREF="../../../../../../com/google/gwt/event/logical/shared/OpenEvent.html" title="class in com.google.gwt.event.logical.shared"><CODE>OpenEvent</CODE></A> handler.
 <P>
 <DD><DL>
 <DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../../com/google/gwt/event/logical/shared/HasOpenHandlers.html#addOpenHandler(com.google.gwt.event.logical.shared.OpenHandler)">addOpenHandler</A></CODE> in interface <CODE><A HREF="../../../../../../com/google/gwt/event/logical/shared/HasOpenHandlers.html" title="interface in com.google.gwt.event.logical.shared">HasOpenHandlers</A>&lt;<A HREF="../../../../../../com/google/gwt/user/cellview/client/TreeNode.html" title="interface in com.google.gwt.user.cellview.client">TreeNode</A>&gt;</CODE></DL>
@@ -397,7 +398,8 @@ public <A HREF="../../../../../../com/google/gwt/user/cellview/client/HasKeyboar
 <DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../../com/google/gwt/user/cellview/client/HasKeyboardSelectionPolicy.html#getKeyboardSelectionPolicy()">getKeyboardSelectionPolicy</A></CODE> in interface <CODE><A HREF="../../../../../../com/google/gwt/user/cellview/client/HasKeyboardSelectionPolicy.html" title="interface in com.google.gwt.user.cellview.client">HasKeyboardSelectionPolicy</A></CODE></DL>
 </DD>
 <DD><DL>
-</DL>
+
+<DT><B>Returns:</B><DD>the selection policy<DT><B>See Also:</B><DD><A HREF="../../../../../../com/google/gwt/user/cellview/client/HasKeyboardSelectionPolicy.html#setKeyboardSelectionPolicy(com.google.gwt.user.cellview.client.HasKeyboardSelectionPolicy.KeyboardSelectionPolicy)"><CODE>HasKeyboardSelectionPolicy.setKeyboardSelectionPolicy(KeyboardSelectionPolicy)</CODE></A></DL>
 </DD>
 </DL>
 <HR>
@@ -448,7 +450,7 @@ public void <B>setKeyboardSelectionPolicy</B>(<A HREF="../../../../../../com/goo
 <DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../../com/google/gwt/user/cellview/client/HasKeyboardSelectionPolicy.html#setKeyboardSelectionPolicy(com.google.gwt.user.cellview.client.HasKeyboardSelectionPolicy.KeyboardSelectionPolicy)">setKeyboardSelectionPolicy</A></CODE> in interface <CODE><A HREF="../../../../../../com/google/gwt/user/cellview/client/HasKeyboardSelectionPolicy.html" title="interface in com.google.gwt.user.cellview.client">HasKeyboardSelectionPolicy</A></CODE></DL>
 </DD>
 <DD><DL>
-</DL>
+<DT><B>Parameters:</B><DD><CODE>policy</CODE> - the selection policy<DT><B>See Also:</B><DD><A HREF="../../../../../../com/google/gwt/user/cellview/client/HasKeyboardSelectionPolicy.html#getKeyboardSelectionPolicy()"><CODE>HasKeyboardSelectionPolicy.getKeyboardSelectionPolicy()</CODE></A></DL>
 </DD>
 </DL>
 <HR>
@@ -519,6 +521,7 @@ protected boolean <B>isLeaf</B>(java.lang.Object&nbsp;value)</PRE>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-summary.html"><FONT CLASS="NavBarFont1"><B>Package</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Class</B></FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="class-use/AbstractCellTree.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
@@ -527,7 +530,7 @@ protected boolean <B>isLeaf</B>(java.lang.Object&nbsp;value)</PRE>
 </TABLE>
 </TD>
 <TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
-GWT 2.1.0.RC1</EM>
+GWT 2.1.1</EM>
 </TD>
 </TR>
 

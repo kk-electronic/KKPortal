@@ -38,6 +38,7 @@ function windowTitle()
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-summary.html"><FONT CLASS="NavBarFont1"><B>Package</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Class</B></FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="class-use/DefaultDateTimeFormatInfo.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
@@ -46,7 +47,7 @@ function windowTitle()
 </TABLE>
 </TD>
 <TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
-GWT 2.1.0.RC1</EM>
+GWT 2.1.1</EM>
 </TD>
 </TR>
 
@@ -144,7 +145,8 @@ Default implementation of DateTimeFormatInfo interface, using values from
 <TD><CODE><B><A HREF="../../../../../com/google/gwt/i18n/client/DefaultDateTimeFormatInfo.html#ampms()">ampms</A></B>()</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns array of strings containing abbreviations for Ante Meridiem and
+ Post Meridiem.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -152,7 +154,7 @@ Default implementation of DateTimeFormatInfo interface, using values from
 <TD><CODE><B><A HREF="../../../../../com/google/gwt/i18n/client/DefaultDateTimeFormatInfo.html#dateFormat()">dateFormat</A></B>()</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns a safe default date format.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -160,7 +162,7 @@ Default implementation of DateTimeFormatInfo interface, using values from
 <TD><CODE><B><A HREF="../../../../../com/google/gwt/i18n/client/DefaultDateTimeFormatInfo.html#dateFormatFull()">dateFormatFull</A></B>()</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns a "full" date format.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -168,7 +170,7 @@ Default implementation of DateTimeFormatInfo interface, using values from
 <TD><CODE><B><A HREF="../../../../../com/google/gwt/i18n/client/DefaultDateTimeFormatInfo.html#dateFormatLong()">dateFormatLong</A></B>()</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns a "long" date format.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -176,7 +178,7 @@ Default implementation of DateTimeFormatInfo interface, using values from
 <TD><CODE><B><A HREF="../../../../../com/google/gwt/i18n/client/DefaultDateTimeFormatInfo.html#dateFormatMedium()">dateFormatMedium</A></B>()</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns a "medium" date format.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -184,7 +186,7 @@ Default implementation of DateTimeFormatInfo interface, using values from
 <TD><CODE><B><A HREF="../../../../../com/google/gwt/i18n/client/DefaultDateTimeFormatInfo.html#dateFormatShort()">dateFormatShort</A></B>()</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns a "short" date format.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -193,7 +195,7 @@ Default implementation of DateTimeFormatInfo interface, using values from
          java.lang.String&nbsp;datePattern)</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Construct a date/time format from a date format pattern and a time format
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns a date/time format from a date format pattern and a time format
  pattern, using the locale default joining.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
@@ -203,7 +205,7 @@ Default implementation of DateTimeFormatInfo interface, using values from
              java.lang.String&nbsp;datePattern)</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Construct a date/time format from a date format pattern and a time format
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns a date/time format from a date format pattern and a time format
  pattern, using "full" joining.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
@@ -213,7 +215,7 @@ Default implementation of DateTimeFormatInfo interface, using values from
              java.lang.String&nbsp;datePattern)</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Construct a date/time format from a date format pattern and a time format
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns a date/time format from a date format pattern and a time format
  pattern, using "full" joining.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
@@ -223,7 +225,7 @@ Default implementation of DateTimeFormatInfo interface, using values from
                java.lang.String&nbsp;datePattern)</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Construct a date/time format from a date format pattern and a time format
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns a date/time format from a date format pattern and a time format
  pattern, using "full" joining.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
@@ -233,7 +235,7 @@ Default implementation of DateTimeFormatInfo interface, using values from
               java.lang.String&nbsp;datePattern)</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Construct a date/time format from a date format pattern and a time format
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns a date/time format from a date format pattern and a time format
  pattern, using "full" joining.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
@@ -242,7 +244,7 @@ Default implementation of DateTimeFormatInfo interface, using values from
 <TD><CODE><B><A HREF="../../../../../com/google/gwt/i18n/client/DefaultDateTimeFormatInfo.html#erasFull()">erasFull</A></B>()</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns an array of the full era names.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -250,7 +252,7 @@ Default implementation of DateTimeFormatInfo interface, using values from
 <TD><CODE><B><A HREF="../../../../../com/google/gwt/i18n/client/DefaultDateTimeFormatInfo.html#erasShort()">erasShort</A></B>()</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns abbreviations of the era names.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -258,7 +260,8 @@ Default implementation of DateTimeFormatInfo interface, using values from
 <TD><CODE><B><A HREF="../../../../../com/google/gwt/i18n/client/DefaultDateTimeFormatInfo.html#firstDayOfTheWeek()">firstDayOfTheWeek</A></B>()</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns the day which generally comes first in a weekly calendar view, as
+     an index into the return value of <A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html#weekdaysFull()"><CODE>DateTimeFormatInfo.weekdaysFull()</CODE></A>.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -266,7 +269,7 @@ Default implementation of DateTimeFormatInfo interface, using values from
 <TD><CODE><B><A HREF="../../../../../com/google/gwt/i18n/client/DefaultDateTimeFormatInfo.html#formatDay()">formatDay</A></B>()</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns localized format equivalent to the "d" skeleton pattern.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -274,7 +277,7 @@ Default implementation of DateTimeFormatInfo interface, using values from
 <TD><CODE><B><A HREF="../../../../../com/google/gwt/i18n/client/DefaultDateTimeFormatInfo.html#formatHour12Minute()">formatHour12Minute</A></B>()</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns localized format equivalent to the "hm" skeleton pattern.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -282,7 +285,7 @@ Default implementation of DateTimeFormatInfo interface, using values from
 <TD><CODE><B><A HREF="../../../../../com/google/gwt/i18n/client/DefaultDateTimeFormatInfo.html#formatHour12MinuteSecond()">formatHour12MinuteSecond</A></B>()</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns localized format equivalent to the "hms" skeleton pattern.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -290,7 +293,7 @@ Default implementation of DateTimeFormatInfo interface, using values from
 <TD><CODE><B><A HREF="../../../../../com/google/gwt/i18n/client/DefaultDateTimeFormatInfo.html#formatHour24Minute()">formatHour24Minute</A></B>()</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns localized format equivalent to the "Hm" skeleton pattern.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -298,7 +301,7 @@ Default implementation of DateTimeFormatInfo interface, using values from
 <TD><CODE><B><A HREF="../../../../../com/google/gwt/i18n/client/DefaultDateTimeFormatInfo.html#formatHour24MinuteSecond()">formatHour24MinuteSecond</A></B>()</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns localized format equivalent to the "Hms" skeleton pattern.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -306,7 +309,7 @@ Default implementation of DateTimeFormatInfo interface, using values from
 <TD><CODE><B><A HREF="../../../../../com/google/gwt/i18n/client/DefaultDateTimeFormatInfo.html#formatMinuteSecond()">formatMinuteSecond</A></B>()</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns localized format equivalent to the "ms" skeleton pattern.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -314,7 +317,7 @@ Default implementation of DateTimeFormatInfo interface, using values from
 <TD><CODE><B><A HREF="../../../../../com/google/gwt/i18n/client/DefaultDateTimeFormatInfo.html#formatMonthAbbrev()">formatMonthAbbrev</A></B>()</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns localized format equivalent to the "MMM" skeleton pattern.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -322,7 +325,7 @@ Default implementation of DateTimeFormatInfo interface, using values from
 <TD><CODE><B><A HREF="../../../../../com/google/gwt/i18n/client/DefaultDateTimeFormatInfo.html#formatMonthAbbrevDay()">formatMonthAbbrevDay</A></B>()</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns localized format equivalent to the "MMMd" skeleton pattern.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -330,7 +333,7 @@ Default implementation of DateTimeFormatInfo interface, using values from
 <TD><CODE><B><A HREF="../../../../../com/google/gwt/i18n/client/DefaultDateTimeFormatInfo.html#formatMonthFull()">formatMonthFull</A></B>()</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns localized format equivalent to the "MMMM" skeleton pattern.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -338,7 +341,7 @@ Default implementation of DateTimeFormatInfo interface, using values from
 <TD><CODE><B><A HREF="../../../../../com/google/gwt/i18n/client/DefaultDateTimeFormatInfo.html#formatMonthFullDay()">formatMonthFullDay</A></B>()</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns localized format equivalent to the "MMMMd" skeleton pattern.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -346,7 +349,7 @@ Default implementation of DateTimeFormatInfo interface, using values from
 <TD><CODE><B><A HREF="../../../../../com/google/gwt/i18n/client/DefaultDateTimeFormatInfo.html#formatMonthFullWeekdayDay()">formatMonthFullWeekdayDay</A></B>()</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns localized format equivalent to the "MMMMEEEEd" skeleton pattern.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -354,7 +357,7 @@ Default implementation of DateTimeFormatInfo interface, using values from
 <TD><CODE><B><A HREF="../../../../../com/google/gwt/i18n/client/DefaultDateTimeFormatInfo.html#formatMonthNumDay()">formatMonthNumDay</A></B>()</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns localized format equivalent to the "Md" skeleton pattern.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -362,7 +365,7 @@ Default implementation of DateTimeFormatInfo interface, using values from
 <TD><CODE><B><A HREF="../../../../../com/google/gwt/i18n/client/DefaultDateTimeFormatInfo.html#formatYear()">formatYear</A></B>()</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns localized format equivalent to the "y" skeleton pattern.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -370,7 +373,7 @@ Default implementation of DateTimeFormatInfo interface, using values from
 <TD><CODE><B><A HREF="../../../../../com/google/gwt/i18n/client/DefaultDateTimeFormatInfo.html#formatYearMonthAbbrev()">formatYearMonthAbbrev</A></B>()</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns localized format equivalent to the "yMMM" skeleton pattern.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -378,7 +381,7 @@ Default implementation of DateTimeFormatInfo interface, using values from
 <TD><CODE><B><A HREF="../../../../../com/google/gwt/i18n/client/DefaultDateTimeFormatInfo.html#formatYearMonthAbbrevDay()">formatYearMonthAbbrevDay</A></B>()</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns localized format equivalent to the "yMMMd" skeleton pattern.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -386,7 +389,7 @@ Default implementation of DateTimeFormatInfo interface, using values from
 <TD><CODE><B><A HREF="../../../../../com/google/gwt/i18n/client/DefaultDateTimeFormatInfo.html#formatYearMonthFull()">formatYearMonthFull</A></B>()</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns localized format equivalent to the "yMMMM" skeleton pattern.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -394,7 +397,7 @@ Default implementation of DateTimeFormatInfo interface, using values from
 <TD><CODE><B><A HREF="../../../../../com/google/gwt/i18n/client/DefaultDateTimeFormatInfo.html#formatYearMonthFullDay()">formatYearMonthFullDay</A></B>()</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns localized format equivalent to the "yMMMMd" skeleton pattern.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -402,7 +405,7 @@ Default implementation of DateTimeFormatInfo interface, using values from
 <TD><CODE><B><A HREF="../../../../../com/google/gwt/i18n/client/DefaultDateTimeFormatInfo.html#formatYearMonthNum()">formatYearMonthNum</A></B>()</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns localized format equivalent to the "yM" skeleton pattern.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -410,7 +413,7 @@ Default implementation of DateTimeFormatInfo interface, using values from
 <TD><CODE><B><A HREF="../../../../../com/google/gwt/i18n/client/DefaultDateTimeFormatInfo.html#formatYearMonthNumDay()">formatYearMonthNumDay</A></B>()</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns localized format equivalent to the "yMd" skeleton pattern.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -418,7 +421,7 @@ Default implementation of DateTimeFormatInfo interface, using values from
 <TD><CODE><B><A HREF="../../../../../com/google/gwt/i18n/client/DefaultDateTimeFormatInfo.html#formatYearMonthWeekdayDay()">formatYearMonthWeekdayDay</A></B>()</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns localized format equivalent to the "yMMMEEEd" skeleton pattern.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -426,7 +429,7 @@ Default implementation of DateTimeFormatInfo interface, using values from
 <TD><CODE><B><A HREF="../../../../../com/google/gwt/i18n/client/DefaultDateTimeFormatInfo.html#formatYearQuarterFull()">formatYearQuarterFull</A></B>()</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns localized format equivalent to the "yQQQQ" skeleton pattern.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -434,7 +437,7 @@ Default implementation of DateTimeFormatInfo interface, using values from
 <TD><CODE><B><A HREF="../../../../../com/google/gwt/i18n/client/DefaultDateTimeFormatInfo.html#formatYearQuarterShort()">formatYearQuarterShort</A></B>()</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns localized format equivalent to the "yQ" skeleton pattern.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -442,7 +445,7 @@ Default implementation of DateTimeFormatInfo interface, using values from
 <TD><CODE><B><A HREF="../../../../../com/google/gwt/i18n/client/DefaultDateTimeFormatInfo.html#monthsFull()">monthsFull</A></B>()</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns an array of full month names.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -450,7 +453,7 @@ Default implementation of DateTimeFormatInfo interface, using values from
 <TD><CODE><B><A HREF="../../../../../com/google/gwt/i18n/client/DefaultDateTimeFormatInfo.html#monthsFullStandalone()">monthsFullStandalone</A></B>()</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns an array of month names for use in a stand-alone context.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -458,7 +461,8 @@ Default implementation of DateTimeFormatInfo interface, using values from
 <TD><CODE><B><A HREF="../../../../../com/google/gwt/i18n/client/DefaultDateTimeFormatInfo.html#monthsNarrow()">monthsNarrow</A></B>()</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns an array of the shortest abbreviations for months, typically a
+     single character and not guaranteed to be unique.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -466,7 +470,9 @@ Default implementation of DateTimeFormatInfo interface, using values from
 <TD><CODE><B><A HREF="../../../../../com/google/gwt/i18n/client/DefaultDateTimeFormatInfo.html#monthsNarrowStandalone()">monthsNarrowStandalone</A></B>()</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns an array of the shortest abbreviations for months suitable for use
+     in a stand-alone context, typically a single character and not
+     guaranteed to be unique.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -474,7 +480,7 @@ Default implementation of DateTimeFormatInfo interface, using values from
 <TD><CODE><B><A HREF="../../../../../com/google/gwt/i18n/client/DefaultDateTimeFormatInfo.html#monthsShort()">monthsShort</A></B>()</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns an array of month abbreviations.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -482,7 +488,8 @@ Default implementation of DateTimeFormatInfo interface, using values from
 <TD><CODE><B><A HREF="../../../../../com/google/gwt/i18n/client/DefaultDateTimeFormatInfo.html#monthsShortStandalone()">monthsShortStandalone</A></B>()</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns an array of month abbreviations, suitable for use in a stand-alone
+     context.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -490,7 +497,7 @@ Default implementation of DateTimeFormatInfo interface, using values from
 <TD><CODE><B><A HREF="../../../../../com/google/gwt/i18n/client/DefaultDateTimeFormatInfo.html#quartersFull()">quartersFull</A></B>()</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns an array of full quarter names.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -498,7 +505,7 @@ Default implementation of DateTimeFormatInfo interface, using values from
 <TD><CODE><B><A HREF="../../../../../com/google/gwt/i18n/client/DefaultDateTimeFormatInfo.html#quartersShort()">quartersShort</A></B>()</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns an array of abbreviations for quarters.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -506,7 +513,7 @@ Default implementation of DateTimeFormatInfo interface, using values from
 <TD><CODE><B><A HREF="../../../../../com/google/gwt/i18n/client/DefaultDateTimeFormatInfo.html#timeFormat()">timeFormat</A></B>()</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns a safe default time format.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -514,7 +521,7 @@ Default implementation of DateTimeFormatInfo interface, using values from
 <TD><CODE><B><A HREF="../../../../../com/google/gwt/i18n/client/DefaultDateTimeFormatInfo.html#timeFormatFull()">timeFormatFull</A></B>()</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns a "full" time format.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -522,7 +529,7 @@ Default implementation of DateTimeFormatInfo interface, using values from
 <TD><CODE><B><A HREF="../../../../../com/google/gwt/i18n/client/DefaultDateTimeFormatInfo.html#timeFormatLong()">timeFormatLong</A></B>()</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns a "long" time format.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -530,7 +537,7 @@ Default implementation of DateTimeFormatInfo interface, using values from
 <TD><CODE><B><A HREF="../../../../../com/google/gwt/i18n/client/DefaultDateTimeFormatInfo.html#timeFormatMedium()">timeFormatMedium</A></B>()</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns a "medium" time format.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -538,7 +545,7 @@ Default implementation of DateTimeFormatInfo interface, using values from
 <TD><CODE><B><A HREF="../../../../../com/google/gwt/i18n/client/DefaultDateTimeFormatInfo.html#timeFormatShort()">timeFormatShort</A></B>()</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns a "short" time format.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -546,7 +553,7 @@ Default implementation of DateTimeFormatInfo interface, using values from
 <TD><CODE><B><A HREF="../../../../../com/google/gwt/i18n/client/DefaultDateTimeFormatInfo.html#weekdaysFull()">weekdaysFull</A></B>()</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns an array of the full names of weekdays.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -554,7 +561,8 @@ Default implementation of DateTimeFormatInfo interface, using values from
 <TD><CODE><B><A HREF="../../../../../com/google/gwt/i18n/client/DefaultDateTimeFormatInfo.html#weekdaysFullStandalone()">weekdaysFullStandalone</A></B>()</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns an array of the full names of weekdays, suitable for use in a
+     stand-alone context.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -562,7 +570,8 @@ Default implementation of DateTimeFormatInfo interface, using values from
 <TD><CODE><B><A HREF="../../../../../com/google/gwt/i18n/client/DefaultDateTimeFormatInfo.html#weekdaysNarrow()">weekdaysNarrow</A></B>()</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns an array of the shortest abbreviations for weekdays, typically a
+     single character and not guaranteed to be unique.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -570,7 +579,9 @@ Default implementation of DateTimeFormatInfo interface, using values from
 <TD><CODE><B><A HREF="../../../../../com/google/gwt/i18n/client/DefaultDateTimeFormatInfo.html#weekdaysNarrowStandalone()">weekdaysNarrowStandalone</A></B>()</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns an array of the shortest abbreviations for weekdays suitable for
+     use in a stand-alone context, typically a single character and not
+     guaranteed to be unique.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -578,7 +589,7 @@ Default implementation of DateTimeFormatInfo interface, using values from
 <TD><CODE><B><A HREF="../../../../../com/google/gwt/i18n/client/DefaultDateTimeFormatInfo.html#weekdaysShort()">weekdaysShort</A></B>()</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns an array of abbreviations for weekdays.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -586,7 +597,8 @@ Default implementation of DateTimeFormatInfo interface, using values from
 <TD><CODE><B><A HREF="../../../../../com/google/gwt/i18n/client/DefaultDateTimeFormatInfo.html#weekdaysShortStandalone()">weekdaysShortStandalone</A></B>()</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns an array of abbreviations for weekdays, suitable for use in a
+     stand-alone context.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -594,7 +606,8 @@ Default implementation of DateTimeFormatInfo interface, using values from
 <TD><CODE><B><A HREF="../../../../../com/google/gwt/i18n/client/DefaultDateTimeFormatInfo.html#weekendEnd()">weekendEnd</A></B>()</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns the day which starts the weekend, as an index into the return value
+     of <A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html#weekdaysFull()"><CODE>DateTimeFormatInfo.weekdaysFull()</CODE></A>.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -602,7 +615,8 @@ Default implementation of DateTimeFormatInfo interface, using values from
 <TD><CODE><B><A HREF="../../../../../com/google/gwt/i18n/client/DefaultDateTimeFormatInfo.html#weekendStart()">weekendStart</A></B>()</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns the day which ends the weekend, as an index into the return value
+     of <A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html#weekdaysFull()"><CODE>DateTimeFormatInfo.weekdaysFull()</CODE></A>.</TD>
 </TR>
 </TABLE>
 &nbsp;<A NAME="methods_inherited_from_class_java.lang.Object"><!-- --></A>
@@ -649,13 +663,15 @@ ampms</H3>
 <PRE>
 public java.lang.String[] <B>ampms</B>()</PRE>
 <DL>
+<DD><B>Description copied from interface: <CODE><A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html#ampms()">DateTimeFormatInfo</A></CODE></B></DD>
+<DD>Returns array of strings containing abbreviations for Ante Meridiem and
+ Post Meridiem.
+<P>
 <DD><DL>
 <DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html#ampms()">ampms</A></CODE> in interface <CODE><A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html" title="interface in com.google.gwt.i18n.client">DateTimeFormatInfo</A></CODE></DL>
 </DD>
 <DD><DL>
-
-<DT><B>Returns:</B><DD>array of strings containing abbreviations for Ante Meridiem and
- Post Meridiem.</DL>
+</DL>
 </DD>
 </DL>
 <HR>
@@ -665,12 +681,14 @@ dateFormat</H3>
 <PRE>
 public java.lang.String <B>dateFormat</B>()</PRE>
 <DL>
+<DD><B>Description copied from interface: <CODE><A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html#dateFormat()">DateTimeFormatInfo</A></CODE></B></DD>
+<DD>Returns a safe default date format.
+<P>
 <DD><DL>
 <DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html#dateFormat()">dateFormat</A></CODE> in interface <CODE><A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html" title="interface in com.google.gwt.i18n.client">DateTimeFormatInfo</A></CODE></DL>
 </DD>
 <DD><DL>
-
-<DT><B>Returns:</B><DD>a safe default date format.</DL>
+</DL>
 </DD>
 </DL>
 <HR>
@@ -680,12 +698,14 @@ dateFormatFull</H3>
 <PRE>
 public java.lang.String <B>dateFormatFull</B>()</PRE>
 <DL>
+<DD><B>Description copied from interface: <CODE><A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html#dateFormatFull()">DateTimeFormatInfo</A></CODE></B></DD>
+<DD>Returns a "full" date format.
+<P>
 <DD><DL>
 <DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html#dateFormatFull()">dateFormatFull</A></CODE> in interface <CODE><A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html" title="interface in com.google.gwt.i18n.client">DateTimeFormatInfo</A></CODE></DL>
 </DD>
 <DD><DL>
-
-<DT><B>Returns:</B><DD>a "full" date format.</DL>
+</DL>
 </DD>
 </DL>
 <HR>
@@ -695,12 +715,14 @@ dateFormatLong</H3>
 <PRE>
 public java.lang.String <B>dateFormatLong</B>()</PRE>
 <DL>
+<DD><B>Description copied from interface: <CODE><A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html#dateFormatLong()">DateTimeFormatInfo</A></CODE></B></DD>
+<DD>Returns a "long" date format.
+<P>
 <DD><DL>
 <DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html#dateFormatLong()">dateFormatLong</A></CODE> in interface <CODE><A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html" title="interface in com.google.gwt.i18n.client">DateTimeFormatInfo</A></CODE></DL>
 </DD>
 <DD><DL>
-
-<DT><B>Returns:</B><DD>a "long" date format.</DL>
+</DL>
 </DD>
 </DL>
 <HR>
@@ -710,12 +732,14 @@ dateFormatMedium</H3>
 <PRE>
 public java.lang.String <B>dateFormatMedium</B>()</PRE>
 <DL>
+<DD><B>Description copied from interface: <CODE><A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html#dateFormatMedium()">DateTimeFormatInfo</A></CODE></B></DD>
+<DD>Returns a "medium" date format.
+<P>
 <DD><DL>
 <DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html#dateFormatMedium()">dateFormatMedium</A></CODE> in interface <CODE><A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html" title="interface in com.google.gwt.i18n.client">DateTimeFormatInfo</A></CODE></DL>
 </DD>
 <DD><DL>
-
-<DT><B>Returns:</B><DD>a "medium" date format.</DL>
+</DL>
 </DD>
 </DL>
 <HR>
@@ -725,12 +749,14 @@ dateFormatShort</H3>
 <PRE>
 public java.lang.String <B>dateFormatShort</B>()</PRE>
 <DL>
+<DD><B>Description copied from interface: <CODE><A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html#dateFormatShort()">DateTimeFormatInfo</A></CODE></B></DD>
+<DD>Returns a "short" date format.
+<P>
 <DD><DL>
 <DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html#dateFormatShort()">dateFormatShort</A></CODE> in interface <CODE><A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html" title="interface in com.google.gwt.i18n.client">DateTimeFormatInfo</A></CODE></DL>
 </DD>
 <DD><DL>
-
-<DT><B>Returns:</B><DD>a "short" date format.</DL>
+</DL>
 </DD>
 </DL>
 <HR>
@@ -742,15 +768,14 @@ public java.lang.String <B>dateTime</B>(java.lang.String&nbsp;timePattern,
                                  java.lang.String&nbsp;datePattern)</PRE>
 <DL>
 <DD><B>Description copied from interface: <CODE><A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html#dateTime(java.lang.String, java.lang.String)">DateTimeFormatInfo</A></CODE></B></DD>
-<DD>Construct a date/time format from a date format pattern and a time format
+<DD>Returns a date/time format from a date format pattern and a time format
  pattern, using the locale default joining.
 <P>
 <DD><DL>
 <DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html#dateTime(java.lang.String, java.lang.String)">dateTime</A></CODE> in interface <CODE><A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html" title="interface in com.google.gwt.i18n.client">DateTimeFormatInfo</A></CODE></DL>
 </DD>
 <DD><DL>
-
-<DT><B>Returns:</B><DD>a date/time format</DL>
+<DT><B>Parameters:</B><DD><CODE>timePattern</CODE> - the time pattern String<DD><CODE>datePattern</CODE> - the data pattern String</DL>
 </DD>
 </DL>
 <HR>
@@ -762,15 +787,14 @@ public java.lang.String <B>dateTimeFull</B>(java.lang.String&nbsp;timePattern,
                                      java.lang.String&nbsp;datePattern)</PRE>
 <DL>
 <DD><B>Description copied from interface: <CODE><A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html#dateTimeFull(java.lang.String, java.lang.String)">DateTimeFormatInfo</A></CODE></B></DD>
-<DD>Construct a date/time format from a date format pattern and a time format
+<DD>Returns a date/time format from a date format pattern and a time format
  pattern, using "full" joining.
 <P>
 <DD><DL>
 <DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html#dateTimeFull(java.lang.String, java.lang.String)">dateTimeFull</A></CODE> in interface <CODE><A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html" title="interface in com.google.gwt.i18n.client">DateTimeFormatInfo</A></CODE></DL>
 </DD>
 <DD><DL>
-
-<DT><B>Returns:</B><DD>a date/time format</DL>
+<DT><B>Parameters:</B><DD><CODE>timePattern</CODE> - the time pattern String<DD><CODE>datePattern</CODE> - the data pattern String</DL>
 </DD>
 </DL>
 <HR>
@@ -782,15 +806,14 @@ public java.lang.String <B>dateTimeLong</B>(java.lang.String&nbsp;timePattern,
                                      java.lang.String&nbsp;datePattern)</PRE>
 <DL>
 <DD><B>Description copied from interface: <CODE><A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html#dateTimeLong(java.lang.String, java.lang.String)">DateTimeFormatInfo</A></CODE></B></DD>
-<DD>Construct a date/time format from a date format pattern and a time format
+<DD>Returns a date/time format from a date format pattern and a time format
  pattern, using "full" joining.
 <P>
 <DD><DL>
 <DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html#dateTimeLong(java.lang.String, java.lang.String)">dateTimeLong</A></CODE> in interface <CODE><A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html" title="interface in com.google.gwt.i18n.client">DateTimeFormatInfo</A></CODE></DL>
 </DD>
 <DD><DL>
-
-<DT><B>Returns:</B><DD>a date/time format</DL>
+<DT><B>Parameters:</B><DD><CODE>timePattern</CODE> - the time pattern String<DD><CODE>datePattern</CODE> - the data pattern String</DL>
 </DD>
 </DL>
 <HR>
@@ -802,15 +825,14 @@ public java.lang.String <B>dateTimeMedium</B>(java.lang.String&nbsp;timePattern,
                                        java.lang.String&nbsp;datePattern)</PRE>
 <DL>
 <DD><B>Description copied from interface: <CODE><A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html#dateTimeMedium(java.lang.String, java.lang.String)">DateTimeFormatInfo</A></CODE></B></DD>
-<DD>Construct a date/time format from a date format pattern and a time format
+<DD>Returns a date/time format from a date format pattern and a time format
  pattern, using "full" joining.
 <P>
 <DD><DL>
 <DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html#dateTimeMedium(java.lang.String, java.lang.String)">dateTimeMedium</A></CODE> in interface <CODE><A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html" title="interface in com.google.gwt.i18n.client">DateTimeFormatInfo</A></CODE></DL>
 </DD>
 <DD><DL>
-
-<DT><B>Returns:</B><DD>a date/time format</DL>
+<DT><B>Parameters:</B><DD><CODE>timePattern</CODE> - the time pattern String<DD><CODE>datePattern</CODE> - the data pattern String</DL>
 </DD>
 </DL>
 <HR>
@@ -822,15 +844,14 @@ public java.lang.String <B>dateTimeShort</B>(java.lang.String&nbsp;timePattern,
                                       java.lang.String&nbsp;datePattern)</PRE>
 <DL>
 <DD><B>Description copied from interface: <CODE><A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html#dateTimeShort(java.lang.String, java.lang.String)">DateTimeFormatInfo</A></CODE></B></DD>
-<DD>Construct a date/time format from a date format pattern and a time format
+<DD>Returns a date/time format from a date format pattern and a time format
  pattern, using "full" joining.
 <P>
 <DD><DL>
 <DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html#dateTimeShort(java.lang.String, java.lang.String)">dateTimeShort</A></CODE> in interface <CODE><A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html" title="interface in com.google.gwt.i18n.client">DateTimeFormatInfo</A></CODE></DL>
 </DD>
 <DD><DL>
-
-<DT><B>Returns:</B><DD>a date/time format</DL>
+<DT><B>Parameters:</B><DD><CODE>timePattern</CODE> - the time pattern String<DD><CODE>datePattern</CODE> - the data pattern String</DL>
 </DD>
 </DL>
 <HR>
@@ -840,12 +861,14 @@ erasFull</H3>
 <PRE>
 public java.lang.String[] <B>erasFull</B>()</PRE>
 <DL>
+<DD><B>Description copied from interface: <CODE><A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html#erasFull()">DateTimeFormatInfo</A></CODE></B></DD>
+<DD>Returns an array of the full era names.
+<P>
 <DD><DL>
 <DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html#erasFull()">erasFull</A></CODE> in interface <CODE><A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html" title="interface in com.google.gwt.i18n.client">DateTimeFormatInfo</A></CODE></DL>
 </DD>
 <DD><DL>
-
-<DT><B>Returns:</B><DD>an array of the full era names.</DL>
+</DL>
 </DD>
 </DL>
 <HR>
@@ -855,12 +878,14 @@ erasShort</H3>
 <PRE>
 public java.lang.String[] <B>erasShort</B>()</PRE>
 <DL>
+<DD><B>Description copied from interface: <CODE><A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html#erasShort()">DateTimeFormatInfo</A></CODE></B></DD>
+<DD>Returns abbreviations of the era names.
+<P>
 <DD><DL>
 <DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html#erasShort()">erasShort</A></CODE> in interface <CODE><A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html" title="interface in com.google.gwt.i18n.client">DateTimeFormatInfo</A></CODE></DL>
 </DD>
 <DD><DL>
-
-<DT><B>Returns:</B><DD>abbreviations of the era names.</DL>
+</DL>
 </DD>
 </DL>
 <HR>
@@ -870,13 +895,15 @@ firstDayOfTheWeek</H3>
 <PRE>
 public int <B>firstDayOfTheWeek</B>()</PRE>
 <DL>
+<DD><B>Description copied from interface: <CODE><A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html#firstDayOfTheWeek()">DateTimeFormatInfo</A></CODE></B></DD>
+<DD>Returns the day which generally comes first in a weekly calendar view, as
+     an index into the return value of <A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html#weekdaysFull()"><CODE>DateTimeFormatInfo.weekdaysFull()</CODE></A>.
+<P>
 <DD><DL>
 <DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html#firstDayOfTheWeek()">firstDayOfTheWeek</A></CODE> in interface <CODE><A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html" title="interface in com.google.gwt.i18n.client">DateTimeFormatInfo</A></CODE></DL>
 </DD>
 <DD><DL>
-
-<DT><B>Returns:</B><DD>the day which generally comes first in a weekly calendar view, as
-     an index into the return value of <A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html#weekdaysFull()"><CODE>DateTimeFormatInfo.weekdaysFull()</CODE></A>.</DL>
+</DL>
 </DD>
 </DL>
 <HR>
@@ -886,12 +913,14 @@ formatDay</H3>
 <PRE>
 public java.lang.String <B>formatDay</B>()</PRE>
 <DL>
+<DD><B>Description copied from interface: <CODE><A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html#formatDay()">DateTimeFormatInfo</A></CODE></B></DD>
+<DD>Returns localized format equivalent to the "d" skeleton pattern.
+<P>
 <DD><DL>
 <DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html#formatDay()">formatDay</A></CODE> in interface <CODE><A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html" title="interface in com.google.gwt.i18n.client">DateTimeFormatInfo</A></CODE></DL>
 </DD>
 <DD><DL>
-
-<DT><B>Returns:</B><DD>localized format equivalent to the "d" skeleton pattern.</DL>
+</DL>
 </DD>
 </DL>
 <HR>
@@ -901,12 +930,14 @@ formatHour12Minute</H3>
 <PRE>
 public java.lang.String <B>formatHour12Minute</B>()</PRE>
 <DL>
+<DD><B>Description copied from interface: <CODE><A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html#formatHour12Minute()">DateTimeFormatInfo</A></CODE></B></DD>
+<DD>Returns localized format equivalent to the "hm" skeleton pattern.
+<P>
 <DD><DL>
 <DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html#formatHour12Minute()">formatHour12Minute</A></CODE> in interface <CODE><A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html" title="interface in com.google.gwt.i18n.client">DateTimeFormatInfo</A></CODE></DL>
 </DD>
 <DD><DL>
-
-<DT><B>Returns:</B><DD>localized format equivalent to the "hm" skeleton pattern.</DL>
+</DL>
 </DD>
 </DL>
 <HR>
@@ -916,12 +947,14 @@ formatHour12MinuteSecond</H3>
 <PRE>
 public java.lang.String <B>formatHour12MinuteSecond</B>()</PRE>
 <DL>
+<DD><B>Description copied from interface: <CODE><A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html#formatHour12MinuteSecond()">DateTimeFormatInfo</A></CODE></B></DD>
+<DD>Returns localized format equivalent to the "hms" skeleton pattern.
+<P>
 <DD><DL>
 <DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html#formatHour12MinuteSecond()">formatHour12MinuteSecond</A></CODE> in interface <CODE><A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html" title="interface in com.google.gwt.i18n.client">DateTimeFormatInfo</A></CODE></DL>
 </DD>
 <DD><DL>
-
-<DT><B>Returns:</B><DD>localized format equivalent to the "hms" skeleton pattern.</DL>
+</DL>
 </DD>
 </DL>
 <HR>
@@ -931,12 +964,14 @@ formatHour24Minute</H3>
 <PRE>
 public java.lang.String <B>formatHour24Minute</B>()</PRE>
 <DL>
+<DD><B>Description copied from interface: <CODE><A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html#formatHour24Minute()">DateTimeFormatInfo</A></CODE></B></DD>
+<DD>Returns localized format equivalent to the "Hm" skeleton pattern.
+<P>
 <DD><DL>
 <DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html#formatHour24Minute()">formatHour24Minute</A></CODE> in interface <CODE><A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html" title="interface in com.google.gwt.i18n.client">DateTimeFormatInfo</A></CODE></DL>
 </DD>
 <DD><DL>
-
-<DT><B>Returns:</B><DD>localized format equivalent to the "Hm" skeleton pattern.</DL>
+</DL>
 </DD>
 </DL>
 <HR>
@@ -946,12 +981,14 @@ formatHour24MinuteSecond</H3>
 <PRE>
 public java.lang.String <B>formatHour24MinuteSecond</B>()</PRE>
 <DL>
+<DD><B>Description copied from interface: <CODE><A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html#formatHour24MinuteSecond()">DateTimeFormatInfo</A></CODE></B></DD>
+<DD>Returns localized format equivalent to the "Hms" skeleton pattern.
+<P>
 <DD><DL>
 <DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html#formatHour24MinuteSecond()">formatHour24MinuteSecond</A></CODE> in interface <CODE><A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html" title="interface in com.google.gwt.i18n.client">DateTimeFormatInfo</A></CODE></DL>
 </DD>
 <DD><DL>
-
-<DT><B>Returns:</B><DD>localized format equivalent to the "Hms" skeleton pattern.</DL>
+</DL>
 </DD>
 </DL>
 <HR>
@@ -961,12 +998,14 @@ formatMinuteSecond</H3>
 <PRE>
 public java.lang.String <B>formatMinuteSecond</B>()</PRE>
 <DL>
+<DD><B>Description copied from interface: <CODE><A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html#formatMinuteSecond()">DateTimeFormatInfo</A></CODE></B></DD>
+<DD>Returns localized format equivalent to the "ms" skeleton pattern.
+<P>
 <DD><DL>
 <DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html#formatMinuteSecond()">formatMinuteSecond</A></CODE> in interface <CODE><A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html" title="interface in com.google.gwt.i18n.client">DateTimeFormatInfo</A></CODE></DL>
 </DD>
 <DD><DL>
-
-<DT><B>Returns:</B><DD>localized format equivalent to the "ms" skeleton pattern.</DL>
+</DL>
 </DD>
 </DL>
 <HR>
@@ -976,12 +1015,14 @@ formatMonthAbbrev</H3>
 <PRE>
 public java.lang.String <B>formatMonthAbbrev</B>()</PRE>
 <DL>
+<DD><B>Description copied from interface: <CODE><A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html#formatMonthAbbrev()">DateTimeFormatInfo</A></CODE></B></DD>
+<DD>Returns localized format equivalent to the "MMM" skeleton pattern.
+<P>
 <DD><DL>
 <DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html#formatMonthAbbrev()">formatMonthAbbrev</A></CODE> in interface <CODE><A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html" title="interface in com.google.gwt.i18n.client">DateTimeFormatInfo</A></CODE></DL>
 </DD>
 <DD><DL>
-
-<DT><B>Returns:</B><DD>localized format equivalent to the "MMM" skeleton pattern.</DL>
+</DL>
 </DD>
 </DL>
 <HR>
@@ -991,12 +1032,14 @@ formatMonthAbbrevDay</H3>
 <PRE>
 public java.lang.String <B>formatMonthAbbrevDay</B>()</PRE>
 <DL>
+<DD><B>Description copied from interface: <CODE><A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html#formatMonthAbbrevDay()">DateTimeFormatInfo</A></CODE></B></DD>
+<DD>Returns localized format equivalent to the "MMMd" skeleton pattern.
+<P>
 <DD><DL>
 <DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html#formatMonthAbbrevDay()">formatMonthAbbrevDay</A></CODE> in interface <CODE><A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html" title="interface in com.google.gwt.i18n.client">DateTimeFormatInfo</A></CODE></DL>
 </DD>
 <DD><DL>
-
-<DT><B>Returns:</B><DD>localized format equivalent to the "MMMd" skeleton pattern.</DL>
+</DL>
 </DD>
 </DL>
 <HR>
@@ -1006,12 +1049,14 @@ formatMonthFull</H3>
 <PRE>
 public java.lang.String <B>formatMonthFull</B>()</PRE>
 <DL>
+<DD><B>Description copied from interface: <CODE><A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html#formatMonthFull()">DateTimeFormatInfo</A></CODE></B></DD>
+<DD>Returns localized format equivalent to the "MMMM" skeleton pattern.
+<P>
 <DD><DL>
 <DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html#formatMonthFull()">formatMonthFull</A></CODE> in interface <CODE><A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html" title="interface in com.google.gwt.i18n.client">DateTimeFormatInfo</A></CODE></DL>
 </DD>
 <DD><DL>
-
-<DT><B>Returns:</B><DD>localized format equivalent to the "MMMM" skeleton pattern.</DL>
+</DL>
 </DD>
 </DL>
 <HR>
@@ -1021,12 +1066,14 @@ formatMonthFullDay</H3>
 <PRE>
 public java.lang.String <B>formatMonthFullDay</B>()</PRE>
 <DL>
+<DD><B>Description copied from interface: <CODE><A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html#formatMonthFullDay()">DateTimeFormatInfo</A></CODE></B></DD>
+<DD>Returns localized format equivalent to the "MMMMd" skeleton pattern.
+<P>
 <DD><DL>
 <DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html#formatMonthFullDay()">formatMonthFullDay</A></CODE> in interface <CODE><A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html" title="interface in com.google.gwt.i18n.client">DateTimeFormatInfo</A></CODE></DL>
 </DD>
 <DD><DL>
-
-<DT><B>Returns:</B><DD>localized format equivalent to the "MMMMd" skeleton pattern.</DL>
+</DL>
 </DD>
 </DL>
 <HR>
@@ -1036,12 +1083,14 @@ formatMonthFullWeekdayDay</H3>
 <PRE>
 public java.lang.String <B>formatMonthFullWeekdayDay</B>()</PRE>
 <DL>
+<DD><B>Description copied from interface: <CODE><A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html#formatMonthFullWeekdayDay()">DateTimeFormatInfo</A></CODE></B></DD>
+<DD>Returns localized format equivalent to the "MMMMEEEEd" skeleton pattern.
+<P>
 <DD><DL>
 <DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html#formatMonthFullWeekdayDay()">formatMonthFullWeekdayDay</A></CODE> in interface <CODE><A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html" title="interface in com.google.gwt.i18n.client">DateTimeFormatInfo</A></CODE></DL>
 </DD>
 <DD><DL>
-
-<DT><B>Returns:</B><DD>localized format equivalent to the "MMMMEEEEd" skeleton pattern.</DL>
+</DL>
 </DD>
 </DL>
 <HR>
@@ -1051,12 +1100,14 @@ formatMonthNumDay</H3>
 <PRE>
 public java.lang.String <B>formatMonthNumDay</B>()</PRE>
 <DL>
+<DD><B>Description copied from interface: <CODE><A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html#formatMonthNumDay()">DateTimeFormatInfo</A></CODE></B></DD>
+<DD>Returns localized format equivalent to the "Md" skeleton pattern.
+<P>
 <DD><DL>
 <DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html#formatMonthNumDay()">formatMonthNumDay</A></CODE> in interface <CODE><A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html" title="interface in com.google.gwt.i18n.client">DateTimeFormatInfo</A></CODE></DL>
 </DD>
 <DD><DL>
-
-<DT><B>Returns:</B><DD>localized format equivalent to the "Md" skeleton pattern.</DL>
+</DL>
 </DD>
 </DL>
 <HR>
@@ -1066,12 +1117,14 @@ formatYear</H3>
 <PRE>
 public java.lang.String <B>formatYear</B>()</PRE>
 <DL>
+<DD><B>Description copied from interface: <CODE><A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html#formatYear()">DateTimeFormatInfo</A></CODE></B></DD>
+<DD>Returns localized format equivalent to the "y" skeleton pattern.
+<P>
 <DD><DL>
 <DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html#formatYear()">formatYear</A></CODE> in interface <CODE><A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html" title="interface in com.google.gwt.i18n.client">DateTimeFormatInfo</A></CODE></DL>
 </DD>
 <DD><DL>
-
-<DT><B>Returns:</B><DD>localized format equivalent to the "y" skeleton pattern.</DL>
+</DL>
 </DD>
 </DL>
 <HR>
@@ -1081,12 +1134,14 @@ formatYearMonthAbbrev</H3>
 <PRE>
 public java.lang.String <B>formatYearMonthAbbrev</B>()</PRE>
 <DL>
+<DD><B>Description copied from interface: <CODE><A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html#formatYearMonthAbbrev()">DateTimeFormatInfo</A></CODE></B></DD>
+<DD>Returns localized format equivalent to the "yMMM" skeleton pattern.
+<P>
 <DD><DL>
 <DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html#formatYearMonthAbbrev()">formatYearMonthAbbrev</A></CODE> in interface <CODE><A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html" title="interface in com.google.gwt.i18n.client">DateTimeFormatInfo</A></CODE></DL>
 </DD>
 <DD><DL>
-
-<DT><B>Returns:</B><DD>localized format equivalent to the "yMMM" skeleton pattern.</DL>
+</DL>
 </DD>
 </DL>
 <HR>
@@ -1096,12 +1151,14 @@ formatYearMonthAbbrevDay</H3>
 <PRE>
 public java.lang.String <B>formatYearMonthAbbrevDay</B>()</PRE>
 <DL>
+<DD><B>Description copied from interface: <CODE><A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html#formatYearMonthAbbrevDay()">DateTimeFormatInfo</A></CODE></B></DD>
+<DD>Returns localized format equivalent to the "yMMMd" skeleton pattern.
+<P>
 <DD><DL>
 <DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html#formatYearMonthAbbrevDay()">formatYearMonthAbbrevDay</A></CODE> in interface <CODE><A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html" title="interface in com.google.gwt.i18n.client">DateTimeFormatInfo</A></CODE></DL>
 </DD>
 <DD><DL>
-
-<DT><B>Returns:</B><DD>localized format equivalent to the "yMMMd" skeleton pattern.</DL>
+</DL>
 </DD>
 </DL>
 <HR>
@@ -1111,12 +1168,14 @@ formatYearMonthFull</H3>
 <PRE>
 public java.lang.String <B>formatYearMonthFull</B>()</PRE>
 <DL>
+<DD><B>Description copied from interface: <CODE><A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html#formatYearMonthFull()">DateTimeFormatInfo</A></CODE></B></DD>
+<DD>Returns localized format equivalent to the "yMMMM" skeleton pattern.
+<P>
 <DD><DL>
 <DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html#formatYearMonthFull()">formatYearMonthFull</A></CODE> in interface <CODE><A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html" title="interface in com.google.gwt.i18n.client">DateTimeFormatInfo</A></CODE></DL>
 </DD>
 <DD><DL>
-
-<DT><B>Returns:</B><DD>localized format equivalent to the "yMMMM" skeleton pattern.</DL>
+</DL>
 </DD>
 </DL>
 <HR>
@@ -1126,12 +1185,14 @@ formatYearMonthFullDay</H3>
 <PRE>
 public java.lang.String <B>formatYearMonthFullDay</B>()</PRE>
 <DL>
+<DD><B>Description copied from interface: <CODE><A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html#formatYearMonthFullDay()">DateTimeFormatInfo</A></CODE></B></DD>
+<DD>Returns localized format equivalent to the "yMMMMd" skeleton pattern.
+<P>
 <DD><DL>
 <DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html#formatYearMonthFullDay()">formatYearMonthFullDay</A></CODE> in interface <CODE><A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html" title="interface in com.google.gwt.i18n.client">DateTimeFormatInfo</A></CODE></DL>
 </DD>
 <DD><DL>
-
-<DT><B>Returns:</B><DD>localized format equivalent to the "yMMMMd" skeleton pattern.</DL>
+</DL>
 </DD>
 </DL>
 <HR>
@@ -1141,12 +1202,14 @@ formatYearMonthNum</H3>
 <PRE>
 public java.lang.String <B>formatYearMonthNum</B>()</PRE>
 <DL>
+<DD><B>Description copied from interface: <CODE><A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html#formatYearMonthNum()">DateTimeFormatInfo</A></CODE></B></DD>
+<DD>Returns localized format equivalent to the "yM" skeleton pattern.
+<P>
 <DD><DL>
 <DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html#formatYearMonthNum()">formatYearMonthNum</A></CODE> in interface <CODE><A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html" title="interface in com.google.gwt.i18n.client">DateTimeFormatInfo</A></CODE></DL>
 </DD>
 <DD><DL>
-
-<DT><B>Returns:</B><DD>localized format equivalent to the "yM" skeleton pattern.</DL>
+</DL>
 </DD>
 </DL>
 <HR>
@@ -1156,12 +1219,14 @@ formatYearMonthNumDay</H3>
 <PRE>
 public java.lang.String <B>formatYearMonthNumDay</B>()</PRE>
 <DL>
+<DD><B>Description copied from interface: <CODE><A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html#formatYearMonthNumDay()">DateTimeFormatInfo</A></CODE></B></DD>
+<DD>Returns localized format equivalent to the "yMd" skeleton pattern.
+<P>
 <DD><DL>
 <DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html#formatYearMonthNumDay()">formatYearMonthNumDay</A></CODE> in interface <CODE><A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html" title="interface in com.google.gwt.i18n.client">DateTimeFormatInfo</A></CODE></DL>
 </DD>
 <DD><DL>
-
-<DT><B>Returns:</B><DD>localized format equivalent to the "yMd" skeleton pattern.</DL>
+</DL>
 </DD>
 </DL>
 <HR>
@@ -1171,12 +1236,14 @@ formatYearMonthWeekdayDay</H3>
 <PRE>
 public java.lang.String <B>formatYearMonthWeekdayDay</B>()</PRE>
 <DL>
+<DD><B>Description copied from interface: <CODE><A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html#formatYearMonthWeekdayDay()">DateTimeFormatInfo</A></CODE></B></DD>
+<DD>Returns localized format equivalent to the "yMMMEEEd" skeleton pattern.
+<P>
 <DD><DL>
 <DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html#formatYearMonthWeekdayDay()">formatYearMonthWeekdayDay</A></CODE> in interface <CODE><A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html" title="interface in com.google.gwt.i18n.client">DateTimeFormatInfo</A></CODE></DL>
 </DD>
 <DD><DL>
-
-<DT><B>Returns:</B><DD>localized format equivalent to the "yMMMEEEd" skeleton pattern.</DL>
+</DL>
 </DD>
 </DL>
 <HR>
@@ -1186,12 +1253,14 @@ formatYearQuarterFull</H3>
 <PRE>
 public java.lang.String <B>formatYearQuarterFull</B>()</PRE>
 <DL>
+<DD><B>Description copied from interface: <CODE><A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html#formatYearQuarterFull()">DateTimeFormatInfo</A></CODE></B></DD>
+<DD>Returns localized format equivalent to the "yQQQQ" skeleton pattern.
+<P>
 <DD><DL>
 <DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html#formatYearQuarterFull()">formatYearQuarterFull</A></CODE> in interface <CODE><A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html" title="interface in com.google.gwt.i18n.client">DateTimeFormatInfo</A></CODE></DL>
 </DD>
 <DD><DL>
-
-<DT><B>Returns:</B><DD>localized format equivalent to the "yQQQQ" skeleton pattern.</DL>
+</DL>
 </DD>
 </DL>
 <HR>
@@ -1201,12 +1270,14 @@ formatYearQuarterShort</H3>
 <PRE>
 public java.lang.String <B>formatYearQuarterShort</B>()</PRE>
 <DL>
+<DD><B>Description copied from interface: <CODE><A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html#formatYearQuarterShort()">DateTimeFormatInfo</A></CODE></B></DD>
+<DD>Returns localized format equivalent to the "yQ" skeleton pattern.
+<P>
 <DD><DL>
 <DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html#formatYearQuarterShort()">formatYearQuarterShort</A></CODE> in interface <CODE><A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html" title="interface in com.google.gwt.i18n.client">DateTimeFormatInfo</A></CODE></DL>
 </DD>
 <DD><DL>
-
-<DT><B>Returns:</B><DD>localized format equivalent to the "yQ" skeleton pattern.</DL>
+</DL>
 </DD>
 </DL>
 <HR>
@@ -1216,12 +1287,14 @@ monthsFull</H3>
 <PRE>
 public java.lang.String[] <B>monthsFull</B>()</PRE>
 <DL>
+<DD><B>Description copied from interface: <CODE><A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html#monthsFull()">DateTimeFormatInfo</A></CODE></B></DD>
+<DD>Returns an array of full month names.
+<P>
 <DD><DL>
 <DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html#monthsFull()">monthsFull</A></CODE> in interface <CODE><A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html" title="interface in com.google.gwt.i18n.client">DateTimeFormatInfo</A></CODE></DL>
 </DD>
 <DD><DL>
-
-<DT><B>Returns:</B><DD>an array of full month names.</DL>
+</DL>
 </DD>
 </DL>
 <HR>
@@ -1231,12 +1304,14 @@ monthsFullStandalone</H3>
 <PRE>
 public java.lang.String[] <B>monthsFullStandalone</B>()</PRE>
 <DL>
+<DD><B>Description copied from interface: <CODE><A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html#monthsFullStandalone()">DateTimeFormatInfo</A></CODE></B></DD>
+<DD>Returns an array of month names for use in a stand-alone context.
+<P>
 <DD><DL>
 <DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html#monthsFullStandalone()">monthsFullStandalone</A></CODE> in interface <CODE><A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html" title="interface in com.google.gwt.i18n.client">DateTimeFormatInfo</A></CODE></DL>
 </DD>
 <DD><DL>
-
-<DT><B>Returns:</B><DD>an array of month names for use in a stand-alone context.</DL>
+</DL>
 </DD>
 </DL>
 <HR>
@@ -1246,13 +1321,15 @@ monthsNarrow</H3>
 <PRE>
 public java.lang.String[] <B>monthsNarrow</B>()</PRE>
 <DL>
+<DD><B>Description copied from interface: <CODE><A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html#monthsNarrow()">DateTimeFormatInfo</A></CODE></B></DD>
+<DD>Returns an array of the shortest abbreviations for months, typically a
+     single character and not guaranteed to be unique.
+<P>
 <DD><DL>
 <DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html#monthsNarrow()">monthsNarrow</A></CODE> in interface <CODE><A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html" title="interface in com.google.gwt.i18n.client">DateTimeFormatInfo</A></CODE></DL>
 </DD>
 <DD><DL>
-
-<DT><B>Returns:</B><DD>an array of the shortest abbreviations for months, typically a
-     single character and not guaranteed to be unique.</DL>
+</DL>
 </DD>
 </DL>
 <HR>
@@ -1262,14 +1339,16 @@ monthsNarrowStandalone</H3>
 <PRE>
 public java.lang.String[] <B>monthsNarrowStandalone</B>()</PRE>
 <DL>
+<DD><B>Description copied from interface: <CODE><A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html#monthsNarrowStandalone()">DateTimeFormatInfo</A></CODE></B></DD>
+<DD>Returns an array of the shortest abbreviations for months suitable for use
+     in a stand-alone context, typically a single character and not
+     guaranteed to be unique.
+<P>
 <DD><DL>
 <DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html#monthsNarrowStandalone()">monthsNarrowStandalone</A></CODE> in interface <CODE><A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html" title="interface in com.google.gwt.i18n.client">DateTimeFormatInfo</A></CODE></DL>
 </DD>
 <DD><DL>
-
-<DT><B>Returns:</B><DD>an array of the shortest abbreviations for months suitable for use
-     in a stand-alone context, typically a single character and not
-     guaranteed to be unique.</DL>
+</DL>
 </DD>
 </DL>
 <HR>
@@ -1279,12 +1358,14 @@ monthsShort</H3>
 <PRE>
 public java.lang.String[] <B>monthsShort</B>()</PRE>
 <DL>
+<DD><B>Description copied from interface: <CODE><A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html#monthsShort()">DateTimeFormatInfo</A></CODE></B></DD>
+<DD>Returns an array of month abbreviations.
+<P>
 <DD><DL>
 <DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html#monthsShort()">monthsShort</A></CODE> in interface <CODE><A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html" title="interface in com.google.gwt.i18n.client">DateTimeFormatInfo</A></CODE></DL>
 </DD>
 <DD><DL>
-
-<DT><B>Returns:</B><DD>an array of month abbreviations.</DL>
+</DL>
 </DD>
 </DL>
 <HR>
@@ -1294,13 +1375,15 @@ monthsShortStandalone</H3>
 <PRE>
 public java.lang.String[] <B>monthsShortStandalone</B>()</PRE>
 <DL>
+<DD><B>Description copied from interface: <CODE><A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html#monthsShortStandalone()">DateTimeFormatInfo</A></CODE></B></DD>
+<DD>Returns an array of month abbreviations, suitable for use in a stand-alone
+     context.
+<P>
 <DD><DL>
 <DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html#monthsShortStandalone()">monthsShortStandalone</A></CODE> in interface <CODE><A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html" title="interface in com.google.gwt.i18n.client">DateTimeFormatInfo</A></CODE></DL>
 </DD>
 <DD><DL>
-
-<DT><B>Returns:</B><DD>an array of month abbreviations, suitable for use in a stand-alone
-     context.</DL>
+</DL>
 </DD>
 </DL>
 <HR>
@@ -1310,12 +1393,14 @@ quartersFull</H3>
 <PRE>
 public java.lang.String[] <B>quartersFull</B>()</PRE>
 <DL>
+<DD><B>Description copied from interface: <CODE><A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html#quartersFull()">DateTimeFormatInfo</A></CODE></B></DD>
+<DD>Returns an array of full quarter names.
+<P>
 <DD><DL>
 <DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html#quartersFull()">quartersFull</A></CODE> in interface <CODE><A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html" title="interface in com.google.gwt.i18n.client">DateTimeFormatInfo</A></CODE></DL>
 </DD>
 <DD><DL>
-
-<DT><B>Returns:</B><DD>an array of full quarter names.</DL>
+</DL>
 </DD>
 </DL>
 <HR>
@@ -1325,12 +1410,14 @@ quartersShort</H3>
 <PRE>
 public java.lang.String[] <B>quartersShort</B>()</PRE>
 <DL>
+<DD><B>Description copied from interface: <CODE><A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html#quartersShort()">DateTimeFormatInfo</A></CODE></B></DD>
+<DD>Returns an array of abbreviations for quarters.
+<P>
 <DD><DL>
 <DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html#quartersShort()">quartersShort</A></CODE> in interface <CODE><A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html" title="interface in com.google.gwt.i18n.client">DateTimeFormatInfo</A></CODE></DL>
 </DD>
 <DD><DL>
-
-<DT><B>Returns:</B><DD>an array of abbreviations for quarters.</DL>
+</DL>
 </DD>
 </DL>
 <HR>
@@ -1340,12 +1427,14 @@ timeFormat</H3>
 <PRE>
 public java.lang.String <B>timeFormat</B>()</PRE>
 <DL>
+<DD><B>Description copied from interface: <CODE><A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html#timeFormat()">DateTimeFormatInfo</A></CODE></B></DD>
+<DD>Returns a safe default time format.
+<P>
 <DD><DL>
 <DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html#timeFormat()">timeFormat</A></CODE> in interface <CODE><A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html" title="interface in com.google.gwt.i18n.client">DateTimeFormatInfo</A></CODE></DL>
 </DD>
 <DD><DL>
-
-<DT><B>Returns:</B><DD>a safe default time format.</DL>
+</DL>
 </DD>
 </DL>
 <HR>
@@ -1355,12 +1444,14 @@ timeFormatFull</H3>
 <PRE>
 public java.lang.String <B>timeFormatFull</B>()</PRE>
 <DL>
+<DD><B>Description copied from interface: <CODE><A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html#timeFormatFull()">DateTimeFormatInfo</A></CODE></B></DD>
+<DD>Returns a "full" time format.
+<P>
 <DD><DL>
 <DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html#timeFormatFull()">timeFormatFull</A></CODE> in interface <CODE><A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html" title="interface in com.google.gwt.i18n.client">DateTimeFormatInfo</A></CODE></DL>
 </DD>
 <DD><DL>
-
-<DT><B>Returns:</B><DD>a "full" time format.</DL>
+</DL>
 </DD>
 </DL>
 <HR>
@@ -1370,12 +1461,14 @@ timeFormatLong</H3>
 <PRE>
 public java.lang.String <B>timeFormatLong</B>()</PRE>
 <DL>
+<DD><B>Description copied from interface: <CODE><A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html#timeFormatLong()">DateTimeFormatInfo</A></CODE></B></DD>
+<DD>Returns a "long" time format.
+<P>
 <DD><DL>
 <DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html#timeFormatLong()">timeFormatLong</A></CODE> in interface <CODE><A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html" title="interface in com.google.gwt.i18n.client">DateTimeFormatInfo</A></CODE></DL>
 </DD>
 <DD><DL>
-
-<DT><B>Returns:</B><DD>a "long" time format.</DL>
+</DL>
 </DD>
 </DL>
 <HR>
@@ -1385,12 +1478,14 @@ timeFormatMedium</H3>
 <PRE>
 public java.lang.String <B>timeFormatMedium</B>()</PRE>
 <DL>
+<DD><B>Description copied from interface: <CODE><A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html#timeFormatMedium()">DateTimeFormatInfo</A></CODE></B></DD>
+<DD>Returns a "medium" time format.
+<P>
 <DD><DL>
 <DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html#timeFormatMedium()">timeFormatMedium</A></CODE> in interface <CODE><A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html" title="interface in com.google.gwt.i18n.client">DateTimeFormatInfo</A></CODE></DL>
 </DD>
 <DD><DL>
-
-<DT><B>Returns:</B><DD>a "medium" time format.</DL>
+</DL>
 </DD>
 </DL>
 <HR>
@@ -1400,12 +1495,14 @@ timeFormatShort</H3>
 <PRE>
 public java.lang.String <B>timeFormatShort</B>()</PRE>
 <DL>
+<DD><B>Description copied from interface: <CODE><A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html#timeFormatShort()">DateTimeFormatInfo</A></CODE></B></DD>
+<DD>Returns a "short" time format.
+<P>
 <DD><DL>
 <DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html#timeFormatShort()">timeFormatShort</A></CODE> in interface <CODE><A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html" title="interface in com.google.gwt.i18n.client">DateTimeFormatInfo</A></CODE></DL>
 </DD>
 <DD><DL>
-
-<DT><B>Returns:</B><DD>a "short" time format.</DL>
+</DL>
 </DD>
 </DL>
 <HR>
@@ -1415,12 +1512,14 @@ weekdaysFull</H3>
 <PRE>
 public java.lang.String[] <B>weekdaysFull</B>()</PRE>
 <DL>
+<DD><B>Description copied from interface: <CODE><A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html#weekdaysFull()">DateTimeFormatInfo</A></CODE></B></DD>
+<DD>Returns an array of the full names of weekdays.
+<P>
 <DD><DL>
 <DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html#weekdaysFull()">weekdaysFull</A></CODE> in interface <CODE><A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html" title="interface in com.google.gwt.i18n.client">DateTimeFormatInfo</A></CODE></DL>
 </DD>
 <DD><DL>
-
-<DT><B>Returns:</B><DD>an array of the full names of weekdays.</DL>
+</DL>
 </DD>
 </DL>
 <HR>
@@ -1430,13 +1529,15 @@ weekdaysFullStandalone</H3>
 <PRE>
 public java.lang.String[] <B>weekdaysFullStandalone</B>()</PRE>
 <DL>
+<DD><B>Description copied from interface: <CODE><A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html#weekdaysFullStandalone()">DateTimeFormatInfo</A></CODE></B></DD>
+<DD>Returns an array of the full names of weekdays, suitable for use in a
+     stand-alone context.
+<P>
 <DD><DL>
 <DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html#weekdaysFullStandalone()">weekdaysFullStandalone</A></CODE> in interface <CODE><A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html" title="interface in com.google.gwt.i18n.client">DateTimeFormatInfo</A></CODE></DL>
 </DD>
 <DD><DL>
-
-<DT><B>Returns:</B><DD>an array of the full names of weekdays, suitable for use in a
-     stand-alone context.</DL>
+</DL>
 </DD>
 </DL>
 <HR>
@@ -1446,13 +1547,15 @@ weekdaysNarrow</H3>
 <PRE>
 public java.lang.String[] <B>weekdaysNarrow</B>()</PRE>
 <DL>
+<DD><B>Description copied from interface: <CODE><A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html#weekdaysNarrow()">DateTimeFormatInfo</A></CODE></B></DD>
+<DD>Returns an array of the shortest abbreviations for weekdays, typically a
+     single character and not guaranteed to be unique.
+<P>
 <DD><DL>
 <DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html#weekdaysNarrow()">weekdaysNarrow</A></CODE> in interface <CODE><A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html" title="interface in com.google.gwt.i18n.client">DateTimeFormatInfo</A></CODE></DL>
 </DD>
 <DD><DL>
-
-<DT><B>Returns:</B><DD>an array of the shortest abbreviations for weekdays, typically a
-     single character and not guaranteed to be unique.</DL>
+</DL>
 </DD>
 </DL>
 <HR>
@@ -1462,14 +1565,16 @@ weekdaysNarrowStandalone</H3>
 <PRE>
 public java.lang.String[] <B>weekdaysNarrowStandalone</B>()</PRE>
 <DL>
+<DD><B>Description copied from interface: <CODE><A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html#weekdaysNarrowStandalone()">DateTimeFormatInfo</A></CODE></B></DD>
+<DD>Returns an array of the shortest abbreviations for weekdays suitable for
+     use in a stand-alone context, typically a single character and not
+     guaranteed to be unique.
+<P>
 <DD><DL>
 <DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html#weekdaysNarrowStandalone()">weekdaysNarrowStandalone</A></CODE> in interface <CODE><A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html" title="interface in com.google.gwt.i18n.client">DateTimeFormatInfo</A></CODE></DL>
 </DD>
 <DD><DL>
-
-<DT><B>Returns:</B><DD>an array of the shortest abbreviations for weekdays suitable for
-     use in a stand-alone context, typically a single character and not
-     guaranteed to be unique.</DL>
+</DL>
 </DD>
 </DL>
 <HR>
@@ -1479,12 +1584,14 @@ weekdaysShort</H3>
 <PRE>
 public java.lang.String[] <B>weekdaysShort</B>()</PRE>
 <DL>
+<DD><B>Description copied from interface: <CODE><A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html#weekdaysShort()">DateTimeFormatInfo</A></CODE></B></DD>
+<DD>Returns an array of abbreviations for weekdays.
+<P>
 <DD><DL>
 <DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html#weekdaysShort()">weekdaysShort</A></CODE> in interface <CODE><A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html" title="interface in com.google.gwt.i18n.client">DateTimeFormatInfo</A></CODE></DL>
 </DD>
 <DD><DL>
-
-<DT><B>Returns:</B><DD>an array of abbreviations for weekdays.</DL>
+</DL>
 </DD>
 </DL>
 <HR>
@@ -1494,13 +1601,15 @@ weekdaysShortStandalone</H3>
 <PRE>
 public java.lang.String[] <B>weekdaysShortStandalone</B>()</PRE>
 <DL>
+<DD><B>Description copied from interface: <CODE><A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html#weekdaysShortStandalone()">DateTimeFormatInfo</A></CODE></B></DD>
+<DD>Returns an array of abbreviations for weekdays, suitable for use in a
+     stand-alone context.
+<P>
 <DD><DL>
 <DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html#weekdaysShortStandalone()">weekdaysShortStandalone</A></CODE> in interface <CODE><A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html" title="interface in com.google.gwt.i18n.client">DateTimeFormatInfo</A></CODE></DL>
 </DD>
 <DD><DL>
-
-<DT><B>Returns:</B><DD>an array of abbreviations for weekdays, suitable for use in a
-     stand-alone context.</DL>
+</DL>
 </DD>
 </DL>
 <HR>
@@ -1510,13 +1619,15 @@ weekendEnd</H3>
 <PRE>
 public int <B>weekendEnd</B>()</PRE>
 <DL>
+<DD><B>Description copied from interface: <CODE><A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html#weekendEnd()">DateTimeFormatInfo</A></CODE></B></DD>
+<DD>Returns the day which starts the weekend, as an index into the return value
+     of <A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html#weekdaysFull()"><CODE>DateTimeFormatInfo.weekdaysFull()</CODE></A>.
+<P>
 <DD><DL>
 <DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html#weekendEnd()">weekendEnd</A></CODE> in interface <CODE><A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html" title="interface in com.google.gwt.i18n.client">DateTimeFormatInfo</A></CODE></DL>
 </DD>
 <DD><DL>
-
-<DT><B>Returns:</B><DD>the day which starts the weekend, as an index into the return value
-     of <A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html#weekdaysFull()"><CODE>DateTimeFormatInfo.weekdaysFull()</CODE></A>.</DL>
+</DL>
 </DD>
 </DL>
 <HR>
@@ -1526,16 +1637,18 @@ weekendStart</H3>
 <PRE>
 public int <B>weekendStart</B>()</PRE>
 <DL>
+<DD><B>Description copied from interface: <CODE><A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html#weekendStart()">DateTimeFormatInfo</A></CODE></B></DD>
+<DD>Returns the day which ends the weekend, as an index into the return value
+     of <A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html#weekdaysFull()"><CODE>DateTimeFormatInfo.weekdaysFull()</CODE></A>.  Note that this value may be numerically less
+     than <A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html#weekendEnd()"><CODE>DateTimeFormatInfo.weekendEnd()</CODE></A> - for example, <A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html#weekendEnd()"><CODE>DateTimeFormatInfo.weekendEnd()</CODE></A> of 6
+     and <A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html#weekendStart()"><CODE>DateTimeFormatInfo.weekendStart()</CODE></A> of 0 means Saturday and Sunday are the
+     weekend.
+<P>
 <DD><DL>
 <DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html#weekendStart()">weekendStart</A></CODE> in interface <CODE><A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html" title="interface in com.google.gwt.i18n.client">DateTimeFormatInfo</A></CODE></DL>
 </DD>
 <DD><DL>
-
-<DT><B>Returns:</B><DD>the day which ends the weekend, as an index into the return value
-     of <A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html#weekdaysFull()"><CODE>DateTimeFormatInfo.weekdaysFull()</CODE></A>.  Note that this value may be numerically less
-     than <A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html#weekendEnd()"><CODE>DateTimeFormatInfo.weekendEnd()</CODE></A> - for example, <A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html#weekendEnd()"><CODE>DateTimeFormatInfo.weekendEnd()</CODE></A> of 6
-     and <A HREF="../../../../../com/google/gwt/i18n/client/DateTimeFormatInfo.html#weekendStart()"><CODE>DateTimeFormatInfo.weekendStart()</CODE></A> of 0 means Saturday and Sunday are the
-     weekend.</DL>
+</DL>
 </DD>
 </DL>
 <!-- ========= END OF CLASS DATA ========= -->
@@ -1554,6 +1667,7 @@ public int <B>weekendStart</B>()</PRE>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-summary.html"><FONT CLASS="NavBarFont1"><B>Package</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Class</B></FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="class-use/DefaultDateTimeFormatInfo.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
@@ -1562,7 +1676,7 @@ public int <B>weekendStart</B>()</PRE>
 </TABLE>
 </TD>
 <TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
-GWT 2.1.0.RC1</EM>
+GWT 2.1.1</EM>
 </TD>
 </TR>
 

@@ -38,6 +38,7 @@ function windowTitle()
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-summary.html"><FONT CLASS="NavBarFont1"><B>Package</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Class</B></FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="class-use/Request.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
@@ -46,7 +47,7 @@ function windowTitle()
 </TABLE>
 </TD>
 <TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
-GWT 2.1.0.RC1</EM>
+GWT 2.1.1</EM>
 </TD>
 </TR>
 
@@ -96,12 +97,7 @@ Interface Request&lt;T&gt;</H2>
 </PRE>
 
 <P>
-<p>
- <span style="color:red">Experimental API: This class is still under rapid
- development, and is very likely to be deleted. Use it at your own risk.
- </span>
- </p>
- Implemented by the request objects created by this factory.
+Implemented by the request objects created by this factory.
 <P>
 
 <P>
@@ -185,7 +181,7 @@ void <B>fire</B>(<A HREF="../../../../../com/google/gwt/requestfactory/shared/Re
 <DD>Convenience method equivalent to calling <code>to(...).fire()</code>.
 <P>
 <DD><DL>
-</DL>
+<DT><B>Parameters:</B><DD><CODE>receiver</CODE> - a <A HREF="../../../../../com/google/gwt/requestfactory/shared/Receiver.html" title="class in com.google.gwt.requestfactory.shared"><CODE>Receiver</CODE></A> instance</DL>
 </DD>
 </DL>
 <HR>
@@ -198,7 +194,8 @@ to</H3>
 <DD>Specify the object that will receive the result of the method invocation.
 <P>
 <DD><DL>
-</DL>
+<DT><B>Parameters:</B><DD><CODE>receiver</CODE> - a <A HREF="../../../../../com/google/gwt/requestfactory/shared/Receiver.html" title="class in com.google.gwt.requestfactory.shared"><CODE>Receiver</CODE></A> instance
+<DT><B>Returns:</B><DD>a <A HREF="../../../../../com/google/gwt/requestfactory/shared/RequestContext.html" title="interface in com.google.gwt.requestfactory.shared"><CODE>RequestContext</CODE></A> instance</DL>
 </DD>
 </DL>
 <HR>
@@ -211,7 +208,8 @@ with</H3>
 <DD>Request additional reference properties to fetch with the return value.
 <P>
 <DD><DL>
-</DL>
+<DT><B>Parameters:</B><DD><CODE>propertyRefs</CODE> - a list of reference property names as Strings
+<DT><B>Returns:</B><DD>a <A HREF="../../../../../com/google/gwt/requestfactory/shared/Request.html" title="interface in com.google.gwt.requestfactory.shared"><CODE>Request</CODE></A> instance of type T</DL>
 </DD>
 </DL>
 <!-- ========= END OF CLASS DATA ========= -->
@@ -230,6 +228,7 @@ with</H3>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-summary.html"><FONT CLASS="NavBarFont1"><B>Package</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Class</B></FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="class-use/Request.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
@@ -238,7 +237,7 @@ with</H3>
 </TABLE>
 </TD>
 <TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
-GWT 2.1.0.RC1</EM>
+GWT 2.1.1</EM>
 </TD>
 </TR>
 

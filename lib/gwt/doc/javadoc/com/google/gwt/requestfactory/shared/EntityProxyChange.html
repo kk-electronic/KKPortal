@@ -38,6 +38,7 @@ function windowTitle()
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-summary.html"><FONT CLASS="NavBarFont1"><B>Package</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Class</B></FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="class-use/EntityProxyChange.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
@@ -46,7 +47,7 @@ function windowTitle()
 </TABLE>
 </TD>
 <TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
-GWT 2.1.0.RC1</EM>
+GWT 2.1.1</EM>
 </TD>
 </TR>
 
@@ -101,12 +102,8 @@ java.lang.Object
 </PRE>
 
 <P>
-<p>
- <span style="color:red">Experimental API: This class is still under rapid
- development, and is very likely to be deleted. Use it at your own risk.
- </span>
- </p>
- Abstract base class for an event announcing changes to a <A HREF="../../../../../com/google/gwt/requestfactory/shared/EntityProxy.html" title="interface in com.google.gwt.requestfactory.shared"><CODE>EntityProxy</CODE></A>.
+Abstract base class for an event announcing changes to an
+ <A HREF="../../../../../com/google/gwt/requestfactory/shared/EntityProxy.html" title="interface in com.google.gwt.requestfactory.shared"><CODE>EntityProxy</CODE></A>.
  <p>
  Note that this event includes an unpopulated copy of the changed proxy
  &mdash; all properties are undefined except it's id. That is, the event
@@ -161,7 +158,7 @@ java.lang.Object
                   <A HREF="../../../../../com/google/gwt/requestfactory/shared/WriteOperation.html" title="enum in com.google.gwt.requestfactory.shared">WriteOperation</A>&nbsp;writeOperation)</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Constructs an EntityProxyChange object.</TD>
 </TR>
 </TABLE>
 &nbsp;
@@ -187,7 +184,7 @@ java.lang.Object
 <TD><CODE><B><A HREF="../../../../../com/google/gwt/requestfactory/shared/EntityProxyChange.html#getAssociatedType()">getAssociatedType</A></B>()</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns the type used to register this event.</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns the type associated with this instance.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -195,7 +192,8 @@ java.lang.Object
 <TD><CODE><B><A HREF="../../../../../com/google/gwt/requestfactory/shared/EntityProxyChange.html#getProxyId()">getProxyId</A></B>()</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns an unpopulated copy of the changed proxy &mdash; all properties are
+ undefined except its id.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -203,7 +201,7 @@ java.lang.Object
 <TD><CODE><B><A HREF="../../../../../com/google/gwt/requestfactory/shared/EntityProxyChange.html#getWriteOperation()">getWriteOperation</A></B>()</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns the <A HREF="../../../../../com/google/gwt/requestfactory/shared/WriteOperation.html" title="enum in com.google.gwt.requestfactory.shared"><CODE>WriteOperation</CODE></A> associated with this instance.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -263,6 +261,10 @@ EntityProxyChange</H3>
 public <B>EntityProxyChange</B>(<A HREF="../../../../../com/google/gwt/requestfactory/shared/EntityProxyChange.html" title="type parameter in EntityProxyChange">P</A>&nbsp;proxy,
                          <A HREF="../../../../../com/google/gwt/requestfactory/shared/WriteOperation.html" title="enum in com.google.gwt.requestfactory.shared">WriteOperation</A>&nbsp;writeOperation)</PRE>
 <DL>
+<DD>Constructs an EntityProxyChange object.
+<P>
+<DL>
+<DT><B>Parameters:</B><DD><CODE>proxy</CODE> - an <A HREF="../../../../../com/google/gwt/requestfactory/shared/EntityProxy.html" title="interface in com.google.gwt.requestfactory.shared"><CODE>EntityProxy</CODE></A> instance of type P<DD><CODE>writeOperation</CODE> - a <A HREF="../../../../../com/google/gwt/requestfactory/shared/WriteOperation.html" title="enum in com.google.gwt.requestfactory.shared"><CODE>WriteOperation</CODE></A> instance</DL>
 </DL>
 
 <!-- ============ METHOD DETAIL ========== -->
@@ -286,7 +288,8 @@ public static &lt;P extends <A HREF="../../../../../com/google/gwt/requestfactor
  class.
 <P>
 <DD><DL>
-</DL>
+<DT><B>Parameters:</B><DD><CODE>eventBus</CODE> - the <A HREF="../../../../../com/google/gwt/event/shared/EventBus.html" title="class in com.google.gwt.event.shared"><CODE>EventBus</CODE></A><DD><CODE>proxyType</CODE> - a Class instance of type P<DD><CODE>handler</CODE> - an <A HREF="../../../../../com/google/gwt/requestfactory/shared/EntityProxyChange.Handler.html" title="interface in com.google.gwt.requestfactory.shared"><CODE>EntityProxyChange.Handler</CODE></A> instance of type P
+<DT><B>Returns:</B><DD>an <A HREF="../../../../../com/google/gwt/requestfactory/shared/EntityProxy.html" title="interface in com.google.gwt.requestfactory.shared"><CODE>EntityProxy</CODE></A> instance</DL>
 </DD>
 </DL>
 <HR>
@@ -296,16 +299,14 @@ getAssociatedType</H3>
 <PRE>
 public <A HREF="../../../../../com/google/gwt/event/shared/GwtEvent.Type.html" title="class in com.google.gwt.event.shared">GwtEvent.Type</A>&lt;<A HREF="../../../../../com/google/gwt/requestfactory/shared/EntityProxyChange.Handler.html" title="interface in com.google.gwt.requestfactory.shared">EntityProxyChange.Handler</A>&lt;<A HREF="../../../../../com/google/gwt/requestfactory/shared/EntityProxyChange.html" title="type parameter in EntityProxyChange">P</A>&gt;&gt; <B>getAssociatedType</B>()</PRE>
 <DL>
-<DD><B>Description copied from class: <CODE><A HREF="../../../../../com/google/gwt/event/shared/GwtEvent.html#getAssociatedType()">GwtEvent</A></CODE></B></DD>
-<DD>Returns the type used to register this event. Used by handler manager to
- dispatch events to the correct handlers.
+<DD>Returns the type associated with this instance.
 <P>
 <DD><DL>
 <DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../com/google/gwt/event/shared/GwtEvent.html#getAssociatedType()">getAssociatedType</A></CODE> in class <CODE><A HREF="../../../../../com/google/gwt/event/shared/GwtEvent.html" title="class in com.google.gwt.event.shared">GwtEvent</A>&lt;<A HREF="../../../../../com/google/gwt/requestfactory/shared/EntityProxyChange.Handler.html" title="interface in com.google.gwt.requestfactory.shared">EntityProxyChange.Handler</A>&lt;<A HREF="../../../../../com/google/gwt/requestfactory/shared/EntityProxyChange.html" title="type parameter in EntityProxyChange">P</A> extends <A HREF="../../../../../com/google/gwt/requestfactory/shared/EntityProxy.html" title="interface in com.google.gwt.requestfactory.shared">EntityProxy</A>&gt;&gt;</CODE></DL>
 </DD>
 <DD><DL>
 
-<DT><B>Returns:</B><DD>the type</DL>
+<DT><B>Returns:</B><DD>an instance of <CODE>GwtEvent.Type</CODE> of type Handler&lt;P&gt</DL>
 </DD>
 </DL>
 <HR>
@@ -315,10 +316,12 @@ getProxyId</H3>
 <PRE>
 public <A HREF="../../../../../com/google/gwt/requestfactory/shared/EntityProxyId.html" title="interface in com.google.gwt.requestfactory.shared">EntityProxyId</A>&lt;<A HREF="../../../../../com/google/gwt/requestfactory/shared/EntityProxyChange.html" title="type parameter in EntityProxyChange">P</A>&gt; <B>getProxyId</B>()</PRE>
 <DL>
+<DD>Returns an unpopulated copy of the changed proxy &mdash; all properties are
+ undefined except its id.
+<P>
 <DD><DL>
 
-<DT><B>Returns:</B><DD>an unpopulated copy of the changed proxy &mdash; all properties are
-         undefined except its id</DL>
+<DT><B>Returns:</B><DD>an instance of <A HREF="../../../../../com/google/gwt/requestfactory/shared/EntityProxyId.html" title="interface in com.google.gwt.requestfactory.shared"><CODE>EntityProxyId</CODE></A>&lt;P&gt;</DL>
 </DD>
 </DL>
 <HR>
@@ -328,8 +331,11 @@ getWriteOperation</H3>
 <PRE>
 public <A HREF="../../../../../com/google/gwt/requestfactory/shared/WriteOperation.html" title="enum in com.google.gwt.requestfactory.shared">WriteOperation</A> <B>getWriteOperation</B>()</PRE>
 <DL>
+<DD>Returns the <A HREF="../../../../../com/google/gwt/requestfactory/shared/WriteOperation.html" title="enum in com.google.gwt.requestfactory.shared"><CODE>WriteOperation</CODE></A> associated with this instance.
+<P>
 <DD><DL>
-</DL>
+
+<DT><B>Returns:</B><DD>a <A HREF="../../../../../com/google/gwt/requestfactory/shared/WriteOperation.html" title="enum in com.google.gwt.requestfactory.shared"><CODE>WriteOperation</CODE></A> instance</DL>
 </DD>
 </DL>
 <HR>
@@ -366,6 +372,7 @@ protected void <B>dispatch</B>(<A HREF="../../../../../com/google/gwt/requestfac
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-summary.html"><FONT CLASS="NavBarFont1"><B>Package</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Class</B></FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="class-use/EntityProxyChange.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
@@ -374,7 +381,7 @@ protected void <B>dispatch</B>(<A HREF="../../../../../com/google/gwt/requestfac
 </TABLE>
 </TD>
 <TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
-GWT 2.1.0.RC1</EM>
+GWT 2.1.1</EM>
 </TD>
 </TR>
 

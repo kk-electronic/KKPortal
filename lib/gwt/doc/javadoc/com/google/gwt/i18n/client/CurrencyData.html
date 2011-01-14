@@ -38,6 +38,7 @@ function windowTitle()
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-summary.html"><FONT CLASS="NavBarFont1"><B>Package</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Class</B></FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="class-use/CurrencyData.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
@@ -46,7 +47,7 @@ function windowTitle()
 </TABLE>
 </TD>
 <TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
-GWT 2.1.0.RC1</EM>
+GWT 2.1.1</EM>
 </TD>
 </TR>
 
@@ -119,7 +120,7 @@ Information about a currency.
 <TD><CODE><B><A HREF="../../../../../com/google/gwt/i18n/client/CurrencyData.html#getCurrencyCode()">getCurrencyCode</A></B>()</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns the ISO4217 code for this currency.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -127,7 +128,7 @@ Information about a currency.
 <TD><CODE><B><A HREF="../../../../../com/google/gwt/i18n/client/CurrencyData.html#getCurrencySymbol()">getCurrencySymbol</A></B>()</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns the default symbol to use for this currency.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -135,7 +136,7 @@ Information about a currency.
 <TD><CODE><B><A HREF="../../../../../com/google/gwt/i18n/client/CurrencyData.html#getDefaultFractionDigits()">getDefaultFractionDigits</A></B>()</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns the default number of decimal positions for this currency.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -143,7 +144,8 @@ Information about a currency.
 <TD><CODE><B><A HREF="../../../../../com/google/gwt/i18n/client/CurrencyData.html#getPortableCurrencySymbol()">getPortableCurrencySymbol</A></B>()</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns the default symbol to use for this currency, intended to be
+ recognizable in most locales.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -151,7 +153,8 @@ Information about a currency.
 <TD><CODE><B><A HREF="../../../../../com/google/gwt/i18n/client/CurrencyData.html#isDeprecated()">isDeprecated</A></B>()</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns true if this currency is deprecated and should not be returned by
+ default in currency lists.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -159,7 +162,8 @@ Information about a currency.
 <TD><CODE><B><A HREF="../../../../../com/google/gwt/i18n/client/CurrencyData.html#isSpaceForced()">isSpaceForced</A></B>()</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns true if there should always be a space between the currency symbol
+ and the number, false if there should be no space.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -167,7 +171,8 @@ Information about a currency.
 <TD><CODE><B><A HREF="../../../../../com/google/gwt/i18n/client/CurrencyData.html#isSpacingFixed()">isSpacingFixed</A></B>()</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns true if the spacing between the currency symbol and the number is
+ fixed regardless of locale defaults.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -175,7 +180,8 @@ Information about a currency.
 <TD><CODE><B><A HREF="../../../../../com/google/gwt/i18n/client/CurrencyData.html#isSymbolPositionFixed()">isSymbolPositionFixed</A></B>()</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns true if the position of the currency symbol relative to the number
+ is fixed regardless of locale defaults.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -183,7 +189,8 @@ Information about a currency.
 <TD><CODE><B><A HREF="../../../../../com/google/gwt/i18n/client/CurrencyData.html#isSymbolPrefix()">isSymbolPrefix</A></B>()</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns true if the currency symbol should go before the number, false if
+ it should go after the number.</TD>
 </TR>
 </TABLE>
 &nbsp;
@@ -204,9 +211,10 @@ getCurrencyCode</H3>
 <PRE>
 java.lang.String <B>getCurrencyCode</B>()</PRE>
 <DL>
+<DD>Returns the ISO4217 code for this currency.
+<P>
 <DD><DL>
-
-<DT><B>Returns:</B><DD>the ISO4217 code for this currency</DL>
+</DL>
 </DD>
 </DL>
 <HR>
@@ -216,9 +224,10 @@ getCurrencySymbol</H3>
 <PRE>
 java.lang.String <B>getCurrencySymbol</B>()</PRE>
 <DL>
+<DD>Returns the default symbol to use for this currency.
+<P>
 <DD><DL>
-
-<DT><B>Returns:</B><DD>the default symbol to use for this currency</DL>
+</DL>
 </DD>
 </DL>
 <HR>
@@ -228,9 +237,10 @@ getDefaultFractionDigits</H3>
 <PRE>
 int <B>getDefaultFractionDigits</B>()</PRE>
 <DL>
+<DD>Returns the default number of decimal positions for this currency.
+<P>
 <DD><DL>
-
-<DT><B>Returns:</B><DD>the default number of decimal positions for this currency</DL>
+</DL>
 </DD>
 </DL>
 <HR>
@@ -240,11 +250,12 @@ getPortableCurrencySymbol</H3>
 <PRE>
 java.lang.String <B>getPortableCurrencySymbol</B>()</PRE>
 <DL>
-<DD><DL>
-
-<DT><B>Returns:</B><DD>the default symbol to use for this currency, intended to be
+<DD>Returns the default symbol to use for this currency, intended to be
  recognizable in most locales.  If such a symbol is not available, it is
- acceptable to return the same value as <A HREF="../../../../../com/google/gwt/i18n/client/CurrencyData.html#getCurrencySymbol()"><CODE>getCurrencySymbol()</CODE></A>.</DL>
+ acceptable to return the same value as <A HREF="../../../../../com/google/gwt/i18n/client/CurrencyData.html#getCurrencySymbol()"><CODE>getCurrencySymbol()</CODE></A>.
+<P>
+<DD><DL>
+</DL>
 </DD>
 </DL>
 <HR>
@@ -254,10 +265,11 @@ isDeprecated</H3>
 <PRE>
 boolean <B>isDeprecated</B>()</PRE>
 <DL>
+<DD>Returns true if this currency is deprecated and should not be returned by
+ default in currency lists.
+<P>
 <DD><DL>
-
-<DT><B>Returns:</B><DD>true if this currency is deprecated and should not be returned by
- default in currency lists.</DL>
+</DL>
 </DD>
 </DL>
 <HR>
@@ -267,11 +279,12 @@ isSpaceForced</H3>
 <PRE>
 boolean <B>isSpaceForced</B>()</PRE>
 <DL>
-<DD><DL>
-
-<DT><B>Returns:</B><DD>true if there should always be a space between the currency symbol
+<DD>Returns true if there should always be a space between the currency symbol
  and the number, false if there should be no space.  Ignored unless
- <A HREF="../../../../../com/google/gwt/i18n/client/CurrencyData.html#isSpacingFixed()"><CODE>isSpacingFixed()</CODE></A> returns true.</DL>
+ <A HREF="../../../../../com/google/gwt/i18n/client/CurrencyData.html#isSpacingFixed()"><CODE>isSpacingFixed()</CODE></A> returns true.
+<P>
+<DD><DL>
+</DL>
 </DD>
 </DL>
 <HR>
@@ -281,11 +294,12 @@ isSpacingFixed</H3>
 <PRE>
 boolean <B>isSpacingFixed</B>()</PRE>
 <DL>
-<DD><DL>
-
-<DT><B>Returns:</B><DD>true if the spacing between the currency symbol and the number is
+<DD>Returns true if the spacing between the currency symbol and the number is
  fixed regardless of locale defaults.  In this case, spacing will be
- determined by <A HREF="../../../../../com/google/gwt/i18n/client/CurrencyData.html#isSpaceForced()"><CODE>isSpaceForced()</CODE></A>.</DL>
+ determined by <A HREF="../../../../../com/google/gwt/i18n/client/CurrencyData.html#isSpaceForced()"><CODE>isSpaceForced()</CODE></A>.
+<P>
+<DD><DL>
+</DL>
 </DD>
 </DL>
 <HR>
@@ -295,11 +309,12 @@ isSymbolPositionFixed</H3>
 <PRE>
 boolean <B>isSymbolPositionFixed</B>()</PRE>
 <DL>
-<DD><DL>
-
-<DT><B>Returns:</B><DD>true if the position of the currency symbol relative to the number
+<DD>Returns true if the position of the currency symbol relative to the number
  is fixed regardless of locale defaults.  In this case, the position will be
- determined by <A HREF="../../../../../com/google/gwt/i18n/client/CurrencyData.html#isSymbolPrefix()"><CODE>isSymbolPrefix()</CODE></A>.</DL>
+ determined by <A HREF="../../../../../com/google/gwt/i18n/client/CurrencyData.html#isSymbolPrefix()"><CODE>isSymbolPrefix()</CODE></A>.
+<P>
+<DD><DL>
+</DL>
 </DD>
 </DL>
 <HR>
@@ -309,11 +324,12 @@ isSymbolPrefix</H3>
 <PRE>
 boolean <B>isSymbolPrefix</B>()</PRE>
 <DL>
-<DD><DL>
-
-<DT><B>Returns:</B><DD>true if the currency symbol should go before the number, false if
+<DD>Returns true if the currency symbol should go before the number, false if
  it should go after the number.  This is ignored unless
- <A HREF="../../../../../com/google/gwt/i18n/client/CurrencyData.html#isSymbolPositionFixed()"><CODE>isSymbolPositionFixed()</CODE></A> is true.</DL>
+ <A HREF="../../../../../com/google/gwt/i18n/client/CurrencyData.html#isSymbolPositionFixed()"><CODE>isSymbolPositionFixed()</CODE></A> is true.
+<P>
+<DD><DL>
+</DL>
 </DD>
 </DL>
 <!-- ========= END OF CLASS DATA ========= -->
@@ -332,6 +348,7 @@ boolean <B>isSymbolPrefix</B>()</PRE>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-summary.html"><FONT CLASS="NavBarFont1"><B>Package</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Class</B></FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="class-use/CurrencyData.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
@@ -340,7 +357,7 @@ boolean <B>isSymbolPrefix</B>()</PRE>
 </TABLE>
 </TD>
 <TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
-GWT 2.1.0.RC1</EM>
+GWT 2.1.1</EM>
 </TD>
 </TR>
 

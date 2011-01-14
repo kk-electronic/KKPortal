@@ -1,12 +1,12 @@
 <pre>/*
  * Copyright 2010 Google Inc.
- *
+ * 
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
  * the License at
- *
+ * 
  * http://www.apache.org/licenses/LICENSE-2.0
- *
+ * 
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
  * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
@@ -21,11 +21,8 @@ import com.google.gwt.cell.client.CheckboxCell;
 import com.google.gwt.cell.client.CompositeCell;
 import com.google.gwt.cell.client.FieldUpdater;
 import com.google.gwt.cell.client.HasCell;
-import com.google.gwt.cell.client.ValueUpdater;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.Element;
-import com.google.gwt.dom.client.NativeEvent;
-import com.google.gwt.event.dom.client.KeyCodes;
 import com.google.gwt.resources.client.ClientBundle;
 import com.google.gwt.resources.client.ImageResource;
 import com.google.gwt.safehtml.shared.SafeHtmlBuilder;
@@ -33,6 +30,7 @@ import com.google.gwt.sample.showcase.client.content.cell.ContactDatabase.Catego
 import com.google.gwt.sample.showcase.client.content.cell.ContactDatabase.ContactInfo;
 import com.google.gwt.sample.showcase.client.content.cell.CwCellList.ContactCell;
 import com.google.gwt.user.client.ui.AbstractImagePrototype;
+import com.google.gwt.view.client.DefaultSelectionEventManager;
 import com.google.gwt.view.client.ListDataProvider;
 import com.google.gwt.view.client.SelectionModel;
 import com.google.gwt.view.client.TreeViewModel;
@@ -71,7 +69,7 @@ public class ContactTreeViewModel implements TreeViewModel {
     }
 
     @Override
-    public void render(Category value, Object key, SafeHtmlBuilder sb) {
+    public void render(Context context, Category value, SafeHtmlBuilder sb) {
       if (value != null) {
         sb.appendHtmlConstant(imageHtml).appendEscaped(" ");
         sb.appendEscaped(value.getDisplayName());
@@ -90,7 +88,7 @@ public class ContactTreeViewModel implements TreeViewModel {
 
     /**
      * Construct a new {@link LetterCount} for one contact.
-     *
+     * 
      * @param category the category
      * @param firstLetter the first letter of the contacts name
      */
@@ -128,7 +126,7 @@ public class ContactTreeViewModel implements TreeViewModel {
   private static class LetterCountCell extends AbstractCell&lt;LetterCount&gt; {
 
     @Override
-    public void render(LetterCount value, Object key, SafeHtmlBuilder sb) {
+    public void render(Context context, LetterCount value, SafeHtmlBuilder sb) {
       if (value != null) {
         sb.appendEscaped(value.firstLetter + " (" + value.count + ")");
       }
@@ -142,10 +140,11 @@ public class ContactTreeViewModel implements TreeViewModel {
 
   private final ListDataProvider&lt;Category&gt; categoryDataProvider;
   private final Cell&lt;ContactInfo&gt; contactCell;
+  private final DefaultSelectionEventManager&lt;ContactInfo&gt; selectionManager =
+      DefaultSelectionEventManager.createCheckboxManager();
   private final SelectionModel&lt;ContactInfo&gt; selectionModel;
 
-  public ContactTreeViewModel(
-      final SelectionModel&lt;ContactInfo&gt; selectionModel) {
+  public ContactTreeViewModel(final SelectionModel&lt;ContactInfo&gt; selectionModel) {
     this.selectionModel = selectionModel;
     if (images == null) {
       images = GWT.create(Images.class);
@@ -159,22 +158,17 @@ public class ContactTreeViewModel implements TreeViewModel {
     }
 
     // Construct a composite cell for contacts that includes a checkbox.
-    List&lt;HasCell&lt;ContactInfo, ?&gt;&gt; hasCells = new ArrayList&lt;
-        HasCell&lt;ContactInfo, ?&gt;&gt;();
+    List&lt;HasCell&lt;ContactInfo, ?&gt;&gt; hasCells = new ArrayList&lt;HasCell&lt;ContactInfo, ?&gt;&gt;();
     hasCells.add(new HasCell&lt;ContactInfo, Boolean&gt;() {
 
-      private CheckboxCell cell = new CheckboxCell(true);
+      private CheckboxCell cell = new CheckboxCell(true, false);
 
       public Cell&lt;Boolean&gt; getCell() {
         return cell;
       }
 
       public FieldUpdater&lt;ContactInfo, Boolean&gt; getFieldUpdater() {
-        return new FieldUpdater&lt;ContactInfo, Boolean&gt;() {
-          public void update(int index, ContactInfo object, Boolean value) {
-            selectionModel.setSelected(object, value);
-          }
-        };
+        return null;
       }
 
       public Boolean getValue(ContactInfo object) {
@@ -199,21 +193,9 @@ public class ContactTreeViewModel implements TreeViewModel {
     });
     contactCell = new CompositeCell&lt;ContactInfo&gt;(hasCells) {
       @Override
-      public void onBrowserEvent(Element parent, ContactInfo value, Object key,
-          NativeEvent event, ValueUpdater&lt;ContactInfo&gt; valueUpdater) {
-        // Make sure that the composition cells see the event.
-        super.onBrowserEvent(parent, value, key, event, valueUpdater);
-
-        if ("keyup".equals(event.getType())
-            && event.getKeyCode() == KeyCodes.KEY_ENTER) {
-          selectionModel.setSelected(value, !selectionModel.isSelected(value));
-        }
-      }
-
-      @Override
-      public void render(ContactInfo value, Object key, SafeHtmlBuilder sb) {
+      public void render(Context context, ContactInfo value, SafeHtmlBuilder sb) {
         sb.appendHtmlConstant("&lt;table&gt;&lt;tbody&gt;&lt;tr&gt;");
-        super.render(value, key, sb);
+        super.render(context, value, sb);
         sb.appendHtmlConstant("&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;");
       }
 
@@ -224,11 +206,11 @@ public class ContactTreeViewModel implements TreeViewModel {
       }
 
       @Override
-      protected &lt;X&gt; void render(ContactInfo value, Object key, SafeHtmlBuilder sb,
-          HasCell&lt;ContactInfo, X&gt; hasCell) {
+      protected &lt;X&gt; void render(Context context, ContactInfo value,
+          SafeHtmlBuilder sb, HasCell&lt;ContactInfo, X&gt; hasCell) {
         Cell&lt;X&gt; cell = hasCell.getCell();
         sb.appendHtmlConstant("&lt;td&gt;");
-        cell.render(hasCell.getValue(value), key, sb);
+        cell.render(context, hasCell.getValue(value), sb);
         sb.appendHtmlConstant("&lt;/td&gt;");
       }
     };
@@ -237,14 +219,14 @@ public class ContactTreeViewModel implements TreeViewModel {
   public &lt;T&gt; NodeInfo&lt;?&gt; getNodeInfo(T value) {
     if (value == null) {
       // Return top level categories.
-      return new DefaultNodeInfo&lt;Category&gt;(
-          categoryDataProvider, new CategoryCell(images.contactsGroup()));
+      return new DefaultNodeInfo&lt;Category&gt;(categoryDataProvider,
+          new CategoryCell(images.contactsGroup()));
     } else if (value instanceof Category) {
       // Return the first letters of each first name.
       Category category = (Category) value;
-          List&lt;ContactInfo&gt; contacts = ContactDatabase.get().queryContactsByCategory(category);
-      Map&lt;Character, LetterCount&gt; counts = new TreeMap&lt;
-          Character, LetterCount&gt;();
+      List&lt;ContactInfo&gt; contacts = ContactDatabase.get().queryContactsByCategory(
+          category);
+      Map&lt;Character, LetterCount&gt; counts = new TreeMap&lt;Character, LetterCount&gt;();
       for (ContactInfo contact : contacts) {
         Character first = contact.getFirstName().charAt(0);
         LetterCount count = counts.get(first);
@@ -263,13 +245,12 @@ public class ContactTreeViewModel implements TreeViewModel {
     } else if (value instanceof LetterCount) {
       // Return the contacts with the specified character and first name.
       LetterCount count = (LetterCount) value;
-          List&lt;ContactInfo&gt; contacts =
-            ContactDatabase.get().queryContactsByCategoryAndFirstName(count.category,
-                count.firstLetter + "");
-      ListDataProvider&lt;ContactInfo&gt; dataProvider = new ListDataProvider&lt;
-          ContactInfo&gt;(contacts, ContactInfo.KEY_PROVIDER);
+      List&lt;ContactInfo&gt; contacts = ContactDatabase.get().queryContactsByCategoryAndFirstName(
+          count.category, count.firstLetter + "");
+      ListDataProvider&lt;ContactInfo&gt; dataProvider = new ListDataProvider&lt;ContactInfo&gt;(
+          contacts, ContactInfo.KEY_PROVIDER);
       return new DefaultNodeInfo&lt;ContactInfo&gt;(
-          dataProvider, contactCell, selectionModel, null);
+          dataProvider, contactCell, selectionModel, selectionManager, null);
     }
 
     // Unhandled type.

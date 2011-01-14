@@ -38,6 +38,7 @@ function windowTitle()
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-summary.html"><FONT CLASS="NavBarFont1"><B>Package</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Class</B></FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="class-use/SplitLayoutPanel.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
@@ -46,7 +47,7 @@ function windowTitle()
 </TABLE>
 </TD>
 <TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
-GWT 2.1.0.RC1</EM>
+GWT 2.1.1</EM>
 </TD>
 </TR>
 
@@ -236,7 +237,15 @@ A panel that adds user-positioned splitters between each of its child
 <TD><CODE><B><A HREF="../../../../../../com/google/gwt/user/client/ui/SplitLayoutPanel.html#SplitLayoutPanel()">SplitLayoutPanel</A></B>()</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Construct a new <A HREF="../../../../../../com/google/gwt/user/client/ui/SplitLayoutPanel.html" title="class in com.google.gwt.user.client.ui"><CODE>SplitLayoutPanel</CODE></A> with the default splitter size of
+ 8px.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD><CODE><B><A HREF="../../../../../../com/google/gwt/user/client/ui/SplitLayoutPanel.html#SplitLayoutPanel(int)">SplitLayoutPanel</A></B>(int&nbsp;splitterSize)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Construct a new <A HREF="../../../../../../com/google/gwt/user/client/ui/SplitLayoutPanel.html" title="class in com.google.gwt.user.client.ui"><CODE>SplitLayoutPanel</CODE></A> with the specified splitter size
+ in pixels.</TD>
 </TR>
 </TABLE>
 &nbsp;
@@ -247,6 +256,14 @@ A panel that adds user-positioned splitters between each of its child
 <TR BGCOLOR="#CCCCFF" CLASS="TableHeadingColor">
 <TH ALIGN="left" COLSPAN="2"><FONT SIZE="+2">
 <B>Method Summary</B></FONT></TH>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;int</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../../com/google/gwt/user/client/ui/SplitLayoutPanel.html#getSplitterSize()">getSplitterSize</A></B>()</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Return the size of the splitter in pixels.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -349,6 +366,22 @@ SplitLayoutPanel</H3>
 <PRE>
 public <B>SplitLayoutPanel</B>()</PRE>
 <DL>
+<DD>Construct a new <A HREF="../../../../../../com/google/gwt/user/client/ui/SplitLayoutPanel.html" title="class in com.google.gwt.user.client.ui"><CODE>SplitLayoutPanel</CODE></A> with the default splitter size of
+ 8px.
+<P>
+</DL>
+<HR>
+
+<A NAME="SplitLayoutPanel(int)"><!-- --></A><H3>
+SplitLayoutPanel</H3>
+<PRE>
+public <B>SplitLayoutPanel</B>(int&nbsp;splitterSize)</PRE>
+<DL>
+<DD>Construct a new <A HREF="../../../../../../com/google/gwt/user/client/ui/SplitLayoutPanel.html" title="class in com.google.gwt.user.client.ui"><CODE>SplitLayoutPanel</CODE></A> with the specified splitter size
+ in pixels.
+<P>
+<DL>
+<DT><B>Parameters:</B><DD><CODE>splitterSize</CODE> - the size of the splitter in pixels</DL>
 </DL>
 
 <!-- ============ METHOD DETAIL ========== -->
@@ -360,6 +393,20 @@ public <B>SplitLayoutPanel</B>()</PRE>
 <B>Method Detail</B></FONT></TH>
 </TR>
 </TABLE>
+
+<A NAME="getSplitterSize()"><!-- --></A><H3>
+getSplitterSize</H3>
+<PRE>
+public int <B>getSplitterSize</B>()</PRE>
+<DL>
+<DD>Return the size of the splitter in pixels.
+<P>
+<DD><DL>
+
+<DT><B>Returns:</B><DD>the splitter size</DL>
+</DD>
+</DL>
+<HR>
 
 <A NAME="insert(com.google.gwt.user.client.ui.Widget, com.google.gwt.user.client.ui.DockLayoutPanel.Direction, double, com.google.gwt.user.client.ui.Widget)"><!-- --></A><H3>
 insert</H3>
@@ -457,6 +504,7 @@ public void <B>setWidgetMinSize</B>(<A HREF="../../../../../../com/google/gwt/us
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-summary.html"><FONT CLASS="NavBarFont1"><B>Package</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Class</B></FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="class-use/SplitLayoutPanel.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
   <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
@@ -465,7 +513,7 @@ public void <B>setWidgetMinSize</B>(<A HREF="../../../../../../com/google/gwt/us
 </TABLE>
 </TD>
 <TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
-GWT 2.1.0.RC1</EM>
+GWT 2.1.1</EM>
 </TD>
 </TR>
 
