@@ -17,8 +17,11 @@
  * along with KKPortal.  If not, see <http://www.gnu.org/licenses/>.
  *
  */
-package com.kk_electronic.kkportal.core.security;
+package com.kk_electronic.kkportal.core.tabs;
 
-public class SecretProvider {
+import com.kk_electronic.kkportal.core.moduleview.Module;
 
+public interface hasAddModuleTypeInfo {
+	public abstract void add(Class<? extends Module> clazz, Integer id,
+			String name);
 }

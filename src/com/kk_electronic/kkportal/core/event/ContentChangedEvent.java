@@ -37,8 +37,12 @@ public class ContentChangedEvent extends GwtEvent<ContentChangedEvent.Handler> {
 	 * Handler type.
 	 */
 	public static final Type<Handler> TYPE = new Type<Handler>();
+	private final int moduleId;
+	private int height;
 
-	public ContentChangedEvent() {
+	public ContentChangedEvent(int ModuleId,int height) {
+		moduleId = ModuleId;
+		this.height = height;
 	}
 
 	@Override
@@ -49,5 +53,13 @@ public class ContentChangedEvent extends GwtEvent<ContentChangedEvent.Handler> {
 	@Override
 	protected void dispatch(Handler handler) {
 		handler.onContentSizeChanged(this);
+	}
+
+	public int getModuleId() {
+		return moduleId;
+	}
+
+	public int getHeight() {
+		return height;
 	}
 }

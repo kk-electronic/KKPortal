@@ -72,7 +72,7 @@ public class TabDisplay implements HasData<TabInfo> {
 	}
 
 	@Override
-	public void setRowData(int start, List<TabInfo> values) {
+	public void setRowData(int start, List<? extends TabInfo> values) {
 		assert start == 0 : "TabDisplay does not support partial viewing";
 		panel.clear();
 		int margin = 10;
@@ -160,5 +160,26 @@ public class TabDisplay implements HasData<TabInfo> {
 	@Override
 	public void fireEvent(GwtEvent<?> event) {
 		eventBus.fireEventFromSource(event, this);
+	}
+
+	@Override
+	public TabInfo getVisibleItem(int indexOnPage) {
+		return null;
+	}
+
+	@Override
+	public int getVisibleItemCount() {
+		return 0;
+	}
+
+	@Override
+	public Iterable<TabInfo> getVisibleItems() {
+		return null;
+	}
+
+	@Override
+	public HandlerRegistration addCellPreviewHandler(
+			com.google.gwt.view.client.CellPreviewEvent.Handler<TabInfo> handler) {
+		return null;
 	}
 }

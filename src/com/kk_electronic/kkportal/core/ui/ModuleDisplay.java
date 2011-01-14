@@ -23,12 +23,12 @@ import java.util.HashMap;
 import java.util.List;
 
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.core.client.Scheduler;
 import com.google.gwt.dom.client.Style.Unit;
 import com.google.gwt.event.dom.client.MouseDownEvent;
 import com.google.gwt.event.dom.client.MouseDownHandler;
 import com.google.gwt.event.dom.client.MouseUpEvent;
 import com.google.gwt.user.client.Command;
-import com.google.gwt.user.client.DeferredCommand;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.LayoutPanel;
@@ -249,7 +249,7 @@ public class ModuleDisplay implements DropSink<ModuleWindow> {
 		canvas.setWidgetTopHeight(t, top, Unit.PX, height, Unit.PX);
 		canvas.setWidgetLeftWidth(t, left, Unit.PCT, width, Unit.PCT);
 		if (viewModules != null) {
-			DeferredCommand.addCommand(new Command() {
+			Scheduler.get().scheduleDeferred(new Command() {
 
 				@Override
 				public void execute() {

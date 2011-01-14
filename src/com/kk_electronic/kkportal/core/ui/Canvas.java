@@ -23,27 +23,32 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.MouseDownEvent;
 import com.google.gwt.event.dom.client.MouseDownHandler;
+import com.google.gwt.event.shared.EventBus;
+import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.inject.Inject;
 import com.kk_electronic.kkportal.core.ModuleWindowFactory;
 import com.kk_electronic.kkportal.core.activity.Activity;
+import com.kk_electronic.kkportal.core.event.ContentChangedEvent;
 import com.kk_electronic.kkportal.core.event.TabSelectedEvent;
 import com.kk_electronic.kkportal.core.event.TabSelectedEvent.Handler;
 import com.kk_electronic.kkportal.core.services.ModuleService.ModuleInfo;
 import com.kk_electronic.kkportal.core.tabs.ModuleInfoProvider;
 import com.kk_electronic.kkportal.core.tabs.TabInfo;
 import com.kk_electronic.kkportal.core.tabs.TabsModel;
+
 /**
  * Note this is not a good example yet. Does not have View-Presenter separation
  * 
  * @author Jes Andersen type filter text
  */
-public class Canvas implements Activity, Handler, com.kk_electronic.kkportal.core.ui.GroupDisplay.Handler<ModuleWindow> {
+public class Canvas implements ContentChangedEvent.Handler, Activity, Handler, com.kk_electronic.kkportal.core.ui.GroupDisplay.Handler<ModuleWindow> {
 	private final GroupDisplay<ModuleWindow> display;
 	private final ModuleInfoProvider moduleInfoProvider;
 	private final ModuleWindowFactory windowFactory;
@@ -52,13 +57,14 @@ public class Canvas implements Activity, Handler, com.kk_electronic.kkportal.cor
 	private TabInfo tabInfo;
 
 	@Inject
-	public Canvas(GroupDisplay<ModuleWindow> display, TabsModel tabsModel,
+	public Canvas(EventBus eventBus, GroupDisplay<ModuleWindow> display, TabsModel tabsModel,
 			ModuleInfoProvider moduleInfoProvider,
 			ModuleWindowFactory windowFactory) {
 		this.display = display;
 		this.tabsModel = tabsModel;
 		this.moduleInfoProvider = moduleInfoProvider;
 		this.windowFactory = windowFactory;
+		eventBus.addHandler(ContentChangedEvent.TYPE, this);
 		tabsModel.addTabSelectedHandler(this);
 		display.setHandler(this);
 		showTab(tabsModel.getSelectedTab());
@@ -93,6 +99,8 @@ public class Canvas implements Activity, Handler, com.kk_electronic.kkportal.cor
 				});
 	}
 
+	private boolean firstRun = true; // Flag for updateDisplay Timer
+
 	private void updateDisplay(List<List<Integer>> ids,
 			Map<Integer, ModuleInfo> map) {
 		groupedModuleWindows = new ArrayList<List<ModuleWindow>>();
@@ -116,6 +124,10 @@ public class Canvas implements Activity, Handler, com.kk_electronic.kkportal.cor
 			}
 		}
 		display.setWidgets(groupedModuleWindows);
+		if (firstRun) {
+			delayedSizeCheck.schedule(700);
+			firstRun = false;
+		}
 	}
 
 	protected boolean delete(ModuleWindow moduleWindow) {
@@ -163,7 +175,7 @@ public class Canvas implements Activity, Handler, com.kk_electronic.kkportal.cor
 	private int findIndex(List<? extends KnownHeight> column, int y) {
 		int index = 0;
 		for(KnownHeight x:column){
-			int h = x.getLastHeight();
+			int h = x.getDesiredHeight();
 			if(y < h/2) break;
 			y-= h;
 			index++;
@@ -182,4 +194,48 @@ public class Canvas implements Activity, Handler, com.kk_electronic.kkportal.cor
 		}
 		return groupedModuleWindows.get(groupedModuleWindows.size()-1);
 	}
+
+	@Override
+	public void onContentSizeChanged(ContentChangedEvent event) {
+		if (display.checkForResizes()) {
+			showTab(tabsModel.getSelectedTab());
+			tabsModel.setModuleHeight(event.getModuleId(),event.getHeight());
+		}
+	}
+	
+	Timer delayedSizeCheck = new Timer() {
+		private int i = 0;
+		
+		@Override
+		public void run() {
+			if (display.checkForResizes()) {
+				showTab(tabsModel.getSelectedTab());
+				HashSet<Integer> needed = new HashSet<Integer>();
+				for (List<Integer> i : tabsModel.getSelectedTab().getModuleIds()) {
+					needed.addAll(i);
+				}
+				moduleInfoProvider.translate(needed, new AsyncCallback<Map<Integer,ModuleInfo>>(){
+					@Override
+					public void onFailure(Throwable caught) {
+						GWT.log("Canvas Height failed to get module infos", caught);
+					}
+
+					@Override
+					public void onSuccess(Map<Integer, ModuleInfo> result) {
+						for (Entry<Integer, ModuleInfo> entry : result.entrySet()) {
+							tabsModel.setModuleHeight(entry.getKey(), entry.getValue().getHeight());
+						}
+					}
+				});
+			}
+			if (i >= 10) {
+				i = 0;
+			} else {
+				this.schedule(300);
+				//GWT.log("Check Height Timer run! #" + i);
+				i++;
+			}
+			
+		}
+	};
 }

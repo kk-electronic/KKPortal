@@ -17,8 +17,8 @@
  * along with KKPortal.  If not, see <http://www.gnu.org/licenses/>.
  *
  */
-package com.kk_electronic.kkportal.core.security;
+package com.kk_electronic.kkportal.core.moduleview;
 
-public class SecretProvider {
-
+public @interface ModuleName {
+	String value();
 }

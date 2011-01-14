@@ -41,4 +41,7 @@
   <generate-with class="com.kk_electronic.gwt.rebind.RemoteServiceGenerator">
     <when-type-assignable class="com.kk_electronic.kkportal.core.rpc.RemoteService" />
   </generate-with>
+  <generate-with class="com.kk_electronic.gwt.rebind.ModuleTypeInfoHelperGenerator">
+    <when-type-assignable class="com.kk_electronic.kkportal.core.tabs.ModuleTypeInfoHelper" />
+  </generate-with>
 </module>

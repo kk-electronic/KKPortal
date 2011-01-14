@@ -32,17 +32,14 @@ import com.google.gwt.user.client.ui.Widget;
 import com.google.inject.Inject;
 import com.kk_electronic.kkportal.core.AbstractModule;
 import com.kk_electronic.kkportal.core.moduleview.Module;
-import com.kk_electronic.kkportal.core.services.TechDemo;
 
 public class DataBaseQuery extends AbstractModule implements Module {
-	private final TechDemo debug;
 	private final UIBinder display;
 	
 	public static interface UIBinder extends UiBinder<Widget, DataBaseQuery>{};
 	
 	@Inject
-	public DataBaseQuery(TechDemo debug,UIBinder display) {
-		this.debug = debug;
+	public DataBaseQuery(UIBinder display) {
 		this.display = display;
 	}
 	

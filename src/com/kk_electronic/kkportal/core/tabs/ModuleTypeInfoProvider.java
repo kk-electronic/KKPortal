@@ -29,33 +29,21 @@ import com.google.inject.Inject;
 import com.kk_electronic.kkportal.core.moduleview.Module;
 import com.kk_electronic.kkportal.core.reflection.ModuleMap;
 import com.kk_electronic.kkportal.core.services.ModuleTypeInfo;
-import com.kk_electronic.kkportal.debug.modules.UsageGraph;
-import com.kk_electronic.kkportal.examples.modules.HelloWorld;
-import com.kk_electronic.kkportal.examples.modules.Inotify;
-import com.kk_electronic.kkportal.examples.modules.MotD;
-import com.kk_electronic.kkportal.examples.modules.SRPLogin;
-import com.kk_electronic.kkportal.examples.modules.Wall;
 
 //TODO: Generate this class
-public class ModuleTypeInfoProvider {
+public class ModuleTypeInfoProvider implements hasAddModuleTypeInfo {
 	HashMap<Integer, ModuleTypeInfo> map = new HashMap<Integer, ModuleTypeInfo>();
 	private final ModuleMap moduleMap;
 
 	@Inject
-	public ModuleTypeInfoProvider(ModuleMap moduleMap) {
+	public ModuleTypeInfoProvider(ModuleMap moduleMap, ModuleTypeInfoHelper data) {
 		this.moduleMap = moduleMap;
-		generated();
+		data.insertData(this);
 	}
 	
-	private void generated() {
-		add(HelloWorld.class,0,null);
-		add(Inotify.class,1,null);		
-		add(Wall.class,2,null);
-		add(UsageGraph.class,3,null);
-		add(MotD.class,4,"Message of the Day");
-		add(SRPLogin.class,5,null);
-	}
-
+	/* (non-Javadoc)
+	 * @see com.kk_electronic.kkportal.core.tabs.hasAddModuleTypeInfo#add(java.lang.Class, java.lang.Integer, java.lang.String)
+	 */
 	public void add(Class<? extends Module> clazz,Integer id,String name){
 		if (name == null){
 			name = getNameFromClass(clazz);

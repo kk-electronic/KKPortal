@@ -1,3 +1,22 @@
+/*
+ * Copyright 2010 kk-electronic a/s. 
+ * 
+ * This file is part of KKPortal.
+ *
+ * KKPortal is free software: you can redistribute it and/or modify it
+ * under the terms of the GNU Lesser General Public License as published
+ * by the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * KKPortal is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with KKPortal.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ */
 package com.kk_electronic.kkportal.debug.modules;
 
 import java.util.LinkedList;
@@ -28,7 +47,7 @@ import com.kk_electronic.kkportal.debug.model.CpuUsage;
  */
 public class UsageGraph extends AbstractModule implements HasData<Double>{
 	GWTCanvas canvas = new GWTCanvas();
-	private List<Double> values;
+	private List<? extends Double> values;
 	
 	/*
 	 * This class was used for testing before the back-end was implemented
@@ -119,7 +138,7 @@ public class UsageGraph extends AbstractModule implements HasData<Double>{
 	 * @see com.google.gwt.view.client.HasData#setRowData(int, java.util.List)
 	 */
 	@Override
-	public void setRowData(int start, List<Double> values) {
+	public void setRowData(int start, List<? extends Double> values) {
 		
 		offset = Duration.currentTimeMillis();
 		this.values = values;
@@ -131,7 +150,7 @@ public class UsageGraph extends AbstractModule implements HasData<Double>{
 	 * update of the graph.
 	 * The constructor will ensure this function gets called every 0.1 seconds
 	 */
-	private void drawPath(List<Double> values, double shift) {
+	private void drawPath(List<? extends Double> values, double shift) {
 		if(values == null || values.isEmpty()) return;
 		canvas.clear();
 	    canvas.beginPath();
@@ -219,5 +238,30 @@ public class UsageGraph extends AbstractModule implements HasData<Double>{
 	public void fireEvent(GwtEvent<?> event) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public Double getVisibleItem(int indexOnPage) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public int getVisibleItemCount() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public Iterable<Double> getVisibleItems() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public HandlerRegistration addCellPreviewHandler(
+			com.google.gwt.view.client.CellPreviewEvent.Handler<Double> handler) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

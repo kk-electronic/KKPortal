@@ -27,7 +27,7 @@ from sqlalchemy import func,select,update
 import simplejson as json
 
 def getTabs(context, user):
-    query = db.tabs.select()
+    query = db.tabs.select().where(db.tabs.c.ownerName == user) #@UndefinedVariable
     result = query.execute()
     returnvalues = [dict(x) for x in result]
     result.close()
@@ -118,6 +118,11 @@ def setModulesIdsOnTab(context,tabid,moduleids):
     result = query.execute()
     result.close()
 
+def setModuleHeight(context,moduleId, height):
+    query = update(db.modules).where(db.modules.c.module_id == moduleId).values(height=height) #@UndefinedVariable
+    result = query.execute()
+    result.close()
+    
 def addModule(context,tabid,typeid):
     query = select([db.modules.c.col_nr,func.count()+1]).where(db.modules.c.tab_id == 2).group_by(db.modules.c.col_nr).order_by(func.sum(db.modules.c.height)).limit(1) #@UndefinedVariable
     result = query.execute().fetchone()

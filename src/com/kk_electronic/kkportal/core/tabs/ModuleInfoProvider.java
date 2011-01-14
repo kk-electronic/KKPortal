@@ -1,3 +1,22 @@
+/*
+ * Copyright 2010 kk-electronic a/s. 
+ * 
+ * This file is part of KKPortal.
+ *
+ * KKPortal is free software: you can redistribute it and/or modify it
+ * under the terms of the GNU Lesser General Public License as published
+ * by the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * KKPortal is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with KKPortal.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ */
 package com.kk_electronic.kkportal.core.tabs;
 
 import java.util.ArrayList;
@@ -6,8 +25,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 
+import com.google.gwt.core.client.Scheduler;
 import com.google.gwt.user.client.Command;
-import com.google.gwt.user.client.DeferredCommand;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
@@ -63,7 +82,7 @@ public class ModuleInfoProvider {
 		if(missing != null && !missing.isEmpty()){
 			addCallback(asyncCallback);
 			//We defer so multiple call in the same cycle gets bundled
-			DeferredCommand.addCommand(new Command() {
+			Scheduler.get().scheduleDeferred(new Command() {
 				
 				@Override
 				public void execute() {
