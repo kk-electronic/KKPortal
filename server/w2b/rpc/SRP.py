@@ -34,6 +34,8 @@ import hashlib
 
 users = {
     ("jes@example.com","password") : (0xfaeab00024b50a73a65b,0xf92e745665885e3a0b4046b3c3c4b65f66ddd76b4b628ca760eba0772965d8fa),
+    ('demo@example.com','password'):(0x858ab75fb0265fd6,0xd70e3f655c776d4639c825f962dc3aa2bc7af46a87acc485725bbae089cf403d),
+    ('demo2','password'):(0x59552a7f5994ffe2,0x96868808131ee7a51173d5fb8435f6f902b455453660070df6f3bd72ebf3bdbf)  
 }
 
 def _lookup(identity,method):
