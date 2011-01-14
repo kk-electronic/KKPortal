@@ -47,7 +47,7 @@ class SecurityContext():
     k=3
     validmethods=set(['password','token'])
 
-    I=None
+    identity=None
     _P=None
     _x=None
     _v=None
@@ -59,14 +59,14 @@ class SecurityContext():
 #        self.make_u()
         self.lookup = _lookup
     def setIdentity(self,identity):
-        self.I = identity
+        self.identity = identity
         self.calc_x()
     def setPassword(self,password):
         self._P = password
         self.calc_x()
     def calc_x(self):
-        if self.I and self._P:
-            self._x = self.HN(self.I,':',self._P)
+        if self.identity and self._P:
+            self._x = self.HN(self.identity,':',self._P)
         self._P = None
     def make_A(self):
         #Fixed for debugging must be random
@@ -76,10 +76,10 @@ class SecurityContext():
         #Fixed for debugging must be random
         self._b= 0xcd1cb305716cd7e6a18cdfef032a0c116f321f727e78da4f52ba2044c6510036
         return (((self.k * self._v) % self.N) + pow(self.g,self._b,self.N)) % self.N
-    def requestChallange(self,identity,methods):
+    def requestChallange(self,methods):
         mutual = [method for method in methods if method in self.validmethods]
         for method in mutual:
-            values = self.lookup(identity,method)
+            values = self.lookup(self.identity,method)
             if values:
                 self.method = method
                 salt, self._v = values
@@ -157,7 +157,8 @@ class SecurityContext():
 #TODO: Precalc challanges 
 def requestChallange(context,server,identity,methods):
     ctx = context.security = SecurityContext()
-    challange = ctx.requestChallange(identity,methods)
+    ctx.setIdentity(identity)
+    challange = ctx.requestChallange(methods)
     return map(_hex,challange)
 
 #TODO: log
