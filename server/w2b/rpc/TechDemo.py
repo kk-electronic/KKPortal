@@ -72,10 +72,11 @@ def getWall(context):
     return wall.lastlines
 
 def postToWall(context,message):
+    identity = context.security.identity
     wall = Wall()
     fullmessage = "<%s> [%s] %s" % (
                       datetime.datetime.now().strftime('%H:%M'),
-                      context.user[:context.user.find("@")],
+                      identity[:identity.find("@")],
                       message)
     wall.broadcast(fullmessage)
 
