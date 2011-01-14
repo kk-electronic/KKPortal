@@ -28,6 +28,7 @@ import java.util.Map;
 import com.google.gwt.json.client.JSONParser;
 import com.google.gwt.json.client.JSONValue;
 import com.google.inject.Inject;
+import com.kk_electronic.kkportal.core.rpc.jsonformat.JsonChallange;
 import com.kk_electronic.kkportal.core.rpc.jsonformat.JsonDouble;
 import com.kk_electronic.kkportal.core.rpc.jsonformat.JsonIdentity;
 import com.kk_electronic.kkportal.core.rpc.jsonformat.JsonInteger;
@@ -40,6 +41,7 @@ import com.kk_electronic.kkportal.core.rpc.jsonformat.JsonTabInfo;
 import com.kk_electronic.kkportal.core.rpc.jsonformat.JsonValue;
 import com.kk_electronic.kkportal.core.rpc.jsonformat.UnableToDeserialize;
 import com.kk_electronic.kkportal.core.rpc.jsonformat.UnableToSerialize;
+import com.kk_electronic.kkportal.core.security.Challange;
 import com.kk_electronic.kkportal.core.security.Identity;
 import com.kk_electronic.kkportal.core.services.ModuleService.ModuleInfo;
 import com.kk_electronic.kkportal.core.tabs.TabInfo;
@@ -66,6 +68,7 @@ public class SimpleEncoder implements FrameEncoder<JSONValue> {
 		types.put(TabInfo.class, new JsonTabInfo());
 		types.put(ModuleInfo.class, new JsonModuleInfo());
 		types.put(Double.class, new JsonDouble());
+		types.put(Challange.class, new JsonChallange());
 	}
 
 	@SuppressWarnings("unchecked")
@@ -77,6 +80,10 @@ public class SimpleEncoder implements FrameEncoder<JSONValue> {
 	@Override
 	public <T> void encode(T object, StringBuilder json)
 			throws UnableToSerialize {
+		if( object == null){
+			json.append("null");
+			return;
+		}
 		if( object instanceof Object[] ){
 			T[] ts = (T[]) object;
 			encode(Arrays.asList(ts), json);
@@ -112,7 +119,7 @@ public class SimpleEncoder implements FrameEncoder<JSONValue> {
 		if(result.isNull() != null) return null;
 		JsonValue<T> jsonValue = find(subtypes.get(0), resultType);
 		if (jsonValue == null){
-			throw new UnableToDeserialize("Could not find serializer for "
+			throw new UnableToDeserialize("Could not find deserializer for "
 					+ subtypes.get(0));
 		}
 		return jsonValue.fromJson(result, subtypes.subList(1, subtypes.size()), this);
