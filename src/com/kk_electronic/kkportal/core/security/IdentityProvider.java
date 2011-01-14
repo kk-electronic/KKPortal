@@ -18,6 +18,7 @@ public class IdentityProvider implements Handler{
 	private final EventBus eventBus;
 	private final String dialogtext = "Username:";
 	private String motd;
+	private String errortext = "";
 	
 	public static interface Display {
 		void show();
@@ -63,7 +64,7 @@ public class IdentityProvider implements Handler{
 		if(motd == null){
 			return dialogtext;
 		} else {
-			return motd + dialogtext;
+			return motd + errortext + dialogtext;
 		}
 	}
 
@@ -94,6 +95,14 @@ public class IdentityProvider implements Handler{
 	@Override
 	public void onInput(String input) {
 		String[] c = input.split("@",2);
+		errortext = "";
 		addIdentity(new Identity(c[0],c[1]));
+	}
+
+	public void invalidate(Identity identity, String reason) {
+		invalidate(identity);
+		errortext = "Password is rejected\n\n";
+		display.show();
+		display.setText(getDialogText());
 	}
 }
