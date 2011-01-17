@@ -117,7 +117,10 @@ class CpuInfo():
             lastused,lastidle = self.info[cpuname]
             useddiff = used - lastused
             idlediff = idle - lastidle
-            load=round(useddiff/(useddiff+idlediff),2)
+            if (useddiff+idlediff) == 0:
+                load = self.history[cpuname][-1]
+            else:
+                load=round(useddiff/(useddiff+idlediff),2)
             self._callAll(cpuname,load)
             self.usage[cpuname] = (used-lastused,idle-lastidle)
             self.history[cpuname].append(load)
