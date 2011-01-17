@@ -326,9 +326,8 @@ public class RpcDispatcher implements FrameSentEvent.Handler, Dispatcher,
 	}
 
 	protected void sendCallsWithFeature(Class<? extends RemoteService> feature) {
-		Iterator<PendingCall<?>> i = pending.values().iterator();
 		String featureName = clientFeatureMap.getKeyFromClass(feature);
-		for (PendingCall<?> call = i.next(); i.hasNext(); call = i.next()) {
+		for(PendingCall<?> call:pending.values()){
 			if (call.getStatus() == PendingCallStatus.NEW
 					&& call.request.getFeatureName().equals(featureName)) {
 				transmit(call);
