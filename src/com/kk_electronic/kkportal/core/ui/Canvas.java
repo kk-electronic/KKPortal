@@ -199,37 +199,25 @@ public class Canvas implements ContentChangedEvent.Handler, Activity, Handler, c
 	public void onContentSizeChanged(ContentChangedEvent event) {
 		if (display.checkForResizes()) {
 			showTab(tabsModel.getSelectedTab());
-			tabsModel.setModuleHeight(event.getModuleId(),event.getHeight());
+			saveModuleHeights();
 		}
 	}
 	
 	Timer delayedSizeCheck = new Timer() {
 		private int i = 0;
+		private boolean updated = false;
 		
 		@Override
 		public void run() {
 			if (display.checkForResizes()) {
 				showTab(tabsModel.getSelectedTab());
-				HashSet<Integer> needed = new HashSet<Integer>();
-				for (List<Integer> i : tabsModel.getSelectedTab().getModuleIds()) {
-					needed.addAll(i);
-				}
-				moduleInfoProvider.translate(needed, new AsyncCallback<Map<Integer,ModuleInfo>>(){
-					@Override
-					public void onFailure(Throwable caught) {
-						GWT.log("Canvas Height failed to get module infos", caught);
-					}
-
-					@Override
-					public void onSuccess(Map<Integer, ModuleInfo> result) {
-						for (Entry<Integer, ModuleInfo> entry : result.entrySet()) {
-							tabsModel.setModuleHeight(entry.getKey(), entry.getValue().getHeight());
-						}
-					}
-				});
+				updated = true;
 			}
 			if (i >= 10) {
 				i = 0;
+				if(updated) {
+					saveModuleHeights();
+				}
 			} else {
 				this.schedule(300);
 				//GWT.log("Check Height Timer run! #" + i);
@@ -238,4 +226,24 @@ public class Canvas implements ContentChangedEvent.Handler, Activity, Handler, c
 			
 		}
 	};
+	
+	private void saveModuleHeights() {
+		HashSet<Integer> needed = new HashSet<Integer>();
+		for (List<Integer> i : tabsModel.getSelectedTab().getModuleIds()) {
+			needed.addAll(i);
+		}
+		moduleInfoProvider.translate(needed, new AsyncCallback<Map<Integer,ModuleInfo>>(){
+			@Override
+			public void onFailure(Throwable caught) {
+				GWT.log("Canvas Height failed to get module infos", caught);
+			}
+
+			@Override
+			public void onSuccess(Map<Integer, ModuleInfo> result) {
+				for (Entry<Integer, ModuleInfo> entry : result.entrySet()) {
+					tabsModel.setModuleHeight(entry.getKey(), entry.getValue().getHeight());
+				}
+			}
+		});
+	}
 }
