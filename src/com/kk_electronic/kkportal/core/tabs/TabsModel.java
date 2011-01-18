@@ -28,6 +28,7 @@ import com.google.gwt.core.client.Scheduler;
 import com.google.gwt.event.shared.EventBus;
 import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.client.Command;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.view.client.HasData;
 import com.google.gwt.view.client.SelectionModel;
@@ -161,6 +162,9 @@ public class TabsModel implements NewPrimaryIdentityEvent.Handler, LocationChang
 	}
 
 	public void addNewModule(final TabInfo tabInfo, ModuleTypeInfo selectedObject) {
+		if(tabInfo == null){
+			Window.alert("The blue sock found");
+		}
 		Identity identity = identityProvider.getPrimaryIdentity();
 		moduleService.createModule(identity,selectedObject.getType_id(),new AsyncCallback<Integer>() {
 
@@ -213,6 +217,9 @@ public class TabsModel implements NewPrimaryIdentityEvent.Handler, LocationChang
 	}
 
 	private void saveTabInfo(final TabInfo tabInfo, final TabInfo newTabInfo) {
+		if(newTabInfo == null){
+			Window.alert("Missing sock found");
+		}
 		moduleService.setModulesIdsOnTab(newTabInfo.getId(),newTabInfo.getModuleIds(),new AsyncCallback<Object>() {
 
 			@Override
