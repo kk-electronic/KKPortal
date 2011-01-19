@@ -21,9 +21,10 @@ import sys, uuid, threading
 import simplejson as json
 
 from twisted.web import resource, server
-from twisted.internet import threads
+from twisted.internet import threads,reactor
 from twisted.python import log
 from w2b import features
+from twisted.internet.defer import Deferred
 
 
 class WebSocketRoot(resource.Resource):
@@ -160,7 +161,10 @@ class MessageBox(resource.Resource):
         for call in jsonRpcBatch:
             log.msg("Adding request to incomming queue %s" % call)
             #Procces each call in another thread
-            d = threads.deferToThread(self._rpcCall, call)
+            #d = threads.deferToThread(self._rpcCall, call)
+            d = Deferred()
+            d.addCallback(self._rpcCall)
+            reactor.callLater(0,d.callback,call) #@UndefinedVariable
             #Make each repsonse call addResponse when it is done (thread-safe)
             d.addCallback(self.addResponse)
         
