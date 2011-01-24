@@ -35,7 +35,9 @@ import com.kk_electronic.kkportal.core.event.LocationChangedEvent;
 import com.kk_electronic.kkportal.core.inject.ConstructFromLiteral;
 import com.kk_electronic.kkportal.core.inject.FlexInjector;
 import com.kk_electronic.kkportal.core.reflection.ActivityMap;
+import com.kk_electronic.kkportal.core.reflection.Injection;
 import com.kk_electronic.kkportal.core.ui.ApplicationLayout;
+import com.kk_electronic.kkportal.core.util.Stats;
 
 /**
  * This class is responsible for history management in a browser and for
@@ -63,12 +65,13 @@ public class ActivityManager implements ValueChangeHandler<String> {
 	private final String defaultplace;
 	private final LocationInfo locationInfo;
 	private final EventBus eventBus;
+	private final Stats stats;
 
 	@Inject
 	public ActivityManager(ApplicationLayout layout, FlexInjector injector,
 			ActivityMap activityMap,
 			@Named("DefaultHistoryToken") String defaultplace,LocationInfo locationInfo
-			, EventBus eventBus) {
+			, EventBus eventBus,Stats stats) {
 
 		this.injector = injector;
 		this.activityMap = activityMap;
@@ -76,6 +79,7 @@ public class ActivityManager implements ValueChangeHandler<String> {
 		this.display = layout;
 		this.locationInfo = locationInfo;
 		this.eventBus = eventBus;
+		this.stats = stats;
 		/*
 		 * We create the initial GUI elements needed for displaying activities.
 		 */
@@ -150,6 +154,7 @@ public class ActivityManager implements ValueChangeHandler<String> {
 			displayActivity(running.get(mainActivity));
 			return;
 		}
+		stats.sendStats(Injection.class, mainActivity, "begin");
 		injector.create(mainActivity, new AsyncCallback<Activity>() {
 			@Override
 			public void onFailure(Throwable caught) {
@@ -158,6 +163,7 @@ public class ActivityManager implements ValueChangeHandler<String> {
 
 			@Override
 			public void onSuccess(Activity result) {
+				stats.sendStats(Injection.class, mainActivity, "end");
 				running.put(mainActivity, result);
 				displayActivity(result);
 			}
