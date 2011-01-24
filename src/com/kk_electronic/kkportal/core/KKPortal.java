@@ -25,6 +25,8 @@ import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.kk_electronic.kkportal.core.activity.ActivityManager;
 import com.kk_electronic.kkportal.core.reflection.Injection;
 import com.kk_electronic.kkportal.core.services.TechDemo;
+import com.kk_electronic.kkportal.core.util.ProgressMeter;
+import com.kk_electronic.kkportal.core.util.Stats;
 
 /**
  * This is the main entry point for the KKPortal project.
@@ -34,13 +36,30 @@ import com.kk_electronic.kkportal.core.services.TechDemo;
  */
 
 public class KKPortal implements EntryPoint {
+	Stats stats = new Stats();
 	
 	@Override
 	public void onModuleLoad() {
 		startActivityManager();
+		startDebugPanel();
 		if(!GWT.isScript()){
 			reloadServer();
 		}
+	}
+
+	private void startDebugPanel() {
+		Injection.create(ProgressMeter.class, new AsyncCallback<ProgressMeter>() {
+
+			@Override
+			public void onFailure(Throwable caught) {
+				GWT.log("DebugPanel Creation Failed",caught);
+			}
+
+			@Override
+			public void onSuccess(ProgressMeter result) {
+				GWT.log("DebugPanel Attached");
+			}
+		});		
 	}
 
 	private void reloadServer() {
@@ -58,6 +77,7 @@ public class KKPortal implements EntryPoint {
 	}
 
 	private void startActivityManager() {
+		stats.sendStats(Injection.class, ActivityManager.class, "begin");
 		Injection.create(ActivityManager.class, new AsyncCallback<ActivityManager>() {
 
 			@Override
@@ -74,6 +94,7 @@ public class KKPortal implements EntryPoint {
 				/*
 				 * We inform that the base class and all dependencies of it has been loaded
 				 */
+				stats.sendStats(Injection.class, ActivityManager.class, "end");
 				GWT.log("Application Start");
 			}
 		});
