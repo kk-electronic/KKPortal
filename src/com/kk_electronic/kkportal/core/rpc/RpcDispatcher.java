@@ -48,6 +48,7 @@ import com.kk_electronic.kkportal.core.reflection.ServerEventMap;
 import com.kk_electronic.kkportal.core.rpc.jsonformat.UnableToDeserialize;
 import com.kk_electronic.kkportal.core.rpc.jsonformat.UnableToSerialize;
 import com.kk_electronic.kkportal.core.security.SecurityMethod;
+import com.kk_electronic.kkportal.core.util.Stats;
 
 /**
  * RpcDispatcher is a flexible {@link Dispatcher} for use with direct server
@@ -97,6 +98,8 @@ public class RpcDispatcher implements FrameSentEvent.Handler, Dispatcher,
 
 	private final EventFromJsonCreator creator;
 
+	private final Stats stats;
+
 	/**
 	 * A holder to keep metainformation about the calls made. should generally
 	 * have no use outside this class.
@@ -106,7 +109,7 @@ public class RpcDispatcher implements FrameSentEvent.Handler, Dispatcher,
 	 * @param <T>
 	 *            used to provide type safety for the callback
 	 */
-	public final static class PendingCall<T> implements AsyncCallback<RpcResponse<JSONValue>> {
+	public final class PendingCall<T> implements AsyncCallback<RpcResponse<JSONValue>> {
 		private final AsyncCallback<T> callback;
 		private RpcRequest request;
 		private PendingCallStatus status;
@@ -129,6 +132,17 @@ public class RpcDispatcher implements FrameSentEvent.Handler, Dispatcher,
 		public PendingCallStatus getStatus() {
 			return status;
 		}
+		
+
+		@Override
+		public String toString() {
+			StringBuilder sb = new StringBuilder();
+			sb.append(request.getMethod());
+			sb.append("[");
+			sb.append(request.getId());
+			sb.append("]");
+			return sb.toString();
+		}
 
 		public void setRequest(RpcRequest request) {
 			this.request = request;
@@ -136,6 +150,7 @@ public class RpcDispatcher implements FrameSentEvent.Handler, Dispatcher,
 
 		@Override
 		public void onFailure(Throwable caught) {
+			stats.sendStats(RpcDispatcher.class, this, "end");
 			if (callback != null) {
 				callback.onFailure(caught);
 			}
@@ -143,6 +158,7 @@ public class RpcDispatcher implements FrameSentEvent.Handler, Dispatcher,
 
 		@Override
 		public void onSuccess(RpcResponse<JSONValue> response) {
+			stats.sendStats(RpcDispatcher.class, this, "callback");
 			T result = null;
 			try {
 				result = encoder.validate(response.getResult(),result,returnValueType);
@@ -153,6 +169,7 @@ public class RpcDispatcher implements FrameSentEvent.Handler, Dispatcher,
 			if (callback != null) {
 				callback.onSuccess(result);
 			}
+			stats.sendStats(RpcDispatcher.class, this, "end");
 		}
 	}
 
@@ -160,7 +177,7 @@ public class RpcDispatcher implements FrameSentEvent.Handler, Dispatcher,
 	public RpcDispatcher(IdCreator<Integer> idCreator, WebSocket socket,
 			FrameEncoder<JSONValue> encoder, SecurityMap clientSecurityMap,
 			FeatureMap clientFeatureMap, FlexInjector injector,
-			ServerEventMap serverEventMap,EventFromJsonCreator creator) {
+			ServerEventMap serverEventMap,EventFromJsonCreator creator,Stats stats) {
 		this.idCreator = idCreator;
 		this.socket = socket;
 		this.frameEncoder = encoder;
@@ -169,6 +186,7 @@ public class RpcDispatcher implements FrameSentEvent.Handler, Dispatcher,
 		this.injector = injector;
 		this.serverEventMap = serverEventMap;
 		this.creator = creator;
+		this.stats = stats;
 		authenticationMethods.put(RemoteServer.class, null);
 		socket.addServerConnectHandler(this);
 		socket.addServerDisconnectHandler(this);
@@ -195,7 +213,8 @@ public class RpcDispatcher implements FrameSentEvent.Handler, Dispatcher,
 		final PendingCall<T> pendingCall = new PendingCall<T>(callback,
 				request, frameEncoder, returnValueType);
 		pending.put(request.getId(), pendingCall);
-
+		stats.sendStats(this.getClass(), pendingCall, "begin");
+		
 		if (authenticationMethods.containsKey(serverinterface)) {
 			SecurityMethod securityMethod = authenticationMethods
 					.get(serverinterface);
@@ -232,6 +251,7 @@ public class RpcDispatcher implements FrameSentEvent.Handler, Dispatcher,
 
 	protected void transmit(PendingCall<?> pendingCall) {
 		pendingCall.setStatus(PendingCallStatus.WAITING_FOR_TRANSMIT);
+		stats.sendStats(RpcDispatcher.class, pendingCall, "transmit");
 		txQueue.add(pendingCall.request);
 		sendQueue();
 	}
