@@ -19,11 +19,15 @@
  */
 package com.kk_electronic.kkportal.core;
 
+import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.shared.EventBus;
+import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.inject.Inject;
 import com.kk_electronic.kkportal.core.event.ContentChangedEvent;
 import com.kk_electronic.kkportal.core.moduleview.Module;
 import com.kk_electronic.kkportal.core.services.ModuleService.ModuleInfo;
+import com.kk_electronic.kkportal.core.util.Callback;
+import com.kk_electronic.kkportal.core.util.DualCallback;
 
 public abstract class AbstractModule implements Module {
 
@@ -46,5 +50,32 @@ public abstract class AbstractModule implements Module {
 	
 	public void setEventBus(EventBus eventBus) {
 		this.eventBus = eventBus;
+	}
+	
+	public <T> AsyncCallback<T> call(final Callback<T> callback){
+		return call(callback, "");
+	}
+	
+	public <T> AsyncCallback<T> call(final Callback<T> callback,final String failmessage){
+		final Class<? extends AbstractModule> clazz = this.getClass();
+		return new DualCallback<T>() {
+
+			@Override
+			public void onFailure(Throwable caught) {
+				if(!GWT.isScript()){
+					String s = clazz.getName();
+					s = s.substring(s.lastIndexOf('.')+1).toUpperCase();
+					if(failmessage != null && !failmessage.isEmpty()){
+						s = s + "-" + failmessage;
+					}
+					GWT.log(s,caught);
+				}
+			}
+
+			@Override
+			public void onSuccess(T result) {
+				callback.onSuccess(result);
+			}
+		};
 	}
 }
