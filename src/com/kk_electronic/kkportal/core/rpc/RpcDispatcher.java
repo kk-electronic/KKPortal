@@ -373,7 +373,7 @@ public class RpcDispatcher implements FrameSentEvent.Handler, Dispatcher,
 			SecurityMethod securityMethod) {
 		authenticationMethods.put(feature, securityMethod);
 		String featureName = clientFeatureMap.getKeyFromClass(feature);
-		for (PendingCall<?> call : pending.values()) {
+		for (PendingCall<?> call : new ArrayList<PendingCall<?>>(pending.values())) {
 			if (call.getStatus() == PendingCallStatus.NEW
 					&& call.request.getFeatureName().equals(featureName)) {
 				signAndTransmit(call, securityMethod);
