@@ -113,7 +113,7 @@ public class TabsModel implements NewPrimaryIdentityEvent.Handler, LocationChang
 	protected void setTabInfos(List<TabInfo> tabInfos) {
 		this.tabInfos = tabInfos;
 		TabInfo selectedInfo = findSelectedTabInfo(tabInfos);
-		if(selectedInfo == null & tabInfos.size()>0){
+		if(selectedInfo == null && tabInfos.size()>0){
 			selectedInfo = tabInfos.get(0);
 		}
 		setSelectedWithoutCheck(selectedInfo);
