@@ -497,4 +497,8 @@ public class RpcDispatcher implements FrameSentEvent.Handler, Dispatcher,
 			}
 		});
 	}
+
+	public WebSocket getSocket() {
+		return socket;
+	}
 }

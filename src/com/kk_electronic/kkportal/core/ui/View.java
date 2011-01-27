@@ -23,6 +23,7 @@ import com.google.gwt.dom.client.Style.Unit;
 import com.google.gwt.user.client.ui.DockLayoutPanel;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.inject.Inject;
+import com.kk_electronic.kkportal.core.LoginIndicator;
 import com.kk_electronic.kkportal.core.activity.Activity;
 
 public class View implements Activity {
@@ -30,7 +31,7 @@ public class View implements Activity {
 	private final TabDisplay tabDisplay;
 
 	@Inject
-	public View(Canvas canvas,TabDisplay tabDisplay) {
+	public View(Canvas canvas,TabDisplay tabDisplay,LoginIndicator login) {
 		this.canvas = canvas;
 		this.tabDisplay = tabDisplay;
 	}
