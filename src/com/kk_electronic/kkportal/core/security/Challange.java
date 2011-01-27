@@ -8,4 +8,5 @@ public class Challange {
 	public BigInteger g;
 	public BigInteger s;
 	public BigInteger B;
+	public String sessionId;
 }

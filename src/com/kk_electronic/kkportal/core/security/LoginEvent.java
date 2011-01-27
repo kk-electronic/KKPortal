@@ -19,19 +19,42 @@
  */
 package com.kk_electronic.kkportal.core.security;
 
-import com.google.gwt.user.client.rpc.AsyncCallback;
-import com.kk_electronic.kkportal.core.inject.ConstructFromLiteral;
-import com.kk_electronic.kkportal.core.rpc.RpcRequest;
+import com.google.gwt.event.shared.EventHandler;
+import com.google.gwt.event.shared.GwtEvent;
 
-@ConstructFromLiteral
-public interface SecurityMethod {
+/**
+ * @author Jes Andersen
+ */
+public class LoginEvent extends GwtEvent<LoginEvent.Handler> {
+
+	public interface Handler extends EventHandler {
+		void onNewLoginEvent(LoginEvent event);
+	}
+
 	/**
-	 * 
-	 * @param request the request to be signed
-	 * @param asyncCallback Should be called with the updated Request on success or onFailure if the method could not be signed
+	 * Handler type.
 	 */
-	void sign(RpcRequest request, AsyncCallback<RpcRequest> asyncCallback);
+	public static final Type<Handler> TYPE = new Type<Handler>();
+	private final Identity identity;
 
-	void invalid();
+	/**
+	 * @return the current primary identity or null if no valid identities are left
+	 */
+	public Identity getIdentity() {
+		return identity;
+	}
 
+	public LoginEvent(Identity identity) {
+		this.identity = identity;
+	}
+
+	@Override
+	public Type<Handler> getAssociatedType() {
+		return TYPE;
+	}
+
+	@Override
+	protected void dispatch(Handler handler) {
+		handler.onNewLoginEvent(this);
+	}
 }

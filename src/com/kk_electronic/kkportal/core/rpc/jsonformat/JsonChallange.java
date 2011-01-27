@@ -24,14 +24,15 @@ public class JsonChallange implements JsonValue<Challange> {
 		Challange c = new Challange();
 		String s = null;
 		s = simpleEncoder.validate(array.get(0), s , new Class<?>[]{String.class});
-		c.N = new BigInteger(s,16);
+		if(s != null) c.N = new BigInteger(s,16);
 		s = simpleEncoder.validate(array.get(1), s , new Class<?>[]{String.class});
-		c.g = new BigInteger(s,16);
+		if(s != null) c.g = new BigInteger(s,16);
 		c.method = simpleEncoder.validate(array.get(2), s , new Class<?>[]{String.class});
 		s = simpleEncoder.validate(array.get(3), s , new Class<?>[]{String.class});
-		c.s = new BigInteger(s,16);
+		if(s != null) c.s = new BigInteger(s,16);
 		s = simpleEncoder.validate(array.get(4), s , new Class<?>[]{String.class});
-		c.B = new BigInteger(s,16);
+		if(s != null) c.B = new BigInteger(s,16);
+		c.sessionId = simpleEncoder.validate(array.get(5), s , new Class<?>[]{String.class});
 		return c;
 	}
 

@@ -16,18 +16,19 @@
 # You should have received a copy of the GNU Lesser General Public License
 # along with KKPortal.  If not, see <http://www.gnu.org/licenses/>.
 #
+import base64
 '''
 Created on Jan 11, 2010
 
 @author: albatros
 '''
 
-import os, random
+import os, random,numbers
 
 def _hex(n):
-    if isinstance(n,basestring):
-        return n
-    return "%x" % n
+    if isinstance(n,numbers.Integral):
+        return "%x" % n
+    return n
 
 import random, math
 import hashlib
@@ -154,14 +155,21 @@ class SecurityContext():
             digest.update(x)
         return digest.hexdigest()
 
+sessions = {}
 
 #TODO: throttle challanges per ip
 #TODO: Precalc challanges 
-def requestChallange(context,server,identity,methods):
-    ctx = context.security = SecurityContext()
-    ctx.setIdentity(identity)
-    challange = ctx.requestChallange(methods)
-    return map(_hex,challange)
+def requestChallange(context,server,identity,methods,sessionId=None):
+    if sessionId and sessionId in sessions:
+        context.security = sessions[sessionId]
+        return (None,None,None,None,None,sessionId)
+    else:
+        sessionId = base64.b64encode(os.urandom(12))
+        ctx = context.security = SecurityContext()
+        ctx.setIdentity(identity)
+        challange = ctx.requestChallange(methods)
+        sessions[sessionId] = ctx
+        return map(_hex,challange + (sessionId,))
 
 #TODO: log
 def answerChallange(context,A,m1):

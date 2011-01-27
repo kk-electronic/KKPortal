@@ -7,7 +7,7 @@ import com.kk_electronic.kkportal.core.rpc.RemoteService;
 
 public interface SRP extends RemoteService {
 	public void requestChallange(String server, String username,
-			List<String> methods, AsyncCallback<Challange> callback);
+			List<String> methods,String sessionId, AsyncCallback<Challange> callback);
 
 	public void answerChallange(String A, String m1,AsyncCallback<String> callback);
 }
