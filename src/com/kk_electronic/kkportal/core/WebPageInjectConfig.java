@@ -23,6 +23,8 @@ import com.google.gwt.event.shared.EventBus;
 import com.google.gwt.event.shared.SimpleEventBus;
 import com.google.gwt.inject.client.AbstractGinModule;
 import com.google.gwt.json.client.JSONValue;
+import com.google.gwt.user.client.ui.LayoutPanel;
+import com.google.gwt.user.client.ui.RootLayoutPanel;
 import com.google.gwt.view.client.ProvidesKey;
 import com.google.inject.Provides;
 import com.google.inject.Singleton;
@@ -30,6 +32,8 @@ import com.google.inject.TypeLiteral;
 import com.google.inject.name.Names;
 import com.kk_electronic.kkportal.core.activity.ActivityManager;
 import com.kk_electronic.kkportal.core.inject.FlexInjector;
+import com.kk_electronic.kkportal.core.persistence.SessionStorage;
+import com.kk_electronic.kkportal.core.persistence.Storage;
 import com.kk_electronic.kkportal.core.reflection.Injection;
 import com.kk_electronic.kkportal.core.rpc.Comet;
 import com.kk_electronic.kkportal.core.rpc.FrameEncoder;
@@ -43,6 +47,7 @@ import com.kk_electronic.kkportal.core.security.SHA256;
 import com.kk_electronic.kkportal.core.services.ModuleInfoKeyProvider;
 import com.kk_electronic.kkportal.core.services.ModuleService.ModuleInfo;
 import com.kk_electronic.kkportal.core.ui.ApplicationLayout;
+import com.kk_electronic.kkportal.core.ui.GlassPanel;
 import com.kk_electronic.kkportal.core.ui.WebPageLayout;
 
 /**
@@ -70,10 +75,18 @@ public class WebPageInjectConfig extends AbstractGinModule {
 		bind(EventBus.class).to(SimpleEventBus.class).in(Singleton.class);
 		bindConstant().annotatedWith(Names.named("DefaultHistoryToken")).to("View");
 		bind(Digest.class).in(Singleton.class);
+		bind(Storage.class).to(SessionStorage.class);
+		bind(GlassPanel.class).in(Singleton.class);
 	}
 	
 	@Provides @Singleton
 	FlexInjector provideFlexInjector(){
 		return Injection.getInjector();
+	}
+	
+
+	@Provides @Singleton
+	LayoutPanel provideLayoutPanel(){
+		return RootLayoutPanel.get();
 	}
 }
