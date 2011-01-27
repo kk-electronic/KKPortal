@@ -102,7 +102,7 @@ public class SRPLogin extends AbstractModule implements Module {
 	public void login(String identity, String password) {
 		context.setIdentity(identity);
 		context.setPassword(password);
-		srp.requestChallange(null, context.getIdentity(),validmethods,new AsyncCallback<Challange>(){
+		srp.requestChallange(null, context.getIdentity(),validmethods,null,new AsyncCallback<Challange>(){
 
 			@Override
 			public void onFailure(Throwable caught) {
