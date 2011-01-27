@@ -19,17 +19,15 @@
  */
 package com.kk_electronic.kkportal.core.ui;
 
-import com.google.gwt.core.client.Scheduler;
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.KeyCodes;
 import com.google.gwt.event.dom.client.KeyDownEvent;
+import com.google.gwt.safehtml.shared.SafeHtml;
 import com.google.gwt.safehtml.shared.SafeHtmlBuilder;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
-import com.google.gwt.user.client.Command;
-import com.google.gwt.user.client.ui.RootLayoutPanel;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.inject.Inject;
@@ -43,9 +41,11 @@ public class InputDialog {
 	
 	private Widget widget;
 	private Handler handler;
+	private final GlassPanel glassPanel;
 
 	@Inject
-	public InputDialog(UIBinder binder) {
+	public InputDialog(UIBinder binder,GlassPanel glassPanel) {
+		this.glassPanel = glassPanel;
 		widget = binder.createAndBindUi(this);
 	}
 	
@@ -54,19 +54,9 @@ public class InputDialog {
 	}
 
 	public void show() {
-		if(showing) return;
+		glassPanel.addWidget(widget);
 		showing = true;
-		final RootLayoutPanel r = RootLayoutPanel.get();
-		Scheduler.get().scheduleDeferred(new Command() {
-			
-			@Override
-			public void execute() {
-				if(r.getWidgetIndex(widget) == -1){
-					r.add(widget);
-					username.setFocus(true);
-				}
-			}
-		});
+		username.setFocus(true);
 	}
 
 	@UiField TextBox username;
@@ -84,8 +74,7 @@ public class InputDialog {
 	}
 	
 	private void hide() {
-		if(!showing) return;
-		RootLayoutPanel.get().remove(widget);
+		glassPanel.remove(widget);
 		showing = false;
 	}
 
@@ -116,5 +105,9 @@ public class InputDialog {
 
 	public void setValue(String value) {
 		username.setText(value);
+	}
+
+	public void setHTML(SafeHtml html) {
+		text.setInnerHTML(html.asString());
 	}
 }

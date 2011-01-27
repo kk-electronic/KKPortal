@@ -21,15 +21,32 @@
 -->
 <ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder" xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:kk="urn:import:com.kk_electronic.kkportal.core.ui" xmlns:c="urn:import:com.google.gwt.user.cellview.client">
 	<ui:style src="../../res/palette.css">
-		.dialog {
-			
+		.dialogholder {
+			/* Setting the position like this centers the div on the page */
+			position: absolute;
+			margin: auto;
+			top: 35%;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			width: 300px;
+			overflow: auto;
+		}
+		.glassscreen {
+			background-color: white;
+			height: 200%;
+			opacity:0.5;
+		}
+		.dialogholder2 {
+			background-color: colour2;
+			color: white;
+			padding: 10px;
+			width: 300px; /* Should be the same as dialogholder */
 		}
 	</ui:style>
 	<g:HTMLPanel>
-		<div class="{style.dialog}">
-			<span ui:field="text">Username</span><br />
-			<g:TextBox ui:field="username">jes@example.com</g:TextBox>
-			<g:Button ui:field="submit">Continue</g:Button>
-		</div>
+		<div class="{style.glassscreen}"></div>
+		<div class="{style.dialogholder}">
+		<g:VerticalPanel ui:field="panel" stylePrimaryName="{style.dialogholder2}"></g:VerticalPanel></div>
 	</g:HTMLPanel>
 </ui:UiBinder>
