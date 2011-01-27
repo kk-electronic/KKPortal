@@ -17,7 +17,7 @@ import com.google.inject.Inject;
 import com.kk_electronic.kkportal.core.inject.ConstructFromLiteral;
 
 @ConstructFromLiteral
-public class ProgressMeter {
+public class DebugPanel {
 	static HTML panel;
 	static boolean showing = false;
 
@@ -36,7 +36,7 @@ public class ProgressMeter {
 	private final LayoutPanel p;
 
 	@Inject
-	public ProgressMeter() {
+	public DebugPanel() {
 		p = RootLayoutPanel.get();
 		Event.addNativePreviewHandler(handler);
 		refire();
@@ -97,11 +97,11 @@ public class ProgressMeter {
 	
 	private native void refire() /*-{
 		for (key in $wnd.__stats){
-			@com.kk_electronic.kkportal.core.util.ProgressMeter::onMetric(Lcom/kk_electronic/kkportal/core/util/MetricInfo;)($wnd.__stats[key]);
+			@com.kk_electronic.kkportal.core.util.DebugPanel::onMetric(Lcom/kk_electronic/kkportal/core/util/MetricInfo;)($wnd.__stats[key]);
 		}
 	}-*/;
 	
 	private native void attachListener() /*-{
-		$wnd.__stats_listener = @com.kk_electronic.kkportal.core.util.ProgressMeter::onMetric(Lcom/kk_electronic/kkportal/core/util/MetricInfo;);
+		$wnd.__stats_listener = @com.kk_electronic.kkportal.core.util.DebugPanel::onMetric(Lcom/kk_electronic/kkportal/core/util/MetricInfo;);
 	}-*/;
 }

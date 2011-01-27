@@ -25,7 +25,7 @@ import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.kk_electronic.kkportal.core.activity.ActivityManager;
 import com.kk_electronic.kkportal.core.reflection.Injection;
 import com.kk_electronic.kkportal.core.services.TechDemo;
-import com.kk_electronic.kkportal.core.util.ProgressMeter;
+import com.kk_electronic.kkportal.core.util.DebugPanel;
 import com.kk_electronic.kkportal.core.util.Stats;
 
 /**
@@ -48,7 +48,7 @@ public class KKPortal implements EntryPoint {
 	}
 
 	private void startDebugPanel() {
-		Injection.create(ProgressMeter.class, new AsyncCallback<ProgressMeter>() {
+		Injection.create(DebugPanel.class, new AsyncCallback<DebugPanel>() {
 
 			@Override
 			public void onFailure(Throwable caught) {
@@ -56,7 +56,7 @@ public class KKPortal implements EntryPoint {
 			}
 
 			@Override
-			public void onSuccess(ProgressMeter result) {
+			public void onSuccess(DebugPanel result) {
 				GWT.log("DebugPanel Attached");
 			}
 		});		
