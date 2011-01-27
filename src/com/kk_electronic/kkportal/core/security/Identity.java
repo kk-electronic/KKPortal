@@ -62,6 +62,12 @@ public class Identity {
 		this.username = username;
 		this.server = server;
 	}
+	public Identity(String i) {
+		assert(i.contains("@"));
+		String[] r = i.split("@",2);
+		username = r[0];
+		server = r[1];
+	}
 	@Override
 	public String toString() {
 		return username + "@" + server;

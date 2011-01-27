@@ -24,11 +24,15 @@ import java.util.List;
 
 import com.google.gwt.event.shared.EventBus;
 import com.google.gwt.event.shared.HandlerRegistration;
+import com.google.gwt.safehtml.shared.SafeHtml;
+import com.google.gwt.safehtml.shared.SafeHtmlBuilder;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
+import com.kk_electronic.kkportal.core.persistence.Storage;
 import com.kk_electronic.kkportal.core.ui.InputDialog;
 import com.kk_electronic.kkportal.core.ui.InputDialog.Handler;
+import com.kk_electronic.kkportal.core.util.Stats;
 import com.kk_electronic.kkportal.examples.modules.MotDService;
 
 @Singleton
@@ -37,7 +41,9 @@ public class IdentityProvider implements Handler{
 	private final EventBus eventBus;
 	private final String dialogtext = "Username:";
 	private String motd;
-	private String errortext = "";
+	private String errortext = null;
+	private final Stats stats;
+	private final Storage storage;
 	
 	public static interface Display {
 		void show();
@@ -46,9 +52,11 @@ public class IdentityProvider implements Handler{
 	}
 
 	@Inject
-	public IdentityProvider(final InputDialog display,EventBus eventBus,MotDService motDService) {
+	public IdentityProvider(final InputDialog display,EventBus eventBus,MotDService motDService,Stats stats,Storage storage) {
 		this.display = display;
 		this.eventBus = eventBus;
+		this.stats = stats;
+		this.storage = storage;
 		motDService.getMessageOfTheDay(new AsyncCallback<String>() {
 			
 			@Override
@@ -62,29 +70,46 @@ public class IdentityProvider implements Handler{
 			}
 		});
 		display.setHandler(this);
+		load();
 	}
 	
+	private void load() {
+		String s = storage.get("identities");
+		if(s != null){
+			for(String i : s.split(",")){
+				addIdentity(new Identity(i));
+			}
+		}
+	}
+
 	protected void setMotd(String newmotd) {
-		if(newmotd == null || newmotd.endsWith("\n")){
-			motd = newmotd;			
+		if(newmotd == null){
+			motd = null;
 		} else {
-			motd = newmotd + "\n";
+			motd = newmotd.trim();
 		}
 		updateText();
 	}
 
 	private void updateText() {
 		if(display.isShowing()){
-			display.setText(getDialogText());
+			display.setHTML(getDialogText());
 		}
 	}
 
-	private String getDialogText() {
-		if(motd == null){
-			return dialogtext;
-		} else {
-			return motd + errortext + dialogtext;
+	private SafeHtml getDialogText() {
+		SafeHtmlBuilder sb = new SafeHtmlBuilder();
+		if(motd != null){
+			sb.appendEscapedLines(motd);
+			sb.appendHtmlConstant("<br /><br />");
 		}
+		if(errortext != null){
+			sb.appendHtmlConstant("<span style=\"color:#C4151B;\"><br />");
+			sb.appendEscapedLines(errortext);
+			sb.appendHtmlConstant("<br /><br /></span>");
+		}
+		sb.appendEscapedLines(dialogtext);
+		return sb.toSafeHtml();
 	}
 
 	List<Identity> identities = new LinkedList<Identity>();
@@ -97,7 +122,7 @@ public class IdentityProvider implements Handler{
 	public Identity getPrimaryIdentity(){
 		if(identities.size() > 0) return identities.get(0);
 		display.show();
-		display.setText(getDialogText());
+		display.setHTML(getDialogText());
 		return null;
 	}
 
@@ -106,22 +131,34 @@ public class IdentityProvider implements Handler{
 		if(identities.size() == 1){
 			eventBus.fireEventFromSource(new NewPrimaryIdentityEvent(identity),this);
 		}
+		save();
 	}
 	
+	private void save() {
+		StringBuilder sb = new StringBuilder();
+		for(Identity i : identities){
+			if(sb.length() > 0){
+				sb.append(',');
+			}
+			sb.append(i.toString());
+		}
+		storage.put("identities", sb.toString());
+	}
+
 	public HandlerRegistration addNewPrimaryIdentityEventHandler(NewPrimaryIdentityEvent.Handler handler){
 		return eventBus.addHandler(NewPrimaryIdentityEvent.TYPE, handler);
 	}
 	@Override
 	public void onInput(String input) {
 		String[] c = input.split("@",2);
-		errortext = "";
+		errortext = null;
 		addIdentity(new Identity(c[0],c[1]));
 	}
 
 	public void invalidate(Identity identity, String reason) {
 		invalidate(identity);
-		errortext = "Password is rejected\n\n";
+		errortext = "Password is rejected";
 		display.show();
-		display.setText(getDialogText());
+		display.setHTML(getDialogText());
 	}
 }
