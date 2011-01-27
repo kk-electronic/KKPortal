@@ -3,6 +3,7 @@ package com.kk_electronic.kkportal.core.security;
 import java.math.BigInteger;
 
 import com.google.inject.Inject;
+import com.kk_electronic.kkportal.core.util.Stats;
 
 public class SecurityContext {
 	private BigInteger N = new BigInteger("115b8b692e0e045692cf280b436735c77a5a9e8a9e7ed56c965f87db5b2a2ece3",16);
@@ -18,10 +19,12 @@ public class SecurityContext {
 	private BigInteger A;
 	private BigInteger a;
 	private BigInteger S;
+	private final Stats stats;
 	
 	@Inject
-	public SecurityContext(Hasher hasher) {
+	public SecurityContext(Hasher hasher,Stats stats) {
 		this.hasher = hasher;
+		this.stats = stats;
 	}
 	
 	public String getIdentity() {
@@ -57,10 +60,13 @@ public class SecurityContext {
 	}
 
 	public Answer calc_answer(Challange challange) {
+		stats.sendStats(SecurityContext.class, "calc_answer", "begin");
 		this.challange = challange;
 		this.A = make_A();
 		calc_Secret();
-		return new Answer(A,hasher.hash(pad(A,256)+pad(challange.B,256)+pad(S,256)));
+		Answer answer = new Answer(A,hasher.hash(pad(A,256)+pad(challange.B,256)+pad(S,256)));
+		stats.sendStats(SecurityContext.class, "calc_answer", "end");
+		return answer;
 	}
 
 	private String pad(BigInteger number, int bits) {
