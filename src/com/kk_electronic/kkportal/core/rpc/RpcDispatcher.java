@@ -448,8 +448,16 @@ public class RpcDispatcher implements FrameSentEvent.Handler, Dispatcher,
 			}
 			if(envelope instanceof RpcError){
 				RpcError response = (RpcError) envelope;
-				PendingCall<?> pendingCall = pending.remove(response.getId());
-				pendingCall.onFailure(response);
+				if(response.getCode() != -31301){
+					PendingCall<?> pendingCall = pending.remove(response.getId());
+					pendingCall.onFailure(response);
+				} else {
+					PendingCall<?> pendingCall = pending.get(response.getId());
+					Class<? extends RemoteService> clazz = clientFeatureMap.getClassFromKey(pendingCall.request.getFeatureName());
+					SecurityMethod securityMethod = authenticationMethods.get(clazz);
+					securityMethod.invalid();
+					signAndTransmit(pendingCall, securityMethod);
+				}
 				continue;
 			}
 			if(envelope instanceof RpcRequest){
