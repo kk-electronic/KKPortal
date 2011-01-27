@@ -77,7 +77,7 @@ public class LoginIndicator implements ServerConnectEvent.Handler,
 		this.identityProvider = identityProvider;
 		this.digest = digest;
 		this.glassPanel = glassPanel;
-		glassPanel.addWidget(x);
+		glassPanel.addWidget(x,0);
 		x.getElement().getStyle().setFontSize(150, Unit.PCT);
 		tabsModel.addTabSelectedHandler(this);
 		WebSocket socket = dispatcher.getSocket();
