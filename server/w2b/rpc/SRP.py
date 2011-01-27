@@ -23,10 +23,10 @@ Created on Jan 11, 2010
 @author: albatros
 '''
 
-import os, random,numbers
+import os, random
 
 def _hex(n):
-    if isinstance(n,numbers.Integral):
+    if isinstance(n,int) or isinstance(n, long):
         return "%x" % n
     return n
 
