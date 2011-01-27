@@ -43,6 +43,7 @@
 	<g:DockLayoutPanel unit='EM' styleName='{style.body}'>
 		<g:north size='4'>
 			<g:HTMLPanel><span style="font-size:250%"><span style="color:#C4151B">KK</span>Portal</span>
+			<div style="position:absolute; top: 0; right:0;"><kk:LogoutLink ui:field="logoutLink"/></div>
 			<div style="position:absolute; bottom: 0; right:0;"><kk:AddModuleLink ui:field="addModuleLink"/></div>
 			</g:HTMLPanel>
 		</g:north>

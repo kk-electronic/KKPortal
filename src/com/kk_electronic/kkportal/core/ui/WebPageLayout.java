@@ -40,6 +40,9 @@ public class WebPageLayout extends Composite implements ApplicationLayout {
 	@UiField(provided=true)
 	AddModuleLink addModuleLink;
 	
+	@UiField(provided=true)
+	LogoutLink logoutLink;
+	
 	@UiField
 	DockLayoutPanel main;
 	@UiField
@@ -47,8 +50,9 @@ public class WebPageLayout extends Composite implements ApplicationLayout {
 	private Widget activityWidget;
 	
 	@Inject
-	public WebPageLayout(UIBinder binder,AddModuleLink addModuleLink) {
+	public WebPageLayout(UIBinder binder,AddModuleLink addModuleLink,LogoutLink logoutLink) {
 		this.addModuleLink = addModuleLink;
+		this.logoutLink = logoutLink;
 		Panel e = binder.createAndBindUi(this);
 		super.initWidget(e);
 	}
