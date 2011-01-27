@@ -279,6 +279,7 @@ public class Comet implements WebSocket {
 				builder.sendRequest("[]", connectCallback);
 			} catch (RequestException e) {
 				GWT.log("SOCKET-Failed to connect to portalserver", e);
+				return;
 			}
 			this.status = WebSocketStatus.CONNECTING;
 		}
