@@ -55,6 +55,9 @@ public class Canvas implements ContentChangedEvent.Handler, Activity, Handler, c
 	private List<List<ModuleWindow>> groupedModuleWindows;
 	private final TabsModel tabsModel;
 	private TabInfo tabInfo;
+	
+	private final static int timerStart = 700;
+	private final static int timerSchedule = 300;
 
 	@Inject
 	public Canvas(EventBus eventBus, GroupDisplay<ModuleWindow> display, TabsModel tabsModel,
@@ -76,6 +79,9 @@ public class Canvas implements ContentChangedEvent.Handler, Activity, Handler, c
 	}
 
 	public void showTab(final TabInfo tabInfo) {
+		if (tabInfo != null && !tabInfo.equals(this.tabInfo)) {
+			firstRun = true;
+		}
 		this.tabInfo = tabInfo;
 		if (tabInfo == null) {
 			display.setWidgets(null);
@@ -95,6 +101,10 @@ public class Canvas implements ContentChangedEvent.Handler, Activity, Handler, c
 					@Override
 					public void onSuccess(Map<Integer, ModuleInfo> result) {
 						updateDisplay(tabInfo.getModuleIds(),result);
+						if (firstRun) {
+							delayedSizeCheck.schedule(timerStart);
+							firstRun = false;
+						}
 					}
 				});
 	}
@@ -124,10 +134,6 @@ public class Canvas implements ContentChangedEvent.Handler, Activity, Handler, c
 			}
 		}
 		display.setWidgets(groupedModuleWindows);
-		if (firstRun) {
-			delayedSizeCheck.schedule(700);
-			firstRun = false;
-		}
 	}
 
 	protected boolean delete(ModuleWindow moduleWindow) {
@@ -219,7 +225,7 @@ public class Canvas implements ContentChangedEvent.Handler, Activity, Handler, c
 					saveModuleHeights();
 				}
 			} else {
-				this.schedule(300);
+				this.schedule(timerSchedule);
 				//GWT.log("Check Height Timer run! #" + i);
 				i++;
 			}
