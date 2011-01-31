@@ -67,6 +67,12 @@ class Settings(ConfigObj):
     def loadFile(self, file, failonerror=False):
         fileConfig = ConfigObj(file, file_error=failonerror)
         self.merge(fileConfig)
+    def get(self,settingname,default=None, domain=None):
+        if domain in self.sections and settingname in settings[domain]:
+            return self[domain][settingname]
+        if 'Global' in settings.sections:
+            return ConfigObj.get(self['Global'], settingname, default)
+        return ConfigObj.get(self, settingname, default)
 
 class InvokeError(Exception):
     _message = None
@@ -87,8 +93,4 @@ def getGlobalSetting(settingname, default=None, domain=None):
     if not settings:
         settings = Settings()
         settings.loadDefaults()
-    if domain in settings.sections and settingname in settings[domain]:
-        return settings[domain][settingname]
-    if 'Global' in settings.sections:
-        return settings['Global'].get(settingname,default)
-    return settings.get(settingname, default)
+    return settings.get(settingname, default,domain)
