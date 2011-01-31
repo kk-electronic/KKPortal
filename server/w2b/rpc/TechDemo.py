@@ -63,6 +63,7 @@ class Wall():
     def broadcast(self,message):
         self.lastlines.append(message)
         self.lastlines.pop(0)
+        self.mailboxes = [x for x in self.mailboxes if not x.dead]
         for mailbox in self.mailboxes:
             mailbox.addResponse(mailbox.makeNotification("NewWallMessageEvent",[message]))
     
@@ -129,6 +130,7 @@ class CpuInfo():
             self._updatewarnings(cpuname,load)
         self.info[cpuname] = (used,idle)
     def _callAll(self,cpuname,load):
+        self.callbacks = [x for x in self.callbacks if not x.dead]
         for callback in self.callbacks:
             callback.addResponse(callback.makeNotification("NewCpuUsageDataEvent",[cpuname,load]))
     def _updatewarnings(self,cpuname,load):
