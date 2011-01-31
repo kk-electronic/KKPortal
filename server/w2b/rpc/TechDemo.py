@@ -92,7 +92,7 @@ class CpuInfo():
         self.highthreshold = 0.80
         self.wall = Wall()
         self.timer = None
-        self.callbacks = set()
+        self.callbacks = []
     def _read(self):
         #We read the virtual file with info on the system
         file=open('/proc/stat')
@@ -106,7 +106,8 @@ class CpuInfo():
             #We sum up user, usernice and systemtime to get info on how much cpu time is used
             self._updatecpu(s[0],sum(map(float,s[1:4])),int(s[4]))
     def addCallback(self,messagebox):
-        self.callbacks.add(messagebox)
+        if messagebox not in self.callbacks:
+            self.callbacks.append(messagebox)
     def update(self):
         self._read()
     def _updatecpu(self,cpuname,used,idle):
