@@ -54,7 +54,7 @@ class WebSocketRoot(resource.Resource):
         '''
         #Disable client side cache of the response
         request.setHeader("Cache-Control", "no-store, no-cache, must-revalidate, post-check=0, pre-check=0")
-        m = MessageBox()
+        m = MessageBox(self)
         self.putChild(str(m.boxid), m)
         m.addRequestsFromRequest(request)
         request.setResponseCode(201) #HTTP 201: Created
@@ -64,12 +64,15 @@ class MessageBox(resource.Resource):
     '''
     This represents an open cometsocket on which frames can be sent and received.
     '''
-    def __init__(self):
+    def __init__(self,parent):
+        self._parent = parent
         self.boxid = uuid.uuid4()
         self.txRequest = None
         self.txQueue = []
         self.features = features.getInstance()
         self.lock = threading.Lock()
+        self._deathwish = None
+        self.dead = False
         log.msg("Client Connected: %s" % self.boxid)
     def _rpcCall(self, jsonRequest):
         '''
@@ -141,6 +144,8 @@ class MessageBox(resource.Resource):
         '''
         Used for sending frames to the client
         '''
+        if self.dead:
+            raise Exception("Response to dead messagebox used")
         if not response:
             return
         log.msg("Adding response to transmit queue %s" % response)
@@ -182,14 +187,25 @@ class MessageBox(resource.Resource):
         server made a response.
         '''
         if e:
+            self.startdeathwish()
             self.txRequest = None
             log.msg("Connection closed clientside %s" % e)
+    
+    def startdeathwish(self):
+        self._deathwish = reactor.callLater(5,self.suicide) #@UndefinedVariable
+    
+    def suicide(self):
+        self._parent.delEntity(str(self.boxid))
+        del self._parent
+        self.dead = True
     
     def render_GET(self, request):
         '''
         GET on an open connection returns any available frames, or if no such
         frame exist it delays the creation of a http response. until addResponse is called
         '''
+        if self._deathwish and self._deathwish.active():
+            self._deathwish.cancel()
         request.setHeader("Cache-Control", "no-store, no-cache, must-revalidate, post-check=0, pre-check=0")
         #Only one should be listening on the messagebox, so we close the previous connection
         if self.txRequest != None:
