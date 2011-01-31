@@ -20,7 +20,15 @@ def options(ctx):
 	ctx.add_option('--force',action='store_true',default=False,help='Enables potentially unsafe commands')
 
 def configure(config):
-	config.find_program('git')
+	config.load('python')
+	try:
+		config.find_program('git')
+		config.check_python_module('configobj')
+		config.check_python_module('twisted')
+		config.check_python_module('sqlalchemy')
+	except Configure.ConfigurationError:
+		print("Try sudo apt-get install git-core python-configobj python-twisted python-sqlalchemy")
+		raise
 	try:
 		config.find_program('dpkg')
 	except Configure.ConfigurationError, e:
@@ -31,21 +39,28 @@ def build(bld):
 	print('Building',APPNAME,VERSION)
 	classpath = [path.abspath() for path in bld.path.ant_glob('lib/**/*.jar')]
 	bld(
+		name='compiler',
 		features='javac',
 		srcdir='src/',
 		classpath=os.pathsep.join(classpath),
-		sourcepath='src'
-		
+		sourcepath='src',
+		outdir='classes'
 	)
-	classpath = [os.path.join(bld.out_dir,'src/')] + classpath
-	classpath = [bld.path.find_dir('src/').abspath()] + classpath
+	classpath = [os.path.join(bld.out_dir,'classes')] + classpath
+	classpath = [bld.path.find_dir('src').abspath()] + classpath
 #	print(os.pathsep.join(classpath))
 	classpath = os.pathsep.join(classpath)
 	command = ['java','-Xmx256M','-classpath',classpath,'com.google.gwt.dev.Compiler','-localWorkers','2','-war',bld.out_dir,'-gen','.generated','com.kk_electronic.kkportal.KKPortal']
 #	print('Command:',' '.join(map(str,command)))
 #	p=subprocess.Popen(command)
 #	p.wait()
-	bld.exec_command(command)
+	print(' '.join(command))
+	bld(
+		name='GWT Compile',
+		rule=lambda task:task.exec_command(command),
+		always=True,
+		after='compiler'
+	)
 	pass
 
 def buildpackage(ctx):
@@ -64,4 +79,3 @@ from waflib.Build import BuildContext
 class BuildPackage(BuildContext):
 	cmd = 'buildpackage'
 	fun = 'buildpackage'
-
