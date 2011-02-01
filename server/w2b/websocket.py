@@ -157,6 +157,10 @@ class MessageBox(resource.Resource):
             self.txRequest.finish()
             self.txRequest = None
             self.txQueue = []
+        if len(self.txQueue) > 600:
+            log.msg('Killing messagebox due to overflow')
+            self.txQueue = []
+            self.suicide()
     def addRequestsFromRequest(self, request):
         '''
         Used for processing incoming frames from the client
