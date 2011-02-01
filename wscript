@@ -54,10 +54,14 @@ def build(bld):
 #	print('Command:',' '.join(map(str,command)))
 #	p=subprocess.Popen(command)
 #	p.wait()
-	print(' '.join(command))
+#	print(' '.join(command))
+	import time
+	def x(task):
+		task.exec_command(['ls','-l',os.path.join(bld.out_dir,'classes','com','kk_electronic','gwt','rebind')])
+		task.exec_command(command)
 	bld(
 		name='GWT Compile',
-		rule=lambda task:task.exec_command(command),
+		rule=x,
 		always=True,
 		after='compiler'
 	)
