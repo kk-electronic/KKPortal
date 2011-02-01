@@ -73,6 +73,7 @@ class MessageBox(resource.Resource):
         self.lock = threading.Lock()
         self._deathwish = None
         self.dead = False
+        self.startdeathwish()
         log.msg("Client Connected: %s" % self.boxid)
     def _rpcCall(self, jsonRequest):
         '''
@@ -186,18 +187,20 @@ class MessageBox(resource.Resource):
         If e is not None the client has closed the connection before the portal
         server made a response.
         '''
+        self.startdeathwish()
         if e:
-            self.startdeathwish()
             self.txRequest = None
             log.msg("Connection closed clientside %s" % e)
     
     def startdeathwish(self):
-        self._deathwish = reactor.callLater(5,self.suicide) #@UndefinedVariable
+        log.msg("Websocket timeout started")
+        self._deathwish = reactor.callLater(120,self.suicide) #@UndefinedVariable
     
     def suicide(self):
         self._parent.delEntity(str(self.boxid))
         del self._parent
         self.dead = True
+        log.msg("Websocket closed due to timeout")
     
     def render_GET(self, request):
         '''
@@ -205,6 +208,7 @@ class MessageBox(resource.Resource):
         frame exist it delays the creation of a http response. until addResponse is called
         '''
         if self._deathwish and self._deathwish.active():
+            log.msg("Websocket timeout cancelled")
             self._deathwish.cancel()
         request.setHeader("Cache-Control", "no-store, no-cache, must-revalidate, post-check=0, pre-check=0")
         #Only one should be listening on the messagebox, so we close the previous connection
