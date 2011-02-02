@@ -10,3 +10,4 @@ test.db
 .lock-wafbuild
 www-test/
 waf-build/
+user.conf
