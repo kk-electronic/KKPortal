@@ -126,6 +126,9 @@ def main(argv=None):
         log.startLogging(file,setStdout=False)
     else:
         log.startLogging(sys.stdout,setStdout=False)
+    
+    if settings.has_key('starturl'):
+        log.msg('Open',settings['starturl'])
     if settings.has_key('jsonconfigfile'):
         file=open(settings['jsonconfigfile'],'w')
         import json
