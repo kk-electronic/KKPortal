@@ -25,7 +25,7 @@ from sqlalchemy import MetaData,create_engine,Table,Column,String,Integer,Binary
 # allowing different databases to be used for different parts of the project
 databasestring = w2b.settings.getGlobalSetting('database',None,__name__)
 
-engine = create_engine(databasestring,echo=True)
+engine = create_engine(databasestring)
 metadata = MetaData()
 
 #This part is the data definition for the database

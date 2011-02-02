@@ -149,7 +149,7 @@ class MessageBox(resource.Resource):
             raise Exception("Response to dead messagebox used")
         if not response:
             return
-        log.msg("Adding response to transmit queue %s" % response)
+        #log.msg("Adding response to transmit queue %s" % response)
         self.txQueue.append(response)
         #If some client is listening for answers send this one
         if self.txRequest != None:
@@ -169,7 +169,7 @@ class MessageBox(resource.Resource):
         requestBody = request.content.read()
         jsonRpcBatch = json.loads(requestBody)
         for call in jsonRpcBatch:
-            log.msg("Adding request to incomming queue %s" % call)
+            #log.msg("Adding request to incomming queue %s" % call)
             #Procces each call in another thread
             #d = threads.deferToThread(self._rpcCall, call)
             d = Deferred()
@@ -194,7 +194,7 @@ class MessageBox(resource.Resource):
         self.startdeathwish()
         if e:
             self.txRequest = None
-            log.msg("Connection closed clientside %s" % e)
+            #log.msg("Connection closed clientside %s" % e)
     
     def startdeathwish(self):
         log.msg("Websocket timeout started")
