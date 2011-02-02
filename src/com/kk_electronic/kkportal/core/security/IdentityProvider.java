@@ -157,7 +157,7 @@ public class IdentityProvider implements Handler{
 
 	public void invalidate(Identity identity, String reason) {
 		invalidate(identity);
-		errortext = "Password is rejected";
+		errortext = reason;
 		display.show();
 		display.setHTML(getDialogText());
 	}

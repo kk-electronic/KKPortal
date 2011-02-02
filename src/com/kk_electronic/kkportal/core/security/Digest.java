@@ -209,6 +209,7 @@ public class Digest implements SecurityMethod, Handler,
 					public void onFailure(Throwable caught) {
 						GWT.log("Login failed", caught);
 						connecting = false;
+						identityProvider.invalidate(identity,"Invalid User");
 					}
 				});
 	}
@@ -228,7 +229,7 @@ public class Digest implements SecurityMethod, Handler,
 					public void onFailure(Throwable caught) {
 						GWT.log("Login failed", caught);
 						connecting = false;
-						identityProvider.invalidate(identity, "Wrong password");
+						identityProvider.invalidate(identity, "Password is rejected");
 					}
 				});
 	}
