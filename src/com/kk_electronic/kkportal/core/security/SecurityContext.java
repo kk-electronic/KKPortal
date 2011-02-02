@@ -33,7 +33,6 @@ public class SecurityContext {
 
 	private String password = null;
 	private BigInteger x = null;
-	private String method;
 	private Challange challange;
 	private BigInteger A;
 	private BigInteger a;
