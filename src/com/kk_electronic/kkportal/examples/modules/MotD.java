@@ -20,13 +20,13 @@
 package com.kk_electronic.kkportal.examples.modules;
 
 import com.google.gwt.safehtml.shared.SafeHtmlBuilder;
-import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.inject.Inject;
 import com.kk_electronic.kkportal.core.AbstractModule;
+import com.kk_electronic.kkportal.core.util.Callback;
 
-public class MotD extends AbstractModule implements AsyncCallback<String> {
+public class MotD extends AbstractModule implements Callback<String> {
 	HTML widget = new HTML("Fetching MotD");
 	
 	@Override
@@ -36,7 +36,7 @@ public class MotD extends AbstractModule implements AsyncCallback<String> {
 
 	@Inject
 	public MotD(MotDService service){
-		service.getMessageOfTheDay(this);
+		service.getMessageOfTheDay(call(this));
 	}
 
 	@Override
@@ -48,10 +48,5 @@ public class MotD extends AbstractModule implements AsyncCallback<String> {
 		} else {
 			widget.setHTML("No message of the day");
 		}
-	}
-	
-	@Override
-	public void onFailure(Throwable caught) {
-		widget.setText(caught.toString());
 	}
 }
