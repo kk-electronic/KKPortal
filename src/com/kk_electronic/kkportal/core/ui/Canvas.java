@@ -58,6 +58,7 @@ public class Canvas implements ContentChangedEvent.Handler, Activity, Handler, c
 	
 	private final static int timerStart = 700;
 	private final static int timerSchedule = 300;
+	private final static int timerIterationCount = 10;
 
 	@Inject
 	public Canvas(EventBus eventBus, GroupDisplay<ModuleWindow> display, TabsModel tabsModel,
@@ -219,7 +220,7 @@ public class Canvas implements ContentChangedEvent.Handler, Activity, Handler, c
 				showTab(tabsModel.getSelectedTab());
 				updated = true;
 			}
-			if (i >= 10) {
+			if (i >= timerIterationCount) {
 				i = 0;
 				if(updated) {
 					saveModuleHeights();
