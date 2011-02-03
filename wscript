@@ -142,15 +142,31 @@ def runserver(ctx):
 	p = subprocess.Popen(command).wait()
 
 def installwindowsdep(ctx):
-	import distutils
+	import distutils,urllib2,subprocess
+	def download(url,target=None):
+		infile = urllib2.urlopen(url)
+		CHUNKSIZE=16*1024
+		with open(target,'w') as outfile:
+			while True:
+				chunk = infile.read(CHUNKSIZE)
+				if not chunk: break
+				outfile.write(chunk)
+	def sh(*command):
+		print(*command)
+		#return subprocess.Popen(command).wait()
 	#print('.Net from http://www.microsoft.com/downloads/en/details.aspx?FamilyID=0856eacb-4362-4b0d-8edd-aab15c5e04f5&displaylang=en')
 	#print('Java from http://javadl.sun.com/webapps/download/AutoDL?BundleId=45835')
 	#print('Mingw32 from http://sourceforge.net/projects/mingw/files/Automated%20MinGW%20Installer/mingw-get-inst/mingw-get-inst-20101030/mingw-get-inst-20101030.exe/download')
 	#PATH??
 	print('ez_setup from http://peak.telecommunity.com/dist/ez_setup.py')
 	distcfgfilepath = os.path.join(os.path.dirname(distutils.__file__),'distutils.cfg')
-	s="[Build]\ncompiler=mingw32"
-	print(s,'>',distcfgfilepath)
-	print('easy_install configobj')
-	print('easy_install twisted')
-	print('easy_install sqlalchemy')
+	if not os.path.exists(distcfgfilepath):
+		print('Creating distutils.cfg')
+		with open(distcfgfilepath,"w") as file:
+			file.write("[Build]\ncompiler=mingw32")
+	download('http://peak.telecommunity.com/dist/ez_setup.py','ez_setup.py')
+	sh(sys.executable,os.path.abspath('ez_setup.py'))
+	sh(os.path.join(sys.prefix,'Scripts','easy_install'),'configobj')
+	sh(os.path.join(sys.prefix,'Scripts','easy_install'),'twisted')
+	sh(os.path.join(sys.prefix,'Scripts','easy_install'),'sqlalchemy')
+	sh(os.path.join(sys.prefix,'Scripts','easy_install'),'simplejson')
