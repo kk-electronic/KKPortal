@@ -206,10 +206,7 @@ public class Canvas implements NewContentEvent.Handler, ContentChangedEvent.Hand
 
 	@Override
 	public void onContentSizeChanged(ContentChangedEvent event) {
-		if (display.checkForResizes()) {
-			showTab(tabsModel.getSelectedTab());
-			saveModuleHeights();
-		}
+		delayedSizeCheck.run();
 	}
 
 	@Override
