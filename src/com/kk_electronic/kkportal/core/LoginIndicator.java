@@ -48,20 +48,21 @@ import com.kk_electronic.kkportal.core.ui.GlassPanel;
  *
  */
 public class LoginIndicator implements ServerConnectEvent.Handler,
-		NewPrimaryIdentityEvent.Handler, LoginEvent.Handler, Handler, com.kk_electronic.kkportal.core.event.ServerDisconnectEvent.Handler {
-	HTML x = new HTML();
+		NewPrimaryIdentityEvent.Handler, LoginEvent.Handler, Handler, ServerDisconnectEvent.Handler {
+	HTML statusMessage = new HTML();
 
 	public static enum State {
-		NOT_CONNECTED, CONNECTED, IDENTITY, PRELOGIN, LOGGED_IN, HASTAB
+		NOT_CONNECTED, CONNECTED, IDENTITY, PRELOGIN, LOGGED_IN, HASTAB, LOST_CONNECTION
 	}
 	
 	public static String[] messages = new String[]{
-		"Connecting to Portalserver",
-		"Connected to Portalserver",
-		"Connected to Portalserver",
+		"Connecting to Portal server",
+		"Connected to Portal server",
+		"Connected to Portal server",
 		"Estabilishing secure connection",
 		"Fetching initial data",
 		"System is ready",
+		"Connection to Portal server lost\nPlease refresh page",
 		};
 
 	State state = State.NOT_CONNECTED;
@@ -77,8 +78,9 @@ public class LoginIndicator implements ServerConnectEvent.Handler,
 		this.identityProvider = identityProvider;
 		this.digest = digest;
 		this.glassPanel = glassPanel;
-		glassPanel.addWidget(x,0);
-		x.getElement().getStyle().setFontSize(150, Unit.PCT);
+		glassPanel.addWidget(statusMessage,0);
+		statusMessage.getElement().getStyle().setFontSize(150, Unit.PCT);
+		statusMessage.getElement().getStyle().setProperty("textAlign", "center");
 		tabsModel.addTabSelectedHandler(this);
 		WebSocket socket = dispatcher.getSocket();
 		socket.addServerConnectHandler(this);
@@ -124,17 +126,17 @@ public class LoginIndicator implements ServerConnectEvent.Handler,
 	private void show() {
 		if(showing) return;
 		showing = true;
-		glassPanel.addWidget(x);
+		glassPanel.addWidget(statusMessage);
 	}
 
 	private void hide() {
 		if(!showing) return;
 		showing = false;
-		glassPanel.remove(x);
+		glassPanel.remove(statusMessage);
 	}
 
 	private void updateWidgetText() {
-		x.setHTML(messages[state.ordinal()]);
+		statusMessage.setHTML(messages[state.ordinal()]);
 	}
 
 	private void addLog(String string) {
@@ -143,7 +145,7 @@ public class LoginIndicator implements ServerConnectEvent.Handler,
 
 	@Override
 	public void onServerConnect(ServerConnectEvent event) {
-		trasition(State.NOT_CONNECTED, State.CONNECTED);
+		trasition(null, State.CONNECTED);
 	}
 
 	@Override
@@ -176,6 +178,6 @@ public class LoginIndicator implements ServerConnectEvent.Handler,
 	 */
 	@Override
 	public void onServerDisconnect(ServerDisconnectEvent event) {
-		trasition(null, State.NOT_CONNECTED);
+		trasition(null, State.LOST_CONNECTION);
 	}
 }

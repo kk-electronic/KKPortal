@@ -39,6 +39,7 @@ public class ModuleInfoProvider {
 	HashMap<Integer, ModuleInfo> map = new HashMap<Integer, ModuleInfo>();
 	private final ModuleService moduleService;
 	List<AsyncCallback<Map<Integer, ModuleInfo>>> asyncCallbacks;
+	HashSet<Integer> missing;
 	
 	private AsyncCallback<List<ModuleInfo>> infoCallback = new AsyncCallback<List<ModuleInfo>>(){
 		@Override
@@ -58,7 +59,7 @@ public class ModuleInfoProvider {
 					continue;
 				}
 			}
-			if(missing.isEmpty()){
+			if(missing.isEmpty() && asyncCallbacks != null){
 				for(AsyncCallback<Map<Integer, ModuleInfo>> callback:asyncCallbacks){
 					callback.onSuccess(map);
 				}
@@ -103,8 +104,6 @@ public class ModuleInfoProvider {
 	private void requestMissing() {
 		moduleService.getModuleInfo(new ArrayList<Integer>(missing), infoCallback);
 	}
-
-	HashSet<Integer> missing;
 
 	private void addMissing(int x) {
 		if(missing == null)	missing = new HashSet<Integer>();

@@ -32,7 +32,6 @@ import com.google.inject.Singleton;
 import com.kk_electronic.kkportal.core.persistence.Storage;
 import com.kk_electronic.kkportal.core.ui.InputDialog;
 import com.kk_electronic.kkportal.core.ui.InputDialog.Handler;
-import com.kk_electronic.kkportal.core.util.Stats;
 import com.kk_electronic.kkportal.examples.modules.MotDService;
 
 @Singleton
@@ -42,7 +41,6 @@ public class IdentityProvider implements Handler{
 	private final String dialogtext = "Username:";
 	private String motd;
 	private String errortext = null;
-	private final Stats stats;
 	private final Storage storage;
 	
 	public static interface Display {
@@ -52,10 +50,9 @@ public class IdentityProvider implements Handler{
 	}
 
 	@Inject
-	public IdentityProvider(final InputDialog display,EventBus eventBus,MotDService motDService,Stats stats,Storage storage) {
+	public IdentityProvider(final InputDialog display,EventBus eventBus,MotDService motDService,Storage storage) {
 		this.display = display;
 		this.eventBus = eventBus;
-		this.stats = stats;
 		this.storage = storage;
 		motDService.getMessageOfTheDay(new AsyncCallback<String>() {
 			
@@ -157,7 +154,7 @@ public class IdentityProvider implements Handler{
 
 	public void invalidate(Identity identity, String reason) {
 		invalidate(identity);
-		errortext = "Password is rejected";
+		errortext = reason;
 		display.show();
 		display.setHTML(getDialogText());
 	}
