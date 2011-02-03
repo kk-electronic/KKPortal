@@ -28,12 +28,19 @@ import datetime
 from collections import deque
 from twisted.internet.task import LoopingCall
 
-class TransmitInotify():
-    def __init__(self,context):
-        self.context = context
-    def write(self,watch,path,mask):
-        log.msg(path.path,humanReadableMask(mask))
-        self.context.addResponse(self.context.makeNotification("INotification",[path.path,humanReadableMask(mask)[0]]))
+if sys.platform == 'linux2':
+    class TransmitInotify():
+        def __init__(self,context):
+            self.context = context
+        def write(self,watch,path,mask):
+            log.msg(path.path,humanReadableMask(mask))
+            self.context.addResponse(self.context.makeNotification("INotification",[path.path,humanReadableMask(mask)[0]]))
+    def inotify(context,path):
+        notifier = INotify()
+        notifier.startReading()
+        context.addResponse()
+        notifier.watch(filepath.FilePath(path),callbacks=[TransmitInotify(context).write])
+
 
 def reload(context):
     for module in sys.modules.values():
@@ -45,12 +52,6 @@ def runQuery(context,query):
     resultmap={'k':result.keys,'v':[map(str,x.values()) for x in result]}
     result.close()
     return resultmap
-
-def inotify(context,path):
-    notifier = INotify()
-    notifier.startReading()
-    context.addResponse()
-    notifier.watch(filepath.FilePath(path),callbacks=[TransmitInotify(context).write])
 
 class Wall():
     mailboxes = []
