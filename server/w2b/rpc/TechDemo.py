@@ -22,13 +22,13 @@ from w2b.database import portal
 from sqlalchemy import text
 import __builtin__
 from twisted.python import filepath
-from w2b.inotify import INotify,humanReadableMask
 from twisted.python import log
 import datetime
 from collections import deque
 from twisted.internet.task import LoopingCall
 
 if sys.platform == 'linux2':
+    from w2b.inotify import INotify,humanReadableMask
     class TransmitInotify():
         def __init__(self,context):
             self.context = context
