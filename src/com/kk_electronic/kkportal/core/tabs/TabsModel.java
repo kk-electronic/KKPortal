@@ -157,6 +157,10 @@ public class TabsModel implements NewPrimaryIdentityEvent.Handler, LocationChang
 	public HandlerRegistration addTabSelectedHandler(TabSelectedEvent.Handler handler) {
 		return eventBus.addHandlerToSource(TabSelectedEvent.TYPE, this, handler); 
 	}
+	
+	public HandlerRegistration addNewContentEventHandler(NewContentEvent.Handler handler) {
+		return eventBus.addHandlerToSource(NewContentEvent.TYPE, this, handler);
+	}
 
 	public SelectionModel<? super TabInfo> getSelectionModel() {
 		return selectionModel;
