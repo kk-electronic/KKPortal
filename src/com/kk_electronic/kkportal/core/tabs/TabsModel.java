@@ -37,6 +37,7 @@ import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import com.kk_electronic.kkportal.core.activity.LocationInfo;
 import com.kk_electronic.kkportal.core.event.LocationChangedEvent;
+import com.kk_electronic.kkportal.core.event.NewContentEvent;
 import com.kk_electronic.kkportal.core.event.TabSelectedEvent;
 import com.kk_electronic.kkportal.core.rpc.jsonformat.JsonTabInfo.TabInfoDTO;
 import com.kk_electronic.kkportal.core.security.Identity;
@@ -161,7 +162,7 @@ public class TabsModel implements NewPrimaryIdentityEvent.Handler, LocationChang
 		return selectionModel;
 	}
 
-	public void addNewModule(final TabInfo tabInfo, ModuleTypeInfo selectedObject) {
+	public void addNewModule(final TabInfo tabInfo, final ModuleTypeInfo selectedObject) {
 		if(tabInfo == null){
 			Window.alert("The blue sock found");
 		}
@@ -175,12 +176,13 @@ public class TabsModel implements NewPrimaryIdentityEvent.Handler, LocationChang
 
 			@Override
 			public void onSuccess(Integer result) {
-				test(tabInfo,result);
+				addToCorrectColumn(tabInfo,result);
+				eventBus.fireEventFromSource(new NewContentEvent(selectedObject, tabInfo), this);
 			}
 		});
 	}
 
-	protected void test(final TabInfo tabInfo, Integer result) {
+	protected void addToCorrectColumn(final TabInfo tabInfo, Integer result) {
 		List<Integer> minColumn = null;
 		for(List<Integer> search:tabInfo.getModuleIds()){
 			if(minColumn == null || minColumn.size()>search.size()){
