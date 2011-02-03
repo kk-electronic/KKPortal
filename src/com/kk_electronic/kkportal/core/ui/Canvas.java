@@ -231,6 +231,7 @@ public class Canvas implements NewContentEvent.Handler, ContentChangedEvent.Hand
 				i = 0;
 				if(updated) {
 					saveModuleHeights();
+					updated = false;
 				}
 			} else {
 				this.schedule(timerSchedule);
