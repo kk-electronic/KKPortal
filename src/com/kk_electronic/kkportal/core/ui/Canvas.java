@@ -36,6 +36,7 @@ import com.google.inject.Inject;
 import com.kk_electronic.kkportal.core.ModuleWindowFactory;
 import com.kk_electronic.kkportal.core.activity.Activity;
 import com.kk_electronic.kkportal.core.event.ContentChangedEvent;
+import com.kk_electronic.kkportal.core.event.NewContentEvent;
 import com.kk_electronic.kkportal.core.event.TabSelectedEvent;
 import com.kk_electronic.kkportal.core.event.TabSelectedEvent.Handler;
 import com.kk_electronic.kkportal.core.services.ModuleService.ModuleInfo;
@@ -48,7 +49,7 @@ import com.kk_electronic.kkportal.core.tabs.TabsModel;
  * 
  * @author Jes Andersen type filter text
  */
-public class Canvas implements ContentChangedEvent.Handler, Activity, Handler, com.kk_electronic.kkportal.core.ui.GroupDisplay.Handler<ModuleWindow> {
+public class Canvas implements NewContentEvent.Handler, ContentChangedEvent.Handler, Activity, Handler, GroupDisplay.Handler<ModuleWindow> {
 	private final GroupDisplay<ModuleWindow> display;
 	private final ModuleInfoProvider moduleInfoProvider;
 	private final ModuleWindowFactory windowFactory;
@@ -69,6 +70,7 @@ public class Canvas implements ContentChangedEvent.Handler, Activity, Handler, c
 		this.moduleInfoProvider = moduleInfoProvider;
 		this.windowFactory = windowFactory;
 		eventBus.addHandler(ContentChangedEvent.TYPE, this);
+		eventBus.addHandler(NewContentEvent.TYPE, this);
 		tabsModel.addTabSelectedHandler(this);
 		display.setHandler(this);
 		showTab(tabsModel.getSelectedTab());
@@ -204,10 +206,12 @@ public class Canvas implements ContentChangedEvent.Handler, Activity, Handler, c
 
 	@Override
 	public void onContentSizeChanged(ContentChangedEvent event) {
-		if (display.checkForResizes()) {
-			showTab(tabsModel.getSelectedTab());
-			saveModuleHeights();
-		}
+		delayedSizeCheck.run();
+	}
+
+	@Override
+	public void onNewContent(NewContentEvent event) {
+		delayedSizeCheck.schedule(timerStart);
 	}
 	
 	Timer delayedSizeCheck = new Timer() {
@@ -224,6 +228,7 @@ public class Canvas implements ContentChangedEvent.Handler, Activity, Handler, c
 				i = 0;
 				if(updated) {
 					saveModuleHeights();
+					updated = false;
 				}
 			} else {
 				this.schedule(timerSchedule);
