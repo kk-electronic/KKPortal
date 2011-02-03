@@ -163,7 +163,7 @@ def installwindowsdep(ctx):
 	if not os.path.exists(distcfgfilepath):
 		print('Creating distutils.cfg')
 		with open(distcfgfilepath,"w") as file:
-			file.write("[Build]\ncompiler=mingw32")
+			file.write("[build]\ncompiler=mingw32")
 	download('http://peak.telecommunity.com/dist/ez_setup.py','ez_setup.py')
 	sh(sys.executable,os.path.abspath('ez_setup.py'))
 	sh(os.path.join(sys.prefix,'Scripts','easy_install'),'configobj')
