@@ -13,6 +13,5 @@
 	<classpathentry kind="lib" path="lib/gin/guice-assistedinject-3.0-rc2.jar"/>
 	<classpathentry kind="lib" path="lib/gwt-user.jar"/>
 	<classpathentry kind="lib" path="lib/gwt-dev.jar"/>
-	<classpathentry kind="lib" path="lib/gwt-incubator-20101117-r1766.jar"/>
 	<classpathentry kind="output" path="waf-build/classes"/>
 </classpath>
