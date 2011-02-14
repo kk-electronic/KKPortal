@@ -25,18 +25,34 @@ import com.google.inject.Inject;
 import com.kk_electronic.kkportal.core.AbstractModule;
 import com.kk_electronic.kkportal.core.moduleview.Module;
 
+/**
+ * A Simple Hello World module.
+ * 
+ * <p>
+ * This module demonstrates how to use UI binder to show something. <br>
+ * All the content of this module is in the XML for this file "HelloWorld.ui.xml"
+ * </p>
+ * 
+ * <p>For more infomation on UIBinder see KKPortal tutorials or <a href="http://code.google.com/webtoolkit/doc/latest/DevGuideUiBinder.html">UI Binder</a></p>
+ */
 public class HelloWorld extends AbstractModule implements Module {
 	private final Display display;
 
 	public static interface UIBinder extends UiBinder<Widget, Display>{};
+
+	/**
+	 * Inner Display Class used for binding the UI.
+	 */
 	public static class Display{
-		Widget w;
+		Widget widget;
+		
 		@Inject
 		public Display(UIBinder binder) {
-			w = binder.createAndBindUi(this);
+			widget = binder.createAndBindUi(this);
 		}
+		
 		public Widget asWidget(){
-			return w;
+			return widget;
 		}
 	}
 	
@@ -49,5 +65,4 @@ public class HelloWorld extends AbstractModule implements Module {
 	public Widget asWidget() {
 		return display.asWidget();
 	}
-
 }
