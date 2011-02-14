@@ -38,19 +38,8 @@ public interface ModuleService extends RemoteService {
 	void getTabs(Identity user,AsyncCallback<List<TabInfo>> asyncCallback);
 	
 	void getModuleInfo(List<Integer> ids,AsyncCallback<List<ModuleInfo>> callback);
-	void getModuleTypeInfo(List<Integer> ids,AsyncCallback<List<ModuleTypeInfo>> callback);
-	
-	void getModule(int moduleID,AsyncCallback<ModuleInfo> callback);
-	
-	void getModules(Integer tabid,AsyncCallback<List<List<ModuleInfo>>> callback);
-	void setModules(int tabid,List<List<ModuleInfo>> modules,AsyncCallback<?> callback);
-
-	void getTabInfos(Identity user, AsyncCallback<List<TabInfo>> tabscallback);
-
-	void addModule(Identity user, Integer tabid, AsyncCallback<TabInfo> callback);
-
-	void createModule(Identity identity, Integer typeId,
-			AsyncCallback<Integer> asyncCallback);
+		
+	void createModule(Identity identity, Integer typeId, AsyncCallback<Integer> asyncCallback);
 
 	void setModulesIdsOnTab(Integer id, List<List<Integer>> moduleIds,AsyncCallback<?> callback);
 	void setModuleHeight(Integer moduleId, Integer height, AsyncCallback<?> callback);
