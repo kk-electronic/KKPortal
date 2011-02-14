@@ -23,12 +23,14 @@ import java.util.LinkedList;
 import java.util.List;
 
 import com.google.gwt.core.client.Duration;
+import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.Style.BorderStyle;
 import com.google.gwt.dom.client.Style.Unit;
 import com.google.gwt.event.shared.GwtEvent;
 import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.client.Random;
 import com.google.gwt.user.client.Timer;
+import com.google.gwt.user.client.ui.RequiresResize;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.gwt.view.client.HasData;
 import com.google.gwt.view.client.Range;
@@ -45,10 +47,14 @@ import com.kk_electronic.kkportal.debug.model.CpuUsage;
  * We use a HTML5 Canvas to display the values using a simple path with no interpolation.
  * @author Jes Andersen
  */
-public class UsageGraph extends AbstractModule implements HasData<Double>{
+public class UsageGraph extends AbstractModule implements HasData<Double>, RequiresResize {
 	GWTCanvas canvas = new GWTCanvas();
 	private List<? extends Double> values;
 	
+	private final int 		borderSize = 1;
+	private final String 	borderColor = "black";
+	private final double	magicNumber = 57.0; // This value is when the graph looks the best.
+
 	/*
 	 * This class was used for testing before the back-end was implemented
 	 */
@@ -97,6 +103,7 @@ public class UsageGraph extends AbstractModule implements HasData<Double>{
 			drawPath(values,(Duration.currentTimeMillis()-offset)/1000.0);
 		}
 	};
+
 	private double offset;
 
 	/*
@@ -109,9 +116,9 @@ public class UsageGraph extends AbstractModule implements HasData<Double>{
 		model.addDisplay(this);
 		canvas.setLineWidth(1);
 	    canvas.setStrokeStyle(Color.BLACK);
-	    canvas.getElement().getStyle().setBorderWidth(1, Unit.PX);
+	    canvas.getElement().getStyle().setBorderWidth(borderSize, Unit.PX);
 	    canvas.getElement().getStyle().setBorderStyle(BorderStyle.SOLID);
-	    canvas.getElement().getStyle().setBorderColor("black");
+	    canvas.getElement().getStyle().setBorderColor(borderColor);
 	    
 	    canvas.beginPath();
 	      canvas.moveTo(1,1);
@@ -154,18 +161,27 @@ public class UsageGraph extends AbstractModule implements HasData<Double>{
 		if(values == null || values.isEmpty()) return;
 		canvas.clear();
 	    canvas.beginPath();
-	    double pixelpersecond = canvas.getCoordWidth()/57.0; 
-	    int o = Math.max(60-values.size(),0); // How many missing values
+	    double pixelpersecond = canvas.getCoordWidth() / magicNumber; 
+	    int o = Math.max(60 - values.size(),0); // How many missing values
 	    canvas.moveTo((o-shift*2-1)*pixelpersecond, canvas.getCoordHeight()*values.get(0));
 //	    canvas.moveTo((o)*pixelpersecond, canvas.getCoordHeight()*values.get(0));
 	    for(int i=1,l=values.size();i<l;i++){
-			double x = (i+o-shift*2-1)*pixelpersecond;
+			double x = (i+o-shift*2-1) * pixelpersecond;
 //	    	double x = (i+o)*pixelpersecond;
 			double y = canvas.getCoordHeight()*(1-values.get(i));
 			canvas.lineTo(x,y);
 		}
 		canvas.stroke();
 	}
+	
+	/* (non-Javadoc)
+	 * @see com.google.gwt.user.client.ui.RequiresResize#onResize()
+	 */
+	@Override
+	public void onResize() {
+		GWT.log("UsageGraph resize called!");
+	}
+
 
 	/*
 	 * All the functions below are null implementations needed the the GWT HasData interface
