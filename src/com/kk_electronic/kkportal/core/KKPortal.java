@@ -71,7 +71,7 @@ public class KKPortal implements EntryPoint {
 
 			@Override
 			public void onSuccess(TechDemo result) {
-				result.reload(null);
+				result.reloadPythonCode(null);
 			}
 		});
 	}
