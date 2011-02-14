@@ -29,7 +29,7 @@ import com.kk_electronic.kkportal.core.event.ServerEvent;
 import com.kk_electronic.kkportal.core.rpc.FrameEncoder;
 import com.kk_electronic.kkportal.core.rpc.jsonformat.UnableToDeserialize;
 import com.kk_electronic.kkportal.debug.model.NewCpuUsageDataEvent;
-import com.kk_electronic.kkportal.examples.modules.NewWallMessageEvent;
+import com.kk_electronic.kkportal.examples.techdemo.NewWallMessageEvent;
 
 /* TODO: Destroy this class */
 public class EventFromJsonCreator {
