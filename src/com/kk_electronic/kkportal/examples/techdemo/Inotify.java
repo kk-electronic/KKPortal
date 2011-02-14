@@ -17,7 +17,7 @@
  * along with KKPortal.  If not, see <http://www.gnu.org/licenses/>.
  *
  */
-package com.kk_electronic.kkportal.examples.modules;
+package com.kk_electronic.kkportal.examples.techdemo;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,6 +34,12 @@ import com.kk_electronic.kkportal.core.AbstractModule;
 import com.kk_electronic.kkportal.core.moduleview.Module;
 import com.kk_electronic.kkportal.core.services.TechDemo;
 
+/**
+ * Inotify demonstrates the possibility to follow file events on a Linux Server 
+ * 
+ * @author Jes Andersen
+ *
+ */
 public class Inotify extends AbstractModule implements Module,INotificationEvent.Handler {
 	private final Display display;
 
