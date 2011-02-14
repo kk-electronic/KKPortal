@@ -19,17 +19,18 @@
  */
 package com.kk_electronic.kkportal.core.ui;
 
+import java.util.Arrays;
+import java.util.List;
+
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.LayoutPanel;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.inject.Inject;
+import com.kk_electronic.kkportal.core.ModuleWindowFactory;
 import com.kk_electronic.kkportal.core.activity.Activity;
 import com.kk_electronic.kkportal.core.activity.LocationInfo;
-import com.kk_electronic.kkportal.core.inject.FlexInjector;
-import com.kk_electronic.kkportal.core.moduleview.Module;
-import com.kk_electronic.kkportal.core.reflection.ModuleMap;
 import com.kk_electronic.kkportal.core.services.ModuleService;
 import com.kk_electronic.kkportal.core.services.ModuleTypeInfo;
 import com.kk_electronic.kkportal.core.services.ModuleService.ModuleInfo;
@@ -60,24 +61,20 @@ public class SingleRender implements Activity {
 	private final Display display;
 	private final ModuleTypeInfoProvider typeInfoProvider;
 	private final LocationInfo location;
-	private final ModuleMap moduleMap;
-	private final FlexInjector injector;
-	private ModuleInfo moduleInfo;
-	private String title;
+	private ModuleWindowFactory factory;
+	private ModuleWindow window;
 
 	@Inject
 	public SingleRender(final LocationInfo location,
 			ModuleService moduleService, Display display2,
-			ModuleTypeInfoProvider typeInfoProvider, ModuleMap moduleMap,
-			FlexInjector injector) {
+			ModuleTypeInfoProvider typeInfoProvider, ModuleWindowFactory moduleWindowFactory) {
 		this.location = location;
 		this.display = display2;
 		this.typeInfoProvider = typeInfoProvider;
-		this.moduleMap = moduleMap;
-		this.injector = injector;
+		this.factory = moduleWindowFactory;
 
-		moduleService.getModule(location.getSubint(),
-				new AsyncCallback<ModuleInfo>() {
+		moduleService.getModuleInfo(Arrays.asList(new Integer[]{location.getSubint()}),
+				new AsyncCallback<List<ModuleInfo>>() {
 					@Override
 					public void onFailure(Throwable caught) {
 						display.showError("Failed to load module "
@@ -85,55 +82,34 @@ public class SingleRender implements Activity {
 					}
 
 					@Override
-					public void onSuccess(ModuleInfo result) {
-						loadModule(result);
+					public void onSuccess(List<ModuleInfo> result) {
+						if (result != null && !result.isEmpty()) {
+							loadModule(result.get(0));
+						} else {
+							onFailure(new RuntimeException("Empty Result"));
+						}
 					}
 				});
 	}
 
 	protected void loadModule(ModuleInfo moduleInfo) {
+		window = factory.get(moduleInfo);
+		display.showWidget(window.asWidget());
 
-		this.moduleInfo = moduleInfo;
 		typeInfoProvider.get(moduleInfo.getType(),
 				new AsyncCallback<ModuleTypeInfo>() {
 
 					@Override
 					public void onFailure(Throwable caught) {
-						display.showError("Failed to load module "
+						display.showError("Failed to load module type "
 								+ location.getSubint() + ":" + caught);
 					}
 
 					@Override
 					public void onSuccess(ModuleTypeInfo result) {
-						title = result.getTitle();
-						Window.setTitle(title);
-						loadCode(result);
+						Window.setTitle(window.title.getText());
 					}
 				});
-	}
-
-	protected void loadCode(ModuleTypeInfo moduleTypeInfo) {
-		Class<? extends Module> moduleClass = moduleMap.getClassFromKey(moduleTypeInfo
-				.getCode());
-		if (moduleClass == null) {
-			display.showError("Unknown module type code" + moduleTypeInfo.getCode());
-		} else {
-			injector.create(moduleClass, new AsyncCallback<Module>() {
-
-				@Override
-				public void onFailure(Throwable caught) {
-					display.showError("Could not load code:" + caught);
-				}
-
-				@Override
-				public void onSuccess(Module result) {
-					ModuleWindow window = new ModuleWindow(moduleInfo);
-					window.setTitle(title);
-					window.setContent(result.asWidget());
-					display.showWidget(window);
-				}
-			});
-		}
 	}
 
 	@Override
