@@ -47,7 +47,7 @@ import com.kk_electronic.kkportal.debug.model.CpuUsage;
  * We use a HTML5 Canvas to display the values using a simple path with no interpolation.
  * @author Jes Andersen
  */
-public class UsageGraph extends AbstractModule implements HasData<Double>{
+public class UsageGraph extends AbstractModule implements HasData<Double>,RequiresResize{
 	Canvas canvas = Canvas.createIfSupported();
 	private List<? extends Double> values;
 	
@@ -117,7 +117,7 @@ public class UsageGraph extends AbstractModule implements HasData<Double>{
 		model.addDisplay(this);
 		context.setLineWidth(1);
 		context.setStrokeStyle("black");
-	    canvas.getElement().getStyle().setBorderWidth(1, Unit.PX);
+	    canvas.getElement().getStyle().setBorderWidth(borderSize, Unit.PX);
 	    canvas.getElement().getStyle().setBorderStyle(BorderStyle.SOLID);
 	    canvas.getElement().getStyle().setBorderColor(borderColor);
 	    
