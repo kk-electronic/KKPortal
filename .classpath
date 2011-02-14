@@ -7,10 +7,12 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/3"/>
 	<classpathentry kind="lib" path="lib/gin/aopalliance.jar"/>
 	<classpathentry kind="lib" path="lib/gin/gin-1.0.jar"/>
-	<classpathentry kind="lib" path="lib/gin/guice-assistedinject-snapshot.jar"/>
-	<classpathentry kind="lib" path="lib/gin/guice-snapshot.jar"/>
 	<classpathentry kind="lib" path="lib/gin/javax.inject.jar"/>
 	<classpathentry kind="lib" path="lib/gwt-dnd-3.0.1.jar"/>
+	<classpathentry kind="lib" path="lib/gin/guice-3.0-rc2.jar"/>
+	<classpathentry kind="lib" path="lib/gin/guice-assistedinject-3.0-rc2.jar"/>
+	<classpathentry kind="lib" path="lib/gwt-user.jar"/>
+	<classpathentry kind="lib" path="lib/gwt-dev.jar"/>
 	<classpathentry kind="lib" path="lib/gwt-incubator-20101117-r1766.jar"/>
 	<classpathentry kind="output" path="waf-build/classes"/>
 </classpath>
