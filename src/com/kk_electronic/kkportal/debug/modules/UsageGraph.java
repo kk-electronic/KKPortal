@@ -22,6 +22,8 @@ package com.kk_electronic.kkportal.debug.modules;
 import java.util.LinkedList;
 import java.util.List;
 
+import com.google.gwt.canvas.client.Canvas;
+import com.google.gwt.canvas.dom.client.Context2d;
 import com.google.gwt.core.client.Duration;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.Style.BorderStyle;
@@ -36,8 +38,6 @@ import com.google.gwt.view.client.HasData;
 import com.google.gwt.view.client.Range;
 import com.google.gwt.view.client.SelectionModel;
 import com.google.gwt.view.client.RangeChangeEvent.Handler;
-import com.google.gwt.widgetideas.graphics.client.Color;
-import com.google.gwt.widgetideas.graphics.client.GWTCanvas;
 import com.google.inject.Inject;
 import com.kk_electronic.kkportal.core.AbstractModule;
 import com.kk_electronic.kkportal.debug.model.CpuUsage;
@@ -47,8 +47,8 @@ import com.kk_electronic.kkportal.debug.model.CpuUsage;
  * We use a HTML5 Canvas to display the values using a simple path with no interpolation.
  * @author Jes Andersen
  */
-public class UsageGraph extends AbstractModule implements HasData<Double>, RequiresResize {
-	GWTCanvas canvas = new GWTCanvas();
+public class UsageGraph extends AbstractModule implements HasData<Double>{
+	Canvas canvas = Canvas.createIfSupported();
 	private List<? extends Double> values;
 	
 	private final int 		borderSize = 1;
@@ -113,20 +113,21 @@ public class UsageGraph extends AbstractModule implements HasData<Double>, Requi
 	 */
 	@Inject
 	public UsageGraph(CpuUsage model) {
+		Context2d context = canvas.getContext2d();
 		model.addDisplay(this);
-		canvas.setLineWidth(1);
-	    canvas.setStrokeStyle(Color.BLACK);
-	    canvas.getElement().getStyle().setBorderWidth(borderSize, Unit.PX);
+		context.setLineWidth(1);
+		context.setStrokeStyle("black");
+	    canvas.getElement().getStyle().setBorderWidth(1, Unit.PX);
 	    canvas.getElement().getStyle().setBorderStyle(BorderStyle.SOLID);
 	    canvas.getElement().getStyle().setBorderColor(borderColor);
 	    
-	    canvas.beginPath();
-	      canvas.moveTo(1,1);
-	      canvas.lineTo(1,50);
-	      canvas.lineTo(50,50);
-	      canvas.lineTo(50, 1);
-	      canvas.closePath();
-	    canvas.stroke();
+	    context.beginPath();
+	      context.moveTo(1,1);
+	      context.lineTo(1,50);
+	      context.lineTo(100,50);
+	      context.lineTo(50, 1);
+	      context.closePath();
+	      context.stroke();
 	    timer.scheduleRepeating(100);
 	}
 	
@@ -159,19 +160,20 @@ public class UsageGraph extends AbstractModule implements HasData<Double>, Requi
 	 */
 	private void drawPath(List<? extends Double> values, double shift) {
 		if(values == null || values.isEmpty()) return;
-		canvas.clear();
-	    canvas.beginPath();
-	    double pixelpersecond = canvas.getCoordWidth() / magicNumber; 
-	    int o = Math.max(60 - values.size(),0); // How many missing values
-	    canvas.moveTo((o-shift*2-1)*pixelpersecond, canvas.getCoordHeight()*values.get(0));
-//	    canvas.moveTo((o)*pixelpersecond, canvas.getCoordHeight()*values.get(0));
+		Context2d context = canvas.getContext2d();
+//		context.setTransform(m11, m12, m21, m22, dx, dy)
+		context.clearRect(0, 0, canvas.getOffsetWidth(), canvas.getCoordinateSpaceHeight());
+//		context.clear();
+		context.beginPath();
+	    double pixelpersecond = canvas.getCoordinateSpaceWidth()/magicNumber; 
+	    int o = Math.max(60-values.size(),0); // How many missing values
+	    context.moveTo((o-shift*2-1)*pixelpersecond, canvas.getCoordinateSpaceHeight()*values.get(0));
 	    for(int i=1,l=values.size();i<l;i++){
-			double x = (i+o-shift*2-1) * pixelpersecond;
-//	    	double x = (i+o)*pixelpersecond;
-			double y = canvas.getCoordHeight()*(1-values.get(i));
-			canvas.lineTo(x,y);
+			double x = (i+o-shift*2-1)*pixelpersecond;
+			double y = canvas.getCoordinateSpaceHeight()*(1-values.get(i));
+			context.lineTo(x,y);
 		}
-		canvas.stroke();
+		context.stroke();
 	}
 	
 	/* (non-Javadoc)
