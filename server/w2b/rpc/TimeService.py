@@ -22,7 +22,7 @@ Created on Feb 15, 2011
 @author: Rasmus Carlsen
 '''
 
-from sqlalchemy import select
+from sqlalchemy import select,or_
 import w2b.database.timereg as db
 
 def get(context, begin, end): 
@@ -30,9 +30,9 @@ def get(context, begin, end):
     query = select(columns)
     query = query.where(db.timereg.c.ownerName == context.security.identity)#@UndefinedVariable
     if begin is not None:
-        query=query.where(begin <= db.timereg.c.checkout)#@UndefinedVariable
+        query=query.where(or_(db.timereg.c.checkout == None,begin <= db.timereg.c.checkout))#@UndefinedVariable
     if end is not None:
-        query=query.where(end >= db.timereg.c.checkin)#@UndefinedVariable
+        query=query.where(or_(db.timereg.c.checkin == None,end >= db.timereg.c.checkin))#@UndefinedVariable
     result = query.execute()
     returnvalues = [dict(x) for x in result]
     result.close()
