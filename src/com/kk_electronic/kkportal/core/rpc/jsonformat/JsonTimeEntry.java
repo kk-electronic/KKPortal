@@ -25,17 +25,17 @@ import java.util.List;
 import com.google.gwt.json.client.JSONObject;
 import com.google.gwt.json.client.JSONValue;
 import com.kk_electronic.kkportal.core.rpc.FrameEncoder;
-import com.kk_electronic.kkportal.core.rpc.SimpleEncoder;
+import com.kk_electronic.kkportal.core.rpc.JsonEncoder;
 import com.kk_electronic.kkportal.timereg.model.TimeEntry;
 
 /**
- * @author albatros
+ * @author Jes Andersen
  *
  */
 public class JsonTimeEntry implements JsonValue<TimeEntry> {
 	@Override
 	public TimeEntry fromJson(JSONValue jsonValue, List<Class<?>> subtypes,
-			SimpleEncoder simpleEncoder) throws UnableToDeserialize {
+			JsonEncoder jsonEncoder) throws UnableToDeserialize {
 		if (jsonValue.isNull() != null)
 			return null;
 		if (jsonValue.isObject() == null)
