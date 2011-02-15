@@ -23,6 +23,16 @@ import com.kk_electronic.gwt.rebind.Dispatch;
 import com.kk_electronic.kkportal.core.rpc.RemoteServer;
 import com.kk_electronic.kkportal.core.rpc.RpcDispatcher;
 
+/**
+ * A Specific implementation of RemoteServer.
+ * <p>
+ * Intended for future use as Portal Service specific interface, 
+ * much like there might be Python server specifics.
+ * </p>
+ * 
+ * @author Jes Andersen
+ *
+ */
 @Dispatch(RpcDispatcher.class)
 public interface PortalService extends RemoteServer {
 }
