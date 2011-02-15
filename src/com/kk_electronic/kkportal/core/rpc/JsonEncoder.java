@@ -35,6 +35,7 @@ import com.kk_electronic.kkportal.core.rpc.jsonformat.JsonDouble;
 import com.kk_electronic.kkportal.core.rpc.jsonformat.JsonIdentity;
 import com.kk_electronic.kkportal.core.rpc.jsonformat.JsonInteger;
 import com.kk_electronic.kkportal.core.rpc.jsonformat.JsonList;
+import com.kk_electronic.kkportal.core.rpc.jsonformat.JsonLong;
 import com.kk_electronic.kkportal.core.rpc.jsonformat.JsonMap;
 import com.kk_electronic.kkportal.core.rpc.jsonformat.JsonModuleInfo;
 import com.kk_electronic.kkportal.core.rpc.jsonformat.JsonRpcEnvelope;
@@ -74,6 +75,7 @@ public class JsonEncoder implements FrameEncoder<JSONValue> {
 		types.put(Double.class, new JsonDouble());
 		types.put(Challange.class, new JsonChallange());
 		types.put(TimeEntry.class, new JsonTimeEntry());
+		types.put(Long.class, new JsonLong());
 		types.put(Date.class, new JsonDate());
 	}
 
