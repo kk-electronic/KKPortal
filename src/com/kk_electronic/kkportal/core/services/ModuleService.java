@@ -23,10 +23,20 @@ import java.util.List;
 
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.kk_electronic.kkportal.core.rpc.RemoteService;
-import com.kk_electronic.kkportal.core.security.Identity;
 import com.kk_electronic.kkportal.core.tabs.TabInfo;
 
+/**
+ * This Service is responsible for the communication about Modules and Tabs
+ * 
+ * @author Jes Andersen
+ */
 public interface ModuleService extends RemoteService {
+	
+	/**
+	 * Bean class for Module Information
+	 * 
+	 * @author Jes Andersen
+	 */
 	public interface ModuleInfo  {
 		public int getId();
 		public int getHeight();
@@ -35,12 +45,40 @@ public interface ModuleService extends RemoteService {
 		public void setType(int code);
 	}
 
-	void getTabs(Identity user,AsyncCallback<List<TabInfo>> asyncCallback);
+	/**
+	 * Gets the tabs for the given user.
+	 * 
+	 * @param asyncCallback returns a list of {@link TabInfo} to onSucces if successful
+	 */
+	void getTabs(AsyncCallback<List<TabInfo>> asyncCallback);
 	
+	/**
+	 * Get the information related to the specific Module Instances
+	 * 
+	 * @param ids Module Instance id's
+	 */
 	void getModuleInfo(List<Integer> ids,AsyncCallback<List<ModuleInfo>> callback);
 		
-	void createModule(Identity identity, Integer typeId, AsyncCallback<Integer> asyncCallback);
+	/**
+	 * Create a new Module instance based on a specific typeId
+	 * 
+	 * @param typeId the type identifier of a Module.
+	 */
+	void createModule(Integer typeId, AsyncCallback<Integer> asyncCallback);
 
+	/**
+	 * Updates a Tab's module list.
+	 * 
+	 * @param id the Tab's identity
+	 * @param moduleIds a List of Module Instances on the tab.
+	 */
 	void setModulesIdsOnTab(Integer id, List<List<Integer>> moduleIds,AsyncCallback<?> callback);
+
+	/**
+	 * Saves the height of a Module Instance
+	 * 
+	 * @param moduleId Module Instance id's
+	 * @param height height in pixels
+	 */
 	void setModuleHeight(Integer moduleId, Integer height, AsyncCallback<?> callback);
 }
