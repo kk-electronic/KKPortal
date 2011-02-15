@@ -50,6 +50,7 @@ def _isValid(entry):
 
 def update(context, entry):
     if _isValid(entry):
+        entry['ownerName'] = context.security.identity
         query = db.timereg.update()
         query = query.where(db.timereg.c.id == entry['id'])#@UndefinedVariable
         query = query.where(db.timereg.c.ownerName == context.security.identity) #@UndefinedVariable
@@ -61,6 +62,7 @@ def update(context, entry):
 def add(context, entry):
     if _isValid(entry):
         entry['id'] = None
+        entry['ownerName'] = context.security.identity
         query = db.timereg.insert()
         result = query.execute(entry)
         i = result.last_inserted_ids()[0]
