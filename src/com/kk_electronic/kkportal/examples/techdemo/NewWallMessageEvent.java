@@ -17,7 +17,7 @@
  * along with KKPortal.  If not, see <http://www.gnu.org/licenses/>.
  *
  */
-package com.kk_electronic.kkportal.examples.modules;
+package com.kk_electronic.kkportal.examples.techdemo;
 
 import com.google.gwt.event.shared.EventHandler;
 import com.google.gwt.event.shared.GwtEvent;

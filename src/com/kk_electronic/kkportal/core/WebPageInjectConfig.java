@@ -39,7 +39,7 @@ import com.kk_electronic.kkportal.core.rpc.Comet;
 import com.kk_electronic.kkportal.core.rpc.FrameEncoder;
 import com.kk_electronic.kkportal.core.rpc.IdCreator;
 import com.kk_electronic.kkportal.core.rpc.IdCreatorSequence;
-import com.kk_electronic.kkportal.core.rpc.SimpleEncoder;
+import com.kk_electronic.kkportal.core.rpc.JsonEncoder;
 import com.kk_electronic.kkportal.core.rpc.WebSocket;
 import com.kk_electronic.kkportal.core.security.Digest;
 import com.kk_electronic.kkportal.core.security.Hasher;
@@ -71,7 +71,7 @@ public class WebPageInjectConfig extends AbstractGinModule {
 		bind(WebSocket.class).to(Comet.class).in(Singleton.class);
 		bind(ActivityManager.class).in(Singleton.class);
 		bind(Hasher.class).to(SHA256.class);
-		bind(new TypeLiteral<FrameEncoder<JSONValue>>() {}).to(SimpleEncoder.class);
+		bind(new TypeLiteral<FrameEncoder<JSONValue>>() {}).to(JsonEncoder.class);
 		bind(EventBus.class).to(SimpleEventBus.class).in(Singleton.class);
 		bindConstant().annotatedWith(Names.named("DefaultHistoryToken")).to("View");
 		bind(Digest.class).in(Singleton.class);

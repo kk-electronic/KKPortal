@@ -28,7 +28,7 @@ import com.kk_electronic.kkportal.core.rpc.RpcEnvelope;
 import com.kk_electronic.kkportal.core.rpc.RpcError;
 import com.kk_electronic.kkportal.core.rpc.RpcRequest;
 import com.kk_electronic.kkportal.core.rpc.RpcResponse;
-import com.kk_electronic.kkportal.core.rpc.SimpleEncoder;
+import com.kk_electronic.kkportal.core.rpc.JsonEncoder;
 
 public class JsonRpcEnvelope implements JsonValue<RpcEnvelope> {
 
@@ -73,7 +73,7 @@ public class JsonRpcEnvelope implements JsonValue<RpcEnvelope> {
 
 	@Override
 	public RpcEnvelope fromJson(JSONValue jsonValue, List<Class<?>> subtypes,
-			SimpleEncoder simpleEncoder) throws UnableToDeserialize {
+			JsonEncoder simpleEncoder) throws UnableToDeserialize {
 		JSONObject jsonObject = jsonValue.isObject();
 		if(jsonObject == null) throw new UnableToDeserialize("Identity must be an Json Object");
 		if(jsonObject.containsKey("result")) return responseFromJson(jsonObject,simpleEncoder);
@@ -82,7 +82,7 @@ public class JsonRpcEnvelope implements JsonValue<RpcEnvelope> {
 		throw new UnableToDeserialize("Json Rpc Envelope must contain either result,error or method");
 	}
 
-	private RpcError errorFromJson(JSONObject jsonValue, SimpleEncoder simpleEncoder) throws UnableToDeserialize {
+	private RpcError errorFromJson(JSONObject jsonValue, JsonEncoder simpleEncoder) throws UnableToDeserialize {
 		if(! ( jsonValue.containsKey("error") && jsonValue.containsKey("id"))) throw new UnableToDeserialize("Json Rpc Error must contain both id and error");
 		Integer id = null;
 		id = simpleEncoder.validate(jsonValue.get("id"),id,new Class<?>[]{Integer.class});
@@ -95,7 +95,7 @@ public class JsonRpcEnvelope implements JsonValue<RpcEnvelope> {
 		return new RpcError(id,code,message,error.get("data")); 
 	}
 
-	public RpcResponse<?> responseFromJson(JSONObject jsonValue, SimpleEncoder simpleEncoder) throws UnableToDeserialize {
+	public RpcResponse<?> responseFromJson(JSONObject jsonValue, JsonEncoder simpleEncoder) throws UnableToDeserialize {
 		if(! ( jsonValue.containsKey("id") && jsonValue.containsKey("result"))) throw new UnableToDeserialize("Json Rpc Response must contain both id and result");
 		Integer id = null;
 		id = simpleEncoder.validate(jsonValue.get("id"),id,new Class<?>[]{Integer.class});
@@ -103,7 +103,7 @@ public class JsonRpcEnvelope implements JsonValue<RpcEnvelope> {
 		return new RpcResponse<Object>(id, result); 
 	}
 	
-	public RpcRequest requestFromJson(JSONObject jsonValue, SimpleEncoder simpleEncoder) throws UnableToDeserialize {
+	public RpcRequest requestFromJson(JSONObject jsonValue, JsonEncoder simpleEncoder) throws UnableToDeserialize {
 		if(! ( jsonValue.containsKey("method") && jsonValue.containsKey("params"))) throw new UnableToDeserialize("Json Rpc Response must contain both method and params");
 		String method = null;
 		method = simpleEncoder.validate(jsonValue.get("method"),method,new Class<?>[]{String.class});

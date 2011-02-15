@@ -30,9 +30,9 @@ import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import com.kk_electronic.kkportal.core.persistence.Storage;
+import com.kk_electronic.kkportal.core.services.MotDService;
 import com.kk_electronic.kkportal.core.ui.InputDialog;
 import com.kk_electronic.kkportal.core.ui.InputDialog.Handler;
-import com.kk_electronic.kkportal.examples.modules.MotDService;
 
 @Singleton
 public class IdentityProvider implements Handler{

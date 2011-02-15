@@ -48,12 +48,12 @@ import com.kk_electronic.kkportal.core.security.Identity;
 import com.kk_electronic.kkportal.core.services.ModuleService.ModuleInfo;
 import com.kk_electronic.kkportal.core.tabs.TabInfo;
 
-public class SimpleEncoder implements FrameEncoder<JSONValue> {
+public class JsonEncoder implements FrameEncoder<JSONValue> {
 
 	HashMap<Class<?>, JsonValue<?>> types = new HashMap<Class<?>, JsonValue<?>>();
 
 	@Inject
-	public SimpleEncoder() {
+	public JsonEncoder() {
 		JsonValue<?> t;
 		types.put(Identity.class, new JsonIdentity());
 		t = new JsonRpcEnvelope();

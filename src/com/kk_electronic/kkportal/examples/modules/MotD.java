@@ -24,8 +24,18 @@ import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.inject.Inject;
 import com.kk_electronic.kkportal.core.AbstractModule;
+import com.kk_electronic.kkportal.core.services.MotDService;
 import com.kk_electronic.kkportal.core.util.Callback;
 
+/**
+ * Message of the Day module,
+ * displaying what the current message of the day is <p> 
+ * 
+ * using the {@link MotDService}
+ * 
+ * @author Jes Andersen
+ *
+ */
 public class MotD extends AbstractModule implements Callback<String> {
 	HTML widget = new HTML("Fetching MotD");
 	
@@ -36,6 +46,10 @@ public class MotD extends AbstractModule implements Callback<String> {
 
 	@Inject
 	public MotD(MotDService service){
+		/*
+		 *  Uses the call method in AbstractModule to 
+		 *	convert a Callback to a Asynccallback for the service.
+		/**/
 		service.getMessageOfTheDay(call(this));
 	}
 

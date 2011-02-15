@@ -23,7 +23,7 @@ import java.util.List;
 
 import com.google.gwt.json.client.JSONValue;
 import com.kk_electronic.kkportal.core.rpc.FrameEncoder;
-import com.kk_electronic.kkportal.core.rpc.SimpleEncoder;
+import com.kk_electronic.kkportal.core.rpc.JsonEncoder;
 import com.kk_electronic.kkportal.core.security.Identity;
 
 public class JsonIdentity implements JsonValue<Identity> {
@@ -46,7 +46,7 @@ public class JsonIdentity implements JsonValue<Identity> {
 
 	@Override
 	public Identity fromJson(JSONValue jsonValue, List<Class<?>> subtypes,
-			SimpleEncoder simpleEncoder) throws UnableToDeserialize {
+			JsonEncoder simpleEncoder) throws UnableToDeserialize {
 		// TODO Auto-generated method stub
 		return null;
 	}

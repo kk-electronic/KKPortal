@@ -27,5 +27,11 @@ import com.kk_electronic.kkportal.core.services.ModuleService.ModuleInfo;
 public interface Module extends IsWidget {
 
 	void setModuleInfo(ModuleInfo info);
+	/**
+	 * Retrieves the title of the module. <br>
+	 * May return null if the module's title is unavailable. 
+	 * 
+	 * @return String or Null representing the title of the module
+	 */
 	String getTitle();
 }

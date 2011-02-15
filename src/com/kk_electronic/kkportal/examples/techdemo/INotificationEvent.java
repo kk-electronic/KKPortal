@@ -17,26 +17,41 @@
  * along with KKPortal.  If not, see <http://www.gnu.org/licenses/>.
  *
  */
-package com.kk_electronic.kkportal.core.util.wait;
+package com.kk_electronic.kkportal.examples.techdemo;
 
 import com.google.gwt.event.shared.EventHandler;
 import com.google.gwt.event.shared.GwtEvent;
+import com.kk_electronic.kkportal.core.event.ServerEvent;
 
 /**
+ * This event is fired when a INotify event is registered on the server
+ * 
  * @author Jes Andersen
  */
-public class LoadEvent extends GwtEvent<LoadEvent.Handler> {
+public class INotificationEvent extends GwtEvent<INotificationEvent.Handler> implements ServerEvent {
 
 	public interface Handler extends EventHandler {
-		void onLoad(LoadEvent event);
+		void onINotification(INotificationEvent event);
 	}
 
 	/**
 	 * Handler type.
 	 */
 	public static final Type<Handler> TYPE = new Type<Handler>();
+	private final String file;
+	private final String notifytype;
 
-	public LoadEvent() {
+	public String getFileName() {
+		return file;
+	}
+
+	public String getNotifytype() {
+		return notifytype;
+	}
+
+	public INotificationEvent(String file, String notifytype) {
+		this.file = file;
+		this.notifytype = notifytype;
 	}
 
 	@Override
@@ -46,6 +61,6 @@ public class LoadEvent extends GwtEvent<LoadEvent.Handler> {
 
 	@Override
 	protected void dispatch(Handler handler) {
-		handler.onLoad(this);
+		handler.onINotification(this);
 	}
 }

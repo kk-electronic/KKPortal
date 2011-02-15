@@ -42,7 +42,7 @@ if sys.platform == 'linux2':
         notifier.watch(filepath.FilePath(path),callbacks=[TransmitInotify(context).write])
 
 
-def reload(context):
+def reloadPythonCode(context):
     for module in sys.modules.values():
         if module:
             __builtin__.reload(module)

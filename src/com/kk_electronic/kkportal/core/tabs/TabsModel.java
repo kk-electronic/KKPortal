@@ -40,7 +40,6 @@ import com.kk_electronic.kkportal.core.event.LocationChangedEvent;
 import com.kk_electronic.kkportal.core.event.NewContentEvent;
 import com.kk_electronic.kkportal.core.event.TabSelectedEvent;
 import com.kk_electronic.kkportal.core.rpc.jsonformat.JsonTabInfo.TabInfoDTO;
-import com.kk_electronic.kkportal.core.security.Identity;
 import com.kk_electronic.kkportal.core.security.IdentityProvider;
 import com.kk_electronic.kkportal.core.security.NewPrimaryIdentityEvent;
 import com.kk_electronic.kkportal.core.services.ModuleService;
@@ -68,20 +67,17 @@ public class TabsModel implements NewPrimaryIdentityEvent.Handler, LocationChang
 		}
 	};
 	private final EventBus eventBus;
-	private final IdentityProvider identityProvider;
-
+	
 	@Inject
 	public TabsModel(IdentityProvider identityProvider, ModuleService moduleService,LocationInfo locationInfo,EventBus eventBus) {
-		this.identityProvider = identityProvider;
 		this.moduleService = moduleService;
 		this.locationInfo = locationInfo;
 		this.eventBus = eventBus;
 		eventBus.addHandler(LocationChangedEvent.TYPE, this);
 		selectionModel = new SingleSelectionModel<TabInfo>();
 		identityProvider.addNewPrimaryIdentityEventHandler(this);
-		Identity identity = identityProvider.getPrimaryIdentity();
-		if(identity != null){
-			getTabs(identity);
+		if(identityProvider.getPrimaryIdentity() != null){
+			getTabs();
 		}
 	}
 
@@ -107,8 +103,8 @@ public class TabsModel implements NewPrimaryIdentityEvent.Handler, LocationChang
 		return 80;
 	}
 
-	protected void getTabs(Identity user) {
-		moduleService.getTabs(user, tabscallback);
+	protected void getTabs() {
+		moduleService.getTabs(tabscallback);
 	}
 	
 	protected void setTabInfos(List<TabInfo> tabInfos) {
@@ -151,7 +147,7 @@ public class TabsModel implements NewPrimaryIdentityEvent.Handler, LocationChang
 			setTabInfos(new ArrayList<TabInfo>());
 			return;
 		}
-		getTabs(event.getIdentity());
+		getTabs();
 	}
 
 	public HandlerRegistration addTabSelectedHandler(TabSelectedEvent.Handler handler) {
@@ -170,8 +166,7 @@ public class TabsModel implements NewPrimaryIdentityEvent.Handler, LocationChang
 		if(tabInfo == null){
 			Window.alert("The blue sock found");
 		}
-		Identity identity = identityProvider.getPrimaryIdentity();
-		moduleService.createModule(identity,selectedObject.getType_id(),new AsyncCallback<Integer>() {
+		moduleService.createModule(selectedObject.getType_id(),new AsyncCallback<Integer>() {
 
 			@Override
 			public void onFailure(Throwable caught) {

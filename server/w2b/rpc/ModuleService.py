@@ -26,7 +26,7 @@ import w2b.database.portal as db
 from sqlalchemy import func,select,update
 import simplejson as json
 
-def getTabs(context, user):
+def getTabs(context):
     query = db.tabs.select().where(db.tabs.c.ownerName == context.security.identity) #@UndefinedVariable
     result = query.execute()
     returnvalues = [dict(x) for x in result]
@@ -50,12 +50,6 @@ def getModules(context, tabid):
         # We append the module to the last column which due the the ordering is always the right place
         return_value[-1].append({"id":row.module_id, "height":row.height, "type":row.type_id})
     return return_value
-
-def getModule(context, moduleid):
-    query = db.modules.select().order_by(db.modules.c.col_nr, db.modules.c.order).where(db.modules.c.module_id == moduleid) #@UndefinedVariable
-    result = query.execute()
-    row = result.fetchone()
-    return {"id":row.module_id, "height":row.height, "type":row.type_id}
 
 def getModuleInfo(context, ids):
     result = db.modules.select().where(db.modules.c.module_id.in_(ids)).execute() #@UndefinedVariable
@@ -92,16 +86,7 @@ def setModules(context, tabid, modules):
     # We insert all the values from the previous step
     db.modules.insert().execute(entries)
 
-def getTabInfos(context, user):
-    return {
-            "k":["name", "tab_id"],
-            "v":[
-                 ["Tab1", 1],
-                 ["Tab2", 2]
-                ]
-            }
-
-def createModule(context,user,typeid):
+def createModule(context,typeid):
     query = db.modules.insert()
     result = query.execute({'col_nr':None,
       'order':None,
@@ -122,15 +107,3 @@ def setModuleHeight(context,moduleId, height):
     query = update(db.modules).where(db.modules.c.module_id == moduleId).values(height=height) #@UndefinedVariable
     result = query.execute()
     result.close()
-    
-def addModule(context,tabid,typeid):
-    query = select([db.modules.c.col_nr,func.count()+1]).where(db.modules.c.tab_id == 2).group_by(db.modules.c.col_nr).order_by(func.sum(db.modules.c.height)).limit(1) #@UndefinedVariable
-    result = query.execute().fetchone()
-#select col_nr from modules where tab_id = 2 group by col_nr order by sum(height) limit 1;
-#query = db.modules.select(db.modules.c.tab_id = tabid).group_by(db.modules.c.col_nr).order_by(func.sum(db.modules.c.height)) #@UndefinedVariable
-    entry = {'col_nr':result[0],
-      'order':result[1],
-      'type_id':typeid,
-      'tab_id':tabid,
-      'height':170}
-    db.modules.insert().execute(entry)

@@ -23,6 +23,8 @@ import com.google.gwt.event.shared.EventHandler;
 import com.google.gwt.event.shared.GwtEvent;
 
 /**
+ * A Standard implementation of a Event.
+ * 
  * @author Jes Andersen
  */
 public class ExampleEvent extends GwtEvent<ExampleEvent.Handler> {

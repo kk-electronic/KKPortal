@@ -17,8 +17,14 @@
  * along with KKPortal.  If not, see <http://www.gnu.org/licenses/>.
  *
  */
-package com.kk_electronic.kkportal.core.security;
+package com.kk_electronic.kkportal.core.services;
 
-public class SecretProvider {
+import com.google.gwt.user.client.rpc.AsyncCallback;
+import com.kk_electronic.kkportal.core.rpc.RemoteService;
 
+public interface MotDService extends RemoteService{
+	/**
+	 *	Contacts the server to retrieve the current Message of the Day. 
+	 */
+	public void getMessageOfTheDay(AsyncCallback<String> callback);
 }

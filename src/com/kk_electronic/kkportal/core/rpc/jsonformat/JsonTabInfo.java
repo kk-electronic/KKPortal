@@ -25,7 +25,7 @@ import com.google.gwt.json.client.JSONObject;
 import com.google.gwt.json.client.JSONParser;
 import com.google.gwt.json.client.JSONValue;
 import com.kk_electronic.kkportal.core.rpc.FrameEncoder;
-import com.kk_electronic.kkportal.core.rpc.SimpleEncoder;
+import com.kk_electronic.kkportal.core.rpc.JsonEncoder;
 import com.kk_electronic.kkportal.core.tabs.TabInfo;
 
 public class JsonTabInfo implements JsonValue<TabInfo> {
@@ -53,7 +53,7 @@ public class JsonTabInfo implements JsonValue<TabInfo> {
 	
 	@Override
 	public TabInfo fromJson(JSONValue jsonValue, List<Class<?>> subtypes,
-			SimpleEncoder simpleEncoder) throws UnableToDeserialize {
+			JsonEncoder simpleEncoder) throws UnableToDeserialize {
 		JSONObject jsonObject = jsonValue.isObject();
 		if(jsonObject == null) throw new UnableToDeserialize("Expected json Object");
 		Integer id = null;

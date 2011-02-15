@@ -17,7 +17,7 @@
  * along with KKPortal.  If not, see <http://www.gnu.org/licenses/>.
  *
  */
-package com.kk_electronic.kkportal.examples.modules;
+package com.kk_electronic.kkportal.examples.techdemo;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,7 +27,6 @@ import com.google.gwt.dom.client.Element;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.KeyCodes;
 import com.google.gwt.event.dom.client.KeyDownEvent;
-import com.google.gwt.event.shared.EventBus;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
@@ -39,26 +38,46 @@ import com.kk_electronic.kkportal.core.AbstractModule;
 import com.kk_electronic.kkportal.core.moduleview.Module;
 import com.kk_electronic.kkportal.core.services.TechDemo;
 
-public class Wall extends AbstractModule implements Module,NewWallMessageEvent.Handler {
+/**
+ * Implementation of a wall to show ability to 
+ * communicate across browsers in a timely fashion
+ * 
+ * <p>Using UIBinder for defining how the module looks like see: <a href="http://code.google.com/webtoolkit/doc/latest/DevGuideUiBinder.html">UI Binder</a></p>
+ * @author Jes Andersen
+ */
+public class Wall extends AbstractModule implements Module, NewWallMessageEvent.Handler {
 	private final Display display;
-	private final TechDemo debug;
+	private final TechDemo service;
+	List<String> lines = new ArrayList<String>();
 
 	public static interface UIBinder extends UiBinder<Widget, Display>{};
+	
+	/**
+	 * Display inner class used to bind with and control the UI.
+	 * 
+	 * @author Jes Andersen
+	 */
 	public static class Display{
-		Widget w;
-		@UiField
+		Widget widget;
+		@UiField 
 		Element lineList;
+		@UiField
+		ValueBoxBase<String> message;
 		private Wall wall;
+
 		@Inject
 		public Display(UIBinder binder) {
-			w = binder.createAndBindUi(this);
+			widget = binder.createAndBindUi(this);
 		}
+		
 		public Widget asWidget(){
-			return w;
+			return widget;
 		}
+		
 		public void setHandler(Wall wall){
 			this.wall = wall;
 		}
+
 		public void setLines(List<String> lines) {
 			StringBuilder sb = new StringBuilder();
 			for(String line:lines){
@@ -68,10 +87,8 @@ public class Wall extends AbstractModule implements Module,NewWallMessageEvent.H
 				sb.append(line);
 			}
 			lineList.setInnerHTML(sb.toString());
-//			eventBus.fireEventFromSource(new ContentChangedEvent(), this);
 		}
-		@UiField
-		ValueBoxBase<String> message;
+
 		@UiHandler("post")
 		public void onPost(ClickEvent event){
 			postTextBox();
@@ -82,6 +99,7 @@ public class Wall extends AbstractModule implements Module,NewWallMessageEvent.H
 			if (KeyCodes.KEY_ENTER != event.getNativeKeyCode()) return;
 			postTextBox();
 		}
+
 		private void postTextBox() {
 			if(message.getValue().isEmpty()) return;
 			if(wall != null){
@@ -92,10 +110,10 @@ public class Wall extends AbstractModule implements Module,NewWallMessageEvent.H
 	}
 	
 	@Inject
-	public Wall(Display display,TechDemo debug,EventBus eventBus) {
-		this.debug = debug;
+	public Wall(Display display,TechDemo service) {
+		this.service = service;
 		display.setHandler(this);
-		debug.getWall(new AsyncCallback<List<String>>() {
+		service.getWall(new AsyncCallback<List<String>>() {
 			
 			@Override
 			public void onSuccess(List<String> result) {
@@ -110,10 +128,8 @@ public class Wall extends AbstractModule implements Module,NewWallMessageEvent.H
 			}
 		});
 		this.display = display;
-		eventBus.addHandler(NewWallMessageEvent.TYPE, this);
+		this.eventBus.addHandler(NewWallMessageEvent.TYPE, this);
 	}
-	
-	List<String> lines = new ArrayList<String>();
 	
 	public void addMessage(String s){
 		lines.add(s);
@@ -125,7 +141,7 @@ public class Wall extends AbstractModule implements Module,NewWallMessageEvent.H
 	}
 	
 	public void postMessage(final String s){
-		debug.postToWall(s, new AsyncCallback<Object>() {
+		service.postToWall(s, new AsyncCallback<Object>() {
 
 			@Override
 			public void onFailure(Throwable caught) {

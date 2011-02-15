@@ -26,7 +26,7 @@ import java.util.Map;
 import com.google.gwt.json.client.JSONObject;
 import com.google.gwt.json.client.JSONValue;
 import com.kk_electronic.kkportal.core.rpc.FrameEncoder;
-import com.kk_electronic.kkportal.core.rpc.SimpleEncoder;
+import com.kk_electronic.kkportal.core.rpc.JsonEncoder;
 
 public class JsonMap<V> implements JsonValue<Map<String,V>> {
 
@@ -41,7 +41,7 @@ public class JsonMap<V> implements JsonValue<Map<String,V>> {
 
 	@Override
 	public Map<String,V> fromJson(JSONValue jsonValue, List<Class<?>> subtypes,
-			SimpleEncoder simpleEncoder) throws UnableToDeserialize {
+			JsonEncoder simpleEncoder) throws UnableToDeserialize {
 		JSONObject jsonObject = jsonValue.isObject();
 		if (jsonObject == null)
 			throw new UnableToDeserialize("Expected Json Object");

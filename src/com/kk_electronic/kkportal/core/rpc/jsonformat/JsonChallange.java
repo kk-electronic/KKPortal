@@ -25,14 +25,14 @@ import java.util.List;
 import com.google.gwt.json.client.JSONArray;
 import com.google.gwt.json.client.JSONValue;
 import com.kk_electronic.kkportal.core.rpc.FrameEncoder;
-import com.kk_electronic.kkportal.core.rpc.SimpleEncoder;
+import com.kk_electronic.kkportal.core.rpc.JsonEncoder;
 import com.kk_electronic.kkportal.core.security.Challange;
 
 public class JsonChallange implements JsonValue<Challange> {
 
 	@Override
 	public Challange fromJson(JSONValue jsonValue, List<Class<?>> subtypes,
-			SimpleEncoder simpleEncoder) throws UnableToDeserialize {
+			JsonEncoder simpleEncoder) throws UnableToDeserialize {
 		if(jsonValue == null || jsonValue.isArray() == null){
 			throw new UnableToDeserialize("Challange must be array");
 		}

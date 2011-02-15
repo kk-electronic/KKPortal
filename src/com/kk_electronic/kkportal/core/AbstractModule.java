@@ -32,7 +32,7 @@ import com.kk_electronic.kkportal.core.util.DualCallback;
 public abstract class AbstractModule implements Module {
 
 	private ModuleInfo info;
-	@Inject private EventBus eventBus;  
+	@Inject protected EventBus eventBus;
 	
 	@Override
 	public void setModuleInfo(ModuleInfo info) {
@@ -48,18 +48,34 @@ public abstract class AbstractModule implements Module {
 		eventBus.fireEventFromSource(new ContentChangedEvent(info.getId(),info.getHeight()), this);
 	}
 	
-	public void setEventBus(EventBus eventBus) {
+	protected void setEventBus(EventBus eventBus) {
 		this.eventBus = eventBus;
 	}
 	
+	/**
+	 * Function used to avoid doing error handling in AsyncCallbacks,<br>
+	 * This is instead done centrally.
+	 * 
+	 * @param <T> the return type of data.
+	 * @param callback A simpler version of Callback with only onSucces
+	 * @return a AsyncCallback with central error handling.
+	 */
 	public <T> AsyncCallback<T> call(final Callback<T> callback){
 		return call(callback, "");
 	}
 	
-	public <T> AsyncCallback<T> call(final Callback<T> callback,final String failmessage){
+	/**
+	 * Function used to avoid doing error handling in AsyncCallbacks,<br>
+	 * This is instead done centrally.
+	 * 
+	 * @param <T> the return type of data.
+	 * @param callback A simpler version of Callback with only onSucces
+	 * @param failmessage message to be printed to the log along with the class name of the source.
+	 * @return a AsyncCallback with central error handling.
+	 */
+	public <T> AsyncCallback<T> call(final Callback<T> callback, final String failmessage){
 		final Class<? extends AbstractModule> clazz = this.getClass();
 		return new DualCallback<T>() {
-
 			@Override
 			public void onFailure(Throwable caught) {
 				if(!GWT.isScript()){
