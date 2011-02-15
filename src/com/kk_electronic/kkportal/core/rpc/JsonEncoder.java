@@ -40,6 +40,7 @@ import com.kk_electronic.kkportal.core.rpc.jsonformat.JsonModuleInfo;
 import com.kk_electronic.kkportal.core.rpc.jsonformat.JsonRpcEnvelope;
 import com.kk_electronic.kkportal.core.rpc.jsonformat.JsonString;
 import com.kk_electronic.kkportal.core.rpc.jsonformat.JsonTabInfo;
+import com.kk_electronic.kkportal.core.rpc.jsonformat.JsonTimeEntry;
 import com.kk_electronic.kkportal.core.rpc.jsonformat.JsonValue;
 import com.kk_electronic.kkportal.core.rpc.jsonformat.UnableToDeserialize;
 import com.kk_electronic.kkportal.core.rpc.jsonformat.UnableToSerialize;
@@ -47,6 +48,7 @@ import com.kk_electronic.kkportal.core.security.Challange;
 import com.kk_electronic.kkportal.core.security.Identity;
 import com.kk_electronic.kkportal.core.services.ModuleService.ModuleInfo;
 import com.kk_electronic.kkportal.core.tabs.TabInfo;
+import com.kk_electronic.kkportal.timereg.model.TimeEntry;
 
 public class JsonEncoder implements FrameEncoder<JSONValue> {
 
@@ -71,6 +73,7 @@ public class JsonEncoder implements FrameEncoder<JSONValue> {
 		types.put(ModuleInfo.class, new JsonModuleInfo());
 		types.put(Double.class, new JsonDouble());
 		types.put(Challange.class, new JsonChallange());
+		types.put(TimeEntry.class, new JsonTimeEntry());
 		types.put(Date.class, new JsonDate());
 	}
 
