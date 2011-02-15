@@ -25,7 +25,7 @@ import java.util.List;
 import com.google.gwt.json.client.JSONArray;
 import com.google.gwt.json.client.JSONValue;
 import com.kk_electronic.kkportal.core.rpc.FrameEncoder;
-import com.kk_electronic.kkportal.core.rpc.SimpleEncoder;
+import com.kk_electronic.kkportal.core.rpc.JsonEncoder;
 
 public class JsonList<T> implements JsonValue<List<T>> {
 
@@ -46,7 +46,7 @@ public class JsonList<T> implements JsonValue<List<T>> {
 
 	@Override
 	public List<T> fromJson(JSONValue jsonValue, List<Class<?>> subtypes,
-			SimpleEncoder simpleEncoder) throws UnableToDeserialize {
+			JsonEncoder simpleEncoder) throws UnableToDeserialize {
 		JSONArray jsonArray = jsonValue.isArray();
 		if (jsonArray == null)
 			throw new UnableToDeserialize("Expected Json Array");

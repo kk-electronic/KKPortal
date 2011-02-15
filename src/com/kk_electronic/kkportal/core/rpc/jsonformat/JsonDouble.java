@@ -24,7 +24,7 @@ import java.util.List;
 import com.google.gwt.json.client.JSONNumber;
 import com.google.gwt.json.client.JSONValue;
 import com.kk_electronic.kkportal.core.rpc.FrameEncoder;
-import com.kk_electronic.kkportal.core.rpc.SimpleEncoder;
+import com.kk_electronic.kkportal.core.rpc.JsonEncoder;
 
 public class JsonDouble implements JsonValue<Double> {
 
@@ -39,7 +39,7 @@ public class JsonDouble implements JsonValue<Double> {
 
 	@Override
 	public Double fromJson(JSONValue jsonValue, List<Class<?>> subtypes,
-			SimpleEncoder simpleEncoder) throws UnableToDeserialize {
+			JsonEncoder simpleEncoder) throws UnableToDeserialize {
 		JSONNumber number = jsonValue.isNumber();
 		if(number == null) throw new UnableToDeserialize("Expected json number");
 		return number.doubleValue();

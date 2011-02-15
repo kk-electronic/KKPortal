@@ -25,7 +25,7 @@ import com.google.gwt.core.client.JsonUtils;
 import com.google.gwt.json.client.JSONString;
 import com.google.gwt.json.client.JSONValue;
 import com.kk_electronic.kkportal.core.rpc.FrameEncoder;
-import com.kk_electronic.kkportal.core.rpc.SimpleEncoder;
+import com.kk_electronic.kkportal.core.rpc.JsonEncoder;
 
 public class JsonString implements JsonValue<String> {
 
@@ -38,7 +38,7 @@ public class JsonString implements JsonValue<String> {
 	}
 	@Override
 	public String fromJson(JSONValue jsonValue, List<Class<?>> subtypes,
-			SimpleEncoder simpleEncoder) throws UnableToDeserialize {
+			JsonEncoder simpleEncoder) throws UnableToDeserialize {
 		if(jsonValue.isNull() != null) return null;
 		JSONString jsonString = jsonValue.isString();
 		if(jsonString == null) throw new UnableToDeserialize("Expected json String");

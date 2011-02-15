@@ -24,7 +24,7 @@ import java.util.List;
 import com.google.gwt.json.client.JSONObject;
 import com.google.gwt.json.client.JSONValue;
 import com.kk_electronic.kkportal.core.rpc.FrameEncoder;
-import com.kk_electronic.kkportal.core.rpc.SimpleEncoder;
+import com.kk_electronic.kkportal.core.rpc.JsonEncoder;
 import com.kk_electronic.kkportal.core.services.ModuleService.ModuleInfo;
 
 public class JsonModuleInfo implements JsonValue<ModuleInfo> {
@@ -58,7 +58,7 @@ public class JsonModuleInfo implements JsonValue<ModuleInfo> {
 	
 	@Override
 	public ModuleInfo fromJson(JSONValue jsonValue, List<Class<?>> subtypes,
-			SimpleEncoder simpleEncoder) throws UnableToDeserialize {
+			JsonEncoder simpleEncoder) throws UnableToDeserialize {
 		JSONObject jsonObject = jsonValue.isObject();
 		if(jsonObject == null) throw new UnableToDeserialize("Expected json Object");
 		Integer id = null;
