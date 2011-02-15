@@ -41,6 +41,9 @@ public class Range<T extends Comparable<T>> implements Cloneable {
 	}
 	
 	public boolean contains(Range<T> range){
+		if (!isBounded()){
+			return false;
+		}
 		if (range.begin.compareTo(begin) < 0){
 			return false;
 		}
@@ -52,5 +55,17 @@ public class Range<T extends Comparable<T>> implements Cloneable {
 
 	public Range<T> clone() {
 		return new Range<T>(begin, end);
+	}
+
+	/**
+	 * @param range
+	 */
+	public void extend(Range<T> range) {
+		if(range.begin != null && (begin == null || range.begin.compareTo(begin) < 0)){
+			begin = range.begin;
+		}
+		if(range.end != null && (end == null || range.end.compareTo(end) > 0)){
+			end = range.end;
+		}
 	}
 }
