@@ -22,10 +22,13 @@ Created on Feb 15, 2011
 @author: Rasmus Carlsen
 '''
 
+from sqlalchemy import select
 import w2b.database.timereg as db
 
 def get(context, begin, end): 
-    query = db.timereg.select().where(db.timereg.c.ownerName == context.security.identity)#@UndefinedVariable
+    columns = [db.timereg.c.id,db.timereg.c.checkin,db.timereg.c.checkout, db.timereg.c.taskId]#@UndefinedVariable
+    query = select(columns)
+    query = query.where(db.timereg.c.ownerName == context.security.identity)#@UndefinedVariable
     if begin is not None:
         query=query.where(begin <= db.timereg.c.checkout)#@UndefinedVariable
     if end is not None:
@@ -35,7 +38,7 @@ def get(context, begin, end):
     result.close()
     return returnvalues
 
-def __isValid(entry):
+def _isValid(entry):
     if entry['checkout'] is None and entry['checkin'] is None:
         return False
     if entry['checkout'] is None or entry['checkin'] is None:
@@ -46,7 +49,7 @@ def __isValid(entry):
     
 
 def update(context, entry):
-    if __isValid(entry):
+    if _isValid(entry):
         query = db.timereg.update()
         query = query.where(db.timereg.c.id == entry['id'])#@UndefinedVariable
         query = query.where(db.timereg.c.ownerName == context.security.identity) #@UndefinedVariable
@@ -56,7 +59,8 @@ def update(context, entry):
     
     
 def add(context, entry):
-    if __isValid(entry):
+    if _isValid(entry):
+        entry['id'] = None
         query = db.timereg.insert()
         result = query.execute(entry)
         i = result.last_inserted_ids()[0]
