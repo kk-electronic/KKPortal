@@ -21,6 +21,7 @@ package com.kk_electronic.kkportal.core.rpc;
 
 import java.util.AbstractList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -29,6 +30,7 @@ import com.google.gwt.json.client.JSONParser;
 import com.google.gwt.json.client.JSONValue;
 import com.google.inject.Inject;
 import com.kk_electronic.kkportal.core.rpc.jsonformat.JsonChallange;
+import com.kk_electronic.kkportal.core.rpc.jsonformat.JsonDate;
 import com.kk_electronic.kkportal.core.rpc.jsonformat.JsonDouble;
 import com.kk_electronic.kkportal.core.rpc.jsonformat.JsonIdentity;
 import com.kk_electronic.kkportal.core.rpc.jsonformat.JsonInteger;
@@ -69,6 +71,7 @@ public class SimpleEncoder implements FrameEncoder<JSONValue> {
 		types.put(ModuleInfo.class, new JsonModuleInfo());
 		types.put(Double.class, new JsonDouble());
 		types.put(Challange.class, new JsonChallange());
+		types.put(Date.class, new JsonDate());
 	}
 
 	@SuppressWarnings("unchecked")
