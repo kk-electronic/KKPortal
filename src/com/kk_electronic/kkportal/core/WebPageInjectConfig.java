@@ -21,6 +21,8 @@ package com.kk_electronic.kkportal.core;
 
 import com.google.gwt.event.shared.EventBus;
 import com.google.gwt.event.shared.SimpleEventBus;
+import com.google.gwt.i18n.client.DateTimeFormat;
+import com.google.gwt.i18n.client.DateTimeFormat.PredefinedFormat;
 import com.google.gwt.inject.client.AbstractGinModule;
 import com.google.gwt.json.client.JSONValue;
 import com.google.gwt.user.client.ui.LayoutPanel;
@@ -88,5 +90,10 @@ public class WebPageInjectConfig extends AbstractGinModule {
 	@Provides @Singleton
 	LayoutPanel provideLayoutPanel(){
 		return RootLayoutPanel.get();
+	}
+	
+	@Provides @Singleton
+	DateTimeFormat provideDateTimeFormat(){
+		return DateTimeFormat.getFormat(PredefinedFormat.DATE_SHORT);
 	}
 }
