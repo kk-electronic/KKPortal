@@ -51,6 +51,7 @@ public class TimeView extends AbstractModule {
 	public static interface UIBinder extends UiBinder<Widget, TimeView>{}
 
 	private Widget display;
+	private final static int dayInMilliSec = 86400;
 	
 	@UiField
 	Label dateLabel;
@@ -67,11 +68,33 @@ public class TimeView extends AbstractModule {
 		timeRegistry.checkout();
 	}
 	
+	@UiHandler("nextDay")
+	protected void onNextDay(ClickEvent event){
+		//TODO: Implement correct functions
+		//int modifier = 1 * dayInMilliSec;
+		//moveRange(modifier);
+		//updateDateLabel();
+	}
+	
+	@UiHandler("prevDay")
+	protected void onPrevDay(ClickEvent event){
+		//TODO: Implement correct functions
+		//int modifier = -1 * dayInMilliSec;
+		//moveRange(modifier);
+		//updateDateLabel();
+	}
+	
 	@UiField
 	Button checkout;
 	
 	@UiField
 	Button checkin;
+	
+	@UiField 
+	Button nextDay;
+	
+	@UiField
+	Button prevDay;
 	
 	@UiField
 	CellTable<TimeEntry> entries;

@@ -40,6 +40,7 @@
 			text-align: center;
 		}
 		
+		
 	</ui:style>
 	<g:HTMLPanel stylePrimaryName="{style.TimeView}">
 		<table class="{style.buttonholder}">
@@ -49,6 +50,12 @@
 			</tr>
 		</table>
 		<c:CellTable ui:field="entries"/>
-		<g:Label ui:field="dateLabel" stylePrimaryName="{style.date}"></g:Label>
+		<table class="{style.buttonholder}">
+			<tr>
+				<td><g:Button ui:field="prevDay">Previous</g:Button></td>
+				<td><g:Label ui:field="dateLabel" stylePrimaryName="{style.date}"></g:Label></td>
+				<td align="right"><g:Button ui:field="nextDay">Next</g:Button></td>
+			</tr>
+		</table>
 	</g:HTMLPanel>
 </ui:UiBinder>
