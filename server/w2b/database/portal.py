@@ -81,8 +81,5 @@ def createDebugData():
     users.insert().execute(demousers)
     for user in demousernames:
         tabs.insert().execute([{'name':'Tab ' + str(i),'module_ids':'[[],[],[]]','ownerName':user} for i in range(1,4)])
-    types.insert().execute([{'type_id':0,'code':439329280,'title':'Hello World'}])
-    types.insert().execute([{'type_id':1,'code':2688490,'title':'Wall'}])
-    types.insert().execute([{'type_id':2,'code':-676430638,'title':'Inotify'}])
     #import random
     #modules.insert().execute([{'col_nr':2,'order':i,'module_id':i,'type_id':0,'tab_id':0,'height':random.randrange(24,80)} for i in range(8)])
