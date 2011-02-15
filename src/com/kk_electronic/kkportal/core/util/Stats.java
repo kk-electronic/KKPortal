@@ -18,10 +18,16 @@
  *
  */
 package com.kk_electronic.kkportal.core.util;
+
 import java.util.Date;
 
 import com.google.gwt.core.client.GWT;
 
+/**
+ * Stats is used to send logEvents
+ * 
+ * @author Jes Andersen
+ */
 public class Stats {
 	
 	public void sendStats(Object module, Object key,String type) {
