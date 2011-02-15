@@ -21,7 +21,7 @@ import hashlib
 from sqlalchemy import MetaData,create_engine,Table,Column,String,Integer,Binary,ForeignKey
 
 #We fetch the database connection string from the config file. (See server/defaulfs.conf)
-#Passing the 3rd parameter of __file__ enables overrideing the key for this file alone, 
+#Passing the 3rd parameter of __name__ enables overrideing the key for this file alone, 
 # allowing different databases to be used for different parts of the project
 databasestring = w2b.settings.getGlobalSetting('database',None,__name__)
 
