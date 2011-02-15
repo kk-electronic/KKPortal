@@ -35,17 +35,29 @@ public class TimeEntry {
 	public void setId(Integer id) {
 		this.id = id;
 	}
-	public Date getCheckin() {
+	public Date getCheckinDate() {
+		if(checkin == null){
+			return null;
+		}
+		return new Date(checkin*1000);
+	}
+	public void setCheckinDate(Date checkin) {
+		this.checkin = checkin.getTime()/1000;
+	}
+	public Date getCheckoutDate() {
+		if(checkout == null){
+			return null;
+		}
+		return new Date(checkout*1000);
+	}
+	public void setCheckoutDate(Date checkout) {
+		this.checkout = checkout.getTime()/1000;
+	}
+	public Long getCheckin() {
 		return checkin;
 	}
-	public void setCheckin(Date checkin) {
-		this.checkin = checkin;
-	}
-	public Date getCheckout() {
+	public Long getCheckout() {
 		return checkout;
-	}
-	public void setCheckout(Date checkout) {
-		this.checkout = checkout;
 	}
 	public Integer getTaskId() {
 		return taskId;
@@ -53,12 +65,14 @@ public class TimeEntry {
 	public void setTaskId(Integer taskId) {
 		this.taskId = taskId;
 	}
-	public TimeEntry(Date checkin,Date checkout, String string) {
+	public TimeEntry(Long checkin,Long checkout, Integer taskId) {
 		this.checkin = checkin;
 		this.checkout = checkout;
+		this.taskId = taskId;
+		this.id = null;
 	}
 	private Integer id;
-	private Date checkin;
-	private Date checkout;
+	private Long checkin;
+	private Long checkout;
 	private Integer taskId;
 }
