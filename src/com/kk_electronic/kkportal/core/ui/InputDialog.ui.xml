@@ -28,7 +28,7 @@
 	<g:HTMLPanel>
 		<div class="{style.dialog}">
 			<span ui:field="text">Username</span><br />
-			<g:TextBox ui:field="username">jes@example.com</g:TextBox>
+			<g:TextBox ui:field="username">demo@example.com</g:TextBox>
 			<g:Button ui:field="submit">Continue</g:Button>
 		</div>
 	</g:HTMLPanel>

@@ -198,11 +198,12 @@ public class RpcDispatcher implements FrameSentEvent.Handler, Dispatcher,
 			Class<?>[] returnValueType,
 			Class<? extends RemoteService> serverinterface, String method,
 			Object... params) {
-		if (serverFeatures != null && serverFeatures.contains(serverinterface)) {
+		String featureName = clientFeatureMap.getKeyFromClass(serverinterface);
+		if (serverFeatures != null && !serverFeatures.contains(featureName)) {
 			callback
 					.onFailure(new Exception("Feature not supported on server"));
+			return;
 		}
-		String featureName = clientFeatureMap.getKeyFromClass(serverinterface);
 		if (featureName == null) {
 			GWT.log("RPC-could not map class to feature: "
 					+ serverinterface.getName());
@@ -397,6 +398,8 @@ public class RpcDispatcher implements FrameSentEvent.Handler, Dispatcher,
 				serverFeatures = new HashSet<String>();
 				for (Entry<String, String> entry : result.entrySet()) {
 					serverFeatures.add(entry.getKey());
+				}
+				for (Entry<String, String> entry : result.entrySet()) {
 					addFeature(entry.getKey(), entry.getValue());
 				}
 				cancelCallsWithUnsupportedFeatures();

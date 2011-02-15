@@ -25,7 +25,6 @@ import java.util.List;
 
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.i18n.client.DateTimeFormat;
-import com.google.gwt.i18n.client.DateTimeFormat.PredefinedFormat;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
@@ -105,28 +104,28 @@ public class TimeView extends AbstractModule {
 	public TimeView(UIBinder binder,DateTimeFormat dateTimeFormat,TimeRegistry timeRegistry) {
 		this.display = binder.createAndBindUi(this);
 		this.timeRegistry = timeRegistry;
-//		this.dateTimeFormat = dateTimeFormat;
-		this.dateTimeFormat = DateTimeFormat.getFormat(PredefinedFormat.DATE_TIME_FULL);
+		this.dateTimeFormat = dateTimeFormat;
+//		this.dateTimeFormat = DateTimeFormat.getFormat(PredefinedFormat.DATE_TIME_FULL);
 		entries.addColumn(new TimeColumn<TimeEntry>() {
 			@Override
 			public Date getValue(TimeEntry object) {
-				return object.getCheckin();
+				return object.getCheckinDate();
 			}
 		}, "in");
 		entries.addColumn(new TimeColumn<TimeEntry>() {
 			@Override
 			public Date getValue(TimeEntry object) {
-				return object.getCheckout();
+				return object.getCheckoutDate();
 			}
 		}, "out");
 		entries.addColumn(new TimeColumn<TimeEntry>() {
 			@SuppressWarnings("deprecation")
 			@Override
 			public Date getValue(TimeEntry object) {
-				if(object.getCheckout() == null || object.getCheckin() == null){
+				if(object.getCheckoutDate() == null || object.getCheckinDate() == null){
 					return null;
 				} else {
-					long i = (object.getCheckout().getTime() - object.getCheckin().getTime());
+					long i = (object.getCheckoutDate().getTime() - object.getCheckinDate().getTime());
 					Date now = new Date();
 					return new Date(i + now.getTimezoneOffset()*60000);
 				}
@@ -140,24 +139,24 @@ public class TimeView extends AbstractModule {
 				return i!=null?i.toString():"";
 			}
 		},"Task");
-		timeRegistry.addDisplay(this);
 		setToday();
+		timeRegistry.addDisplay(this);
 	}
 	
 	@SuppressWarnings("deprecation")
 	private void setToday() {
-		Date timestamp = new Date();
-		int tz = timestamp.getTimezoneOffset();
-		Long low = timestamp.getTime() % 86400;
-		date = new Range<Long>(low,timestamp.getTime());
+		Date now = new Date();
+		Long timestamp = now.getTime();
+		Long tz = Long.valueOf(now.getTimezoneOffset())*60000;
+		Long low = (timestamp - ((timestamp - tz) % 86400000))/1000;
+		Long high = (low + 86400);
+		date = new Range<Long>(low,high);
 		updateDateLabel();
 	}
 	
 	private void updateDateLabel() {
 		dateLabel.setText(
-				dateTimeFormat.format(new Date(date.begin)) + 
-				" - " +
-				dateTimeFormat.format(new Date(date.end))
+				dateTimeFormat.format(new Date(date.begin*1000))
 				);
 	}
 
@@ -186,6 +185,6 @@ public class TimeView extends AbstractModule {
 	 * @return
 	 */
 	public Range<Long> getRange() {
-		return null;
+		return date;
 	}
 }

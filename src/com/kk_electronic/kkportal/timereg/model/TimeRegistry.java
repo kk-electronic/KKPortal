@@ -24,6 +24,8 @@ import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
+import com.google.gwt.core.client.GWT;
+import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.inject.Inject;
 import com.kk_electronic.kkportal.core.util.Range;
 import com.kk_electronic.kkportal.timereg.ui.TimeView;
@@ -48,7 +50,20 @@ public class TimeRegistry {
 
 	public void checkin() {
 		Date now = new Date();
-		entries.add(new TimeEntry(now, null, null));
+		final TimeEntry entry = new TimeEntry(now.getTime()/1000, null, null);
+		entries.add(entry);
+		timeService.add(entry, new AsyncCallback<Integer>() {
+			
+			@Override
+			public void onSuccess(Integer result) {
+				entry.setId(result);
+			}
+			
+			@Override
+			public void onFailure(Throwable caught) {
+				entries.remove(entry);
+			}
+		});
 		updatedisplays();
 	}
 
@@ -63,14 +78,40 @@ public class TimeRegistry {
 			return null;
 		return entries.get(entries.size() - 1);
 	}
+	
+	AsyncCallback<Object> ignore = new AsyncCallback<Object>(){
+
+		@Override
+		public void onFailure(Throwable caught) {
+			GWT.log("TimeRegistry - Failed to update",caught);
+		}
+
+		@Override
+		public void onSuccess(Object result) {
+			GWT.log("TimeRegistry - Updated");			
+		}
+	};
 
 	public void checkout() {
 		Date now = new Date();
-		TimeEntry entry = getLast();
-		if (entry != null && entry.getCheckout() == null) {
-			entry.setCheckout(now);
+		final TimeEntry entry = getLast();
+		if (entry != null && entry.getCheckoutDate() == null) {
+			entry.setCheckoutDate(now);
+			timeService.update(entry, ignore);
 		} else {
-			entries.add(new TimeEntry(null, now, null));
+			entries.add(new TimeEntry(null, now.getTime()/1000, null));
+			timeService.add(entry, new AsyncCallback<Integer>() {
+				
+				@Override
+				public void onSuccess(Integer result) {
+					entry.setId(result);
+				}
+				
+				@Override
+				public void onFailure(Throwable caught) {
+					entries.remove(entry);
+				}
+			});
 		}
 		updatedisplays();
 	}
@@ -95,13 +136,57 @@ public class TimeRegistry {
 	 * @param viewrange
 	 */
 	private void requestrange(Range<Long> viewrange) {
-		if(requested.contains(viewrange)){
+		if (requested.contains(viewrange)) {
 			return;
 		} else {
-			Range<Long> upperrange = viewrange.clone();
-			upperrange.begin = fetched.end;
-			Range<Long> lowerrange = viewrange.clone();
-			lowerrange.end = fetched.begin;
+			if (requested.isBounded()){
+				requested.begin = Math.min(requested.begin, viewrange.begin);
+				requested.end = Math.min(requested.end, viewrange.end);
+			} else {
+				requested = viewrange.clone();
+			}
+			if (fetched.isBounded()) {
+				Range<Long> upperrange = viewrange.clone();
+				upperrange.begin = fetched.end;
+				Range<Long> lowerrange = viewrange.clone();
+				lowerrange.end = fetched.begin;
+				request(lowerrange);
+				request(upperrange);
+			} else {
+				viewrange.clone();
+				request(viewrange);
+			}
 		}
+	}
+
+	/**
+	 * @param viewrange
+	 */
+	private void request(final Range<Long> range) {
+		timeService.get(range.begin, range.end,
+				new AsyncCallback<List<TimeEntry>>() {
+
+					@Override
+					public void onSuccess(List<TimeEntry> result) {
+						update(result,range);
+						GWT.log("TimeRegistry - Got entries");
+					}
+
+					@Override
+					public void onFailure(Throwable caught) {
+						GWT.log("TimeRegistry - Failed fetching entries",
+								caught);
+					}
+				});
+	}
+
+	/**
+	 * @param result
+	 * @param range 
+	 */
+	protected void update(List<TimeEntry> result, Range<Long> range) {
+		fetched.extend(range);
+		entries.addAll(result);
+		updatedisplays();
 	}
 }

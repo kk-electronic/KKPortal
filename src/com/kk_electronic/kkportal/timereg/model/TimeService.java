@@ -20,7 +20,6 @@
 
 package com.kk_electronic.kkportal.timereg.model;
 
-import java.util.Date;
 import java.util.List;
 
 import com.google.gwt.user.client.rpc.AsyncCallback;
@@ -34,7 +33,8 @@ public interface TimeService extends RemoteService {
 	/**
 	 * @param day number of days since 1. jan 1970
 	 */
-	public void get(Date begin,Date end,AsyncCallback<List<TimeEntry>> callback);
+	public void get(Long begin,Long end,AsyncCallback<List<TimeEntry>> callback);
 	public void add(TimeEntry entry,AsyncCallback<Integer> callback);
 	public void remove(int id,AsyncCallback<?> callback);
+	public void update(TimeEntry entry, AsyncCallback<?> callback);
 }
