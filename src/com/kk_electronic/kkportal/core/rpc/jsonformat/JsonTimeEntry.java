@@ -42,12 +42,42 @@ public class JsonTimeEntry implements JsonValue<TimeEntry> {
 			throw new UnableToDeserialize("Expected Json Object");
 		JSONObject o = jsonValue.isObject();
 		
-		return null;
+		Long checkin = null;
+		Long checkout = null;
+		Integer taskid = null;
+		Integer id = null;
+		checkin = jsonEncoder.validate(o.get("checkin"), checkin, new Class<?>[]{Long.class});
+		checkout = jsonEncoder.validate(o.get("checkout"), checkout, new Class<?>[]{Long.class});
+		taskid = jsonEncoder.validate(o.get("taskId"), taskid, new Class<?>[]{Integer.class});
+		id = jsonEncoder.validate(o.get("id"), id, new Class<?>[]{Integer.class});
+		TimeEntry t = new TimeEntry(checkin, checkout, taskid);
+		t.setId(id);
+		return t;
 	}
 
 	@Override
 	public void toJson(StringBuilder response, TimeEntry object,
 			FrameEncoder<JSONValue> encoder) throws UnableToSerialize {
-		response.append("{}");	
+		response.append("{");
+		
+		encoder.encode("checkin", response);
+		response.append(":");
+		encoder.encode(object.getCheckin(), response);
+		response.append(",");
+		
+		encoder.encode("checkout", response);
+		response.append(":");
+		encoder.encode(object.getCheckout(), response);
+		response.append(",");
+		
+		encoder.encode("id", response);
+		response.append(":");
+		encoder.encode(object.getId(), response);
+		response.append(",");
+		
+		encoder.encode("taskid", response);
+		response.append(":");
+		encoder.encode(object.getTaskId(), response);		
+		response.append("}");
 	}
 }
