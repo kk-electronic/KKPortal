@@ -21,7 +21,22 @@ import sys,os
 
 sys.path.append(os.path.join(os.path.dirname(os.path.dirname(__file__)),'server'))
 
-import w2b.database.portal
+import w2b.database
 
-w2b.database.portal.recreate()
-w2b.database.portal.createDebugData()
+# All public python files in w2b.database without the suffix 
+submodules = [filename[:-3] for filename in os.listdir(w2b.database.__path__[0]) if filename.endswith('.py') and not filename.startswith('_')]
+
+# Import them
+imports = __import__(w2b.database.__name__,fromlist=submodules)
+
+for modulename in submodules:
+    module = getattr(imports, modulename)
+    print("reset %s" % modulename)
+    try:
+        module.recreate()
+    except e:
+        print("Resetting failed",e)
+    try:
+        module.createDebugData()
+    except:
+        pass
