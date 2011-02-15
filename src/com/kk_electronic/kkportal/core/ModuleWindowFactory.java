@@ -32,7 +32,6 @@ import com.kk_electronic.kkportal.core.services.ModuleService.ModuleInfo;
 import com.kk_electronic.kkportal.core.tabs.ModuleTypeInfoProvider;
 import com.kk_electronic.kkportal.core.ui.ModuleWindow;
 
-//TODO: Make some stop mechanism
 public class ModuleWindowFactory {
 	HashMap<ModuleInfo, ModuleWindow> map = new HashMap<ModuleInfo, ModuleWindow>();
 	private final ModuleTypeInfoProvider typeInfoProvider;
@@ -61,6 +60,7 @@ public class ModuleWindowFactory {
 
 					@Override
 					public void onSuccess(ModuleTypeInfo result) {
+						final ModuleTypeInfo typeInfo = result;
 						flexInjector.create(moduleMap.getClassFromKey(result.getCode()), new AsyncCallback<Module>() {
 
 							@Override
@@ -73,7 +73,10 @@ public class ModuleWindowFactory {
 								result.setModuleInfo(info);
 								String title = result.getTitle();
 								if(title == null){
-									title = getDefaultName(result.getClass());
+									title = typeInfo.getTitle();
+									if(title == null){
+										title = getDefaultName(result.getClass());
+									}
 								}
 								moduleWindow.setTitle(title);
 								moduleWindow.setContent(result.asWidget());
