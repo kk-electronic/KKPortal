@@ -24,12 +24,13 @@ import java.util.Date;
 import java.util.List;
 
 import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.event.shared.EventBus;
+import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.i18n.client.DateTimeFormat;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.cellview.client.CellTable;
-import com.google.gwt.user.cellview.client.TextColumn;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.Widget;
@@ -38,11 +39,12 @@ import com.google.inject.Inject;
 import com.kk_electronic.kkportal.core.AbstractModule;
 import com.kk_electronic.kkportal.core.util.Range;
 import com.kk_electronic.kkportal.core.util.TimeColumn;
+import com.kk_electronic.kkportal.timereg.model.RangeUpdatedEvent;
 import com.kk_electronic.kkportal.timereg.model.TimeEntry;
 import com.kk_electronic.kkportal.timereg.model.TimeRegistry;
 
 /**
- * @author albatros
+ * @author Jes Andersen
  *
  */
 public class TimeView extends AbstractModule {
@@ -50,12 +52,12 @@ public class TimeView extends AbstractModule {
 	public static interface UIBinder extends UiBinder<Widget, TimeView>{}
 
 	private Widget display;
-	private final static int dayInMilliSec = 86400;
+	private final static int dayInSec = 86400;
 	
 	@UiField
 	Label dateLabel;
 	private final DateTimeFormat dateTimeFormat;
-	private Range<Long> date;
+	private Range<Long> currentRange;
 	
 	@UiHandler("checkin")
 	protected void onCheckin(ClickEvent event){
@@ -69,20 +71,27 @@ public class TimeView extends AbstractModule {
 	
 	@UiHandler("nextDay")
 	protected void onNextDay(ClickEvent event){
-		//TODO: Implement correct functions
-		//int modifier = 1 * dayInMilliSec;
-		//moveRange(modifier);
-		//updateDateLabel();
+		int modifier = 1 * dayInSec;
+		moveRange(modifier);
+		updateDateLabel();
 	}
 	
 	@UiHandler("prevDay")
 	protected void onPrevDay(ClickEvent event){
-		//TODO: Implement correct functions
-		//int modifier = -1 * dayInMilliSec;
-		//moveRange(modifier);
-		//updateDateLabel();
+		int modifier = -1 * dayInSec;
+		moveRange(modifier);
+		updateDateLabel();
 	}
 	
+	/**
+	 * @param modifier
+	 */
+	private void moveRange(int modifier) {
+		currentRange.begin = currentRange.begin + modifier;
+		currentRange.end = currentRange.end + modifier;
+		eventBus.fireEventFromSource(new RangeUpdatedEvent(currentRange), this);
+	}
+
 	@UiField
 	Button checkout;
 	
@@ -101,10 +110,12 @@ public class TimeView extends AbstractModule {
 	private final TimeRegistry timeRegistry;
 
 	@Inject
-	public TimeView(UIBinder binder,DateTimeFormat dateTimeFormat,TimeRegistry timeRegistry) {
+	public TimeView(UIBinder binder,DateTimeFormat dateTimeFormat,TimeRegistry timeRegistry, EventBus eventBus) {
 		this.display = binder.createAndBindUi(this);
 		this.timeRegistry = timeRegistry;
 		this.dateTimeFormat = dateTimeFormat;
+		this.eventBus = eventBus;
+		
 //		this.dateTimeFormat = DateTimeFormat.getFormat(PredefinedFormat.DATE_TIME_FULL);
 		entries.addColumn(new TimeColumn<TimeEntry>() {
 			@Override
@@ -131,14 +142,6 @@ public class TimeView extends AbstractModule {
 				}
 			}
 		}, "total");
-		entries.addColumn(new TextColumn<TimeEntry>() {
-
-			@Override
-			public String getValue(TimeEntry object) {
-				Integer i = object.getTaskId();
-				return i!=null?i.toString():"";
-			}
-		},"Task");
 		setToday();
 		timeRegistry.addDisplay(this);
 	}
@@ -148,15 +151,15 @@ public class TimeView extends AbstractModule {
 		Date now = new Date();
 		Long timestamp = now.getTime();
 		Long tz = Long.valueOf(now.getTimezoneOffset())*60000;
-		Long low = (timestamp - ((timestamp - tz) % 86400000))/1000;
-		Long high = (low + 86400);
-		date = new Range<Long>(low,high);
+		Long low = (timestamp - ((timestamp - tz) % (dayInSec * 1000)))/1000;
+		Long high = (low + dayInSec);
+		currentRange = new Range<Long>(low,high);
 		updateDateLabel();
 	}
 	
 	private void updateDateLabel() {
 		dateLabel.setText(
-				dateTimeFormat.format(new Date(date.begin*1000))
+				dateTimeFormat.format(new Date(currentRange.begin*1000))
 				);
 	}
 
@@ -185,6 +188,14 @@ public class TimeView extends AbstractModule {
 	 * @return
 	 */
 	public Range<Long> getRange() {
-		return date;
+		return currentRange;
+	}
+
+	/**
+	 * @param handler
+	 * @return 
+	 */
+	public HandlerRegistration addRangeUpdatedHandler(RangeUpdatedEvent.Handler handler) {
+		return eventBus.addHandlerToSource(RangeUpdatedEvent.TYPE, this, handler);
 	}
 }
