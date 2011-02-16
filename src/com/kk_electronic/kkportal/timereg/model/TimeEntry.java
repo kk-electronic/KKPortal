@@ -75,4 +75,11 @@ public class TimeEntry {
 	private Long checkin;
 	private Long checkout;
 	private Integer taskId;
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "("+checkin+","+checkout+")";
+	}
 }
