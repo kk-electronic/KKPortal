@@ -49,7 +49,6 @@
 				<td><g:Button stylePrimaryName="{style.button}" ui:field="checkout">Check out now</g:Button></td>
 			</tr>
 		</table>
-		<c:CellTable ui:field="entries"/>
 		<table class="{style.buttonholder}">
 			<tr>
 				<td><g:Button ui:field="prevDay">Previous</g:Button></td>
@@ -57,5 +56,6 @@
 				<td align="right"><g:Button ui:field="nextDay">Next</g:Button></td>
 			</tr>
 		</table>
+		<c:CellTable ui:field="entries"/>
 	</g:HTMLPanel>
 </ui:UiBinder>
