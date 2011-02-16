@@ -20,18 +20,22 @@
 
 package com.kk_electronic.kkportal.timereg.model;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Set;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.inject.Inject;
 import com.kk_electronic.kkportal.core.util.Range;
+import com.kk_electronic.kkportal.timereg.model.RangeUpdatedEvent.Handler;
 import com.kk_electronic.kkportal.timereg.ui.TimeView;
 
 /**
- * @author albatros
+ * @author Jes Andersen
  * 
  */
 public class TimeRegistry {
@@ -51,25 +55,12 @@ public class TimeRegistry {
 	public void checkin() {
 		Date now = new Date();
 		final TimeEntry entry = new TimeEntry(now.getTime()/1000, null, null);
-		entries.add(entry);
-		timeService.add(entry, new AsyncCallback<Integer>() {
-			
-			@Override
-			public void onSuccess(Integer result) {
-				entry.setId(result);
-			}
-			
-			@Override
-			public void onFailure(Throwable caught) {
-				entries.remove(entry);
-			}
-		});
-		updatedisplays();
+		addNewEntry(entry);
 	}
 
 	private void updatedisplays() {
 		for (TimeView display : displays) {
-			display.update(entries);
+			display.update(findInRange(display.getRange()));
 		}
 	}
 
@@ -77,6 +68,21 @@ public class TimeRegistry {
 		if (entries.size() == 0)
 			return null;
 		return entries.get(entries.size() - 1);
+	}
+	
+	private List<TimeEntry> findInRange(Range<Long> range){
+		List<TimeEntry> result = new ArrayList<TimeEntry>();
+		for(TimeEntry entry:entries){
+			if(entry.getCheckout() != null && entry.getCheckout() < range.begin){
+				continue;
+			}
+			if(entry.getCheckin() != null && entry.getCheckin() > range.end){
+				continue;
+			}
+			result.add(entry);
+		}
+		//TODO: Sort
+		return result;
 	}
 	
 	AsyncCallback<Object> ignore = new AsyncCallback<Object>(){
@@ -92,27 +98,47 @@ public class TimeRegistry {
 		}
 	};
 
+	private Handler rangeHandler = new RangeUpdatedEvent.Handler() {
+		@Override
+		public void onRangeUpdate(RangeUpdatedEvent event) {
+			if(fetched.contains(event.getRange())){
+				updatedisplays();
+			} else {
+				requestrange(event.getRange());
+			}
+		}
+	};
+
 	public void checkout() {
 		Date now = new Date();
-		final TimeEntry entry = getLast();
+		TimeEntry entry = getLast();
 		if (entry != null && entry.getCheckoutDate() == null) {
 			entry.setCheckoutDate(now);
 			timeService.update(entry, ignore);
+			updatedisplays();
 		} else {
-			entries.add(new TimeEntry(null, now.getTime()/1000, null));
-			timeService.add(entry, new AsyncCallback<Integer>() {
-				
-				@Override
-				public void onSuccess(Integer result) {
-					entry.setId(result);
-				}
-				
-				@Override
-				public void onFailure(Throwable caught) {
-					entries.remove(entry);
-				}
-			});
+			addNewEntry(new TimeEntry(null, now.getTime()/1000, null));
 		}
+	}
+
+	/**
+	 * @param entry
+	 */
+	private void addNewEntry(final TimeEntry entry) {
+		entries.add(entry);
+		timeService.add(entry, new AsyncCallback<Integer>() {
+			
+			@Override
+			public void onSuccess(Integer result) {
+				entry.setId(result);
+				seen.add(result);
+			}
+			
+			@Override
+			public void onFailure(Throwable caught) {
+				entries.remove(entry);
+			}
+		});
 		updatedisplays();
 	}
 
@@ -121,12 +147,13 @@ public class TimeRegistry {
 	 */
 	public void addDisplay(TimeView timeView) {
 		displays.add(timeView);
+		timeView.addRangeUpdatedHandler(rangeHandler);
 		Range<Long> viewrange = timeView.getRange();
 		if (viewrange == null || !viewrange.isBounded()) {
 			return;
 		}
 		if (fetched.contains(viewrange)) {
-			timeView.getHasData().setRowData(0, entries);
+			timeView.update(findInRange(timeView.getRange()));
 		} else {
 			requestrange(viewrange);
 		}
@@ -141,14 +168,14 @@ public class TimeRegistry {
 		} else {
 			if (requested.isBounded()){
 				requested.begin = Math.min(requested.begin, viewrange.begin);
-				requested.end = Math.min(requested.end, viewrange.end);
+				requested.end = Math.max(requested.end, viewrange.end);
 			} else {
 				requested = viewrange.clone();
 			}
 			if (fetched.isBounded()) {
-				Range<Long> upperrange = viewrange.clone();
+				Range<Long> upperrange = requested.clone();
 				upperrange.begin = fetched.end;
-				Range<Long> lowerrange = viewrange.clone();
+				Range<Long> lowerrange = requested.clone();
 				lowerrange.end = fetched.begin;
 				request(lowerrange);
 				request(upperrange);
@@ -163,13 +190,16 @@ public class TimeRegistry {
 	 * @param viewrange
 	 */
 	private void request(final Range<Long> range) {
+		if (range.begin >= range.end){
+			return;
+		}
 		timeService.get(range.begin, range.end,
 				new AsyncCallback<List<TimeEntry>>() {
 
 					@Override
 					public void onSuccess(List<TimeEntry> result) {
 						update(result,range);
-						GWT.log("TimeRegistry - Got entries");
+						GWT.log("TimeRegistry - Got entries:" + result.size());
 					}
 
 					@Override
@@ -180,13 +210,18 @@ public class TimeRegistry {
 				});
 	}
 
+	private Set<Integer> seen = new HashSet<Integer>();
 	/**
 	 * @param result
 	 * @param range 
 	 */
 	protected void update(List<TimeEntry> result, Range<Long> range) {
 		fetched.extend(range);
-		entries.addAll(result);
+		for(TimeEntry entry: result){
+			if(seen.add(entry.getId())){
+				entries.add(entry);
+			}
+		}
 		updatedisplays();
 	}
 }
