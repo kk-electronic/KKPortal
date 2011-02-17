@@ -116,7 +116,12 @@ public class TimeView extends AbstractModule {
 		this.dateTimeFormat = dateTimeFormat;
 		this.eventBus = eventBus;
 		
-//		this.dateTimeFormat = DateTimeFormat.getFormat(PredefinedFormat.DATE_TIME_FULL);
+		setupCellTable();
+		setToday();
+		timeRegistry.addDisplay(this);
+	}
+
+	private void setupCellTable() {
 		entries.addColumn(new TimeColumn<TimeEntry>() {
 			@Override
 			public Date getValue(TimeEntry object) {
@@ -142,18 +147,20 @@ public class TimeView extends AbstractModule {
 				}
 			}
 		}, "total");
-		setToday();
-		timeRegistry.addDisplay(this);
 	}
 	
 	@SuppressWarnings("deprecation")
 	private void setToday() {
 		Date now = new Date();
-		Long timestamp = now.getTime();
-		Long tz = Long.valueOf(now.getTimezoneOffset())*60000;
-		Long low = (timestamp - ((timestamp - tz) % (dayInSec * 1000)))/1000;
-		Long high = (low + dayInSec);
-		currentRange = new Range<Long>(low,high);
+		//Date in in ms, timestamps in seconds
+		Long t_now = now.getTime()/1000;
+		//getTimezoneOffset is minutes from local time to GMT
+		//t_z is seconds from GMT to local time
+		Long t_z = -Long.valueOf(now.getTimezoneOffset())*60;
+		//t_first is the latest timestamp such 
+		Long t_first = (t_now - ((t_now + t_z) % (dayInSec)));
+		Long t_last = (t_first + dayInSec - 1);
+		currentRange = new Range<Long>(t_first,t_last);
 		updateDateLabel();
 	}
 	
