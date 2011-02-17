@@ -51,6 +51,7 @@ import com.kk_electronic.kkportal.core.services.ModuleService.ModuleInfo;
 import com.kk_electronic.kkportal.core.ui.ApplicationLayout;
 import com.kk_electronic.kkportal.core.ui.GlassPanel;
 import com.kk_electronic.kkportal.core.ui.WebPageLayout;
+import com.kk_electronic.kkportal.timereg.model.TimeRegistry;
 
 /**
  * This class defines which implementations is used for different interfaces
@@ -79,6 +80,7 @@ public class WebPageInjectConfig extends AbstractGinModule {
 		bind(Digest.class).in(Singleton.class);
 		bind(Storage.class).to(SessionStorage.class);
 		bind(GlassPanel.class).in(Singleton.class);
+		bind(TimeRegistry.class).in(Singleton.class);
 	}
 	
 	@Provides @Singleton
