@@ -57,6 +57,9 @@ public class RemoteServiceGenerator extends Generator {
 		try {
 	    	typeOracle = context.getTypeOracle();
 	    	classType = typeOracle.getType(typeName);
+	    	if(classType.isClass() != null){
+	    		return typeName;
+	    	}
 	    	packageName = classType.getPackage().getName();
 	    	className = classType.getSimpleSourceName() + "Impl";
 	    	classType.getAnnotation(GinModules.class);
