@@ -27,6 +27,7 @@ import com.google.gwt.dom.client.Element;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.KeyCodes;
 import com.google.gwt.event.dom.client.KeyDownEvent;
+import com.google.gwt.event.shared.EventBus;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
@@ -49,6 +50,7 @@ public class Wall extends AbstractModule implements Module, NewWallMessageEvent.
 	private final Display display;
 	private final TechDemo service;
 	List<String> lines = new ArrayList<String>();
+	private final EventBus eventBus;
 
 	public static interface UIBinder extends UiBinder<Widget, Display>{};
 	
@@ -110,8 +112,9 @@ public class Wall extends AbstractModule implements Module, NewWallMessageEvent.
 	}
 	
 	@Inject
-	public Wall(Display display,TechDemo service) {
+	public Wall(Display display,TechDemo service,EventBus eventBus) {
 		this.service = service;
+		this.eventBus = eventBus;
 		display.setHandler(this);
 		service.getWall(new AsyncCallback<List<String>>() {
 			

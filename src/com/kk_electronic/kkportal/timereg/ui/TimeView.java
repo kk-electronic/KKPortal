@@ -108,6 +108,7 @@ public class TimeView extends AbstractModule {
 	CellTable<TimeEntry> entries;
 
 	private final TimeRegistry timeRegistry;
+	private EventBus eventBus;
 
 	@Inject
 	public TimeView(UIBinder binder,DateTimeFormat dateTimeFormat,TimeRegistry timeRegistry, EventBus eventBus) {

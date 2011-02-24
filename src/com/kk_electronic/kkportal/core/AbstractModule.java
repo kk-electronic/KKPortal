@@ -32,7 +32,7 @@ import com.kk_electronic.kkportal.core.util.DualCallback;
 public abstract class AbstractModule implements Module {
 
 	private ModuleInfo info;
-	@Inject protected EventBus eventBus;
+	@Inject private EventBus eventBus;
 	
 	@Override
 	public void setModuleInfo(ModuleInfo info) {
