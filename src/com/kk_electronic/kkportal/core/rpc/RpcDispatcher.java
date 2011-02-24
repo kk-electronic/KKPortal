@@ -444,16 +444,28 @@ public class RpcDispatcher implements FrameSentEvent.Handler, Dispatcher,
 		}
 		for (RpcEnvelope envelope : responses) {
 			if(envelope instanceof RpcResponse<?>){
-				RpcResponse response = (RpcResponse) envelope;
-				PendingCall<?> pendingCall = pending.remove(response.getId());
-				pendingCall.onSuccess(response);
+				final RpcResponse response = (RpcResponse) envelope;
+				final PendingCall<?> pendingCall = pending.remove(response.getId());
+				Scheduler.get().scheduleDeferred(new Scheduler.ScheduledCommand() {
+					
+					@Override
+					public void execute() {
+						pendingCall.onSuccess(response);
+					}
+				});
 				continue;
 			}
 			if(envelope instanceof RpcError){
-				RpcError response = (RpcError) envelope;
+				final RpcError response = (RpcError) envelope;
 				if(response.getCode() != -31301){
-					PendingCall<?> pendingCall = pending.remove(response.getId());
-					pendingCall.onFailure(response);
+					final PendingCall<?> pendingCall = pending.remove(response.getId());
+					Scheduler.get().scheduleDeferred(new Scheduler.ScheduledCommand() {
+						
+						@Override
+						public void execute() {
+							pendingCall.onFailure(response);
+						}
+					});
 				} else {
 					PendingCall<?> pendingCall = pending.get(response.getId());
 					Class<? extends RemoteService> clazz = clientFeatureMap.getClassFromKey(pendingCall.request.getFeatureName());
