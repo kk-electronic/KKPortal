@@ -24,6 +24,7 @@ import java.util.Date;
 import java.util.List;
 
 import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.shared.EventBus;
 import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.i18n.client.DateTimeFormat;
@@ -113,10 +114,20 @@ public class TimeView extends AbstractModule {
 	@Inject
 	public TimeView(UIBinder binder,DateTimeFormat dateTimeFormat,TimeRegistry timeRegistry, EventBus eventBus) {
 		this.display = binder.createAndBindUi(this);
+		checkin.addClickHandler(new ClickHandler() {
+			
+			@Override
+			public void onClick(ClickEvent event) {
+				onCheckin(event);
+			}
+		});
 		this.timeRegistry = timeRegistry;
 		this.dateTimeFormat = dateTimeFormat;
 		this.eventBus = eventBus;
-		
+
+		checkin.setEnabled(timeRegistry.canCheckin());
+		checkout.setEnabled(timeRegistry.canCheckout());
+
 		setupCellTable();
 		setToday();
 		timeRegistry.addDisplay(this);
@@ -189,6 +200,8 @@ public class TimeView extends AbstractModule {
 	public void update(List<TimeEntry> values) {
 		entries.setRowData(values);
 		entries.setRowCount(values.size());
+		checkin.setEnabled(timeRegistry.canCheckin());
+		checkout.setEnabled(timeRegistry.canCheckout());
 		contentChanged();
 	}
 

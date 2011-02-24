@@ -57,9 +57,12 @@ public class TimeRegistry {
 	public TimeRegistry(TimeService timeService) {
 		this.timeService = timeService;
 	}
-
+	
 	//Checkin should add a new TimeEntry
 	public void checkin() {
+		if(!canCheckin()){
+			return;
+		}
 		//Without arguments creates the current local time
 		Date now = new Date();
 		//getTime is in milliseconds and TimeEntry uses seconds
@@ -67,8 +70,35 @@ public class TimeRegistry {
 		//This will call the service, fill out the id, and update displays
 		addNewEntry(entry);
 	}
+
+	//Checking is possible if we have fetched something from the server and the last
+	//entry is checked out
+	public boolean canCheckin() {
+		if (!fetched.isBounded()){
+			return false;
+		}
+		//Refuse to do a double checkin
+		TimeEntry e = getLast();
+		if(e != null && e.getCheckout() == null){
+			return false;
+		}
+		return true;
+	}	
+
+	//Checkout is possible if the last entry is not checked out
+	public boolean canCheckout() {
+		TimeEntry e = getLast();
+		if(e != null && e.getCheckout() == null){
+			return true;
+		}
+		return false;
+	}	
+
 	//Checkout should either update a entry if there is one to close or create a new one
 	public void checkout() {
+		if(!canCheckout()){
+			return;
+		}
 		Date now = new Date();
 		TimeEntry entry = getLast();
 		if (entry != null && entry.getCheckoutDate() == null) {
