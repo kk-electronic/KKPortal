@@ -27,19 +27,18 @@
 		.module { 
 			background-color: colour4; 
 			color: Black;
-			margin-top: margin;
-			margin-right: margin;
 		}
 		.contentcontainer {
 			padding: 0;
 		}
 		.first {
-			margin-left: margin;
 		}
 		.last {
 		}
 		.delete {
-			float: right;
+			position: absolute;
+			top: 0;
+			right: 0;
 			cursor: pointer;
 		}
 	</ui:style>
