@@ -97,7 +97,7 @@ def build(bld):
 #	print('Command:',' '.join(map(str,command)))
 	import time
 	def x(task):
-		task.exec_command(command)
+		return task.exec_command(command)
 	bld(
 		name='GWT Compile',
 		rule=x,
