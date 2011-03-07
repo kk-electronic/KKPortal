@@ -61,6 +61,13 @@ public class Canvas implements NewContentEvent.Handler, ContentChangedEvent.Hand
 	private final static int timerSchedule = 300;
 	private final static int timerIterationCount = 10;
 
+	/**
+	 * The higher the value the more likely the interface is to make new columns when
+	 * dropping a module on the canvas.
+	 * Must be in the range [0.0;0.5]
+	 */
+	public double createaffinity = 0.2;
+	
 	@Inject
 	public Canvas(EventBus eventBus, GroupDisplay<ModuleWindow> display, TabsModel tabsModel,
 			ModuleInfoProvider moduleInfoProvider,
@@ -163,6 +170,11 @@ public class Canvas implements NewContentEvent.Handler, ContentChangedEvent.Hand
 		List<ModuleWindow> column = findColumn(x);
 		int index = findIndex(column,y);
 		column.add(index,element);
+		List<List<ModuleWindow>> newgroupedModuleWindows = new ArrayList<List<ModuleWindow>>();
+		for(List<ModuleWindow> moduleWindows : groupedModuleWindows){
+			if(!moduleWindows.isEmpty()) newgroupedModuleWindows.add(moduleWindows);
+		}
+		groupedModuleWindows = newgroupedModuleWindows;
 		element.setFirstColumn(column == groupedModuleWindows.get(0));
 		GWT.log("After move"+groupedModuleWindows.toString());
 		tabsModel.setModuleIds(tabInfo,getIds(groupedModuleWindows));
@@ -194,12 +206,25 @@ public class Canvas implements NewContentEvent.Handler, ContentChangedEvent.Hand
 
 	private List<ModuleWindow> findColumn(final double x) {
 		//TODO: Support variable width
-		double cw = 0;
+		double cw = x;
 		for (List<ModuleWindow> column : groupedModuleWindows) {
 			double width = 100.0/groupedModuleWindows.size();
-			cw += width;
-			if (x < cw)
+			if (cw < width){
+				double columnprocent = cw/width;
+				if(columnprocent < createaffinity){
+					List<ModuleWindow> newcolumn = new ArrayList<ModuleWindow>();
+					groupedModuleWindows.add(groupedModuleWindows.indexOf(column), newcolumn);
+					return newcolumn;					
+				}
+				if((1 - columnprocent) < createaffinity){
+					List<ModuleWindow> newcolumn = new ArrayList<ModuleWindow>();
+					groupedModuleWindows.add(groupedModuleWindows.indexOf(column)+1, newcolumn);
+					return newcolumn;
+				}
+				GWT.log("DROP-" + columnprocent);
 				return column;
+			}
+			cw -= width;
 		}
 		return groupedModuleWindows.get(groupedModuleWindows.size()-1);
 	}
