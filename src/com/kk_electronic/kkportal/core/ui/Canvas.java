@@ -226,7 +226,9 @@ public class Canvas implements NewContentEvent.Handler, ContentChangedEvent.Hand
 			}
 			cw -= width;
 		}
-		return groupedModuleWindows.get(groupedModuleWindows.size()-1);
+		List<ModuleWindow> newcolumn = new ArrayList<ModuleWindow>();
+		groupedModuleWindows.add(newcolumn);
+		return newcolumn;
 	}
 
 	@Override
