@@ -27,6 +27,7 @@ import com.google.gwt.dom.client.Style.Unit;
 import com.google.gwt.event.dom.client.MouseDownEvent;
 import com.google.gwt.event.dom.client.MouseDownHandler;
 import com.google.gwt.event.dom.client.MouseUpEvent;
+import com.google.gwt.layout.client.Layout;
 import com.google.gwt.user.client.Command;
 import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.LayoutPanel;
@@ -40,6 +41,8 @@ import com.kk_electronic.kkportal.res.Resources;
 public class GroupDisplay<T extends IsWidget & KnownHeight & DragSource> implements DropSink<T>,IsWidget {
 	LayoutPanel canvas = new LayoutPanel();
 	private final DND<T> dnd;
+	private double margin = 1;
+	private Unit marginunit = Unit.EM;
 	
 	public static interface Handler<T>{
 		public void onElementDrop(double x, int y, T element);
@@ -58,6 +61,10 @@ public class GroupDisplay<T extends IsWidget & KnownHeight & DragSource> impleme
 		canvas.getElement().getStyle().setBackgroundColor(resources.palette().colour2());
 	}
 	
+	private native Layout iHateJavaProtection(LayoutPanel layoutPanel) /*-{
+		return layoutPanel.@com.google.gwt.user.client.ui.LayoutPanel::layout;
+	}-*/;
+	
 	HashSet<Widget> displayed = new HashSet<Widget>();
 	
 	public void setWidgets(List<List<T>> widgets){
@@ -67,11 +74,17 @@ public class GroupDisplay<T extends IsWidget & KnownHeight & DragSource> impleme
 			return;
 		}
 		HashSet<Widget> needRemoval = new HashSet<Widget>(displayed);
-		double left = 0;
+	
+		Layout l = iHateJavaProtection(canvas);
+		
+		double x = l.getUnitSize(Unit.EM, false)/l.getUnitSize(Unit.PCT, false);
+		double y = l.getUnitSize(Unit.EM, true);
+		
+		double left = x;
 		for(List<T> column:widgets){
-			double top = 0;
+			double top = y;
 			//TODO: Support weighted column sizes
-			double width = 100.0 / widgets.size();
+			double width = (100.0-x) / widgets.size()-x;
 			for(final T face:column){
 				final Widget widget = face.asWidget();
 				int height = face.getDesiredHeight();
@@ -88,10 +101,10 @@ public class GroupDisplay<T extends IsWidget & KnownHeight & DragSource> impleme
 				}
 				canvas.setWidgetLeftWidth(widget, left, Unit.PCT, width, Unit.PCT);
 				canvas.setWidgetTopHeight(widget, top, Unit.PX, height, Unit.PX);
-				top += height;
+				top += height+y;
 				needRemoval.remove(face);
 			}
-			left += width;
+			left += width + x;
 		}
 		for(Widget toRemove : needRemoval){
 			canvas.remove(toRemove);
