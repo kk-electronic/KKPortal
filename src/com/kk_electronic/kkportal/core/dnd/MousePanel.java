@@ -64,6 +64,7 @@ public class MousePanel implements MouseMoveHandler,MouseUpHandler{
 			oldmargin = w.getElement().getStyle().getMargin();
 			w.getElement().getStyle().setMargin(0, Unit.PX);
 			parent.add(widget);
+			parent.getWidgetContainerElement(widget).getStyle().clearOverflow();
 			parent.setWidgetTopHeight(widget, event.getClientY() - offsetY, Unit.PX, height, Unit.PX);
 			parent.setWidgetLeftWidth(widget, event.getClientX() - offsetX, Unit.PX, width, Unit.PX);
 			attachHandlers();

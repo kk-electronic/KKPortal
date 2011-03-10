@@ -90,6 +90,7 @@ public class GroupDisplay<T extends IsWidget & KnownHeight & DragSource> impleme
 				int height = face.getDesiredHeight();
 				if(!displayed.contains(widget)){
 					canvas.add(widget);
+					canvas.getWidgetContainerElement(widget).getStyle().clearOverflow();
 					displayed.add(widget);
 					face.getDragHandle().addMouseDownHandler(new MouseDownHandler() {
 						
@@ -131,6 +132,7 @@ public class GroupDisplay<T extends IsWidget & KnownHeight & DragSource> impleme
 				/ canvas.getOffsetWidth();
 		final double xpct = 100.0 * x / canvas.getOffsetWidth();
 		canvas.add(widget);
+		canvas.getWidgetContainerElement(widget).getStyle().clearOverflow();
 		canvas.setWidgetTopHeight(widget, top, Unit.PX, height, Unit.PX);
 		canvas.setWidgetLeftWidth(widget, left, Unit.PCT, width, Unit.PCT);
 		if (handler != null) {
