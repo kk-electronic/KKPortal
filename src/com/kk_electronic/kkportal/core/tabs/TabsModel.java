@@ -39,11 +39,11 @@ import com.kk_electronic.kkportal.core.activity.LocationInfo;
 import com.kk_electronic.kkportal.core.event.LocationChangedEvent;
 import com.kk_electronic.kkportal.core.event.NewContentEvent;
 import com.kk_electronic.kkportal.core.event.TabSelectedEvent;
-import com.kk_electronic.kkportal.core.rpc.jsonformat.JsonTabInfo.TabInfoDTO;
 import com.kk_electronic.kkportal.core.security.IdentityProvider;
 import com.kk_electronic.kkportal.core.security.NewPrimaryIdentityEvent;
 import com.kk_electronic.kkportal.core.services.ModuleService;
 import com.kk_electronic.kkportal.core.services.ModuleTypeInfo;
+import com.kk_electronic.kkportal.core.services.TabService;
 
 @Singleton
 public class TabsModel implements NewPrimaryIdentityEvent.Handler, LocationChangedEvent.Handler{
@@ -51,26 +51,15 @@ public class TabsModel implements NewPrimaryIdentityEvent.Handler, LocationChang
 	private final LocationInfo locationInfo;
 	
 	private final ModuleService moduleService;
+	private final TabService tabService;
 	private final SingleSelectionModel<TabInfo> selectionModel;
 	private List<TabInfo> tabInfos;
-
-	private AsyncCallback<List<TabInfo>> tabscallback = new AsyncCallback<List<TabInfo>>() {
-		
-		@Override
-		public void onFailure(Throwable caught) {
-			GWT.log("ERROR-Could not fetch tabs: " + caught);
-		}	
-		
-		@Override
-		public void onSuccess(List<TabInfo> tabInfos) {
-			setTabInfos(tabInfos);
-		}
-	};
 	private final EventBus eventBus;
 	
 	@Inject
-	public TabsModel(IdentityProvider identityProvider, ModuleService moduleService,LocationInfo locationInfo,EventBus eventBus) {
+	public TabsModel(IdentityProvider identityProvider, ModuleService moduleService,LocationInfo locationInfo,EventBus eventBus, TabService tabService) {
 		this.moduleService = moduleService;
+		this.tabService = tabService;
 		this.locationInfo = locationInfo;
 		this.eventBus = eventBus;
 		eventBus.addHandler(LocationChangedEvent.TYPE, this);
@@ -104,7 +93,18 @@ public class TabsModel implements NewPrimaryIdentityEvent.Handler, LocationChang
 	}
 
 	protected void getTabs() {
-		moduleService.getTabs(tabscallback);
+		tabService.retrieve(new AsyncCallback<List<TabInfo>>() {
+			
+			@Override
+			public void onFailure(Throwable caught) {
+				GWT.log("ERROR - Could not fetch tabs: " + caught);
+			}	
+			
+			@Override
+			public void onSuccess(List<TabInfo> tabInfos) {
+				setTabInfos(tabInfos);
+			}
+		});
 	}
 	
 	protected void setTabInfos(List<TabInfo> tabInfos) {
@@ -192,6 +192,15 @@ public class TabsModel implements NewPrimaryIdentityEvent.Handler, LocationChang
 		setModuleIds(tabInfo, tabInfo.getModuleIds());
 	}
 
+	/**
+	 * <p>
+	 * Called when the address of the page is changed by the browser, user or external factors,
+	 * it checks whether a new tab is selected based on the address.
+	 * </p>
+	 * <p>
+	 * This allows bookmarking of specific tabs.
+	 * </p> 
+	 */
 	@Override
 	public void onLocationChanged(LocationChangedEvent event) {
 		if(tabInfos != null){
@@ -205,7 +214,7 @@ public class TabsModel implements NewPrimaryIdentityEvent.Handler, LocationChang
 		if(!tabInfos.contains(tabInfo)){
 			return;
 		}
-		final TabInfo newTabInfo = new TabInfoDTO(tabInfo.getId(),tabInfo.getName(),newIds);
+		final TabInfo newTabInfo = new TabInfo(tabInfo.getId(),tabInfo.getName(),newIds);
 		tabInfos.set(tabInfos.indexOf(tabInfo), newTabInfo);
 		setSelectedWithoutCheck(newTabInfo);
 		Scheduler.get().scheduleDeferred(new Command() {
@@ -221,13 +230,16 @@ public class TabsModel implements NewPrimaryIdentityEvent.Handler, LocationChang
 		if(newTabInfo == null){
 			Window.alert("Missing sock found");
 		}
-		moduleService.setModulesIdsOnTab(newTabInfo.getId(),newTabInfo.getModuleIds(),new AsyncCallback<Object>() {
-
+		tabService.update(newTabInfo, new AsyncCallback<Object>() {
 			@Override
 			public void onFailure(Throwable caught) {
 				GWT.log("TabsModel-Save failed",caught);
-				tabInfos.set(tabInfos.indexOf(tabInfo), tabInfo);
-				setSelectedWithoutCheck(tabInfo);
+				// roll back changes in the local data storage
+				tabInfos.set(tabInfos.indexOf(newTabInfo), tabInfo);
+				// exchanged the selected tab if it's the new tab
+				if(selectionModel.isSelected(newTabInfo)) {
+					setSelectedWithoutCheck(tabInfo);
+				}
 			}
 
 			@Override
@@ -235,7 +247,7 @@ public class TabsModel implements NewPrimaryIdentityEvent.Handler, LocationChang
 			}
 		});
 	}
-
+	
 	public void setModuleHeight(int moduleId, int height) {
 		moduleService.setModuleHeight(moduleId, height, new AsyncCallback<Object>() {
 

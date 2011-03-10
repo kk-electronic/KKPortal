@@ -49,6 +49,7 @@ public interface ModuleService extends RemoteService {
 	 * Gets the tabs for the given user.
 	 * 
 	 * @param asyncCallback returns a list of {@link TabInfo} to onSucces if successful
+	 * @deprecated Moved and renamed in TabService
 	 */
 	void getTabs(AsyncCallback<List<TabInfo>> asyncCallback);
 	
@@ -71,6 +72,7 @@ public interface ModuleService extends RemoteService {
 	 * 
 	 * @param id the Tab's identity
 	 * @param moduleIds a List of Module Instances on the tab.
+	 * @deprecated Moved and renamed in TabService
 	 */
 	void setModulesIdsOnTab(Integer id, List<List<Integer>> moduleIds,AsyncCallback<?> callback);
 
