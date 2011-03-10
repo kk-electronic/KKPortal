@@ -262,4 +262,51 @@ public class TabsModel implements NewPrimaryIdentityEvent.Handler, LocationChang
 		});
 		
 	}
+	
+	public TabInfo createTab() {
+		return createTab("New Tab", null);
+	}
+
+	/**
+	 * @param name
+	 * @param moduleIds 
+	 * @return
+	 */
+	public TabInfo createTab(final String name, final List<List<Integer>> moduleIds) {
+		final TabInfo t = new TabInfo(name, moduleIds);
+		tabInfos.add(t);
+		setSelectedWithoutCheck(t);
+		tabService.create(t, new AsyncCallback<Integer>(){
+			@Override
+			public void onFailure(Throwable caught) {
+				GWT.log("Creatation of new Tab failed: ", caught);
+			}
+
+			@Override
+			public void onSuccess(Integer result) {
+				TabInfo newT = new TabInfo(result, t.getName(), t.getModuleIds());
+				tabInfos.set(tabInfos.indexOf(t), newT);
+				setSelectedWithoutCheck(newT);
+			}
+		});
+		return t;
+	}
+	
+	public void deleteTab(final TabInfo tabInfo) {
+		if (tabInfo.getId() == 0 ) {
+			return;
+		}
+		tabInfos.remove(tabInfo);
+		tabService.delete(tabInfo.getId(), new AsyncCallback<Object>() {
+
+			@Override
+			public void onFailure(Throwable caught) {
+				GWT.log("Deletion of tab id:" + tabInfo.getId() + " failed", caught);
+			}
+
+			@Override
+			public void onSuccess(Object result) {
+			}
+		});
+	}
 }
