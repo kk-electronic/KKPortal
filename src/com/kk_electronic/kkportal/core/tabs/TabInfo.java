@@ -21,8 +21,40 @@ package com.kk_electronic.kkportal.core.tabs;
 
 import java.util.List;
 
-public interface TabInfo {
-	public int getId();
-	public String getName();
-	public List<List<Integer>> getModuleIds();
+public class TabInfo {
+	public final int id;
+	public String name;
+	private List<List<Integer>> moduleIds;
+	
+	public TabInfo(int id, String name, List<List<Integer>> moduleIds) {
+		this.name = name;
+		this.moduleIds = moduleIds;
+		this.id = id;
+	}
+	
+	/**
+	 * @param name
+	 * @param moduleIds
+	 */
+	public TabInfo(String name, List<List<Integer>> moduleIds) {
+		this(0, name, moduleIds);
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+	public List<List<Integer>> getModuleIds() {
+		return moduleIds;
+	}
+	public void setModuleIds(List<List<Integer>> moduleIds) {
+		this.moduleIds = moduleIds;
+	}
 }

@@ -30,24 +30,9 @@ import com.kk_electronic.kkportal.core.tabs.TabInfo;
 
 public class JsonTabInfo implements JsonValue<TabInfo> {
 
-	public static class TabInfoDTO implements TabInfo{
-		public final int id;
-		public final String name;
-		private final List<List<Integer>> moduleIds;
-		public List<List<Integer>> getModuleIds() {
-			return moduleIds;
-		}
+	public static class TabInfoDTO extends TabInfo{
 		public TabInfoDTO(int id, String name, List<List<Integer>> moduleIds) {
-			super();
-			this.id = id;
-			this.name = name;
-			this.moduleIds = moduleIds;
-		}
-		public int getId() {
-			return id;
-		}
-		public String getName() {
-			return name;
+			super(id, name, moduleIds);
 		}
 	}
 	
