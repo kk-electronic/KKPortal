@@ -50,7 +50,7 @@
 				<g:Image resource="{res.righttab}" />
 			</g:layer>
 			<g:layer left="{res.lefttab.getWidth}px" right="{res.righttab.getWidth}px" top="0px" bottom="0">
-				<g:Hyperlink stylePrimaryName="{style.link}" ui:field="name" />
+				<g:Anchor stylePrimaryName="{style.link}" ui:field="name" />
 			</g:layer>
 	</g:LayoutPanel>
 </ui:UiBinder>

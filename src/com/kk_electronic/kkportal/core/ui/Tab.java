@@ -20,11 +20,15 @@
 
 package com.kk_electronic.kkportal.core.ui;
 
+import com.google.gwt.event.dom.client.DoubleClickHandler;
+import com.google.gwt.event.dom.client.HasDoubleClickHandlers;
+import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.resources.client.CssResource;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
+import com.google.gwt.user.client.rpc.AsyncCallback;
+import com.google.gwt.user.client.ui.Anchor;
 import com.google.gwt.user.client.ui.Composite;
-import com.google.gwt.user.client.ui.Hyperlink;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.inject.Inject;
 import com.kk_electronic.kkportal.core.tabs.TabInfo;
@@ -33,7 +37,7 @@ import com.kk_electronic.kkportal.core.tabs.TabInfo;
  * @author Rasmus Carlsen
  *
  */
-public class Tab extends Composite {
+public class Tab extends Composite implements HasDoubleClickHandlers{
 	private TabInfo info;
 	
 	public static interface UIBinder extends UiBinder<Widget, Tab> {
@@ -48,7 +52,7 @@ public class Tab extends Composite {
 	Style style;
 	
 	@UiField
-	Hyperlink name;
+	Anchor name;
 	
 	@UiField
 	Widget container;
@@ -69,10 +73,27 @@ public class Tab extends Composite {
 	public void setInfo(TabInfo tabInfo) {
 		this.info = tabInfo;
 		name.setText(this.info.getName());
-		name.setTargetHistoryToken("View$" + this.info.getId());
+		name.setHref("#View$" + this.info.getId());
+	}
+	
+	public TabInfo getInfo() { 
+		return info;
 	}
 	
 	public void setSelected() {
 		this.addStyleName(style.selected());
+	}
+	
+	protected void editTabName(AsyncCallback<String> callback) {
+		// insert a text edit field in place of title
+		// insert handler for enter / (lose/change) focus events
+		// if no new text revert the text field to the previous widget.
+		// Return the text field text.
+		callback.onSuccess("Socks!");
+	}
+
+	@Override
+	public HandlerRegistration addDoubleClickHandler(DoubleClickHandler handler) {
+		return name.addDoubleClickHandler(handler);
 	}
 }
