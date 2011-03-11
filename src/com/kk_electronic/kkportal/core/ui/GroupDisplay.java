@@ -59,6 +59,9 @@ public class GroupDisplay<T extends IsWidget & KnownHeight & DragSource> impleme
 		this.dnd = dnd;
 		dnd.registerDropSink(this);
 		canvas.getElement().getStyle().setBackgroundColor(resources.palette().colour2());
+		canvas.getElement().getStyle().setPropertyPx("borderTopLeftRadius", 10);
+		canvas.getElement().getStyle().setPropertyPx("WebkitBorderTopLeftRadius", 10);
+		canvas.getElement().getStyle().setPropertyPx("MozBorderRadiusTopleft", 10);
 	}
 	
 	private native Layout iHateJavaProtection(LayoutPanel layoutPanel) /*-{
