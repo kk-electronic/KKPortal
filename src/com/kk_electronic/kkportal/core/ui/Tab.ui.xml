@@ -20,17 +20,37 @@
 
 -->
 <ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder" xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:kk="urn:import:com.kk_electronic.kkportal.core.ui">
+	<ui:with field='res' type="com.kk_electronic.kkportal.res.Resources" />
 	<ui:style src="../../res/palette.css" type="com.kk_electronic.kkportal.core.ui.Tab.Style">
 		.left{ background-image: url("../../res/left.png")}
 		.right{ background-image: url("../../res/right.png")}
-		.container { background-color: colour1; padding-bottom: 5px;}
-		.selected { background-color: colour2;}
-		.selected .left{}
-		.selected .right{}
+		.container {}
+		.selected {}
+		.link{ 
+			background-color: colour2; 
+			padding-bottom: 5px;
+			border-bottom: 2px solid colour1;
+		}
+		.selected .link{
+			border-top: 2px solid colour1;
+			border-bottom: none;
+		}
+		.showselection {
+			margin-top: -2px;
+		}
+		.selected .showselection {
+			margin-top: 0px;
+		}
 	</ui:style>
-	<g:HTMLPanel stylePrimaryName="{style.container}" ui:field="container">
-		<img class="{style.left}"></img>
-		<g:InlineHyperlink ui:field="name"></g:InlineHyperlink>
-		<img class="{style.right}"></img>
-	</g:HTMLPanel>
+		<g:LayoutPanel stylePrimaryName="{style.container}" ui:field="container">
+			<g:layer left="0px" width="{res.lefttab.getWidth}px">
+				<g:Image stylePrimaryName="{style.showselection}" resource="{res.lefttab}" />
+			</g:layer>
+			<g:layer right="0px" width="{res.righttab.getWidth}px">
+				<g:Image stylePrimaryName="{style.showselection}" resource="{res.righttab}" />
+			</g:layer>
+			<g:layer left="{res.lefttab.getWidth}px" right="{res.righttab.getWidth}px" top="0px" bottom="0">
+				<g:Hyperlink stylePrimaryName="{style.link}" ui:field="name" />
+			</g:layer>
+	</g:LayoutPanel>
 </ui:UiBinder>
