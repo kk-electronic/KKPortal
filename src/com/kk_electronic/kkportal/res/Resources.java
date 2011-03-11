@@ -21,6 +21,7 @@ package com.kk_electronic.kkportal.res;
 
 import com.google.gwt.resources.client.ClientBundle;
 import com.google.gwt.resources.client.CssResource;
+import com.google.gwt.resources.client.ImageResource;
 
 public interface Resources extends ClientBundle {
 	public static interface ColourPalette extends CssResource {
@@ -44,4 +45,7 @@ public interface Resources extends ClientBundle {
 	}
 	
 	public ColourPalette palette();
+
+	public ImageResource lefttab();
+	public ImageResource righttab();
 }
