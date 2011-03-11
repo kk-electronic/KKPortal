@@ -25,8 +25,6 @@ import com.google.gwt.dom.client.Style.Unit;
 import com.google.gwt.event.shared.EventBus;
 import com.google.gwt.event.shared.GwtEvent;
 import com.google.gwt.event.shared.HandlerRegistration;
-import com.google.gwt.safehtml.shared.SafeHtmlUtils;
-import com.google.gwt.user.client.ui.Hyperlink;
 import com.google.gwt.user.client.ui.LayoutPanel;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.gwt.view.client.HasData;
@@ -36,10 +34,10 @@ import com.google.gwt.view.client.RowCountChangeEvent;
 import com.google.gwt.view.client.SelectionModel;
 import com.google.gwt.view.client.RangeChangeEvent.Handler;
 import com.google.inject.Inject;
+import com.google.inject.Provider;
 import com.kk_electronic.kkportal.core.tabs.TabInfo;
 import com.kk_electronic.kkportal.core.tabs.TabsModel;
 import com.kk_electronic.kkportal.res.Resources;
-import com.kk_electronic.kkportal.res.Resources.ColourPalette;
 
 public class TabDisplay implements HasData<TabInfo> {
 
@@ -50,14 +48,14 @@ public class TabDisplay implements HasData<TabInfo> {
 	private int rowCount;
 	private boolean isRowCountExact;
 	private final TabsModel tabInfoProvider;
-	private ColourPalette palette;
+	private final Provider<Tab> tabProvider;	
 
 	@Inject
 	public TabDisplay(TabsModel tabInfoProvider, EventBus eventBus,
-			Resources resources) {
+			Resources resources, Provider<Tab> tabProvider) {
 		this.tabInfoProvider = tabInfoProvider;
 		this.eventBus = eventBus;
-		palette = resources.palette();
+		this.tabProvider = tabProvider;
 		selectionModel = tabInfoProvider.getSelectionModel();
 		tabInfoProvider.addDataDisplay(this);
 	}
@@ -79,6 +77,13 @@ public class TabDisplay implements HasData<TabInfo> {
 		int totalWidth = margin;
 		int tabWidth = tabInfoProvider.getMaxWidth();
 		for (TabInfo info : values) {
+			Tab t = tabProvider.get();
+			t.setInfo(info);
+			panel.add(t);
+			if (selectionModel != null && selectionModel.isSelected(info)) {
+				t.setSelected();
+			}
+			/*
 			Hyperlink l = new Hyperlink(SafeHtmlUtils.fromString(info.getName()),"View$" + info.getId());
 			if (selectionModel != null && selectionModel.isSelected(info)) {
 				l.getElement().getStyle().setBackgroundColor(palette.colour2());
@@ -86,8 +91,9 @@ public class TabDisplay implements HasData<TabInfo> {
 				l.getElement().getStyle().setBackgroundColor(palette.colour1());
 			}
 			panel.add(l);
-			panel.setWidgetBottomHeight(l, 0, Unit.EM, 1, Unit.EM);
-			panel.setWidgetLeftWidth(l, totalWidth, Unit.PX, tabWidth, Unit.PX);
+			/**/
+			panel.setWidgetBottomHeight(t, 0, Unit.EM, 1, Unit.EM);
+			panel.setWidgetLeftWidth(t, totalWidth, Unit.PX, tabWidth, Unit.PX);
 			totalWidth += tabWidth + margin;
 		}
 		totalWidth -= margin;
