@@ -79,8 +79,13 @@ public class TabsModel implements NewPrimaryIdentityEvent.Handler, LocationChang
 
 	private TabInfo findSelectedTabInfo(List<TabInfo> tabInfos){
 		if(locationInfo.getSubint() == null) return null;
+		return findTabInfo(tabInfos, locationInfo.getSubint());
+	}
+
+	private TabInfo findTabInfo(List<TabInfo> tabInfos, Integer id) {
+		if (id == null) return null;
 		for(TabInfo tabInfo : tabInfos){
-			if(tabInfo.getId() == locationInfo.getSubint()){
+			if(id.equals(tabInfo.getId())){
 				return tabInfo;
 			}
 		}
@@ -263,17 +268,13 @@ public class TabsModel implements NewPrimaryIdentityEvent.Handler, LocationChang
 		
 	}
 	
-	public TabInfo createTab() {
-		return createTab("New Tab", null);
-	}
-
 	/**
 	 * @param name
 	 * @param moduleIds 
 	 * @return
 	 */
 	public TabInfo createTab(final String name, final List<List<Integer>> moduleIds) {
-		final TabInfo t = new TabInfo(name, moduleIds);
+		final TabInfo t = new TabInfo(null, name, moduleIds);
 		tabInfos.add(t);
 		setSelectedWithoutCheck(t);
 		tabService.create(t, new AsyncCallback<Integer>(){
@@ -293,7 +294,7 @@ public class TabsModel implements NewPrimaryIdentityEvent.Handler, LocationChang
 	}
 	
 	public void deleteTab(final TabInfo tabInfo) {
-		if (tabInfo.getId() == 0 ) {
+		if (tabInfo.getId() == null ) {
 			return;
 		}
 		tabInfos.remove(tabInfo);
@@ -308,5 +309,13 @@ public class TabsModel implements NewPrimaryIdentityEvent.Handler, LocationChang
 			public void onSuccess(Object result) {
 			}
 		});
+	}
+	
+	public void updateTab(final TabInfo tabInfo) {
+		if (tabInfo.getId() == null ) {
+			return;
+		}
+		TabInfo oldTab = findTabInfo(this.tabInfos, tabInfo.getId());
+		saveTabInfo(oldTab, tabInfo);
 	}
 }

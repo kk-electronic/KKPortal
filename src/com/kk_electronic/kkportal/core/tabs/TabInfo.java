@@ -22,25 +22,23 @@ package com.kk_electronic.kkportal.core.tabs;
 import java.util.List;
 
 public class TabInfo {
-	public final int id;
+	public final Integer id;
 	public String name;
 	private List<List<Integer>> moduleIds;
 	
-	public TabInfo(int id, String name, List<List<Integer>> moduleIds) {
+	/**
+	 * 
+	 * @param id
+	 * @param name
+	 * @param moduleIds
+	 */
+	public TabInfo(Integer id, String name, List<List<Integer>> moduleIds) {
 		this.name = name;
 		this.moduleIds = moduleIds;
 		this.id = id;
 	}
 	
-	/**
-	 * @param name
-	 * @param moduleIds
-	 */
-	public TabInfo(String name, List<List<Integer>> moduleIds) {
-		this(0, name, moduleIds);
-	}
-
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
