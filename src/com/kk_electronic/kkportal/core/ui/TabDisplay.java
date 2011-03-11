@@ -25,6 +25,8 @@ import com.google.gwt.dom.client.Style.Unit;
 import com.google.gwt.event.shared.EventBus;
 import com.google.gwt.event.shared.GwtEvent;
 import com.google.gwt.event.shared.HandlerRegistration;
+import com.google.gwt.uibinder.client.UiBinder;
+import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.LayoutPanel;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.gwt.view.client.HasData;
@@ -41,27 +43,32 @@ import com.kk_electronic.kkportal.res.Resources;
 
 public class TabDisplay implements HasData<TabInfo> {
 
-	LayoutPanel panel = new LayoutPanel();
+	@UiField
+	LayoutPanel panel;
 	private SelectionModel<? super TabInfo> selectionModel;
 	private final EventBus eventBus;
 	private Range range;
 	private int rowCount;
 	private boolean isRowCountExact;
 	private final TabsModel tabInfoProvider;
-	private final Provider<Tab> tabProvider;	
+	private final Provider<Tab> tabProvider;
+	private Widget widget;
 
+	public static interface UIBinder extends UiBinder<Widget, TabDisplay> { }
+	
 	@Inject
 	public TabDisplay(TabsModel tabInfoProvider, EventBus eventBus,
-			Resources resources, Provider<Tab> tabProvider) {
+			Resources resources, Provider<Tab> tabProvider, UIBinder binder) {
 		this.tabInfoProvider = tabInfoProvider;
 		this.eventBus = eventBus;
 		this.tabProvider = tabProvider;
+		this.widget = binder.createAndBindUi(this);
 		selectionModel = tabInfoProvider.getSelectionModel();
 		tabInfoProvider.addDataDisplay(this);
 	}
-
+	
 	public Widget asWidget() {
-		return panel;
+		return widget;
 	}
 
 	@Override
