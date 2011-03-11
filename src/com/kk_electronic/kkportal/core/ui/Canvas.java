@@ -93,7 +93,7 @@ public class Canvas implements NewContentEvent.Handler, ContentChangedEvent.Hand
 			firstRun = true;
 		}
 		this.tabInfo = tabInfo;
-		if (tabInfo == null) {
+		if (tabInfo == null || tabInfo.getModuleIds() == null) {
 			display.setWidgets(null);
 			return;
 		}
@@ -270,6 +270,9 @@ public class Canvas implements NewContentEvent.Handler, ContentChangedEvent.Hand
 	};
 	
 	private void saveModuleHeights() {
+		if (tabsModel.getSelectedTab().getModuleIds() == null) {
+			return;
+		}
 		HashSet<Integer> needed = new HashSet<Integer>();
 		for (List<Integer> i : tabsModel.getSelectedTab().getModuleIds()) {
 			needed.addAll(i);
