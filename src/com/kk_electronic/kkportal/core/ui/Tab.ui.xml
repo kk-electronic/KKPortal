@@ -24,30 +24,30 @@
 	<ui:style src="../../res/palette.css" type="com.kk_electronic.kkportal.core.ui.Tab.Style">
 		.left{ background-image: url("../../res/left.png")}
 		.right{ background-image: url("../../res/right.png")}
-		.container {}
-		.selected {}
-		.link{ 
+		.container {
+			margin-bottom: 2px;
+		}
+		.selected {
+			margin-top: 2px;
+			margin-bottom: 0;
+		}
+		.link{
+			border-top: 1px solid colour1;
 			background-color: colour2; 
 			padding-bottom: 5px;
-			border-bottom: 2px solid colour1;
 		}
-		.selected .link{
-			border-top: 2px solid colour1;
-			border-bottom: none;
-		}
-		.showselection {
-			margin-top: -2px;
-		}
-		.selected .showselection {
-			margin-top: 0px;
+		.link a{
+			color: white;
+			padding: 3px 3px 3px 3px;
+			text-decoration: none;
 		}
 	</ui:style>
 		<g:LayoutPanel stylePrimaryName="{style.container}" ui:field="container">
 			<g:layer left="0px" width="{res.lefttab.getWidth}px">
-				<g:Image stylePrimaryName="{style.showselection}" resource="{res.lefttab}" />
+				<g:Image resource="{res.lefttab}" />
 			</g:layer>
 			<g:layer right="0px" width="{res.righttab.getWidth}px">
-				<g:Image stylePrimaryName="{style.showselection}" resource="{res.righttab}" />
+				<g:Image resource="{res.righttab}" />
 			</g:layer>
 			<g:layer left="{res.lefttab.getWidth}px" right="{res.righttab.getWidth}px" top="0px" bottom="0">
 				<g:Hyperlink stylePrimaryName="{style.link}" ui:field="name" />
