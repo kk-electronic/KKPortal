@@ -83,6 +83,7 @@ public class TabDisplay implements HasData<TabInfo> {
 		int margin = 10;
 		int totalWidth = margin;
 		int tabWidth = tabInfoProvider.getMaxWidth();
+		int i = values.size(); 
 		for (TabInfo info : values) {
 			Tab t = tabProvider.get();
 			t.setInfo(info);
@@ -90,15 +91,7 @@ public class TabDisplay implements HasData<TabInfo> {
 			if (selectionModel != null && selectionModel.isSelected(info)) {
 				t.setSelected();
 			}
-			/*
-			Hyperlink l = new Hyperlink(SafeHtmlUtils.fromString(info.getName()),"View$" + info.getId());
-			if (selectionModel != null && selectionModel.isSelected(info)) {
-				l.getElement().getStyle().setBackgroundColor(palette.colour2());
-			} else {
-				l.getElement().getStyle().setBackgroundColor(palette.colour1());
-			}
-			panel.add(l);
-			/**/
+			t.getElement().getStyle().setZIndex(i--);
 			panel.setWidgetBottomHeight(t, 0, Unit.EM, 1, Unit.EM);
 			panel.setWidgetLeftWidth(t, totalWidth, Unit.PX, tabWidth, Unit.PX);
 			totalWidth += tabWidth + margin;
