@@ -42,7 +42,7 @@ public class View implements Activity {
 	public Widget asWidget() {
 		if(panel != null) return panel;
 		panel = new DockLayoutPanel(Unit.EM);
-		panel.addNorth(tabDisplay.asWidget(), 2);
+		panel.addNorth(tabDisplay.asWidget(), 1.4);
 		panel.add(canvas.asWidget());
 		return panel;
 	}
