@@ -15,9 +15,9 @@
    id="svg2"
    version="1.1"
    inkscape:version="0.48.0 r9654"
-   sodipodi:docname="tabsprite-selected.svg"
+   sodipodi:docname="lefttab.svg"
    style="display:inline"
-   inkscape:export-filename="tabsprite-selected.png"
+   inkscape:export-filename="lefttab.png"
    inkscape:export-xdpi="90"
    inkscape:export-ydpi="90">
   <defs
@@ -94,9 +94,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="45.254834"
-     inkscape:cx="0.25323397"
-     inkscape:cy="6.0222535"
+     inkscape:zoom="32"
+     inkscape:cx="-5.7524503"
+     inkscape:cy="5.1257896"
      inkscape:document-units="px"
      inkscape:current-layer="layer2"
      showgrid="true"
@@ -168,11 +168,5 @@
          inkscape:connector-curvature="0"
          sodipodi:nodetypes="cc" />
     </g>
-    <path
-       style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:square;stroke-linejoin:miter;stroke-opacity:1"
-       d="m 0.5,14.5 9,0"
-       id="path3847"
-       inkscape:connector-curvature="0"
-       transform="translate(350,157.875)" />
   </g>
 </svg>
