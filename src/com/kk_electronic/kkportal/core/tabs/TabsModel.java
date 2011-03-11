@@ -55,6 +55,7 @@ public class TabsModel implements NewPrimaryIdentityEvent.Handler, LocationChang
 	private final SingleSelectionModel<TabInfo> selectionModel;
 	private List<TabInfo> tabInfos;
 	private final EventBus eventBus;
+	private Integer localTabs = -1; // First Local tab this counter lowers itself on use.
 	
 	@Inject
 	public TabsModel(IdentityProvider identityProvider, ModuleService moduleService,LocationInfo locationInfo,EventBus eventBus, TabService tabService) {
@@ -294,10 +295,14 @@ public class TabsModel implements NewPrimaryIdentityEvent.Handler, LocationChang
 	}
 	
 	public void deleteTab(final TabInfo tabInfo) {
+		// Remove Local
+		tabInfos.remove(tabInfo);
+		
 		if (tabInfo.getId() == null ) {
+			localTabs++;
 			return;
 		}
-		tabInfos.remove(tabInfo);
+		// Remove remote if tabInfo has an id.
 		tabService.delete(tabInfo.getId(), new AsyncCallback<Object>() {
 
 			@Override
@@ -313,9 +318,18 @@ public class TabsModel implements NewPrimaryIdentityEvent.Handler, LocationChang
 	
 	public void updateTab(final TabInfo tabInfo) {
 		if (tabInfo.getId() == null ) {
-			return;
+			createTab(tabInfo.getName(), tabInfo.getModuleIds());
 		}
 		TabInfo oldTab = findTabInfo(this.tabInfos, tabInfo.getId());
 		saveTabInfo(oldTab, tabInfo);
+	}
+	
+	public TabInfo createEmptyLocalTab() {
+		TabInfo tabInfo = new TabInfo(localTabs--, "New Tab", new ArrayList<List<Integer>>());
+		// Create local tab
+		tabInfos.add(tabInfo);
+		// Select new Tab
+		setSelectedWithoutCheck(tabInfo);
+		return tabInfo;
 	}
 }

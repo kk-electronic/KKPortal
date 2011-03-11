@@ -22,11 +22,16 @@ package com.kk_electronic.kkportal.core.ui;
 import java.util.List;
 
 import com.google.gwt.dom.client.Style.Unit;
+import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.shared.EventBus;
 import com.google.gwt.event.shared.GwtEvent;
 import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
+import com.google.gwt.user.client.rpc.AsyncCallback;
+import com.google.gwt.user.client.ui.Button;
+import com.google.gwt.user.client.ui.Hyperlink;
 import com.google.gwt.user.client.ui.LayoutPanel;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.gwt.view.client.HasData;
@@ -45,6 +50,7 @@ public class TabDisplay implements HasData<TabInfo> {
 
 	@UiField
 	LayoutPanel panel;
+
 	private SelectionModel<? super TabInfo> selectionModel;
 	private final EventBus eventBus;
 	private Range range;
@@ -53,6 +59,7 @@ public class TabDisplay implements HasData<TabInfo> {
 	private final TabsModel tabInfoProvider;
 	private final Provider<Tab> tabProvider;
 	private Widget widget;
+	private Button newTabButton = new Button("+");
 
 	public static interface UIBinder extends UiBinder<Widget, TabDisplay> { }
 	
@@ -65,6 +72,12 @@ public class TabDisplay implements HasData<TabInfo> {
 		this.widget = binder.createAndBindUi(this);
 		selectionModel = tabInfoProvider.getSelectionModel();
 		tabInfoProvider.addDataDisplay(this);
+		newTabButton.addClickHandler(new ClickHandler() {
+			@Override
+			public void onClick(ClickEvent event) {
+				makeNewTabBottom();
+			}
+		});
 	}
 	
 	public Widget asWidget() {
@@ -97,7 +110,9 @@ public class TabDisplay implements HasData<TabInfo> {
 			panel.setWidgetLeftWidth(t, totalWidth, Unit.PX, tabWidth, Unit.PX);
 			totalWidth += tabWidth - margin;
 		}
-		totalWidth -= margin;
+		panel.add(newTabButton);
+		panel.setWidgetLeftWidth(newTabButton, totalWidth + margin, Unit.PX, margin*2, Unit.PX);
+		panel.setWidgetBottomHeight(newTabButton, 0, Unit.EM, 1, Unit.EM);
 	}
 
 	@Override
@@ -188,5 +203,70 @@ public class TabDisplay implements HasData<TabInfo> {
 	public HandlerRegistration addCellPreviewHandler(
 			com.google.gwt.view.client.CellPreviewEvent.Handler<TabInfo> handler) {
 		return null;
+	}
+	
+	private void makeNewTabBottom() {
+		// create tabinfo
+		// insert tabinfo into local (this class) store
+		
+		Tab to = findTab(tabInfoProvider.createEmptyLocalTab());
+		to.editTabName(new AsyncCallback<String>() {
+			@Override
+			public void onFailure(Throwable caught) {
+				
+			}
+
+			@Override
+			public void onSuccess(String result) {
+				// create the tab in TabsModel
+				//tabInfoProvider.createTab(result, to.getInfo().getModuleIds());
+			}
+		});
+	}
+	
+	private void onEditTabNameClick() {
+		// Get the right tab;
+		Hyperlink h = new Hyperlink();
+		
+		final Tabzors t = new Tabzors();
+		t.editTabName(new AsyncCallback<String>() {
+			@Override
+			public void onFailure(Throwable caught) { /* No-op */ }
+
+			@Override
+			public void onSuccess(String result) {
+				t.getInfo().setName(result);
+				tabInfoProvider.updateTab(t.getInfo());
+			}
+		});
+	}
+	
+	private Tab findTab(TabInfo tabInfo) {
+		for (Widget widget : panel) {
+			if (widget instanceof Tab) {
+				Tab tab = (Tab) widget;
+				if (tab.getInfo().getId().equals(tabInfo.getId())) {
+					return tab;
+				}
+			}
+		}
+		return null;
+	}
+	
+	
+	private class Tabzors {
+		private	TabInfo tabInfo;
+
+		protected void editTabName(AsyncCallback<String> callback) {
+			// insert a text edit field in place of title
+			// insert handler for enter / (lose/change) focus events
+			// if no new text revert the text field to the previous widget.
+			// Return the text field text.
+			callback.onSuccess("Socks!");
+		}
+		
+		public TabInfo getInfo() { 
+			return tabInfo;
+		}
 	}
 }

@@ -23,6 +23,7 @@
 	<ui:style src="../../res/palette.css">
 		.tabBar { }
 		.tabBar > div { padding-bottom: 5px; }
+		.tabBar > gwt-Button { width: 30px; }
 	</ui:style>
 	<g:LayoutPanel ui:field="panel" stylePrimaryName="{style.tabBar}">
 	</g:LayoutPanel>
