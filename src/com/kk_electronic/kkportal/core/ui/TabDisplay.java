@@ -81,20 +81,21 @@ public class TabDisplay implements HasData<TabInfo> {
 		assert start == 0 : "TabDisplay does not support partial viewing";
 		panel.clear();
 		int margin = 10;
-		int totalWidth = margin;
+		int totalWidth = 2*margin;
 		int tabWidth = tabInfoProvider.getMaxWidth();
 		int i = values.size(); 
 		for (TabInfo info : values) {
 			Tab t = tabProvider.get();
 			t.setInfo(info);
 			panel.add(t);
+			t.getElement().getStyle().setZIndex(i--);
 			if (selectionModel != null && selectionModel.isSelected(info)) {
 				t.setSelected();
+				t.getElement().getStyle().setZIndex(values.size());
 			}
-			t.getElement().getStyle().setZIndex(i--);
 			panel.setWidgetBottomHeight(t, 0, Unit.EM, 1, Unit.EM);
 			panel.setWidgetLeftWidth(t, totalWidth, Unit.PX, tabWidth, Unit.PX);
-			totalWidth += tabWidth + margin;
+			totalWidth += tabWidth - margin;
 		}
 		totalWidth -= margin;
 	}
