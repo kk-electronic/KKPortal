@@ -31,7 +31,18 @@
 		.module { 
 			background-color: colour4; 
 			color: Black;
+
 			box-shadow: 5px 5px 4px black;
+			-webkit-box-shadow: 5px 5px 4px black;
+			-moz-box-shadow: 5px 5px 4px black;
+
+			border-bottom-left-radius: 5px;
+			-moz-border-radius-bottomleft: 5px;
+			-webkit-border-bottom-left-radius: 5px;
+
+			border-bottom-right-radius: 5px;
+			-moz-border-radius-bottomright: 5px;
+			-webkit-border-bottom-right-radius: 5px;
 		}
 		.contentcontainer {
 			margin: 3px 3px 3px 3px;
