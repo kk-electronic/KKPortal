@@ -170,7 +170,7 @@ public class ModuleWindow extends Composite implements
 
 	@Override
 	public int getDesiredHeight() {
-		int magicInt = 13; //TODO find how to convert 1 em to px.
+		int magicInt = 0; //TODO find how to convert 1 em to px.
 		int a = this.content.getElement().getScrollHeight();
 		int b = this.content.getElement().getOffsetTop();
 		int r = a+b + magicInt;
