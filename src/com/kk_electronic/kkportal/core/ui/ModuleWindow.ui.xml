@@ -27,6 +27,7 @@
 		.module { 
 			background-color: colour4; 
 			color: Black;
+			box-shadow: 5px 5px 4px black;
 		}
 		.contentcontainer {
 			padding: 0;

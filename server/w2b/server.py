@@ -120,6 +120,14 @@ def main(argv=None):
     from twisted.web import static, server
     from twisted.python import log
     from w2b.websocket import WebSocketRoot
+    
+    class CacheFile(static.File):
+        def makeProducer(self, request, fileForReading):
+            if request.uri.find('.nocache.') != -1:
+                request.setHeader('Cache-Control','no-store, no-cache, must-revalidate, post-check=0, pre-check=0')
+            elif request.uri.find('.cache.') != -1:
+                request.setHeader('Cache-Control','max-age=290304000, public')
+            return static.File.makeProducer(self,request,fileForReading)
 
     if settings.has_key('logfile'):
         file=open(settings['logfile'],"wa")
@@ -135,7 +143,7 @@ def main(argv=None):
         json.dump(settings, file)
     log.msg(os.getcwd())
     log.msg(settings['rootdir'])
-    root = static.File(settings['rootdir'])
+    root = CacheFile(settings['rootdir'])
     from twisted.web.proxy import ReverseProxyResource
     proxy = ReverseProxyResource('windpowerhub.com',80,'/~albatros/php')
     root.putChild("php",proxy)

@@ -163,6 +163,9 @@ public class Canvas implements NewContentEvent.Handler, ContentChangedEvent.Hand
 
 	@Override
 	public void onElementDrop(double x, int y, ModuleWindow element) {
+		Widget p = element.getParent();
+		x = 100.0 * (double)((element.getAbsoluteLeft()-p.getAbsoluteLeft() + element.getOffsetWidth()/2)) / p.getOffsetWidth();
+		y = (element.getAbsoluteTop() - p.getAbsoluteTop() + element.getOffsetHeight()/2);
 		GWT.log("Before move"+groupedModuleWindows.toString());
 		for(List<ModuleWindow> moduleWindows : groupedModuleWindows){
 			if(moduleWindows.remove(element)) break;
@@ -226,7 +229,9 @@ public class Canvas implements NewContentEvent.Handler, ContentChangedEvent.Hand
 			}
 			cw -= width;
 		}
-		return groupedModuleWindows.get(groupedModuleWindows.size()-1);
+		List<ModuleWindow> newcolumn = new ArrayList<ModuleWindow>();
+		groupedModuleWindows.add(newcolumn);
+		return newcolumn;
 	}
 
 	@Override
