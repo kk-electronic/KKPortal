@@ -56,7 +56,21 @@ public class JsonTabInfo implements JsonValue<TabInfo> {
 	@Override
 	public void toJson(StringBuilder response, TabInfo object,
 			FrameEncoder<JSONValue> encoder) throws UnableToSerialize {
-		// TODO Auto-generated method stub
+		response.append("{");
 		
+		encoder.encode("tab_id", response);
+		response.append(":");
+		encoder.encode(object.getId(), response);
+		response.append(",");
+		
+		encoder.encode("moduleIds", response);
+		response.append(":");
+		encoder.encode(object.getModuleIds(), response);
+		response.append(",");
+		
+		encoder.encode("name", response);
+		response.append(":");
+		encoder.encode(object.getName(), response);
+		response.append("}");		
 	}
 }
