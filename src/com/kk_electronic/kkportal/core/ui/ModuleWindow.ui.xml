@@ -26,7 +26,7 @@
 			cursor: move;
 			padding: 3px 3px 3px 3px;
 		}
-		.title { cursor: pointer; }
+		.title { cursor: pointer; text-decoration: none; color: black; }
 		.title:HOVER { text-decoration: underline; }
 		.module { 
 			background-color: colour4; 
@@ -50,7 +50,7 @@
 	<g:HTMLPanel stylePrimaryName="{style.module}">
 		<div ui:field="container">
 		<g:HTMLPanel ui:field="titlebar">
-			<div class="{style.header}"><g:InlineHyperlink ui:field="title"></g:InlineHyperlink>&nbsp; <g:Label ui:field="delete" styleName="{style.delete}">X</g:Label></div>
+			<div class="{style.header}"><g:InlineHyperlink stylePrimaryName="{style.title}" ui:field="title"></g:InlineHyperlink>&nbsp; <g:Label ui:field="delete" styleName="{style.delete}">X</g:Label></div>
 		</g:HTMLPanel>
 		<div class="{style.contentcontainer}">
 			<g:SimplePanel ui:field="content">
