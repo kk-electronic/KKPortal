@@ -21,7 +21,11 @@
 -->
 <ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder" xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:kk="urn:import:com.kk_electronic.kkportal.core.ui">
 	<ui:style src="../../res/palette.css" type="com.kk_electronic.kkportal.core.ui.ModuleWindow.Style">
-		.header { background-color: colour3; cursor: move;}
+		.header { 
+			background-color: colour3;
+			cursor: move;
+			padding: 3px 3px 3px 3px;
+		}
 		.title { cursor: pointer; }
 		.title:HOVER { text-decoration: underline; }
 		.module { 
@@ -30,7 +34,7 @@
 			box-shadow: 5px 5px 4px black;
 		}
 		.contentcontainer {
-			padding: 0;
+			margin: 3px 3px 3px 3px;
 		}
 		.first {
 		}
