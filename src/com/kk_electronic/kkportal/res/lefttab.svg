@@ -11,7 +11,7 @@
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    width="10"
-   height="15"
+   height="18"
    id="svg2"
    version="1.1"
    inkscape:version="0.48.0 r9654"
@@ -56,17 +56,6 @@
     </clipPath>
     <clipPath
        clipPathUnits="userSpaceOnUse"
-       id="clipPath4007">
-      <rect
-         style="color:#000000;fill:#ce5c00;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1px;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
-         id="rect4009"
-         width="9.9998999"
-         height="15"
-         x="350"
-         y="157.875" />
-    </clipPath>
-    <clipPath
-       clipPathUnits="userSpaceOnUse"
        id="clipPath4001-7">
       <path
          style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:square;stroke-linejoin:miter;stroke-opacity:1;display:inline"
@@ -94,11 +83,11 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="32"
-     inkscape:cx="-5.7524503"
-     inkscape:cy="5.1257896"
+     inkscape:zoom="256"
+     inkscape:cx="1.3445187"
+     inkscape:cy="1.1958719"
      inkscape:document-units="px"
-     inkscape:current-layer="layer2"
+     inkscape:current-layer="g4062"
      showgrid="true"
      inkscape:window-width="1680"
      inkscape:window-height="973"
@@ -116,8 +105,8 @@
        visible="true"
        enabled="true"
        snapvisiblegridlinesonly="true"
-       spacingx="5px"
-       spacingy="5px" />
+       spacingx="1px"
+       spacingy="1px" />
     <inkscape:grid
        type="xygrid"
        id="grid3901"
@@ -140,7 +129,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -148,8 +137,8 @@
      inkscape:groupmode="layer"
      id="layer2"
      inkscape:label="BasicShape"
-     transform="translate(-350,-157.875)"
-     style="display:inline;opacity:0.99">
+     transform="translate(-350,-154.875)"
+     style="opacity:0.98999999;display:inline">
     <g
        id="g4062">
       <rect
@@ -159,11 +148,14 @@
          width="9.9998999"
          height="15"
          x="350"
-         y="157.875" />
+         y="157.875"
+         inkscape:export-xdpi="90"
+         inkscape:export-ydpi="90"
+         transform="matrix(1,0,0,1.2413793,0,-41.728448)" />
       <path
-         clip-path="url(#clipPath4007)"
-         style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:square;stroke-linejoin:miter;stroke-opacity:1;display:inline"
-         d="m 359.9999,158.375 c -6.6667,0 -3.3333,14 -9.9999,14"
+         clip-path="none"
+         style="fill:none;stroke:#000000;stroke-width:0.99999994px;stroke-linecap:square;stroke-linejoin:miter;stroke-opacity:1;display:inline"
+         d="m 359.9999,155.375 c -6.6667,0 -3.3333,17 -9.9999,17"
          id="path3946"
          inkscape:connector-curvature="0"
          sodipodi:nodetypes="cc" />
