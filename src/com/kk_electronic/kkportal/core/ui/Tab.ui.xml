@@ -34,12 +34,15 @@
 		.link{
 			border-top: 1px solid colour1;
 			background-color: colour2; 
-			padding-bottom: 5px;
-		}
-		.link a{
 			color: white;
-			padding: 3px 3px 3px 3px;
 			text-decoration: none;
+		}
+		.link:visited{
+			color: white;
+		}
+		.link:hover{
+			color: white;
+			text-decoration: underline;
 		}
 	</ui:style>
 		<g:LayoutPanel stylePrimaryName="{style.container}" ui:field="container">
