@@ -31,7 +31,6 @@ import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Button;
-import com.google.gwt.user.client.ui.Hyperlink;
 import com.google.gwt.user.client.ui.LayoutPanel;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.gwt.view.client.HasData;
@@ -209,7 +208,7 @@ public class TabDisplay implements HasData<TabInfo> {
 		// create tabinfo
 		// insert tabinfo into local (this class) store
 		
-		Tab to = findTab(tabInfoProvider.createEmptyLocalTab());
+		final Tab to = findTab(tabInfoProvider.createEmptyLocalTab());
 		to.editTabName(new AsyncCallback<String>() {
 			@Override
 			public void onFailure(Throwable caught) {
@@ -218,25 +217,22 @@ public class TabDisplay implements HasData<TabInfo> {
 
 			@Override
 			public void onSuccess(String result) {
-				// create the tab in TabsModel
-				//tabInfoProvider.createTab(result, to.getInfo().getModuleIds());
+				to.getInfo().setName(result);
+				tabInfoProvider.createTab(to.getInfo());
 			}
 		});
 	}
 	
-	private void onEditTabNameClick() {
+	private void onEditTabNameClick(final Tab tab) {
 		// Get the right tab;
-		Hyperlink h = new Hyperlink();
-		
-		final Tabzors t = new Tabzors();
-		t.editTabName(new AsyncCallback<String>() {
+		tab.editTabName(new AsyncCallback<String>() {
 			@Override
 			public void onFailure(Throwable caught) { /* No-op */ }
 
 			@Override
 			public void onSuccess(String result) {
-				t.getInfo().setName(result);
-				tabInfoProvider.updateTab(t.getInfo());
+				tab.getInfo().setName(result);
+				tabInfoProvider.updateTab(tab.getInfo());
 			}
 		});
 	}
@@ -251,22 +247,5 @@ public class TabDisplay implements HasData<TabInfo> {
 			}
 		}
 		return null;
-	}
-	
-	
-	private class Tabzors {
-		private	TabInfo tabInfo;
-
-		protected void editTabName(AsyncCallback<String> callback) {
-			// insert a text edit field in place of title
-			// insert handler for enter / (lose/change) focus events
-			// if no new text revert the text field to the previous widget.
-			// Return the text field text.
-			callback.onSuccess("Socks!");
-		}
-		
-		public TabInfo getInfo() { 
-			return tabInfo;
-		}
 	}
 }

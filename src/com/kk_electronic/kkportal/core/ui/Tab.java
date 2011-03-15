@@ -22,6 +22,11 @@ package com.kk_electronic.kkportal.core.ui;
 
 import com.google.gwt.event.dom.client.DoubleClickHandler;
 import com.google.gwt.event.dom.client.HasDoubleClickHandlers;
+import com.google.gwt.event.dom.client.KeyCodes;
+import com.google.gwt.event.dom.client.KeyPressEvent;
+import com.google.gwt.event.dom.client.KeyPressHandler;
+import com.google.gwt.event.logical.shared.CloseEvent;
+import com.google.gwt.event.logical.shared.CloseHandler;
 import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.resources.client.CssResource;
 import com.google.gwt.uibinder.client.UiBinder;
@@ -29,6 +34,9 @@ import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Anchor;
 import com.google.gwt.user.client.ui.Composite;
+import com.google.gwt.user.client.ui.LayoutPanel;
+import com.google.gwt.user.client.ui.PopupPanel;
+import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.inject.Inject;
 import com.kk_electronic.kkportal.core.tabs.TabInfo;
@@ -55,7 +63,7 @@ public class Tab extends Composite implements HasDoubleClickHandlers{
 	Anchor name;
 	
 	@UiField
-	Widget container;
+	LayoutPanel container;
 	
 	@Inject
 	public Tab(UIBinder binder) {
@@ -84,12 +92,32 @@ public class Tab extends Composite implements HasDoubleClickHandlers{
 		this.addStyleName(style.selected());
 	}
 	
-	protected void editTabName(AsyncCallback<String> callback) {
+	public void editTabName(final AsyncCallback<String> callback) {
 		// insert a text edit field in place of title
-		// insert handler for enter / (lose/change) focus events
-		// if no new text revert the text field to the previous widget.
-		// Return the text field text.
-		callback.onSuccess("Socks!");
+		final PopupPanel pp = new PopupPanel(true, true);
+		final TextBox tb = new TextBox();
+		pp.add(tb);
+
+		tb.setText(getName());
+		pp.setAnimationEnabled(true);
+		pp.showRelativeTo(name);
+		pp.addCloseHandler(new CloseHandler<PopupPanel>() {
+			@Override
+			public void onClose(CloseEvent<PopupPanel> event) {
+				String text = tb.getText();
+				if (!text.equals(name)) {
+					callback.onSuccess(text);
+				}	
+			}
+		});
+		tb.addKeyPressHandler(new KeyPressHandler() {
+			@Override
+			public void onKeyPress(KeyPressEvent event) {
+				if(event.getCharCode() == KeyCodes.KEY_ENTER) {
+					pp.hide();
+				}
+			}
+		});
 	}
 
 	@Override
