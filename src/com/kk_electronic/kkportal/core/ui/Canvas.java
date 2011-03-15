@@ -270,7 +270,8 @@ public class Canvas implements NewContentEvent.Handler, ContentChangedEvent.Hand
 	};
 	
 	private void saveModuleHeights() {
-		if (tabsModel.getSelectedTab().getModuleIds() == null) {
+		if (tabsModel.getSelectedTab() == null || 
+			tabsModel.getSelectedTab().getModuleIds() == null) {
 			return;
 		}
 		HashSet<Integer> needed = new HashSet<Integer>();

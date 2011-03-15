@@ -189,10 +189,17 @@ public class TabsModel implements NewPrimaryIdentityEvent.Handler, LocationChang
 
 	protected void addToCorrectColumn(final TabInfo tabInfo, Integer result) {
 		List<Integer> minColumn = null;
-		for(List<Integer> search:tabInfo.getModuleIds()){
-			if(minColumn == null || minColumn.size()>search.size()){
-				minColumn = search;
+		if(tabInfo.getModuleIds() != null && !tabInfo.getModuleIds().isEmpty()){
+			for(List<Integer> search:tabInfo.getModuleIds()){
+				if(minColumn == null || minColumn.size()>search.size()){
+					minColumn = search;
+				}
 			}
+		} else {
+			List<List<Integer>> newList = new ArrayList<List<Integer>>();
+			tabInfo.setModuleIds(newList);
+			minColumn = new ArrayList<Integer>();
+			newList.add(minColumn);
 		}
 		minColumn.add(result);
 		setModuleIds(tabInfo, tabInfo.getModuleIds());
@@ -250,6 +257,7 @@ public class TabsModel implements NewPrimaryIdentityEvent.Handler, LocationChang
 
 			@Override
 			public void onSuccess(Object result) {
+				updateDisplays();
 			}
 		});
 	}
@@ -275,10 +283,15 @@ public class TabsModel implements NewPrimaryIdentityEvent.Handler, LocationChang
 	 * @return
 	 */
 	public TabInfo createTab(final String name, final List<List<Integer>> moduleIds) {
-		final TabInfo t = new TabInfo(null, name, moduleIds);
+		final TabInfo t = new TabInfo(localTabs--, name, moduleIds);
 		tabInfos.add(t);
 		setSelectedWithoutCheck(t);
-		tabService.create(t, new AsyncCallback<Integer>(){
+		createTab(t);
+		return t;
+	}
+	
+	public void createTab(final TabInfo info) {
+		tabService.create(info, new AsyncCallback<Integer>(){
 			@Override
 			public void onFailure(Throwable caught) {
 				GWT.log("Creatation of new Tab failed: ", caught);
@@ -291,7 +304,6 @@ public class TabsModel implements NewPrimaryIdentityEvent.Handler, LocationChang
 				setSelectedWithoutCheck(newT);
 			}
 		});
-		return t;
 	}
 	
 	public void deleteTab(final TabInfo tabInfo) {
@@ -314,11 +326,14 @@ public class TabsModel implements NewPrimaryIdentityEvent.Handler, LocationChang
 			public void onSuccess(Object result) {
 			}
 		});
+		updateDisplays();
 	}
 	
 	public void updateTab(final TabInfo tabInfo) {
+		//TODO does not take local Tabs into account
 		if (tabInfo.getId() == null ) {
 			createTab(tabInfo.getName(), tabInfo.getModuleIds());
+			return;
 		}
 		TabInfo oldTab = findTabInfo(this.tabInfos, tabInfo.getId());
 		saveTabInfo(oldTab, tabInfo);

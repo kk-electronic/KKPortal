@@ -44,12 +44,15 @@ public class JsonTabInfo implements JsonValue<TabInfo> {
 		Integer id = null;
 		String name = null;
 		String moduleidstring = null;
+		List<List<Integer>> moduleIds = null;
+
 		id = simpleEncoder.validate(jsonObject.get("tab_id"), id,new Class<?>[]{Integer.class});
 		name = simpleEncoder.validate(jsonObject.get("name"), name,new Class<?>[]{String.class});
 		moduleidstring = simpleEncoder.validate(jsonObject.get("module_ids"), moduleidstring,new Class<?>[]{String.class});
-		JSONValue mi = JSONParser.parseStrict(moduleidstring);
-		List<List<Integer>> moduleIds = null;
-		moduleIds = simpleEncoder.validate(mi, moduleIds, new Class<?>[]{List.class,List.class,Integer.class});
+		if (moduleidstring != null) {
+			JSONValue mi = JSONParser.parseStrict(moduleidstring);
+			moduleIds = simpleEncoder.validate(mi, moduleIds, new Class<?>[]{List.class,List.class,Integer.class});
+		}
 		return new TabInfoDTO(id, name, moduleIds);
 	}
 
@@ -57,11 +60,6 @@ public class JsonTabInfo implements JsonValue<TabInfo> {
 	public void toJson(StringBuilder response, TabInfo object,
 			FrameEncoder<JSONValue> encoder) throws UnableToSerialize {
 		response.append("{");
-		
-		encoder.encode("tab_id", response);
-		response.append(":");
-		encoder.encode(object.getId(), response);
-		response.append(",");
 		
 		encoder.encode("moduleIds", response);
 		response.append(":");
@@ -71,6 +69,11 @@ public class JsonTabInfo implements JsonValue<TabInfo> {
 		encoder.encode("name", response);
 		response.append(":");
 		encoder.encode(object.getName(), response);
-		response.append("}");		
+		response.append(",");		
+
+		encoder.encode("tab_id", response);
+		response.append(":");
+		encoder.encode(object.getId(), response);
+		response.append("}");
 	}
 }

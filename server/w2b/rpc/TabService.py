@@ -24,10 +24,13 @@ Created on March 8, 2011
 
 import w2b.database.portal as db
 from sqlalchemy import func,select,update
+import simplejson as json
+# db.engine.echo = True # Debug info switch 
 
 def create(context,tab):
     tab['tab_id'] = None
     tab['ownerName'] = context.security.identity
+    tab['module_ids'] = json.dumps(tab['moduleIds'])
     query = db.tabs.insert()
     result = query.execute(tab)
     result.close()
@@ -35,6 +38,7 @@ def create(context,tab):
 
 def update(context, tab):
     tab['ownerName'] = context.security.identity
+    tab['module_ids'] = json.dumps(tab['moduleIds'])
     query = db.tabs.update()
     query = query.where(db.tabs.c.tab_id == tab['tab_id'])#@UndefinedVariable
     query = query.where(db.tabs.c.ownerName == context.security.identity) #@UndefinedVariable

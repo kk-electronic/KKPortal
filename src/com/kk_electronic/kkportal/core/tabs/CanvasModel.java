@@ -96,12 +96,14 @@ public class CanvasModel implements TabSelectedEvent.Handler {
 
 	private List<List<ModuleInfo>> getModuleIds(List<List<Integer>> moduleIds) {
 		List<List<ModuleInfo>> ret = new ArrayList<List<ModuleInfo>>();
-		for(List<Integer> column:moduleIds){
-			List<ModuleInfo> columnModule = new ArrayList<ModuleInfo>();
-			for(int id : column){
-				columnModule.add(map.get(id));
-			}
-			ret.add(columnModule);
+		if (moduleIds != null) {
+			for(List<Integer> column:moduleIds){
+				List<ModuleInfo> columnModule = new ArrayList<ModuleInfo>();
+				for(int id : column){
+					columnModule.add(map.get(id));
+				}
+				ret.add(columnModule);
+			}			
 		}
 		return ret;
 	}
@@ -118,7 +120,11 @@ public class CanvasModel implements TabSelectedEvent.Handler {
 		}
 	}
 	
-	private void addMissing(List<List<Integer>> moduleIds) {
+	private void addMissing(List<List<Integer>> moduleIds) 
+	{
+		if(moduleIds == null){
+			return;
+		}
 		for(List<Integer> column:moduleIds){
 			for(Integer id:column){
 				if(! map.containsKey(id)) addRequest(id);
