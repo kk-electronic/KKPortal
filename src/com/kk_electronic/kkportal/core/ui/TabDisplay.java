@@ -24,6 +24,8 @@ import java.util.List;
 import com.google.gwt.dom.client.Style.Unit;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.event.dom.client.DoubleClickEvent;
+import com.google.gwt.event.dom.client.DoubleClickHandler;
 import com.google.gwt.event.shared.EventBus;
 import com.google.gwt.event.shared.GwtEvent;
 import com.google.gwt.event.shared.HandlerRegistration;
@@ -97,8 +99,14 @@ public class TabDisplay implements HasData<TabInfo> {
 		int tabWidth = tabInfoProvider.getMaxWidth();
 		int i = values.size(); 
 		for (TabInfo info : values) {
-			Tab t = tabProvider.get();
+			final Tab t = tabProvider.get();
 			t.setInfo(info);
+			t.addDoubleClickHandler(new DoubleClickHandler() {
+				@Override
+				public void onDoubleClick(DoubleClickEvent event) {
+					onEditTabNameClick(t);
+				}
+			});
 			panel.add(t);
 			t.getElement().getStyle().setZIndex(i--);
 			if (selectionModel != null && selectionModel.isSelected(info)) {
