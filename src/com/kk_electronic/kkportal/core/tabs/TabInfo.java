@@ -22,8 +22,8 @@ package com.kk_electronic.kkportal.core.tabs;
 import java.util.List;
 
 public class TabInfo {
-	public final Integer id;
-	public String name;
+	private Integer id;
+	private String name;
 	private List<List<Integer>> moduleIds;
 	
 	/**
@@ -40,6 +40,12 @@ public class TabInfo {
 	
 	public Integer getId() {
 		return id;
+	}
+	
+	protected void setId(Integer id) {
+		if ((this.id == null || this.id < 0) && id >= 0) {
+			this.id = id;
+		}
 	}
 
 	public String getName() {

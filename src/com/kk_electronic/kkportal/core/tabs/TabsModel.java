@@ -299,9 +299,8 @@ public class TabsModel implements NewPrimaryIdentityEvent.Handler, LocationChang
 
 			@Override
 			public void onSuccess(Integer result) {
-				TabInfo newT = new TabInfo(result, t.getName(), t.getModuleIds());
-				tabInfos.set(tabInfos.indexOf(t), newT);
-				setSelectedWithoutCheck(newT);
+				info.setId(result);
+				updateDisplays();
 			}
 		});
 	}
