@@ -21,6 +21,7 @@ package com.kk_electronic.kkportal.core.ui;
 
 import java.util.List;
 
+import com.google.gwt.dom.client.Style.Cursor;
 import com.google.gwt.dom.client.Style.Unit;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
@@ -29,7 +30,7 @@ import com.google.gwt.event.shared.GwtEvent;
 import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
-import com.google.gwt.user.client.ui.Button;
+import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.LayoutPanel;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.gwt.view.client.HasData;
@@ -57,7 +58,9 @@ public class TabDisplay implements HasData<TabInfo> {
 	private final TabsModel tabInfoProvider;
 	private final Provider<Tab> tabProvider;
 	private Widget widget;
-	private Button newTabButton = new Button("+");
+	private Image newTabButton;
+
+	private final Resources resources;
 
 	public static interface UIBinder extends UiBinder<Widget, TabDisplay> { }
 	
@@ -66,10 +69,13 @@ public class TabDisplay implements HasData<TabInfo> {
 			Resources resources, Provider<Tab> tabProvider, UIBinder binder) {
 		this.tabInfoProvider = tabInfoProvider;
 		this.eventBus = eventBus;
+		this.resources = resources;
 		this.tabProvider = tabProvider;
 		this.widget = binder.createAndBindUi(this);
 		selectionModel = tabInfoProvider.getSelectionModel();
 		tabInfoProvider.addDataDisplay(this);
+		newTabButton = new Image(resources.addtab());
+		newTabButton.getElement().getStyle().setCursor(Cursor.POINTER);
 		newTabButton.addClickHandler(new ClickHandler() {
 			@Override
 			public void onClick(ClickEvent event) {
@@ -110,8 +116,13 @@ public class TabDisplay implements HasData<TabInfo> {
 			totalWidth += tabWidth - margin;
 		}
 		panel.add(newTabButton);
-		panel.setWidgetLeftWidth(newTabButton, totalWidth + margin, Unit.PX, margin*2, Unit.PX);
-		panel.setWidgetBottomHeight(newTabButton, 0, Unit.EM, 1, Unit.EM);
+		panel.setWidgetLeftWidth(newTabButton, totalWidth+5, Unit.PX, margin*2, Unit.PX); 
+		panel.setWidgetTopBottom(newTabButton, 3, Unit.PX, 0, Unit.PX);
+		/*
+		 * now this is a really stupid hack to fix the fact that LayoutPanel clears the height and width
+		 * of the element.
+		 */
+		newTabButton.setPixelSize(resources.addtab().getWidth(), resources.addtab().getHeight());
 	}
 
 	@Override
