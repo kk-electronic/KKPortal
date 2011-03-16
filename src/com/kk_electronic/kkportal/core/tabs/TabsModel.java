@@ -306,6 +306,14 @@ public class TabsModel implements NewPrimaryIdentityEvent.Handler, LocationChang
 	}
 	
 	public void deleteTab(final TabInfo tabInfo) {
+		if(selectionModel.getSelectedObject() == tabInfo){
+			int i = tabInfos.indexOf(tabInfo);
+			if (i > 0){
+				selectionModel.setSelected(tabInfos.get(i-1), true);
+			} else if ( !tabInfos.isEmpty() ){
+				selectionModel.setSelected(tabInfos.get(0), true);
+			}
+		}
 		// Remove Local
 		tabInfos.remove(tabInfo);
 		
