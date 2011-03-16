@@ -48,4 +48,6 @@ public interface Resources extends ClientBundle {
 
 	public ImageResource lefttab();
 	public ImageResource righttab();
+	public ImageResource deltab();
+	public ImageResource addtab();
 }
