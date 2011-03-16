@@ -135,11 +135,14 @@ public class TogglePanel extends Composite implements IndexedPanel.ForIsWidget, 
 	}
 	
 	public void setWidget(Widget widget) {
-		if(getWidget() == widget) {
-			return;
-		}
 		if(!widgets.contains(widget)){
 			widgets.add(widget);
+		}
+		showWidget(widget);
+	}
+	private void showWidget(Widget widget) {
+		if(getWidget() == widget) {
+			return;
 		}
 		if(holder.getWidgetCount() > 0){
 			holder.clear();
@@ -150,5 +153,16 @@ public class TogglePanel extends Composite implements IndexedPanel.ForIsWidget, 
 	public Widget getWidget(){
 		if(holder.getWidgetCount() == 0) return null;
 		return holder.getWidget(0);
+	}
+	/**
+	 * @param i
+	 */
+	public Widget setWidget(int index) {
+		if(index < 0 || index >= widgets.size()){
+			return null;
+		}
+		Widget w = widgets.get(index);
+		showWidget(w);
+		return w;
 	}
 }
