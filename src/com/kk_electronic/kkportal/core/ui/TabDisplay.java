@@ -228,4 +228,11 @@ public class TabDisplay implements HasData<TabInfo> {
 		}
 		return null;
 	}
+
+	/**
+	 * @param tab
+	 */
+	public void deletetab(Tab tab) {
+		tabInfoProvider.deleteTab(tab.getInfo());
+	}
 }
