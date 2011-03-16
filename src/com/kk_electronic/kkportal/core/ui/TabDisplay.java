@@ -24,14 +24,11 @@ import java.util.List;
 import com.google.gwt.dom.client.Style.Unit;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
-import com.google.gwt.event.dom.client.DoubleClickEvent;
-import com.google.gwt.event.dom.client.DoubleClickHandler;
 import com.google.gwt.event.shared.EventBus;
 import com.google.gwt.event.shared.GwtEvent;
 import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
-import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.LayoutPanel;
 import com.google.gwt.user.client.ui.Widget;
@@ -101,12 +98,7 @@ public class TabDisplay implements HasData<TabInfo> {
 		for (TabInfo info : values) {
 			final Tab t = tabProvider.get();
 			t.setInfo(info);
-			t.addDoubleClickHandler(new DoubleClickHandler() {
-				@Override
-				public void onDoubleClick(DoubleClickEvent event) {
-					onEditTabNameClick(t);
-				}
-			});
+			t.setHandler(this);
 			panel.add(t);
 			t.getElement().getStyle().setZIndex(i--);
 			if (selectionModel != null && selectionModel.isSelected(info)) {
@@ -217,32 +209,12 @@ public class TabDisplay implements HasData<TabInfo> {
 		// insert tabinfo into local (this class) store
 		
 		final Tab to = findTab(tabInfoProvider.createEmptyLocalTab());
-		to.editTabName(new AsyncCallback<String>() {
-			@Override
-			public void onFailure(Throwable caught) {
-				
-			}
-
-			@Override
-			public void onSuccess(String result) {
-				to.getInfo().setName(result);
-				tabInfoProvider.createTab(to.getInfo());
-			}
-		});
+		to.setEdit(true);
 	}
 	
-	private void onEditTabNameClick(final Tab tab) {
-		// Get the right tab;
-		tab.editTabName(new AsyncCallback<String>() {
-			@Override
-			public void onFailure(Throwable caught) { /* No-op */ }
-
-			@Override
-			public void onSuccess(String result) {
-				tab.getInfo().setName(result);
-				tabInfoProvider.updateTab(tab.getInfo());
-			}
-		});
+	public void onEditTabNameClick(final Tab tab,String newname) {
+		tab.getInfo().setName(newname);
+		tabInfoProvider.updateTab(tab.getInfo());
 	}
 	
 	private Tab findTab(TabInfo tabInfo) {

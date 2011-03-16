@@ -329,9 +329,8 @@ public class TabsModel implements NewPrimaryIdentityEvent.Handler, LocationChang
 	}
 	
 	public void updateTab(final TabInfo tabInfo) {
-		//TODO does not take local Tabs into account
-		if (tabInfo.getId() == null ) {
-			createTab(tabInfo.getName(), tabInfo.getModuleIds());
+		if (tabInfo.getId() == null || tabInfo.getId() < 0) {
+			createTab(tabInfo);
 			return;
 		}
 		TabInfo oldTab = findTabInfo(this.tabInfos, tabInfo.getId());

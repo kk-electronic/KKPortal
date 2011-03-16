@@ -20,22 +20,19 @@
 
 package com.kk_electronic.kkportal.core.ui;
 
-import com.google.gwt.event.dom.client.DoubleClickHandler;
-import com.google.gwt.event.dom.client.HasDoubleClickHandlers;
+import com.google.gwt.core.client.GWT;
+import com.google.gwt.core.client.Scheduler;
+import com.google.gwt.core.client.Scheduler.ScheduledCommand;
+import com.google.gwt.event.dom.client.BlurEvent;
+import com.google.gwt.event.dom.client.DoubleClickEvent;
 import com.google.gwt.event.dom.client.KeyCodes;
 import com.google.gwt.event.dom.client.KeyPressEvent;
-import com.google.gwt.event.dom.client.KeyPressHandler;
-import com.google.gwt.event.logical.shared.CloseEvent;
-import com.google.gwt.event.logical.shared.CloseHandler;
-import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.resources.client.CssResource;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
-import com.google.gwt.user.client.rpc.AsyncCallback;
+import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.client.ui.Anchor;
 import com.google.gwt.user.client.ui.Composite;
-import com.google.gwt.user.client.ui.LayoutPanel;
-import com.google.gwt.user.client.ui.PopupPanel;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.inject.Inject;
@@ -45,7 +42,7 @@ import com.kk_electronic.kkportal.core.tabs.TabInfo;
  * @author Rasmus Carlsen
  *
  */
-public class Tab extends Composite implements HasDoubleClickHandlers{
+public class Tab extends Composite{
 	private TabInfo info;
 	
 	public static interface UIBinder extends UiBinder<Widget, Tab> {
@@ -63,7 +60,15 @@ public class Tab extends Composite implements HasDoubleClickHandlers{
 	Anchor name;
 	
 	@UiField
-	LayoutPanel container;
+	TogglePanel toggle;
+
+	@UiField
+	TextBox editname;
+	
+	@UiField
+	Widget container;
+
+	private TabDisplay handler;
 	
 	@Inject
 	public Tab(UIBinder binder) {
@@ -92,36 +97,58 @@ public class Tab extends Composite implements HasDoubleClickHandlers{
 		this.addStyleName(style.selected());
 	}
 	
-	public void editTabName(final AsyncCallback<String> callback) {
-		// insert a text edit field in place of title
-		final PopupPanel pp = new PopupPanel(true, true);
-		final TextBox tb = new TextBox();
-		pp.add(tb);
-
-		tb.setText(getName());
-		pp.setAnimationEnabled(true);
-		pp.showRelativeTo(name);
-		pp.addCloseHandler(new CloseHandler<PopupPanel>() {
-			@Override
-			public void onClose(CloseEvent<PopupPanel> event) {
-				String text = tb.getText();
-				if (!text.equals(name)) {
-					callback.onSuccess(text);
-				}	
-			}
-		});
-		tb.addKeyPressHandler(new KeyPressHandler() {
-			@Override
-			public void onKeyPress(KeyPressEvent event) {
-				if(event.getCharCode() == KeyCodes.KEY_ENTER) {
-					pp.hide();
+	/**
+	 * @param b
+	 */
+	public void setEdit(boolean b) {
+		if(b){
+			toggle.setWidget(editname);
+			editname.setText(info.getName());
+			Scheduler.get().scheduleDeferred(new ScheduledCommand() {
+				
+				@Override
+				public void execute() {
+					editname.setFocus(true);					
 				}
-			}
-		});
+			});
+		} else {
+			toggle.setWidget(name);
+		}
+	}
+	
+	@UiHandler("editname")
+	public void onBlur(BlurEvent event){
+		commit();
 	}
 
-	@Override
-	public HandlerRegistration addDoubleClickHandler(DoubleClickHandler handler) {
-		return name.addDoubleClickHandler(handler);
+	@UiHandler("editname")
+	public void onKeyPress(KeyPressEvent event){
+		if(event.getCharCode() == KeyCodes.KEY_ENTER){
+			commit();
+		}
+	}
+
+	@UiHandler("name")
+	public void onDoubleClick(DoubleClickEvent event){
+		setEdit(true);
+	}
+	
+	/**
+	 * 
+	 */
+	private void commit() {
+		GWT.log("Tab-edit done");
+		setEdit(false);
+		name.setText(editname.getText());
+		if(handler != null){
+			handler.onEditTabNameClick(this,editname.getText());
+		}
+	}
+
+	/**
+	 * @param tabDisplay
+	 */
+	public void setHandler(TabDisplay handler) {
+		this.handler = handler;
 	}
 }
