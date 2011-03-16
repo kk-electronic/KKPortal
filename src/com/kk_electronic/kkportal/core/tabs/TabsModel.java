@@ -95,7 +95,7 @@ public class TabsModel implements NewPrimaryIdentityEvent.Handler, LocationChang
 	
 	public int getMaxWidth() {
 		//TODO:iterate and find
-		return 80;
+		return 120;
 	}
 
 	protected void getTabs() {
