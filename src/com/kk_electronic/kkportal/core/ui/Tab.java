@@ -24,6 +24,7 @@ import com.google.gwt.core.client.GWT;
 import com.google.gwt.core.client.Scheduler;
 import com.google.gwt.core.client.Scheduler.ScheduledCommand;
 import com.google.gwt.event.dom.client.BlurEvent;
+import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.DoubleClickEvent;
 import com.google.gwt.event.dom.client.KeyCodes;
 import com.google.gwt.event.dom.client.KeyPressEvent;
@@ -102,7 +103,7 @@ public class Tab extends Composite{
 	 */
 	public void setEdit(boolean b) {
 		if(b){
-			toggle.setWidget(editname);
+			toggle.setWidget(1);
 			editname.setText(info.getName());
 			Scheduler.get().scheduleDeferred(new ScheduledCommand() {
 				
@@ -112,7 +113,7 @@ public class Tab extends Composite{
 				}
 			});
 		} else {
-			toggle.setWidget(name);
+			toggle.setWidget(0);
 		}
 	}
 	
@@ -132,7 +133,14 @@ public class Tab extends Composite{
 	public void onDoubleClick(DoubleClickEvent event){
 		setEdit(true);
 	}
-	
+
+	@UiHandler("delete")
+	public void onDoubleClick(ClickEvent event){
+		if(handler != null){
+			handler.deletetab(this);
+		}		
+	}
+
 	/**
 	 * 
 	 */

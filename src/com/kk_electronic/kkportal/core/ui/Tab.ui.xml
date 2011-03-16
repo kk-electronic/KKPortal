@@ -31,9 +31,11 @@
 			margin-top: 2px;
 			margin-bottom: 0;
 		}
-		.link{
+		.linkbox{
 			border-top: 1px solid colour1;
 			background-color: colour2; 
+		}
+		.link{
 			color: white;
 			text-decoration: none;
 		}
@@ -48,6 +50,9 @@
 			border: none;
 			padding: 0;
 		}
+		.imagelink{
+			cursor: pointer;
+		}
 	</ui:style>
 		<g:LayoutPanel stylePrimaryName="{style.container}" ui:field="container">
 			<g:layer left="0px" width="{res.lefttab.getWidth}px">
@@ -57,9 +62,16 @@
 				<g:Image resource="{res.righttab}" />
 			</g:layer>
 			<g:layer left="{res.lefttab.getWidth}px" right="{res.righttab.getWidth}px" top="0px" bottom="0">
-				<kk:TogglePanel ui:field="toggle">
-					<g:Anchor stylePrimaryName="{style.link}" ui:field="name" />
-					<g:TextBox stylePrimaryName="{style.editname}" ui:field="editname" >Tet</g:TextBox>
+				<kk:TogglePanel stylePrimaryName="{style.linkbox}" ui:field="toggle">
+					<g:LayoutPanel>
+						<g:layer left="0px" right="{res.righttab.getWidth}px">
+							<g:Anchor stylePrimaryName="{style.link}" ui:field="name" />
+						</g:layer>
+						<g:layer right="0px" width="{res.deltab.getWidth}px">
+							<g:Image stylePrimaryName="{style.imagelink}" resource="{res.deltab}" ui:field="delete" />
+						</g:layer>
+					</g:LayoutPanel>
+					<g:TextBox stylePrimaryName="{style.editname}" ui:field="editname">Tet</g:TextBox>
 				</kk:TogglePanel>
 			</g:layer>
 	</g:LayoutPanel>
