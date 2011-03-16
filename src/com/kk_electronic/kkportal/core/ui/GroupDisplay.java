@@ -71,6 +71,9 @@ public class GroupDisplay<T extends IsWidget & KnownHeight & DragSource> impleme
 	HashSet<Widget> displayed = new HashSet<Widget>();
 	
 	public void setWidgets(List<List<T>> widgets){
+		if(canvas.isAttached() == false){
+			return;
+		}
 		if(widgets == null){
 			canvas.clear();
 			displayed.clear();
