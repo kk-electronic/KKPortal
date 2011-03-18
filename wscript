@@ -170,3 +170,15 @@ def installwindowsdep(ctx):
 	sh(os.path.join(sys.prefix,'Scripts','easy_install'),'twisted')
 	sh(os.path.join(sys.prefix,'Scripts','easy_install'),'sqlalchemy')
 	sh(os.path.join(sys.prefix,'Scripts','easy_install'),'simplejson')
+
+def resetDB(ctx):
+	includedir = ctx.path.find_node('server').abspath()
+	import subprocess,os,sys
+	if 'PYTHONPATH' in os.environ:
+		os.environ['PYTHONPATH'] += os.path.pathsep + includedir
+	else:
+		os.environ['PYTHONPATH'] = includedir
+	command = ['python',
+		os.path.join(ctx.path.find_dir('tools').abspath(),'resetDatabase.py'),
+	]
+	p = subprocess.Popen(command).wait()
