@@ -21,55 +21,45 @@ package com.kk_electronic.kkportal.core.rpc;
 
 import java.util.AbstractList;
 import java.util.Arrays;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import com.google.gwt.json.client.JSONParser;
 import com.google.gwt.json.client.JSONValue;
 import com.google.inject.Inject;
-import com.kk_electronic.kkportal.core.rpc.jsonformat.JsonChallange;
-import com.kk_electronic.kkportal.core.rpc.jsonformat.JsonDate;
-import com.kk_electronic.kkportal.core.rpc.jsonformat.JsonDouble;
 import com.kk_electronic.kkportal.core.rpc.jsonformat.JsonIdentity;
-import com.kk_electronic.kkportal.core.rpc.jsonformat.JsonInteger;
 import com.kk_electronic.kkportal.core.rpc.jsonformat.JsonList;
-import com.kk_electronic.kkportal.core.rpc.jsonformat.JsonLong;
 import com.kk_electronic.kkportal.core.rpc.jsonformat.JsonMap;
-import com.kk_electronic.kkportal.core.rpc.jsonformat.JsonModuleInfo;
 import com.kk_electronic.kkportal.core.rpc.jsonformat.JsonRpcEnvelope;
-import com.kk_electronic.kkportal.core.rpc.jsonformat.JsonString;
-import com.kk_electronic.kkportal.core.rpc.jsonformat.JsonTabInfo;
-import com.kk_electronic.kkportal.core.rpc.jsonformat.JsonTimeEntry;
 import com.kk_electronic.kkportal.core.rpc.jsonformat.JsonValue;
 import com.kk_electronic.kkportal.core.rpc.jsonformat.UnableToDeserialize;
 import com.kk_electronic.kkportal.core.rpc.jsonformat.UnableToSerialize;
-import com.kk_electronic.kkportal.core.security.Challange;
 import com.kk_electronic.kkportal.core.security.Identity;
-import com.kk_electronic.kkportal.core.services.ModuleService.ModuleInfo;
-import com.kk_electronic.kkportal.core.tabs.TabInfo;
-import com.kk_electronic.kkportal.timereg.model.TimeEntry;
 
 public class JsonEncoder implements FrameEncoder<JSONValue> {
 
 	HashMap<Class<?>, JsonValue<?>> types = new HashMap<Class<?>, JsonValue<?>>();
 
 	@Inject
-	public JsonEncoder() {
+	public JsonEncoder(JsonEncoderHelper helper) {
 		JsonValue<?> t;
 		types.put(Identity.class, new JsonIdentity());
+		
 		t = new JsonRpcEnvelope();
 		types.put(RpcRequest.class, t);
 		types.put(RpcResponse.class, t);
+
 		t = new JsonList<Object>();
 		types.put(AbstractList.class, t);
-		types.put(List.class, t);
+		//types.put(List.class, t);
+		
+		t = new JsonMap<Object>();
+		types.put(HashMap.class, new JsonMap<Object>());
+		//types.put(Map.class, t);
+
+		/*
 		types.put(String.class, new JsonString());
 		types.put(Integer.class, new JsonInteger());
-		t = new JsonMap<Object>();
-		types.put(Map.class, t);
-		types.put(HashMap.class, t);
 		types.put(TabInfo.class, new JsonTabInfo());
 		types.put(ModuleInfo.class, new JsonModuleInfo());
 		types.put(Double.class, new JsonDouble());
@@ -77,6 +67,10 @@ public class JsonEncoder implements FrameEncoder<JSONValue> {
 		types.put(TimeEntry.class, new JsonTimeEntry());
 		types.put(Long.class, new JsonLong());
 		types.put(Date.class, new JsonDate());
+		/**/
+
+		// Inserts all the generated classes
+		types.putAll(helper.getGeneratedMap());
 	}
 
 	@SuppressWarnings("unchecked")
@@ -108,8 +102,9 @@ public class JsonEncoder implements FrameEncoder<JSONValue> {
 	private <T> JsonValue<T> find(Class<?> clazz, T ihatejava) {
 		if (types.containsKey(clazz))
 			return (JsonValue<T>) types.get(clazz);
-		if (clazz.getSuperclass() != null)
-			return find(clazz.getSuperclass(), ihatejava);
+		if (clazz.getSuperclass() != null) {
+			return find(clazz.getSuperclass(), ihatejava);			
+		}
 		return null;
 	}
 

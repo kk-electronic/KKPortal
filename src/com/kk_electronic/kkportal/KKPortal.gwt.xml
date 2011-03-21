@@ -44,4 +44,7 @@
   <generate-with class="com.kk_electronic.gwt.rebind.ModuleTypeInfoHelperGenerator">
     <when-type-assignable class="com.kk_electronic.kkportal.core.tabs.ModuleTypeInfoHelper" />
   </generate-with>
+  <generate-with class="com.kk_electronic.gwt.rebind.JsonEncoderGenerator">
+    <when-type-assignable class="com.kk_electronic.kkportal.core.rpc.JsonEncoderHelper" />
+  </generate-with>
 </module>
