@@ -19,13 +19,13 @@
  */
 package com.kk_electronic.kkportal.core.rpc;
 
-import java.util.HashMap;
+import java.util.Map;
 
 import com.google.gwt.user.client.rpc.AsyncCallback;
 
 public interface RemoteServer extends RemoteService {
 	void getServerFQDN(AsyncCallback<String> callback);
-	void getSecurityMap(AsyncCallback<HashMap<String,String>> callback);
+	void getSecurityMap(AsyncCallback<Map<String,String>> callback);
 	void getEncryptedSessionKey(String newusername,
 			AsyncCallback<String> encryptedKeyCallback);
 }
