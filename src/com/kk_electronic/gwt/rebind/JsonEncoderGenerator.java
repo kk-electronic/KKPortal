@@ -49,7 +49,6 @@ import com.google.gwt.user.rebind.ClassSourceFileComposerFactory;
 import com.google.gwt.user.rebind.SourceWriter;
 import com.google.inject.Singleton;
 import com.kk_electronic.kkportal.core.rpc.FrameEncoder;
-import com.kk_electronic.kkportal.core.rpc.JsonEncoder;
 import com.kk_electronic.kkportal.core.rpc.JsonEncoderHelper;
 import com.kk_electronic.kkportal.core.rpc.RemoteService;
 import com.kk_electronic.kkportal.core.rpc.Rename;
@@ -330,7 +329,6 @@ public class JsonEncoderGenerator extends Generator{
 			composer.addImport(JSONValue.class.getCanonicalName());
 			composer.addImport(JSONObject.class.getCanonicalName());
 			composer.addImport(FrameEncoder.class.getCanonicalName());
-			composer.addImport(JsonEncoder.class.getCanonicalName());
 			composer.addImport(jc.getQualifiedSourceName());
 			
 			composer.addImplementedInterface(JsonValue.class.getCanonicalName() + "<" + jc.getSimpleSourceName() + ">");
@@ -459,7 +457,7 @@ public class JsonEncoderGenerator extends Generator{
 			sw.println("@Override");
 			sw.println("public " + jc.getSimpleSourceName() + " fromJson(JSONValue jsonValue, List<Class<?>> subtypes,");
 			sw.indent();
-			sw.indentln("JsonEncoder jsonEncoder) throws UnableToDeserialize {");
+			sw.indentln("FrameEncoder<JSONValue> encoder) throws UnableToDeserialize {");
 
 			//boiler plate null check
 			sw.println("if (jsonValue.isNull() != null)");
@@ -477,7 +475,7 @@ public class JsonEncoderGenerator extends Generator{
 			
 			//validate
 			for (JField f : fields) {
-				sw.print(f.getName() + " = jsonEncoder.validate(jsonObject.get(\"" + getJsonName(f) + "\"), ");
+				sw.print(f.getName() + " = encoder.validate(jsonObject.get(\"" + getJsonName(f) + "\"), ");
 				sw.println(f.getName() + ", new Class<?>[]{" + getFieldType(f, true) + "});");
 			}
 			sw.println();

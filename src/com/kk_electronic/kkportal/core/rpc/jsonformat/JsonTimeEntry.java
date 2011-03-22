@@ -25,7 +25,6 @@ import java.util.List;
 import com.google.gwt.json.client.JSONObject;
 import com.google.gwt.json.client.JSONValue;
 import com.kk_electronic.kkportal.core.rpc.FrameEncoder;
-import com.kk_electronic.kkportal.core.rpc.JsonEncoder;
 import com.kk_electronic.kkportal.timereg.model.TimeEntry;
 
 /**
@@ -35,7 +34,7 @@ import com.kk_electronic.kkportal.timereg.model.TimeEntry;
 public class JsonTimeEntry implements JsonValue<TimeEntry> {
 	@Override
 	public TimeEntry fromJson(JSONValue jsonValue, List<Class<?>> subtypes,
-			JsonEncoder jsonEncoder) throws UnableToDeserialize {
+			FrameEncoder<JSONValue> encoder) throws UnableToDeserialize {
 		if (jsonValue.isNull() != null)
 			return null;
 		if (jsonValue.isObject() == null)
@@ -46,10 +45,10 @@ public class JsonTimeEntry implements JsonValue<TimeEntry> {
 		Long checkout = null;
 		Integer taskid = null;
 		Integer id = null;
-		checkin = jsonEncoder.validate(o.get("checkin"), checkin, new Class<?>[]{Long.class});
-		checkout = jsonEncoder.validate(o.get("checkout"), checkout, new Class<?>[]{Long.class});
-		taskid = jsonEncoder.validate(o.get("taskId"), taskid, new Class<?>[]{Integer.class});
-		id = jsonEncoder.validate(o.get("id"), id, new Class<?>[]{Integer.class});
+		checkin = encoder.validate(o.get("checkin"), checkin, new Class<?>[]{Long.class});
+		checkout = encoder.validate(o.get("checkout"), checkout, new Class<?>[]{Long.class});
+		taskid = encoder.validate(o.get("taskId"), taskid, new Class<?>[]{Integer.class});
+		id = encoder.validate(o.get("id"), id, new Class<?>[]{Integer.class});
 		TimeEntry t = new TimeEntry(checkin, checkout, taskid);
 		t.setId(id);
 		return t;

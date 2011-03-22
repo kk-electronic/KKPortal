@@ -24,14 +24,13 @@ import java.util.List;
 import com.google.gwt.json.client.JSONObject;
 import com.google.gwt.json.client.JSONValue;
 import com.kk_electronic.kkportal.core.rpc.FrameEncoder;
-import com.kk_electronic.kkportal.core.rpc.JsonEncoder;
 import com.kk_electronic.kkportal.core.tabs.TabInfo;
 
 public class JsonTabInfo implements JsonValue<TabInfo> {
 
 	@Override
 	public TabInfo fromJson(JSONValue jsonValue, List<Class<?>> subtypes,
-			JsonEncoder simpleEncoder) throws UnableToDeserialize {
+			FrameEncoder<JSONValue> encoder) throws UnableToDeserialize {
 		JSONObject jsonObject = jsonValue.isObject();
 		if(jsonObject == null) throw new UnableToDeserialize("Expected json Object");
 
@@ -39,9 +38,9 @@ public class JsonTabInfo implements JsonValue<TabInfo> {
 		String name = null;
 		List<List<Integer>> moduleIds = null;
 
-		id = simpleEncoder.validate(jsonObject.get("tab_id"), id,new Class<?>[]{Integer.class});
-		name = simpleEncoder.validate(jsonObject.get("name"), name,new Class<?>[]{String.class});
-		moduleIds = simpleEncoder.validate(jsonObject.get("module_ids"), moduleIds, new Class<?>[]{List.class,List.class,Integer.class});
+		id = encoder.validate(jsonObject.get("tab_id"), id,new Class<?>[]{Integer.class});
+		name = encoder.validate(jsonObject.get("name"), name,new Class<?>[]{String.class});
+		moduleIds = encoder.validate(jsonObject.get("module_ids"), moduleIds, new Class<?>[]{List.class,List.class,Integer.class});
 		
 		return new TabInfo(id, name, moduleIds);
 	}

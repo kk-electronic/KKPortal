@@ -25,7 +25,6 @@ import java.util.List;
 import com.google.gwt.json.client.JSONArray;
 import com.google.gwt.json.client.JSONValue;
 import com.kk_electronic.kkportal.core.rpc.FrameEncoder;
-import com.kk_electronic.kkportal.core.rpc.JsonEncoder;
 
 public class JsonList<T> implements JsonValue<List<T>> {
 
@@ -46,14 +45,15 @@ public class JsonList<T> implements JsonValue<List<T>> {
 
 	@Override
 	public List<T> fromJson(JSONValue jsonValue, List<Class<?>> subtypes,
-			JsonEncoder simpleEncoder) throws UnableToDeserialize {
+			FrameEncoder<JSONValue> encoder) throws UnableToDeserialize {
 		JSONArray jsonArray = jsonValue.isArray();
 		if (jsonArray == null)
 			throw new UnableToDeserialize("Expected Json Array");
 		List<T> list = new ArrayList<T>();
 		for (int i = 0, l = jsonArray.size(); i < l; i++) {
 			T result = null;
-			result = simpleEncoder.test(jsonArray.get(i),subtypes,result);
+//			result = encoder.test(jsonArray.get(i),subtypes,result);
+			result = encoder.validate(jsonArray.get(i), result, subtypes.toArray(new Class<?>[subtypes.size()]));
 			list.add(result);
 		}
 		return list;
