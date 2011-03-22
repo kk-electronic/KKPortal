@@ -114,29 +114,46 @@ public class JsonEncoderGenerator extends Generator{
 			for (JMethod m : methods) {
 				JParameter[] paras = m.getParameters();
 				for (JParameter p : paras) {
-					JClassType jct = p.getType().isInterface();
-					if (jct == null || !jct.isAssignableTo(desiredInterface)) {
+					JType t = p.getType();
+
+					if (t == null) {
 						continue;
-					} else {
-						processStuff(jct);
 					}
+					
+					JClassType jct = t.isInterface(); 
+					if (t.isInterface() != null) {
+						if (jct.isAssignableTo(desiredInterface)) {
+							processStuff(jct);
+							jct = null;
+						} 
+					} else { 
+						jct = t.isClass();
+					}
+					if (jct == null){
+						continue;
+					}
+					checkClass(jct);
 				}
 			}
 		}
 		
 	}
 
-	private void processStuff(JClassType jct) {
+	private void processStuff(JType jct) {
 		JParameterizedType jpt = jct.isParameterized();
 		if (jpt == null) {
 			return;
 		}
 		JClassType[] cd = jpt.getTypeArgs();
 		for (JClassType type : cd) {
-			if (!map.containsKey(type.getQualifiedSourceName()) && type.isWildcard() == null && !worklist.contains(type)) {
-				worklist.add(type);					
-			}
+			checkClass(type);
 			processStuff(type);
+		}
+	}
+	
+	private void checkClass(JClassType type) {
+		if (!map.containsKey(type.getQualifiedSourceName()) && type.isWildcard() == null && !worklist.contains(type)) {
+			worklist.add(type);					
 		}
 	}
 	

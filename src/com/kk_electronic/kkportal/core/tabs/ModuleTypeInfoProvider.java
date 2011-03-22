@@ -30,7 +30,6 @@ import com.kk_electronic.kkportal.core.moduleview.Module;
 import com.kk_electronic.kkportal.core.reflection.ModuleMap;
 import com.kk_electronic.kkportal.core.services.ModuleTypeInfo;
 
-//TODO: Generate this class
 public class ModuleTypeInfoProvider implements hasAddModuleTypeInfo {
 	HashMap<Integer, ModuleTypeInfo> map = new HashMap<Integer, ModuleTypeInfo>();
 	private final ModuleMap moduleMap;
@@ -41,7 +40,9 @@ public class ModuleTypeInfoProvider implements hasAddModuleTypeInfo {
 		data.insertData(this);
 	}
 	
-	/* (non-Javadoc)
+	/**
+	 * Used for adding modules to the internal Data structure
+	 * 
 	 * @see com.kk_electronic.kkportal.core.tabs.hasAddModuleTypeInfo#add(java.lang.Class, java.lang.Integer, java.lang.String)
 	 */
 	public void add(Class<? extends Module> clazz,Integer id,String name){
