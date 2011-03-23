@@ -207,7 +207,7 @@ public class JsonEncoderGenerator extends Generator{
 					break;
 				}
 			}
-			if (!emptyConstructor) {
+			if (!emptyConstructor && cs.length > 0) {
 				logger.log(TreeLogger.ERROR, "Unable to generate class for " + jc.getSimpleSourceName() + " mising default constructor");
 			} else {
 				SubClassGenerator gen = new SubClassGenerator();
