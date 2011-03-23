@@ -120,9 +120,9 @@ public class JsonEncoderGenerator extends Generator{
 					}
 					
 					JClassType jct = t.isInterface(); 
-					if (t.isInterface() != null) {
+					if (jct != null) {
 						if (jct.isAssignableTo(desiredInterface)) {
-							processStuff(jct);
+							processGenerics(jct);
 							jct = null;
 						} 
 					} else { 
@@ -131,29 +131,46 @@ public class JsonEncoderGenerator extends Generator{
 					if (jct == null){
 						continue;
 					}
-					checkClass(jct);
+					processClass(jct);
 				}
 			}
 		}
 		
 	}
 
-	private void processStuff(JType jct) {
+	private void processClass(JClassType jct) {
+		processGenerics(jct);
+		if(checkClass(jct) && jct.isInterface() == null) {
+			processFields(jct);
+		}
+	}
+	
+	private void processGenerics(JType jct) {
 		JParameterizedType jpt = jct.isParameterized();
 		if (jpt == null) {
 			return;
 		}
 		JClassType[] cd = jpt.getTypeArgs();
 		for (JClassType type : cd) {
-			checkClass(type);
-			processStuff(type);
+			processClass(type);
 		}
 	}
 	
-	private void checkClass(JClassType type) {
-		if (!map.containsKey(type.getQualifiedSourceName()) && type.isWildcard() == null && !worklist.contains(type)) {
-			worklist.add(type);					
+	private void processFields(JClassType jct) {
+		JField[] fields = jct.getFields();
+		for (JField jField : fields) {
+			JClassType jClass = jField.getType().isClass();
+			if (jClass != null && !jField.isTransient()) {
+				processClass(jClass);
+			}
 		}
+	}
+	
+	private boolean checkClass(JClassType type) {
+		if (!map.containsKey(type.getQualifiedSourceName()) && type.isWildcard() == null && !worklist.contains(type)) {
+			return worklist.add(type);					
+		}
+		return false;
 	}
 	
 	/**
