@@ -19,21 +19,26 @@
  */
 package com.kk_electronic.kkportal.core.ui;
 
+import com.google.gwt.dom.client.Element;
+import com.google.gwt.dom.client.Style.Overflow;
 import com.google.gwt.dom.client.Style.Unit;
 import com.google.gwt.user.client.ui.DockLayoutPanel;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.inject.Inject;
 import com.kk_electronic.kkportal.core.LoginIndicator;
 import com.kk_electronic.kkportal.core.activity.Activity;
+import com.kk_electronic.kkportal.res.Resources;
 
 public class View implements Activity {
 	private final Canvas canvas;
 	private final TabDisplay tabDisplay;
+	private Resources resources;
 
 	@Inject
-	public View(Canvas canvas,TabDisplay tabDisplay,LoginIndicator login) {
+	public View(Resources resources, Canvas canvas,TabDisplay tabDisplay,LoginIndicator login) {
 		this.canvas = canvas;
 		this.tabDisplay = tabDisplay;
+		this.resources = resources;
 	}
 	
 	DockLayoutPanel panel;
@@ -43,7 +48,15 @@ public class View implements Activity {
 		if(panel != null) return panel;
 		panel = new DockLayoutPanel(Unit.EM);
 		panel.addNorth(tabDisplay.asWidget(), 1.4);
-		panel.add(canvas.asWidget());
+		Widget w = canvas.asWidget();
+		panel.add(w);
+		Element e = panel.getWidgetContainerElement(w);
+		e.getStyle().setBackgroundColor(resources.palette().colour2());
+		e.getStyle().setOverflow(Overflow.AUTO);
+		e.getStyle().setPropertyPx("borderTopLeftRadius", 10);
+		e.getStyle().setPropertyPx("WebkitBorderTopLeftRadius", 10);
+		e.getStyle().setPropertyPx("MozBorderRadiusTopleft", 10);
+
 		return panel;
 	}
 }
