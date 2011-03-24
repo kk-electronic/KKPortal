@@ -44,4 +44,6 @@ public class Pair<A, B> {
 		this.b = b;
 		
 	}
+	
+	public Pair() { }
 }

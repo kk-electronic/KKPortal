@@ -24,6 +24,7 @@ import java.util.List;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.kk_electronic.kkportal.core.rpc.RemoteService;
 import com.kk_electronic.kkportal.core.tabs.TabInfo;
+import com.kk_electronic.kkportal.core.util.Pair;
 
 /**
  * This Service is responsible for the communication about Modules and Tabs
@@ -83,4 +84,11 @@ public interface ModuleService extends RemoteService {
 	 * @param height height in pixels
 	 */
 	void setModuleHeight(Integer moduleId, Integer height, AsyncCallback<?> callback);
+	
+	/**
+	 * Saves the heights of a list of Module Instances
+	 * 
+	 * @param list
+	 */
+	void setModuleHeights(List<Pair<Integer, Integer>> list, AsyncCallback<?> callback);
 }
