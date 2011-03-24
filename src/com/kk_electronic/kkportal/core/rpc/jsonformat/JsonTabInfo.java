@@ -22,38 +22,27 @@ package com.kk_electronic.kkportal.core.rpc.jsonformat;
 import java.util.List;
 
 import com.google.gwt.json.client.JSONObject;
-import com.google.gwt.json.client.JSONParser;
 import com.google.gwt.json.client.JSONValue;
 import com.kk_electronic.kkportal.core.rpc.FrameEncoder;
-import com.kk_electronic.kkportal.core.rpc.JsonEncoder;
 import com.kk_electronic.kkportal.core.tabs.TabInfo;
 
 public class JsonTabInfo implements JsonValue<TabInfo> {
 
-	public static class TabInfoDTO extends TabInfo{
-		public TabInfoDTO(int id, String name, List<List<Integer>> moduleIds) {
-			super(id, name, moduleIds);
-		}
-	}
-	
 	@Override
 	public TabInfo fromJson(JSONValue jsonValue, List<Class<?>> subtypes,
-			JsonEncoder simpleEncoder) throws UnableToDeserialize {
+			FrameEncoder<JSONValue> encoder) throws UnableToDeserialize {
 		JSONObject jsonObject = jsonValue.isObject();
 		if(jsonObject == null) throw new UnableToDeserialize("Expected json Object");
+
 		Integer id = null;
 		String name = null;
-		String moduleidstring = null;
 		List<List<Integer>> moduleIds = null;
 
-		id = simpleEncoder.validate(jsonObject.get("tab_id"), id,new Class<?>[]{Integer.class});
-		name = simpleEncoder.validate(jsonObject.get("name"), name,new Class<?>[]{String.class});
-		moduleidstring = simpleEncoder.validate(jsonObject.get("module_ids"), moduleidstring,new Class<?>[]{String.class});
-		if (moduleidstring != null) {
-			JSONValue mi = JSONParser.parseStrict(moduleidstring);
-			moduleIds = simpleEncoder.validate(mi, moduleIds, new Class<?>[]{List.class,List.class,Integer.class});
-		}
-		return new TabInfoDTO(id, name, moduleIds);
+		id = encoder.validate(jsonObject.get("tab_id"), id,new Class<?>[]{Integer.class});
+		name = encoder.validate(jsonObject.get("name"), name,new Class<?>[]{String.class});
+		moduleIds = encoder.validate(jsonObject.get("module_ids"), moduleIds, new Class<?>[]{List.class,List.class,Integer.class});
+		
+		return new TabInfo(id, name, moduleIds);
 	}
 
 	@Override

@@ -49,6 +49,9 @@ def retrieve(context):
     result = query.execute()
     returnvalues = [dict(x) for x in result]
     result.close()
+    for x in returnvalues:
+        if x['module_ids'] is not None:
+            x['module_ids'] = json.loads(x['module_ids']);
     return returnvalues
 
 def delete(context, id):

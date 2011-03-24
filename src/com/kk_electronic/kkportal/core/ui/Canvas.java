@@ -43,6 +43,7 @@ import com.kk_electronic.kkportal.core.services.ModuleService.ModuleInfo;
 import com.kk_electronic.kkportal.core.tabs.ModuleInfoProvider;
 import com.kk_electronic.kkportal.core.tabs.TabInfo;
 import com.kk_electronic.kkportal.core.tabs.TabsModel;
+import com.kk_electronic.kkportal.core.util.Pair;
 
 /**
  * Note this is not a good example yet. Does not have View-Presenter separation
@@ -57,9 +58,9 @@ public class Canvas implements NewContentEvent.Handler, ContentChangedEvent.Hand
 	private final TabsModel tabsModel;
 	private TabInfo tabInfo;
 	
-	private final static int timerStart = 700;
-	private final static int timerSchedule = 300;
-	private final static int timerIterationCount = 10;
+	private final static int timerStart = 1000;
+	private final static int timerSchedule = 500;
+	private final static int timerIterationCount = 30;
 
 	/**
 	 * The higher the value the more likely the interface is to make new columns when
@@ -263,7 +264,7 @@ public class Canvas implements NewContentEvent.Handler, ContentChangedEvent.Hand
 			} else {
 				this.schedule(timerSchedule);
 				//GWT.log("Check Height Timer run! #" + i);
-				i++;
+				i = i + 1;
 			}
 			
 		}
@@ -286,9 +287,12 @@ public class Canvas implements NewContentEvent.Handler, ContentChangedEvent.Hand
 
 			@Override
 			public void onSuccess(Map<Integer, ModuleInfo> result) {
+				List<Pair<Integer, Integer>> list = new ArrayList<Pair<Integer,Integer>>();
+				
 				for (Entry<Integer, ModuleInfo> entry : result.entrySet()) {
-					tabsModel.setModuleHeight(entry.getKey(), entry.getValue().getHeight());
+					list.add(new Pair<Integer, Integer>(entry.getKey(), entry.getValue().getHeight()));
 				}
+				tabsModel.setModuleHeight(list);
 			}
 		});
 	}

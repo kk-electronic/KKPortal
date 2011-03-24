@@ -20,8 +20,8 @@
 package com.kk_electronic.kkportal.core.ui;
 
 public interface KnownHeight {
-	@Deprecated
 	public int getLastHeight();
 	public int getDesiredHeight();
 	public void saveHeight(int newHeight);
+	public int getId();
 }

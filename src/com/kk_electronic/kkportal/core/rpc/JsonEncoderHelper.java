@@ -17,15 +17,17 @@
  * along with KKPortal.  If not, see <http://www.gnu.org/licenses/>.
  *
  */
+
 package com.kk_electronic.kkportal.core.rpc;
 
 import java.util.Map;
 
-import com.google.gwt.user.client.rpc.AsyncCallback;
+import com.kk_electronic.kkportal.core.rpc.jsonformat.JsonValue;
 
-public interface RemoteServer extends RemoteService {
-	void getServerFQDN(AsyncCallback<String> callback);
-	void getSecurityMap(AsyncCallback<Map<String,String>> callback);
-	void getEncryptedSessionKey(String newusername,
-			AsyncCallback<String> encryptedKeyCallback);
+/**
+ * @author Rasmus Carlsen
+ *
+ */
+public interface JsonEncoderHelper {
+	public Map<Class<?>,JsonValue<?>> getGeneratedMap();
 }

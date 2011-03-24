@@ -44,6 +44,7 @@ import com.kk_electronic.kkportal.core.security.NewPrimaryIdentityEvent;
 import com.kk_electronic.kkportal.core.services.ModuleService;
 import com.kk_electronic.kkportal.core.services.ModuleTypeInfo;
 import com.kk_electronic.kkportal.core.services.TabService;
+import com.kk_electronic.kkportal.core.util.Pair;
 
 @Singleton
 public class TabsModel implements NewPrimaryIdentityEvent.Handler, LocationChangedEvent.Handler{
@@ -352,5 +353,23 @@ public class TabsModel implements NewPrimaryIdentityEvent.Handler, LocationChang
 		// Select new Tab
 		setSelectedWithoutCheck(tabInfo);
 		return tabInfo;
+	}
+
+	/**
+	 * @param list
+	 */
+	public void setModuleHeight(List<Pair<Integer, Integer>> list) {
+		moduleService.setModuleHeights(list, new AsyncCallback<Object>() {
+
+			@Override
+			public void onFailure(Throwable caught) {
+				GWT.log("ModuleHeight-Save failed",caught);
+			}
+
+			@Override
+			public void onSuccess(Object result) {
+			}
+		});
+		
 	}
 }

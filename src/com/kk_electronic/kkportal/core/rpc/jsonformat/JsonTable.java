@@ -23,14 +23,13 @@ import java.util.List;
 
 import com.google.gwt.json.client.JSONValue;
 import com.kk_electronic.kkportal.core.rpc.FrameEncoder;
-import com.kk_electronic.kkportal.core.rpc.JsonEncoder;
 import com.kk_electronic.kkportal.core.rpc.Table;
 
 public class JsonTable<T> implements JsonValue<Table<T>> {
 
 	@Override
 	public Table<T> fromJson(JSONValue jsonValue, List<Class<?>> subtypes,
-			JsonEncoder simpleEncoder) throws UnableToDeserialize {
+			FrameEncoder<JSONValue> encoder) throws UnableToDeserialize {
 		// TODO Auto-generated method stub
 		return null;
 	}

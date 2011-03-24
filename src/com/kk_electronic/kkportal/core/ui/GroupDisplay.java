@@ -19,6 +19,7 @@
  */
 package com.kk_electronic.kkportal.core.ui;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 
@@ -36,7 +37,7 @@ import com.google.inject.Inject;
 import com.kk_electronic.kkportal.core.dnd.DND;
 import com.kk_electronic.kkportal.core.dnd.DragSource;
 import com.kk_electronic.kkportal.core.dnd.DND.DropSink;
-import com.kk_electronic.kkportal.res.Resources;
+import com.kk_electronic.kkportal.core.util.Pair;
 
 public class GroupDisplay<T extends IsWidget & KnownHeight & DragSource> implements DropSink<T>,IsWidget {
 	LayoutPanel canvas = new LayoutPanel();
@@ -55,13 +56,9 @@ public class GroupDisplay<T extends IsWidget & KnownHeight & DragSource> impleme
 	}
 
 	@Inject
-	public GroupDisplay(Resources resources, DND<T> dnd) {
+	public GroupDisplay(DND<T> dnd) {
 		this.dnd = dnd;
 		dnd.registerDropSink(this);
-		canvas.getElement().getStyle().setBackgroundColor(resources.palette().colour2());
-		canvas.getElement().getStyle().setPropertyPx("borderTopLeftRadius", 10);
-		canvas.getElement().getStyle().setPropertyPx("WebkitBorderTopLeftRadius", 10);
-		canvas.getElement().getStyle().setPropertyPx("MozBorderRadiusTopleft", 10);
 	}
 	
 	private native Layout iHateJavaProtection(LayoutPanel layoutPanel) /*-{
@@ -83,8 +80,8 @@ public class GroupDisplay<T extends IsWidget & KnownHeight & DragSource> impleme
 	
 		Layout l = iHateJavaProtection(canvas);
 		
-		double x = l.getUnitSize(Unit.EM, false)/l.getUnitSize(Unit.PCT, false);
-		double y = l.getUnitSize(Unit.EM, true);
+		double x = margin * l.getUnitSize(marginunit, false)/l.getUnitSize(Unit.PCT, false);
+		double y = margin * l.getUnitSize(marginunit, true);
 		
 		double left = x;
 		for(List<T> column:widgets){
@@ -162,17 +159,18 @@ public class GroupDisplay<T extends IsWidget & KnownHeight & DragSource> impleme
 	public boolean checkForResizes() {
 		if (canvas.getWidgetCount() == 0)
 			return false;
-
+		//ArrayList<Pair<Integer, Integer>> worklist = new ArrayList<Pair<Integer,Integer>>();
+		
 		boolean newSizes = false;
 		for (int i = 0, l = canvas.getWidgetCount(); i < l; i++) {
 			Widget widget = canvas.getWidget(i);
 
-			int currentHeight = widget.getElement().getScrollHeight();
 			int desiredHeight = 0;
 			if (widget instanceof KnownHeight) {
 				KnownHeight heightWidget = (KnownHeight) widget;
 				desiredHeight = heightWidget.getDesiredHeight();
-				if (currentHeight != desiredHeight) {
+				if (desiredHeight != heightWidget.getLastHeight()) {
+					//worklist.add(new Pair(heightWidget.getId(), desiredHeight));
 					heightWidget.saveHeight(desiredHeight);
 					newSizes = true;
 				}

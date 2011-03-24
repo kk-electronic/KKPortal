@@ -17,15 +17,20 @@
  * along with KKPortal.  If not, see <http://www.gnu.org/licenses/>.
  *
  */
+
 package com.kk_electronic.kkportal.core.rpc;
 
-import java.util.Map;
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Target;
 
-import com.google.gwt.user.client.rpc.AsyncCallback;
-
-public interface RemoteServer extends RemoteService {
-	void getServerFQDN(AsyncCallback<String> callback);
-	void getSecurityMap(AsyncCallback<Map<String,String>> callback);
-	void getEncryptedSessionKey(String newusername,
-			AsyncCallback<String> encryptedKeyCallback);
+/**
+ * <p>Allows a field to be renamed from what it is called in Java Code</p>
+ * 
+ * 
+ * @author Rasmus Carlsen
+ *
+ */
+@Target({ElementType.FIELD})
+public @interface Rename {
+	String value();
 }

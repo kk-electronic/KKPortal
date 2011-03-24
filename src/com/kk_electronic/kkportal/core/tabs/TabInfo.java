@@ -21,10 +21,16 @@ package com.kk_electronic.kkportal.core.tabs;
 
 import java.util.List;
 
+import com.kk_electronic.kkportal.core.rpc.Rename;
+
 public class TabInfo {
+	@Rename("tab_id")
 	private Integer id;
 	private String name;
+	@Rename("module_ids")
 	private List<List<Integer>> moduleIds;
+	
+	public TabInfo() { }
 	
 	/**
 	 * 

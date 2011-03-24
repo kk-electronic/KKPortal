@@ -65,6 +65,7 @@ public class TimeEntry {
 	public void setTaskId(Integer taskId) {
 		this.taskId = taskId;
 	}
+	public TimeEntry() {}
 	public TimeEntry(Long checkin,Long checkout, Integer taskId) {
 		this.checkin = checkin;
 		this.checkout = checkout;

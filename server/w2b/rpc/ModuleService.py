@@ -25,6 +25,7 @@ Created on Aug 2, 2010
 import w2b.database.portal as db
 from sqlalchemy import func,select,update
 import simplejson as json
+# db.engine.echo = True # Debug info switch 
 
 def getTabs(context):
     query = db.tabs.select().where(db.tabs.c.ownerName == context.security.identity) #@UndefinedVariable
@@ -107,3 +108,7 @@ def setModuleHeight(context,moduleId, height):
     query = update(db.modules).where(db.modules.c.module_id == moduleId).values(height=height) #@UndefinedVariable
     result = query.execute()
     result.close()
+    
+def setModuleHeights(context,list):
+    for x in list:
+        setModuleHeight(context, x['a'], x['b'])

@@ -149,7 +149,7 @@ public class ModuleWindow extends Composite implements
 
 	@Override
 	public void saveHeight(int newHeight) {
-		module.setHeight(newHeight + 5);
+		module.setHeight(newHeight);
 	}
 
 	@Override
@@ -170,7 +170,7 @@ public class ModuleWindow extends Composite implements
 
 	@Override
 	public int getDesiredHeight() {
-		int magicInt = 3; //TODO find how to convert 1 em to px.
+		int magicInt = 0; //TODO find how to convert 1 em to px.
 		int a = this.content.getElement().getScrollHeight();
 		int b = this.content.getElement().getOffsetTop();
 		int r = a+b + magicInt;
@@ -178,5 +178,13 @@ public class ModuleWindow extends Composite implements
 			r = getLastHeight();
 		}
 		return r;
+	}
+
+	/* (non-Javadoc)
+	 * @see com.kk_electronic.kkportal.core.ui.KnownHeight#getId()
+	 */
+	@Override
+	public int getId() {
+		return module.getId();
 	}
 }

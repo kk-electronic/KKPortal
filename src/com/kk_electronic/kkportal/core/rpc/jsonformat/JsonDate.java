@@ -26,7 +26,6 @@ import java.util.List;
 import com.google.gwt.json.client.JSONNumber;
 import com.google.gwt.json.client.JSONValue;
 import com.kk_electronic.kkportal.core.rpc.FrameEncoder;
-import com.kk_electronic.kkportal.core.rpc.JsonEncoder;
 
 /**
  * @author Jes Andersen
@@ -36,7 +35,7 @@ public class JsonDate implements JsonValue<Date> {
 
 	@Override
 	public Date fromJson(JSONValue jsonValue, List<Class<?>> subtypes,
-			JsonEncoder simpleEncoder) throws UnableToDeserialize {
+			FrameEncoder<JSONValue> encoder) throws UnableToDeserialize {
 		if (jsonValue.isNull() != null)
 			return null;
 		if (jsonValue.isNumber() == null)
