@@ -167,10 +167,11 @@ public class JsonEncoderGenerator extends Generator{
 	}
 	
 	private boolean checkClass(JClassType type) {
+		boolean b = false;
 		if (!map.containsKey(type.getQualifiedSourceName()) && type.isWildcard() == null && !worklist.contains(type)) {
-			return worklist.add(type);					
+			b = worklist.add(type); 
 		}
-		return false;
+		return b;
 	}
 	
 	/**
