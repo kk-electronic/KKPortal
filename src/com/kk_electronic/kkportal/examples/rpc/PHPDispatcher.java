@@ -25,10 +25,8 @@ import com.google.gwt.http.client.RequestCallback;
 import com.google.gwt.http.client.RequestException;
 import com.google.gwt.http.client.Response;
 import com.google.gwt.json.client.JSONValue;
-import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.inject.Inject;
 import com.kk_electronic.kkportal.core.rpc.Dispatcher;
-import com.kk_electronic.kkportal.core.rpc.RemoteService;
 import com.kk_electronic.kkportal.core.rpc.JsonEncoder;
 import com.kk_electronic.kkportal.core.rpc.jsonformat.UnableToDeserialize;
 import com.kk_electronic.kkportal.core.rpc.jsonformat.UnableToSerialize;
@@ -53,17 +51,14 @@ public class PHPDispatcher implements Dispatcher {
 	}
 	
 	@Override
-	public <T> void execute(final AsyncCallback<T> callback,
-			final Class<?>[] returnValueType,
-			Class<? extends RemoteService> serverinterface, String method,
-			Object... params) {
-		String url = "php/dispatch.php?i="+serverinterface.getName()+"&m="+method;
+	public <T> void execute(final com.kk_electronic.kkportal.core.rpc.Request<T> orequest) {
+		String url = "php/dispatch.php?i="+orequest.getServerinterface().getName()+"&m="+orequest.getMethod();
 		RequestBuilder builder = new RequestBuilder(RequestBuilder.POST,url);
 		StringBuilder sb = new StringBuilder();
 		try {
-			encoder.encode(params, sb);
+			encoder.encode(orequest.getParams(), sb);
 		} catch (UnableToSerialize e) {
-			callback.onFailure(e);
+			orequest.onFailure(e);
 		}
 		try {
 			builder.sendRequest(sb.toString(),new RequestCallback() {
@@ -71,7 +66,7 @@ public class PHPDispatcher implements Dispatcher {
 				@Override
 				public void onError(com.google.gwt.http.client.Request request,
 						Throwable exception) {
-					callback.onFailure(exception);
+					orequest.onFailure(exception);
 				}
 
 				@Override
@@ -81,21 +76,21 @@ public class PHPDispatcher implements Dispatcher {
 					try {
 						result = encoder.decode(response.getText());
 					} catch (UnableToDeserialize e) {
-						callback.onFailure(e);
+						orequest.onFailure(e);
 						return;
 					}
 					T decodedResult = null;
 					try {
-						decodedResult = encoder.validate(result, decodedResult, returnValueType);
+						decodedResult = encoder.validate(result, decodedResult, orequest.getReturnValueType());
 					} catch (UnableToDeserialize e) {
-						callback.onFailure(e);
+						orequest.onFailure(e);
 						return;
 					}
-					callback.onSuccess(decodedResult);
+					orequest.onSuccess(decodedResult);
 				}
 			});
 		} catch (RequestException e) {
-			callback.onFailure(e);
+			orequest.onFailure(e);
 		}
 	}
 }

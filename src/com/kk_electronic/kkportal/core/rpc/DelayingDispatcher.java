@@ -22,48 +22,22 @@ package com.kk_electronic.kkportal.core.rpc;
 import java.util.ArrayList;
 
 import com.google.gwt.core.client.GWT;
-import com.google.gwt.user.client.rpc.AsyncCallback;
 
 public class DelayingDispatcher implements Dispatcher {
 
 	private boolean isReady = false;
 	private Dispatcher dispatcher;
 
-	public static class DelayedExecution<T> {
-		AsyncCallback<T> callback;
-		Class<? extends RemoteService> serverinterface;
-		String method;
-		Object[] params;
-		private final Class<?>[] returnValueType;
+	public ArrayList<Request<?>> delayedExecutions;
 
-		public DelayedExecution(AsyncCallback<T> callback,
-				Class<?>[] returnValueType,
-				Class<? extends RemoteService> serverinterface, String method,
-				Object[] params) {
-			this.callback = callback;
-			this.returnValueType = returnValueType;
-			this.serverinterface = serverinterface;
-			this.method = method;
-			this.params = params;
-		}
-	}
-
-	public ArrayList<DelayedExecution<?>> delayedExecutions;
-
-	public <T> void execute(AsyncCallback<T> callback,
-			Class<?>[] returnValueType,
-			Class<? extends RemoteService> serverinterface, String method,
-			Object... params) {
+	public <T> void execute(Request<T> request) {
 		if (isReady()) {
-			dispatcher.execute(callback, returnValueType, serverinterface,
-					method, params);
+			dispatcher.execute(request);
 		} else {
-			DelayedExecution<T> d = new DelayedExecution<T>(callback,
-					returnValueType,serverinterface, method, params);
 			if (delayedExecutions == null) {
-				delayedExecutions = new ArrayList<DelayedExecution<?>>();
+				delayedExecutions = new ArrayList<Request<?>>();
 			}
-			delayedExecutions.add(d);
+			delayedExecutions.add(request);
 		}
 	}
 
@@ -89,9 +63,8 @@ public class DelayingDispatcher implements Dispatcher {
 
 	private void runDelayed() {
 		if (delayedExecutions != null) {
-			for (DelayedExecution<?> d : delayedExecutions) {
-				dispatcher.execute(d.callback, d.returnValueType,
-						d.serverinterface, d.method, d.params);
+			for (Request<?> d : delayedExecutions) {
+				dispatcher.execute(d);
 			}
 		}
 		delayedExecutions = null;

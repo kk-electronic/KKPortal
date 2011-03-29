@@ -19,13 +19,9 @@
  */
 package com.kk_electronic.kkportal.core.rpc;
 
-import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.kk_electronic.kkportal.core.inject.ConstructFromLiteral;
 
 @ConstructFromLiteral
 public interface Dispatcher {
-	public <T> void execute(AsyncCallback<T> callback,
-			Class<?>[] returnValueType,
-			Class<? extends RemoteService> serverinterface,String method,
-			Object... params);
+	public <T> void execute(Request<T> request);
 }

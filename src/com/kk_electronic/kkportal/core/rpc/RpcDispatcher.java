@@ -109,7 +109,8 @@ public class RpcDispatcher implements FrameSentEvent.Handler, Dispatcher,
 	 * @param <T>
 	 *            used to provide type safety for the callback
 	 */
-	public final class PendingCall<T> implements AsyncCallback<RpcResponse<JSONValue>> {
+	public final class PendingCall<T> implements
+			AsyncCallback<RpcResponse<JSONValue>> {
 		private final AsyncCallback<T> callback;
 		private RpcRequest request;
 		private PendingCallStatus status;
@@ -132,7 +133,6 @@ public class RpcDispatcher implements FrameSentEvent.Handler, Dispatcher,
 		public PendingCallStatus getStatus() {
 			return status;
 		}
-		
 
 		@Override
 		public String toString() {
@@ -161,7 +161,8 @@ public class RpcDispatcher implements FrameSentEvent.Handler, Dispatcher,
 			stats.sendStats(RpcDispatcher.class, this, "callback");
 			T result = null;
 			try {
-				result = encoder.validate(response.getResult(),result,returnValueType);
+				result = encoder.validate(response.getResult(), result,
+						returnValueType);
 			} catch (UnableToDeserialize e) {
 				callback.onFailure(e);
 				return;
@@ -177,7 +178,8 @@ public class RpcDispatcher implements FrameSentEvent.Handler, Dispatcher,
 	public RpcDispatcher(IdCreator<Integer> idCreator, WebSocket socket,
 			FrameEncoder<JSONValue> encoder, SecurityMap clientSecurityMap,
 			FeatureMap clientFeatureMap, FlexInjector injector,
-			ServerEventMap serverEventMap,EventFromJsonCreator creator,Stats stats) {
+			ServerEventMap serverEventMap, EventFromJsonCreator creator,
+			Stats stats) {
 		this.idCreator = idCreator;
 		this.socket = socket;
 		this.frameEncoder = encoder;
@@ -194,31 +196,31 @@ public class RpcDispatcher implements FrameSentEvent.Handler, Dispatcher,
 		socket.addFrameSentHandler(this);
 	}
 
-	public <T> void execute(AsyncCallback<T> callback,
-			Class<?>[] returnValueType,
-			Class<? extends RemoteService> serverinterface, String method,
-			Object... params) {
-		String featureName = clientFeatureMap.getKeyFromClass(serverinterface);
+	public <T> void execute(Request<T> orequest) {
+		String featureName = clientFeatureMap.getKeyFromClass(orequest
+				.getServerinterface());
 		if (serverFeatures != null && !serverFeatures.contains(featureName)) {
-			callback
+			orequest
 					.onFailure(new Exception("Feature not supported on server"));
 			return;
 		}
 		if (featureName == null) {
 			GWT.log("RPC-could not map class to feature: "
-					+ serverinterface.getName());
+					+ orequest.getServerinterface().getName());
 		}
-		RpcRequest request = new RpcRequest(featureName, method, params);
+		RpcRequest request = new RpcRequest(featureName, orequest.getMethod(),
+				orequest.getParams());
 		// TODO: Delay Creation of id
 		request.setId(idCreator.getNextId());
-		final PendingCall<T> pendingCall = new PendingCall<T>(callback,
-				request, frameEncoder, returnValueType);
+		final PendingCall<T> pendingCall = new PendingCall<T>(orequest
+				.getCallback(), request, frameEncoder, orequest
+				.getReturnValueType());
 		pending.put(request.getId(), pendingCall);
 		stats.sendStats(this.getClass(), pendingCall, "begin");
-		
-		if (authenticationMethods.containsKey(serverinterface)) {
-			SecurityMethod securityMethod = authenticationMethods
-					.get(serverinterface);
+
+		if (authenticationMethods.containsKey(orequest.getServerinterface())) {
+			SecurityMethod securityMethod = authenticationMethods.get(orequest
+					.getServerinterface());
 			if (securityMethod == null) {
 				transmit(pendingCall);
 			} else {
@@ -234,20 +236,23 @@ public class RpcDispatcher implements FrameSentEvent.Handler, Dispatcher,
 	protected void signAndTransmit(final PendingCall<?> pendingCall,
 			SecurityMethod securityMethod) {
 		pendingCall.status = PendingCallStatus.WAITING_FOR_SECURITY;
-		securityMethod.sign(pendingCall.request, new AsyncCallback<RpcRequest>() {
+		securityMethod.sign(pendingCall.request,
+				new AsyncCallback<RpcRequest>() {
 
-			@Override
-			public void onFailure(Throwable caught) {
-				GWT.log("RPC-Security could not sign request - aborting call",
-						caught);
-			}
+					@Override
+					public void onFailure(Throwable caught) {
+						GWT
+								.log(
+										"RPC-Security could not sign request - aborting call",
+										caught);
+					}
 
-			@Override
-			public void onSuccess(RpcRequest result) {
-				pendingCall.setRequest(result);
-				transmit(pendingCall);
-			}
-		});
+					@Override
+					public void onSuccess(RpcRequest result) {
+						pendingCall.setRequest(result);
+						transmit(pendingCall);
+					}
+				});
 	}
 
 	protected void transmit(PendingCall<?> pendingCall) {
@@ -348,14 +353,14 @@ public class RpcDispatcher implements FrameSentEvent.Handler, Dispatcher,
 
 	protected void sendCallsWithFeature(Class<? extends RemoteService> feature) {
 		String featureName = clientFeatureMap.getKeyFromClass(feature);
-		for(PendingCall<?> call:pending.values()){
+		for (PendingCall<?> call : pending.values()) {
 			if (call.getStatus() == PendingCallStatus.NEW
 					&& call.request.getFeatureName().equals(featureName)) {
 				transmit(call);
 			}
 		}
 	}
-	
+
 	protected void cancelCallsWithFeature(Class<? extends RemoteService> feature) {
 		Iterator<PendingCall<?>> i = pending.values().iterator();
 		String featureName = clientFeatureMap.getKeyFromClass(feature);
@@ -374,7 +379,8 @@ public class RpcDispatcher implements FrameSentEvent.Handler, Dispatcher,
 			SecurityMethod securityMethod) {
 		authenticationMethods.put(feature, securityMethod);
 		String featureName = clientFeatureMap.getKeyFromClass(feature);
-		for (PendingCall<?> call : new ArrayList<PendingCall<?>>(pending.values())) {
+		for (PendingCall<?> call : new ArrayList<PendingCall<?>>(pending
+				.values())) {
 			if (call.getStatus() == PendingCallStatus.NEW
 					&& call.request.getFeatureName().equals(featureName)) {
 				signAndTransmit(call, securityMethod);
@@ -415,9 +421,10 @@ public class RpcDispatcher implements FrameSentEvent.Handler, Dispatcher,
 		/*
 		 * To remove a circular dependency we make the call directly here
 		 */
-		execute(x, new Class<?>[] { Map.class, String.class, String.class },
-				com.kk_electronic.kkportal.core.rpc.RemoteServer.class,
-				"getSecurityMap");
+		execute(new Request<Map<String, String>>(x, new Class<?>[] { Map.class,
+				String.class, String.class },
+				com.kk_electronic.kkportal.core.rpc.RemoteServer.class, "getSecurityMap")
+				);
 	}
 
 	@Override
@@ -437,45 +444,53 @@ public class RpcDispatcher implements FrameSentEvent.Handler, Dispatcher,
 		List<RpcEnvelope> responses = null;
 		try {
 			JSONValue object = frameEncoder.decode(event.getData());
-			responses = frameEncoder.validate(object, responses, new Class<?>[]{List.class,RpcResponse.class});
+			responses = frameEncoder.validate(object, responses,
+					new Class<?>[] { List.class, RpcResponse.class });
 		} catch (UnableToDeserialize e) {
-			GWT.log("RpcDispatcher could not get responses",e);
+			GWT.log("RpcDispatcher could not get responses", e);
 			return;
 		}
 		for (RpcEnvelope envelope : responses) {
-			if(envelope instanceof RpcResponse<?>){
+			if (envelope instanceof RpcResponse<?>) {
 				final RpcResponse response = (RpcResponse) envelope;
-				final PendingCall<?> pendingCall = pending.remove(response.getId());
-				Scheduler.get().scheduleDeferred(new Scheduler.ScheduledCommand() {
-					
-					@Override
-					public void execute() {
-						pendingCall.onSuccess(response);
-					}
-				});
+				final PendingCall<?> pendingCall = pending.remove(response
+						.getId());
+				Scheduler.get().scheduleDeferred(
+						new Scheduler.ScheduledCommand() {
+
+							@Override
+							public void execute() {
+								pendingCall.onSuccess(response);
+							}
+						});
 				continue;
 			}
-			if(envelope instanceof RpcError){
+			if (envelope instanceof RpcError) {
 				final RpcError response = (RpcError) envelope;
-				if(response.getCode() != -31301){
-					final PendingCall<?> pendingCall = pending.remove(response.getId());
-					Scheduler.get().scheduleDeferred(new Scheduler.ScheduledCommand() {
-						
-						@Override
-						public void execute() {
-							pendingCall.onFailure(response);
-						}
-					});
+				if (response.getCode() != -31301) {
+					final PendingCall<?> pendingCall = pending.remove(response
+							.getId());
+					Scheduler.get().scheduleDeferred(
+							new Scheduler.ScheduledCommand() {
+
+								@Override
+								public void execute() {
+									pendingCall.onFailure(response);
+								}
+							});
 				} else {
 					PendingCall<?> pendingCall = pending.get(response.getId());
-					Class<? extends RemoteService> clazz = clientFeatureMap.getClassFromKey(pendingCall.request.getFeatureName());
-					SecurityMethod securityMethod = authenticationMethods.get(clazz);
+					Class<? extends RemoteService> clazz = clientFeatureMap
+							.getClassFromKey(pendingCall.request
+									.getFeatureName());
+					SecurityMethod securityMethod = authenticationMethods
+							.get(clazz);
 					securityMethod.invalid();
 					signAndTransmit(pendingCall, securityMethod);
 				}
 				continue;
 			}
-			if(envelope instanceof RpcRequest){
+			if (envelope instanceof RpcRequest) {
 				RpcRequest request = (RpcRequest) envelope;
 				fireServerEvent(request);
 				continue;
@@ -484,22 +499,27 @@ public class RpcDispatcher implements FrameSentEvent.Handler, Dispatcher,
 	}
 
 	private void fireServerEvent(RpcRequest request) {
-		Class<? extends ServerEvent> clazz = serverEventMap.getClassFromKey(request.getMethod());
-		if(clazz == null){
+		Class<? extends ServerEvent> clazz = serverEventMap
+				.getClassFromKey(request.getMethod());
+		if (clazz == null) {
 			GWT.log("SERVEREVENT-Unknown event " + request.getMethod());
 		}
-		creator.create(clazz, request.getParams(), new AsyncCallback<ServerEvent>() {
+		creator.create(clazz, request.getParams(),
+				new AsyncCallback<ServerEvent>() {
 
-			@Override
-			public void onFailure(Throwable caught) {
-				GWT.log("SERVEREVENT-Failure during creation of serverevent",caught);
-			}
+					@Override
+					public void onFailure(Throwable caught) {
+						GWT
+								.log(
+										"SERVEREVENT-Failure during creation of serverevent",
+										caught);
+					}
 
-			@Override
-			public void onSuccess(ServerEvent result) {
-				GWT.log("SERVEREVENT-Created");
-			}
-		});
+					@Override
+					public void onSuccess(ServerEvent result) {
+						GWT.log("SERVEREVENT-Created");
+					}
+				});
 	}
 
 	@Override

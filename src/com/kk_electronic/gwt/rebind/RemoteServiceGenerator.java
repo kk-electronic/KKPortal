@@ -41,6 +41,7 @@ import com.google.gwt.user.rebind.SourceWriter;
 import com.kk_electronic.kkportal.core.reflection.Injection;
 import com.kk_electronic.kkportal.core.rpc.DelayingDispatcher;
 import com.kk_electronic.kkportal.core.rpc.Dispatcher;
+import com.kk_electronic.kkportal.core.rpc.Request;
 import com.kk_electronic.kkportal.core.rpc.RpcDispatcher;
 
 public class RemoteServiceGenerator extends Generator {
@@ -84,6 +85,7 @@ public class RemoteServiceGenerator extends Generator {
 
 		composer.addImport(dispatcher.getCanonicalName());
 		composer.addImport(Dispatcher.class.getCanonicalName());
+		composer.addImport(Request.class.getCanonicalName());
 		composer.addImport(AsyncCallback.class.getCanonicalName());
 		composer.addImport(DelayingDispatcher.class.getCanonicalName());
 		composer.addImport(Injection.class.getCanonicalName());
@@ -169,7 +171,7 @@ public class RemoteServiceGenerator extends Generator {
 		}
 		sw.println(") {");
 		String callbackname = parameters[parameters.length-1].getName();
-		sw.print("	dispatcher.execute(" + callbackname + ","
+		sw.print("	dispatcher.execute(new " + Request.class.getCanonicalName() + "(" + callbackname + ","
 				+ method.getName().toUpperCase() + "_RETVAL,"
 				+ interfaze.getQualifiedSourceName() + ".class,\""
 				+ escape(method.getName()) + "\"");
@@ -177,7 +179,7 @@ public class RemoteServiceGenerator extends Generator {
 			sw.print(",");
 			sw.print(parameters[i].getName());
 		}
-		sw.println(");");
+		sw.println("));");
 		sw.println("}");
 	}
 
