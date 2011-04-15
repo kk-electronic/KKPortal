@@ -20,6 +20,9 @@
 
 package com.kk_electronic.kkportal.core.rpc;
 
+import java.util.LinkedHashMap;
+import java.util.Map;
+
 import com.google.gwt.user.client.rpc.AsyncCallback;
 
 /**
@@ -31,9 +34,14 @@ public class Request<T> implements AsyncCallback<T>{
 	private Class<?>[] returnValueType;
 	private Class<? extends RemoteService> serverinterface;
 	private String method;
-	private Object[] params;
+	private Map<String,Object> params = new LinkedHashMap<String, Object>();
 	
 	public Request() {
+	}
+
+	public String[] getNames() {
+		String[] a = new String[params.size()];
+		return params.keySet().toArray(a);
 	}
 
 	public Request(AsyncCallback<T> callback, Class<?>[] returnValueType,
@@ -44,7 +52,11 @@ public class Request<T> implements AsyncCallback<T>{
 		this.returnValueType = returnValueType;
 		this.serverinterface = serverinterface;
 		this.method = method;
-		this.params = params;
+		assert(params.length % 2 == 0);
+		for(int i=0,l=params.length;i<l;i+=2){
+			assert(params[i] instanceof String);
+			this.params.put((String)params[i], params[i+1]);
+		}
 	}
 
 	public AsyncCallback<T> getCallback() {
@@ -80,11 +92,11 @@ public class Request<T> implements AsyncCallback<T>{
 	}
 
 	public Object[] getParams() {
-		return params;
+		return params.values().toArray();
 	}
-
-	public void setParams(Object[] params) {
-		this.params = params;
+	
+	public Object addParam(String key,Object value) {
+		return params.put(key, value);
 	}
 
 	@Override

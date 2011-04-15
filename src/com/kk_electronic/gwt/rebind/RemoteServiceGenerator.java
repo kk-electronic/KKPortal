@@ -30,6 +30,7 @@ import com.google.gwt.core.ext.typeinfo.JClassType;
 import com.google.gwt.core.ext.typeinfo.JMethod;
 import com.google.gwt.core.ext.typeinfo.JParameter;
 import com.google.gwt.core.ext.typeinfo.JParameterizedType;
+import com.google.gwt.core.ext.typeinfo.JPrimitiveType;
 import com.google.gwt.core.ext.typeinfo.JType;
 import com.google.gwt.core.ext.typeinfo.JWildcardType;
 import com.google.gwt.core.ext.typeinfo.NotFoundException;
@@ -140,22 +141,23 @@ public class RemoteServiceGenerator extends Generator {
 	private void writeMethods(SourceWriter sw) {
 		JClassType[] implementedInterfaces = classType.getImplementedInterfaces();
 		JMethod[] methods = classType.getMethods();
+		int i = 0;
 		for(JMethod method : methods){
-			writeMethod(sw, classType, method);
+			writeMethod(sw, classType, method,i++);
 		}
 		for (JClassType interfaze:implementedInterfaces){
 			methods = interfaze.getMethods();
 			for(JMethod method : methods){
-				writeMethod(sw, interfaze, method);
+				writeMethod(sw, interfaze, method,i++);
 			}
 		}
 	}
 
 	private void writeMethod(SourceWriter sw, JClassType interfaze,
-			JMethod method) {
+			JMethod method, int methodnr) {
 		JParameter[] parameters = method.getParameters();
 		sw.println();
-		sw.print("private Class<?>[] "+method.getName().toUpperCase()+"_RETVAL");
+		sw.print("private Class<?>[] RETVAL_"+methodnr);
 		sw.print(" = new Class<?>[]{");
 		writeTypeInfo(sw,parameters[parameters.length-1].getType().isParameterized().getTypeArgs()[0]);
 		sw.println("};");
@@ -170,16 +172,33 @@ public class RemoteServiceGenerator extends Generator {
 			sw.print(parameters[i].getName());
 		}
 		sw.println(") {");
+		sw.indent();
 		String callbackname = parameters[parameters.length-1].getName();
-		sw.print("	dispatcher.execute(new " + Request.class.getCanonicalName() + "(" + callbackname + ","
-				+ method.getName().toUpperCase() + "_RETVAL,"
+		sw.print(Request.class.getCanonicalName() + " r = new " + Request.class.getCanonicalName() + "(" + callbackname
+				+ ", RETVAL_" + methodnr + ","
 				+ interfaze.getQualifiedSourceName() + ".class,\""
 				+ escape(method.getName()) + "\"");
 		for(int i=0,c=parameters.length-1;i<c;i++){
-			sw.print(",");
+			sw.print(",\"");
+			sw.print(escape(parameters[i].getName()));
+			sw.print("\",");
 			sw.print(parameters[i].getName());
 		}
-		sw.println("));");
+		sw.println(");");
+		//sw.print("r.setParamNames(");
+		//for(int i=0,c=parameters.length-1;i<c;i++){
+		//	if(i>0) sw.print(",");
+		//	sw.print("\"");
+		//	sw.print(escape(parameters[i].getName()));
+		//	sw.print("\"");
+		//}
+		//sw.println(");");
+		if(method.getReturnType().isPrimitive() == JPrimitiveType.VOID){
+			sw.println("dispatcher.execute(r);");
+		} else {
+			sw.println("return r;");
+		}
+		sw.outdent();
 		sw.println("}");
 	}
 
