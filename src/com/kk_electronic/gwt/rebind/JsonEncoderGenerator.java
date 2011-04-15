@@ -26,6 +26,7 @@ import java.util.Arrays;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Vector;
 import java.util.Map.Entry;
 
@@ -34,7 +35,6 @@ import com.google.gwt.core.ext.GeneratorContext;
 import com.google.gwt.core.ext.TreeLogger;
 import com.google.gwt.core.ext.UnableToCompleteException;
 import com.google.gwt.core.ext.typeinfo.JClassType;
-import com.google.gwt.core.ext.typeinfo.JConstructor;
 import com.google.gwt.core.ext.typeinfo.JField;
 import com.google.gwt.core.ext.typeinfo.JMethod;
 import com.google.gwt.core.ext.typeinfo.JParameter;
@@ -217,15 +217,7 @@ public class JsonEncoderGenerator extends Generator{
 		for (JClassType jc : worklist) {
 			String localClassName = "Json" + jc.getSimpleSourceName();
 			
-			JConstructor[] cs = jc.getConstructors();
-			boolean emptyConstructor = false;
-			for (JConstructor jConstructor : cs) {
-				if (jConstructor.getParameters().length == 0) {
-					emptyConstructor = true;
-					break;
-				}
-			}
-			if (!emptyConstructor && cs.length > 0) {
+			if (!jc.isDefaultInstantiable()) {
 				logger.log(TreeLogger.ERROR, "Unable to generate class for " + jc.getSimpleSourceName() + " mising default constructor");
 			} else {
 				SubClassGenerator gen = new SubClassGenerator();
