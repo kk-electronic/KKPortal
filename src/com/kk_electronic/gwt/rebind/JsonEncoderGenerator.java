@@ -160,6 +160,7 @@ public class JsonEncoderGenerator extends Generator{
 		JField[] fields = jct.getFields();
 		for (JField jField : fields) {
 			JClassType jClass = jField.getType().isClass();
+			processGenerics(jField.getType());
 			if (jClass != null && !jField.isTransient()) {
 				processClass(jClass);
 			}
