@@ -250,16 +250,12 @@ public class JsonEncoderGenerator extends Generator{
 		composer.addImplementedInterface(JsonEncoderHelper.class.getCanonicalName());
 		
 		composer.addImport(Singleton.class.getCanonicalName());
+		composer.addImport(Map.class.getCanonicalName());
 		composer.addImport(HashMap.class.getCanonicalName());
 		composer.addImport(JsonEncoderHelper.class.getCanonicalName());
 		composer.addImport(JsonValue.class.getCanonicalName());
 		composer.addAnnotationDeclaration("@Singleton");
 
-		//Iterate to include imports
-		for (Entry<String, String> entry : map.entrySet()) {
-			composer.addImport(entry.getKey());
-			composer.addImport(entry.getValue());
-		}
 		SourceWriter sourceWriter = composer.createSourceWriter(context,printWriter);
 		
 		writeHelperClass(sourceWriter);
