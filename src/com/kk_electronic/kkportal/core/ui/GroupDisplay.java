@@ -19,7 +19,6 @@
  */
 package com.kk_electronic.kkportal.core.ui;
 
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 
@@ -37,7 +36,6 @@ import com.google.inject.Inject;
 import com.kk_electronic.kkportal.core.dnd.DND;
 import com.kk_electronic.kkportal.core.dnd.DragSource;
 import com.kk_electronic.kkportal.core.dnd.DND.DropSink;
-import com.kk_electronic.kkportal.core.util.Pair;
 
 public class GroupDisplay<T extends IsWidget & KnownHeight & DragSource> implements DropSink<T>,IsWidget {
 	LayoutPanel canvas = new LayoutPanel();

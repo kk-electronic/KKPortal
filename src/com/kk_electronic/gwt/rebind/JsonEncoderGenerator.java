@@ -167,10 +167,11 @@ public class JsonEncoderGenerator extends Generator{
 	}
 	
 	private boolean checkClass(JClassType type) {
+		boolean b = false;
 		if (!map.containsKey(type.getQualifiedSourceName()) && type.isWildcard() == null && !worklist.contains(type)) {
-			return worklist.add(type);					
+			b = worklist.add(type); 
 		}
-		return false;
+		return b;
 	}
 	
 	/**
@@ -337,9 +338,20 @@ public class JsonEncoderGenerator extends Generator{
 			}
 
 			sequencer = 0;
-			fields = getFields(jc);
+			ClassSourceFileComposerFactory composer = null;
 			
-			ClassSourceFileComposerFactory composer = new ClassSourceFileComposerFactory(packageName,className);
+			/*
+			 * Changes the name to fit with any generics of the object.
+			 */
+			if (jc.isParameterized() != null) {
+				this.jc = jc.isParameterized().getBaseType();
+				String temp = this.jc.getParameterizedQualifiedSourceName();
+				String name = "Json" + temp.substring(temp.lastIndexOf('.') + 1);
+				composer = new ClassSourceFileComposerFactory(packageName,name);
+			} else {
+				composer = new ClassSourceFileComposerFactory(packageName, className);
+			}
+			fields = getFields(this.jc);
 			
 			composer.addImport(List.class.getCanonicalName());
 			composer.addImport(JsonValue.class.getCanonicalName());
@@ -353,11 +365,12 @@ public class JsonEncoderGenerator extends Generator{
 			SourceWriter sourceWriter = composer.createSourceWriter(context,printWriter);
 			
 			for (JField f : fields) {
-				if(f.getType().isPrimitive() == null) {
-					composer.addImport(f.getType().getQualifiedSourceName());
+				if(f.getType().isPrimitive() == null && f.getType().isTypeParameter() == null) {
+					String s = f.getType().getQualifiedSourceName();
+					composer.addImport(s);
 				}
 			}
-
+			
 			writeFromJson(sourceWriter);
 			writeToJson(sourceWriter);
 			writeNatives(sourceWriter);
@@ -374,7 +387,7 @@ public class JsonEncoderGenerator extends Generator{
 
 			//Native set function
 			sw.println();
-			sw.print("private native void setFields(" + jc.getSimpleSourceName() + " obj");
+			sw.print("private native void setFields(" + jc.getParameterizedQualifiedSourceName() + " obj");
 			for (JField f : fields) {
 				sw.print(", " + getFieldType(f) + " " + f.getName());
 			}
@@ -390,7 +403,7 @@ public class JsonEncoderGenerator extends Generator{
 
 			for (JField f : fields) {
 				sw.println();
-				sw.println("private native " + getFieldType(f) + " get" + f.getName() + "(" + jc.getSimpleSourceName() + " obj) /*-{");
+				sw.println("private native " + getFieldType(f) + " get" + f.getName() + "(" + jc.getParameterizedQualifiedSourceName() + " obj) /*-{");
 				sw.indent();
 				sw.println("return " + s + f.getName() + ";");
 				sw.outdent();
@@ -399,28 +412,57 @@ public class JsonEncoderGenerator extends Generator{
 		}
 
 		private String getFieldType(JField f) {
-			return getFieldType(f, false);
+			return f.getType().getParameterizedQualifiedSourceName();
+		}
+		
+		private int getParametizedFieldCount(JClassType jc) {
+			if (jc.isParameterized() == null) {
+				return 1;
+			} else {
+				int i = 1;
+				JParameterizedType p = jc.isParameterized();
+				for (JClassType jct : p.getTypeArgs()) {
+					i = i + getParametizedFieldCount(jct);
+				}
+				return i;
+			}
+		}
+		
+		private int getParametizedFieldCount(JField f) {
+			if (f.getType().isParameterized() == null) {
+				return 0;
+			} else {
+				int i = 1;
+				JParameterizedType d = f.getType().isParameterized();
+				for (JClassType jc : d.getTypeArgs()) {
+					i = i + getParametizedFieldCount(jc) + 1;
+				}
+				return i;
+			}
 		}
 		
 		private String getFieldType(JField f, boolean addClass) {
 			JType j = f.getType();
 			String type;
-			if (j.isParameterized() != null) {
-				type = recursiveTypeFind(j, addClass);
-			} else {
-				type = j.getSimpleSourceName();
-				if (addClass) {
-					type = type + ".class";
+			if (addClass) {
+				if (j.isParameterized() != null) {
+					type = recursiveTypeFind(j);
+				} else {
+					type = j.getQualifiedSourceName();
+					if (addClass) {
+						type = type + ".class";
+					}
 				}
+			} else {
+				type = j.getParameterizedQualifiedSourceName();
 			}
 			return type;
 		}
 		
-		private String recursiveTypeFind(JType j, boolean addClassString) {
-			String type = j.getSimpleSourceName();
-			if (addClassString) {
-				type = type + ".class";
-			}
+		private String recursiveTypeFind(JType j) {
+			String type = j.getQualifiedSourceName();
+			type = type + ".class";
+
 			if (j.isParameterized() != null) {
 				JClassType[] a = j.isParameterized().getTypeArgs();
 
@@ -430,11 +472,7 @@ public class JsonEncoderGenerator extends Generator{
 						type = type + ", ";
 						first = false;
 					}
-					if(addClassString) {
-						type = type + "," + recursiveTypeFind(jClassType, addClassString);
-					} else {
-						type = type + "<" + recursiveTypeFind(jClassType, addClassString) + ">";
-					}
+					type = type + "," + recursiveTypeFind(jClassType);
 				}
 			}
 			return type;
@@ -443,7 +481,7 @@ public class JsonEncoderGenerator extends Generator{
 		private void writeToJson(SourceWriter sw) {
 			sw.println();
 			sw.println("@Override");
-			sw.println("public void toJson(StringBuilder response, " + jc.getSimpleSourceName() + " object,");
+			sw.println("public void toJson(StringBuilder response, " + jc.getQualifiedSourceName() + " object,");
 			sw.indent();
 			sw.indentln("FrameEncoder<JSONValue> encoder) throws UnableToSerialize {");
 			sw.println("response.append(\"{\");");
@@ -491,14 +529,21 @@ public class JsonEncoderGenerator extends Generator{
 			sw.println();
 			
 			//validate
+			int counter = 0;
 			for (JField f : fields) {
 				sw.print(f.getName() + " = encoder.validate(jsonObject.get(\"" + getJsonName(f) + "\"), ");
-				sw.println(f.getName() + ", new Class<?>[]{" + getFieldType(f, true) + "});");
+				if(f.getType().isTypeParameter() == null) {
+					sw.println(f.getName() + ", new Class<?>[]{" + getFieldType(f, true) + "});");
+				} else {
+					int l = getParametizedFieldCount(f);
+					sw.println(f.getName() + ", subtypes.subList(" + counter + "," + (counter + l) + ").toArray(new Class<?>[" + (l + 1) + "]));");
+					counter = counter + l + 1;
+				}
 			}
 			sw.println();
 			
 			//create new object
-			sw.println(jc.getSimpleSourceName() + " obj = new " + jc.getSimpleSourceName() + "();");
+			sw.println(jc.getParameterizedQualifiedSourceName() + " obj = new " + jc.getParameterizedQualifiedSourceName() + "();");
 			
 			//Call native set
 			sw.print("setFields(obj");
@@ -531,7 +576,7 @@ public class JsonEncoderGenerator extends Generator{
 		private JField[] getFields(JClassType j) {
 			assert(j != null);
 			Vector<JField> vector = new Vector<JField>();
-			
+			 
 			for (JField f : j.getFields()) {
 				if(!f.isTransient()){
 					vector.add(f);
