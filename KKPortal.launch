@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <launchConfiguration type="com.google.gdt.eclipse.suite.webapp">
-<booleanAttribute key="com.google.gdt.eclipse.core.AUTO_PORT_SELECTION" value="true"/>
 <booleanAttribute key="com.google.gdt.eclipse.core.RUN_SERVER" value="false"/>
 <stringAttribute key="com.google.gdt.eclipse.suiteMainTypeProcessor.PREVIOUSLY_SET_MAIN_TYPE_NAME" value="com.google.gwt.dev.GWTShell"/>
 <booleanAttribute key="com.google.gdt.eclipse.suiteWarArgumentProcessor.IS_WAR_FROM_PROJECT_PROPERTIES" value="true"/>
@@ -22,7 +21,7 @@
 </listAttribute>
 <stringAttribute key="org.eclipse.jdt.launching.CLASSPATH_PROVIDER" value="com.google.gwt.eclipse.core.moduleClasspathProvider"/>
 <stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value="com.google.gwt.dev.DevMode"/>
-<stringAttribute key="org.eclipse.jdt.launching.PROGRAM_ARGUMENTS" value="-codeServerPort 9997 -war war -remoteUI &quot;${gwt_remote_ui_server_port}:${unique_id}&quot; -startupUrl http://localhost:8888/KKPortal.html -bindAddress 0.0.0.0 -gen .generated -noserver -logLevel INFO com.kk_electronic.kkportal.KKPortal"/>
+<stringAttribute key="org.eclipse.jdt.launching.PROGRAM_ARGUMENTS" value="-codeServerPort 9997 -war war -remoteUI &quot;${gwt_remote_ui_server_port}:${unique_id}&quot; -startupUrl http://localhost:8888/KKPortal.html -bindAddress 0.0.0.0 -gen waf-build/generated -noserver -logLevel INFO com.kk_electronic.kkportal.KKPortal"/>
 <stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="KKPortal"/>
 <stringAttribute key="org.eclipse.jdt.launching.VM_ARGUMENTS" value="-Xmx512m"/>
 <stringAttribute key="org.eclipse.jdt.launching.WORKING_DIRECTORY" value="${workspace_loc:KKPortal}"/>
