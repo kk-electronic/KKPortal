@@ -32,6 +32,7 @@
   <source path='debug'/>
   <source path='timereg'/>
   <source path='res'/>
+  <source path='scada'/>
   <generate-with class="com.kk_electronic.gwt.rebind.FlexInjectorGenerator">
     <when-type-assignable class="com.kk_electronic.kkportal.core.inject.FlexInjector" />
   </generate-with>
