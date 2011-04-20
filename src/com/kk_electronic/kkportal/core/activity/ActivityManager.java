@@ -20,23 +20,19 @@
 package com.kk_electronic.kkportal.core.activity;
 
 import java.util.HashMap;
-import java.util.Map;
 
 import com.google.gwt.core.client.GWT;
-import com.google.gwt.event.logical.shared.ValueChangeEvent;
-import com.google.gwt.event.logical.shared.ValueChangeHandler;
 import com.google.gwt.event.shared.EventBus;
-import com.google.gwt.user.client.History;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
-import com.google.inject.name.Named;
 import com.kk_electronic.kkportal.core.event.LocationChangedEvent;
 import com.kk_electronic.kkportal.core.inject.ConstructFromLiteral;
 import com.kk_electronic.kkportal.core.inject.FlexInjector;
 import com.kk_electronic.kkportal.core.reflection.ActivityMap;
 import com.kk_electronic.kkportal.core.reflection.Injection;
 import com.kk_electronic.kkportal.core.ui.ApplicationLayout;
+import com.kk_electronic.kkportal.core.ui.SideBar;
 import com.kk_electronic.kkportal.core.util.Stats;
 
 /**
@@ -58,54 +54,46 @@ import com.kk_electronic.kkportal.core.util.Stats;
 /* We make this class can be created using the injection framework */
 @Singleton
 /* And hint that only one such class such exist */
-public class ActivityManager implements ValueChangeHandler<String> {
+public class ActivityManager implements LocationChangedEvent.Handler {
+	
 	private final ApplicationLayout display;
+	private final SideBar secondaryDisplay;
 	private final FlexInjector injector;
 	private final ActivityMap activityMap;
-	private final String defaultplace;
-	private final LocationInfo locationInfo;
-	private final EventBus eventBus;
 	private final Stats stats;
-
+	private final LocationManager locationManager;
+	
+	HashMap<Class<? extends Activity>, Activity> running = new HashMap<Class<? extends Activity>, Activity>();
+	private LocationInfo locationInfo;
+	
 	@Inject
 	public ActivityManager(ApplicationLayout layout, FlexInjector injector,
-			ActivityMap activityMap,
-			@Named("DefaultHistoryToken") String defaultplace,LocationInfo locationInfo
-			, EventBus eventBus,Stats stats) {
+			ActivityMap activityMap, LocationInfo locationInfo,
+			EventBus eventBus, Stats stats, LocationManager locationManager,
+			SideBar sideBar) {
 
 		this.injector = injector;
 		this.activityMap = activityMap;
-		this.defaultplace = defaultplace;
 		this.display = layout;
 		this.locationInfo = locationInfo;
-		this.eventBus = eventBus;
 		this.stats = stats;
+		this.locationManager = locationManager;
+		this.secondaryDisplay = sideBar;
+		
 		/*
 		 * We create the initial GUI elements needed for displaying activities.
 		 */
 		layout.go();
-		History.addValueChangeHandler(this);
-
+		
 		/*
-		 * If we do not have anything in the history stack de go to the default
-		 * view TODO: Decide if we should redirect like here or just show it
+		 * Start Listening to LocationChange events.
 		 */
-		if ("".equals(History.getToken())) {
-			goHome();
-		} else {
-			/*
-			 * If we have a history token we fire the change event which handles
-			 * setup of the activity
-			 */
-			History.fireCurrentHistoryState();
-		}
-	}
-
-	/**
-	 * Return the application to the default home activity
-	 */
-	public void goHome() {
-		History.newItem(defaultplace);
+		eventBus.addHandler(LocationChangedEvent.TYPE, this);
+		
+		/*
+		 * Do first location check
+		 */
+		onLocationChanged(null);
 	}
 
 	/**
@@ -119,43 +107,16 @@ public class ActivityManager implements ValueChangeHandler<String> {
 		if (placename == null) {
 			GWT.log("Place not found for activity: " + place.getName());
 		}
-		History.newItem(placename);
+		locationManager.go(placename);
 	}
 		
-	/**
-	 * This is called either when the user loads the page for the first time or
-	 * when the user switches places.
-	 * 
-	 * It is not meant to be called directly, but implicit via
-	 * {@link #go(Class)}
-	 */
-	@Override
-	public void onValueChange(ValueChangeEvent<String> event) {
-		Map<String, String> tokens = parseToken(event.getValue());
-		if (!tokens.containsKey(null)) {
-			GWT.log("History Token has no location - returning to home page");
-			goHome();
-		} else {
-			Class<? extends Activity> mainActivity = getActityFromLocation(tokens);
-			if (mainActivity != null) {
-				displayActivityClass(mainActivity);
-			} else {
-				GWT.log("Unknown location - returning to home page");
-				goHome();
-				return;
-			}
-		}
-	}
-
-	HashMap<Class<? extends Activity>, Activity> running = new HashMap<Class<? extends Activity>, Activity>();
-
-	private void displayActivityClass(final Class<? extends Activity> mainActivity) {
-		if(running.containsKey(mainActivity)){
-			displayActivity(running.get(mainActivity));
+	private void displayActivityClass(final Class<? extends Activity> activity, final ActivityContainer target) {
+		if(running.containsKey(activity)){
+			displayActivity(running.get(activity), target);
 			return;
 		}
-		stats.sendStats(Injection.class, mainActivity, "begin");
-		injector.create(mainActivity, new AsyncCallback<Activity>() {
+		stats.sendStats(Injection.class, activity, "begin");
+		injector.create(activity, new AsyncCallback<Activity>() {
 			@Override
 			public void onFailure(Throwable caught) {
 				GWT.log("Unable to start requested Presenter", caught);
@@ -163,82 +124,60 @@ public class ActivityManager implements ValueChangeHandler<String> {
 
 			@Override
 			public void onSuccess(Activity result) {
-				stats.sendStats(Injection.class, mainActivity, "end");
-				running.put(mainActivity, result);
-				displayActivity(result);
+				stats.sendStats(Injection.class, activity, "end");
+				running.put(activity, result);
+				displayActivity(result, target);
 			}
 		});		
 	}
 
-	private void displayActivity(Activity result) {
-		display.displayActivity(result);
+	private void displayActivity(Activity result, ActivityContainer target) {
+		target.displayActivity(result);
 	}
 	
 	/**
-	 * This one trims the place name a bit before using activitymap to lookup
-	 * the name. It is done to provide some nice looking urls. Everything after
-	 * $ or / is cut off
 	 * 
-	 * @param tokens
-	 *            a map if input tokens, where the null key is the main
-	 *            navigation element
 	 * @return the class matching the token set
 	 */
-	private Class<? extends Activity> getActityFromLocation(
-			Map<String, String> tokens) {
-		String location = tokens.get(null);
-		String[] matches = location.split("[/$]", 2);
-		GWT.log("mainplace: " + matches[0]);
-		if (matches.length > 1) {
-			switch (location.charAt(matches[0].length())) {
-			case '/':
-				locationInfo.setSubint(null);
-				locationInfo.setSubpath(matches[1]);
-				break;
-			case '$':
-				locationInfo.setSubpath(null);
-				locationInfo.setSubint(Integer.valueOf(matches[1]));
-				break;
-			default:
-				GWT.log("ActivityManager:Problems with history token"
-						+ location);
-			}
-		}
-		eventBus.fireEvent(new LocationChangedEvent(locationInfo));
-		return activityMap.getClassFromKey(matches[0]);
+	private Class<? extends Activity> getActityFromLocation(String activityToken) {
+		return activityMap.getClassFromKey(activityToken);
 	}
 
 	/**
-	 * Decode the map like described in {@link ActivityManager}
+	 * This is called either when the user loads the page for the first time or
+	 * when the user switches places.
 	 * 
-	 * If an invalid rawString is provided it returns to the home activity
-	 * 
-	 * @param rawHistoryString
-	 *            the anchor part of the current url
-	 * @return a map of parameters
+	 * It is not meant to be called directly, but implicit via
+	 * {@link #go(Class)}
+	 * @see LocationChangedEvent.Handler#onLocationChanged(LocationChangedEvent)
 	 */
-	private Map<String, String> parseToken(String rawHistoryString) {
-		HashMap<String, String> parameterMap = new HashMap<String, String>();
-		parameterMap.clear();
-		String[] values = rawHistoryString.split(";");
-		for (String placestring : values) {
-			String[] l = placestring.split("[=]", 2);
-			if (l.length > 1) {
-				assert (!parameterMap.containsKey(l[0]));
-				parameterMap.put(l[0], l[1]);
+	@Override
+	public void onLocationChanged(LocationChangedEvent event) {
+		String activity = locationInfo.getActivity();
+
+		if (activity == null || activity.equals("")) {
+			GWT.log("History Token has no location - returning to home page");
+			locationManager.goHome();
+		} else {
+			Class<? extends Activity> mainActivity = getActityFromLocation(activity);
+			if (mainActivity != null) {
+				displayActivityClass(mainActivity, display);
 			} else {
-				if (!parameterMap.containsKey(null)) {
-					parameterMap.put(null, l[0]);
-				} else {
-					if (!parameterMap.containsKey(l[0])) {
-						GWT
-								.log("History Contains Duplicate items - returning to home page");
-						goHome();
-					}
-					parameterMap.put(l[0], "");
-				}
+				GWT.log("Unknown location - returning to home page");
+				locationManager.goHome();
+				return;
 			}
+		}		
+
+		/*
+		 * Check for sidebar activities 
+		 */
+		String sideToken = locationManager.getToken("sidepanel");
+		if (sideToken != null && !sideToken.equals("")) {
+			String[] matches = sideToken.split("[,]");
+			
+			Class<? extends Activity> secActivity = getActityFromLocation(matches[0]);
+			displayActivityClass(secActivity, secondaryDisplay);
 		}
-		return parameterMap;
 	}
 }
