@@ -19,8 +19,8 @@
  */
 package com.kk_electronic.kkportal.core.ui;
 
+import com.google.gwt.user.client.ui.Anchor;
 import com.google.gwt.user.client.ui.Composite;
-import com.google.gwt.user.client.ui.Hyperlink;
 import com.google.inject.Inject;
 import com.kk_electronic.kkportal.core.event.TabSelectedEvent;
 import com.kk_electronic.kkportal.core.tabs.TabInfo;
@@ -28,17 +28,23 @@ import com.kk_electronic.kkportal.core.tabs.TabsModel;
 
 public class AddModuleLink extends Composite implements TabSelectedEvent.Handler {
 	
-	Hyperlink hyperlink = new Hyperlink();
+	Anchor link = new Anchor();
+	Integer id;
+	
 	@Inject
 	public AddModuleLink(TabsModel tabsModel) {
-		initWidget(hyperlink);
+		initWidget(link);
 		updateLink(tabsModel.getSelectedTab());
 		tabsModel.addTabSelectedHandler(this);
+		link.addClickHandler(handler);
 	}
 
 	public void updateLink(TabInfo tabInfo) {
-		hyperlink.setHTML(tabInfo!=null?"Add Module":"");
-		if(tabInfo != null) hyperlink.setTargetHistoryToken("AddModule$"+tabInfo.getId());
+		if(tabInfo != null) {
+			id = tabInfo.getId();
+			link.setText("Add Module");
+			link.setHref("#View$" + id + ";sidepanel=AddModule");
+		}
 	}
 
 	@Override
