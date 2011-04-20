@@ -38,7 +38,7 @@
 			margin-top: 2em;
 			background-color: colour2;
 		}
-		.whitelink, .whitelink a {
+		.whitelink, .whitelink:visited, .whitelink:hover {
 			color: white;
 		}
 	</ui:style>
