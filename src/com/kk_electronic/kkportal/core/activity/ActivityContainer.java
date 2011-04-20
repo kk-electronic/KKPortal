@@ -17,15 +17,14 @@
  * along with KKPortal.  If not, see <http://www.gnu.org/licenses/>.
  *
  */
-package com.kk_electronic.kkportal.core.ui;
 
-import com.kk_electronic.kkportal.core.activity.ActivityContainer;
-import com.kk_electronic.kkportal.core.inject.ConstructFromLiteral;
+package com.kk_electronic.kkportal.core.activity;
 
-@ConstructFromLiteral(includeInterfaces=true,recursive=false)
-public interface ApplicationLayout extends ActivityContainer {
-	/**
-	 * This function is called to setup the main application layout
-	 */
-	void go();
+
+/**
+ * @author Rasmus Carlsen
+ *
+ */
+public interface ActivityContainer {
+	void displayActivity(Activity activity);
 }
