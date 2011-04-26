@@ -26,6 +26,7 @@ import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.kk_electronic.gwt.rebind.Dispatch;
 import com.kk_electronic.kkportal.core.rpc.RemoteService;
 import com.kk_electronic.kkportal.core.rpc.Rename;
+import com.kk_electronic.kkportal.scada.dto.Result;
 
 /**
  * @author Jes Andersen
@@ -86,10 +87,6 @@ public interface IDataElementService extends RemoteService {
 		String EnumValueName;
 	}
 
-	public static class Result {
-		List<DataElementValue> Result;
-	}
-
 	/*
 	 * And then we use the generic result wrapper that all scada services must
 	 * implement and return a List of the basic return type.
@@ -97,5 +94,5 @@ public interface IDataElementService extends RemoteService {
 	public void GetDataElementValue(String stationGUID,
 			String hierarchyTypeNumber, String mappingGUID,
 			String dataElementGUID, String aggregation,
-			Boolean returnFromStation, AsyncCallback<Result> callback);
+			Boolean returnFromStation, AsyncCallback<Result<List<DataElementValue>>> callback);
 }

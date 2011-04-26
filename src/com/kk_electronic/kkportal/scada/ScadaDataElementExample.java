@@ -20,6 +20,8 @@
 
 package com.kk_electronic.kkportal.scada;
 
+import java.util.List;
+
 import com.google.gwt.safehtml.shared.SafeHtmlBuilder;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.HTML;
@@ -27,7 +29,7 @@ import com.google.gwt.user.client.ui.Widget;
 import com.google.inject.Inject;
 import com.kk_electronic.kkportal.core.AbstractModule;
 import com.kk_electronic.kkportal.scada.IDataElementService.DataElementValue;
-import com.kk_electronic.kkportal.scada.IDataElementService.Result;
+import com.kk_electronic.kkportal.scada.dto.Result;
 
 /**
  * @author Jes Andersen
@@ -59,10 +61,10 @@ public class ScadaDataElementExample extends AbstractModule {
 		 * All rpc calls are asynchronous since we must not halt the ui while
 		 * fetching data.
 		 */
-		AsyncCallback<Result> callback = new AsyncCallback<Result>() {
+		AsyncCallback<Result<List<DataElementValue>>> callback = new AsyncCallback<Result<List<DataElementValue>>>() {
 
 			@Override
-			public void onSuccess(Result result) {
+			public void onSuccess(Result<List<DataElementValue>> result) {
 				/**
 				 * We create a SafeHtmlBuilder to create the new HTML of label
 				 * The result is similar to this:
