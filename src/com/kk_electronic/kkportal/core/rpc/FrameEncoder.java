@@ -19,6 +19,8 @@
  */
 package com.kk_electronic.kkportal.core.rpc;
 
+import java.util.List;
+
 import com.kk_electronic.kkportal.core.rpc.jsonformat.UnableToDeserialize;
 import com.kk_electronic.kkportal.core.rpc.jsonformat.UnableToSerialize;
 
@@ -27,4 +29,5 @@ public interface FrameEncoder<V> {
 	public abstract <T> void encode(T object,StringBuilder response) throws UnableToSerialize;
 	public abstract V decode(String string) throws UnableToDeserialize;
 	public abstract <T> T validate(V object,T resultType,Class<?>[] subtypes) throws UnableToDeserialize;
+	public abstract <T> T validate(V object,T resultType,List<Class<?>> subtypes) throws UnableToDeserialize;
 }

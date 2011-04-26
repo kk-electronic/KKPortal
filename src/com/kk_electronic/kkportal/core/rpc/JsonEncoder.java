@@ -22,6 +22,7 @@ package com.kk_electronic.kkportal.core.rpc;
 import java.util.AbstractList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 
 import com.google.gwt.json.client.JSONParser;
@@ -111,21 +112,25 @@ public class JsonEncoder implements FrameEncoder<JSONValue> {
 	@Override
 	public <T> T validate(JSONValue result, T resultType, Class<?>[] subtypes)
 			throws UnableToDeserialize {
-		if (!(result instanceof JSONValue))
-			throw new UnableToDeserialize("result must not be null");
-		if (subtypes == null || subtypes.length == 0)
-			throw new UnableToDeserialize("Subtypes must not be null or empty");
-		return test(result,Arrays.asList(subtypes),resultType);
+		LinkedList<Class<?>> x = new LinkedList<Class<?>>();
+		for(Class<?> item:subtypes){
+			x.add(item);
+		}
+		return validate(result,resultType,x);
 	}
 
-	public <T> T test(JSONValue result, List<Class<?>> subtypes,T resultType) throws UnableToDeserialize {
+	public <T> T validate(JSONValue result,T resultType,List<Class<?>> subtypes) throws UnableToDeserialize {
+		if (!(result instanceof JSONValue))
+			throw new UnableToDeserialize("result must not be null");
+		if (subtypes == null || subtypes.size() == 0)
+			throw new UnableToDeserialize("Subtypes must not be null or empty");
 		if(result.isNull() != null) return null;
-		JsonValue<T> jsonValue = find(subtypes.get(0), resultType);
+		JsonValue<T> jsonValue = find(subtypes.remove(0), resultType);
 		if (jsonValue == null){
 			throw new UnableToDeserialize("Could not find deserializer for "
 					+ subtypes.get(0));
 		}
-		return jsonValue.fromJson(result, subtypes.subList(1, subtypes.size()), this);
+		return jsonValue.fromJson(result, subtypes, this);
 	}
 
 	@Override
