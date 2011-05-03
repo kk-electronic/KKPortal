@@ -172,12 +172,26 @@ public class ActivityManager implements LocationChangedEvent.Handler {
 		/*
 		 * Check for sidebar activities 
 		 */
+		String panelToken = locationManager.getToken("sidepanelOpen");
+		if (panelToken != null) {
+			Boolean b = new Boolean(panelToken);			
+			if (b) {
+				// TODO show sidebar
+			} else {
+				// TODO hide sidebar
+			}
+		}
+		
 		String sideToken = locationManager.getToken("sidepanel");
+		secondaryDisplay.clear();
 		if (sideToken != null && !sideToken.equals("")) {
 			String[] matches = sideToken.split("[,]");
-			
-			Class<? extends Activity> secActivity = getActityFromLocation(matches[0]);
-			displayActivityClass(secActivity, secondaryDisplay);
+			for (String match : matches) {
+				Class<? extends Activity> secActivity = getActityFromLocation(match);
+				if(secActivity != null) {
+					displayActivityClass(secActivity, secondaryDisplay);
+				}				
+			}
 		}
 	}
 }

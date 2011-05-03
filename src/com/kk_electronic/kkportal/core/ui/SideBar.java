@@ -51,7 +51,6 @@ public class SideBar extends Composite implements ActivityContainer {
 		if(activityWidget == activity){
 			return;
 		}
-		slp.clear();
 		if(activity == null){
 			activityWidget = null;
 		} else {
@@ -59,6 +58,10 @@ public class SideBar extends Composite implements ActivityContainer {
 			slp.add(activityWidget, "Add Module", 2.0);
 		}
 		
+	}
+	
+	public void clear() {
+		slp.clear();
 	}
 
 }
