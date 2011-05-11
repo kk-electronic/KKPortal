@@ -23,14 +23,10 @@ import com.google.inject.Singleton;
 
 @Singleton
 public class LocationInfo {
-	private String name;
+	private String Activity;
 	private Integer subint;
 	private String subpath;
 	
-	public void setName(String name) {
-		this.name = name;
-	}
-
 	public void setSubint(Integer subint) {
 		this.subint = subint;
 	}
@@ -39,15 +35,25 @@ public class LocationInfo {
 		this.subpath = subpath;
 	}
 
-	public String getName() {
-		return name;
-	}
-
 	public Integer getSubint() {
 		return subint;
 	}
 
 	public String getSubpath() {
 		return subpath;
+	}
+
+	/**
+	 * @param activity the activity to set
+	 */
+	public void setActivity(String activity) {
+		Activity = activity;
+	}
+
+	/**
+	 * @return the activity
+	 */
+	public String getActivity() {
+		return Activity;
 	}
 }

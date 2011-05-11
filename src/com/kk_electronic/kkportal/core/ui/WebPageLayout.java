@@ -50,9 +50,10 @@ public class WebPageLayout extends Composite implements ApplicationLayout {
 	private Widget activityWidget;
 	
 	@Inject
-	public WebPageLayout(UIBinder binder,AddModuleLink addModuleLink,LogoutLink logoutLink) {
+	public WebPageLayout(UIBinder binder,AddModuleLink addModuleLink,LogoutLink logoutLink, SideBar sidebar) {
 		this.addModuleLink = addModuleLink;
 		this.logoutLink = logoutLink;
+		this.sidebar = sidebar;
 		Panel e = binder.createAndBindUi(this);
 		super.initWidget(e);
 	}
@@ -77,8 +78,8 @@ public class WebPageLayout extends Composite implements ApplicationLayout {
 	}
 	
 	boolean isSidebarHidden = true;
-	@UiField
-	Widget sidebar;
+	@UiField(provided=true)
+	SideBar sidebar;
 	
 	public void toggleSidebar() {
 		if(isSidebarHidden){
