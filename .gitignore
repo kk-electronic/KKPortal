@@ -11,3 +11,4 @@ test.db
 www-test/
 waf-build/
 user.conf
+*~
